@@ -1,7 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSass = require("eleventy-plugin-sass");
 
 module.exports = function (eleventyConfig) {
 	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
@@ -10,12 +9,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
 	eleventyConfig.addPlugin(pluginRss);
-	// https://www.npmjs.com/package/eleventy-plugin-sass
-	eleventyConfig.addPlugin(pluginSass, {
-		watch: ['**/*.{scss,sass}', '!node_modules/**'],
-		sourcemaps: true,
-		outputDir:
-	});
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 
@@ -31,11 +24,7 @@ module.exports = function (eleventyConfig) {
 	return {
 		// Control which files Eleventy will process
 		// e.g.: *.md, *.njk, *.html
-		templateFormats: [
-		  "md",
-		  "njk",
-		  "html"
-		],
+		templateFormats: ["md", "njk", "html"],
 
 		// -----------------------------------------------------------------
 		// If your site deploys to a subdirectory, change `pathPrefix`.
@@ -62,11 +51,11 @@ module.exports = function (eleventyConfig) {
 
 		// These are all optional (defaults are shown):
 		dir: {
-		  input: ".",
-		  includes: "_includes",
-		  data: "_data",
-		  output: "docs"
-		}
-	  };
+			input: "src",
+			includes: "_includes",
+			layouts: "_layouts",
+			data: "_data",
+			output: "docs",
+		},
 	};
 };
