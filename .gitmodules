@@ -1,0 +1,3 @@
+[submodule "dinky"]
+	path = dinky
+	url = git@github.com:pages-themes/dinky.git

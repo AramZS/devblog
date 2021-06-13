@@ -1,0 +1,19 @@
+{
+  "name": "fightwithtooldev",
+  "version": "1.0.0",
+  "description": "This is the repo for Aram ZS's developer notes and log, keeping track of code experiments and decisions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.2.0",
+    "@11ty/eleventy-plugin-rss": "^1.1.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
+    "sass": "^1.34.1"
+  }
+}
