@@ -1,3 +1,6 @@
 {
-	"lang": "en-US"
+	"lang": "en-US",
+	"github": {
+		"build_revision": 1.0
+	}
 }

@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
 
 	// Copy the `img` folders to the output
 	eleventyConfig.addPassthroughCopy("img");
+	eleventyConfig.addPassthroughCopy({ "dinky/assets": "assets" });
 
 	return {
 		// Control which files Eleventy will process

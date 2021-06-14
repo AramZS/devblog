@@ -1,6 +1,7 @@
 ---
 title: Hello World Devblog - Pt. 2
 subtitle: Getting this dev blog running
+description: Part 2 of setting up 11ty deb blog.
 tags:
   - Starters
   - 11ty
@@ -55,7 +56,10 @@ Because I defined a path to layouts in the config, I don't need to include it?
 
 Yup, now I have an error in the template!
 
-Ok, looks like I can't use this structure: `{{ site.lang | default: "en-US" }}"`
+Ok, looks like I can't use this structure:
+{% raw %}
+`{{ site.lang | default: "en-US" }}"`
+{% endraw %}
 
 So, default values, how should I do them? It [looks like](https://www.11ty.dev/docs/data-cascade/) the answer is to define it as [a data global](https://www.11ty.dev/docs/data-global/). Ok let's try it, place the default in `src/_data/site.json`.
 
@@ -69,4 +73,30 @@ Huh... render error on *this* file:
 
 `TemplateContentRenderError ... expected variable end`
 
-Going to remove `{% seo %}` from the template. I assume it is a template fragment without looking it up but I'm not prepared to figure it out. Still no solve. Good time to commit! 
+Going to remove {% raw %}`{% seo %}`{% endraw %} from the template. I assume it is a template fragment without looking it up but I'm not prepared to figure it out. Still no solve. Good time to commit!
+
+`git commit -am "Template still not working but getting closer"`
+
+Ok, let's start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn't make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are [more ways to configure the passthrough rules](https://www.11ty.dev/docs/copy/#change-the-output-directory) to make this work for me.
+
+`eleventyConfig.addPassthroughCopy({ "dinky/assets": "assets" });`
+
+Ok, passthrough works! But the template still won't render. The error is still in my markdown! At `[Line 49, Column 67]`. What is going on?! That line is empty, it doesn't have columns.
+
+Wait... the line number is likely being calculated after the metadata is removed from the head of the `md` file. Ok... my metadata takes up 10 lines so it is really line *59*. Oh! It's a code sample *from* the template. It's trying to render an njk variable from the markdown file?! That's very dumb.
+
+To Google! "njk picking up code sample of njk code" > [result](https://github.com/11ty/eleventy/issues/791).
+
+Raw tag huh? How does that work exactly? Oh... like [this](https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md).
+
+Ok, works both for blocks and inline, good!
+
+Ok, defaults for posts *have* to be in the `posts` folder's `posts.json`. I cannot seem to set any defaults for posts in the `_data` folder. Or at least I haven't figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the `dinky` submodule! This is good. The process works, so now I can start to build in my weirdness.
+
+I still really want to figure out the defaults thing first. How do I make this work?
+
+Ok, [here we go](https://github.com/11ty/eleventy/issues/380#issuecomment-568033456).
+
+So to get a default `description` value in my template I can set it up with a file at `src/_data/description.js` and have the content of that file be `module.exports = "Talking about code";`. Ok, that works!
+
+Yay, 11ty defaults work now! Good place to commit. 
