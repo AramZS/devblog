@@ -2,29 +2,11 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
+const path = require("path");
+const del = require("del");
 
 module.exports = function (eleventyConfig) {
-	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
-	eleventyConfig.addPlugin(syntaxHighlight);
-	// https://www.11ty.dev/docs/plugins/navigation/
-	eleventyConfig.addPlugin(eleventyNavigationPlugin);
-	// https://www.11ty.dev/docs/plugins/rss/
-	eleventyConfig.addPlugin(pluginRss);
-	sassBuild();
-
-	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
-
-	// https://www.11ty.dev/docs/data-deep-merge/
-	eleventyConfig.setDataDeepMerge(true);
-
-	// Alias `layout: post` to `layout: layouts/post.njk`
-	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
-
-	// Copy the `img` folders to the output
-	eleventyConfig.addPassthroughCopy("img");
-	eleventyConfig.addPassthroughCopy({ "dinky/assets": "assets" });
-
-	return {
+	var siteConfiguration = {
 		// Control which files Eleventy will process
 		// e.g.: *.md, *.njk, *.html
 		templateFormats: ["md", "njk", "html"],
@@ -61,4 +43,32 @@ module.exports = function (eleventyConfig) {
 			output: "docs",
 		},
 	};
+
+	const dirToClean = path.join(siteConfiguration.dir.output, "*");
+	del.sync(dirToClean, { dot: true });
+
+	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
+	eleventyConfig.addPlugin(syntaxHighlight);
+	// https://www.11ty.dev/docs/plugins/navigation/
+	eleventyConfig.addPlugin(eleventyNavigationPlugin);
+	// https://www.11ty.dev/docs/plugins/rss/
+	eleventyConfig.addPlugin(pluginRss);
+	sassBuild();
+
+	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
+
+	// https://www.11ty.dev/docs/data-deep-merge/
+	eleventyConfig.setDataDeepMerge(true);
+
+	// Alias `layout: post` to `layout: layouts/post.njk`
+	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+
+	// Copy the `img` folders to the output
+	eleventyConfig.addPassthroughCopy("img");
+	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
+	eleventyConfig.addPassthroughCopy({
+		"dinky/assets/images": "assets/images",
+	});
+
+	return siteConfiguration;
 };
