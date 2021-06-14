@@ -1,6 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const sassBuild = require("./_custom-plugins/sass-manager");
 
 module.exports = function (eleventyConfig) {
 	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
@@ -9,6 +10,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
 	eleventyConfig.addPlugin(pluginRss);
+	sassBuild();
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 

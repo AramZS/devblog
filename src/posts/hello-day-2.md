@@ -99,4 +99,42 @@ Ok, [here we go](https://github.com/11ty/eleventy/issues/380#issuecomment-568033
 
 So to get a default `description` value in my template I can set it up with a file at `src/_data/description.js` and have the content of that file be `module.exports = "Talking about code";`. Ok, that works!
 
-Yay, 11ty defaults work now! Good place to commit. 
+Yay, 11ty defaults work now! Good place to commit.
+
+`git commit -am "Ok, renders and defaults are working now"`
+
+Hmmm... ok I guess that I picked a bad example plugin, because the one I used [doesn't have a typical footprint](https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage). Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add `sassBuild();` to the inside of my .eleventy.js function inside of `module.exports = function (eleventyConfig) {`?
+
+Ok... renderSync from `dart-sass` threw an error:
+
+```bash
+Receiver: Closure '_renderSync'
+Arguments: [Instance of 'PlainJavaScriptObject', Instance of 'JavaScriptFunction']
+
+`` was thrown:
+    NoSuchMethodError: method not found: 'call'
+```
+
+Lol [documentation error in dart-sass](https://github.com/sass/dart-sass/issues/23#issuecomment-259011350) apparently. Don't pass two functions, because that's an async pattern, instead return the result.
+
+Cool. New error!
+
+`Invalid argument(s): Either options.data or options.file must be set.`
+
+Can I not use multiple files? I guess I need a single file that calls the others [using @use](https://sass-lang.com/documentation/at-rules/use). Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!
+
+Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the `@use` relative to the base of the project, where I'm executing the 11ty build process.
+
+Still no css file.
+
+Oh, [lol](https://sass-lang.com/documentation/js-api#outfile)
+
+> Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.
+
+Ok, gotta do that.
+
+Ok, I want to use `fs` to write the resulting file into `docs/styles/styles.css`. Only, the `styles` directory does not predictably exist so `fs` fails because I have to make that folder. Of course, forgot. Easy enough.
+
+Ok, it works! This is a good place to stop because it is almost midnight.
+
+
