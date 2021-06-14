@@ -137,4 +137,6 @@ Ok, I want to use `fs` to write the resulting file into `docs/styles/styles.css`
 
 Ok, it works! This is a good place to stop because it is almost midnight.
 
+`git commit -am "Compile that sass"`
 
+And this is pretty far along, huh? Time to push it to Github. 
