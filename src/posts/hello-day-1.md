@@ -1,11 +1,14 @@
 ---
-title: Hello World - Getting this dev blog running
+title: Hello World Devblog - Pt. 1
+subtitle: Getting this dev blog running
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
 ---
+
+# Day 1
 
 I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:
 
@@ -201,4 +204,8 @@ Let's try altering the .eleventy.js returned data to include, and I'll move the 
 
 Still didn't pick it up.
 
-Ok, gotta play around, but good time to 
+Ok, gotta play around, but good time to commit
+
+`git commit -am "First render, didn't work"`
+
+Time to take a break for dinner.

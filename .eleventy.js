@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
 
 	// Alias `layout: post` to `layout: layouts/post.njk`
-	eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
 	// Copy the `img` folders to the output
 	eleventyConfig.addPassthroughCopy("img");
