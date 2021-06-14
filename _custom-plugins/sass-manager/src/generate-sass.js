@@ -9,17 +9,20 @@ module.exports = () => {
 			// ...
 		},
 		sourceMap: true,
-		outFile: "docs/styles/style.css",
+		outFile: "docs/assets/css/style.css",
 	});
 	console.log("Sass renderSync result", result);
 	var fullCSS = result.css.toString();
 	if (!fs.existsSync("./docs")) {
 		fs.mkdirSync("./docs");
 	}
-	if (!fs.existsSync("./docs/styles")) {
-		fs.mkdirSync("./docs/styles");
+	if (!fs.existsSync("./docs/assets")) {
+		fs.mkdirSync("./docs/assets");
 	}
-	var writeResult = fs.writeFileSync("./docs/styles/style.css", fullCSS);
+	if (!fs.existsSync("./docs/assets/css")) {
+		fs.mkdirSync("./docs/assets/css");
+	}
+	var writeResult = fs.writeFileSync("./docs/assets/css/style.css", fullCSS);
 	console.log("Sass file write result", writeResult);
 	return result;
 };

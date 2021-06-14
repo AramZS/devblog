@@ -4,6 +4,10 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
 const path = require("path");
 const del = require("del");
+const hljs = require("highlight.js"); // https://highlightjs.org/
+
+// Actual default values
+var markdownIt = require("markdown-it");
 
 module.exports = function (eleventyConfig) {
 	var siteConfiguration = {
@@ -53,7 +57,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
 	eleventyConfig.addPlugin(pluginRss);
+
 	sassBuild();
+	eleventyConfig.on("beforeWatch", (changedFiles) => {
+		// changedFiles is an array of files that changed
+		// to trigger the watch/serve build
+		sassBuild();
+	});
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 
@@ -69,6 +79,27 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		"dinky/assets/images": "assets/images",
 	});
+
+	let options = {
+		html: true,
+		breaks: true,
+		linkify: true,
+		langPrefix: "language-",
+		highlight: function (str, lang) {
+			if (lang && hljs.getLanguage(lang)) {
+				try {
+					console.log("Syntax highlight good", lang);
+					return hljs.highlight(lang, str).value;
+				} catch (__) {
+					console.log("Syntax highlight fail", lang);
+				}
+			}
+			console.log("Fallback syntax highlighting");
+			return ""; // use external default escaping
+		},
+	};
+	eleventyConfig.setLibrary("md", markdownIt(options));
+	eleventyConfig.setLibrary("markdown", markdownIt(options));
 
 	return siteConfiguration;
 };

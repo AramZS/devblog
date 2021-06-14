@@ -177,7 +177,7 @@ NOTE: I'm pretty sure that Nunjucks can process HTML files. Do I want to just ad
 
 Pull the .eleventy.js return from the [base blog](https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js) and change output to `docs` for Github Pages...
 
-```
+```javascript
 		dir: {
 			input: ".",
 			includes: "_includes",

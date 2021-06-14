@@ -58,4 +58,128 @@ One other throught now occurs. I saw that the dinky template uses some sort of b
 
 [ ] How do I cachebreak files on the basis of new build events? Datetime? `site.github.build_revision` is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?
 
+`git commit -am "Self-cleaning builds"`
 
+11ty build is now stable enough that I might be able to develop with `npx @11ty/eleventy --serve` and check in on it. Let's see what it looks like.
+
+Gotta adjust my CSS output path to match the template file's.
+
+Ok, content is rendering as escaped HTML. That's not right at all.
+
+Ahhh, apparently (here we are at poorly documented Nunjucks again...) my content tag needs to be {% raw %}`{{ content | safe }}`{% endraw %}.
+
+Ok, it's working now! Good signs! Hmmm. I was hoping that 1-space empty brackets would be rendered as a checkbox, as in Github-flavored markdown. But apparently not. How difficult would that be to fix?
+
+Hmmm also some other problems:
+
+[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.
+[ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.
+
+I [have syntax highlighting styles](https://github.com/AramZS/aramzs.github.io/blob/master/_sass/_syntax-highlighting.scss) I like on my Github user Pages site. Let's just reuse it.
+
+Huh... why doesn't the plugin for building Sass re-trigger on watch? [Looks like there's a way to fix that](https://www.11ty.dev/docs/events/#beforewatch).
+
+Ugh... apparently the Sass syntax has changed significantly since the last time I used it and also since it was set up in my other site. I'll need to correct.
+
+*sigh*
+
+Ok [it's changed a lot](https://stackoverflow.com/questions/56858150/i-am-gettiing-an-error-expected-new-line-while-compiling-sass). And the Sass build tools are dickishly specific about spaces over tabs. Need to add a new section to my `.editorconfig`.
+
+```
+
+[*.sass]
+indent_style = space
+
+```
+
+Ok, I tried building the extendable [placeholder](https://sass-lang.com/documentation/style-rules/placeholder-selectors) into a standalone Sass file and a standalone Scss file and [it looks right](https://sass-lang.com/documentation/at-rules/extend#placeholder-selectors). But `@extend %vertical-rhythm` still isn't working.
+
+My ordering looks correct!
+
+```sass
+@use '_sass/base-syntax-highlighting'
+@use '_sass/syntax-highlighting'
+```
+
+What's going on?
+
+First error is a depreciation error. It *shouldn't* be a problem, but let's just get rid of it.
+
+```bash
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($spacing-unit, 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+```
+
+Alrighty. [Go to the docs and do what it says](https://sass-lang.com/documentation/breaking-changes/slash-div). Side comment... this is dumb. Why is it *easier* to do this type of math with standard CSS (where it would be `calc()`) than it is with Sass. Why is Sass harder to use now than it was when I got deep into it years ago? Grrrrr.
+
+OMG why does this documentation start off with `// Future Sass, doesn't work yet!`?!?! Why would you start off a documentation file with a suggested solution that **doesn't work**?!
+
+Ok. Down to one error. Still not importing the placeholder, why not?
+
+Oh no. This is [A Problem](https://github.com/sass/dart-sass/issues/1042#issuecomment-656338728). Apparently the move to @use has not synced well with the old ways of using mixins, imports and placeholders?
+
+The answer seems to be that you can't have a master file import a variables and expect them to be picked up by downstream files `@use`ed by that master file, instead you have to import them directly into the file you inted to use? I could have sworn that worked differently before? That isn't how it seems to work in my Jekyll site, perhaps there is a better way to do this?
+
+[ ] Why is the logic around `@use` not working how I expect it to? Is there a better way?
+
+Ok, I'm... not sure the styles are applying. Let's replicate a markdown block from my other site and see if it looks good.
+
+```markdown
+---
+layout: page
+---
+```
+
+It doesn't look good, but looking at the HTML markup... it looks like the problem is 11ty's processing and output of the actual markup.
+
+:/
+
+What does Jekyll use?
+
+> Confusingly, GitHub Pages renders Markdown differently than GitHub does. GitHub uses its own Markdown processor; GitHub Pages uses jekyll-commonmark.
+
+lol [thanks](https://www.markdownguide.org/tools/github-pages/).
+
+Looks like [Markdown-It](https://www.npmjs.com/package/markdown-it) is [a popular choice](https://www.11ty.dev/docs/languages/markdown/) on 11ty to switch to commonmark.
+
+Oh no, [it doesn't ship with syntax highlighting](https://www.npmjs.com/package/markdown-it#syntax-highlighting).
+
+Ok, `highlight.js` is still not applying good tags. Is it an 11ty issue, or is it that I need to use Pygments, which is apparently the code syntax highlighting engine that Github Pages uses? Ok, how does that work in Node? There [is a package, let's read up](https://www.npmjs.com/package/pygments)!
+
+I am concerned that it hasn't been update in 5 years. You know what? let's try https://highlightjs.org/ and see if I can force it to build better styles.
+
+Oh no... white text on bright red background. This is a bad sign.
+
+Ok, this looks like it actually should work ok though, what is going on? I'm going to add some `console.log` statements.
+
+```javascript
+	let options = {
+		html: true,
+		breaks: true,
+		linkify: true,
+		langPrefix: "language-",
+		highlight: function (str, lang) {
+			if (lang && hljs.getLanguage(lang)) {
+				try {
+					console.log("Syntax highlight good", lang);
+					return hljs.highlight(lang, str).value;
+				} catch (__) {
+					console.log("Syntax highlight fail", lang);
+				}
+			}
+
+			return ""; // use external default escaping
+		},
+	};
+	eleventyConfig.setLibrary("md", markdownIt(options));
+	eleventyConfig.setLibrary("markdown", markdownIt(options));
+```
+
+Ok, they aren't triggering. No logging, this isn't working.
+
+The eleventy website has good syntax highlighting. [How are they doing it](https://github.com/11ty/11ty-website/blob/master/.eleventy.js)?
+
+Ok, there's a lot going on there and I need a break. Break time.
