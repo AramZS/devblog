@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 2
+title: Hello World Devblog - Pt. 3
 subtitle: Getting this dev blog running
-description: Part 2 of setting up 11ty deb blog.
+description: Part 3 of setting up 11ty deb blog.
 tags:
   - Starters
   - 11ty
@@ -183,3 +183,5 @@ Ok, they aren't triggering. No logging, this isn't working.
 The eleventy website has good syntax highlighting. [How are they doing it](https://github.com/11ty/11ty-website/blob/master/.eleventy.js)?
 
 Ok, there's a lot going on there and I need a break. Break time.
+
+`git commit -am "Trying to get better syntax highlighting" `

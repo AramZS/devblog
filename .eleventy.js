@@ -4,10 +4,11 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
 const path = require("path");
 const del = require("del");
-const hljs = require("highlight.js"); // https://highlightjs.org/
+// const hljs = require("highlight.js"); // https://highlightjs.org/
+const loadLanguages = require("prismjs/components/");
+var mdProcessor = require("markdown-it");
 
-// Actual default values
-var markdownIt = require("markdown-it");
+loadLanguages(["yaml"]);
 
 module.exports = function (eleventyConfig) {
 	var siteConfiguration = {
@@ -51,8 +52,10 @@ module.exports = function (eleventyConfig) {
 	const dirToClean = path.join(siteConfiguration.dir.output, "*");
 	del.sync(dirToClean, { dot: true });
 
+	// var markdownIt = new mdProcessor();
+
 	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
-	eleventyConfig.addPlugin(syntaxHighlight);
+	// eleventyConfig.addPlugin(syntaxHighlight);
 	// https://www.11ty.dev/docs/plugins/navigation/
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
@@ -80,11 +83,24 @@ module.exports = function (eleventyConfig) {
 		"dinky/assets/images": "assets/images",
 	});
 
+	eleventyConfig.addPlugin(syntaxHighlight, {
+		templateFormats: ["md", "njk"],
+		init: function ({ Prism }) {
+			Prism.languages.markdown = Prism.languages.extend("markup", {
+				frontmatter: {
+					pattern: /^---[\s\S]*?^---$/m,
+					greedy: true,
+					inside: Prism.languages.yaml,
+				},
+			});
+		},
+	});
+
 	let options = {
 		html: true,
 		breaks: true,
 		linkify: true,
-		langPrefix: "language-",
+		/** langPrefix: "language-",
 		highlight: function (str, lang) {
 			if (lang && hljs.getLanguage(lang)) {
 				try {
@@ -96,10 +112,10 @@ module.exports = function (eleventyConfig) {
 			}
 			console.log("Fallback syntax highlighting");
 			return ""; // use external default escaping
-		},
+		},**/
 	};
-	eleventyConfig.setLibrary("md", markdownIt(options));
-	eleventyConfig.setLibrary("markdown", markdownIt(options));
+	eleventyConfig.setLibrary("md", mdProcessor(options));
+	eleventyConfig.setLibrary("markdown", mdProcessor(options));
 
 	return siteConfiguration;
 };
