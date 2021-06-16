@@ -77,7 +77,7 @@ module.exports = function (eleventyConfig) {
 	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
 	// Copy the `img` folders to the output
-	eleventyConfig.addPassthroughCopy("img");
+	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
 	eleventyConfig.addPassthroughCopy({
 		"dinky/assets/images": "assets/images",
@@ -100,6 +100,10 @@ module.exports = function (eleventyConfig) {
 		html: true,
 		breaks: true,
 		linkify: true,
+		replaceLink: function (link, env) {
+			// console.log("env:", env);
+			return env.site.site_url + "/img/" + link;
+		},
 		/** langPrefix: "language-",
 		highlight: function (str, lang) {
 			if (lang && hljs.getLanguage(lang)) {
@@ -114,8 +118,12 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
-	eleventyConfig.setLibrary("md", mdProcessor(options));
-	eleventyConfig.setLibrary("markdown", mdProcessor(options));
+	eleventyConfig.setLibrary(
+		"md",
+		mdProcessor(options)
+			.use(require("markdown-it-replace-link"))
+			.use(require("markdown-it-todo"))
+	);
 
 	return siteConfiguration;
 };

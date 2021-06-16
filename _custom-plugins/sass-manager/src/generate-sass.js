@@ -4,7 +4,7 @@ var fs = require("fs");
 module.exports = () => {
 	var result = sass.renderSync({
 		includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
-		file: "_sass/_index.sass",
+		file: "src/_sass/_index.sass",
 		importer: function (url, prev, done) {
 			// ...
 		},
