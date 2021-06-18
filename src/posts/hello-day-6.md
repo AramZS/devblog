@@ -62,4 +62,8 @@ Huh... it build from the file at `src/index.njk` once... and now it hasn't again
 
 Is it possible to have the docs content not committed on `main` but only on `gh-pages`? That would seem to be a good solution, but let's see.
 
+Ooops, I was fiddling with trying to build a useful gitignore file for docs and passing it through and accidentally deleted all my layouts.
 
+Let me pull those files back in from the last good commit: `git checkout 32e6206c0680d9009a316b85e33461479058d81d src/_layouts/*`
+
+Yup that did it. My Index file is back. Ok 

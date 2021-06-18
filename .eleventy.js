@@ -78,7 +78,7 @@ module.exports = function (eleventyConfig) {
 
 	// Copy the `img` folders to the output
 	eleventyConfig.addPassthroughCopy("src/img");
-	eleventyConfig.addPassthroughCopy("src/.gitignore");
+	// eleventyConfig.addPassthroughCopy("src/.gitignore");
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
 	eleventyConfig.addPassthroughCopy({
 		"dinky/assets/images": "assets/images",
