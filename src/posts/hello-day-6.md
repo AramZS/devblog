@@ -81,3 +81,15 @@ Ah, the issue is that the default configuration of Jekyll github pages pulls in 
 Oh, and fix my `.editorconfig` to work better with yml files.
 
 git commit -am "Get submodules working for github actions hopefully"
+
+Good news, a new error!
+
+```bash
+Run peaceiris/actions-gh-pages@v3
+[INFO] Usage https://github.com/peaceiris/actions-gh-pages#readme
+Dump inputs
+Setup auth token
+  Error: Action failed with "not found deploy key or tokens"
+```
+
+Oops, but the secret in a custom environment instead of the `github-pages` [environment](https://github.com/AramZS/devblog/settings/environments).
