@@ -73,3 +73,11 @@ Build still isn't working. Hmmm where are the logs for this?
 Ok, [in the Actions tab](https://github.com/AramZS/devblog/actions), not in settings.
 
 Looks like it isn't pulling in Dinky properly as a submodule because [Github Pages needs the https url for the repo in .gitsubmodules](https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages).
+
+Hmmm, still not working.
+
+Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but [the default configuration of the checkout action doesn't](https://github.com/actions/checkout). I just need to add that property to the yml file.
+
+Oh, and fix my `.editorconfig` to work better with yml files.
+
+git commit -am "Get submodules working for github actions hopefully"
