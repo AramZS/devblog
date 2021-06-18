@@ -94,6 +94,10 @@ Ok, now to set up a `user` overwrite to be the last file in the Sass compile pro
 
 Much better.
 
-Oh, I want to make those checkboxes show up correctly. Bet there's a markdown-it plugin I can use. It looks like there are [1](https://www.npmjs.com/package/markdown-it-task-checkbox) [2](https://www.npmjs.com/package/markdown-it-todo?activeTab=dependencies) possible node modules, a more used one with some unresolved PRs and ignored issues and a barely used one that correctly makes checkboxes readonly.
+Oh, I want to make those checkboxes show up correctly. Bet there's a markdown-it plugin I can use. It looks like there are 2 possible node modules, [a more used one with some unresolved PRs and ignored issues](https://www.npmjs.com/package/markdown-it-task-checkbox) and [a barely used one that correctly makes checkboxes readonly](https://www.npmjs.com/package/markdown-it-todo). It might be less popular, but I'm going with the version that works the way I want right out of the box. It also happens to be a very simple plugin, so if it goes wrong, I can always hack at it.
 
 Looks good!
+
+`git commit -am "Adding days 4 and 5 progress and notes"`
+
+
