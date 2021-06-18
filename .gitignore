@@ -1,3 +1,5 @@
 node_modules
 .env
 docs/*
+gh-pages
+gh-pages.pub

@@ -4,7 +4,8 @@
   "description": "This is the repo for Aram ZS's developer notes and log, keeping track of code experiments and decisions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build": "eleventy"
   },
   "keywords": [],
   "author": "",

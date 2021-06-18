@@ -48,9 +48,12 @@ Ok, here we go on day 6. Today I write code on a Delta flight.
 
 I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.
 
-The most upvoted solution I saw for Github Pages deployment was [the LinkedIn post](https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/) I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.
+The most upvoted solution I saw for Github Pages deployment was [the LinkedIn post by Lea Tortay](https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/) I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.
 
 Oh, lol the wifi was only free for the first 5 minutes I guess? Ok, I'll pay.
 
 Hmmmmm Captive Portal problems. Time to reboot.
+
+Had to reboot, find the captive portal URL, cycle my DHCP lease and then pay for the privlige, but on the interwebs again. Payed to get on.
+
 
