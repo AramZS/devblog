@@ -66,4 +66,10 @@ Ooops, I was fiddling with trying to build a useful gitignore file for docs and 
 
 Let me pull those files back in from the last good commit: `git checkout 32e6206c0680d9009a316b85e33461479058d81d src/_layouts/*`
 
-Yup that did it. My Index file is back. Ok 
+Yup that did it. My Index file is back.
+
+Build still isn't working. Hmmm where are the logs for this?
+
+Ok, [in the Actions tab](https://github.com/AramZS/devblog/actions), not in settings.
+
+Looks like it isn't pulling in Dinky properly as a submodule because [Github Pages needs the https url for the repo in .gitsubmodules](https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages).
