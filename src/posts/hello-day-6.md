@@ -56,4 +56,10 @@ Hmmmmm Captive Portal problems. Time to reboot.
 
 Had to reboot, find the captive portal URL, cycle my DHCP lease and then pay for the privlige, but on the interwebs again. Payed to get on.
 
+Ok, implimented the Github actions file with a few small changes, I went ahead and updated `node-version` to match my latest version and switched by branch from master to main. Took care of the keys as specified. The action ran... but no joy. Maybe the problem is a lack of index page? Let's try putting one together.
+
+Huh... it build from the file at `src/index.njk` once... and now it hasn't again. I made my defaults layout the same as my posts layout, so it should work. But after I wiped it out one time, it hasn't built again.
+
+Is it possible to have the docs content not committed on `main` but only on `gh-pages`? That would seem to be a good solution, but let's see.
+
 
