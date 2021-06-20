@@ -80,7 +80,7 @@ Ah, the issue is that the default configuration of Jekyll github pages pulls in 
 
 Oh, and fix my `.editorconfig` to work better with yml files.
 
-git commit -am "Get submodules working for github actions hopefully"
+`git commit -am "Get submodules working for github actions hopefully"`
 
 Good news, a new error!
 
@@ -93,3 +93,12 @@ Setup auth token
 ```
 
 Oops, but the secret in a custom environment instead of the `github-pages` [environment](https://github.com/AramZS/devblog/settings/environments).
+
+Hmmm... deploy was a success this time, but no-go on seeing any pages? Looks like it just deleted everything but the nojekyll file? I should prob look a little deeper into what is going on with these GitHub actions.
+
+Ooooh. I should make a markdown code to expand my little typing shortcuts!
+
+[ ] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
+
+`git commit -am "Have I got the secret now?"`
+
