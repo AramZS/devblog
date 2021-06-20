@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hello World Devblog - Pt. 7</title>
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Hello World Devblog - Pt. 7</h1>
+        <p class="header">Part 7 of setting up 11ty deb blog.</p>
+      </header>
+
+      <section>
+        <ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+</ul>
+<h1>Day 7</h1>
+<p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
+<p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
+<p>First is <a href="http://localhost:8080/img/https://github.com/actions/setup-node">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
+<p>Oh, NVM doesn't automatically use the latest node version huh? Ok, I'll specify the version to match the action on Github. Downloading and installing it now.</p>
+<p><code>npm install</code></p>
+<p>Ok. Everything still works, so that is good!</p>
+<p>But what could be the issue, it must be me gitignoring the docs folder, I guess it has to commit the folder? I still don't want the docs folder on my main branch if I can avoid it. What if I just remove the docs gitignore during the build process?</p>
+<p><code>git commit -am &quot;Update build process and attempt to commit the docs folder in the build process&quot;</code></p>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>

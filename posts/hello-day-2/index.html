@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hello World Devblog - Pt. 2</title>
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Hello World Devblog - Pt. 2</h1>
+        <p class="header">Part 2 of setting up 11ty deb blog.</p>
+      </header>
+
+      <section>
+        <h1>Day 2</h1>
+<p>Ok, day 2. Let's restate the requirements and todos!</p>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<p>[ ] Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p>[ ] So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+<p>[ ] Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p>[ ] Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
+<p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
+<p>Ok, so why isn't it picking up the layout from either <code>_layouts/post.njk</code> or <code>_layouts/default.njk</code>? Maybe I need to define a default <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-template-dir/">at the data level</a>? Or do I need to move it to <code>src</code> even if I define the location in the returned configuration?</p>
+<p>Moving it into <code>src</code> doesn't seem to do anything. But it looks like all the files I configure into 11ty in the returned object do need to be in there, so apparently I can't set a default layout in the <code>data</code> folder?</p>
+<p>Adding a template to <code>src/posts/posts.json</code></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"layouts/post.njk"</span> <span class="token punctuation">}</span></code></pre>
+<p>Ok, yay, an error!</p>
+<p><code>Error You’re trying to use a layout that does not exist layouts/post.njk (undefined)</code></p>
+<p>Because I defined a path to layouts in the config, I don't need to include it?</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"post.njk"</span> <span class="token punctuation">}</span></code></pre>
+<p>Yup, now I have an error in the template!</p>
+<p>Ok, looks like I can't use this structure:</p>
+<p><code>{{ site.lang | default: &quot;en-US&quot; }}&quot;</code></p>
+<p>So, default values, how should I do them? It <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-cascade/">looks like</a> the answer is to define it as <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-global/">a data global</a>. Ok let's try it, place the default in <code>src/_data/site.json</code>.</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"lang"</span><span class="token operator">:</span> <span class="token string">"en-US"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Huh... render error on <em>this</em> file:</p>
+<p><code>TemplateContentRenderError ... expected variable end</code></p>
+<p>Going to remove <code>{% seo %}</code> from the template. I assume it is a template fragment without looking it up but I'm not prepared to figure it out. Still no solve. Good time to commit!</p>
+<p><code>git commit -am &quot;Template still not working but getting closer&quot;</code></p>
+<p>Ok, let's start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn't make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are <a href="http://localhost:8080/img/https://www.11ty.dev/docs/copy/#change-the-output-directory">more ways to configure the passthrough rules</a> to make this work for me.</p>
+<p><code>eleventyConfig.addPassthroughCopy({ &quot;dinky/assets&quot;: &quot;assets&quot; });</code></p>
+<p>Ok, passthrough works! But the template still won't render. The error is still in my markdown! At <code>[Line 49, Column 67]</code>. What is going on?! That line is empty, it doesn't have columns.</p>
+<p>Wait... the line number is likely being calculated after the metadata is removed from the head of the <code>md</code> file. Ok... my metadata takes up 10 lines so it is really line <em>59</em>. Oh! It's a code sample <em>from</em> the template. It's trying to render an njk variable from the markdown file?! That's very dumb.</p>
+<p>To Google! &quot;njk picking up code sample of njk code&quot; &gt; <a href="http://localhost:8080/img/https://github.com/11ty/eleventy/issues/791">result</a>.</p>
+<p>Raw tag huh? How does that work exactly? Oh... like <a href="http://localhost:8080/img/https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md">this</a>.</p>
+<p>Ok, works both for blocks and inline, good!</p>
+<p>Ok, defaults for posts <em>have</em> to be in the <code>posts</code> folder's <code>posts.json</code>. I cannot seem to set any defaults for posts in the <code>_data</code> folder. Or at least I haven't figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the <code>dinky</code> submodule! This is good. The process works, so now I can start to build in my weirdness.</p>
+<p>I still really want to figure out the defaults thing first. How do I make this work?</p>
+<p>Ok, <a href="http://localhost:8080/img/https://github.com/11ty/eleventy/issues/380#issuecomment-568033456">here we go</a>.</p>
+<p>So to get a default <code>description</code> value in my template I can set it up with a file at <code>src/_data/description.js</code> and have the content of that file be <code>module.exports = &quot;Talking about code&quot;;</code>. Ok, that works!</p>
+<p>Yay, 11ty defaults work now! Good place to commit.</p>
+<p><code>git commit -am &quot;Ok, renders and defaults are working now&quot;</code></p>
+<p>Hmmm... ok I guess that I picked a bad example plugin, because the one I used <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage">doesn't have a typical footprint</a>. Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add <code>sassBuild();</code> to the inside of my .eleventy.js function inside of <code>module.exports = function (eleventyConfig) {</code>?</p>
+<p>Ok... renderSync from <code>dart-sass</code> threw an error:</p>
+<pre class="language-bash"><code class="language-bash">Receiver: Closure <span class="token string">'_renderSync'</span><br>Arguments: <span class="token punctuation">[</span>Instance of <span class="token string">'PlainJavaScriptObject'</span>, Instance of <span class="token string">'JavaScriptFunction'</span><span class="token punctuation">]</span><br><br>`` was thrown:<br>    NoSuchMethodError: method not found: <span class="token string">'call'</span></code></pre>
+<p>Lol <a href="http://localhost:8080/img/https://github.com/sass/dart-sass/issues/23#issuecomment-259011350">documentation error in dart-sass</a> apparently. Don't pass two functions, because that's an async pattern, instead return the result.</p>
+<p>Cool. New error!</p>
+<p><code>Invalid argument(s): Either options.data or options.file must be set.</code></p>
+<p>Can I not use multiple files? I guess I need a single file that calls the others <a href="http://localhost:8080/img/https://sass-lang.com/documentation/at-rules/use">using @use</a>. Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!</p>
+<p>Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the <code>@use</code> relative to the base of the project, where I'm executing the 11ty build process.</p>
+<p>Still no css file.</p>
+<p>Oh, <a href="http://localhost:8080/img/https://sass-lang.com/documentation/js-api#outfile">lol</a></p>
+<blockquote>
+<p>Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.</p>
+</blockquote>
+<p>Ok, gotta do that.</p>
+<p>Ok, I want to use <code>fs</code> to write the resulting file into <code>docs/styles/styles.css</code>. Only, the <code>styles</code> directory does not predictably exist so <code>fs</code> fails because I have to make that folder. Of course, forgot. Easy enough.</p>
+<p>Ok, it works! This is a good place to stop because it is almost midnight.</p>
+<p><code>git commit -am &quot;Compile that sass&quot;</code></p>
+<p>And this is pretty far along, huh? Time to push it to Github.</p>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>

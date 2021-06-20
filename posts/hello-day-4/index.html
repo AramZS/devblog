@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hello World Devblog - Pt. 4</title>
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Hello World Devblog - Pt. 4</h1>
+        <p class="header">Part 3 of setting up 11ty deb blog.</p>
+      </header>
+
+      <section>
+        <ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<p>[ ] Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p>[ ] So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+<p>[ ] Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p>[ ] Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p>[ ] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
+<p>[ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+<p>[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
+<p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+<p>[ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+<h1>Day 4</h1>
+<p>Ok, don't have a ton of time to work today, but I've been thinking more about the shitty code blocks.</p>
+<p>The core of the problem is that I can't even apply styles the way I want because the code is not being broken down properly.</p>
+<p>Here's what I'm getting:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>language-markdown<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>language-markdown<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>token front-matter-block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>token punctuation<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>token font-matter yaml language-yaml<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>layout: page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>token punctuation<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span></code></pre>
+<p>What I want would look like this:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>language-markdown<span class="token punctuation">"</span></span> <span class="token attr-name">data-lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>markdown<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>na<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>layout<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pi<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>s<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>post<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span></code></pre>
+<p>See the greater level of styling detail available via the additional span tags?</p>
+<p>Ok. So, like I said, surely a lot of people are using 11ty to demo code. Why not take a step back?</p>
+<p>Instead of trying to get some increasingly complex markdown processor in play to do this, let's see if there is a code block plugin instead? If anyone uses it I bet 11ty's website does?</p>
+<p><a href="http://localhost:8080/img/https://github.com/11ty/11ty-website/blob/master/.eleventy.js#L14">Yup</a>!</p>
+<p><a href="http://localhost:8080/img/https://www.11ty.dev/docs/plugins/syntaxhighlight/">Reading the docs</a>. Looks like it uses Prism, which I'm also familiar with. I'll try to implement like the 11ty site does.</p>
+<p>Ok, that looks a LOT better! I'll have to walk through some examples to make sure it works.</p>
+<p>git commit -am &quot;Syntax highlighting actually working now?&quot;</p>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>

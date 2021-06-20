@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hello World Devblog - Pt. 6</title>
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Hello World Devblog - Pt. 6</h1>
+        <p class="header">Part 6 of setting up 11ty deb blog.</p>
+      </header>
+
+      <section>
+        <ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+</ul>
+<h1>Day 6</h1>
+<p>Ok, here we go on day 6. Today I write code on a Delta flight.</p>
+<p>I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.</p>
+<p>The most upvoted solution I saw for Github Pages deployment was <a href="http://localhost:8080/img/https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
+<p>Oh, lol the wifi was only free for the first 5 minutes I guess? Ok, I'll pay.</p>
+<p>Hmmmmm Captive Portal problems. Time to reboot.</p>
+<p>Had to reboot, find the captive portal URL, cycle my DHCP lease and then pay for the privlige, but on the interwebs again. Payed to get on.</p>
+<p>Ok, implimented the Github actions file with a few small changes, I went ahead and updated <code>node-version</code> to match my latest version and switched by branch from master to main. Took care of the keys as specified. The action ran... but no joy. Maybe the problem is a lack of index page? Let's try putting one together.</p>
+<p>Huh... it build from the file at <code>src/index.njk</code> once... and now it hasn't again. I made my defaults layout the same as my posts layout, so it should work. But after I wiped it out one time, it hasn't built again.</p>
+<p>Is it possible to have the docs content not committed on <code>main</code> but only on <code>gh-pages</code>? That would seem to be a good solution, but let's see.</p>
+<p>Ooops, I was fiddling with trying to build a useful gitignore file for docs and passing it through and accidentally deleted all my layouts.</p>
+<p>Let me pull those files back in from the last good commit: <code>git checkout 32e6206c0680d9009a316b85e33461479058d81d src/_layouts/*</code></p>
+<p>Yup that did it. My Index file is back.</p>
+<p>Build still isn't working. Hmmm where are the logs for this?</p>
+<p>Ok, <a href="http://localhost:8080/img/https://github.com/AramZS/devblog/actions">in the Actions tab</a>, not in settings.</p>
+<p>Looks like it isn't pulling in Dinky properly as a submodule because <a href="http://localhost:8080/img/https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages">Github Pages needs the https url for the repo in .gitsubmodules</a>.</p>
+<p>Hmmm, still not working.</p>
+<p>Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but <a href="http://localhost:8080/img/https://github.com/actions/checkout">the default configuration of the checkout action doesn't</a>. I just need to add that property to the yml file.</p>
+<p>Oh, and fix my <code>.editorconfig</code> to work better with yml files.</p>
+<p><code>git commit -am &quot;Get submodules working for github actions hopefully&quot;</code></p>
+<p>Good news, a new error!</p>
+<pre class="language-bash"><code class="language-bash">Run peaceiris/actions-gh-pages@v3<br><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Usage https://github.com/peaceiris/actions-gh-pages<span class="token comment">#readme</span><br>Dump inputs<br>Setup auth token<br>  Error: Action failed with <span class="token string">"not found deploy key or tokens"</span></code></pre>
+<p>Oops, but the secret in a custom environment instead of the <code>github-pages</code> <a href="http://localhost:8080/img/https://github.com/AramZS/devblog/settings/environments">environment</a>.</p>
+<p>Hmmm... deploy was a success this time, but no-go on seeing any pages? Looks like it just deleted everything but the nojekyll file? I should prob look a little deeper into what is going on with these GitHub actions.</p>
+<p>Ooooh. I should make a markdown code to expand my little typing shortcuts!</p>
+<p>[ ] Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p><code>git commit -am &quot;Have I got the secret now?&quot;</code></p>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>
