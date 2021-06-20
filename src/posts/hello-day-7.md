@@ -60,5 +60,20 @@ Ok. Everything still works, so that is good!
 
 But what could be the issue, it must be me gitignoring the docs folder, I guess it has to commit the folder? I still don't want the docs folder on my main branch if I can avoid it. What if I just remove the docs gitignore during the build process?
 
+I'll add the line to the top of the commands run, it basically echoes the contents of .gitignore starting at the 2nd line back into the .gitignore file:
+
+`- run: echo "$(tail -n +2 .gitignore)" > .gitignore`
+
 `git commit -am "Update build process and attempt to commit the docs folder in the build process"`
+
+Hmmm still no go. Let's read [the actions-gh-pages docs](https://github.com/peaceiris/actions-gh-pages#github-actions-for-github-pages) from zero instead.
+
+It looks like `publish_dir:` in the build task says is the *source* folder to publish onto the gh-pages branch. A good lesson to read the docs right here because literally line 2 is
+
+> The next example step will deploy ./public directory to the remote gh-pages branch.
+
+`git commit -am "Is the issue the docs directory needs to be the public_dir?"`
+
+Interesting. I might not even need the gitignore change?
+
 
