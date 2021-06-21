@@ -105,3 +105,25 @@ Finishing off my requirements means handling some Sass to get mapping to work. I
 I thought I might be able to use [global data added at the config level, but it looks like that isn't available yet](https://www.11ty.dev/docs/data-global-custom/). Didn't see that on my first run through as it isn't super obviously called out.
 
 I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.
+
+Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.
+
+```javascript
+		replaceLink: function (link, env) {
+			// console.log("env:", env);
+			var imageLinkRegex = /^..\/img\//;
+			if (link && imageLinkRegex.test(link)) {
+				return (
+					env.site.site_url +
+					"/img/" +
+					link.replace(imageLinkRegex, "")
+				);
+			} else {
+				return link;
+			}
+		}
+```
+
+While I'm fiddling with markdown-it, I should also [add `target="_blank"` to all my links](https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer).
+
+Still looking at how to get [sourcemaps](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map) working.

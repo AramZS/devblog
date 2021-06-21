@@ -80,7 +80,7 @@ There's [no way to really get the base URL](https://www.11ty.dev/docs/data-eleve
 
 <div style="border: 2px black solid">
 
-![Links look bad inside the text.](links-and-not-links.png)
+![Links look bad inside the text.](../img/links-and-not-links.png)
 
 </div>
 
