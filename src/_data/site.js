@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-let domain_name = "https://fightwithtools.dev/";
+let domain_name = "https://fightwithtools.dev";
 
 if (process.env.IS_LOCAL) {
 	domain_name = "http://localhost:8080";

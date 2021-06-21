@@ -89,3 +89,9 @@ I'll create the correct CNAME file and set up 11ty to pass it through to the bui
 `eleventyConfig.addPassthroughCopy("./CNAME");`
 
 And I'm going to set up my site data using [dotenv](https://www.npmjs.com/package/dotenv) in order to have my local `http://localhost:8080` server used for the site domain when local and otherwise have it use my domain.
+
+`git commit -am "Setting up dotenv to have proper site data and domain use"`
+
+Oops, swapped my prod and local domains.
+
+`git commit -am "Ooops mixed up my local and prod urls"`
