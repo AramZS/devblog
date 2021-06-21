@@ -36,14 +36,14 @@
 <p>Ok. 11ty it is.</p>
 <p>Ok, first things first. New folder. <code>git init</code>.</p>
 <p>Oh, it starts new projects with the <code>master</code> branch? I don't like that, I like using <code>main</code>. I can checkout main and delete master right?</p>
-<p>Huh... if you don't have anything committed to any branch and you checkout a new branch the <code>master</code> branch ceases to exist. Cool. I guess I don't need to do <a href="https://fightwithtools.dev/img/https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/">this</a>.</p>
-<p>Wait... does 11ty work with GitHub Actions to build? I have no idea. <a href="https://fightwithtools.dev/img/https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/">Looks like yes</a>... let's move forward.</p>
+<p>Huh... if you don't have anything committed to any branch and you checkout a new branch the <code>master</code> branch ceases to exist. Cool. I guess I don't need to do <a href="https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/" target="_blank">this</a>.</p>
+<p>Wait... does 11ty work with GitHub Actions to build? I have no idea. <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">Looks like yes</a>... let's move forward.</p>
 <p><code>npm init -y</code></p>
 <p><code>npm install --save-dev @11ty/eleventy</code></p>
 <p>Here we go with 11ty! Only...</p>
 <p>All the pre-built... ughhh &quot;Themes&quot; or &quot;Starters&quot; (I can't say template here, because searching for &quot;11ty templates&quot;, while a logical thing to do, just gives me a ton of pages about using Nunjucks) suck. They all suck hardcore. I mean, they're all single page sites with no clear navigation or nav bar and look barely worked out beyond the Bootstrap Starter Template phase. I can't stand any of them. Is there a secret location for good 11ty themes or is it just that the type of folks most likely to use 11ty lack design skills?</p>
 <p>But... I really like the Jekyll dinky theme. All I really need is the CSS and I can pull a copy of its template into whatever. Easy enough in theory (never in practice).</p>
-<p>I'm going to pull it in as a submodule. I forgot how to do submodules. <a href="https://fightwithtools.dev/img/https://github.blog/2016-02-01-working-with-submodules/">Here we go</a>.</p>
+<p>I'm going to pull it in as a submodule. I forgot how to do submodules. <a href="https://github.blog/2016-02-01-working-with-submodules/" target="_blank">Here we go</a>.</p>
 <p><code>git submodule add git@github.com:pages-themes/dinky.git</code></p>
 <p><code>git submodule update --init --recursive</code></p>
 <p>Alright, what have we got here.</p>
@@ -53,7 +53,7 @@
 <p><code>npm install @11ty/eleventy-img</code></p>
 <p>Huh, some funkyness on the install... because I forgot that, for various complicated reasons, my Node install defaults to 8.*.</p>
 <p>Ok. Create the <code>.nvmrc</code> file and what's the latest version of node these days? Put <code>16</code> in it.</p>
-<p>Reboot my console so I take advantage of <a href="https://fightwithtools.dev/img/https://gist.github.com/AramZS/fda9c04a38908789dccdf78bb94e2b45">the nifty nvm auto-load ZSH script</a>.</p>
+<p>Reboot my console so I take advantage of <a href="https://gist.github.com/AramZS/fda9c04a38908789dccdf78bb94e2b45" target="_blank">the nifty nvm auto-load ZSH script</a>.</p>
 <p>Dump package-lock, dump node_modules, <code>npm install</code> again.</p>
 <p>Plugin install works now.</p>
 <p><code>npm install @11ty/eleventy-plugin-syntaxhighlight --save-dev</code><br>
@@ -64,23 +64,23 @@
 <p>Looks like something with <code>node-gyp</code>. Frequently a problem.</p>
 <p>Let's check <code>node-gyp</code>.</p>
 <p>Ok, a whole thing for problems from an upgrade.</p>
-<p>Let's do all of <a href="https://fightwithtools.dev/img/https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md">that</a>. XCode needed an update and for some reason updating to Catalina also wiped out my XCode CLI tools... didn't realize that. Reinstall those:</p>
+<p>Let's do all of <a href="https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md" target="_blank">that</a>. XCode needed an update and for some reason updating to Catalina also wiped out my XCode CLI tools... didn't realize that. Reinstall those:</p>
 <p><code>xcode-select --install</code></p>
 <p>Ok, cool. Moving on...</p>
 <p>Oh, I am looking at the configuration options for <code>gulp-sass</code> which get passed into the 11ty plugin and looks like <code>gulp-sass</code> is depreciated. So this plugin is not one I want to use. And it looks like there isn't an up to date Sass plugin.</p>
 <p>lol.</p>
 <p>So, let's assume I'm going to have to write my own plugin. I know nothing about 11ty plugins. Find a real basic one and use that as the template to start a new one.</p>
-<p>This <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/eleventy-plugin-meta-generator">one</a> looks pretty simple! So I'm going to keep that tab open for reference as I build out a Sass processor.</p>
-<p>[ ] Also <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
-<p>[ ] So does the <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
-<p>I also saw <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/eleventy-load">a Loader plugin</a>... but it looks way more complicated than I need while also <em>not doing what I need</em>, so mark it, move on. Might have something in its code that's useful for later.</p>
-<p>[ ] Also <a href="https://fightwithtools.dev/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p>This <a href="https://www.npmjs.com/package/eleventy-plugin-meta-generator" target="_blank">one</a> looks pretty simple! So I'm going to keep that tab open for reference as I build out a Sass processor.</p>
+<p>[ ] Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p>[ ] So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+<p>I also saw <a href="https://www.npmjs.com/package/eleventy-load" target="_blank">a Loader plugin</a>... but it looks way more complicated than I need while also <em>not doing what I need</em>, so mark it, move on. Might have something in its code that's useful for later.</p>
+<p>[ ] Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
 <p>Ok, back to Sass. Now, I don't want to fk around with building a whole NPM module for this right now, so let's start with the plugin internal to the project.</p>
 <p>There does not seem to be a standard pattern for these like there is for layouts, data, etc... so I'm going to imitate the <code>_{thing}</code> pattern and make a <code>_custom-plugins</code> folder. Maybe someday someone will read this and tell me this is a dumb pattern. Put it in there. Node module structure, <code>index.js</code> at the base, <code>src</code> folder with the files that actually do stuff.</p>
-<p>Ok let's get Sass in here. I want the Javascript library, so read through docs <a href="https://fightwithtools.dev/img/https://sass-lang.com/dart-sass">at their site</a>.</p>
+<p>Ok let's get Sass in here. I want the Javascript library, so read through docs <a href="https://sass-lang.com/dart-sass" target="_blank">at their site</a>.</p>
 <p><code>npm install sass --save-dev</code><br>
 <code>npm install fiber --save-dev</code></p>
-<p>That 2nd one didn't work... cool, what is Fiber... let's <a href="https://fightwithtools.dev/img/https://github.com/laverdet/node-fibers">read about it</a>.</p>
+<p>That 2nd one didn't work... cool, what is Fiber... let's <a href="https://github.com/laverdet/node-fibers" target="_blank">read about it</a>.</p>
 <blockquote>
 <p>Update [April 13th, 2021] -- Fibers is not compatible with nodejs v16.0.0 or later. Unfortunately, v8 commit dacc2fee0f is a breaking change and workarounds are non-trivial.</p>
 </blockquote>
@@ -91,10 +91,10 @@
 <p>Whatever... never use latest Node... it always causes problems. I have encountered this time and time again. Clear out package-lock and node_modules.</p>
 <p><code>npm install</code></p>
 <p>Ok at this point my process has already become more muddled then I'm comfortable with. Better start documenting it actually. Oh wait, this is a dev blog, I should start documenting it AS A BLOG POST.</p>
-<p>I forgot the pattern for 11ty posts' folders in a project. <a href="https://fightwithtools.dev/img/https://github.com/11ty/eleventy-base-blog/tree/master/posts">Here it is</a>.</p>
+<p>I forgot the pattern for 11ty posts' folders in a project. <a href="https://github.com/11ty/eleventy-base-blog/tree/master/posts" target="_blank">Here it is</a>.</p>
 <p>Started this file.</p>
 <p>Forgot the number of dashes for the metadata format for markdown that 11ty likes because it is not 8:30pm and I have not yet had dinner. I was reading about some feature that mentioned it in the context of merging data from templates with markdown files, I should likely note that.</p>
-<p>[ ] Use <a href="https://fightwithtools.dev/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>Ok now:</p>
 <p>[x] Write everything down that I've done to this point before it zeroes out of my head.</p>
 <p>God bless CLI and browser history.</p>
@@ -105,17 +105,17 @@
 <ol start="7">
 <li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
 </ol>
-<p>I also would like to have smart CSS, where it only loads the CSS files it needs for a template, so we'd have a main CSS file and then per-template CSS files? That would be cool. Or maybe <a href="https://fightwithtools.dev/img/https://github.com/addyosmani/critical#usage">this thing</a>? You know what... table that... let's just render the damn CSS first.</p>
+<p>I also would like to have smart CSS, where it only loads the CSS files it needs for a template, so we'd have a main CSS file and then per-template CSS files? That would be cool. Or maybe <a href="https://github.com/addyosmani/critical#usage" target="_blank">this thing</a>? You know what... table that... let's just render the damn CSS first.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
 <p>Huh... a thought... can I just run any arbitrary function in 11ty as part of the build?</p>
-<p><a href="https://fightwithtools.dev/img/https://www.11ty.dev/docs/data-js/">Looks like</a> the <code>_data</code> folder can contain functions that output arbitrary files?</p>
+<p><a href="https://www.11ty.dev/docs/data-js/" target="_blank">Looks like</a> the <code>_data</code> folder can contain functions that output arbitrary files?</p>
 <p>Should I do that? I mean... I likely could... but it isn't elegant, it isn't the <em>right</em> way. Skip it.</p>
 <p>Ok, set it up with the most basic Sass build rules. Let's hold there, I'm going to want to try it out, but first, let's make sure the normal 11ty build works.</p>
-<p>Ok, to do that I need a layout in place. Get it in <a href="https://fightwithtools.dev/img/https://github.com/11ty/eleventy-base-blog/tree/master/_includes/layouts">the right place</a>.</p>
+<p>Ok, to do that I need a layout in place. Get it in <a href="https://github.com/11ty/eleventy-base-blog/tree/master/_includes/layouts" target="_blank">the right place</a>.</p>
 <p>To make sure my CSS works properly, I should prob set up the dinky layout here. <code>dinky/_layouts</code>. Ok... only one file, easy enough. And the template syntax looks basically identical. Copy it and paste it into the <code>_includes/layouts</code> folder and rename it to <code>default.njk</code>.</p>
 <p>NOTE: I'm pretty sure that Nunjucks can process HTML files. Do I want to just add a 11ty alias to just pull default.html from dinky in the style of <code>eleventyConfig.addLayoutAlias(&quot;base&quot;, &quot;dinky/_layouts/default.html&quot;);</code>? Would that work? Put a pin in that:</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
-<p>Pull the .eleventy.js return from the <a href="https://fightwithtools.dev/img/https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js">base blog</a> and change output to <code>docs</code> for Github Pages...</p>
+<p>Pull the .eleventy.js return from the <a href="https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js" target="_blank">base blog</a> and change output to <code>docs</code> for Github Pages...</p>
 <pre class="language-javascript"><code class="language-javascript">		dir<span class="token operator">:</span> <span class="token punctuation">{</span><br>			input<span class="token operator">:</span> <span class="token string">"."</span><span class="token punctuation">,</span><br>			includes<span class="token operator">:</span> <span class="token string">"_includes"</span><span class="token punctuation">,</span><br>			data<span class="token operator">:</span> <span class="token string">"_data"</span><span class="token punctuation">,</span><br>			output<span class="token operator">:</span> <span class="token string">"docs"</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
 <p>Wait... it's pulling njk files from the base of the project? Mixing project files with build configuration files? That's HOT NONSENSE. I did that last time, but it was becaause I wanted to build some real basic pages and only a few of them. Not good for a larger project IMO. Create an <code>src</code> folder.</p>
 <p><code>input: &quot;src&quot;,</code></p>
