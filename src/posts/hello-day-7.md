@@ -127,3 +127,5 @@ Hmmm, while trying to debug I noticed my image rewrite method was also applying 
 While I'm fiddling with markdown-it, I should also [add `target="_blank"` to all my links](https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer).
 
 Still looking at how to get [sourcemaps](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map) working.
+
+`git commit -am "Fixing a number of path and link issues, still trying to get Sass working with sourcemaps"`
