@@ -1,9 +1,9 @@
 require("dotenv").config();
 
-let domain_name = "http://localhost:8080";
+let domain_name = "https://fightwithtools.dev/";
 
 if (process.env.IS_LOCAL) {
-	domain_name = "https://fightwithtools.dev/";
+	domain_name = "http://localhost:8080";
 }
 
 module.exports = () => {
