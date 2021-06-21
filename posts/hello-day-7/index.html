@@ -89,6 +89,10 @@
 <p><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></p>
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
+<p>While I'm here I should <a href="http://localhost:8080/img/https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io">github.io</a> user page.</p>
+<p>I'll create the correct CNAME file and set up 11ty to pass it through to the build process.</p>
+<p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
+<p>And I'm going to set up my site data using <a href="http://localhost:8080/img/https://www.npmjs.com/package/dotenv">dotenv</a> in order to have my local <code>http://localhost:8080</code> server used for the site domain when local and otherwise have it use my domain.</p>
 
       </section>
 
