@@ -1,0 +1,9 @@
+@use "sass:math";
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+$spacing-unit: 30px;
+
+%vertical-rhythm {
+	margin-bottom: math.div($spacing-unit, 2);
+}
