@@ -74,6 +74,10 @@ It looks like `publish_dir:` in the build task says is the *source* folder to pu
 
 `git commit -am "Is the issue the docs directory needs to be the public_dir?"`
 
-Interesting. I might not even need the gitignore change?
+Interesting, now the content is properly in the gh-pages branch! I might not even need the gitignore change?
 
+`git commit -am "Remove the gitignore rewrite"`
 
+I also originally had the folder set for Github Pages to be `/docs` but that's not how this works, the action publishes the content inside the docs folder to the root of the `gh-pages` branch. I have to fix that in the repo settings.
+
+Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!
