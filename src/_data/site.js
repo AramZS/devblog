@@ -1,17 +1,10 @@
-require("dotenv").config();
-
-let domain_name = "https://fightwithtools.dev";
-
-if (process.env.IS_LOCAL) {
-	domain_name = "http://localhost:8080";
-}
-
-module.exports = () => {
+module.exports = (info) => {
+	console.log("Global data input", info);
 	return {
 		lang: "en-US",
 		github: {
 			build_revision: 1.0,
 		},
-		site_url: domain_name,
+		site_url: process.env.DOMAIN,
 	};
 };

@@ -95,3 +95,13 @@ And I'm going to set up my site data using [dotenv](https://www.npmjs.com/packag
 Oops, swapped my prod and local domains.
 
 `git commit -am "Ooops mixed up my local and prod urls"`
+
+Ok, it looks like it is all working for my my base level requirements 1-6. I still want a source map for my CSS and that isn't done yet, but that is a Sass task.
+
+I still have some other major tasks... like building a real home page, including serious SE/MO and a few other things, but now I can move forward on that work confident that this system hits my baseline requirements and I can invest more time into it.
+
+Finishing off my requirements means handling some Sass to get mapping to work. I can define `sourceMap` and write the file appropriately, but it looks like I'll need handle two complications, first the relative paths to the source file will have to be passed through so the Sass files can be exposed on the front end. That's easy enough with a few functions in `.eleventy.js`. But it also apparently will need to have a full, not relative, url.
+
+I thought I might be able to use [global data added at the config level, but it looks like that isn't available yet](https://www.11ty.dev/docs/data-global-custom/). Didn't see that on my first run through as it isn't super obviously called out.
+
+I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.

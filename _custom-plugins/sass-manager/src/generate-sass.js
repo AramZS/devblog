@@ -8,11 +8,13 @@ module.exports = () => {
 		importer: function (url, prev, done) {
 			// ...
 		},
-		sourceMap: true,
-		outFile: "docs/assets/css/style.css",
+		outputStyle: "compressed",
+		sourceMap: process.env.DOMAIN + "/assets/css/style.css.map",
+		outFile: process.env.DOMAIN + "/assets/css/style.css",
 	});
 	console.log("Sass renderSync result", result);
 	var fullCSS = result.css.toString();
+	var fullMap = result.map.toString();
 	if (!fs.existsSync("./docs")) {
 		fs.mkdirSync("./docs");
 	}
@@ -23,6 +25,15 @@ module.exports = () => {
 		fs.mkdirSync("./docs/assets/css");
 	}
 	var writeResult = fs.writeFileSync("./docs/assets/css/style.css", fullCSS);
-	console.log("Sass file write result", writeResult);
+	var writeMapResult = fs.writeFileSync(
+		"./docs/assets/css/style.css.map",
+		fullMap
+	);
+	console.log(
+		"Sass file write result",
+		writeResult,
+		"Sass map write result",
+		writeMapResult
+	);
 	return result;
 };

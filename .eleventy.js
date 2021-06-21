@@ -10,6 +10,16 @@ var mdProcessor = require("markdown-it");
 
 loadLanguages(["yaml"]);
 
+require("dotenv").config();
+
+let domain_name = "https://fightwithtools.dev";
+
+if (process.env.IS_LOCAL) {
+	domain_name = "http://localhost:8080";
+}
+
+process.env.DOMAIN = domain_name;
+
 module.exports = function (eleventyConfig) {
 	var siteConfiguration = {
 		// Control which files Eleventy will process
@@ -49,6 +59,10 @@ module.exports = function (eleventyConfig) {
 		},
 	};
 
+	// Not in place until v1
+	// eleventyConfig.addGlobalData("domain_name", domain_name);
+	//console.log("eleventyConfig", eleventyConfig);
+
 	const dirToClean = path.join(siteConfiguration.dir.output, "*");
 	del.sync(dirToClean, { dot: true });
 
@@ -83,6 +97,12 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
 	eleventyConfig.addPassthroughCopy({
 		"dinky/assets/images": "assets/images",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"dinky/_sass": "dinky/_sass",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"src/_sass": "src/_sass",
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {
