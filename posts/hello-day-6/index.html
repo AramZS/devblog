@@ -31,16 +31,16 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://fightwithtools.dev/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://fightwithtools.dev/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -68,7 +68,7 @@
 <h1>Day 6</h1>
 <p>Ok, here we go on day 6. Today I write code on a Delta flight.</p>
 <p>I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.</p>
-<p>The most upvoted solution I saw for Github Pages deployment was <a href="https://fightwithtools.dev//img/https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
+<p>The most upvoted solution I saw for Github Pages deployment was <a href="https://fightwithtools.dev/img/https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
 <p>Oh, lol the wifi was only free for the first 5 minutes I guess? Ok, I'll pay.</p>
 <p>Hmmmmm Captive Portal problems. Time to reboot.</p>
 <p>Had to reboot, find the captive portal URL, cycle my DHCP lease and then pay for the privlige, but on the interwebs again. Payed to get on.</p>
@@ -79,15 +79,15 @@
 <p>Let me pull those files back in from the last good commit: <code>git checkout 32e6206c0680d9009a316b85e33461479058d81d src/_layouts/*</code></p>
 <p>Yup that did it. My Index file is back.</p>
 <p>Build still isn't working. Hmmm where are the logs for this?</p>
-<p>Ok, <a href="https://fightwithtools.dev//img/https://github.com/AramZS/devblog/actions">in the Actions tab</a>, not in settings.</p>
-<p>Looks like it isn't pulling in Dinky properly as a submodule because <a href="https://fightwithtools.dev//img/https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages">Github Pages needs the https url for the repo in .gitsubmodules</a>.</p>
+<p>Ok, <a href="https://fightwithtools.dev/img/https://github.com/AramZS/devblog/actions">in the Actions tab</a>, not in settings.</p>
+<p>Looks like it isn't pulling in Dinky properly as a submodule because <a href="https://fightwithtools.dev/img/https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages">Github Pages needs the https url for the repo in .gitsubmodules</a>.</p>
 <p>Hmmm, still not working.</p>
-<p>Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but <a href="https://fightwithtools.dev//img/https://github.com/actions/checkout">the default configuration of the checkout action doesn't</a>. I just need to add that property to the yml file.</p>
+<p>Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but <a href="https://fightwithtools.dev/img/https://github.com/actions/checkout">the default configuration of the checkout action doesn't</a>. I just need to add that property to the yml file.</p>
 <p>Oh, and fix my <code>.editorconfig</code> to work better with yml files.</p>
 <p><code>git commit -am &quot;Get submodules working for github actions hopefully&quot;</code></p>
 <p>Good news, a new error!</p>
 <pre class="language-bash"><code class="language-bash">Run peaceiris/actions-gh-pages@v3<br><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Usage https://github.com/peaceiris/actions-gh-pages<span class="token comment">#readme</span><br>Dump inputs<br>Setup auth token<br>  Error: Action failed with <span class="token string">"not found deploy key or tokens"</span></code></pre>
-<p>Oops, but the secret in a custom environment instead of the <code>github-pages</code> <a href="https://fightwithtools.dev//img/https://github.com/AramZS/devblog/settings/environments">environment</a>.</p>
+<p>Oops, but the secret in a custom environment instead of the <code>github-pages</code> <a href="https://fightwithtools.dev/img/https://github.com/AramZS/devblog/settings/environments">environment</a>.</p>
 <p>Hmmm... deploy was a success this time, but no-go on seeing any pages? Looks like it just deleted everything but the nojekyll file? I should prob look a little deeper into what is going on with these GitHub actions.</p>
 <p>Ooooh. I should make a markdown code to expand my little typing shortcuts!</p>
 <p>[ ] Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
