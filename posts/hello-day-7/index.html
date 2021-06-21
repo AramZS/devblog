@@ -85,7 +85,10 @@
 <p>The next example step will deploy ./public directory to the remote gh-pages branch.</p>
 </blockquote>
 <p><code>git commit -am &quot;Is the issue the docs directory needs to be the public_dir?&quot;</code></p>
-<p>Interesting. I might not even need the gitignore change?</p>
+<p>Interesting, now the content is properly in the gh-pages branch! I might not even need the gitignore change?</p>
+<p><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></p>
+<p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
+<p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
 
       </section>
 
