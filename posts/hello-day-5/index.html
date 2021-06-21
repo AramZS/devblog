@@ -31,16 +31,16 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -70,28 +70,28 @@
 <p>Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.</p>
 <p>So, since it hasn't been a great 24hs IRL, let's see if I can harvest a few more easy wins.</p>
 <p>How do the GitHub variables work for cachebreaking? That seems like a potentially non-obvious but relatively easy win. A-searching we do go.</p>
-<p>Interesting to see someone <a href="http://localhost:8080/img/https://snook.ca/archives/servers/deploying-11ty-to-gh-pages">handling their build via Travis</a>, good to remember.</p>
+<p>Interesting to see someone <a href="https://fightwithtools.dev//img/https://snook.ca/archives/servers/deploying-11ty-to-gh-pages">handling their build via Travis</a>, good to remember.</p>
 <p>Ok, that was unexpected. No one seems to have asked this question? Maybe it just works? I guess I'll have to wait to deploy in order to see. Moving on to something entirely in my hands, let's make the links look less shitty.</p>
 <p>Let me show you the problem.</p>
 <p>Oh, wait, need to get the image folder working first...</p>
 <p>Ok, following the pattern of posts the <code>img</code> folder should be inside of <code>src</code>. Gotta fix the passthrough <code>eleventyConfig.addPassthroughCopy(&quot;src/img&quot;, &quot;img&quot;);</code>.</p>
-<p>Oh, I actually <a href="http://localhost:8080/img/https://www.11ty.dev/docs/copy/#how-passthrough-file-copy-handles-input-directories">don't need to be that explicit</a>. <code>eleventyConfig.addPassthroughCopy(&quot;src/img&quot;, &quot;img&quot;);</code> works just fine.</p>
+<p>Oh, I actually <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/copy/#how-passthrough-file-copy-handles-input-directories">don't need to be that explicit</a>. <code>eleventyConfig.addPassthroughCopy(&quot;src/img&quot;, &quot;img&quot;);</code> works just fine.</p>
 <p>Hmmm, I could do full URLs, but this is actually one of the things I hate about Jekyll.</p>
-<p>Ugh... <a href="http://localhost:8080/img/https://github.com/11ty/eleventy/issues/379">it looks like the general strategy in GitHub issues is to copy images to be relative to the folders of the associated posts</a>. That's... meh. I dislike it intensely. What if I want to reuse the image? Now I have multiples. One image, one URL IMHO.</p>
-<p>Ok, looks like I'm not the only one fiddling around with this, <a href="http://localhost:8080/img/https://www.npmjs.com/package/markdown-it-replace-link">someone else wrote all the annoying regexes for me in a markdown-it plugin</a>.</p>
-<p>There's <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-eleventy-supplied/">no way to really get the base URL</a>, but at least I can do it <a href="http://localhost:8080/img/https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>.</p>
+<p>Ugh... <a href="https://fightwithtools.dev//img/https://github.com/11ty/eleventy/issues/379">it looks like the general strategy in GitHub issues is to copy images to be relative to the folders of the associated posts</a>. That's... meh. I dislike it intensely. What if I want to reuse the image? Now I have multiples. One image, one URL IMHO.</p>
+<p>Ok, looks like I'm not the only one fiddling around with this, <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/markdown-it-replace-link">someone else wrote all the annoying regexes for me in a markdown-it plugin</a>.</p>
+<p>There's <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/data-eleventy-supplied/">no way to really get the base URL</a>, but at least I can do it <a href="https://fightwithtools.dev//img/https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>.</p>
 <aside>
-<p>(I also saw <a href="http://localhost:8080/img/https://www.11ty.dev/docs/quicktips/eliminate-js/">how 11ty pulls from the Github API on build</a>, which may be useful if I need to use <a href="http://localhost:8080/img/https://docs.github.com/en/rest/reference/repos#get">that sort of info</a> for cachebreaking later.)</p>
+<p>(I also saw <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/quicktips/eliminate-js/">how 11ty pulls from the Github API on build</a>, which may be useful if I need to use <a href="https://fightwithtools.dev//img/https://docs.github.com/en/rest/reference/repos#get">that sort of info</a> for cachebreaking later.)</p>
 </aside>
 <div style="border: 2px black solid">
-<p><img src="http://localhost:8080/img/links-and-not-links.png" alt="Links look bad inside the text."></p>
+<p><img src="https://fightwithtools.dev//img/links-and-not-links.png" alt="Links look bad inside the text."></p>
 </div>
 <p>This comes from that whole annoying school of &quot;native link styles are ugly so let's change them as much as possible and try to use some other thing to indicate they are links.&quot;</p>
 <p>That school is one I do not attend. Clear and legible UX has to build on top of standards of design the user is familiar with lest a site confuse the reader. I can give any theme some room, you can remove underlines, or change the color to something other than close-to-link-blue, but both?! Nien.</p>
 <p>Huh... first things first... that Sass folder should really be in <code>src</code>.</p>
 <p>Ok, now to set up a <code>user</code> overwrite to be the last file in the Sass compile process, and t/f the one that overrides general site-level stuff. Let's fix it to a blue color and remove that <em>very</em> annoying light weight on the font.</p>
 <p>Much better.</p>
-<p>Oh, I want to make those checkboxes show up correctly. Bet there's a markdown-it plugin I can use. It looks like there are 2 possible node modules, <a href="http://localhost:8080/img/https://www.npmjs.com/package/markdown-it-task-checkbox">a more used one with some unresolved PRs and ignored issues</a> and <a href="http://localhost:8080/img/https://www.npmjs.com/package/markdown-it-todo">a barely used one that correctly makes checkboxes readonly</a>. It might be less popular, but I'm going with the version that works the way I want right out of the box. It also happens to be a very simple plugin, so if it goes wrong, I can always hack at it.</p>
+<p>Oh, I want to make those checkboxes show up correctly. Bet there's a markdown-it plugin I can use. It looks like there are 2 possible node modules, <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/markdown-it-task-checkbox">a more used one with some unresolved PRs and ignored issues</a> and <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/markdown-it-todo">a barely used one that correctly makes checkboxes readonly</a>. It might be less popular, but I'm going with the version that works the way I want right out of the box. It also happens to be a very simple plugin, so if it goes wrong, I can always hack at it.</p>
 <p>Looks good!</p>
 <p><code>git commit -am &quot;Adding days 4 and 5 progress and notes&quot;</code></p>
 

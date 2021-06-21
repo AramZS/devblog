@@ -31,16 +31,16 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap">the sitemap plugin</a> looks cool. Should grab that later.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="http://localhost:8080/img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/eleventy-plugin-reading-time">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="http://localhost:8080/img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://fightwithtools.dev//img/https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="http://localhost:8080/img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://fightwithtools.dev//img/https://www.11ty.dev/docs/data-deep-merge/">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -71,7 +71,7 @@
 <h1>Day 7</h1>
 <p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
 <p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
-<p>First is <a href="http://localhost:8080/img/https://github.com/actions/setup-node">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
+<p>First is <a href="https://fightwithtools.dev//img/https://github.com/actions/setup-node">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
 <p>Oh, NVM doesn't automatically use the latest node version huh? Ok, I'll specify the version to match the action on Github. Downloading and installing it now.</p>
 <p><code>npm install</code></p>
 <p>Ok. Everything still works, so that is good!</p>
@@ -79,7 +79,7 @@
 <p>I'll add the line to the top of the commands run, it basically echoes the contents of .gitignore starting at the 2nd line back into the .gitignore file:</p>
 <p><code>- run: echo &quot;$(tail -n +2 .gitignore)&quot; &gt; .gitignore</code></p>
 <p><code>git commit -am &quot;Update build process and attempt to commit the docs folder in the build process&quot;</code></p>
-<p>Hmmm still no go. Let's read <a href="http://localhost:8080/img/https://github.com/peaceiris/actions-gh-pages#github-actions-for-github-pages">the actions-gh-pages docs</a> from zero instead.</p>
+<p>Hmmm still no go. Let's read <a href="https://fightwithtools.dev//img/https://github.com/peaceiris/actions-gh-pages#github-actions-for-github-pages">the actions-gh-pages docs</a> from zero instead.</p>
 <p>It looks like <code>publish_dir:</code> in the build task says is the <em>source</em> folder to publish onto the gh-pages branch. A good lesson to read the docs right here because literally line 2 is</p>
 <blockquote>
 <p>The next example step will deploy ./public directory to the remote gh-pages branch.</p>
@@ -89,10 +89,10 @@
 <p><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></p>
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
-<p>While I'm here I should <a href="http://localhost:8080/img/https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io">github.io</a> user page.</p>
+<p>While I'm here I should <a href="https://fightwithtools.dev//img/https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io">github.io</a> user page.</p>
 <p>I'll create the correct CNAME file and set up 11ty to pass it through to the build process.</p>
 <p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
-<p>And I'm going to set up my site data using <a href="http://localhost:8080/img/https://www.npmjs.com/package/dotenv">dotenv</a> in order to have my local <code>http://localhost:8080</code> server used for the site domain when local and otherwise have it use my domain.</p>
+<p>And I'm going to set up my site data using <a href="https://fightwithtools.dev//img/https://www.npmjs.com/package/dotenv">dotenv</a> in order to have my local <code>http://localhost:8080</code> server used for the site domain when local and otherwise have it use my domain.</p>
 
       </section>
 
