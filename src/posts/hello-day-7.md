@@ -81,3 +81,11 @@ Interesting, now the content is properly in the gh-pages branch! I might not eve
 I also originally had the folder set for Github Pages to be `/docs` but that's not how this works, the action publishes the content inside the docs folder to the root of the `gh-pages` branch. I have to fix that in the repo settings.
 
 Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!
+
+While I'm here I should [map my apex domain to the Github Site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my `www` record CNAME to my github.io user page.
+
+I'll create the correct CNAME file and set up 11ty to pass it through to the build process.
+
+`eleventyConfig.addPassthroughCopy("./CNAME");`
+
+And I'm going to set up my site data using [dotenv](https://www.npmjs.com/package/dotenv) in order to have my local `http://localhost:8080` server used for the site domain when local and otherwise have it use my domain.

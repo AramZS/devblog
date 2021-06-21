@@ -23,6 +23,7 @@
     "sass": "^1.34.1"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "prismjs": "^1.23.0"
   }
 }
