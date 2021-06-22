@@ -130,3 +130,18 @@ module.exports = (info) => {
 ```
 
 Huh... about to try this but a thought occurs... should I just export the whole `github` object? Would that work? Wait... [is it already there](https://docs.github.com/en/actions/reference/environment-variables)? Let me try that both ways and see what I get.
+
+`git commit -am "Set up new Sass build process and new build vars in use" `
+
+Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling `process.env.GITHUB_JOB` just got me `deploy`. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.
+
+What if I set the `env` at the level of job? I think this means I could prob use `GITHUB_SHA`, but I want to see what works. 
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_HEAD_SHA: ${{ github.run_id }}
+```
+

@@ -9,6 +9,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      MY_GITHUB_RUN_ID: ${{ github.run_id }}
     steps:
         - uses: actions/checkout@v2
           with:
@@ -20,7 +22,6 @@ jobs:
           with:
             node-version: '14.17.1'
 
-        - run: export GITHUB_HEAD_SHA=${{ github.run_id }}
         - run: npm ci
 
 
