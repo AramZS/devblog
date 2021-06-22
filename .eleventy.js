@@ -7,6 +7,7 @@ const del = require("del");
 // const hljs = require("highlight.js"); // https://highlightjs.org/
 const loadLanguages = require("prismjs/components/");
 var mdProcessor = require("markdown-it");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 loadLanguages(["yaml"]);
 
@@ -74,6 +75,20 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
 	eleventyConfig.addPlugin(pluginRss);
+	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
+	eleventyConfig.addPlugin(sitemap, {
+		// Name of the property for the last modification date.
+		// By default it is undefined and the plugin will fallback to `date`.
+		// When set, the plugin will try to use this property and it will fallback
+		// to the `date` property when needed.
+		lastModifiedProperty: "modified",
+
+		sitemap: {
+			// Options for SitemapStream. See https://github.com/ekalinin/sitemap.js/blob/master/api.md#sitemapstream
+			// Hostname is needed when the URLs of the items don't include it.
+			hostname: domain_name,
+		},
+	});
 
 	sassBuild(domain_name);
 	eleventyConfig.on("beforeWatch", (changedFiles) => {

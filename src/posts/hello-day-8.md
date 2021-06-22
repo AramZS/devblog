@@ -19,7 +19,7 @@ tags:
 6. I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.
 7. I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.
 
-- [ ] Also [the sitemap plugin](https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap) looks cool. Should grab that later.
+- [x] Also [the sitemap plugin](https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap) looks cool. Should grab that later.
 
 - [ ] So does the [reading time one](https://www.npmjs.com/package/eleventy-plugin-reading-time).
 
@@ -37,7 +37,7 @@ tags:
 
 - [ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?
 
-- [ ] How do I cachebreak files on the basis of new build events? Datetime? `site.github.build_revision` is [how Jekyll accomplishes this](https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md), but is there a way to push [that](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context) [into the build process](https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions) for 11ty?
+- [x] How do I cachebreak files on the basis of new build events? Datetime? `site.github.build_revision` is [how Jekyll accomplishes this](https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md), but is there a way to push [that](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context) [into the build process](https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions) for 11ty?
 
 - [x] Make link text look less shitty. It looks like it is a whole, lighter, font.
 
@@ -135,13 +135,21 @@ Huh... about to try this but a thought occurs... should I just export the whole 
 
 Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling `process.env.GITHUB_JOB` just got me `deploy`. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.
 
-What if I set the `env` at the level of job? I think this means I could prob use `GITHUB_SHA`, but I want to see what works. 
+What if I set the `env` at the level of job? I think this means I could prob use `GITHUB_SHA`, but I want to see what works.
 
 ```yaml
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      GITHUB_HEAD_SHA: ${{ github.run_id }}
+      MY_GITHUB_RUN_ID: ${{ github.run_id }}
 ```
+
+Ah, that did it, so now I know how to use both!
+
+The sitemap plugin looks easy to implement. Let's try that!
+
+Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.
+
+`git commit -am "Set up sitemap"`
 
