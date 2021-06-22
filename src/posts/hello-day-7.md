@@ -7,6 +7,7 @@ tags:
   - 11ty
   - Node
   - Sass
+  - Github Actions
 ---
 
 
@@ -36,7 +37,7 @@ tags:
 
 - [ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?
 
-- [ ] How do I cachebreak files on the basis of new build events? Datetime? `site.github.build_revision` is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?
+- [ ] How do I cachebreak files on the basis of new build events? Datetime? `site.github.build_revision` is [how Jekyll accomplishes this](https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md), but is there a way to push [that](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context) [into the build process](https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions) for 11ty?
 
 - [x] Make link text look less shitty. It looks like it is a whole, lighter, font.
 
@@ -129,3 +130,5 @@ While I'm fiddling with markdown-it, I should also [add `target="_blank"` to all
 Still looking at how to get [sourcemaps](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map) working.
 
 `git commit -am "Fixing a number of path and link issues, still trying to get Sass working with sourcemaps"`
+
+- [ ] See if we can start Markdown's interpretation of H tags to [start at 2, since H1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1) is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.

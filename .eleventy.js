@@ -99,10 +99,10 @@ module.exports = function (eleventyConfig) {
 		"dinky/assets/images": "assets/images",
 	});
 	eleventyConfig.addPassthroughCopy({
-		"dinky/_sass": "dinky/_sass",
+		"dinky/_sass": "sass/dinky/_sass",
 	});
 	eleventyConfig.addPassthroughCopy({
-		"src/_sass": "src/_sass",
+		"src/_sass": "sass/src/_sass",
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {

@@ -20,6 +20,7 @@ jobs:
           with:
             node-version: '14.17.1'
 
+        - run: export GITHUB_HEAD_SHA=${{ github.run_id }}
         - run: npm ci
 
 
