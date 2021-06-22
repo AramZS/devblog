@@ -1,4 +1,5 @@
 {
 	"layout": "post.njk",
-	"description": "Aram is talking about code"
+	"description": "Aram is talking about code",
+	"tags": [ "posts" ]
 }

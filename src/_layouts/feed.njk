@@ -1,21 +1,23 @@
----json
+---js
 {
   "permalink": "feed.xml",
   "eleventyExcludeFromCollections": true,
   "metadata": {
     "title": "Feed for Fight With Tools - Aram's Dev Blog",
     "subtitle": "Notes on various projects",
-    "url": "https://example.com/",
-    "feedUrl": "https://example.com/feed.xml",
+    "url": (function(){ return process.env.DOMAIN + "/" })(),
+    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),
     "author": {
       "name": "Aram Zucker-Scharff",
-      "email": "aramzs@hacktext.com"
+      "email": "aramdevblog@aramzs.me"
     }
-  }
+  },
+  "internalPageTypes": [ "feed" ]
 }
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+  <!-- internal page type: {{ internalPageTypes }} -->
   <title>{{ metadata.title }}</title>
   <subtitle>{{ metadata.subtitle }}</subtitle>
   <link href="{{ metadata.feedUrl }}" rel="self"/>

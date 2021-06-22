@@ -1,12 +1,14 @@
 ---
 title: Hello World Devblog - Pt. 2
 subtitle: Getting this dev blog running
-description: Part 2 of setting up 11ty deb blog.
+description: Part 2 of setting up 11ty dev blog.
+project: Dev Blog
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
+  - WiP
 ---
 
 # Day 2
@@ -139,4 +141,4 @@ Ok, it works! This is a good place to stop because it is almost midnight.
 
 `git commit -am "Compile that sass"`
 
-And this is pretty far along, huh? Time to push it to Github. 
+And this is pretty far along, huh? Time to push it to Github.

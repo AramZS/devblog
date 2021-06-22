@@ -1,11 +1,13 @@
 ---
 title: Hello World Devblog - Pt. 1
 subtitle: Getting this dev blog running
+project: Dev Blog
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
+  - WiP
 ---
 
 # Day 1

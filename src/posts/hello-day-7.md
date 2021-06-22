@@ -1,13 +1,15 @@
 ---
 title: Hello World Devblog - Pt. 7
 subtitle: Getting this dev blog running
-description: Part 7 of setting up 11ty deb blog.
+description: Part 7 of setting up 11ty dev blog.
+project: Dev Blog
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
   - Github Actions
+  - WiP
 ---
 
 

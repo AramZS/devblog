@@ -1,12 +1,14 @@
 ---
 title: Hello World Devblog - Pt. 5
 subtitle: Getting this dev blog running
-description: Part 3 of setting up 11ty deb blog.
+description: Part 3 of setting up 11ty dev blog.
+project: Dev Blog
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
+  - WiP
 ---
 
 

@@ -1,13 +1,15 @@
 ---
 title: Hello World Devblog - Pt. 8
 subtitle: Getting this dev blog running
-description: Part 8 of setting up 11ty deb blog.
+description: Part 8 of setting up 11ty dev blog.
+project: Dev Blog
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
   - Github Actions
+  - WiP
 ---
 
 
@@ -46,6 +48,8 @@ tags:
 - [ ] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
 
 - [ ] See if we can start Markdown's interpretation of H tags to [start at 2, since H1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1) is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.
+
+- [ ] Should I [explore some shortcodes](https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/)?
 
 ## Day 8
 
@@ -153,3 +157,48 @@ Looks good! A little basic as sitemaps go, and if this site gets extensive I may
 
 `git commit -am "Set up sitemap"`
 
+Just checking off stuff in this post!
+
+Looks like the Deep Data Merge is up and running already. I'll do a quick double check and it does appear to work fine!
+
+RSS feed next. Need to add the collection tag to my `posts.json` in `src/posts` in order to have it properly in a `posts` collection.
+
+```json
+{
+	"layout": "post.njk",
+	"description": "Aram is talking about code",
+	"tags": [ "posts" ]
+}
+```
+
+Huh, I'm getting this in the output now: `Benchmark (Configuration): "htmlToAbsoluteUrls" Nunjucks Async Filter took 40ms (8.9%, called 8×, 5.0ms each)` and the domain name is wrong in the RSS feed. Found some info on building permalinks that may be useful for my more dynamic link urls, but doesn't seem to be for this. Huh, looks like this generates an Atom feed, not an RSS standard one. Going to rename the file accordingly.
+
+Still no go on getting those URLs set up properly. I need to pass the calculated domain in to the page metadata, but using template tags or JS functions doesn't seem to be doing it. The domain data just isn't going through.
+
+Ok, I had thought the functions in the `js` layout-based front matter would execute themselves, but it looks like I have to write them to execute in the context of the front matter itself. So now the front matter looks like this:
+
+{% raw %}
+```liquid
+---js
+{
+  "permalink": "feed.xml",
+  "eleventyExcludeFromCollections": true,
+  "metadata": {
+    "title": "Feed for Fight With Tools - Aram's Dev Blog",
+    "subtitle": "Notes on various projects",
+    "url": (function(){ return process.env.DOMAIN + "/" })(),
+    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),
+    "author": {
+      "name": "Aram Zucker-Scharff",
+      "email": "aramdevblog@aramzs.me"
+    }
+  },
+  "internalPageTypes": [ "feed" ]
+}
+---
+```
+{% endraw %}
+
+Looks like the solution was to use a immediately-invoked function there. Working well now!
+
+Looks like [there is a straightforward way to handle building a good robots.txt](https://obsolete29.com/posts/ogp-seo-favicons-eleventy/) file.
