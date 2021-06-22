@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Hello World Devblog - Pt. 8</title>
 	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css?v=1">
-	<!-- Built by a job with either this id: 1 or this id: deploy -->
+    <link rel="stylesheet" href="/assets/css/style.css?v=961548208">
+	<!-- Build Revision: 961548208 & Sha: fbf2cd46bdb38b70a68a87d4e0eba17484e5babd -->
     <script src="/assets/js/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -89,6 +89,10 @@
 <p>Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
 <pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token punctuation">{</span><br>		lang<span class="token operator">:</span> <span class="token string">"en-US"</span><span class="token punctuation">,</span><br>		github<span class="token operator">:</span> <span class="token punctuation">{</span><br>			build_revision<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">GITHUB_HEAD_SHA</span> <span class="token operator">||</span> <span class="token number">1.0</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span><br>		site_url<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Huh... about to try this but a thought occurs... should I just export the whole <code>github</code> object? Would that work? Wait... <a href="https://docs.github.com/en/actions/reference/environment-variables" target="_blank">is it already there</a>? Let me try that both ways and see what I get.</p>
+<p><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></p>
+<p>Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling <code>process.env.GITHUB_JOB</code> just got me <code>deploy</code>. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.</p>
+<p>What if I set the <code>env</code> at the level of job? I think this means I could prob use <code>GITHUB_SHA</code>, but I want to see what works.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">GITHUB_HEAD_SHA</span><span class="token punctuation">:</span> $</code></pre>
 
       </section>
 
