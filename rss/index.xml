@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/feed.xml" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Wed, 23 Jun 2021 14:08:24 GMT</lastBuildDate>
+	<lastBuildDate>Wed, 23 Jun 2021 14:14:16 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -24,7 +24,7 @@
 	<item>
 		<title>Hello World Devblog - Pt. 1</title>
 		<link>https://fightwithtools.dev/posts/hello-day-1/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-1/</guid>
 		<description></description>
@@ -143,7 +143,7 @@
 	<item>
 		<title>Hello World Devblog - Pt. 2</title>
 		<link>https://fightwithtools.dev/posts/hello-day-2/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-2/</guid>
 		<description></description>
@@ -218,7 +218,7 @@
 	<item>
 		<title>Hello World Devblog - Pt. 3</title>
 		<link>https://fightwithtools.dev/posts/hello-day-3/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-3/</guid>
 		<description></description>
@@ -308,7 +308,7 @@ indent_style = space
 	<item>
 		<title>Hello World Devblog - Pt. 4</title>
 		<link>https://fightwithtools.dev/posts/hello-day-4/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-4/</guid>
 		<description></description>
@@ -351,7 +351,7 @@ indent_style = space
 	<item>
 		<title>Hello World Devblog - Pt. 5</title>
 		<link>https://fightwithtools.dev/posts/hello-day-5/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-5/</guid>
 		<description></description>
@@ -435,7 +435,7 @@ indent_style = space
 	<item>
 		<title>Hello World Devblog - Pt. 6</title>
 		<link>https://fightwithtools.dev/posts/hello-day-6/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-6/</guid>
 		<description></description>
@@ -517,7 +517,7 @@ indent_style = space
 	<item>
 		<title>Hello World Devblog - Pt. 7</title>
 		<link>https://fightwithtools.dev/posts/hello-day-7/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-7/</guid>
 		<description></description>
@@ -616,7 +616,7 @@ indent_style = space
 	<item>
 		<title>Hello World Devblog - Pt. 8</title>
 		<link>https://fightwithtools.dev/posts/hello-day-8/?source=rss</link>
-		<pubDate>Wed, 23 Jun 2021 14:08:10 GMT</pubDate>
+		<pubDate>Wed, 23 Jun 2021 14:14:04 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-8/</guid>
 		<description></description>
