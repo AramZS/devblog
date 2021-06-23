@@ -1,0 +1,2 @@
+Sitemap: https://fightwithtools.dev/sitemap.xml
+User-agent: *
