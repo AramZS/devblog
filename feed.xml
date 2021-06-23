@@ -5,7 +5,7 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-06-23T01:58:31Z</updated>
+  <updated>2021-06-23T14:08:10Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 1</title>
     <link href="https://fightwithtools.dev/posts/hello-day-1/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-1/</id>
     <content type="html">&lt;h1&gt;Day 1&lt;/h1&gt;
 &lt;p&gt;I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:&lt;/p&gt;
@@ -132,7 +132,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 2</title>
     <link href="https://fightwithtools.dev/posts/hello-day-2/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-2/</id>
     <content type="html">&lt;h1&gt;Day 2&lt;/h1&gt;
 &lt;p&gt;Ok, day 2. Let&#39;s restate the requirements and todos!&lt;/p&gt;
@@ -205,7 +205,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 3</title>
     <link href="https://fightwithtools.dev/posts/hello-day-3/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-3/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -293,7 +293,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 4</title>
     <link href="https://fightwithtools.dev/posts/hello-day-4/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-4/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -334,7 +334,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 5</title>
     <link href="https://fightwithtools.dev/posts/hello-day-5/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-5/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -416,7 +416,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 6</title>
     <link href="https://fightwithtools.dev/posts/hello-day-6/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-6/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -496,7 +496,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 7</title>
     <link href="https://fightwithtools.dev/posts/hello-day-7/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-7/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -593,7 +593,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 8</title>
     <link href="https://fightwithtools.dev/posts/hello-day-8/"/>
-    <updated>2021-06-23T01:58:31Z</updated>
+    <updated>2021-06-23T14:08:10Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-8/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
