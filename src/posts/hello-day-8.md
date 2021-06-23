@@ -27,7 +27,7 @@ tags:
 
 - [ ] Also [this TOC plugin](https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js) mby?
 
-- [ ] Use [Data Deep Merge](https://www.11ty.dev/docs/data-deep-merge/) in this blog.
+- [x] Use [Data Deep Merge](https://www.11ty.dev/docs/data-deep-merge/) in this blog.
 
 - [ ] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.
 
@@ -202,3 +202,9 @@ Ok, I had thought the functions in the `js` layout-based front matter would exec
 Looks like the solution was to use a immediately-invoked function there. Working well now!
 
 Looks like [there is a straightforward way to handle building a good robots.txt](https://obsolete29.com/posts/ogp-seo-favicons-eleventy/) file.
+
+I'll hand build an RSS template so I have an RSS2 feed as well.
+
+`git commit -am "Set up various feeds and crawling tools"`
+
+

@@ -1,6 +1,6 @@
 ---
-permalink: /feed.xml
-layout: atom-feed
+permalink: /rss
+layout: rss2-feed
 eleventyExcludeFromCollections: true
 internalPageTypes: [ 'xml' ]
 ---
