@@ -5,7 +5,7 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-06-23T14:16:37Z</updated>
+  <updated>2021-06-25T18:53:05Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 1</title>
     <link href="https://fightwithtools.dev/posts/hello-day-1/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-1/</id>
     <content type="html">&lt;h1&gt;Day 1&lt;/h1&gt;
 &lt;p&gt;I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:&lt;/p&gt;
@@ -132,7 +132,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 2</title>
     <link href="https://fightwithtools.dev/posts/hello-day-2/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-2/</id>
     <content type="html">&lt;h1&gt;Day 2&lt;/h1&gt;
 &lt;p&gt;Ok, day 2. Let&#39;s restate the requirements and todos!&lt;/p&gt;
@@ -205,7 +205,7 @@
   <entry>
     <title>Hello World Devblog - Pt. 3</title>
     <link href="https://fightwithtools.dev/posts/hello-day-3/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-3/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -293,7 +293,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 4</title>
     <link href="https://fightwithtools.dev/posts/hello-day-4/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-4/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -334,7 +334,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 5</title>
     <link href="https://fightwithtools.dev/posts/hello-day-5/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-5/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -416,7 +416,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 6</title>
     <link href="https://fightwithtools.dev/posts/hello-day-6/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-6/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -496,7 +496,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 7</title>
     <link href="https://fightwithtools.dev/posts/hello-day-7/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-7/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -593,7 +593,7 @@ indent_style = space
   <entry>
     <title>Hello World Devblog - Pt. 8</title>
     <link href="https://fightwithtools.dev/posts/hello-day-8/"/>
-    <updated>2021-06-23T14:16:37Z</updated>
+    <updated>2021-06-25T18:53:05Z</updated>
     <id>https://fightwithtools.dev/posts/hello-day-8/</id>
     <content type="html">&lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
@@ -686,6 +686,72 @@ indent_style = space
 &lt;p&gt;Looks like &lt;a href=&quot;https://obsolete29.com/posts/ogp-seo-favicons-eleventy/&quot; target=&quot;_blank&quot;&gt;there is a straightforward way to handle building a good robots.txt&lt;/a&gt; file.&lt;/p&gt;
 &lt;p&gt;I&#39;ll hand build an RSS template so I have an RSS2 feed as well.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Set up various feeds and crawling tools&amp;quot;&lt;/code&gt;&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Hello World Devblog - Pt. 8</title>
+    <link href="https://fightwithtools.dev/posts/hello-day-9/"/>
+    <updated>2021-06-25T18:53:05Z</updated>
+    <id>https://fightwithtools.dev/posts/hello-day-9/</id>
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
+&lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
+&lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
+&lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
+&lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
+&lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
+&lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Decide if I want to render the CSS fancier than just a base file and do per-template splitting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; How do I cachebreak files on the basis of new build events? Datetime? &lt;code&gt;site.github.build_revision&lt;/code&gt; is &lt;a href=&quot;https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md&quot; target=&quot;_blank&quot;&gt;how Jekyll accomplishes this&lt;/a&gt;, but is there a way to push &lt;a href=&quot;https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context&quot; target=&quot;_blank&quot;&gt;that&lt;/a&gt; &lt;a href=&quot;https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions&quot; target=&quot;_blank&quot;&gt;into the build process&lt;/a&gt; for 11ty?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Make link text look less shitty. It looks like it is a whole, lighter, font.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Code blocks do not have good syntax highlighting. I want good syntax highlighting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Build a Markdown-it plugin to take my typing shortcuts &lt;code&gt;[prob, b/c, ...?]&lt;/code&gt; and expand them on build.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; See if we can start Markdown&#39;s interpretation of H tags to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1&quot; target=&quot;_blank&quot;&gt;start at 2, since H1&lt;/a&gt; is always pulled from the page title metadata. If it isn&#39;t easy, I just have to change my pattern of writing in the MD documents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Should I &lt;a href=&quot;https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/&quot; target=&quot;_blank&quot;&gt;explore some shortcodes&lt;/a&gt;?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Day 9&lt;/h2&gt;
+&lt;p&gt;Looks like the RSS feed is correct but being served from Github Pages as &amp;quot;application/octet-stream&amp;quot;. I found a Stack Overflow that said it needs a trailing slash. But now that serves it as text/html. Apparently it needs to have an xml ending, but if we want to keep &lt;code&gt;/rss/&lt;/code&gt; &lt;a href=&quot;https://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/&quot; target=&quot;_blank&quot;&gt;we need to create an xml file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Set an xml index for the rss path&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;That did it! Good to know that Github Pages is &lt;em&gt;very&lt;/em&gt; dependent on file endings, and if it doesn&#39;t get them it defaults &lt;code&gt;/path-with-no-ending-slash&lt;/code&gt; to a downloadable octet-stream and &lt;code&gt;/path-with-ending-slash/&lt;/code&gt; to HTML.&lt;/p&gt;
 </content>
   </entry>
 </feed>
