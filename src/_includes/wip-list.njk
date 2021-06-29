@@ -1,0 +1,7 @@
+<!-- https://www.11ty.dev/docs/collections/ -->
+<!-- Should I use {{ "abcdef" | reverse }} -->
+<ul>
+    {% for post in collections.WiP %}
+	<li>{{post.data.title}}</li>
+	{% endfor %}
+</ul>
