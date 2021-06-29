@@ -3,6 +3,7 @@ title: Hello World Devblog - Pt. 4
 subtitle: Getting this dev blog running
 description: Part 3 of setting up 11ty deb blog.
 project: Dev Blog
+date: 2021-06-15 22:59:43.10 -5
 tags:
   - Starters
   - 11ty

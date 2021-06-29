@@ -3,6 +3,7 @@ title: Hello World Devblog - Pt. 8
 subtitle: Getting this dev blog running
 description: Part 8 of setting up 11ty dev blog.
 project: Dev Blog
+date: 2021-06-28 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
@@ -59,4 +60,4 @@ Looks like the RSS feed is correct but being served from Github Pages as "applic
 
 That did it! Good to know that Github Pages is *very* dependent on file endings, and if it doesn't get them it defaults `/path-with-no-ending-slash` to a downloadable octet-stream and `/path-with-ending-slash/` to HTML.
 
-
+I want to build some post-only conditionals into a common base template. The goal here is to make my templates as DRY as possible. No code should have to be repeated. Looks like there [are some tools to do that in Nunjucks](https://bryanlrobinson.com/blog/using-nunjucks-if-expressions-to-create-an-active-navigation-state-in-11ty/).
