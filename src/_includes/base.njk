@@ -14,37 +14,47 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 	{% endblock %}
+	{% block socialhead %}
+	{% endblock %}
+	{% block stylehead %}
+	{% endblock %}
   </head>
   <body>
     <div class="wrapper">
-      <header>
-	 	{% block header %}
+	<header>
+	{% block header %}
 
-			{% if '/posts' in page.url %}
-			<!-- post mode -->
-			<time>{{ page.date.toDateString() }}</time> <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-			{% elif '/projects' in page.url %}
-			<!-- projects mode -->
-			{% else %}
-			<!-- else mode -->
-			{% endif %}
-			<h1 class="header">{{ title }}</h1>
-			<p class="header">{{ description }}</p>
+		{% if '/posts' in page.url %}
+		<!-- post mode -->
+		<time>{{ page.date.toDateString() }}</time> <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+		{% elif '/projects' in page.url %}
+		<!-- projects mode -->
+		{% else %}
+		<!-- else mode -->
+		{% endif %}
+		<h1 class="header">{{ title }}</h1>
+		<p class="header">{{ description }}</p>
 
-		{% endblock %}
-      </header>
-	  	<main>
+	{% endblock %}
+	</header>
+		<main>
 			{% block precontent %}
 			{% endblock %}
 			<section>
-			{{ content | safe }}
+				{% block content %}
+				{{ content | safe }}
+				{% endblock %}
 			</section>
 			{% block postcontent %}
 			{% endblock %}
 		</main>
       <footer>
+	  	{% block prefooter %}
+		{% endblock %}
 	  	{% block footer %}
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+		{% endblock %}
+		{% block postfooter %}
 		{% endblock %}
       </footer>
     </div>

@@ -1,5 +1,9 @@
 {% extends "base.njk" %}
+{%- from "postList/macros.njk" import postList -%}
 
 {% block postcontent %}
-	{% include 'wip-list.njk' %}
+<!-- post list: -->
+	{{ postList({
+		collectionName: 'WiP'
+	}) }}
 {% endblock %}
