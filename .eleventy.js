@@ -131,20 +131,34 @@ module.exports = function (eleventyConfig) {
 	}
 
 	// Nunjucks Filters
-	let nunjucksEnvironment = new Nunjucks.Environment(
-		new Nunjucks.FileSystemLoader([
-			pathNormalizer(siteConfiguration.dir.includes),
-			pathNormalizer(siteConfiguration.dir.input),
-			pathNormalizer(".")
-		]),
-		{
-			throwOnUndefined: throwOnUndefinedSetting,
-			autoescape: true
-		}
-	);
-	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
-	eleventyConfig.addNunjucksFilter("interpolate", function(value) {
-		return Nunjucks.renderString(text, this.ctx);
+	/**
+		let nunjucksEnvironment = Nunjucks.configure(
+			new Nunjucks.FileSystemLoader([
+				siteConfiguration.dir.includes,
+				siteConfiguration.dir.input,
+				siteConfiguration.dir.layouts,
+				"."
+			]),
+			{
+				throwOnUndefined: throwOnUndefinedSetting,
+				autoescape: true
+			}
+		);
+		// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+		//eleventyConfig.addNunjucksFilter("interpolate", function(value) {
+		//	return Nunjucks.renderString(text, this.ctx);
+		//});
+	*/
+	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts) {
+		let postList = collectionOfPosts.map((post) => {
+			return `<li>${post.data.title}</li>`
+		})
+		return `<p>${collectionName}</p>
+		<ul>
+			<!-- Collection: ${collectionName} -->
+			${postList.join('\n')}
+		</ul>
+		`;
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {
