@@ -1,0 +1,9 @@
+{% macro postList(collectionName) %}
+	{% include "./postList.njk" %}
+{% endmacro %}
+
+{% macro wipList(params) %}
+	{{ postList({
+ 		collectionName: 'WiP'
+	}) }}
+{% endmacro %}

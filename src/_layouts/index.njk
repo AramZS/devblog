@@ -2,8 +2,6 @@
 {%- from "postList/macros.njk" import postList -%}
 
 {% block postcontent %}
-<!-- post list: -->
-	{{ postList({
-		collectionName: 'WiP'
-	}) }}
+	<!-- post list: -->
+	{{ postList( collectionName = 'WiP' ) }}
 {% endblock %}

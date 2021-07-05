@@ -103,6 +103,7 @@ Anyway, this works now... and it gives me a really useful insight into how the s
 
 And I can also change my passthroughs in `.eleventy.js`.
 
+{% raw %}
 ```javascript
 	eleventyConfig.addPassthroughCopy({
 		"dinky/_sass": "sass/dinky/_sass",
@@ -111,6 +112,7 @@ And I can also change my passthroughs in `.eleventy.js`.
 		"src/_sass": "sass/src/_sass",
 	});
 ```
+{% endraw %}
 
 If this works correctly on publish, it will resolve the last of my base requirements!
 

@@ -157,3 +157,5 @@ Ok maybe this:
 Especially with the variable name in the `for` deceleration? I don't know if that works the way I think it does and I may even just need [a shortcode instead](https://www.11ty.dev/docs/languages/nunjucks/#shortcodes). But I'd like to get it working. Let's try just echoing out the passed in value first.
 
 Damn, still no go.
+
+`git commit -am "Get macros in the mix."`

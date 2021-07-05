@@ -9,14 +9,20 @@ const loadLanguages = require("prismjs/components/");
 var mdProcessor = require("markdown-it");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
+let Nunjucks = require("nunjucks");
+const normalize = require("normalize-path");
+
 loadLanguages(["yaml"]);
 
 require("dotenv").config();
 
 let domain_name = "https://fightwithtools.dev";
+let throwOnUndefinedSetting = false;
 
 if (process.env.IS_LOCAL) {
 	domain_name = "http://localhost:8080";
+	throwOnUndefinedSetting = true;
+	console.log('Dev env')
 }
 
 process.env.DOMAIN = domain_name;
@@ -118,6 +124,26 @@ module.exports = function (eleventyConfig) {
 	});
 	eleventyConfig.addPassthroughCopy({
 		"src/_sass": "sass/src/_sass",
+	});
+
+	const pathNormalizer = function(pathString){
+		return normalize(path.normalize(path.resolve(".")))
+	}
+
+	// Nunjucks Filters
+	let nunjucksEnvironment = new Nunjucks.Environment(
+		new Nunjucks.FileSystemLoader([
+			pathNormalizer(siteConfiguration.dir.includes),
+			pathNormalizer(siteConfiguration.dir.layouts),
+			pathNormalizer(".")
+		]),
+		{
+			throwOnUndefined: throwOnUndefinedSetting
+		}
+	);
+	// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+	eleventyConfig.addNunjucksFilter("interpolate", function(value) {
+		return Nunjucks.renderString(text, this.ctx);
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {

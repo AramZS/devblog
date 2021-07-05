@@ -1,0 +1,10 @@
+<p>{{collectionName}}</p>
+
+<ul>
+	<!-- Collection: {{collectionName}} -->
+	{% for post in collections[{{
+			collectionName | interpolate
+	 }}] %}
+		<li>{{post.data.title}}</li>
+	{% endfor %}
+</ul>
