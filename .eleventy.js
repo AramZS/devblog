@@ -134,14 +134,15 @@ module.exports = function (eleventyConfig) {
 	let nunjucksEnvironment = new Nunjucks.Environment(
 		new Nunjucks.FileSystemLoader([
 			pathNormalizer(siteConfiguration.dir.includes),
-			pathNormalizer(siteConfiguration.dir.layouts),
+			pathNormalizer(siteConfiguration.dir.input),
 			pathNormalizer(".")
 		]),
 		{
-			throwOnUndefined: throwOnUndefinedSetting
+			throwOnUndefined: throwOnUndefinedSetting,
+			autoescape: true
 		}
 	);
-	// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
 	eleventyConfig.addNunjucksFilter("interpolate", function(value) {
 		return Nunjucks.renderString(text, this.ctx);
 	});

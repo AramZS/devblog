@@ -3,7 +3,7 @@ title: Hello World Devblog - Pt. 8
 subtitle: Getting this dev blog running
 description: Part 8 of setting up 11ty dev blog.
 project: Dev Blog
-date: 2021-06-28 22:59:43.10 -4
+date: 2021-07-04 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
@@ -131,3 +131,5 @@ Well, [it looks like 11ty does more to configure the Nunjucks rendering engine t
 Hmmm, pulled the same configuration, but now it looks like one of my posts isn't working. It looks like Nunjucks is adding some secret juice to the `raw` tag for escaping stuff. Hmmm, ok, there is a lot of badly documented stuff that 11ty is doing with the Nunjucks engine and modifying it. Perhaps it is time to step back from attempting to mod it and take a different approach.
 
 Maybe I should go for the custom filter method instead. Let's step back.
+
+`git commit -am "Trying to get variable variables working and 11ty to set throwOnUndefined for nunjucks"`

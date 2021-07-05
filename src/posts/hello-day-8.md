@@ -94,6 +94,8 @@ The code sample says "HACK 1: Force all "sources" to be relative to project root
 
 Anyway, this works now... and it gives me a really useful insight into how the source map is built. I can hack better paths for sources! The paths themselves are useful for the project, but having them at the base of the website sort of irks me. Now I can put them all in a nice `sass` folder, makes it neat.
 
+{% raw %}
+
 ```javascript
 	var newSources = map.sources.map((source) => {
 		return "sass/" + source;
@@ -101,9 +103,12 @@ Anyway, this works now... and it gives me a really useful insight into how the s
 	map.sources = newSources;
 ```
 
+{% endraw %}
+
 And I can also change my passthroughs in `.eleventy.js`.
 
 {% raw %}
+
 ```javascript
 	eleventyConfig.addPassthroughCopy({
 		"dinky/_sass": "sass/dinky/_sass",
@@ -112,6 +117,7 @@ And I can also change my passthroughs in `.eleventy.js`.
 		"src/_sass": "sass/src/_sass",
 	});
 ```
+
 {% endraw %}
 
 If this works correctly on publish, it will resolve the last of my base requirements!
