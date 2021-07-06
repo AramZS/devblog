@@ -1,39 +1,44 @@
 <!doctype html>
 <html lang="en-US">
-  <head>
-  	
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hello World Devblog - Pt. 8</title>
-	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css?v=981302581">
-	<!-- Build Revision: 981302581 & Sha: e59d4078e5fc07346e15ecc897922e9f583209cc -->
-    <script src="/assets/js/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
+	<head>
+		
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<title>Hello World Devblog - Pt. 9</title>
+			<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+			<link rel="stylesheet" href="/assets/css/style.css?v=1004495045">
+			<!-- Build Revision: 1004495045 & Sha: 16489980c08be5ebaab225ed4178fb314d8f80f9 -->
+			<script src="/assets/js/scale.fix.js"></script>
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+			<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-	 	
-
-			
-			<!-- post mode -->
-			<time>Tue Jun 29 2021</time> <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-			
-			<h1 class="header">Hello World Devblog - Pt. 8</h1>
-			<p class="header">Part 8 of setting up 11ty dev blog.</p>
-
 		
-      </header>
-	  	<main>
-			
-			
-			<section>
-			<ol>
+		
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				
+
+					
+						<!-- post mode -->
+						<time>Tue Jun 29 2021</time>
+						<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+					
+					<h1 class="header">Hello World Devblog - Pt. 9</h1>
+					<p class="header">Part 8 of setting up 11ty dev blog.</p>
+
+				
+			</header>
+			<main>
+				<section>
+					
+				</section>
+				<section>
+					
+						<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -92,17 +97,48 @@
 <p><code>git commit -am &quot;Set an xml index for the rss path&quot;</code></p>
 <p>That did it! Good to know that Github Pages is <em>very</em> dependent on file endings, and if it doesn't get them it defaults <code>/path-with-no-ending-slash</code> to a downloadable octet-stream and <code>/path-with-ending-slash/</code> to HTML.</p>
 <p>I want to build some post-only conditionals into a common base template. The goal here is to make my templates as DRY as possible. No code should have to be repeated. Looks like there <a href="https://bryanlrobinson.com/blog/using-nunjucks-if-expressions-to-create-an-active-navigation-state-in-11ty/" target="_blank">are some tools to do that in Nunjucks</a>.</p>
+<p>Ok, so I'm going to split this into a few chunks.</p>
+<p>First I'm going to establish a base template, one that all the others can pull off of. This can set up the basic HTML structure, my HTML, HEAD and BODY tags. It can also establish the baseline HTML to make the template work, like the wrapper-classed div and the semantic HTML5 tags within.</p>
+<p><code>git commit -am &quot;Setting up some templates to inheret from.&quot;</code></p>
+<p>Then I'll want to define the areas that the layouts that pull off the base can pull from. Nunjucks seems to do this with <code>block</code> tags. So I'll set up some of these block tags in the <code>&lt;main&gt;</code> area to start with.</p>
+<pre class="language-liquid"><code class="language-liquid">		<span class="token operator">&lt;</span>main<span class="token operator">></span><br>			{<span class="token operator">%</span> block precontent <span class="token operator">%</span>}<br>			{<span class="token operator">%</span> endblock <span class="token operator">%</span>}<br>			<span class="token operator">&lt;</span>section<span class="token operator">></span><br>				{<span class="token operator">%</span> block content <span class="token operator">%</span>}<br>				{{ content <span class="token operator">|</span> safe }}<br>				{<span class="token operator">%</span> endblock <span class="token operator">%</span>}<br>			<span class="token operator">&lt;</span><span class="token operator">/</span>section<span class="token operator">></span><br>			{<span class="token operator">%</span> block postcontent <span class="token operator">%</span>}<br>			{<span class="token operator">%</span> endblock <span class="token operator">%</span>}<br>		<span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">></span></code></pre>
+<p>With the basics in place, I can actually drop the entire content of <code>post.njk</code> and replace it with an <code>extends</code> statement.</p>
+<p>{% extends &quot;base.njk&quot; %}</p>
+<p>The original dinky template was designed for single page sites. So the post template works pretty much unchanged with no issues. But what about my index page? I'm going to want to add stuff to there.</p>
+<p>First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly <a href="https://www.11ty.dev/docs/collections/" target="_blank">to create an 11ty collection</a>, but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span>ul<span class="token operator">></span><br>    {<span class="token operator">%</span> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections.WiP <span class="token operator">%</span>}<br>	<span class="token operator">&lt;</span>li<span class="token operator">></span>{{post.data.title}}<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span><br>	{<span class="token operator">%</span> <span class="token keyword">endfor</span> <span class="token operator">%</span>}<br><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span></code></pre>
+<p>This is a good start, but what if I only want one category of WiP? Or if I want to separate it out into projects? I need to make this more reusable.</p>
+<p>But what about sorting? I may need to sort by date and dates are always messy. To make sure I can get them work right, I should start by adding a date to all post templates. I could add it in the post template itself, but I suspect there may be other pages I want to have the date on, so I'm going to handle it with an if/else chain at the base template.</p>
+<pre class="language-liquid"><code class="language-liquid">	<span class="token operator">&lt;</span>header<span class="token operator">></span><br>	{<span class="token operator">%</span> block header <span class="token operator">%</span>}<br><br>		{<span class="token operator">%</span> <span class="token keyword">if</span> '<span class="token operator">/</span>posts' <span class="token keyword">in</span> page.url <span class="token operator">%</span>}<br>		<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> post mode <span class="token operator">--</span><span class="token operator">></span><br>		<span class="token operator">&lt;</span>time<span class="token operator">></span>{{ page.date.toDateString() }}<span class="token operator">&lt;</span><span class="token operator">/</span>time<span class="token operator">></span><br>		{<span class="token operator">%</span> elif '<span class="token operator">/</span>projects' <span class="token keyword">in</span> page.url <span class="token operator">%</span>}<br>		<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> projects mode <span class="token operator">--</span><span class="token operator">></span><br>		{<span class="token operator">%</span> <span class="token keyword">else</span> <span class="token operator">%</span>}<br>		<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">else</span> mode <span class="token operator">--</span><span class="token operator">></span><br>		{<span class="token operator">%</span> <span class="token keyword">endif</span> <span class="token operator">%</span>}<br>		<span class="token operator">&lt;</span>h1 class<span class="token operator">=</span>"header"<span class="token operator">></span>{{ title }}<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span><br>		<span class="token operator">&lt;</span>p class<span class="token operator">=</span>"header"<span class="token operator">></span>{{ description }}<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span><br><br>	{<span class="token operator">%</span> endblock <span class="token operator">%</span>}<br>	<span class="token operator">&lt;</span><span class="token operator">/</span>header<span class="token operator">></span></code></pre>
+<p>Oh, these dates aren't great, they seem to be pulling from some info that isn't totally accurate via the 11ty defaults</p>
+<p>Surprising no one, dates are a <a href="https://www.11ty.dev/docs/pitfalls/" target="_blank">Common Pitfall</a>. <a href="https://www.11ty.dev/docs/dates/" target="_blank">11ty documentation advises to directly set the date</a>. And I can't just set them any which way, I need to set them <a href="https://yaml.org/type/timestamp.html" target="_blank">via the YAML date format</a>. Once that's done, I can display them using that built-in toDateString function in a way that makes the dates more human readable.</p>
+<p>git commit -am &quot;Adding template parts&quot;</p>
+<p>Ok back to my reusable post list. I started with a pretty basic version, but it looks to me like <a href="https://www.trysmudford.com/blog/encapsulated-11ty-components/" target="_blank">the right approach is Macros</a>.</p>
+<p>Huh... that didn't work.</p>
+<p>Ok maybe this:</p>
+<p>{% raw %}</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www.<span class="token number">11</span>ty.dev<span class="token operator">/</span>docs<span class="token operator">/</span>collections<span class="token operator">/</span> <span class="token operator">--</span><span class="token operator">></span><br><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> Should I use {{ "abcdef" <span class="token operator">|</span> <span class="token function">reverse</span> }} <span class="token operator">--</span><span class="token operator">></span><br><span class="token operator">&lt;</span>ul<span class="token operator">></span><br>	<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> Collection<span class="token operator">:</span> {{collectionName}} <span class="token operator">--</span><span class="token operator">></span><br>    {<span class="token operator">%</span> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections.{{collectionName}} <span class="token operator">%</span>}<br>	<span class="token operator">&lt;</span>li<span class="token operator">></span>{{post.data.title}}<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span><br>	{<span class="token operator">%</span> <span class="token keyword">endfor</span> <span class="token operator">%</span>}<br><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span><br></code></pre>
+<p>{% endraw %}</p>
+<p>Especially with the variable name in the <code>for</code> deceleration? I don't know if that works the way I think it does and I may even just need <a href="https://www.11ty.dev/docs/languages/nunjucks/#shortcodes" target="_blank">a shortcode instead</a>. But I'd like to get it working. Let's try just echoing out the passed in value first.</p>
+<p>Damn, still no go.</p>
+<p><code>git commit -am &quot;Get macros in the mix.&quot;</code></p>
 
-			</section>
-			
-			
-		</main>
-      <footer>
-	  	
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-		
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-  </body>
+					
+				</section>
+				<section>
+					
+				</section>
+			</main>
+			<footer>
+				
+				
+					<p>
+						<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+					</p>
+				
+				
+			</footer>
+		</div>
+		<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	</body>
 </html>

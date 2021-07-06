@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-US">
+	<head>
+		
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<title>Hello World Devblog - Pt. 10</title>
+			<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+			<link rel="stylesheet" href="/assets/css/style.css?v=1004495045">
+			<!-- Build Revision: 1004495045 & Sha: 16489980c08be5ebaab225ed4178fb314d8f80f9 -->
+			<script src="/assets/js/scale.fix.js"></script>
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+			<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+		
+		
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				
+
+					
+						<!-- post mode -->
+						<time>Mon Jul 05 2021</time>
+						<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+					
+					<h1 class="header">Hello World Devblog - Pt. 10</h1>
+					<p class="header">Part 8 of setting up 11ty dev blog.</p>
+
+				
+			</header>
+			<main>
+				<section>
+					
+				</section>
+				<section>
+					
+						<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+</ul>
+<h2>Day 10</h2>
+<p>Ok, when we left off I had totally failed to build a macro in Nunjucks.</p>
+<p>Ok, I forgot to change the argument that was passed in the macros file and when I did that it worked.</p>
+<p>So... progress!</p>
+<p>Now let's try and figure out how to make it more useful.</p>
+<p>There are some interesting things you can do with Macros! I really would like to get it to work, so before we go the filter route, let's see if we can make my intended methodology work. This seems like it would be a thing people would want to do! So some more web searching may be in order.</p>
+<p>Ok, after trying a few different search terms <a href="https://stackoverflow.com/questions/50685814/nunjucks-nested-variables" target="_blank">I've found a useful middle ground</a>. But I know that <a href="https://www.11ty.dev/docs/languages/nunjucks/#filters" target="_blank">Nunjucks applies filters in a specific way in 11ty</a>.</p>
+<p>Hmmm, apparently part of the issue <a href="https://github.com/11ty/eleventy/issues/354#issuecomment-449904901" target="_blank">is that Nunjucks fails silently on rendering stuff</a>. Is there a way to turn it off? Looks like first <a href="https://www.11ty.dev/docs/languages/nunjucks/#optional-use-your-nunjucks-environment" target="_blank">I'll have to redefine the Nunjucks rendering environment</a>.</p>
+<p>The Nunjucks page on 11ty suggests we pass in the <code>_includes</code> folder name as a string: <code>new Nunjucks.FileSystemLoader(&quot;_includes&quot;)</code>. But that's an extra instance of that string to keep track of. Better to use my 11ty config object instead. I also want to switch <code>throwOnUndefined</code> to <code>true</code>, but only in the local environment. Another good use for <code>process.env.DOMAIN</code>.</p>
+<p>Now at the top of my <code>.eleventy.js</code> file I have</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> domain_name <span class="token operator">=</span> <span class="token string">"https://fightwithtools.dev"</span><span class="token punctuation">;</span><br><span class="token keyword">let</span> throwOnUndefinedSetting <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br><br><span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">IS_LOCAL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	domain_name <span class="token operator">=</span> <span class="token string">"http://localhost:8080"</span><span class="token punctuation">;</span><br>	throwOnUndefinedSetting <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>And I have a new section that sets up my own Nunjucks filter:</p>
+<pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">let</span> nunjucksEnvironment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>Environment</span><span class="token punctuation">(</span><br>		<span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>FileSystemLoader</span><span class="token punctuation">(</span>siteConfiguration<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>includes<span class="token punctuation">,</span><br>		<span class="token punctuation">{</span><br>			throwOnUndefined<span class="token operator">:</span> throwOnUndefinedSetting<br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"njk"</span><span class="token punctuation">,</span> nunjucksEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ok... interesting... when I set it up, it no longer reads the include statement properly, which calls a template located in <code>src/_layouts</code> and passed into the configuration object to 11ty as <code>dir.layouts</code>:</p>
+<p><code>{% extends &quot;base.njk&quot; %}</code></p>
+<p>Hmmmm. Well <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L124" target="_blank">let's take a look at how 11ty configures it</a>.</p>
+<pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">const</span> normalize <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"normalize-path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token operator">...</span><br><br>	<span class="token keyword">const</span> <span class="token function-variable function">pathNormalizer</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">pathString</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token function">normalize</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>	<span class="token punctuation">}</span><br><br>	<span class="token keyword">let</span> nunjucksEnvironment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>Environment</span><span class="token punctuation">(</span><br>		<span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>FileSystemLoader</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>			<span class="token function">pathNormalizer</span><span class="token punctuation">(</span>siteConfiguration<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>includes<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			<span class="token function">pathNormalizer</span><span class="token punctuation">(</span>siteConfiguration<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>layouts<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			<span class="token function">pathNormalizer</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><br>		<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		<span class="token punctuation">{</span><br>			throwOnUndefined<span class="token operator">:</span> throwOnUndefinedSetting<br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"njk"</span><span class="token punctuation">,</span> nunjucksEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Well, <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L124" target="_blank">it looks like 11ty does more to configure the Nunjucks rendering engine than I thought</a>. Let's see if I can try to duplicate how the core 11ty approach does it.</p>
+<p>Hmmm, pulled the same configuration, but now it looks like one of my posts isn't working. It looks like Nunjucks is adding some secret juice to the <code>raw</code> tag for escaping stuff. Hmmm, ok, there is a lot of badly documented stuff that 11ty is doing with the Nunjucks engine and modifying it. Perhaps it is time to step back from attempting to mod it and take a different approach.</p>
+<p>Maybe I should go for the custom filter method instead. Let's step back.</p>
+<p><code>git commit -am &quot;Trying to get variable variables working and 11ty to set throwOnUndefined for nunjucks&quot;</code></p>
+
+					
+				</section>
+				<section>
+					
+				</section>
+			</main>
+			<footer>
+				
+				
+					<p>
+						<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+					</p>
+				
+				
+			</footer>
+		</div>
+		<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	</body>
+</html>
