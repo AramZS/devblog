@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 8
+title: Hello World Devblog - Pt. 10
 subtitle: Getting this dev blog running
 description: Part 8 of setting up 11ty dev blog.
 project: Dev Blog

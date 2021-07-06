@@ -2,6 +2,9 @@
 
 {% block postcontent %}
 	<!-- post list: -->
-	{% postList "WiP",
-	collections["WiP"] %}
+	{%- for postType in postLists %}
+		{% postList postType.name,
+		collections[postType.collection],
+		postType.order %}
+	{%- endfor %}
 {% endblock %}

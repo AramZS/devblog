@@ -149,7 +149,13 @@ module.exports = function (eleventyConfig) {
 		//	return Nunjucks.renderString(text, this.ctx);
 		//});
 	*/
-	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts) {
+	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts, order) {
+		if (!!!order){
+			order = "reverse"
+		}
+		if (order === "reverse"){
+			collectionOfPosts.reverse()
+		}
 		let postList = collectionOfPosts.map((post) => {
 			return `<li>${post.data.title}</li>`
 		})
