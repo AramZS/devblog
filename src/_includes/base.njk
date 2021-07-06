@@ -4,7 +4,7 @@
   	{% block head %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{ title }}</title>
+	<title>{{ title or "NO TITLE" }}</title>
 	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css?v={{ site.github.build_revision}}">
 	<!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
@@ -32,7 +32,7 @@
 		{% else %}
 		<!-- else mode -->
 		{% endif %}
-		<h1 class="header">{{ title }}</h1>
+		<h1 class="header">{{ title or "NO TITLE" }}</h1>
 		<p class="header">{{ description }}</p>
 
 	{% endblock %}

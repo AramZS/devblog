@@ -96,12 +96,12 @@ module.exports = function (eleventyConfig) {
 		},
 	});
 
-	sassBuild(domain_name);
-	eleventyConfig.on("beforeWatch", (changedFiles) => {
-		// changedFiles is an array of files that changed
-		// to trigger the watch/serve build
-		sassBuild(domain_name);
-	});
+	// sassBuild(domain_name);
+	// eleventyConfig.on("beforeWatch", (changedFiles) => {
+	// 	// changedFiles is an array of files that changed
+	// 	// to trigger the watch/serve build
+	// 	sassBuild(domain_name);
+	// });
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 
@@ -115,35 +115,32 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("./CNAME");
 	// eleventyConfig.addPassthroughCopy("src/.gitignore");
-	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
-	eleventyConfig.addPassthroughCopy({
-		"dinky/assets/images": "assets/images",
-	});
-	eleventyConfig.addPassthroughCopy({
-		"dinky/_sass": "sass/dinky/_sass",
-	});
+	// eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
+	// eleventyConfig.addPassthroughCopy({
+	// 	"dinky/assets/images": "assets/images",
+	// });
+	// eleventyConfig.addPassthroughCopy({
+	// 	"dinky/_sass": "sass/dinky/_sass",
+	// });
 	eleventyConfig.addPassthroughCopy({
 		"src/_sass": "sass/src/_sass",
 	});
 
-	const pathNormalizer = function(pathString){
-		return normalize(path.normalize(path.resolve(".")))
+const njkEngine = require("nunjucks").configure(
+	[
+		path.join(siteConfiguration.dir.input, siteConfiguration.dir.includes),
+		path.join(siteConfiguration.dir.input, siteConfiguration.dir.layouts),
+		siteConfiguration.dir.input,
+	],
+	{
+		autoescape: false,
+		throwOnUndefined: true
 	}
+);
 
-	// Nunjucks Filters
-	let nunjucksEnvironment = new Nunjucks.Environment(
-		new Nunjucks.FileSystemLoader([
-			pathNormalizer(siteConfiguration.dir.includes),
-			pathNormalizer(siteConfiguration.dir.input),
-			pathNormalizer(".")
-		]),
-		{
-			throwOnUndefined: throwOnUndefinedSetting,
-			autoescape: true
-		}
-	);
-	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
-	eleventyConfig.addNunjucksFilter("interpolate", function(value) {
+eleventyConfig.setLibrary('njk', njkEngine );  //: autoescape for CSS rules
+
+eleventyConfig.addNunjucksFilter("interpolate", function(value) {
 		return Nunjucks.renderString(text, this.ctx);
 	});
 
