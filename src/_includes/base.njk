@@ -24,6 +24,9 @@
 
 					{% if '/posts' in page.url %}
 						<!-- post mode -->
+						<script>
+							console.log({{ page.toString() }})
+						</script>
 						<time>{{ page.date.toDateString() }}</time>
 						<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
 					{% elif '/projects' in page.url %}

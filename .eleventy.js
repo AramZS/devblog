@@ -126,6 +126,10 @@ module.exports = function (eleventyConfig) {
 		"src/_sass": "sass/src/_sass",
 	});
 
+	eleventyConfig.addCollection('projects', function(collectionApi) {
+        return collectionApi.getFilteredByGlob('src/projects/*');
+    });
+
 	const pathNormalizer = function(pathString){
 		return normalize(path.normalize(path.resolve(".")))
 	}

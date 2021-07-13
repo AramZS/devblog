@@ -1,8 +1,6 @@
 {% extends "base.njk" %}
 
 {% block postcontent %}
-	<h3>Projects Thus Far</h3>
-
 	<!-- post list: -->
 	{%- for postType in postLists %}
 		{% postList postType.name,
