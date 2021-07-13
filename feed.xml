@@ -13,119 +13,161 @@
   </author>
   
   <entry>
-    <title>Hello World Devblog - Pt. 1</title>
-    <link href="https://fightwithtools.dev/posts/hello-day-1/"/>
+    <title>Hello World Devblog - Pt. 2</title>
+    <link href="https://fightwithtools.dev/posts/hello-day-2/"/>
     <updated>2021-06-13T03:59:43Z</updated>
-    <id>https://fightwithtools.dev/posts/hello-day-1/</id>
-    <content type="html">&lt;h1&gt;Day 1&lt;/h1&gt;
-&lt;p&gt;I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:&lt;/p&gt;
+    <id>https://fightwithtools.dev/posts/hello-day-2/</id>
+    <content type="html">&lt;h1&gt;Day 2&lt;/h1&gt;
+&lt;p&gt;Ok, day 2. Let&#39;s restate the requirements and todos!&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
 &lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
 &lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
 &lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
 &lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;So, after being completly put off by the Hugo quickstart page, I decided to go to 11ty. I&#39;d been using 11ty for a very basic build process on another project, so I wanted to see what it would be like for a more complex blog. Everyone I know seems to love 11ty so if I complain about it on Twitter someone will likely give me an answer. This is a requirement I only just realized:&lt;/p&gt;
-&lt;ol start=&quot;6&quot;&gt;
 &lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Ok. 11ty it is.&lt;/p&gt;
-&lt;p&gt;Ok, first things first. New folder. &lt;code&gt;git init&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Oh, it starts new projects with the &lt;code&gt;master&lt;/code&gt; branch? I don&#39;t like that, I like using &lt;code&gt;main&lt;/code&gt;. I can checkout main and delete master right?&lt;/p&gt;
-&lt;p&gt;Huh... if you don&#39;t have anything committed to any branch and you checkout a new branch the &lt;code&gt;master&lt;/code&gt; branch ceases to exist. Cool. I guess I don&#39;t need to do &lt;a href=&quot;https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Wait... does 11ty work with GitHub Actions to build? I have no idea. &lt;a href=&quot;https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/&quot; target=&quot;_blank&quot;&gt;Looks like yes&lt;/a&gt;... let&#39;s move forward.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm init -y&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install --save-dev @11ty/eleventy&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Here we go with 11ty! Only...&lt;/p&gt;
-&lt;p&gt;All the pre-built... ughhh &amp;quot;Themes&amp;quot; or &amp;quot;Starters&amp;quot; (I can&#39;t say template here, because searching for &amp;quot;11ty templates&amp;quot;, while a logical thing to do, just gives me a ton of pages about using Nunjucks) suck. They all suck hardcore. I mean, they&#39;re all single page sites with no clear navigation or nav bar and look barely worked out beyond the Bootstrap Starter Template phase. I can&#39;t stand any of them. Is there a secret location for good 11ty themes or is it just that the type of folks most likely to use 11ty lack design skills?&lt;/p&gt;
-&lt;p&gt;But... I really like the Jekyll dinky theme. All I really need is the CSS and I can pull a copy of its template into whatever. Easy enough in theory (never in practice).&lt;/p&gt;
-&lt;p&gt;I&#39;m going to pull it in as a submodule. I forgot how to do submodules. &lt;a href=&quot;https://github.blog/2016-02-01-working-with-submodules/&quot; target=&quot;_blank&quot;&gt;Here we go&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git submodule add git@github.com:pages-themes/dinky.git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git submodule update --init --recursive&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Alright, what have we got here.&lt;/p&gt;
-&lt;p&gt;Sass. We&#39;ve got Sass. That&#39;s going to need to be figured out.&lt;/p&gt;
-&lt;p&gt;Let&#39;s go to the 11ty plugins and see what, if anything, can help me here.&lt;/p&gt;
-&lt;p&gt;Oh and let&#39;s grab some cool looking ones.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install @11ty/eleventy-img&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Huh, some funkyness on the install... because I forgot that, for various complicated reasons, my Node install defaults to 8.*.&lt;/p&gt;
-&lt;p&gt;Ok. Create the &lt;code&gt;.nvmrc&lt;/code&gt; file and what&#39;s the latest version of node these days? Put &lt;code&gt;16&lt;/code&gt; in it.&lt;/p&gt;
-&lt;p&gt;Reboot my console so I take advantage of &lt;a href=&quot;https://gist.github.com/AramZS/fda9c04a38908789dccdf78bb94e2b45&quot; target=&quot;_blank&quot;&gt;the nifty nvm auto-load ZSH script&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Dump package-lock, dump node_modules, &lt;code&gt;npm install&lt;/code&gt; again.&lt;/p&gt;
-&lt;p&gt;Plugin install works now.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install @11ty/eleventy-plugin-syntaxhighlight --save-dev&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;npm install @11ty/eleventy-navigation --save-dev&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;npm install @11ty/eleventy-plugin-rss --save-dev&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install eleventy-plugin-sass --save &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok, that didn&#39;t work. And the whole point of looking at plugins was a SASS processor integrated into the 11ty build process. Not great. What&#39;s wrong?&lt;/p&gt;
-&lt;p&gt;Looks like something with &lt;code&gt;node-gyp&lt;/code&gt;. Frequently a problem.&lt;/p&gt;
-&lt;p&gt;Let&#39;s check &lt;code&gt;node-gyp&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Ok, a whole thing for problems from an upgrade.&lt;/p&gt;
-&lt;p&gt;Let&#39;s do all of &lt;a href=&quot;https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md&quot; target=&quot;_blank&quot;&gt;that&lt;/a&gt;. XCode needed an update and for some reason updating to Catalina also wiped out my XCode CLI tools... didn&#39;t realize that. Reinstall those:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;xcode-select --install&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok, cool. Moving on...&lt;/p&gt;
-&lt;p&gt;Oh, I am looking at the configuration options for &lt;code&gt;gulp-sass&lt;/code&gt; which get passed into the 11ty plugin and looks like &lt;code&gt;gulp-sass&lt;/code&gt; is depreciated. So this plugin is not one I want to use. And it looks like there isn&#39;t an up to date Sass plugin.&lt;/p&gt;
-&lt;p&gt;lol.&lt;/p&gt;
-&lt;p&gt;So, let&#39;s assume I&#39;m going to have to write my own plugin. I know nothing about 11ty plugins. Find a real basic one and use that as the template to start a new one.&lt;/p&gt;
-&lt;p&gt;This &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-meta-generator&quot; target=&quot;_blank&quot;&gt;one&lt;/a&gt; looks pretty simple! So I&#39;m going to keep that tab open for reference as I build out a Sass processor.&lt;/p&gt;
-&lt;p&gt;[ ] Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
-&lt;p&gt;[ ] So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I also saw &lt;a href=&quot;https://www.npmjs.com/package/eleventy-load&quot; target=&quot;_blank&quot;&gt;a Loader plugin&lt;/a&gt;... but it looks way more complicated than I need while also &lt;em&gt;not doing what I need&lt;/em&gt;, so mark it, move on. Might have something in its code that&#39;s useful for later.&lt;/p&gt;
-&lt;p&gt;[ ] Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
-&lt;p&gt;Ok, back to Sass. Now, I don&#39;t want to fk around with building a whole NPM module for this right now, so let&#39;s start with the plugin internal to the project.&lt;/p&gt;
-&lt;p&gt;There does not seem to be a standard pattern for these like there is for layouts, data, etc... so I&#39;m going to imitate the &lt;code&gt;_{thing}&lt;/code&gt; pattern and make a &lt;code&gt;_custom-plugins&lt;/code&gt; folder. Maybe someday someone will read this and tell me this is a dumb pattern. Put it in there. Node module structure, &lt;code&gt;index.js&lt;/code&gt; at the base, &lt;code&gt;src&lt;/code&gt; folder with the files that actually do stuff.&lt;/p&gt;
-&lt;p&gt;Ok let&#39;s get Sass in here. I want the Javascript library, so read through docs &lt;a href=&quot;https://sass-lang.com/dart-sass&quot; target=&quot;_blank&quot;&gt;at their site&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install sass --save-dev&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;npm install fiber --save-dev&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;That 2nd one didn&#39;t work... cool, what is Fiber... let&#39;s &lt;a href=&quot;https://github.com/laverdet/node-fibers&quot; target=&quot;_blank&quot;&gt;read about it&lt;/a&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Update [April 13th, 2021] -- Fibers is not compatible with nodejs v16.0.0 or later. Unfortunately, v8 commit dacc2fee0f is a breaking change and workarounds are non-trivial.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;em&gt;sigh&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Ok, using latest version of Node, clearly a bad choice.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;.nvmrc&lt;/code&gt; changed to &lt;code&gt;15&lt;/code&gt;. I like 15, I&#39;ve used 15 for other stuff. Hopefully no problem.&lt;/p&gt;
-&lt;p&gt;You know... reading node-fiber&#39;s documentation... I... don&#39;t actually need it anyway. I want &lt;code&gt;renderSync&lt;/code&gt;, to block the build process of 11ty until the right assets are done.&lt;/p&gt;
-&lt;p&gt;Whatever... never use latest Node... it always causes problems. I have encountered this time and time again. Clear out package-lock and node_modules.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok at this point my process has already become more muddled then I&#39;m comfortable with. Better start documenting it actually. Oh wait, this is a dev blog, I should start documenting it AS A BLOG POST.&lt;/p&gt;
-&lt;p&gt;I forgot the pattern for 11ty posts&#39; folders in a project. &lt;a href=&quot;https://github.com/11ty/eleventy-base-blog/tree/master/posts&quot; target=&quot;_blank&quot;&gt;Here it is&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Started this file.&lt;/p&gt;
-&lt;p&gt;Forgot the number of dashes for the metadata format for markdown that 11ty likes because it is not 8:30pm and I have not yet had dinner. I was reading about some feature that mentioned it in the context of merging data from templates with markdown files, I should likely note that.&lt;/p&gt;
-&lt;p&gt;[ ] Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
-&lt;p&gt;Ok now:&lt;/p&gt;
-&lt;p&gt;[x] Write everything down that I&#39;ve done to this point before it zeroes out of my head.&lt;/p&gt;
-&lt;p&gt;God bless CLI and browser history.&lt;/p&gt;
-&lt;p&gt;Ok, back to the Sass plugin. And also: this would be a good time to do a commit huh?&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;a real 11ty blog... I don&#39;t know wtf I&#39;m doing to make this work yet&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok, &lt;code&gt;dart-sass&lt;/code&gt;. I don&#39;t know what any of these listed options are...&lt;/p&gt;
-&lt;p&gt;Annoying, since they are emulating the &lt;code&gt;node-sass&lt;/code&gt; API, it&#39;s just a link to the &lt;code&gt;node-sass&lt;/code&gt; README documentation. Ok, taking a look.&lt;/p&gt;
-&lt;ol start=&quot;7&quot;&gt;
 &lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I also would like to have smart CSS, where it only loads the CSS files it needs for a template, so we&#39;d have a main CSS file and then per-template CSS files? That would be cool. Or maybe &lt;a href=&quot;https://github.com/addyosmani/critical#usage&quot; target=&quot;_blank&quot;&gt;this thing&lt;/a&gt;? You know what... table that... let&#39;s just render the damn CSS first.&lt;/p&gt;
+&lt;p&gt;[ ] Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
+&lt;p&gt;[ ] So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;[ ] Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
+&lt;p&gt;[ ] Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
 &lt;p&gt;[ ] Decide if I want to render the CSS fancier than just a base file.&lt;/p&gt;
-&lt;p&gt;Huh... a thought... can I just run any arbitrary function in 11ty as part of the build?&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.11ty.dev/docs/data-js/&quot; target=&quot;_blank&quot;&gt;Looks like&lt;/a&gt; the &lt;code&gt;_data&lt;/code&gt; folder can contain functions that output arbitrary files?&lt;/p&gt;
-&lt;p&gt;Should I do that? I mean... I likely could... but it isn&#39;t elegant, it isn&#39;t the &lt;em&gt;right&lt;/em&gt; way. Skip it.&lt;/p&gt;
-&lt;p&gt;Ok, set it up with the most basic Sass build rules. Let&#39;s hold there, I&#39;m going to want to try it out, but first, let&#39;s make sure the normal 11ty build works.&lt;/p&gt;
-&lt;p&gt;Ok, to do that I need a layout in place. Get it in &lt;a href=&quot;https://github.com/11ty/eleventy-base-blog/tree/master/_includes/layouts&quot; target=&quot;_blank&quot;&gt;the right place&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To make sure my CSS works properly, I should prob set up the dinky layout here. &lt;code&gt;dinky/_layouts&lt;/code&gt;. Ok... only one file, easy enough. And the template syntax looks basically identical. Copy it and paste it into the &lt;code&gt;_includes/layouts&lt;/code&gt; folder and rename it to &lt;code&gt;default.njk&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;NOTE: I&#39;m pretty sure that Nunjucks can process HTML files. Do I want to just add a 11ty alias to just pull default.html from dinky in the style of &lt;code&gt;eleventyConfig.addLayoutAlias(&amp;quot;base&amp;quot;, &amp;quot;dinky/_layouts/default.html&amp;quot;);&lt;/code&gt;? Would that work? Put a pin in that:&lt;/p&gt;
 &lt;p&gt;[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/p&gt;
-&lt;p&gt;Pull the .eleventy.js return from the &lt;a href=&quot;https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js&quot; target=&quot;_blank&quot;&gt;base blog&lt;/a&gt; and change output to &lt;code&gt;docs&lt;/code&gt; for Github Pages...&lt;/p&gt;
-&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;		dir&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;			input&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;			includes&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;_includes&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;			data&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;_data&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;			output&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docs&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Wait... it&#39;s pulling njk files from the base of the project? Mixing project files with build configuration files? That&#39;s HOT NONSENSE. I did that last time, but it was becaause I wanted to build some real basic pages and only a few of them. Not good for a larger project IMO. Create an &lt;code&gt;src&lt;/code&gt; folder.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;input: &amp;quot;src&amp;quot;,&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Crap... what of these folders do I need to move in? I guess &lt;code&gt;posts&lt;/code&gt;? That is likely it. I&#39;ll find out later!&lt;/p&gt;
-&lt;p&gt;Ok, theoretically should be able to make a build. Moment of truth.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npx @11ty/eleventy&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;It did not pick up the template&lt;/p&gt;
-&lt;p&gt;Let&#39;s try altering the .eleventy.js returned data to include, and I&#39;ll move the folder accordingly:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;layouts: &amp;quot;_layouts&amp;quot;,&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Still didn&#39;t pick it up.&lt;/p&gt;
-&lt;p&gt;Ok, gotta play around, but good time to commit&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;First render, didn&#39;t work&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Time to take a break for dinner.&lt;/p&gt;
+&lt;p&gt;Ok, so why isn&#39;t it picking up the layout from either &lt;code&gt;_layouts/post.njk&lt;/code&gt; or &lt;code&gt;_layouts/default.njk&lt;/code&gt;? Maybe I need to define a default &lt;a href=&quot;https://www.11ty.dev/docs/data-template-dir/&quot; target=&quot;_blank&quot;&gt;at the data level&lt;/a&gt;? Or do I need to move it to &lt;code&gt;src&lt;/code&gt; even if I define the location in the returned configuration?&lt;/p&gt;
+&lt;p&gt;Moving it into &lt;code&gt;src&lt;/code&gt; doesn&#39;t seem to do anything. But it looks like all the files I configure into 11ty in the returned object do need to be in there, so apparently I can&#39;t set a default layout in the &lt;code&gt;data&lt;/code&gt; folder?&lt;/p&gt;
+&lt;p&gt;Adding a template to &lt;code&gt;src/posts/posts.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;layouts/post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, yay, an error!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Error You’re trying to use a layout that does not exist layouts/post.njk (undefined)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Because I defined a path to layouts in the config, I don&#39;t need to include it?&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Yup, now I have an error in the template!&lt;/p&gt;
+&lt;p&gt;Ok, looks like I can&#39;t use this structure:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{{ site.lang | default: &amp;quot;en-US&amp;quot; }}&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So, default values, how should I do them? It &lt;a href=&quot;https://www.11ty.dev/docs/data-cascade/&quot; target=&quot;_blank&quot;&gt;looks like&lt;/a&gt; the answer is to define it as &lt;a href=&quot;https://www.11ty.dev/docs/data-global/&quot; target=&quot;_blank&quot;&gt;a data global&lt;/a&gt;. Ok let&#39;s try it, place the default in &lt;code&gt;src/_data/site.json&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token property&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;en-US&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Huh... render error on &lt;em&gt;this&lt;/em&gt; file:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TemplateContentRenderError ... expected variable end&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Going to remove &lt;code&gt;{% seo %}&lt;/code&gt; from the template. I assume it is a template fragment without looking it up but I&#39;m not prepared to figure it out. Still no solve. Good time to commit!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Template still not working but getting closer&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ok, let&#39;s start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn&#39;t make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are &lt;a href=&quot;https://www.11ty.dev/docs/copy/#change-the-output-directory&quot; target=&quot;_blank&quot;&gt;more ways to configure the passthrough rules&lt;/a&gt; to make this work for me.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;eleventyConfig.addPassthroughCopy({ &amp;quot;dinky/assets&amp;quot;: &amp;quot;assets&amp;quot; });&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ok, passthrough works! But the template still won&#39;t render. The error is still in my markdown! At &lt;code&gt;[Line 49, Column 67]&lt;/code&gt;. What is going on?! That line is empty, it doesn&#39;t have columns.&lt;/p&gt;
+&lt;p&gt;Wait... the line number is likely being calculated after the metadata is removed from the head of the &lt;code&gt;md&lt;/code&gt; file. Ok... my metadata takes up 10 lines so it is really line &lt;em&gt;59&lt;/em&gt;. Oh! It&#39;s a code sample &lt;em&gt;from&lt;/em&gt; the template. It&#39;s trying to render an njk variable from the markdown file?! That&#39;s very dumb.&lt;/p&gt;
+&lt;p&gt;To Google! &amp;quot;njk picking up code sample of njk code&amp;quot; &amp;gt; &lt;a href=&quot;https://github.com/11ty/eleventy/issues/791&quot; target=&quot;_blank&quot;&gt;result&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Raw tag huh? How does that work exactly? Oh... like &lt;a href=&quot;https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, works both for blocks and inline, good!&lt;/p&gt;
+&lt;p&gt;Ok, defaults for posts &lt;em&gt;have&lt;/em&gt; to be in the &lt;code&gt;posts&lt;/code&gt; folder&#39;s &lt;code&gt;posts.json&lt;/code&gt;. I cannot seem to set any defaults for posts in the &lt;code&gt;_data&lt;/code&gt; folder. Or at least I haven&#39;t figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the &lt;code&gt;dinky&lt;/code&gt; submodule! This is good. The process works, so now I can start to build in my weirdness.&lt;/p&gt;
+&lt;p&gt;I still really want to figure out the defaults thing first. How do I make this work?&lt;/p&gt;
+&lt;p&gt;Ok, &lt;a href=&quot;https://github.com/11ty/eleventy/issues/380#issuecomment-568033456&quot; target=&quot;_blank&quot;&gt;here we go&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So to get a default &lt;code&gt;description&lt;/code&gt; value in my template I can set it up with a file at &lt;code&gt;src/_data/description.js&lt;/code&gt; and have the content of that file be &lt;code&gt;module.exports = &amp;quot;Talking about code&amp;quot;;&lt;/code&gt;. Ok, that works!&lt;/p&gt;
+&lt;p&gt;Yay, 11ty defaults work now! Good place to commit.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Ok, renders and defaults are working now&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hmmm... ok I guess that I picked a bad example plugin, because the one I used &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage&quot; target=&quot;_blank&quot;&gt;doesn&#39;t have a typical footprint&lt;/a&gt;. Well, I&#39;m not going to have a typical footprint I guess. Let&#39;s start without that. It runs sync, so I can just call the function during setup mby? Just add &lt;code&gt;sassBuild();&lt;/code&gt; to the inside of my .eleventy.js function inside of &lt;code&gt;module.exports = function (eleventyConfig) {&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;Ok... renderSync from &lt;code&gt;dart-sass&lt;/code&gt; threw an error:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Receiver: Closure &lt;span class=&quot;token string&quot;&gt;&#39;_renderSync&#39;&lt;/span&gt;&lt;br /&gt;Arguments: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Instance of &lt;span class=&quot;token string&quot;&gt;&#39;PlainJavaScriptObject&#39;&lt;/span&gt;, Instance of &lt;span class=&quot;token string&quot;&gt;&#39;JavaScriptFunction&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;`` was thrown:&lt;br /&gt;    NoSuchMethodError: method not found: &lt;span class=&quot;token string&quot;&gt;&#39;call&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Lol &lt;a href=&quot;https://github.com/sass/dart-sass/issues/23#issuecomment-259011350&quot; target=&quot;_blank&quot;&gt;documentation error in dart-sass&lt;/a&gt; apparently. Don&#39;t pass two functions, because that&#39;s an async pattern, instead return the result.&lt;/p&gt;
+&lt;p&gt;Cool. New error!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Invalid argument(s): Either options.data or options.file must be set.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Can I not use multiple files? I guess I need a single file that calls the others &lt;a href=&quot;https://sass-lang.com/documentation/at-rules/use&quot; target=&quot;_blank&quot;&gt;using @use&lt;/a&gt;. Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!&lt;/p&gt;
+&lt;p&gt;Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the &lt;code&gt;@use&lt;/code&gt; relative to the base of the project, where I&#39;m executing the 11ty build process.&lt;/p&gt;
+&lt;p&gt;Still no css file.&lt;/p&gt;
+&lt;p&gt;Oh, &lt;a href=&quot;https://sass-lang.com/documentation/js-api#outfile&quot; target=&quot;_blank&quot;&gt;lol&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ok, gotta do that.&lt;/p&gt;
+&lt;p&gt;Ok, I want to use &lt;code&gt;fs&lt;/code&gt; to write the resulting file into &lt;code&gt;docs/styles/styles.css&lt;/code&gt;. Only, the &lt;code&gt;styles&lt;/code&gt; directory does not predictably exist so &lt;code&gt;fs&lt;/code&gt; fails because I have to make that folder. Of course, forgot. Easy enough.&lt;/p&gt;
+&lt;p&gt;Ok, it works! This is a good place to stop because it is almost midnight.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Compile that sass&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And this is pretty far along, huh? Time to push it to Github.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Hello World Devblog - Pt. 11</title>
+    <link href="https://fightwithtools.dev/posts/hello-day-11/"/>
+    <updated>2021-07-06T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/hello-day-11/</id>
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
+&lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
+&lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
+&lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
+&lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
+&lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
+&lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Decide if I want to render the CSS fancier than just a base file and do per-template splitting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; How do I cachebreak files on the basis of new build events? Datetime? &lt;code&gt;site.github.build_revision&lt;/code&gt; is &lt;a href=&quot;https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md&quot; target=&quot;_blank&quot;&gt;how Jekyll accomplishes this&lt;/a&gt;, but is there a way to push &lt;a href=&quot;https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context&quot; target=&quot;_blank&quot;&gt;that&lt;/a&gt; &lt;a href=&quot;https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions&quot; target=&quot;_blank&quot;&gt;into the build process&lt;/a&gt; for 11ty?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Make link text look less shitty. It looks like it is a whole, lighter, font.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Code blocks do not have good syntax highlighting. I want good syntax highlighting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Build a Markdown-it plugin to take my typing shortcuts &lt;code&gt;[prob, b/c, ...?]&lt;/code&gt; and expand them on build.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; See if we can start Markdown&#39;s interpretation of H tags to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1&quot; target=&quot;_blank&quot;&gt;start at 2, since H1&lt;/a&gt; is always pulled from the page title metadata. If it isn&#39;t easy, I just have to change my pattern of writing in the MD documents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Should I &lt;a href=&quot;https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/&quot; target=&quot;_blank&quot;&gt;explore some shortcodes&lt;/a&gt;?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Day 11&lt;/h2&gt;
+&lt;p&gt;Ok, still not getting Macros working exactly the way I wanted. It would be really useful to have 11ty throw actual errors as part of this, but when I tried to set my own version of the Nunjucks Environment I kept hitting against undocumented settings that 11ty apparently sets up. This is getting way off the main thing I was trying to build. I could dive deeper in, but this site still isn&#39;t live and I would like to get it to that point first. So, for now, I&#39;m going to just drop it.&lt;/p&gt;
+&lt;p&gt;But before I do, I do think this is a major problem and would be useful for eleventy to fix. So, let&#39;s check issues one last time, and check if there is something for me to file.&lt;/p&gt;
+&lt;p&gt;It looks like &lt;a href=&quot;https://github.com/11ty/eleventy/issues/895&quot; target=&quot;_blank&quot;&gt;there is an issue in the right space&lt;/a&gt;, but the suggested solution on the issue doesn&#39;t work. If I &lt;a href=&quot;https://github.com/pdehaan/11ty-blog-ideas/issues/7&quot; target=&quot;_blank&quot;&gt;follow through the tickets&lt;/a&gt; a little more I can &lt;a href=&quot;https://github.com/pdehaan/11ty-nunjucks-config/blob/master/.eleventy.js&quot; target=&quot;_blank&quot;&gt;see another suggested solution&lt;/a&gt;. But it doesn&#39;t solve the issue with the raw tags no longer working either.&lt;/p&gt;
+&lt;p&gt;I don&#39;t understand. &lt;a href=&quot;https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L128&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; &lt;em&gt;should&lt;/em&gt; work. I even checked to make sure my version of Nunjucks is the same! I even tried removing one of the files, but now my Nunjucks execution is failing on a different chunk of JS in the &lt;code&gt;js&lt;/code&gt; front matter block in &lt;code&gt;rss2-feed.njk&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So let&#39;s add my voice.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Bookmarking attempt to set custom NJK library.&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A quick bookmark of the current state of the site to help the Eleventy folks with debugging my issue!&lt;/p&gt;
+&lt;p&gt;And now &lt;a href=&quot;https://github.com/11ty/eleventy/issues/1879&quot; target=&quot;_blank&quot;&gt;a write up&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Ok, let&#39;s move on!&lt;/p&gt;
+&lt;p&gt;I&#39;m going to give up on Macros for now and instead I&#39;ll &lt;a href=&quot;https://www.11ty.dev/docs/languages/nunjucks/#single-shortcode&quot; target=&quot;_blank&quot;&gt;use a Shortcode&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, honestly this is a &lt;strong&gt;ton&lt;/strong&gt; easier. I should have just gone this direction in the first place.&lt;/p&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;	eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addShortcode&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;postList&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;collectionName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; collectionOfPosts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; postList &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; collectionOfPosts&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;			&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;li&gt;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;post&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;/li&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;p&gt;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;collectionName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;/p&gt;&lt;br /&gt;		&amp;lt;ul&gt;&lt;br /&gt;			&amp;lt;!-- Collection: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;collectionName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; --&gt;&lt;br /&gt;			&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;postList&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;\n&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&lt;br /&gt;		&amp;lt;/ul&gt;&lt;br /&gt;		&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then I can call it easily with 11ty data like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{% postList &amp;quot;WiP&amp;quot;, collections[&amp;quot;WiP&amp;quot;] %}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Set up a shortcode for postlist&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ok, now I want to be able to pass the post type I want to list in the Markdown file.&lt;/p&gt;
+&lt;p&gt;New markdown front matter to make that work:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; index&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;eleventyExcludeFromCollections&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;internalPageTypes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;home&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token key atrule&quot;&gt;postLists&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;WiP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;WiP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;date&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Posts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;reverse&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and I&#39;ll alter the shortcode to use the new arguments.&lt;/p&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;	eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addShortcode&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;postList&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;collectionName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; collectionOfPosts&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; order&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;order&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;			order &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;reverse&quot;&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;order &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;reverse&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;			collectionOfPosts&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; postList &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; collectionOfPosts&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;			&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;li&gt;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;post&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;/li&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;p&gt;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;collectionName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&amp;lt;/p&gt;&lt;br /&gt;		&amp;lt;ul&gt;&lt;br /&gt;			&amp;lt;!-- Collection: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;collectionName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; --&gt;&lt;br /&gt;			&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;postList&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;\n&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&lt;br /&gt;		&amp;lt;/ul&gt;&lt;br /&gt;		&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and now my &lt;code&gt;index.njk&lt;/code&gt; file is reusable for any vertical file I wish to reuse it with.&lt;/p&gt;
+&lt;pre class=&quot;language-liquid&quot;&gt;&lt;code class=&quot;language-liquid&quot;&gt;{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; extends &quot;base.njk&quot; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;br /&gt;&lt;br /&gt;{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; block postcontent &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;br /&gt;	&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt; post list&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;br /&gt;	{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; postType &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; postLists &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;br /&gt;		{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; postList postType.name,&lt;br /&gt;		collections[postType.collection],&lt;br /&gt;		postType.order &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;br /&gt;	{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;endfor&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;br /&gt;{&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; endblock &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Got shortcode + vertical layout template working&amp;quot;&lt;/code&gt;&lt;/p&gt;
 </content>
   </entry>
   
@@ -792,83 +834,10 @@ indent_style = space
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 2</title>
-    <link href="https://fightwithtools.dev/posts/hello-day-2/"/>
-    <updated>2021-06-13T03:59:43Z</updated>
-    <id>https://fightwithtools.dev/posts/hello-day-2/</id>
-    <content type="html">&lt;h1&gt;Day 2&lt;/h1&gt;
-&lt;p&gt;Ok, day 2. Let&#39;s restate the requirements and todos!&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
-&lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
-&lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
-&lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
-&lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
-&lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
-&lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;[ ] Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
-&lt;p&gt;[ ] So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;[ ] Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
-&lt;p&gt;[ ] Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
-&lt;p&gt;[ ] Decide if I want to render the CSS fancier than just a base file.&lt;/p&gt;
-&lt;p&gt;[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/p&gt;
-&lt;p&gt;Ok, so why isn&#39;t it picking up the layout from either &lt;code&gt;_layouts/post.njk&lt;/code&gt; or &lt;code&gt;_layouts/default.njk&lt;/code&gt;? Maybe I need to define a default &lt;a href=&quot;https://www.11ty.dev/docs/data-template-dir/&quot; target=&quot;_blank&quot;&gt;at the data level&lt;/a&gt;? Or do I need to move it to &lt;code&gt;src&lt;/code&gt; even if I define the location in the returned configuration?&lt;/p&gt;
-&lt;p&gt;Moving it into &lt;code&gt;src&lt;/code&gt; doesn&#39;t seem to do anything. But it looks like all the files I configure into 11ty in the returned object do need to be in there, so apparently I can&#39;t set a default layout in the &lt;code&gt;data&lt;/code&gt; folder?&lt;/p&gt;
-&lt;p&gt;Adding a template to &lt;code&gt;src/posts/posts.json&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;layouts/post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Ok, yay, an error!&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Error You’re trying to use a layout that does not exist layouts/post.njk (undefined)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Because I defined a path to layouts in the config, I don&#39;t need to include it?&lt;/p&gt;
-&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Yup, now I have an error in the template!&lt;/p&gt;
-&lt;p&gt;Ok, looks like I can&#39;t use this structure:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;{{ site.lang | default: &amp;quot;en-US&amp;quot; }}&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;So, default values, how should I do them? It &lt;a href=&quot;https://www.11ty.dev/docs/data-cascade/&quot; target=&quot;_blank&quot;&gt;looks like&lt;/a&gt; the answer is to define it as &lt;a href=&quot;https://www.11ty.dev/docs/data-global/&quot; target=&quot;_blank&quot;&gt;a data global&lt;/a&gt;. Ok let&#39;s try it, place the default in &lt;code&gt;src/_data/site.json&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token property&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;en-US&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Huh... render error on &lt;em&gt;this&lt;/em&gt; file:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;TemplateContentRenderError ... expected variable end&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Going to remove &lt;code&gt;{% seo %}&lt;/code&gt; from the template. I assume it is a template fragment without looking it up but I&#39;m not prepared to figure it out. Still no solve. Good time to commit!&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Template still not working but getting closer&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok, let&#39;s start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn&#39;t make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are &lt;a href=&quot;https://www.11ty.dev/docs/copy/#change-the-output-directory&quot; target=&quot;_blank&quot;&gt;more ways to configure the passthrough rules&lt;/a&gt; to make this work for me.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;eleventyConfig.addPassthroughCopy({ &amp;quot;dinky/assets&amp;quot;: &amp;quot;assets&amp;quot; });&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok, passthrough works! But the template still won&#39;t render. The error is still in my markdown! At &lt;code&gt;[Line 49, Column 67]&lt;/code&gt;. What is going on?! That line is empty, it doesn&#39;t have columns.&lt;/p&gt;
-&lt;p&gt;Wait... the line number is likely being calculated after the metadata is removed from the head of the &lt;code&gt;md&lt;/code&gt; file. Ok... my metadata takes up 10 lines so it is really line &lt;em&gt;59&lt;/em&gt;. Oh! It&#39;s a code sample &lt;em&gt;from&lt;/em&gt; the template. It&#39;s trying to render an njk variable from the markdown file?! That&#39;s very dumb.&lt;/p&gt;
-&lt;p&gt;To Google! &amp;quot;njk picking up code sample of njk code&amp;quot; &amp;gt; &lt;a href=&quot;https://github.com/11ty/eleventy/issues/791&quot; target=&quot;_blank&quot;&gt;result&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Raw tag huh? How does that work exactly? Oh... like &lt;a href=&quot;https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Ok, works both for blocks and inline, good!&lt;/p&gt;
-&lt;p&gt;Ok, defaults for posts &lt;em&gt;have&lt;/em&gt; to be in the &lt;code&gt;posts&lt;/code&gt; folder&#39;s &lt;code&gt;posts.json&lt;/code&gt;. I cannot seem to set any defaults for posts in the &lt;code&gt;_data&lt;/code&gt; folder. Or at least I haven&#39;t figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the &lt;code&gt;dinky&lt;/code&gt; submodule! This is good. The process works, so now I can start to build in my weirdness.&lt;/p&gt;
-&lt;p&gt;I still really want to figure out the defaults thing first. How do I make this work?&lt;/p&gt;
-&lt;p&gt;Ok, &lt;a href=&quot;https://github.com/11ty/eleventy/issues/380#issuecomment-568033456&quot; target=&quot;_blank&quot;&gt;here we go&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So to get a default &lt;code&gt;description&lt;/code&gt; value in my template I can set it up with a file at &lt;code&gt;src/_data/description.js&lt;/code&gt; and have the content of that file be &lt;code&gt;module.exports = &amp;quot;Talking about code&amp;quot;;&lt;/code&gt;. Ok, that works!&lt;/p&gt;
-&lt;p&gt;Yay, 11ty defaults work now! Good place to commit.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Ok, renders and defaults are working now&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Hmmm... ok I guess that I picked a bad example plugin, because the one I used &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage&quot; target=&quot;_blank&quot;&gt;doesn&#39;t have a typical footprint&lt;/a&gt;. Well, I&#39;m not going to have a typical footprint I guess. Let&#39;s start without that. It runs sync, so I can just call the function during setup mby? Just add &lt;code&gt;sassBuild();&lt;/code&gt; to the inside of my .eleventy.js function inside of &lt;code&gt;module.exports = function (eleventyConfig) {&lt;/code&gt;?&lt;/p&gt;
-&lt;p&gt;Ok... renderSync from &lt;code&gt;dart-sass&lt;/code&gt; threw an error:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Receiver: Closure &lt;span class=&quot;token string&quot;&gt;&#39;_renderSync&#39;&lt;/span&gt;&lt;br /&gt;Arguments: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Instance of &lt;span class=&quot;token string&quot;&gt;&#39;PlainJavaScriptObject&#39;&lt;/span&gt;, Instance of &lt;span class=&quot;token string&quot;&gt;&#39;JavaScriptFunction&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;`` was thrown:&lt;br /&gt;    NoSuchMethodError: method not found: &lt;span class=&quot;token string&quot;&gt;&#39;call&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Lol &lt;a href=&quot;https://github.com/sass/dart-sass/issues/23#issuecomment-259011350&quot; target=&quot;_blank&quot;&gt;documentation error in dart-sass&lt;/a&gt; apparently. Don&#39;t pass two functions, because that&#39;s an async pattern, instead return the result.&lt;/p&gt;
-&lt;p&gt;Cool. New error!&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Invalid argument(s): Either options.data or options.file must be set.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Can I not use multiple files? I guess I need a single file that calls the others &lt;a href=&quot;https://sass-lang.com/documentation/at-rules/use&quot; target=&quot;_blank&quot;&gt;using @use&lt;/a&gt;. Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!&lt;/p&gt;
-&lt;p&gt;Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the &lt;code&gt;@use&lt;/code&gt; relative to the base of the project, where I&#39;m executing the 11ty build process.&lt;/p&gt;
-&lt;p&gt;Still no css file.&lt;/p&gt;
-&lt;p&gt;Oh, &lt;a href=&quot;https://sass-lang.com/documentation/js-api#outfile&quot; target=&quot;_blank&quot;&gt;lol&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Ok, gotta do that.&lt;/p&gt;
-&lt;p&gt;Ok, I want to use &lt;code&gt;fs&lt;/code&gt; to write the resulting file into &lt;code&gt;docs/styles/styles.css&lt;/code&gt;. Only, the &lt;code&gt;styles&lt;/code&gt; directory does not predictably exist so &lt;code&gt;fs&lt;/code&gt; fails because I have to make that folder. Of course, forgot. Easy enough.&lt;/p&gt;
-&lt;p&gt;Ok, it works! This is a good place to stop because it is almost midnight.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Compile that sass&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And this is pretty far along, huh? Time to push it to Github.&lt;/p&gt;
-</content>
-  </entry>
-  
-  <entry>
     <title>Hello World Devblog - Pt. 1</title>
-    <link href="https://fightwithtools.dev/posts/hello-day-1/"/>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-1/"/>
     <updated>2021-06-13T03:59:43Z</updated>
-    <id>https://fightwithtools.dev/posts/hello-day-1/</id>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-1/</id>
     <content type="html">&lt;h1&gt;Day 1&lt;/h1&gt;
 &lt;p&gt;I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:&lt;/p&gt;
 &lt;ol&gt;
@@ -978,6 +947,79 @@ indent_style = space
 &lt;p&gt;Ok, gotta play around, but good time to commit&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git commit -am &amp;quot;First render, didn&#39;t work&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Time to take a break for dinner.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Hello World Devblog - Pt. 2</title>
+    <link href="https://fightwithtools.dev/posts/hello-day-2/"/>
+    <updated>2021-06-13T03:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/hello-day-2/</id>
+    <content type="html">&lt;h1&gt;Day 2&lt;/h1&gt;
+&lt;p&gt;Ok, day 2. Let&#39;s restate the requirements and todos!&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
+&lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
+&lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
+&lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
+&lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
+&lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
+&lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[ ] Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
+&lt;p&gt;[ ] So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;[ ] Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
+&lt;p&gt;[ ] Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
+&lt;p&gt;[ ] Decide if I want to render the CSS fancier than just a base file.&lt;/p&gt;
+&lt;p&gt;[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/p&gt;
+&lt;p&gt;Ok, so why isn&#39;t it picking up the layout from either &lt;code&gt;_layouts/post.njk&lt;/code&gt; or &lt;code&gt;_layouts/default.njk&lt;/code&gt;? Maybe I need to define a default &lt;a href=&quot;https://www.11ty.dev/docs/data-template-dir/&quot; target=&quot;_blank&quot;&gt;at the data level&lt;/a&gt;? Or do I need to move it to &lt;code&gt;src&lt;/code&gt; even if I define the location in the returned configuration?&lt;/p&gt;
+&lt;p&gt;Moving it into &lt;code&gt;src&lt;/code&gt; doesn&#39;t seem to do anything. But it looks like all the files I configure into 11ty in the returned object do need to be in there, so apparently I can&#39;t set a default layout in the &lt;code&gt;data&lt;/code&gt; folder?&lt;/p&gt;
+&lt;p&gt;Adding a template to &lt;code&gt;src/posts/posts.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;layouts/post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, yay, an error!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Error You’re trying to use a layout that does not exist layouts/post.njk (undefined)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Because I defined a path to layouts in the config, I don&#39;t need to include it?&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;&quot;layout&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;post.njk&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Yup, now I have an error in the template!&lt;/p&gt;
+&lt;p&gt;Ok, looks like I can&#39;t use this structure:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{{ site.lang | default: &amp;quot;en-US&amp;quot; }}&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So, default values, how should I do them? It &lt;a href=&quot;https://www.11ty.dev/docs/data-cascade/&quot; target=&quot;_blank&quot;&gt;looks like&lt;/a&gt; the answer is to define it as &lt;a href=&quot;https://www.11ty.dev/docs/data-global/&quot; target=&quot;_blank&quot;&gt;a data global&lt;/a&gt;. Ok let&#39;s try it, place the default in &lt;code&gt;src/_data/site.json&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;	&lt;span class=&quot;token property&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;en-US&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Huh... render error on &lt;em&gt;this&lt;/em&gt; file:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TemplateContentRenderError ... expected variable end&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Going to remove &lt;code&gt;{% seo %}&lt;/code&gt; from the template. I assume it is a template fragment without looking it up but I&#39;m not prepared to figure it out. Still no solve. Good time to commit!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Template still not working but getting closer&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ok, let&#39;s start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn&#39;t make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are &lt;a href=&quot;https://www.11ty.dev/docs/copy/#change-the-output-directory&quot; target=&quot;_blank&quot;&gt;more ways to configure the passthrough rules&lt;/a&gt; to make this work for me.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;eleventyConfig.addPassthroughCopy({ &amp;quot;dinky/assets&amp;quot;: &amp;quot;assets&amp;quot; });&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ok, passthrough works! But the template still won&#39;t render. The error is still in my markdown! At &lt;code&gt;[Line 49, Column 67]&lt;/code&gt;. What is going on?! That line is empty, it doesn&#39;t have columns.&lt;/p&gt;
+&lt;p&gt;Wait... the line number is likely being calculated after the metadata is removed from the head of the &lt;code&gt;md&lt;/code&gt; file. Ok... my metadata takes up 10 lines so it is really line &lt;em&gt;59&lt;/em&gt;. Oh! It&#39;s a code sample &lt;em&gt;from&lt;/em&gt; the template. It&#39;s trying to render an njk variable from the markdown file?! That&#39;s very dumb.&lt;/p&gt;
+&lt;p&gt;To Google! &amp;quot;njk picking up code sample of njk code&amp;quot; &amp;gt; &lt;a href=&quot;https://github.com/11ty/eleventy/issues/791&quot; target=&quot;_blank&quot;&gt;result&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Raw tag huh? How does that work exactly? Oh... like &lt;a href=&quot;https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, works both for blocks and inline, good!&lt;/p&gt;
+&lt;p&gt;Ok, defaults for posts &lt;em&gt;have&lt;/em&gt; to be in the &lt;code&gt;posts&lt;/code&gt; folder&#39;s &lt;code&gt;posts.json&lt;/code&gt;. I cannot seem to set any defaults for posts in the &lt;code&gt;_data&lt;/code&gt; folder. Or at least I haven&#39;t figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the &lt;code&gt;dinky&lt;/code&gt; submodule! This is good. The process works, so now I can start to build in my weirdness.&lt;/p&gt;
+&lt;p&gt;I still really want to figure out the defaults thing first. How do I make this work?&lt;/p&gt;
+&lt;p&gt;Ok, &lt;a href=&quot;https://github.com/11ty/eleventy/issues/380#issuecomment-568033456&quot; target=&quot;_blank&quot;&gt;here we go&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So to get a default &lt;code&gt;description&lt;/code&gt; value in my template I can set it up with a file at &lt;code&gt;src/_data/description.js&lt;/code&gt; and have the content of that file be &lt;code&gt;module.exports = &amp;quot;Talking about code&amp;quot;;&lt;/code&gt;. Ok, that works!&lt;/p&gt;
+&lt;p&gt;Yay, 11ty defaults work now! Good place to commit.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Ok, renders and defaults are working now&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hmmm... ok I guess that I picked a bad example plugin, because the one I used &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage&quot; target=&quot;_blank&quot;&gt;doesn&#39;t have a typical footprint&lt;/a&gt;. Well, I&#39;m not going to have a typical footprint I guess. Let&#39;s start without that. It runs sync, so I can just call the function during setup mby? Just add &lt;code&gt;sassBuild();&lt;/code&gt; to the inside of my .eleventy.js function inside of &lt;code&gt;module.exports = function (eleventyConfig) {&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;Ok... renderSync from &lt;code&gt;dart-sass&lt;/code&gt; threw an error:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Receiver: Closure &lt;span class=&quot;token string&quot;&gt;&#39;_renderSync&#39;&lt;/span&gt;&lt;br /&gt;Arguments: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;Instance of &lt;span class=&quot;token string&quot;&gt;&#39;PlainJavaScriptObject&#39;&lt;/span&gt;, Instance of &lt;span class=&quot;token string&quot;&gt;&#39;JavaScriptFunction&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;`` was thrown:&lt;br /&gt;    NoSuchMethodError: method not found: &lt;span class=&quot;token string&quot;&gt;&#39;call&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Lol &lt;a href=&quot;https://github.com/sass/dart-sass/issues/23#issuecomment-259011350&quot; target=&quot;_blank&quot;&gt;documentation error in dart-sass&lt;/a&gt; apparently. Don&#39;t pass two functions, because that&#39;s an async pattern, instead return the result.&lt;/p&gt;
+&lt;p&gt;Cool. New error!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Invalid argument(s): Either options.data or options.file must be set.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Can I not use multiple files? I guess I need a single file that calls the others &lt;a href=&quot;https://sass-lang.com/documentation/at-rules/use&quot; target=&quot;_blank&quot;&gt;using @use&lt;/a&gt;. Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!&lt;/p&gt;
+&lt;p&gt;Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the &lt;code&gt;@use&lt;/code&gt; relative to the base of the project, where I&#39;m executing the 11ty build process.&lt;/p&gt;
+&lt;p&gt;Still no css file.&lt;/p&gt;
+&lt;p&gt;Oh, &lt;a href=&quot;https://sass-lang.com/documentation/js-api#outfile&quot; target=&quot;_blank&quot;&gt;lol&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ok, gotta do that.&lt;/p&gt;
+&lt;p&gt;Ok, I want to use &lt;code&gt;fs&lt;/code&gt; to write the resulting file into &lt;code&gt;docs/styles/styles.css&lt;/code&gt;. Only, the &lt;code&gt;styles&lt;/code&gt; directory does not predictably exist so &lt;code&gt;fs&lt;/code&gt; fails because I have to make that folder. Of course, forgot. Easy enough.&lt;/p&gt;
+&lt;p&gt;Ok, it works! This is a good place to stop because it is almost midnight.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Compile that sass&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And this is pretty far along, huh? Time to push it to Github.&lt;/p&gt;
 </content>
   </entry>
 </feed>
