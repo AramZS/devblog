@@ -126,9 +126,18 @@ module.exports = function (eleventyConfig) {
 		"src/_sass": "sass/src/_sass",
 	});
 
-	eleventyConfig.addCollection('projects', function(collectionApi) {
-        return collectionApi.getFilteredByGlob('src/projects/*');
+	// Can't use this until ver 1 apparently
+	/**
+	const getDirectories = source =>
+		readdirSync(source, { withFileTypes: true })
+			.filter(dirent => dirent.isDirectory())
+			.map(dirent => dirent.name)
+
+
+	eleventyConfig.addGlobalData('projects', function(collectionApi) {
+        return getDirectories('src/projects/');
     });
+	*/
 
 	const pathNormalizer = function(pathString){
 		return normalize(path.normalize(path.resolve(".")))

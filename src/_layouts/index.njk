@@ -2,6 +2,11 @@
 
 {% block postcontent %}
 	<h3>Projects Thus Far</h3>
+	<ul>
+		{%- for project in projects %}
+			<li class="capitalize-first">{{project}}</li>
+		{%- endfor %}
+	</ul>
 
 	<!-- post list: -->
 	{%- for postType in postLists %}

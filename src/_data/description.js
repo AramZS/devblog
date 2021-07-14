@@ -1,1 +1,1 @@
-module.exports = "Talking about code";
+module.exports="Talking about code";
