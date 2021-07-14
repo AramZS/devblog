@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Tue, 13 Jul 2021 13:35:31 GMT</lastBuildDate>
+	<lastBuildDate>Wed, 14 Jul 2021 04:42:51 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,15 +22,13 @@
 	</managingEditor>
 	
 	<item>
-		<title>Hello World Devblog - Pt. 2</title>
-		<link>https://fightwithtools.dev/posts/hello-day-2/?source=rss</link>
-		<pubDate>Sun, 13 Jun 2021 03:59:43 GMT</pubDate>
+		<title>Hello World Devblog - Pt. 12</title>
+		<link>https://fightwithtools.dev/posts/hello-day-12/?source=rss</link>
+		<pubDate>Tue, 06 Jul 2021 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
-		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-2/</guid>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/hello-day-12/</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h1>Day 2</h1>
-<p>Ok, day 2. Let's restate the requirements and todos!</p>
-<ol>
+		<content:encoded><![CDATA[<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -39,60 +37,69 @@
 <li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
 <li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
 </ol>
-<p>[ ] Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
-<p>[ ] So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
-<p>[ ] Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
-<p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
-<p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
-<p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
-<p>Ok, so why isn't it picking up the layout from either <code>_layouts/post.njk</code> or <code>_layouts/default.njk</code>? Maybe I need to define a default <a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">at the data level</a>? Or do I need to move it to <code>src</code> even if I define the location in the returned configuration?</p>
-<p>Moving it into <code>src</code> doesn't seem to do anything. But it looks like all the files I configure into 11ty in the returned object do need to be in there, so apparently I can't set a default layout in the <code>data</code> folder?</p>
-<p>Adding a template to <code>src/posts/posts.json</code></p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"layouts/post.njk"</span> <span class="token punctuation">}</span></code></pre>
-<p>Ok, yay, an error!</p>
-<p><code>Error You’re trying to use a layout that does not exist layouts/post.njk (undefined)</code></p>
-<p>Because I defined a path to layouts in the config, I don't need to include it?</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> <span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"post.njk"</span> <span class="token punctuation">}</span></code></pre>
-<p>Yup, now I have an error in the template!</p>
-<p>Ok, looks like I can't use this structure:</p>
-<p><code>{{ site.lang | default: &quot;en-US&quot; }}&quot;</code></p>
-<p>So, default values, how should I do them? It <a href="https://www.11ty.dev/docs/data-cascade/" target="_blank">looks like</a> the answer is to define it as <a href="https://www.11ty.dev/docs/data-global/" target="_blank">a data global</a>. Ok let's try it, place the default in <code>src/_data/site.json</code>.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br />	<span class="token property">"lang"</span><span class="token operator">:</span> <span class="token string">"en-US"</span><br /><span class="token punctuation">}</span></code></pre>
-<p>Huh... render error on <em>this</em> file:</p>
-<p><code>TemplateContentRenderError ... expected variable end</code></p>
-<p>Going to remove <code>{% seo %}</code> from the template. I assume it is a template fragment without looking it up but I'm not prepared to figure it out. Still no solve. Good time to commit!</p>
-<p><code>git commit -am &quot;Template still not working but getting closer&quot;</code></p>
-<p>Ok, let's start stripping out stuff from the template. The error indicates the problem is in my markdown, but that doesn't make sense, so simpler template. Ok, first, I want the dinky assets folder so it works properly in the template. There are <a href="https://www.11ty.dev/docs/copy/#change-the-output-directory" target="_blank">more ways to configure the passthrough rules</a> to make this work for me.</p>
-<p><code>eleventyConfig.addPassthroughCopy({ &quot;dinky/assets&quot;: &quot;assets&quot; });</code></p>
-<p>Ok, passthrough works! But the template still won't render. The error is still in my markdown! At <code>[Line 49, Column 67]</code>. What is going on?! That line is empty, it doesn't have columns.</p>
-<p>Wait... the line number is likely being calculated after the metadata is removed from the head of the <code>md</code> file. Ok... my metadata takes up 10 lines so it is really line <em>59</em>. Oh! It's a code sample <em>from</em> the template. It's trying to render an njk variable from the markdown file?! That's very dumb.</p>
-<p>To Google! &quot;njk picking up code sample of njk code&quot; &gt; <a href="https://github.com/11ty/eleventy/issues/791" target="_blank">result</a>.</p>
-<p>Raw tag huh? How does that work exactly? Oh... like <a href="https://github.com/11ty/11ty-website/blob/master/src/docs/languages/nunjucks.md" target="_blank">this</a>.</p>
-<p>Ok, works both for blocks and inline, good!</p>
-<p>Ok, defaults for posts <em>have</em> to be in the <code>posts</code> folder's <code>posts.json</code>. I cannot seem to set any defaults for posts in the <code>_data</code> folder. Or at least I haven't figured out how. But ok, things are rendering now in the right template. Also the assets are being passed out of the <code>dinky</code> submodule! This is good. The process works, so now I can start to build in my weirdness.</p>
-<p>I still really want to figure out the defaults thing first. How do I make this work?</p>
-<p>Ok, <a href="https://github.com/11ty/eleventy/issues/380#issuecomment-568033456" target="_blank">here we go</a>.</p>
-<p>So to get a default <code>description</code> value in my template I can set it up with a file at <code>src/_data/description.js</code> and have the content of that file be <code>module.exports = &quot;Talking about code&quot;;</code>. Ok, that works!</p>
-<p>Yay, 11ty defaults work now! Good place to commit.</p>
-<p><code>git commit -am &quot;Ok, renders and defaults are working now&quot;</code></p>
-<p>Hmmm... ok I guess that I picked a bad example plugin, because the one I used <a href="https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage" target="_blank">doesn't have a typical footprint</a>. Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add <code>sassBuild();</code> to the inside of my .eleventy.js function inside of <code>module.exports = function (eleventyConfig) {</code>?</p>
-<p>Ok... renderSync from <code>dart-sass</code> threw an error:</p>
-<pre class="language-bash"><code class="language-bash">Receiver: Closure <span class="token string">'_renderSync'</span><br />Arguments: <span class="token punctuation">[</span>Instance of <span class="token string">'PlainJavaScriptObject'</span>, Instance of <span class="token string">'JavaScriptFunction'</span><span class="token punctuation">]</span><br /><br />`` was thrown:<br />    NoSuchMethodError: method not found: <span class="token string">'call'</span></code></pre>
-<p>Lol <a href="https://github.com/sass/dart-sass/issues/23#issuecomment-259011350" target="_blank">documentation error in dart-sass</a> apparently. Don't pass two functions, because that's an async pattern, instead return the result.</p>
-<p>Cool. New error!</p>
-<p><code>Invalid argument(s): Either options.data or options.file must be set.</code></p>
-<p>Can I not use multiple files? I guess I need a single file that calls the others <a href="https://sass-lang.com/documentation/at-rules/use" target="_blank">using @use</a>. Last time I used Sass it was @import, but according to docs, that method is out now. Good to know!</p>
-<p>Oh, gotta remember paths are relative to execution, so I have to set up paths in both the Sass plugin AND the <code>@use</code> relative to the base of the project, where I'm executing the 11ty build process.</p>
-<p>Still no css file.</p>
-<p>Oh, <a href="https://sass-lang.com/documentation/js-api#outfile" target="_blank">lol</a></p>
-<blockquote>
-<p>Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.</p>
-</blockquote>
-<p>Ok, gotta do that.</p>
-<p>Ok, I want to use <code>fs</code> to write the resulting file into <code>docs/styles/styles.css</code>. Only, the <code>styles</code> directory does not predictably exist so <code>fs</code> fails because I have to make that folder. Of course, forgot. Easy enough.</p>
-<p>Ok, it works! This is a good place to stop because it is almost midnight.</p>
-<p><code>git commit -am &quot;Compile that sass&quot;</code></p>
-<p>And this is pretty far along, huh? Time to push it to Github.</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+</ul>
+<h2>Day 12</h2>
+<p>Ok, I'd like to have a custom collection so I can get a list of project names. So is there a way to add a collection API that's an entirely different collection? Something I can use instead of <code>tags</code> in other words</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Not what I want, but I should prob do this <a href="https://www.11ty.dev/docs/quicktips/tag-pages/" target="_blank">https://www.11ty.dev/docs/quicktips/tag-pages/</a></p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> This will be good to have on the bottom of these posts - <a href="https://www.11ty.dev/docs/filters/collection-items/" target="_blank">https://www.11ty.dev/docs/filters/collection-items/</a></p>
+</li>
+</ul>
+<p>Feels a little hacky, but it looks like <a href="https://stackoverflow.com/questions/66083103/how-to-generate-a-list-of-all-collections-in-11ty" target="_blank">the way to do this is to create a global object and filter the output I want into there</a>.</p>
+<p>There's another way I could potentially handle this, and that's by folder structure. I think it makes sense to try that first and see what we can do with it. First we'll move a post into this new folder structure to try and see if we can query the path usefuly.</p>
+<p>I'll move my hello-day-1 post into <code>src/posts/projects/devblog</code>.</p>
+<p>Now can I get a list of paths under a particular path? I'm not seeing a way actually. It seems like the sort of thing that it would make sense to be easy to do. Yet, no clear sign of how to do it.</p>
+<p>I thought this might work, but no go:</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span><span class="token string">'projects'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">collectionApi</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />        <span class="token keyword">return</span> collectionApi<span class="token punctuation">.</span><span class="token function">getFilteredByGlob</span><span class="token punctuation">(</span><span class="token string">'src/projects/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ok, looks like I'm going to have to do something a little more complex.</p>
+<p><code>git commit -am &quot;First attempt at setting up projects list&quot;</code></p>
 ]]></content:encoded>
 	</item>
 	
