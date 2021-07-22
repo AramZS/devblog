@@ -123,8 +123,9 @@ module.exports = function (eleventyConfig) {
 		"dinky/_sass": "sass/dinky/_sass",
 	});
 	eleventyConfig.addPassthroughCopy({
-		"src/_sass": "sass/src/_sass",
+		"src/assets": "assets",
 	});
+
 
 	// Can't use this until ver 1 apparently
 	/**
@@ -166,12 +167,15 @@ module.exports = function (eleventyConfig) {
 		if (!!!order){
 			order = "reverse"
 		}
-		if (order === "reverse"){
+		if (order === "reverse" && collectionOfPosts){
 			collectionOfPosts.reverse()
 		}
-		let postList = collectionOfPosts.map((post) => {
-			return `<li>${post.data.title}</li>`
-		})
+		let postList = []
+		if (collectionOfPosts){
+			postList = collectionOfPosts.map((post) => {
+				return `<li>${post.data.title}</li>`
+			})
+		}
 		return `<p>${collectionName}</p>
 		<ul>
 			<!-- Collection: ${collectionName} -->
