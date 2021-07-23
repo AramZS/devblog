@@ -1,8 +1,10 @@
 {% extends "base.njk" %}
 
 {% block prefooter %}
-Tags:
-	{%- for tag in tags -%}
-		{{ tag }},
-	{%- endfor -%}
+	<div id="taglist">
+		Tags:&nbsp;
+			{%- for tag in tags -%}
+			{{ tag }},
+			{%- endfor -%}
+	</div>
 {% endblock %}

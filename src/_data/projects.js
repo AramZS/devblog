@@ -8,10 +8,13 @@ readdirSync(source, { withFileTypes: true })
 
 const directorySet = getDirectories('src/posts/projects/').map(
 	(projectDir) => {
+		const projectData = require(path.resolve(`./src/posts/projects/${projectDir}/${projectDir}.json`));
+		const projectTitle = projectDir.charAt(0).toUpperCase() + projectDir.slice(1);
 		return {
-			title: projectDir.charAt(0).toUpperCase() + projectDir.slice(1),
+			title: projectTitle,
 			slug: projectDir,
-			projectName: require(path.resolve(`./src/posts/projects/${projectDir}/${projectDir}.json`)).project
+			projectName: projectData.project ? projectData.project : projectTitle,
+			description: projectData.description ? projectData.description : `Building ${projectData.title}`
 		}
 	}
 );
