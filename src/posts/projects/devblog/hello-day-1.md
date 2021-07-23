@@ -1,7 +1,6 @@
 ---
 title: Hello World Devblog - Pt. 1
 subtitle: Getting this dev blog running
-project: Dev Blog
 date: 2021-06-12 22:59:43.10 -5
 tags:
   - Starters

@@ -1,1 +1,8 @@
 {% extends "base.njk" %}
+
+{% block prefooter %}
+Tags:
+	{%- for tag in tags -%}
+		{{ tag }},
+	{%- endfor -%}
+{% endblock %}
