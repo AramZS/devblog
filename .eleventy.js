@@ -163,7 +163,7 @@ module.exports = function (eleventyConfig) {
 		//	return Nunjucks.renderString(text, this.ctx);
 		//});
 	*/
-	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts, order) {
+	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts, order, hlevel) {
 		if (!!!order){
 			order = "reverse"
 		}
@@ -176,7 +176,10 @@ module.exports = function (eleventyConfig) {
 				return `<li>${post.data.title}</li>`
 			})
 		}
-		return `<p>${collectionName}</p>
+		if (!!!hlevel){
+			hlevel = 'p'
+		}
+		return `<${hlevel}>${collectionName}</${hlevel}>
 		<ul>
 			<!-- Collection: ${collectionName} -->
 			${postList.join('\n')}
@@ -184,6 +187,33 @@ module.exports = function (eleventyConfig) {
 		`;
 	});
 
+	eleventyConfig.addShortcode("projectList", function(collectionName, collectionOfPosts, order, hlevel) {
+		if (!!!order){
+			order = "reverse"
+		}
+		if (order === "reverse" && collectionOfPosts){
+			collectionOfPosts.reverse()
+		}
+		let postList = []
+		if (collectionOfPosts){
+			postList = collectionOfPosts.map((post) => {
+				let postName = post.data.title;
+				if (post.data.hasOwnProperty('project')){
+					postName = "<em>" + post.data.project + "</em> | " + postName;
+				}
+				return `<li><a href="${post.url}">${postName}</a></li>`
+			})
+		}
+		if (!!!hlevel){
+			hlevel = 'p'
+		}
+		return `<${hlevel}>${collectionName}</${hlevel}>
+		<ul>
+			<!-- Collection: ${collectionName} -->
+			${postList.join('\n')}
+		</ul>
+		`;
+	});
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		templateFormats: ["md", "njk"],
 		init: function ({ Prism }) {

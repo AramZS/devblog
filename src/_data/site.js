@@ -6,5 +6,6 @@ module.exports = (info) => {
 			build_sha: process.env.GITHUB_SHA || 1,
 		},
 		site_url: process.env.DOMAIN,
+		site_name: "Fight With Tools: A Dev Blog"
 	};
 };

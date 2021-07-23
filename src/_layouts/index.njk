@@ -1,17 +1,26 @@
 {% extends "base.njk" %}
 
+{% block header %}
+	<h1 class="header">
+		{{site.site_name}}
+	</h1>
+{% endblock %}
+
 {% block postcontent %}
 	<h3>Projects Thus Far</h3>
 	<ul>
 		{%- for project in projects %}
-			<li class="capitalize-first">{{project.title}}</li>
+			<li class="capitalize-first">
+				<a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span>
+			</li>
 		{%- endfor %}
 	</ul>
 
 	<!-- post list: -->
 	{%- for postType in postLists %}
-		{% postList postType.name,
+		{% projectList postType.name,
 		collections[postType.collection],
-		postType.order %}
+		postType.order,
+		"h3" %}
 	{%- endfor %}
 {% endblock %}

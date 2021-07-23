@@ -35,8 +35,15 @@
 					{% else %}
 						<!-- else mode -->
 					{% endif %}
-					<h1 class="header">{{ title }}</h1>
+					<h1 class="header">
+						{{ title }}
+					</h1>
 					<p class="header">{{ description }}</p>
+					{% if '/posts' in page.url or '/projects' in page.url %}
+						<h2 id="site-name-subhead">
+							<a href="{{site.site_url}}">{{site.site_name}}</a>
+						</h2>
+					{% endif %}
 
 				{% endblock %}
 			</header>

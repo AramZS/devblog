@@ -3,7 +3,7 @@ pagination:
     data: projects
     size: 1
     alias: project
-permalink: "project/{{ project.slug | slug }}/"
+permalink: "projects/{{ project.slug | slug }}/"
 eleventyComputed:
   title: "Project: {{ project.projectName }}"
   description: "{{ project.description }}"
