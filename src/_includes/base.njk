@@ -48,15 +48,15 @@
 				{% endblock %}
 			</header>
 			<main>
-				<section>
+				<section id="precontent">
 					{% block precontent %}{% endblock %}
 				</section>
-				<section>
+				<section id="contet">
 					{% block content %}
 						{{ content | safe }}
 					{% endblock %}
 				</section>
-				<section>
+				<section id="postcontent">
 					{% block postcontent %}{% endblock %}
 				</section>
 			</main>
