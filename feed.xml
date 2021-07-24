@@ -1288,6 +1288,7 @@ indent_style = space
 &lt;p&gt;Ok, back to SaaS. What&#39;s going on there?&lt;/p&gt;
 &lt;p&gt;Oops, forgot to give it a &lt;code&gt;px&lt;/code&gt; for the unit type.&lt;/p&gt;
 &lt;p&gt;Ok. That works now.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Set up changes to styles and add some additional elements to the design&amp;quot;&lt;/code&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

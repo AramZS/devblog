@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Sat, 24 Jul 2021 23:44:42 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 24 Jul 2021 23:45:34 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1327,6 +1327,7 @@ indent_style = space
 <p>Ok, back to SaaS. What's going on there?</p>
 <p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
 <p>Ok. That works now.</p>
+<p><code>git commit -am &quot;Set up changes to styles and add some additional elements to the design&quot;</code></p>
 ]]></content:encoded>
 	</item>
 	</channel>
