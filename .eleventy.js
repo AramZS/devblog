@@ -95,7 +95,7 @@ module.exports = function (eleventyConfig) {
 			hostname: domain_name,
 		},
 	});
-
+	eleventyConfig.addWatchTarget("./_custom-plugins/");
 	sassBuild(domain_name);
 	eleventyConfig.on("beforeWatch", (changedFiles) => {
 		// changedFiles is an array of files that changed

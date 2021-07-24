@@ -1,0 +1,16 @@
+#template-index
+    header h5
+        color: #bdbdbd
+        a
+            text-decoration: none
+            color: #bdbdbd
+    .front-container
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))
+        grid-gap: 0 6px
+        grid-auto-rows: minmax(200px, auto)
+        .column:nth-of-type(2n)
+            border-left: #ccc 1px solid
+            padding-left: 6px
+            margin-bottom: 0
+            padding-bottom: 12px

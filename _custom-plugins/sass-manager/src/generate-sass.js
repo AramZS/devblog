@@ -58,7 +58,7 @@ module.exports = (domain) => {
 		}
 	})
 	templateFiles.forEach((file) => {
-		var templateOutFile = "/assets/css/"+(path.basename(file, '.scss'))+".css";
+		var templateOutFile = "/assets/css/"+(path.basename(file, '.sass'))+".css";
 		var templateResult = sass.renderSync({
 			includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
 			file: "src/_sass/"+file,
@@ -73,7 +73,7 @@ module.exports = (domain) => {
 			// outFile: `${domain}/assets/css/style.css`,
 			// sourceMapRoot: `${domain}/assets/css/`,
 		});
-		handleSassResult(templateResult, domain, path.basename(file, '.scss'))
+		handleSassResult(templateResult, domain, path.basename(file, '.sass'))
 	})
 	var result = sass.renderSync({
 		includePaths: ["**/*.{scss,sass}", "!node_modules/**"],

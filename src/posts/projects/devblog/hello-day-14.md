@@ -76,3 +76,14 @@ Ok, to get the layouts the way I want while still having the base template be ve
 
 - [x] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.
 
+`git commit -am "Set up SASS > CSS Code spliting with template selection"`
+
+Very annoying that SASS changes don't cause a watch trigger. I'll need to handle that.
+
+`eleventyConfig.addWatchTarget("./src/_sass");`
+
+Ok. It's looking good now. A basic grid layout that I'll need to add some media queries too, but it's the direction I want to go.
+
+Dinner time!
+
+`git commit -am "Add front page styles"`
