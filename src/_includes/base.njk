@@ -29,7 +29,14 @@
 			<div class="wrapper">
 				<header>
 					{% block header %}
-
+						{% if '/posts' in page.url or '/projects' in page.url %}
+							<div id="site-name-subhead">
+								<a href="{{site.site_url}}">{{site.site_name}}</a>
+								{% if '/posts' in page.url and project %}
+									> <a id="project-link" href="{{ page.url | relproject }}">{{project}}</a>
+								{% endif %}
+							</div>
+						{% endif %}
 						{% if '/posts' in page.url %}
 							<!-- post mode -->
 							<script>
@@ -46,11 +53,6 @@
 							{{ title }}
 						</h1>
 						<p class="header">{{ description }}</p>
-						{% if '/posts' in page.url or '/projects' in page.url %}
-							<h2 id="site-name-subhead">
-								<a href="{{site.site_url}}">{{site.site_name}}</a>
-							</h2>
-						{% endif %}
 
 					{% endblock %}
 				</header>

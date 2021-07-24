@@ -1,3 +1,4 @@
+$large-mobile: 960px
 a
     color: #2a7ae2
     text-decoration: none
@@ -8,3 +9,12 @@ img
     text-transform: capitalize
 .capitalize
     text-transform: capitalize
+#site-name-subhead
+    margin-bottom: 4px
+    a
+        text-decoration: underline
+        color: #bdbdbd
+
+header
+    @media print, screen and (max-width: $large-mobile)
+        padding-right: 160px

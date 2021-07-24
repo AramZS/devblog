@@ -82,7 +82,7 @@ Very annoying that SASS changes don't cause a watch trigger. I'll need to handle
 
 `eleventyConfig.addWatchTarget("./src/_sass");`
 
-Ok. It's looking good now. A basic grid layout that I'll need to add some media queries too, but it's the direction I want to go.
+Ok. It's looking good now. A basic grid layout that can fit inside the 650px wide main body. I'll need to add some media queries too, but it's the direction I want to go.
 
 Dinner time!
 

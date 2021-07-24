@@ -96,6 +96,7 @@ module.exports = function (eleventyConfig) {
 		},
 	});
 	eleventyConfig.addWatchTarget("./_custom-plugins/");
+	eleventyConfig.addWatchTarget("./src/_sass");
 	sassBuild(domain_name);
 	eleventyConfig.on("beforeWatch", (changedFiles) => {
 		// changedFiles is an array of files that changed
@@ -114,6 +115,7 @@ module.exports = function (eleventyConfig) {
 	// Copy the `img` folders to the output
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("./CNAME");
+	eleventyConfig.addPassthroughCopy({"src/favicon.ico": "favicon.ico"});
 	// eleventyConfig.addPassthroughCopy("src/.gitignore");
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
 	eleventyConfig.addPassthroughCopy({
@@ -186,6 +188,14 @@ module.exports = function (eleventyConfig) {
 		</ul>
 		`;
 	});
+
+	eleventyConfig.addFilter("relproject", function (url) {
+		var urlArray = url.split('/')
+		var urlFiltered = urlArray.filter(e => e.length > 0)
+		urlFiltered.pop() // Remove post path
+		urlFiltered.shift() // Remove `posts/`
+		return process.env.DOMAIN + '/' + urlFiltered.join('/')
+	  })
 
 	eleventyConfig.addShortcode("projectList", function(collectionName, collectionOfPosts, order, hlevel) {
 		if (!!!order){
