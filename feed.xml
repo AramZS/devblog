@@ -5,7 +5,7 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-07-24T02:59:43Z</updated>
+  <updated>2021-07-25T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
@@ -1207,9 +1207,87 @@ indent_style = space
 &lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Set up SASS &amp;gt; CSS Code spliting with template selection&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Very annoying that SASS changes don&#39;t cause a watch trigger. I&#39;ll need to handle that.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;eleventyConfig.addWatchTarget(&amp;quot;./src/_sass&amp;quot;);&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ok. It&#39;s looking good now. A basic grid layout that I&#39;ll need to add some media queries too, but it&#39;s the direction I want to go.&lt;/p&gt;
+&lt;p&gt;Ok. It&#39;s looking good now. A basic grid layout that can fit inside the 650px wide main body. I&#39;ll need to add some media queries too, but it&#39;s the direction I want to go.&lt;/p&gt;
 &lt;p&gt;Dinner time!&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git commit -am &amp;quot;Add front page styles&amp;quot;&lt;/code&gt;&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Hello World Devblog - Pt. 15</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-15/"/>
+    <updated>2021-07-25T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-15/</id>
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;Static Site Generator that can build the blog and let me host it on Github Pages&lt;/li&gt;
+&lt;li&gt;I want to write posts in Markdown because I&#39;m lazy, it&#39;s easy, and it is how I take notes now.&lt;/li&gt;
+&lt;li&gt;I don&#39;t want to spend a ton of time doing design work. I&#39;m doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.&lt;/li&gt;
+&lt;li&gt;Once it gets going, I want template changes to be easy.&lt;/li&gt;
+&lt;li&gt;It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can&#39;t figure this out than fk it, just use Jekyll.&lt;/li&gt;
+&lt;li&gt;I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.&lt;/li&gt;
+&lt;li&gt;I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap&quot; target=&quot;_blank&quot;&gt;the sitemap plugin&lt;/a&gt; looks cool. Should grab that later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; So does the &lt;a href=&quot;https://www.npmjs.com/package/eleventy-plugin-reading-time&quot; target=&quot;_blank&quot;&gt;reading time one&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Also &lt;a href=&quot;https://github.com/jdsteinbach/eleventy-plugin-toc/&quot; target=&quot;_blank&quot;&gt;this TOC plugin&lt;/a&gt; mby?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Use &lt;a href=&quot;https://www.11ty.dev/docs/data-deep-merge/&quot; target=&quot;_blank&quot;&gt;Data Deep Merge&lt;/a&gt; in this blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Decide if I want to render the CSS fancier than just a base file and do per-template splitting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Can I use the template inside of dinky that already exists instead of copy/pasting it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/s&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; How do I cachebreak files on the basis of new build events? Datetime? &lt;code&gt;site.github.build_revision&lt;/code&gt; is &lt;a href=&quot;https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md&quot; target=&quot;_blank&quot;&gt;how Jekyll accomplishes this&lt;/a&gt;, but is there a way to push &lt;a href=&quot;https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context&quot; target=&quot;_blank&quot;&gt;that&lt;/a&gt; &lt;a href=&quot;https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions&quot; target=&quot;_blank&quot;&gt;into the build process&lt;/a&gt; for 11ty?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Make link text look less shitty. It looks like it is a whole, lighter, font.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; checked=&quot;true&quot; class=&quot;markdown-todo&quot; /&gt; Code blocks do not have good syntax highlighting. I want good syntax highlighting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Build a Markdown-it plugin to take my typing shortcuts &lt;code&gt;[prob, b/c, ...?]&lt;/code&gt; and expand them on build.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; See if we can start Markdown&#39;s interpretation of H tags to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1&quot; target=&quot;_blank&quot;&gt;start at 2, since H1&lt;/a&gt; is always pulled from the page title metadata. If it isn&#39;t easy, I just have to change my pattern of writing in the MD documents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input disabled=&quot;true&quot; type=&quot;checkbox&quot; class=&quot;markdown-todo&quot; /&gt; Should I &lt;a href=&quot;https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/&quot; target=&quot;_blank&quot;&gt;explore some shortcodes&lt;/a&gt;?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Day 15&lt;/h2&gt;
+&lt;p&gt;Ok, let&#39;s add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.&lt;/p&gt;
+&lt;p&gt;I&#39;ll put &lt;code&gt;$mobile-width: 890px&lt;/code&gt; at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;        @media &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $mobile-width&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;            &lt;span class=&quot;token property&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; block&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, I want to set a link to the home page on every page. I started with a query to check for &lt;code&gt;/posts&lt;/code&gt; and &lt;code&gt;/projects&lt;/code&gt; in the base template. But I don&#39;t like how it looks if it is below the main content of the header. Let&#39;s switch up the design.&lt;/p&gt;
+&lt;p&gt;Ok, that&#39;s looking better. But I want the title of the page to span longer then it does now.&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;@media print&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; screen and &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $large-mobile&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;    header&lt;br /&gt;        &lt;span class=&quot;token property&quot;&gt;padding-right&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 260px&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hm. That&#39;s not working.&lt;/p&gt;
+&lt;p&gt;I&#39;ll come back to it in a second. I want to get a breadcrumb path working, but there&#39;s no way to split the URL at the build process, at least not one that I can see that&#39;s built in. I guess the answer is a filter I can run the URL through.&lt;/p&gt;
+&lt;p&gt;To manipulate chunks of the URL I am going to have to turn the URL into an array and manipulate it, along with handling the domain env variable.&lt;/p&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;	eleventyConfig&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addFilter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;relproject&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; urlArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; url&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; urlFiltered &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; urlArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;		urlFiltered&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Remove post path&lt;/span&gt;&lt;br /&gt;		urlFiltered&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Remove `posts/`&lt;/span&gt;&lt;br /&gt;		&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; process&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;env&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;DOMAIN&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; urlFiltered&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;	  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now I can use it in a template tag like this:&lt;/p&gt;
+&lt;pre class=&quot;language-liquid&quot;&gt;&lt;code class=&quot;language-liquid&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;a id&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&quot;project&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;link&quot; href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&quot;{{ page.url &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; relproject }}&quot;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;{{project}}&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;a&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, back to SaaS. What&#39;s going on there?&lt;/p&gt;
+&lt;p&gt;Oops, forgot to give it a &lt;code&gt;px&lt;/code&gt; for the unit type.&lt;/p&gt;
+&lt;p&gt;Ok. That works now.&lt;/p&gt;
 </content>
   </entry>
 </feed>

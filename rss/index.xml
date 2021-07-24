@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Sat, 24 Jul 2021 00:53:21 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 24 Jul 2021 23:44:42 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1244,9 +1244,89 @@ indent_style = space
 <p><code>git commit -am &quot;Set up SASS &gt; CSS Code spliting with template selection&quot;</code></p>
 <p>Very annoying that SASS changes don't cause a watch trigger. I'll need to handle that.</p>
 <p><code>eleventyConfig.addWatchTarget(&quot;./src/_sass&quot;);</code></p>
-<p>Ok. It's looking good now. A basic grid layout that I'll need to add some media queries too, but it's the direction I want to go.</p>
+<p>Ok. It's looking good now. A basic grid layout that can fit inside the 650px wide main body. I'll need to add some media queries too, but it's the direction I want to go.</p>
 <p>Dinner time!</p>
 <p><code>git commit -am &quot;Add front page styles&quot;</code></p>
+]]></content:encoded>
+	</item>
+	
+	<item>
+		<title>Hello World Devblog - Pt. 15</title>
+		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-15/?source=rss</link>
+		<pubDate>Sun, 25 Jul 2021 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-15/</guid>
+		<description></description>
+		<content:encoded><![CDATA[<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+</ul>
+<h2>Day 15</h2>
+<p>Ok, let's add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.</p>
+<p>I'll put <code>$mobile-width: 890px</code> at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:</p>
+<pre class="language-css"><code class="language-css">        @media <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $mobile-width<span class="token punctuation">)</span><br />            <span class="token property">display</span><span class="token punctuation">:</span> block</code></pre>
+<p>Ok, I want to set a link to the home page on every page. I started with a query to check for <code>/posts</code> and <code>/projects</code> in the base template. But I don't like how it looks if it is below the main content of the header. Let's switch up the design.</p>
+<p>Ok, that's looking better. But I want the title of the page to span longer then it does now.</p>
+<pre class="language-css"><code class="language-css">@media print<span class="token punctuation">,</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $large-mobile<span class="token punctuation">)</span><br />    header<br />        <span class="token property">padding-right</span><span class="token punctuation">:</span> 260px</code></pre>
+<p>Hm. That's not working.</p>
+<p>I'll come back to it in a second. I want to get a breadcrumb path working, but there's no way to split the URL at the build process, at least not one that I can see that's built in. I guess the answer is a filter I can run the URL through.</p>
+<p>To manipulate chunks of the URL I am going to have to turn the URL into an array and manipulate it, along with handling the domain env variable.</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"relproject"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />		<span class="token keyword">var</span> urlArray <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br />		<span class="token keyword">var</span> urlFiltered <span class="token operator">=</span> urlArray<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> e<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><br />		urlFiltered<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove post path</span><br />		urlFiltered<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove `posts/`</span><br />		<span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> urlFiltered<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br />	  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Now I can use it in a template tag like this:</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span>a id<span class="token operator">=</span>"project<span class="token operator">-</span>link" href<span class="token operator">=</span>"{{ page.url <span class="token operator">|</span> relproject }}"<span class="token operator">></span>{{project}}<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span></code></pre>
+<p>Ok, back to SaaS. What's going on there?</p>
+<p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
+<p>Ok. That works now.</p>
 ]]></content:encoded>
 	</item>
 	</channel>

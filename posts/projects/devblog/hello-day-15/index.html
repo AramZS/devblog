@@ -6,7 +6,7 @@
 			
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 14</title>
+				<title>Hello World Devblog - Pt. 15</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
 				<link rel="stylesheet" href="/assets/css/style.css?v=1063462785">
@@ -38,11 +38,11 @@
 							<script>
 								console.log([object Object])
 							</script>
-							<time>Sat Jul 24 2021</time>
+							<time>Sun Jul 25 2021</time>
 							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
 						
 						<h1 class="header">
-							Hello World Devblog - Pt. 14
+							Hello World Devblog - Pt. 15
 						</h1>
 						<p class="header">Part 14 of setting up 11ty dev blog.</p>
 
@@ -77,7 +77,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 </li>
 </ul>
 <s>
@@ -108,26 +108,22 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 14</h2>
-<p>Ok, let's work though making these vertical pages a little more functional. We'll start with the home page. I want to have links to the project pages, so I'm going to need to build a URL for those. To do that I think I'll need to place it into my <code>projects</code> object. I can use the same technique of environment variables I set up for the feeds to have proper absolute links here.</p>
-<p>I'll add this to <code>project.js</code>.</p>
-<p><code>url: (function(){ return process.env.DOMAIN + &quot;/projects/&quot; + projectDir })(),</code></p>
-<p>Then I can use this data property to build the template links that go out to the project pages.</p>
-<p>I don't like the lack of headers, I'll add an <code>hlevel</code> argument to my shortcode to allow me to set headers on each post list.</p>
-<p>Good list headers now! Time to add links to the other post lists. I also want to format the post titles with the project name. To do that I'm going to create another shortcode that formats the post titles a little differently.</p>
-<p>This also seems like a good time to move my posts over to the right folder.</p>
-<p>Ok, adding the site name to the non-index pages and now its time to do some css.</p>
-<p><code>git commit -am &quot;Done with setting up vertical content, on to vertical styles.&quot;</code></p>
-<p>Ok, to get the layouts the way I want while still having the base template be very reusable, I need to have some custom CSS that applies only to specific pages. I can handle that by adding an ID with the template name to the <code>body</code> HTML tag. That's easy. But I don't want to load down the CSS file with these file specific rules where I don't need them. So let's accomplish one of my early goals and split the CSS into smaller files.</p>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</li>
-</ul>
-<p><code>git commit -am &quot;Set up SASS &gt; CSS Code spliting with template selection&quot;</code></p>
-<p>Very annoying that SASS changes don't cause a watch trigger. I'll need to handle that.</p>
-<p><code>eleventyConfig.addWatchTarget(&quot;./src/_sass&quot;);</code></p>
-<p>Ok. It's looking good now. A basic grid layout that can fit inside the 650px wide main body. I'll need to add some media queries too, but it's the direction I want to go.</p>
-<p>Dinner time!</p>
-<p><code>git commit -am &quot;Add front page styles&quot;</code></p>
+<h2>Day 15</h2>
+<p>Ok, let's add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.</p>
+<p>I'll put <code>$mobile-width: 890px</code> at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:</p>
+<pre class="language-css"><code class="language-css">        @media <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $mobile-width<span class="token punctuation">)</span><br>            <span class="token property">display</span><span class="token punctuation">:</span> block</code></pre>
+<p>Ok, I want to set a link to the home page on every page. I started with a query to check for <code>/posts</code> and <code>/projects</code> in the base template. But I don't like how it looks if it is below the main content of the header. Let's switch up the design.</p>
+<p>Ok, that's looking better. But I want the title of the page to span longer then it does now.</p>
+<pre class="language-css"><code class="language-css">@media print<span class="token punctuation">,</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $large-mobile<span class="token punctuation">)</span><br>    header<br>        <span class="token property">padding-right</span><span class="token punctuation">:</span> 260px</code></pre>
+<p>Hm. That's not working.</p>
+<p>I'll come back to it in a second. I want to get a breadcrumb path working, but there's no way to split the URL at the build process, at least not one that I can see that's built in. I guess the answer is a filter I can run the URL through.</p>
+<p>To manipulate chunks of the URL I am going to have to turn the URL into an array and manipulate it, along with handling the domain env variable.</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"relproject"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">var</span> urlArray <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> urlFiltered <span class="token operator">=</span> urlArray<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> e<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove post path</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove `posts/`</span><br>		<span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> urlFiltered<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>	  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Now I can use it in a template tag like this:</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span>a id<span class="token operator">=</span>"project<span class="token operator">-</span>link" href<span class="token operator">=</span>"{{ page.url <span class="token operator">|</span> relproject }}"<span class="token operator">></span>{{project}}<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span></code></pre>
+<p>Ok, back to SaaS. What's going on there?</p>
+<p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
+<p>Ok. That works now.</p>
 
 						
 					</section>

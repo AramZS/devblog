@@ -5,9 +5,9 @@
 		"sass/src/_sass/template-index.sass"
 	],
 	"names": [],
-	"mappings": "AACI,0BACI,cACA,4BACI,qBACA,cACR,iCACI,aACA,4DACA,eACA,mCACA,yDACI,2BACA,iBACA,gBACA",
+	"mappings": "AAGI,0BACI,cACA,4BACI,qBACA,cACR,iCACI,aACA,4DACA,eACA,mCACA,yBALJ,iCAMQ,eACJ,yDACI,2BACA,iBACA,gBACA,oBACA,yBALJ,yDAMQ,SACA,oBACA",
 	"file": "template-index.css",
 	"sourcesContent": [
-		"#template-index\n    header h5\n        color: #bdbdbd\n        a\n            text-decoration: none\n            color: #bdbdbd\n    .front-container\n        display: grid\n        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))\n        grid-gap: 0 6px\n        grid-auto-rows: minmax(200px, auto)\n        .column:nth-of-type(2n)\n            border-left: #ccc 1px solid\n            padding-left: 6px\n            margin-bottom: 0\n            padding-bottom: 12px\n"
+		"$mobile-width: 890px\n\n#template-index\n    header h5\n        color: #bdbdbd\n        a\n            text-decoration: none\n            color: #bdbdbd\n    .front-container\n        display: grid\n        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))\n        grid-gap: 0 6px\n        grid-auto-rows: minmax(200px, auto)\n        @media (max-width: $mobile-width)\n            display: block\n        .column:nth-of-type(2n)\n            border-left: #ccc 1px solid\n            padding-left: 6px\n            margin-bottom: 0\n            padding-bottom: 12px\n            @media (max-width: $mobile-width)\n                border: 0\n                padding-bottom: 10px\n                padding-left: 0\n"
 	]
 }
