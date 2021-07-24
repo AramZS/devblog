@@ -69,3 +69,10 @@ Good list headers now! Time to add links to the other post lists. I also want to
 This also seems like a good time to move my posts over to the right folder.
 
 Ok, adding the site name to the non-index pages and now its time to do some css.
+
+`git commit -am "Done with setting up vertical content, on to vertical styles."`
+
+Ok, to get the layouts the way I want while still having the base template be very reusable, I need to have some custom CSS that applies only to specific pages. I can handle that by adding an ID with the template name to the `body` HTML tag. That's easy. But I don't want to load down the CSS file with these file specific rules where I don't need them. So let's accomplish one of my early goals and split the CSS into smaller files.
+
+- [x] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.
+

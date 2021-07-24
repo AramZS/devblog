@@ -1,75 +1,82 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
-	<head>
-		{% block head %}
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<title>{{ title }}</title>
-			<link href="/assets/prism-okaidia.css" rel="preload" as="style">
-			<link href="/assets/prism-okaidia.css" rel="stylesheet">
-			<link rel="stylesheet" href="/assets/css/style.css?v={{ site.github.build_revision}}">
-			<!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
-			<script src="/assets/js/scale.fix.js"></script>
-			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-			<!--[if lt IE 9]>
+{% if templateName %}
+	<html lang="{{ site.lang }}" id="template-{{ templateName }}">
+	{% else %}
+		<html lang="{{ site.lang }}" id="template-base">
+		{% endif %}
+		<head>
+			{% block head %}
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<title>{{ title }}</title>
+				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
+				<link href="/assets/prism-okaidia.css" rel="stylesheet">
+				<link rel="stylesheet" href="/assets/css/style.css?v={{ site.github.build_revision}}">
+				{% if templateName %}
+					<link rel="stylesheet" href="/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}">
+				{% endif %}
+				<!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
+				<script src="/assets/js/scale.fix.js"></script>
+				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+				<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-		{% endblock %}
-		{% block socialhead %}{% endblock %}
-		{% block stylehead %}{% endblock %}
-	</head>
-	<body>
-		<div class="wrapper">
-			<header>
-				{% block header %}
+			{% endblock %}
+			{% block socialhead %}{% endblock %}
+			{% block stylehead %}{% endblock %}
+		</head>
+		<body>
+			<div class="wrapper">
+				<header>
+					{% block header %}
 
-					{% if '/posts' in page.url %}
-						<!-- post mode -->
-						<script>
-							console.log({{ page.toString() }})
-						</script>
-						<time>{{ page.date.toDateString() }}</time>
-						<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-					{% elif '/projects' in page.url %}
-						<!-- projects mode -->
-					{% else %}
-						<!-- else mode -->
-					{% endif %}
-					<h1 class="header">
-						{{ title }}
-					</h1>
-					<p class="header">{{ description }}</p>
-					{% if '/posts' in page.url or '/projects' in page.url %}
-						<h2 id="site-name-subhead">
-							<a href="{{site.site_url}}">{{site.site_name}}</a>
-						</h2>
-					{% endif %}
+						{% if '/posts' in page.url %}
+							<!-- post mode -->
+							<script>
+								console.log({{ page.toString() }})
+							</script>
+							<time>{{ page.date.toDateString() }}</time>
+							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+						{% elif '/projects' in page.url %}
+							<!-- projects mode -->
+						{% else %}
+							<!-- else mode -->
+						{% endif %}
+						<h1 class="header">
+							{{ title }}
+						</h1>
+						<p class="header">{{ description }}</p>
+						{% if '/posts' in page.url or '/projects' in page.url %}
+							<h2 id="site-name-subhead">
+								<a href="{{site.site_url}}">{{site.site_name}}</a>
+							</h2>
+						{% endif %}
 
-				{% endblock %}
-			</header>
-			<main>
-				<section id="precontent">
-					{% block precontent %}{% endblock %}
-				</section>
-				<section id="contet">
-					{% block content %}
-						{{ content | safe }}
 					{% endblock %}
-				</section>
-				<section id="postcontent">
-					{% block postcontent %}{% endblock %}
-				</section>
-			</main>
-			<footer>
-				{% block prefooter %}{% endblock %}
-				{% block footer %}
-					<p>
-						<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-					</p>
-				{% endblock %}
-				{% block postfooter %}{% endblock %}
-			</footer>
-		</div>
-		<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-	</body>
-</html>
+				</header>
+				<main>
+					<section id="precontent">
+						{% block precontent %}{% endblock %}
+					</section>
+					<section id="contet">
+						{% block content %}
+							{{ content | safe }}
+						{% endblock %}
+					</section>
+					<section id="postcontent">
+						{% block postcontent %}{% endblock %}
+					</section>
+				</main>
+				<footer>
+					{% block prefooter %}{% endblock %}
+					{% block footer %}
+						<p>
+							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+						</p>
+					{% endblock %}
+					{% block postfooter %}{% endblock %}
+				</footer>
+			</div>
+			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		</body>
+	</html>

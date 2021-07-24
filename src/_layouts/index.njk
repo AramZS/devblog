@@ -1,9 +1,14 @@
 {% extends "base.njk" %}
 
+{% set templateName = "index" %}
+
 {% block header %}
 	<h1 class="header">
 		{{site.site_name}}
 	</h1>
+	<h5>
+		<a href="http://aramzs.github.io/aramzs/" target="_blank">By Aram Zucker-Scharff</a>
+	</h5>
 {% endblock %}
 
 {% block postcontent %}

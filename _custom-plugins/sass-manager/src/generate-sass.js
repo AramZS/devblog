@@ -2,30 +2,8 @@ var sass = require("sass");
 var fs = require("fs");
 var path = require("path");
 
-module.exports = (domain) => {
-	console.log(
-		"Generate Sass with domain",
-		domain,
-		"target file",
-		`${domain}/assets/css/style.css`,
-		"cwd",
-		process.cwd()
-	);
-	const outFile = "/assets/css/style.css";
-	var result = sass.renderSync({
-		includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
-		file: "src/_sass/_index.sass",
-		importer: function (url, prev, done) {
-			// ...
-		},
-		outputStyle: "compressed",
-		//sourceMap: `${domain}/assets/css/style.css.map`,
-		sourceMap: true,
-		sourceMapContents: true,
-		outFile: path.join(process.cwd(), path.basename(outFile)),
-		// outFile: `${domain}/assets/css/style.css`,
-		// sourceMapRoot: `${domain}/assets/css/`,
-	});
+const handleSassResult = (resultOfRenderSync, domain, filename) => {
+	const result = resultOfRenderSync;
 	console.log("Sass renderSync result", result);
 	var fullCSS = result.css.toString();
 	var map = JSON.parse(result.map);
@@ -45,9 +23,9 @@ module.exports = (domain) => {
 	if (!fs.existsSync("./docs/assets/css")) {
 		fs.mkdirSync("./docs/assets/css");
 	}
-	var writeResult = fs.writeFileSync("./docs/assets/css/style.css", fullCSS);
+	var writeResult = fs.writeFileSync(`./docs/assets/css/${filename}.css`, fullCSS);
 	var writeMapResult = fs.writeFileSync(
-		"./docs/assets/css/style.css.map",
+		`./docs/assets/css/${filename}.css.map`,
 		fullMap
 	);
 	console.log(
@@ -56,5 +34,61 @@ module.exports = (domain) => {
 		"Sass map write result",
 		writeMapResult
 	);
+}
+
+module.exports = (domain) => {
+	console.log(
+		"Generate Sass with domain",
+		domain,
+		"target file",
+		`${domain}/assets/css/style.css`,
+		"cwd",
+		process.cwd()
+	);
+	const outFile = "/assets/css/style.css";
+	const sassTemplateFiles = fs.readdirSync(path.resolve(`./src/_sass`));
+	const templateFiles = sassTemplateFiles.filter((sassFile) => {
+		console.log('sassFile', sassFile)
+		var sassName = sassFile
+		if (sassName.includes('template-')){
+			console.log('Sass File ')
+			return true;
+		} else {
+			return false;
+		}
+	})
+	templateFiles.forEach((file) => {
+		var templateOutFile = "/assets/css/"+(path.basename(file, '.scss'))+".css";
+		var templateResult = sass.renderSync({
+			includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
+			file: "src/_sass/"+file,
+			importer: function (url, prev, done) {
+				// ...
+			},
+			outputStyle: "compressed",
+			//sourceMap: `${domain}/assets/css/style.css.map`,
+			sourceMap: true,
+			sourceMapContents: true,
+			outFile: path.join(process.cwd(), path.basename(templateOutFile)),
+			// outFile: `${domain}/assets/css/style.css`,
+			// sourceMapRoot: `${domain}/assets/css/`,
+		});
+		handleSassResult(templateResult, domain, path.basename(file, '.scss'))
+	})
+	var result = sass.renderSync({
+		includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
+		file: "src/_sass/_index.sass",
+		importer: function (url, prev, done) {
+			// ...
+		},
+		outputStyle: "compressed",
+		//sourceMap: `${domain}/assets/css/style.css.map`,
+		sourceMap: true,
+		sourceMapContents: true,
+		outFile: path.join(process.cwd(), path.basename(outFile)),
+		// outFile: `${domain}/assets/css/style.css`,
+		// sourceMapRoot: `${domain}/assets/css/`,
+	});
+	handleSassResult(result, domain, 'style')
 	return result;
 };
