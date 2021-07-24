@@ -101,4 +101,6 @@ Ok, back to SaaS. What's going on there?
 
 Oops, forgot to give it a `px` for the unit type.
 
-Ok. That works now. 
+Ok. That works now.
+
+`git commit -am "Set up changes to styles and add some additional elements to the design"`
