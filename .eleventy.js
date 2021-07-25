@@ -268,9 +268,11 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
+	var slugify = require('slugify')
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
-		.use(require("markdown-it-todo"));
+		.use(require("markdown-it-todo"))
+		.use(require('markdown-it-anchor'), { slugify: s => slugify(s) });
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
