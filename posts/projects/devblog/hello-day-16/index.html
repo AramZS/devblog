@@ -1,0 +1,162 @@
+<!doctype html>
+
+		<html lang="en-US" id="template-base">
+		
+		<head>
+			
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<title>Hello World Devblog - Pt. 16</title>
+				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
+				<link href="/assets/prism-okaidia.css" rel="stylesheet">
+				<link rel="stylesheet" href="/assets/css/style.css?v=1065874265">
+				
+				<!-- Build Revision: 1065874265 & Sha: 89bf4940ef9ccd80deef9151549a3fd1da77d66a -->
+				<script src="/assets/js/scale.fix.js"></script>
+				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+				<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+			
+			
+			
+		</head>
+		<body>
+			<div class="wrapper">
+				<header>
+					
+						
+							<div id="site-name-subhead">
+								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+								
+									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+								
+							</div>
+						
+						
+							<!-- post mode -->
+							<script>
+								console.log([object Object])
+							</script>
+							<time>Mon Jul 26 2021</time>
+							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+						
+						<h1 class="header">
+							Hello World Devblog - Pt. 16
+						</h1>
+						<p class="header">Part 16 of setting up 11ty dev blog.</p>
+
+					
+				</header>
+				<main>
+					<section id="precontent">
+						
+					</section>
+					<section id="contet">
+						
+							<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+</ul>
+<h2 id="Day-16" tabindex="-1">Day 16</h2>
+<p>Ok, so I'd like to continue using my shortcuts like <code>b/c</code> or <code>prob</code>. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.</p>
+<p>We can take a look at <a href="https://github.com/markdown-it/markdown-it#api" target="_blank">Markdown-it's documentation</a> for help here.</p>
+<p>Oh, README says this is the wrong place to look at for plugins. Ok.</p>
+<p><a href="https://github.com/markdown-it/markdown-it/tree/master/docs" target="_blank">Info for plugin developers</a>... ok, two links in here.</p>
+<p>Ok... I'm not sure how useful these are. The douments are nice for understanding the philosophy involved. But not great to kick me off. Ok, <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#general-considerations-for-plugins" target="_blank">let's take recommendation 2</a> and look at some existing plugins. It sounds like I might possibly conflict with other plugins, so I prob should use an inline or block rule. That's useful.</p>
+<p>Oh, this looks useful and like a good idea, <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank">anchor links on my headers</a>.</p>
+<p>Let's try and pull it in along with a slugify method that can make for clear URLs.</p>
+<p>It recommends I use <code>'@sindresorhus/slugify'</code> or <code>string</code> to handle the slugify process. The 2nd is basic, but the first doesn't work well with how I structured this project. (It requires being called from a module, and my project isn't set up that way.) So, I'll use <code>slugify</code> which I have used in other projects in the past.</p>
+<p>Ok, that worked!</p>
+<p><code>git commit -am &quot;Add anchors to headers&quot;</code></p>
+<p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
+<p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
+<p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
+<p>Ok, to facilitate a similar structure, I'll take the Wikilinks plugin and place it in my own folder under <code>_custom-plugins</code>. I'm not going to be taking in options right now, so I can remove that stuff from the plugin.</p>
+<p>The plugin looks like it is very dependent on a modules called <code>markdown-it-regexp</code>. So let's <a href="https://github.com/rlidwka/markdown-it-regexp" target="_blank">check out how that works</a>. It <a href="https://github.com/rlidwka/markdown-it-regexp/blob/master/lib/index.js#L61" target="_blank">looks like it handles regex rules and does the work of registering those rules</a> with the Markdown-it rules manager called <code>ruler</code>. It seems to take two arguments, a regex pattern and a function to run on that regex pattern. All this seems relatively straightforward, which makes me feel a lot better about using a library that doesn't seem to have had any activity since 2016.</p>
+<p>I have to admit, I'm not super thrilled with Markdown-it. <a href="https://glitch.com/edit/#!/thespin?path=markdown-to-col.js%3A1%3A0" target="_blank">Normally I use</a> <a href="https://www.npmjs.com/package/showdown" target="_blank">Showdown</a> for Markdown parsing, but a lot of the Eleventy docs push Markdown-it. I guess I'll stick with it for now, but I'm not sure I'd recommend it or use it in a future project.</p>
+<p>Ok, let's strip it down to the basics.</p>
+<p>First my regex, I want to replace my use of <code>prob</code> with <code>probably</code>. So easy enough, gotta surround it with spaces. <code>/\sprob\s/</code> is a start. But it looks from the example that I should also have a capture group. Ok so instead I'll make it <code>/\s(prob)\s/,</code> Let's assume I'll eventually have a bunch of patterns, so I need to check to see that the pattern is giving me back one of a set of specific patterns. Then I can apply my specific transform.</p>
+<p>Hmmm it should work now, but I'm not seeing any results. I tried adding a console.log, but still nothing.</p>
+<p>Oh, oops, the pattern I'm using from the Wikilinks plugin, <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks#usage" target="_blank">means I have to execute it as a function first</a>.</p>
+<p>Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.</p>
+<p>Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during <code>watch</code> mode?). But it isn't treating my text?</p>
+<p>Ok, <a href="https://jsfiddle.net/yd2gLxev/" target="_blank">the sample code</a> given in the Readme of <code>markdown-it-regexp</code> doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.</p>
+<p>Ok, now I am even more annoyed that this isn't working. It should, by all rights. All I can think is that it must have something to do with the specific way eleventy implements Markdown-It?</p>
+<p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
+<p>Ok, trying to use <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">markdown-it-regex</a>. But it won't work either. I keep getting <code>plugin.apply is not a function</code>. Which makes me think the problem with the last plugin might be showing up here, where the way the markdown-it tool is being applied by eleventy isn't normal or at least isn't what some of these plugin authors expect.</p>
+<p>Ok, nothing working here. Time to switch approaches. <a href="https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/" target="_blank">This walkthrough looks like it might be promising</a>.</p>
+<p><code>git commit -am &quot;Day 16 - I fail to write a Markdown-it plugin&quot;</code></p>
+
+						
+					</section>
+					<section id="postcontent">
+						
+					</section>
+				</main>
+				<footer>
+					
+	<div id="taglist">
+		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,Github Actions,WiP,</div>
+
+					
+						<p>
+							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+						</p>
+					
+					
+				</footer>
+			</div>
+			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		</body>
+	</html>

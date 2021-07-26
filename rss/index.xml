@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Sat, 24 Jul 2021 23:45:34 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 26 Jul 2021 02:05:28 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -28,7 +28,7 @@
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-1/</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h1>Day 1</h1>
+		<content:encoded><![CDATA[<h1 id="Day-1" tabindex="-1">Day 1</h1>
 <p>I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:</p>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
@@ -147,7 +147,7 @@
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-2/</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h1>Day 2</h1>
+		<content:encoded><![CDATA[<h1 id="Day-2" tabindex="-1">Day 2</h1>
 <p>Ok, day 2. Let's restate the requirements and todos!</p>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
@@ -237,7 +237,7 @@
 <p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
-<h2>Day 3</h2>
+<h2 id="Day-3" tabindex="-1">Day 3</h2>
 <p>Ok, so I'm at day 3 and everything is working at a basic level. I need an index/entry page and some ways to present posts in lists. I also am not a huge fan of the <code>site/posts/post-name</code> structure.</p>
 <p>[ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
 <p>There's also an open question of Why Nunjucks? I'm not the biggest fan of Nunjucks, outside of the 11ty community that seems to be heavily invested into it, not many people seem to be using it. Documentation is (as we've already seen) sorta iffy and its relatively low adoption makes it harder to get questions answered.</p>
@@ -331,7 +331,7 @@ indent_style = space
 <p>[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
 <p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
 <p>[ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
-<h1>Day 4</h1>
+<h1 id="Day-4" tabindex="-1">Day 4</h1>
 <p>Ok, don't have a ton of time to work today, but I've been thinking more about the shitty code blocks.</p>
 <p>The core of the problem is that I can't even apply styles the way I want because the code is not being broken down properly.</p>
 <p>Here's what I'm getting:</p>
@@ -400,7 +400,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1>Day 5</h1>
+<h1 id="Day-5" tabindex="-1">Day 5</h1>
 <p>Ok, yesterday I didn't have that much time to work, but today I'm feeling as good as I can after having my main battery and a whole bunch of USB sticks, a Yubi key, and my main external Anker power battery robbed out of the back of a rental car in San Antonio yesterday.</p>
 <p>Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.</p>
 <p>So, since it hasn't been a great 24hs IRL, let's see if I can harvest a few more easy wins.</p>
@@ -484,7 +484,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1>Day 6</h1>
+<h1 id="Day-6" tabindex="-1">Day 6</h1>
 <p>Ok, here we go on day 6. Today I write code on a Delta flight.</p>
 <p>I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.</p>
 <p>The most upvoted solution I saw for Github Pages deployment was <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
@@ -569,7 +569,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 </ul>
-<h1>Day 7</h1>
+<h1 id="Day-7" tabindex="-1">Day 7</h1>
 <p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
 <p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
 <p>First is <a href="https://github.com/actions/setup-node" target="_blank">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
@@ -674,7 +674,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 8</h2>
+<h2 id="Day-8" tabindex="-1">Day 8</h2>
 <p>So, the Sass source-map is still giving me file:// URLs. This is apparently some sort of weird error in the dart-sass implementation? I found a few issues, all of which seem to point at <a href="https://github.com/sass/libsass/issues/908#issuecomment-76452477" target="_blank">one issue's set of solutions</a>. But none of these worked for me. I'm not really sure why. I think because dart-sass assumes source maps are only used for local development, not also for public-facing examples like I want. But the top of that thread pointed me <a href="https://github.com/joliss/node-sass-source-map-example/blob/master/better-output.js" target="_blank">at a useful build script example</a>.</p>
 <p>On the basis of that (which still uses dirname for local file paths) I altered it to match my reality of running a local server&quot;</p>
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">const</span> outFile <span class="token operator">=</span> <span class="token string">"/assets/css/style.css"</span><span class="token punctuation">;</span><br />	<span class="token keyword">var</span> result <span class="token operator">=</span> sass<span class="token punctuation">.</span><span class="token function">renderSync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br />		includePaths<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"**/*.{scss,sass}"</span><span class="token punctuation">,</span> <span class="token string">"!node_modules/**"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br />		file<span class="token operator">:</span> <span class="token string">"src/_sass/_index.sass"</span><span class="token punctuation">,</span><br />		outputStyle<span class="token operator">:</span> <span class="token string">"compressed"</span><span class="token punctuation">,</span><br />		sourceMap<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />		sourceMapContents<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />		outFile<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>outFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Sass renderSync result"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token keyword">var</span> fullCSS <span class="token operator">=</span> result<span class="token punctuation">.</span>css<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token keyword">var</span> map <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	map<span class="token punctuation">.</span>sourceRoot <span class="token operator">=</span> domain<span class="token punctuation">;</span><br />	result<span class="token punctuation">.</span>map <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token keyword">var</span> fullMap <span class="token operator">=</span> result<span class="token punctuation">.</span>map<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -775,7 +775,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 9</h2>
+<h2 id="Day-9" tabindex="-1">Day 9</h2>
 <p>Looks like the RSS feed is correct but being served from Github Pages as &quot;application/octet-stream&quot;. I found a Stack Overflow that said it needs a trailing slash. But now that serves it as text/html. Apparently it needs to have an xml ending, but if we want to keep <code>/rss/</code> <a href="https://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/" target="_blank">we need to create an xml file</a>.</p>
 <p><code>git commit -am &quot;Set an xml index for the rss path&quot;</code></p>
 <p>That did it! Good to know that Github Pages is <em>very</em> dependent on file endings, and if it doesn't get them it defaults <code>/path-with-no-ending-slash</code> to a downloadable octet-stream and <code>/path-with-ending-slash/</code> to HTML.</p>
@@ -869,7 +869,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 10</h2>
+<h2 id="Day-10" tabindex="-1">Day 10</h2>
 <p>Ok, when we left off I had totally failed to build a macro in Nunjucks.</p>
 <p>Ok, I forgot to change the argument that was passed in the macros file and when I did that it worked.</p>
 <p>So... progress!</p>
@@ -954,7 +954,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 11</h2>
+<h2 id="Day-11" tabindex="-1">Day 11</h2>
 <p>Ok, still not getting Macros working exactly the way I wanted. It would be really useful to have 11ty throw actual errors as part of this, but when I tried to set my own version of the Nunjucks Environment I kept hitting against undocumented settings that 11ty apparently sets up. This is getting way off the main thing I was trying to build. I could dive deeper in, but this site still isn't live and I would like to get it to that point first. So, for now, I'm going to just drop it.</p>
 <p>But before I do, I do think this is a major problem and would be useful for eleventy to fix. So, let's check issues one last time, and check if there is something for me to file.</p>
 <p>It looks like <a href="https://github.com/11ty/eleventy/issues/895" target="_blank">there is an issue in the right space</a>, but the suggested solution on the issue doesn't work. If I <a href="https://github.com/pdehaan/11ty-blog-ideas/issues/7" target="_blank">follow through the tickets</a> a little more I can <a href="https://github.com/pdehaan/11ty-nunjucks-config/blob/master/.eleventy.js" target="_blank">see another suggested solution</a>. But it doesn't solve the issue with the raw tags no longer working either.</p>
@@ -1042,7 +1042,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 12</h2>
+<h2 id="Day-12" tabindex="-1">Day 12</h2>
 <p>Ok, I'd like to have a custom collection so I can get a list of project names. So is there a way to add a collection API that's an entirely different collection? Something I can use instead of <code>tags</code> in other words</p>
 <ul class="task-list">
 <li class="task-list-item">
@@ -1124,7 +1124,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 13</h2>
+<h2 id="Day-13" tabindex="-1">Day 13</h2>
 <p>Ok, I'm trying to create a taxonomy that queries projects so I can list posts by their parent project. I tried to do it with <code>addGlobalData</code> but that's apparently a future feature of 11ty. So I'm headed back from DC now on the Acela (it's been a long time since the last time that was true) so it's coooooooooooooooode time.</p>
 <p>The main thing to note here is I want to be able to get:</p>
 <ol>
@@ -1227,7 +1227,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 14</h2>
+<h2 id="Day-14" tabindex="-1">Day 14</h2>
 <p>Ok, let's work though making these vertical pages a little more functional. We'll start with the home page. I want to have links to the project pages, so I'm going to need to build a URL for those. To do that I think I'll need to place it into my <code>projects</code> object. I can use the same technique of environment variables I set up for the feeds to have proper absolute links here.</p>
 <p>I'll add this to <code>project.js</code>.</p>
 <p><code>url: (function(){ return process.env.DOMAIN + &quot;/projects/&quot; + projectDir })(),</code></p>
@@ -1311,7 +1311,7 @@ indent_style = space
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 15</h2>
+<h2 id="Day-15" tabindex="-1">Day 15</h2>
 <p>Ok, let's add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.</p>
 <p>I'll put <code>$mobile-width: 890px</code> at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:</p>
 <pre class="language-css"><code class="language-css">        @media <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $mobile-width<span class="token punctuation">)</span><br />            <span class="token property">display</span><span class="token punctuation">:</span> block</code></pre>
@@ -1328,6 +1328,99 @@ indent_style = space
 <p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
 <p>Ok. That works now.</p>
 <p><code>git commit -am &quot;Set up changes to styles and add some additional elements to the design&quot;</code></p>
+]]></content:encoded>
+	</item>
+	
+	<item>
+		<title>Hello World Devblog - Pt. 16</title>
+		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-16/?source=rss</link>
+		<pubDate>Mon, 26 Jul 2021 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-16/</guid>
+		<description></description>
+		<content:encoded><![CDATA[<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+</ul>
+<h2 id="Day-16" tabindex="-1">Day 16</h2>
+<p>Ok, so I'd like to continue using my shortcuts like <code>b/c</code> or <code>prob</code>. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.</p>
+<p>We can take a look at <a href="https://github.com/markdown-it/markdown-it#api" target="_blank">Markdown-it's documentation</a> for help here.</p>
+<p>Oh, README says this is the wrong place to look at for plugins. Ok.</p>
+<p><a href="https://github.com/markdown-it/markdown-it/tree/master/docs" target="_blank">Info for plugin developers</a>... ok, two links in here.</p>
+<p>Ok... I'm not sure how useful these are. The douments are nice for understanding the philosophy involved. But not great to kick me off. Ok, <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#general-considerations-for-plugins" target="_blank">let's take recommendation 2</a> and look at some existing plugins. It sounds like I might possibly conflict with other plugins, so I prob should use an inline or block rule. That's useful.</p>
+<p>Oh, this looks useful and like a good idea, <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank">anchor links on my headers</a>.</p>
+<p>Let's try and pull it in along with a slugify method that can make for clear URLs.</p>
+<p>It recommends I use <code>'@sindresorhus/slugify'</code> or <code>string</code> to handle the slugify process. The 2nd is basic, but the first doesn't work well with how I structured this project. (It requires being called from a module, and my project isn't set up that way.) So, I'll use <code>slugify</code> which I have used in other projects in the past.</p>
+<p>Ok, that worked!</p>
+<p><code>git commit -am &quot;Add anchors to headers&quot;</code></p>
+<p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
+<p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
+<p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
+<p>Ok, to facilitate a similar structure, I'll take the Wikilinks plugin and place it in my own folder under <code>_custom-plugins</code>. I'm not going to be taking in options right now, so I can remove that stuff from the plugin.</p>
+<p>The plugin looks like it is very dependent on a modules called <code>markdown-it-regexp</code>. So let's <a href="https://github.com/rlidwka/markdown-it-regexp" target="_blank">check out how that works</a>. It <a href="https://github.com/rlidwka/markdown-it-regexp/blob/master/lib/index.js#L61" target="_blank">looks like it handles regex rules and does the work of registering those rules</a> with the Markdown-it rules manager called <code>ruler</code>. It seems to take two arguments, a regex pattern and a function to run on that regex pattern. All this seems relatively straightforward, which makes me feel a lot better about using a library that doesn't seem to have had any activity since 2016.</p>
+<p>I have to admit, I'm not super thrilled with Markdown-it. <a href="https://glitch.com/edit/#!/thespin?path=markdown-to-col.js%3A1%3A0" target="_blank">Normally I use</a> <a href="https://www.npmjs.com/package/showdown" target="_blank">Showdown</a> for Markdown parsing, but a lot of the Eleventy docs push Markdown-it. I guess I'll stick with it for now, but I'm not sure I'd recommend it or use it in a future project.</p>
+<p>Ok, let's strip it down to the basics.</p>
+<p>First my regex, I want to replace my use of <code>prob</code> with <code>probably</code>. So easy enough, gotta surround it with spaces. <code>/\sprob\s/</code> is a start. But it looks from the example that I should also have a capture group. Ok so instead I'll make it <code>/\s(prob)\s/,</code> Let's assume I'll eventually have a bunch of patterns, so I need to check to see that the pattern is giving me back one of a set of specific patterns. Then I can apply my specific transform.</p>
+<p>Hmmm it should work now, but I'm not seeing any results. I tried adding a console.log, but still nothing.</p>
+<p>Oh, oops, the pattern I'm using from the Wikilinks plugin, <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks#usage" target="_blank">means I have to execute it as a function first</a>.</p>
+<p>Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.</p>
+<p>Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during <code>watch</code> mode?). But it isn't treating my text?</p>
+<p>Ok, <a href="https://jsfiddle.net/yd2gLxev/" target="_blank">the sample code</a> given in the Readme of <code>markdown-it-regexp</code> doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.</p>
+<p>Ok, now I am even more annoyed that this isn't working. It should, by all rights. All I can think is that it must have something to do with the specific way eleventy implements Markdown-It?</p>
+<p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
+<p>Ok, trying to use <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">markdown-it-regex</a>. But it won't work either. I keep getting <code>plugin.apply is not a function</code>. Which makes me think the problem with the last plugin might be showing up here, where the way the markdown-it tool is being applied by eleventy isn't normal or at least isn't what some of these plugin authors expect.</p>
+<p>Ok, nothing working here. Time to switch approaches. <a href="https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/" target="_blank">This walkthrough looks like it might be promising</a>.</p>
+<p><code>git commit -am &quot;Day 16 - I fail to write a Markdown-it plugin&quot;</code></p>
 ]]></content:encoded>
 	</item>
 	</channel>

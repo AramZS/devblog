@@ -9,9 +9,9 @@
 				<title>Hello World Devblog - Pt. 9</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="/assets/css/style.css?v=1063463464">
+				<link rel="stylesheet" href="/assets/css/style.css?v=1065874265">
 				
-				<!-- Build Revision: 1063463464 & Sha: 7e0f8e6a4cd87b192370375142bbe02d58f56cd9 -->
+				<!-- Build Revision: 1065874265 & Sha: 89bf4940ef9ccd80deef9151549a3fd1da77d66a -->
 				<script src="/assets/js/scale.fix.js"></script>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 				<!--[if lt IE 9]>
@@ -108,7 +108,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 9</h2>
+<h2 id="Day-9" tabindex="-1">Day 9</h2>
 <p>Looks like the RSS feed is correct but being served from Github Pages as &quot;application/octet-stream&quot;. I found a Stack Overflow that said it needs a trailing slash. But now that serves it as text/html. Apparently it needs to have an xml ending, but if we want to keep <code>/rss/</code> <a href="https://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/" target="_blank">we need to create an xml file</a>.</p>
 <p><code>git commit -am &quot;Set an xml index for the rss path&quot;</code></p>
 <p>That did it! Good to know that Github Pages is <em>very</em> dependent on file endings, and if it doesn't get them it defaults <code>/path-with-no-ending-slash</code> to a downloadable octet-stream and <code>/path-with-ending-slash/</code> to HTML.</p>

@@ -9,9 +9,9 @@
 				<title>Hello World Devblog - Pt. 14</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="/assets/css/style.css?v=1063463464">
+				<link rel="stylesheet" href="/assets/css/style.css?v=1065874265">
 				
-				<!-- Build Revision: 1063463464 & Sha: 7e0f8e6a4cd87b192370375142bbe02d58f56cd9 -->
+				<!-- Build Revision: 1065874265 & Sha: 89bf4940ef9ccd80deef9151549a3fd1da77d66a -->
 				<script src="/assets/js/scale.fix.js"></script>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 				<!--[if lt IE 9]>
@@ -108,7 +108,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
-<h2>Day 14</h2>
+<h2 id="Day-14" tabindex="-1">Day 14</h2>
 <p>Ok, let's work though making these vertical pages a little more functional. We'll start with the home page. I want to have links to the project pages, so I'm going to need to build a URL for those. To do that I think I'll need to place it into my <code>projects</code> object. I can use the same technique of environment variables I set up for the feeds to have proper absolute links here.</p>
 <p>I'll add this to <code>project.js</code>.</p>
 <p><code>url: (function(){ return process.env.DOMAIN + &quot;/projects/&quot; + projectDir })(),</code></p>
