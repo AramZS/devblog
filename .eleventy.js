@@ -2,6 +2,8 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
+// const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
+// const markdownItRegex = require("markdown-it-regex");
 const path = require("path");
 const del = require("del");
 // const hljs = require("highlight.js"); // https://highlightjs.org/
@@ -272,6 +274,7 @@ module.exports = function (eleventyConfig) {
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
+		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require('markdown-it-anchor'), { slugify: s => slugify(s) });
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
