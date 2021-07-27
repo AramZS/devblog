@@ -302,6 +302,9 @@ module.exports = function (eleventyConfig) {
 		// pass token to default renderer.
 		return defaultRender(tokens, idx, options, env, self);
 	};
+
+
+
 	eleventyConfig.setLibrary("md", markdownSetup);
 
 	return siteConfiguration;
