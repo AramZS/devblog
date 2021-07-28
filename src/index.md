@@ -1,4 +1,5 @@
 ---
+title: "Fight with Tools: A Dev Blog by Aram Zucker-Scharff"
 layout: index
 eleventyExcludeFromCollections: true
 internalPageTypes: [ 'home' ]
