@@ -178,13 +178,18 @@ module.exports = function (eleventyConfig) {
 			let postList = [];
 			if (collectionOfPosts) {
 				postList = collectionOfPosts.map((post) => {
-					return `<li>${post.data.title}</li>`;
+					let postName = post.data.title;
+					return `<li><a href="${post.url}">${postName}</a></li>`;
 				});
 			}
+			let hblock = "";
 			if (!!!hlevel) {
 				hlevel = "p";
 			}
-			return `<${hlevel}>${collectionName}</${hlevel}>
+			if (hlevel != "noheader") {
+				hblock = `<${hlevel}>${collectionName}</${hlevel}>`;
+			}
+			return `${hblock}
 		<ul>
 			<!-- Collection: ${collectionName} -->
 			${postList.join("\n")}
@@ -199,6 +204,36 @@ module.exports = function (eleventyConfig) {
 		urlFiltered.pop(); // Remove post path
 		urlFiltered.shift(); // Remove `posts/`
 		return process.env.DOMAIN + "/" + urlFiltered.join("/");
+	});
+
+	// Get the first `n` elements of a collection.
+	eleventyConfig.addFilter("slice", (array, n) => {
+		if (!Array.isArray(array) || array.length === 0) {
+			return [];
+		}
+		if (n < 0) {
+			return array.slice(n);
+		}
+
+		return array.slice(0, n);
+	});
+
+	function filterTagList(tags) {
+		return (tags || []).filter(
+			(tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+		);
+	}
+
+	eleventyConfig.addFilter("filterTagList", filterTagList);
+
+	// Create an array of all tags
+	eleventyConfig.addCollection("tagList", function (collection) {
+		let tagSet = new Set();
+		collection.getAll().forEach((item) => {
+			(item.data.tags || []).forEach((tag) => tagSet.add(tag));
+		});
+		console.log(filterTagList([...tagSet]));
+		return filterTagList([...tagSet]);
 	});
 
 	eleventyConfig.addShortcode(

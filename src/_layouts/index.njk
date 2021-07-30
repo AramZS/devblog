@@ -12,6 +12,14 @@
 {% endblock %}
 
 {% block postcontent %}
+	<div class="front-post">
+		<hr />
+		{% set postslist = collections.posts | slice(-1) %}
+
+		<h3>Latest Post: <a href="{{ postslist[0].url }}">{{ postslist[0].data.title }}</a> </h3>
+		<p>{{ postslist[0].data.description | safe }}</p>
+		<p><a href="{{ postslist[0].url }}">Read the rest...</a></p>
+	</div>
 	<div class="front-container">
 		<div class="column">
 			<h3>Projects Thus Far</h3>
