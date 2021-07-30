@@ -24,7 +24,7 @@ let throwOnUndefinedSetting = false;
 if (process.env.IS_LOCAL) {
 	domain_name = "http://localhost:8080";
 	throwOnUndefinedSetting = true;
-	console.log('Dev env')
+	console.log("Dev env");
 }
 
 process.env.DOMAIN = domain_name;
@@ -117,7 +117,7 @@ module.exports = function (eleventyConfig) {
 	// Copy the `img` folders to the output
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("./CNAME");
-	eleventyConfig.addPassthroughCopy({"src/favicon.ico": "favicon.ico"});
+	eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
 	// eleventyConfig.addPassthroughCopy("src/.gitignore");
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
 	eleventyConfig.addPassthroughCopy({
@@ -129,7 +129,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		"src/assets": "assets",
 	});
-
 
 	// Can't use this until ver 1 apparently
 	/**
@@ -144,9 +143,9 @@ module.exports = function (eleventyConfig) {
     });
 	*/
 
-	const pathNormalizer = function(pathString){
-		return normalize(path.normalize(path.resolve(".")))
-	}
+	const pathNormalizer = function (pathString) {
+		return normalize(path.normalize(path.resolve(".")));
+	};
 
 	// Nunjucks Filters
 	/**
@@ -167,65 +166,75 @@ module.exports = function (eleventyConfig) {
 		//	return Nunjucks.renderString(text, this.ctx);
 		//});
 	*/
-	eleventyConfig.addShortcode("postList", function(collectionName, collectionOfPosts, order, hlevel) {
-		if (!!!order){
-			order = "reverse"
-		}
-		if (order === "reverse" && collectionOfPosts){
-			collectionOfPosts.reverse()
-		}
-		let postList = []
-		if (collectionOfPosts){
-			postList = collectionOfPosts.map((post) => {
-				return `<li>${post.data.title}</li>`
-			})
-		}
-		if (!!!hlevel){
-			hlevel = 'p'
-		}
-		return `<${hlevel}>${collectionName}</${hlevel}>
+	eleventyConfig.addShortcode(
+		"postList",
+		function (collectionName, collectionOfPosts, order, hlevel) {
+			if (!!!order) {
+				order = "reverse";
+			}
+			if (order === "reverse" && collectionOfPosts) {
+				collectionOfPosts.reverse();
+			}
+			let postList = [];
+			if (collectionOfPosts) {
+				postList = collectionOfPosts.map((post) => {
+					return `<li>${post.data.title}</li>`;
+				});
+			}
+			if (!!!hlevel) {
+				hlevel = "p";
+			}
+			return `<${hlevel}>${collectionName}</${hlevel}>
 		<ul>
 			<!-- Collection: ${collectionName} -->
-			${postList.join('\n')}
+			${postList.join("\n")}
 		</ul>
 		`;
-	});
+		}
+	);
 
 	eleventyConfig.addFilter("relproject", function (url) {
-		var urlArray = url.split('/')
-		var urlFiltered = urlArray.filter(e => e.length > 0)
-		urlFiltered.pop() // Remove post path
-		urlFiltered.shift() // Remove `posts/`
-		return process.env.DOMAIN + '/' + urlFiltered.join('/')
-	  })
+		var urlArray = url.split("/");
+		var urlFiltered = urlArray.filter((e) => e.length > 0);
+		urlFiltered.pop(); // Remove post path
+		urlFiltered.shift(); // Remove `posts/`
+		return process.env.DOMAIN + "/" + urlFiltered.join("/");
+	});
 
-	eleventyConfig.addShortcode("projectList", function(collectionName, collectionOfPosts, order, hlevel) {
-		if (!!!order){
-			order = "reverse"
-		}
-		if (order === "reverse" && collectionOfPosts){
-			collectionOfPosts.reverse()
-		}
-		let postList = []
-		if (collectionOfPosts){
-			postList = collectionOfPosts.map((post) => {
-				let postName = post.data.title;
-				if (post.data.hasOwnProperty('project')){
-					postName = "<em>" + post.data.project + "</em> | " + postName;
-				}
-				return `<li><a href="${post.url}">${postName}</a></li>`
-			})
-		}
-		if (!!!hlevel){
-			hlevel = 'p'
-		}
-		return `<${hlevel}>${collectionName}</${hlevel}>
+	eleventyConfig.addShortcode(
+		"projectList",
+		function (collectionName, collectionOfPosts, order, hlevel, limit) {
+			if (!!!order) {
+				order = "reverse";
+			}
+			if (order === "reverse" && collectionOfPosts) {
+				collectionOfPosts.reverse();
+			}
+			let postList = [];
+			if (collectionOfPosts && limit) {
+				collectionOfPosts = collectionOfPosts.slice(0, limit);
+			}
+			if (collectionOfPosts) {
+				postList = collectionOfPosts.map((post) => {
+					let postName = post.data.title;
+					if (post.data.hasOwnProperty("project")) {
+						postName =
+							"<em>" + post.data.project + "</em> | " + postName;
+					}
+					return `<li><a href="${post.url}">${postName}</a></li>`;
+				});
+			}
+			if (!!!hlevel) {
+				hlevel = "p";
+			}
+			return `<${hlevel}>${collectionName}</${hlevel}>
 		<ul>
 			<!-- Collection: ${collectionName} -->
-			${postList.join('\n')}
+			${postList.join("\n")}
 		</ul>
 		`;
-	});
+		}
+	);
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		templateFormats: ["md", "njk"],
 		init: function ({ Prism }) {
@@ -270,12 +279,12 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
-	var slugify = require('slugify')
+	var slugify = require("slugify");
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
-		.use(require('markdown-it-anchor'), { slugify: s => slugify(s) });
+		.use(require("markdown-it-anchor"), { slugify: (s) => slugify(s) });
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
@@ -302,8 +311,6 @@ module.exports = function (eleventyConfig) {
 		// pass token to default renderer.
 		return defaultRender(tokens, idx, options, env, self);
 	};
-
-
 
 	eleventyConfig.setLibrary("md", markdownSetup);
 

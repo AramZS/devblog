@@ -52,8 +52,97 @@ tags:
 
 - [ ] Should I [explore some shortcodes](https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/)?
 
+- [ ] Order projects listing by last posted blog in that project
+
+- [ ] Limit the output of home page post lists to a specific number of posts
+
+- [ ] Show the latest post below the site intro on the homepage.
+
+- [ ] Tags pages with Pagination
+
 ## Day 17
 
 So as of last time I checked out [this walkthrough](https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/).
 
 It has a little more information for me to use than the Markdown-it documentation. It also recommended I check out one of the markdown-it plugins I was actually able to get working. [So let's do that](https://github.com/valeriangalliat/markdown-it-anchor/blob/HEAD/index.js).
+
+Just looking at my homepage and realizing I need to add some to-dos:
+
+- [x] Order projects listing by last posted blog in that project
+
+- [x] Limit the output of home page post lists to a specific number of posts
+
+- [ ] Show the latest post below the site intro on the homepage.
+
+- [ ] Tags pages with Pagination
+
+- [ ] Posts should be able to support a preview header image that can also be shown on post lists.
+
+Ok, let's take on projects by last updated. I guess this means another field to add to that projects object. I guess I'll start off by getting the front matter. I guess the first step is pulling in a markdown frontmatter processor.
+
+It looks [like `markdown-it` doesn't ship with frontmatter parsing](https://www.npmjs.com/package/markdown-it-front-matter). [Eleventy uses grey-matter to handle frontmatter](https://www.11ty.dev/docs/data-frontmatter/) so if I pull that package in it won't increase our NPM package footprint.
+
+Ok, so with that in hand, let's get the file content.
+
+```javascript
+const { readdirSync, readFileSync } = require("fs");
+const path = require("path");
+const matter = require("gray-matter");
+// ...
+	const projectFilesContent = projectFiles.map((filePath) => {
+		return readFileSync(
+			path.resolve(`./src/posts/projects/${projectDir}/${filePath}`)
+		).toString(); // Don't forget the `toString` part!
+	});
+```
+
+Gotta remember to use `path` in this because otherwise it just gives me the last portion of the path.
+
+Ok, so let's use grey-matter to pull out that data. Where on the object does it live? I'm not getting anything yet.
+
+Ok, it's because the front-matter data lives on `object.data` so my date is at `object.data.date`. Cool. Ok, got it working now. I can use `Array.reduce` here to figure out the most recent date.
+
+```javascript
+	lastUpdated = projectFilesContent.reduce((prevValue, fileContent) => {
+		try {
+			const mdObject = matter(fileContent);
+			// console.log("data", mdObject.data);
+			if (!mdObject.data || !mdObject.data.date) {
+				return 0;
+			}
+			const datetime = Date.parse(mdObject.data.date);
+			if (prevValue > datetime) {
+				return prevValue;
+			} else {
+				return datetime;
+			}
+		} catch (e) {
+			console.log("Could not find date", e);
+			return 0;
+		}
+	}, 0);
+```
+
+And then I can sort it.
+
+```javascript
+directorySet.sort((a, b) => b.lastUpdatedPost - a.lastUpdatedPost);
+```
+
+Done!
+
+Ok, now I can limit the posts output on the homepage by adding a limit count ot the shortcode.
+
+```javascript
+	eleventyConfig.addShortcode(
+		"projectList",
+		function (collectionName, collectionOfPosts, order, hlevel, limit) {
+		// ...
+			if (collectionOfPosts && limit) {
+				collectionOfPosts = collectionOfPosts.slice(0, limit);
+			}
+```
+
+Works!
+
+`git commit -am "Improve homepage outputs and ordering!" `

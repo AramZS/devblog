@@ -18,7 +18,7 @@
 			<ul>
 				{%- for project in projects %}
 					<li class="capitalize-first">
-						<a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span>
+						<a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span> <!-- last updated:  {{project.lastUpdatedPost}} -->
 					</li>
 				{%- endfor %}
 			</ul>
@@ -29,7 +29,7 @@
 				{% projectList postType.name,
 				collections[postType.collection],
 				postType.order,
-				"h3" %}
+				"h3", 10 %}
 			</div>
 		{%- endfor %}
 	</div>
