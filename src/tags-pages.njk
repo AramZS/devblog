@@ -1,0 +1,20 @@
+---
+pagination:
+    data: collections.tagList
+    size: 1
+    alias: tag
+permalink: "tags/{{ tag | slug }}/"
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+  description: "Posts tagged {{ tag }}"
+---
+
+{% block precontent %}
+<h2>Posts tagged: {{tag}}</h2>
+<div>
+	{% postList postType.name,
+	collections[tag],
+	postType.order,
+	"noheader" %}
+</div>
+{% endblock %}
