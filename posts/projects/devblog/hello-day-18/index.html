@@ -6,7 +6,7 @@
 			
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 15</title>
+				<title>Hello World Devblog - Pt. 18</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
 				<link rel="stylesheet" href="/assets/css/style.css?v=1083806209">
@@ -38,13 +38,13 @@
 							<script>
 								console.log([object Object])
 							</script>
-							<time>Sun Jul 25 2021</time>
+							<time>Sat Jul 31 2021</time>
 							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
 						
 						<h1 class="header">
-							Hello World Devblog - Pt. 15
+							Hello World Devblog - Pt. 18
 						</h1>
-						<p class="header">Part 14 of setting up 11ty dev blog.</p>
+						<p class="header">Ok, I&#39;m still disappointed with markdown-it. So let&#39;s take on a different task today. I&#39;m going to take on showing the latest post and the tags pages, if I can pull off both.</p>
 
 					
 				</header>
@@ -107,24 +107,36 @@
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
 </ul>
-<h2 id="Day-15" tabindex="-1">Day 15</h2>
-<p>Ok, let's add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.</p>
-<p>I'll put <code>$mobile-width: 890px</code> at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:</p>
-<pre class="language-css"><code class="language-css">        @media <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $mobile-width<span class="token punctuation">)</span><br>            <span class="token property">display</span><span class="token punctuation">:</span> block</code></pre>
-<p>Ok, I want to set a link to the home page on every page. I started with a query to check for <code>/posts</code> and <code>/projects</code> in the base template. But I don't like how it looks if it is below the main content of the header. Let's switch up the design.</p>
-<p>Ok, that's looking better. But I want the title of the page to span longer then it does now.</p>
-<pre class="language-css"><code class="language-css">@media print<span class="token punctuation">,</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $large-mobile<span class="token punctuation">)</span><br>    header<br>        <span class="token property">padding-right</span><span class="token punctuation">:</span> 260px</code></pre>
-<p>Hm. That's not working.</p>
-<p>I'll come back to it in a second. I want to get a breadcrumb path working, but there's no way to split the URL at the build process, at least not one that I can see that's built in. I guess the answer is a filter I can run the URL through.</p>
-<p>To manipulate chunks of the URL I am going to have to turn the URL into an array and manipulate it, along with handling the domain env variable.</p>
-<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"relproject"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">var</span> urlArray <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> urlFiltered <span class="token operator">=</span> urlArray<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> e<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove post path</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove `posts/`</span><br>		<span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> urlFiltered<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>	  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Now I can use it in a template tag like this:</p>
-<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span>a id<span class="token operator">=</span>"project<span class="token operator">-</span>link" href<span class="token operator">=</span>"{{ page.url <span class="token operator">|</span> relproject }}"<span class="token operator">></span>{{project}}<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span></code></pre>
-<p>Ok, back to SaaS. What's going on there?</p>
-<p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
-<p>Ok. That works now.</p>
-<p><code>git commit -am &quot;Set up changes to styles and add some additional elements to the design&quot;</code></p>
+<h2 id="Day-18" tabindex="-1">Day 18</h2>
+<p>Ok, I'm still disappointed with markdown-it. So let's take on a different task today. I'm going to take on showing the latest post and the tags pages, if I can pull off both.</p>
+<p>For the home page, it looks like <a href="https://stackoverflow.com/questions/64337175/get-latest-post-to-show-on-home-page-with-eleventy" target="_blank">I can pull a good example</a>. It is dependent on <a href="https://github.com/11ty/eleventy-base-blog/blob/1be6346bde9ebe4afc23d7feaf0370817ad90f15/.eleventy.js#L31" target="_blank">a filter</a> though. Oh this idea, to truncate an array with a filter, is really cool. I wish I hard realized it existed before I set up the limit number on the collection. But I'll pull it over. That said, I prefer to name it what it actually does and call it <code>slice</code>. Ok, now I can have a single post on the homepage. But I don't really want the whole thing. Time to use the &quot;description&quot; metadata key and value. I'll need it for SEO anyway, so good to have something else on the site that uses the value. I want to have a good separator in place to differentiate the post content. I can add an <code>hr</code>, but it will need some custom styling.</p>
+<p>I'll use my index-specific Sass here.</p>
+<pre class="language-css"><code class="language-css">    .front-post<br>        hr<br>            <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 6px<br>        h3<br>            <span class="token property">margin-top</span><span class="token punctuation">:</span> 2px</code></pre>
+<p>Ok, on to the tag pages.</p>
+<p>I'll start by duplicating the projects page. Now the question is how to get a list of collections.</p>
+<p>There doesn't seem to be a native way, but <a href="https://github.com/11ty/eleventy-base-blog/blob/1be6346bde9ebe4afc23d7feaf0370817ad90f15/.eleventy.js#L47" target="_blank">I can build on the techniques that the 11ty site itself uses</a>.</p>
+<p>Ok, what does that create exactly? According to <code>console.log</code>:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>  <span class="token string">'projects'</span><span class="token punctuation">,</span><br>  <span class="token string">'Starters'</span><span class="token punctuation">,</span><br>  <span class="token string">'11ty'</span><span class="token punctuation">,</span><br>  <span class="token string">'Node'</span><span class="token punctuation">,</span><br>  <span class="token string">'Sass'</span><span class="token punctuation">,</span><br>  <span class="token string">'WiP'</span><span class="token punctuation">,</span><br>  <span class="token string">'Github Actions'</span><br><span class="token punctuation">]</span></code></pre>
+<p>Ok and from there I can base the new page off <a href="https://www.11ty.dev/docs/pagination/#paging-a-collection" target="_blank">the example from the eleventy site</a>. It worked! Now I have a set of pages.</p>
+<p>I can use my postList shortcode here to get a list of posts. Just have to update it so the posts are linked.</p>
+<p>This is a good start, next step is paginating these tag pages!</p>
+<p><code>git commit -am &quot;Setting up homepage post and tag pages&quot;</code></p>
 
 						
 					</section>
