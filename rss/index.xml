@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Wed, 28 Jul 2021 14:22:25 GMT</lastBuildDate>
+	<lastBuildDate>Fri, 30 Jul 2021 01:09:49 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1484,10 +1484,55 @@ indent_style = space
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
 </ul>
 <h2 id="Day-17" tabindex="-1">Day 17</h2>
 <p>So as of last time I checked out <a href="https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/" target="_blank">this walkthrough</a>.</p>
 <p>It has a little more information for me to use than the Markdown-it documentation. It also recommended I check out one of the markdown-it plugins I was actually able to get working. <a href="https://github.com/valeriangalliat/markdown-it-anchor/blob/HEAD/index.js" target="_blank">So let's do that</a>.</p>
+<p>Just looking at my homepage and realizing I need to add some to-dos:</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+</ul>
+<p>Ok, let's take on projects by last updated. I guess this means another field to add to that projects object. I guess I'll start off by getting the front matter. I guess the first step is pulling in a markdown frontmatter processor.</p>
+<p>It looks <a href="https://www.npmjs.com/package/markdown-it-front-matter" target="_blank">like <code>markdown-it</code> doesn't ship with frontmatter parsing</a>. <a href="https://www.11ty.dev/docs/data-frontmatter/" target="_blank">Eleventy uses grey-matter to handle frontmatter</a> so if I pull that package in it won't increase our NPM package footprint.</p>
+<p>Ok, so with that in hand, let's get the file content.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> readdirSync<span class="token punctuation">,</span> readFileSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token keyword">const</span> matter <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gray-matter"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token comment">// ...</span><br />	<span class="token keyword">const</span> projectFilesContent <span class="token operator">=</span> projectFiles<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">filePath</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />		<span class="token keyword">return</span> <span class="token function">readFileSync</span><span class="token punctuation">(</span><br />			path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/posts/projects/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>projectDir<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>filePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><br />		<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Don't forget the `toString` part!</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Gotta remember to use <code>path</code> in this because otherwise it just gives me the last portion of the path.</p>
+<p>Ok, so let's use grey-matter to pull out that data. Where on the object does it live? I'm not getting anything yet.</p>
+<p>Ok, it's because the front-matter data lives on <code>object.data</code> so my date is at <code>object.data.date</code>. Cool. Ok, got it working now. I can use <code>Array.reduce</code> here to figure out the most recent date.</p>
+<pre class="language-javascript"><code class="language-javascript">	lastUpdated <span class="token operator">=</span> projectFilesContent<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">prevValue<span class="token punctuation">,</span> fileContent</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />		<span class="token keyword">try</span> <span class="token punctuation">{</span><br />			<span class="token keyword">const</span> mdObject <span class="token operator">=</span> <span class="token function">matter</span><span class="token punctuation">(</span>fileContent<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token comment">// console.log("data", mdObject.data);</span><br />			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mdObject<span class="token punctuation">.</span>data <span class="token operator">||</span> <span class="token operator">!</span>mdObject<span class="token punctuation">.</span>data<span class="token punctuation">.</span>date<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span><br />			<span class="token keyword">const</span> datetime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>mdObject<span class="token punctuation">.</span>data<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token keyword">if</span> <span class="token punctuation">(</span>prevValue <span class="token operator">></span> datetime<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				<span class="token keyword">return</span> prevValue<span class="token punctuation">;</span><br />			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />				<span class="token keyword">return</span> datetime<span class="token punctuation">;</span><br />			<span class="token punctuation">}</span><br />		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Could not find date"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><br />		<span class="token punctuation">}</span><br />	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>And then I can sort it.</p>
+<pre class="language-javascript"><code class="language-javascript">directorySet<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> b<span class="token punctuation">.</span>lastUpdatedPost <span class="token operator">-</span> a<span class="token punctuation">.</span>lastUpdatedPost<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Done!</p>
+<p>Ok, now I can limit the posts output on the homepage by adding a limit count ot the shortcode.</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><br />		<span class="token string">"projectList"</span><span class="token punctuation">,</span><br />		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order<span class="token punctuation">,</span> hlevel<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />		<span class="token comment">// ...</span><br />			<span class="token keyword">if</span> <span class="token punctuation">(</span>collectionOfPosts <span class="token operator">&amp;&amp;</span> limit<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				collectionOfPosts <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> limit<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span></code></pre>
+<p>Works!</p>
+<p><code>git commit -am &quot;Improve homepage outputs and ordering!&quot; </code></p>
 ]]></content:encoded>
 	</item>
 	</channel>
