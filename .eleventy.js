@@ -120,6 +120,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
 	// eleventyConfig.addPassthroughCopy("src/.gitignore");
 	eleventyConfig.addPassthroughCopy({ "dinky/assets/js": "assets/js" });
+	eleventyConfig.addPassthroughCopy({ "src/_well-known": ".well-known" });
 	eleventyConfig.addPassthroughCopy({
 		"dinky/assets/images": "assets/images",
 	});
