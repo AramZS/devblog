@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Fri, 30 Jul 2021 22:56:39 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 31 Jul 2021 20:25:22 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1626,6 +1626,91 @@ indent_style = space
 <p>I can use my postList shortcode here to get a list of posts. Just have to update it so the posts are linked.</p>
 <p>This is a good start, next step is paginating these tag pages!</p>
 <p><code>git commit -am &quot;Setting up homepage post and tag pages&quot;</code></p>
+]]></content:encoded>
+	</item>
+	
+	<item>
+		<title>Hello World Devblog - Pt. 19</title>
+		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-19/?source=rss</link>
+		<pubDate>Sun, 01 Aug 2021 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-19/</guid>
+		<description></description>
+		<content:encoded><![CDATA[<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+</ul>
+<h2 id="Day-19" tabindex="-1">Day 19</h2>
+<h3 id="Oh-let's-turn-on-GPC" tabindex="-1">Oh let's turn on GPC</h3>
+<p>Oh, I'm not doing any personalized tracking to turn off, but I might as well register my support for <a href="https://globalprivacycontrol.org/" target="_blank">GPC</a>. It should be easy enough to set up a location for me to store <code>.well-known</code> data and pass it through. I'll have an internal folder at <code>src/_well-known</code> and set up a passthrough copy from there.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// added to .eleventy.js</span><br />eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"src/_well-known"</span><span class="token operator">:</span> <span class="token string">".well-known"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Then I can just add a <code>gpc.json</code> file in that folder</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br />	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br /><span class="token punctuation">}</span></code></pre>
 ]]></content:encoded>
 	</item>
 	</channel>

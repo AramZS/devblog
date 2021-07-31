@@ -6,7 +6,7 @@
 			
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 12</title>
+				<title>Hello World Devblog - Pt. 19</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
 				<link rel="stylesheet" href="/assets/css/style.css?v=1085808756">
@@ -38,13 +38,13 @@
 							<script>
 								console.log([object Object])
 							</script>
-							<time>Tue Jul 06 2021</time>
+							<time>Sun Aug 01 2021</time>
 							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
 						
 						<h1 class="header">
-							Hello World Devblog - Pt. 12
+							Hello World Devblog - Pt. 19
 						</h1>
-						<p class="header">Part 12 of setting up 11ty dev blog.</p>
+						<p class="header">More devblog</p>
 
 					
 				</header>
@@ -77,7 +77,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 </li>
 </ul>
 <s>
@@ -107,25 +107,28 @@
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
-</ul>
-<h2 id="Day-12" tabindex="-1">Day 12</h2>
-<p>Ok, I'd like to have a custom collection so I can get a list of project names. So is there a way to add a collection API that's an entirely different collection? Something I can use instead of <code>tags</code> in other words</p>
-<ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Not what I want, but I should prob do this <a href="https://www.11ty.dev/docs/quicktips/tag-pages/" target="_blank">https://www.11ty.dev/docs/quicktips/tag-pages/</a></p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> This will be good to have on the bottom of these posts - <a href="https://www.11ty.dev/docs/filters/collection-items/" target="_blank">https://www.11ty.dev/docs/filters/collection-items/</a></p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
 </li>
 </ul>
-<p>Feels a little hacky, but it looks like <a href="https://stackoverflow.com/questions/66083103/how-to-generate-a-list-of-all-collections-in-11ty" target="_blank">the way to do this is to create a global object and filter the output I want into there</a>.</p>
-<p>There's another way I could potentially handle this, and that's by folder structure. I think it makes sense to try that first and see what we can do with it. First we'll move a post into this new folder structure to try and see if we can query the path usefuly.</p>
-<p>I'll move my hello-day-1 post into <code>src/posts/projects/devblog</code>.</p>
-<p>Now can I get a list of paths under a particular path? I'm not seeing a way actually. It seems like the sort of thing that it would make sense to be easy to do. Yet, no clear sign of how to do it.</p>
-<p>I thought this might work, but no go:</p>
-<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span><span class="token string">'projects'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">collectionApi</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> collectionApi<span class="token punctuation">.</span><span class="token function">getFilteredByGlob</span><span class="token punctuation">(</span><span class="token string">'src/projects/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Ok, looks like I'm going to have to do something a little more complex.</p>
-<p><code>git commit -am &quot;First attempt at setting up projects list&quot;</code></p>
+<h2 id="Day-19" tabindex="-1">Day 19</h2>
+<h3 id="Oh-let's-turn-on-GPC" tabindex="-1">Oh let's turn on GPC</h3>
+<p>Oh, I'm not doing any personalized tracking to turn off, but I might as well register my support for <a href="https://globalprivacycontrol.org/" target="_blank">GPC</a>. It should be easy enough to set up a location for me to store <code>.well-known</code> data and pass it through. I'll have an internal folder at <code>src/_well-known</code> and set up a passthrough copy from there.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// added to .eleventy.js</span><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"src/_well-known"</span><span class="token operator">:</span> <span class="token string">".well-known"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Then I can just add a <code>gpc.json</code> file in that folder</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br><span class="token punctuation">}</span></code></pre>
 
 						
 					</section>
@@ -136,7 +139,7 @@
 				<footer>
 					
 	<div id="taglist">
-		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,Github Actions,WiP,</div>
+		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,Github Actions,WiP,GPC,</div>
 
 					
 						<p>
