@@ -113,3 +113,6 @@ So what is happening here?
 
 Should I just use [the reverse call intended for pagination](https://www.11ty.dev/docs/pagination/#reverse-the-data) instead?
 
+Got distracted and ended up not finishing. The downside of weekend development.
+
+`git commit -am "First run at tag pages"`
