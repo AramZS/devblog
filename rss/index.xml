@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description></description>
-	<lastBuildDate>Sat, 31 Jul 2021 20:25:22 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 02 Aug 2021 14:20:05 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1711,6 +1711,21 @@ indent_style = space
 <pre class="language-javascript"><code class="language-javascript"><span class="token comment">// added to .eleventy.js</span><br />eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"src/_well-known"</span><span class="token operator">:</span> <span class="token string">".well-known"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Then I can just add a <code>gpc.json</code> file in that folder</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br />	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br /><span class="token punctuation">}</span></code></pre>
+<p><code>git commit -am &quot;Add GPC .well-known file&quot;</code></p>
+<p>Huh, my front page posts are no longer reversing properly. I think because <code>reverse</code> <a href="https://www.11ty.dev/docs/collections/#sort-descending" target="_blank">happens in-place</a> it's causing some issues.</p>
+<p>Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><br />		<span class="token string">"projectList"</span><span class="token punctuation">,</span><br />		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order<span class="token punctuation">,</span> hlevel<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />			<span class="token keyword">var</span> postCollection <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br />			<span class="token keyword">if</span> <span class="token punctuation">(</span>collectionOfPosts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				postCollection <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span></code></pre>
+<p>Ok, good stuff!</p>
+<p>Now let's look into pagination of tags pages.</p>
+<p>Ok, the reverse is not working again... wtf...</p>
+<p>Yeah, I'm pretty sure every place I'm calling reverse now is on a clone of the collections array. My post collection pull for the index page isn't reversing, it's just slicing one off the end. I'm not sure why the ordering here is wonky. Especially because it shouldn't even be a problem. <a href="https://www.11ty.dev/docs/collections/#advanced-custom-filtering-and-sorting" target="_blank">According to the 11ty site</a>:</p>
+<blockquote>
+<p>Note that while Array .reverse() mutates the array in-place, all Eleventy Collection API methods return new copies of collection arrays and can be modified without side effects to other collections.</p>
+</blockquote>
+<p>So what is happening here?</p>
+<p>Should I just use <a href="https://www.11ty.dev/docs/pagination/#reverse-the-data" target="_blank">the reverse call intended for pagination</a> instead?</p>
+<p>Got distracted and ended up not finishing. The downside of weekend development.</p>
+<p><code>git commit -am &quot;First run at tag pages&quot;</code></p>
 ]]></content:encoded>
 	</item>
 	</channel>
