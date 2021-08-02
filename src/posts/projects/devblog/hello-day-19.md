@@ -82,3 +82,34 @@ Then I can just add a `gpc.json` file in that folder
 	"lastUpdate": "2021-07-31"
 }
 ```
+
+`git commit -am "Add GPC .well-known file"`
+
+Huh, my front page posts are no longer reversing properly. I think because `reverse` [happens in-place](https://www.11ty.dev/docs/collections/#sort-descending) it's causing some issues.
+
+Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.
+
+```javascript
+	eleventyConfig.addShortcode(
+		"projectList",
+		function (collectionName, collectionOfPosts, order, hlevel, limit) {
+			var postCollection = [];
+			if (collectionOfPosts) {
+				postCollection = collectionOfPosts.slice();
+			}
+```
+
+Ok, good stuff!
+
+Now let's look into pagination of tags pages.
+
+Ok, the reverse is not working again... wtf...
+
+Yeah, I'm pretty sure every place I'm calling reverse now is on a clone of the collections array. My post collection pull for the index page isn't reversing, it's just slicing one off the end. I'm not sure why the ordering here is wonky. Especially because it shouldn't even be a problem. [According to the 11ty site](https://www.11ty.dev/docs/collections/#advanced-custom-filtering-and-sorting):
+
+> Note that while Array .reverse() mutates the array in-place, all Eleventy Collection API methods return new copies of collection arrays and can be modified without side effects to other collections.
+
+So what is happening here?
+
+Should I just use [the reverse call intended for pagination](https://www.11ty.dev/docs/pagination/#reverse-the-data) instead?
+

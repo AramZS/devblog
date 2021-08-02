@@ -29,7 +29,7 @@
 			<div class="wrapper">
 				<header>
 					{% block header %}
-						{% if '/posts' in page.url or '/projects' in page.url %}
+						{% if '/posts' in page.url or '/projects' in page.url or '/tag' in page.url %}
 							<div id="site-name-subhead">
 								<a href="{{site.site_url}}">{{site.site_name}}</a>
 								{% if '/posts' in page.url and project %}

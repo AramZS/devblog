@@ -170,14 +170,20 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addShortcode(
 		"postList",
 		function (collectionName, collectionOfPosts, order, hlevel) {
+			var postCollection = [];
+			if (collectionOfPosts) {
+				// Clone post collection to avoid reverse having weird effects on other uses of the collection due to it being transformed in place.
+				postCollection = collectionOfPosts.slice();
+			} else {
+				return "";
+			}
 			if (!!!order) {
 				order = "reverse";
 			}
 			if (order === "reverse" && collectionOfPosts) {
-				collectionOfPosts.reverse();
+				postCollection = postCollection.reverse();
 			}
-			let postList = [];
-			if (collectionOfPosts) {
+			if (postCollection) {
 				postList = collectionOfPosts.map((post) => {
 					let postName = post.data.title;
 					return `<li><a href="${post.url}">${postName}</a></li>`;
@@ -198,7 +204,45 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
-
+	eleventyConfig.addShortcode(
+		"projectList",
+		function (collectionName, collectionOfPosts, order, hlevel, limit) {
+			var postCollection = [];
+			if (collectionOfPosts) {
+				// Clone post collection to avoid reverse having weird effects on other uses of the collection due to it being transformed in place.
+				postCollection = collectionOfPosts.slice();
+			}
+			if (!!!order) {
+				order = "reverse";
+			}
+			if (order === "reverse" && collectionOfPosts) {
+				postCollection = postCollection.reverse();
+			}
+			let postList = [];
+			if (collectionOfPosts && limit) {
+				postCollection = postCollection.slice(0, limit);
+			}
+			if (postCollection) {
+				postList = postCollection.map((post) => {
+					let postName = post.data.title;
+					if (post.data.hasOwnProperty("project")) {
+						postName =
+							"<em>" + post.data.project + "</em> | " + postName;
+					}
+					return `<li><a href="${post.url}">${postName}</a></li>`;
+				});
+			}
+			if (!!!hlevel) {
+				hlevel = "p";
+			}
+			return `<${hlevel}>${collectionName}</${hlevel}>
+		<ul>
+			<!-- Collection: ${collectionName} -->
+			${postList.join("\n")}
+		</ul>
+		`;
+		}
+	);
 	eleventyConfig.addFilter("relproject", function (url) {
 		var urlArray = url.split("/");
 		var urlFiltered = urlArray.filter((e) => e.length > 0);
@@ -237,40 +281,6 @@ module.exports = function (eleventyConfig) {
 		return filterTagList([...tagSet]);
 	});
 
-	eleventyConfig.addShortcode(
-		"projectList",
-		function (collectionName, collectionOfPosts, order, hlevel, limit) {
-			if (!!!order) {
-				order = "reverse";
-			}
-			if (order === "reverse" && collectionOfPosts) {
-				collectionOfPosts.reverse();
-			}
-			let postList = [];
-			if (collectionOfPosts && limit) {
-				collectionOfPosts = collectionOfPosts.slice(0, limit);
-			}
-			if (collectionOfPosts) {
-				postList = collectionOfPosts.map((post) => {
-					let postName = post.data.title;
-					if (post.data.hasOwnProperty("project")) {
-						postName =
-							"<em>" + post.data.project + "</em> | " + postName;
-					}
-					return `<li><a href="${post.url}">${postName}</a></li>`;
-				});
-			}
-			if (!!!hlevel) {
-				hlevel = "p";
-			}
-			return `<${hlevel}>${collectionName}</${hlevel}>
-		<ul>
-			<!-- Collection: ${collectionName} -->
-			${postList.join("\n")}
-		</ul>
-		`;
-		}
-	);
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		templateFormats: ["md", "njk"],
 		init: function ({ Prism }) {
