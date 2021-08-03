@@ -6,7 +6,7 @@
 			
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 14</title>
+				<title>Hello World Devblog - Pt. 20</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
 				<link rel="stylesheet" href="/assets/css/style.css?v=1092443760">
@@ -38,13 +38,13 @@
 							<script>
 								console.log([object Object])
 							</script>
-							<time>Sat Jul 24 2021</time>
+							<time>Tue Aug 03 2021</time>
 							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
 						
 						<h1 class="header">
-							Hello World Devblog - Pt. 14
+							Hello World Devblog - Pt. 20
 						</h1>
-						<p class="header">Part 14 of setting up 11ty dev blog.</p>
+						<p class="header">More devblog</p>
 
 					
 				</header>
@@ -77,7 +77,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 </li>
 </ul>
 <s>
@@ -107,27 +107,31 @@
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with l<a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">inks to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
 </ul>
-<h2 id="Day-14" tabindex="-1">Day 14</h2>
-<p>Ok, let's work though making these vertical pages a little more functional. We'll start with the home page. I want to have links to the project pages, so I'm going to need to build a URL for those. To do that I think I'll need to place it into my <code>projects</code> object. I can use the same technique of environment variables I set up for the feeds to have proper absolute links here.</p>
-<p>I'll add this to <code>project.js</code>.</p>
-<p><code>url: (function(){ return process.env.DOMAIN + &quot;/projects/&quot; + projectDir })(),</code></p>
-<p>Then I can use this data property to build the template links that go out to the project pages.</p>
-<p>I don't like the lack of headers, I'll add an <code>hlevel</code> argument to my shortcode to allow me to set headers on each post list.</p>
-<p>Good list headers now! Time to add links to the other post lists. I also want to format the post titles with the project name. To do that I'm going to create another shortcode that formats the post titles a little differently.</p>
-<p>This also seems like a good time to move my posts over to the right folder.</p>
-<p>Ok, adding the site name to the non-index pages and now its time to do some css.</p>
-<p><code>git commit -am &quot;Done with setting up vertical content, on to vertical styles.&quot;</code></p>
-<p>Ok, to get the layouts the way I want while still having the base template be very reusable, I need to have some custom CSS that applies only to specific pages. I can handle that by adding an ID with the template name to the <code>body</code> HTML tag. That's easy. But I don't want to load down the CSS file with these file specific rules where I don't need them. So let's accomplish one of my early goals and split the CSS into smaller files.</p>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</li>
-</ul>
-<p><code>git commit -am &quot;Set up SASS &gt; CSS Code spliting with template selection&quot;</code></p>
-<p>Very annoying that SASS changes don't cause a watch trigger. I'll need to handle that.</p>
-<p><code>eleventyConfig.addWatchTarget(&quot;./src/_sass&quot;);</code></p>
-<p>Ok. It's looking good now. A basic grid layout that can fit inside the 650px wide main body. I'll need to add some media queries too, but it's the direction I want to go.</p>
-<p>Dinner time!</p>
-<p><code>git commit -am &quot;Add front page styles&quot;</code></p>
+<h2 id="Day-20" tabindex="-1">Day 20</h2>
+<p>Ok, well, first problem was I hadn't switched the variable. Doing that got the reverse working. Let's try removing the array clone.</p>
+<p>Hmm. Interesting, doing that appears to keep the tag pages reversed, but the homepage post list from the <code>projectList</code> shortcode is broken again.</p>
+<p>I checked <a href="https://github.com/11ty/eleventy/issues/215" target="_blank">this issue</a> first and it looks this was reported, but not this exact context. <a href="https://github.com/11ty/eleventy/issues/352" target="_blank">It looks like it was an issue with getAllSorted</a>. Ok, I'm going to suggest documentation and keep <code>.slice</code> in place. I could potentially use the <code>reverse</code> filter, but I'm not sure that would work well with the functionality I'm trying to create, which gives me the ability to generate and alter these lists using arguments from the Markdown front-matter. It would be good <a href="https://github.com/11ty/11ty-website/pull/1135" target="_blank">to warn that collections manipulated in shortcodes impact other uses of the same collections</a>.</p>
+<p>Got a late start so, short day today.</p>
+<p><code>git commit -am &quot;Solve issue with shortcodes mutating collections&quot;</code></p>
 
 						
 					</section>
@@ -138,7 +142,7 @@
 				<footer>
 					
 	<div id="taglist">
-		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,Github Actions,WiP,</div>
+		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,Github Actions,WiP,GPC,</div>
 
 					
 						<p>

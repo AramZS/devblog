@@ -9,9 +9,9 @@
 				<title>Hello World Devblog - Pt. 19</title>
 				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
 				<link href="/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="/assets/css/style.css?v=1090566512">
+				<link rel="stylesheet" href="/assets/css/style.css?v=1092443760">
 				
-				<!-- Build Revision: 1090566512 & Sha: 7d114cf770ab21cff597d3374d4ed27ec5d8d092 -->
+				<!-- Build Revision: 1092443760 & Sha: 62a347bb11f9ee93692f1af11136a14dde5d0d8d -->
 				<script src="/assets/js/scale.fix.js"></script>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 				<!--[if lt IE 9]>
@@ -130,6 +130,7 @@
 <p>Then I can just add a <code>gpc.json</code> file in that folder</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br><span class="token punctuation">}</span></code></pre>
 <p><code>git commit -am &quot;Add GPC .well-known file&quot;</code></p>
+<h3 id="Tag-pages-let's-do-it!" tabindex="-1">Tag pages, let's do it!</h3>
 <p>Huh, my front page posts are no longer reversing properly. I think because <code>reverse</code> <a href="https://www.11ty.dev/docs/collections/#sort-descending" target="_blank">happens in-place</a> it's causing some issues.</p>
 <p>Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.</p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><br>		<span class="token string">"projectList"</span><span class="token punctuation">,</span><br>		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order<span class="token punctuation">,</span> hlevel<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">var</span> postCollection <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>collectionOfPosts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				postCollection <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span></code></pre>
