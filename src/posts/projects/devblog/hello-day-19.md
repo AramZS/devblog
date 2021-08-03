@@ -85,6 +85,8 @@ Then I can just add a `gpc.json` file in that folder
 
 `git commit -am "Add GPC .well-known file"`
 
+### Tag pages, let's do it!
+
 Huh, my front page posts are no longer reversing properly. I think because `reverse` [happens in-place](https://www.11ty.dev/docs/collections/#sort-descending) it's causing some issues.
 
 Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.

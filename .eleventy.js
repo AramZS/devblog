@@ -181,13 +181,16 @@ module.exports = function (eleventyConfig) {
 				order = "reverse";
 			}
 			if (order === "reverse" && collectionOfPosts) {
+				// console.log(postCollection.map((post) => post.data.title));
 				postCollection = postCollection.reverse();
+				// console.log("reversed",postCollection.map((post) => post.data.title));
 			}
 			if (postCollection) {
-				postList = collectionOfPosts.map((post) => {
+				postList = postCollection.map((post) => {
 					let postName = post.data.title;
 					return `<li><a href="${post.url}">${postName}</a></li>`;
 				});
+				// console.log("rendered reversed", postList);
 			}
 			let hblock = "";
 			if (!!!hlevel) {
