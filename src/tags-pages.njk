@@ -1,4 +1,5 @@
 ---
+template: base
 eleventyExcludeFromCollections: true
 pagination:
     data: collections.deepTagList
@@ -6,8 +7,8 @@ pagination:
     alias: paged
 permalink: "tag/{{ paged.tagName | slug }}/{% if paged.number > 1 %}{{ paged.number }}/{% endif %}index.html"
 eleventyComputed:
-	title: "Tag: {{paged.tagName}}"
-	description: "Posts tagged with {{paged.tagName}}"
+    title: "Tag: {{ paged.tagName }}"
+    description: "Posts tagged with {{ paged.tagName }}"
 ---
 
 {% block precontent %}

@@ -322,7 +322,7 @@ module.exports = function (eleventyConfig) {
 				});
 			}
 		});
-		console.log("pagedPosts", pagedPosts[0]);
+		console.log("pagedPosts", pagedPosts[0].tagName);
 		return pagedPosts;
 		collection.getAll().forEach((item) => {
 			if ("tags" in item.data) {

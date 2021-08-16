@@ -3,15 +3,13 @@ title: Hello World Devblog - Pt. 21
 subtitle: Getting this dev blog running
 description: "More devblog"
 project: Dev Blog
-date: 2021-08-03 22:59:43.10 -4
+date: 2021-08-16 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
   - Node
   - Sass
-  - Github Actions
   - WiP
-  - GPC
 ---
 
 
@@ -167,3 +165,10 @@ Nope, that doesn't do it. And checking the docs it makes it clear that [we can i
 Hmmm. So I think maybe this just isn't working the way I would have hoped. [It looks like I'm not the only person to want to do this](https://github.com/11ty/eleventy/issues/332). [Judging by the pagination code](https://github.com/11ty/eleventy/blob/master/src/Plugins/Pagination.js) this is indeed the best way to do what I want to do, which seems, sort of a shame. [Others have taken a similar approach as well it looks like](https://github.com/dafiulh/vredeburg/blob/master/src/tag.njk).
 
 I like how the [vredeburg](https://vredeburg.netlify.app/) these handles it. Very solid objects that make pagination easy and page links available. I should be able to adapt it easy. Switching over the code seems like it should be easy enough. The pagination seems to have applied, but the `eleventyComputed` doesn't seem to be working. Oh, a good time to commit!
+
+`git commit -am "Getting tag pages working, mostly there"`
+
+Oh, I used tabs instead of spaces. That was the problem. Well, solved now! I'll add that to my editorconfig file and be good to go!
+
+
+
