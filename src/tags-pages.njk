@@ -1,20 +1,20 @@
 ---
+eleventyExcludeFromCollections: true
 pagination:
-    data: collections.tagList
+    data: collections.deepTagList
     size: 1
-    alias: tag
-permalink: "tag/{{ tag | slug }}/"
+    alias: paged
+permalink: "tag/{{ paged.tagName | slug }}/{% if paged.number > 1 %}{{ paged.number }}/{% endif %}index.html"
 eleventyComputed:
-  title: "Tag: {{ tag }}"
-  description: "Posts tagged {{ tag }}"
+	title: "Tag: {{paged.tagName}}"
+	description: "Posts tagged with {{paged.tagName}}"
 ---
 
 {% block precontent %}
-<h2>Posts tagged: {{tag}}</h2>
+<h2>Posts tagged: {{paged.tagName}}</h2>
 <div>
-	{% postList "noheader",
-	collections[tag],
-	"reverse",
-	"noheader" %}
+	{%- for post in paged.posts %}
+		<p>{{post.data.title}}</p>
+	{%- endfor %}
 </div>
 {% endblock %}

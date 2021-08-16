@@ -145,7 +145,7 @@ module.exports = function (eleventyConfig) {
 	*/
 
 	const pathNormalizer = function (pathString) {
-		return normalize(path.normalize(path.resolve(".")));
+		return normalize(path.normalize(path.resolve(".") + pathString));
 	};
 
 	// Nunjucks Filters
@@ -268,20 +268,84 @@ module.exports = function (eleventyConfig) {
 
 	function filterTagList(tags) {
 		return (tags || []).filter(
-			(tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+			(tag) =>
+				["all", "nav", "post", "posts", "projects"].indexOf(tag) === -1
 		);
 	}
 
 	eleventyConfig.addFilter("filterTagList", filterTagList);
 
-	// Create an array of all tags
-	eleventyConfig.addCollection("tagList", function (collection) {
-		let tagSet = new Set();
-		collection.getAll().forEach((item) => {
-			(item.data.tags || []).forEach((tag) => tagSet.add(tag));
+	let tagSet = new Set();
+	let tagList = [];
+
+	getAllTags = (allPosts) => {
+		allPosts.forEach((item) => {
+			if ("tags" in item.data) {
+				let tags = filterTagList(item.data.tags);
+				// console.log("Tags:", tags);
+				tags.forEach((tag) => {
+					tagSet.add(tag);
+				});
+			}
 		});
-		console.log(filterTagList([...tagSet]));
-		return filterTagList([...tagSet]);
+		tagList = [...tagSet];
+		return tagList;
+	};
+	// Create an array of all tags
+	eleventyConfig.addCollection("tagList", (collection) => {
+		return getAllTags(collection.getAll());
+	});
+
+	// Create a list of posts by tag for paged lists
+	eleventyConfig.addCollection("deepTagList", (collection) => {
+		const maxPostsPerPage = 10;
+		const pagedPosts = [];
+		tagList = getAllTags(collection.getAll());
+		tagList.forEach((tagName) => {
+			const taggedPosts = [
+				...collection.getFilteredByTag(tagName),
+			].reverse();
+			const numberOfPages = Math.ceil(
+				taggedPosts.length / maxPostsPerPage
+			);
+
+			for (let pageNum = 1; pageNum <= numberOfPages; pageNum++) {
+				const sliceFrom = (pageNum - 1) * maxPostsPerPage;
+				const sliceTo = sliceFrom + maxPostsPerPage;
+
+				pagedPosts.push({
+					tagName: tagName,
+					number: pageNum,
+					posts: taggedPosts.slice(sliceFrom, sliceTo),
+					first: pageNum === 1,
+					last: pageNum === numberOfPages,
+				});
+			}
+		});
+		console.log("pagedPosts", pagedPosts[0]);
+		return pagedPosts;
+		collection.getAll().forEach((item) => {
+			if ("tags" in item.data) {
+				let tags = filterTagList(item.data.tags);
+				// console.log("Tags:", tags);
+				tags.forEach((tag) => {
+					if (!tagSet.hasOwnProperty(tag)) {
+						console.log("Add new tag to object", tag);
+						tagSet[tag] = new Set();
+					}
+					item.data.verticalTag = tag;
+					tagSet[tag].add(item);
+				});
+			}
+		});
+		let taggedArray = [];
+		Object.keys(tagSet).forEach((key) => {
+			// console.log(key);        // the name of the current key.
+			// console.log(myObj[key]); // the value of the current key.
+			taggedArray.push([...tagSet[key]]);
+		});
+		console.log("tagset", taggedArray[0][0].data.verticalTag);
+		return tagSet;
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {
