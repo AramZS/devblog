@@ -170,5 +170,5 @@ I like how the [vredeburg](https://vredeburg.netlify.app/) these handles it. Ver
 
 Oh, I used tabs instead of spaces. That was the problem. Well, solved now! I'll add that to my editorconfig file and be good to go!
 
-
+git commit -am "Getting the basics of tags pages working"
 
