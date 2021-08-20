@@ -2000,6 +2000,9 @@ indent_style = space
 <p>A commit to cover tags changes:</p>
 <p><code>git commit -m &quot;Get tags pages working&quot;</code></p>
 <p>Ok now let's commit with the relative file paths working in the suggested way, since everything seems to be working.</p>
+<p>Oh, <a href="https://github.com/11ty/11ty-website/pull/1135" target="_blank">let's also fix the styles for my PR to the 11ty website while I'm here</a>. And, while checking the issues involved with the problem, I noticed <a href="https://github.com/11ty/eleventy/issues/895" target="_blank">my input may have helped push a Nunjucks config option into the eventual 11ty v1 release</a>.</p>
+<p>His suggestions to add the <code>or</code> to the title, while I understand, I want to avoid, as part of the reason I want it to throw errors is specifically to catch stuff like leaving out a title where there needs to be a title.</p>
+<p>Going to break for now, gotta eat.</p>
 </content>
   </entry>
 </feed>
