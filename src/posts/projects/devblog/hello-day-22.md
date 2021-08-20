@@ -196,4 +196,10 @@ A commit to cover tags changes:
 
 Ok now let's commit with the relative file paths working in the suggested way, since everything seems to be working.
 
+Oh, [let's also fix the styles for my PR to the 11ty website while I'm here](https://github.com/11ty/11ty-website/pull/1135). And, while checking the issues involved with the problem, I noticed [my input may have helped push a Nunjucks config option into the eventual 11ty v1 release](https://github.com/11ty/eleventy/issues/895).
+
+His suggestions to add the `or` to the title, while I understand, I want to avoid, as part of the reason I want it to throw errors is specifically to catch stuff like leaving out a title where there needs to be a title.
+
+Going to break for now, gotta eat.
+
 

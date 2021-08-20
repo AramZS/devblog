@@ -151,6 +151,7 @@ module.exports = function (eleventyConfig) {
 	};
 
 	// Nunjucks Filters
+	/** this method doesn't work for unclear reasons
 	let nunjucksFileSystem = [
 		pathNormalizer(
 			path.join(
@@ -175,7 +176,8 @@ module.exports = function (eleventyConfig) {
 			autoescape: true,
 		}
 	);
-	// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+    */
 	const njkEngine = require("nunjucks").configure(
 		[
 			path.join(
