@@ -1,0 +1,195 @@
+<!doctype html>
+
+	<html lang="en-US" id="template-post" class="base">
+	
+		<head>
+			
+				<meta charset="utf-8">
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<title>Hello World Devblog - Pt. 22</title>
+				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
+				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
+				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1149065153">
+				
+					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1149065153">
+				
+				<!-- Build Revision: 1149065153 & Sha: 86bc44164bd19e2b0da90214d67437ebc2f36ac9 -->
+				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+				<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+			
+			
+			
+		</head>
+		<body>
+			<div class="wrapper">
+				<header>
+					
+						
+							<div id="site-name-subhead">
+								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+								
+									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+								
+							</div>
+						
+						
+							<!-- post mode -->
+							<script>
+								console.log([object Object])
+							</script>
+							<time>Fri Aug 20 2021</time>
+							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+						
+						<h1 class="header">
+							Hello World Devblog - Pt. 22
+						</h1>
+						<p class="header">More devblog</p>
+
+					
+				</header>
+				<main>
+					<section id="precontent">
+						
+					</section>
+                    <section id="content">
+						
+							<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with l<a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">inks to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create Next Day/Previous Day links on each post</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?)</p>
+</li>
+</ul>
+<h2 id="Day-22" tabindex="-1">Day 22</h2>
+<p>Ok did the basics of finishing off tags pages. I also want to link to them on the individual posts.</p>
+<p>But we don't want to link to tag pages that I removed because they're collections but not what I think of as tags. So the same filter I applied to build out the tag pages themselves needs to be applied to the post template. Luckily, I have it set up already.</p>
+<pre class="language-js"><code class="language-js">	<span class="token keyword">function</span> <span class="token function">filterTagList</span><span class="token punctuation">(</span><span class="token parameter">tags</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token punctuation">(</span>tags <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><br>			<span class="token punctuation">(</span><span class="token parameter">tag</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>				<span class="token punctuation">[</span><span class="token string">"all"</span><span class="token punctuation">,</span> <span class="token string">"nav"</span><span class="token punctuation">,</span> <span class="token string">"post"</span><span class="token punctuation">,</span> <span class="token string">"posts"</span><span class="token punctuation">,</span> <span class="token string">"projects"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"filterTagList"</span><span class="token punctuation">,</span> filterTagList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>And now I can run my tags list through that filter in the template.</p>
+<pre class="language-liquid"><code class="language-liquid">{<span class="token operator">%</span> block prefooter <span class="token operator">%</span>}<br>	<span class="token operator">&lt;</span>div id<span class="token operator">=</span>"taglist"<span class="token operator">></span><br>		<span class="token operator">&lt;</span>h6<span class="token operator">></span>Tags<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">/</span>h6<span class="token operator">></span><br>        <span class="token operator">&lt;</span>ul<span class="token operator">></span><br>			{<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">for</span> tag <span class="token keyword">in</span> tags <span class="token operator">|</span> filterTagList <span class="token operator">-</span><span class="token operator">%</span>}<br>			    <span class="token operator">&lt;</span>li<span class="token operator">></span><span class="token operator">&lt;</span>a href<span class="token operator">=</span>"{{ site.site_url }}<span class="token operator">/</span>tag<span class="token operator">/</span>{{ tag <span class="token operator">|</span> slug }}"<span class="token operator">></span>{{ tag }}<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span><br>			{<span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">endfor</span> <span class="token operator">-</span><span class="token operator">%</span>}<br>        <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span><br>	<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><br>{<span class="token operator">%</span> endblock <span class="token operator">%</span>}</code></pre>
+<p>I don't like how that looks though, so let's apply some styling. We'll keep it in the semantically correct unordered list HTML, but I want to change the layout. First let's move it to be an <code>inline-block</code>. Then let's add some symbols.</p>
+<p>Ok we're going to use <code>:after</code>. Oh, why is it autocorrecting me to use <code>::after</code>?</p>
+<p><a href="https://stackoverflow.com/questions/17684797/should-i-use-single-colons-or-double-colons-for-before-after-first-le" target="_blank">Apparently, that's the standard!</a> Did not know that. Ok, so I want to have a <code>|</code> seperater between each element, along with the list starting with the character. I know the pseudo-classes for this!</p>
+<pre class="language-sass"><code class="language-sass"><span class="token selector">#taglist</span><br>    <span class="token selector">li</span><br><span class="token property-line">        <span class="token property">font-size</span><span class="token punctuation">:</span> 10px</span><br><span class="token property-line">        <span class="token property">line-height</span><span class="token punctuation">:</span> 6px</span><br><span class="token property-line">        <span class="token property">display</span><span class="token punctuation">:</span> inline-block</span><br><span class="token property-line">        <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">after</span></span><br><span class="token property-line">            <span class="token property">content</span><span class="token punctuation">:</span> </span><span class="token string">"|"</span><br><span class="token property-line">            <span class="token property">margin</span><span class="token punctuation">:</span> 0 3px</span><br><span class="token property-line">        <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">before</span></span><br><span class="token property-line">            <span class="token property">content</span><span class="token punctuation">:</span> </span><span class="token string">"|"</span><br><span class="token property-line">            <span class="token property">margin</span><span class="token punctuation">:</span> 0</span><br><span class="token property-line">            <span class="token property">margin-right</span><span class="token punctuation">:</span> 3px</span></code></pre>
+<p>Hmm, even with line-height set low, I'm still seeing a large separation between lines. It doesn't appear to be based on line-height, I'm not sure where the separation is coming from, it isn't in margin or padding in the Computed area of the styles.</p>
+<p>I think it is just the nature of using <code>inline-block</code> so better to use something else. I'll use <code>display: block</code> and <code>float: left</code>. Then to make things flow properly without it colliding into the element below it I'll have to add the same to the <code>ul</code> container. So final style is like this.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token selector">#taglist</span><br>    <span class="token selector">ul</span><br><span class="token property-line">        <span class="token property">display</span><span class="token punctuation">:</span> block</span><br><span class="token property-line">        <span class="token property">position</span><span class="token punctuation">:</span> relative</span><br><span class="token property-line">        <span class="token property">float</span><span class="token punctuation">:</span> left</span><br><span class="token property-line">        <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 12px</span><br>        <span class="token selector">li</span><br><span class="token property-line">            <span class="token property">font-size</span><span class="token punctuation">:</span> 10px</span><br><span class="token property-line">            <span class="token property">line-height</span><span class="token punctuation">:</span> 12px</span><br><span class="token property-line">            <span class="token property">height</span><span class="token punctuation">:</span> 12px</span><br><span class="token property-line">            <span class="token property">display</span><span class="token punctuation">:</span> block</span><br><span class="token property-line">            <span class="token property">float</span><span class="token punctuation">:</span> left</span><br><span class="token property-line">            <span class="token property">margin</span><span class="token punctuation">:</span> 3px 0</span><br><span class="token property-line">            <span class="token property">padding</span><span class="token punctuation">:</span> 0</span><br><span class="token property-line">            <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">after,</span> <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">before</span></span><br><span class="token property-line">                <span class="token property">content</span><span class="token punctuation">:</span> </span><span class="token string">"|"</span><br><span class="token property-line">                <span class="token property">font-size</span><span class="token punctuation">:</span> 11px</span><br><span class="token property-line">                <span class="token property">font-weight</span><span class="token punctuation">:</span> bold</span><br><span class="token property-line">                <span class="token property">margin</span><span class="token punctuation">:</span> 0 3px</span><br><span class="token property-line">            <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">before</span></span><br><span class="token property-line">                <span class="token property">margin</span><span class="token punctuation">:</span> 0</span><br><span class="token property-line">                <span class="token property">margin-right</span><span class="token punctuation">:</span> 3px</span></code></pre>
+<h3 id="First-response!" tabindex="-1">First response!</h3>
+<p>Ok, I noticed <a href="https://github.com/AramZS/devblog/pull/1" target="_blank">I have a PR</a> around <a href="https://github.com/11ty/eleventy/issues/1879" target="_blank">my attempt to open a custom environment</a>. Let's see if it solves <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-11/" target="_blank">my problems from day 11</a>.</p>
+<p>First <a href="https://github.com/pdehaan" target="_blank"><code>pdehaan</code></a> noted I had a dumb error. Let's see if we can get the array of file strings working properly.</p>
+<p>Also they ask: Why did I include the normalize function? Well, I can look back <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-10/" target="_blank">at day 10</a> and see that the reason is because, <a href="https://github.com/11ty/eleventy/blob/6776e871128cc3f9895edddadc6408db8abd7fde/src/TemplatePath.js#L95" target="_blank">that's what 11ty did</a>. Good to know. It doesn't look like I need it... on Mac at least? But I assume that this has to do with handling weird paths in a multitude of operating systems, so I'll leave it in, just in case I want to develop in another environment.</p>
+<p>Ok, let's leave it in place, but correctly fix all the paths.</p>
+<p>Good stuff! Looks like it works.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>  <span class="token string">'/Users/zuckerscharffa/Dev/fightwithtooldev/src/_includes'</span><span class="token punctuation">,</span><br>  <span class="token string">'/Users/zuckerscharffa/Dev/fightwithtooldev/src/_layouts'</span><span class="token punctuation">,</span><br>  <span class="token string">'/Users/zuckerscharffa/Dev/fightwithtooldev/src'</span><span class="token punctuation">,</span><br>  <span class="token string">'.'</span><br><span class="token punctuation">]</span></code></pre>
+<p>So, do all the other things that broke when I last tried this work? Nope, let's move on to the other comments in the PR.</p>
+<p>Ok, so first, I've got a new error. For some reason, it isn't going down to the <code>partials</code> path inside my <code>_includes</code> folder. Ok, I tried removing that specific call and it still isn't working, now it can't see <code>base.njk</code>, so the <code>_includes</code> folder isn't working at all. Let's try the version in the PR.</p>
+<p>Huh, ok, does it need <em>relative</em> paths, not absolute ones for some reason?</p>
+<pre><code>[ 'src/_includes', 'src/_layouts', 'src' ]
+</code></pre>
+<p><code>pdehaan</code> left off the <code>.</code> path, though that is included in the standard 11ty setup. I'll add it back in, just for consistency.</p>
+<p>Let's fix the other errors I made, before we dive back into the environment issues in more detail.</p>
+<p>Ok, I think I've puilled in all of <code>pdehaan</code> suggestions. (Oops I probably should have made a commit after the tags work huh?)</p>
+<p>A commit to cover tags changes:</p>
+<p><code>git commit -m &quot;Get tags pages working&quot;</code></p>
+<p>Ok now let's commit with the relative file paths working in the suggested way, since everything seems to be working.</p>
+
+						
+					</section>
+					<section id="postcontent">
+						
+					</section>
+				</main>
+				<footer>
+					
+	<div id="taglist">
+		<h6>Tags: </h6>
+        <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
+	</div>
+
+					
+						<p>
+							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+						</p>
+					
+					
+				</footer>
+			</div>
+			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		</body>
+	</html>

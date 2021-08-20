@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"sourceRoot": "https://fightwithtools.dev",
+	"sources": [
+		"sass/src/_sass/template-post.sass"
+	],
+	"names": [],
+	"mappings": "AACI,YACI,cACA,kBACA,WACA,mBACA,eACI,eACA,iBACA,YACA,cACA,WACA,aACA,UACA,2DACI,YACA,eACA,iBACA,aACJ,qCACI,SACA",
+	"file": "template-post.css",
+	"sourcesContent": [
+		"#taglist\n    ul\n        display: block\n        position: relative\n        float: left\n        margin-bottom: 12px\n        li\n            font-size: 10px\n            line-height: 12px\n            height: 12px\n            display: block\n            float: left\n            margin: 3px 0\n            padding: 0\n            &::after, &:first-of-type::before\n                content: \"|\"\n                font-size: 11px\n                font-weight: bold\n                margin: 0 3px\n            &:first-of-type::before\n                margin: 0\n                margin-right: 3px\n"
+	]
+}

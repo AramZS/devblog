@@ -1,18 +1,20 @@
 <!doctype html>
 
-		<html lang="en-US" id="template-base">
-		
+	<html lang="en-US" id="template-post" class="base">
+	
 		<head>
 			
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<title>Hello World Devblog - Pt. 21</title>
-				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="/assets/css/style.css?v=1134284496">
+				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
+				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
+				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1149065153">
 				
-				<!-- Build Revision: 1134284496 & Sha: 8fa4e25c8a4fe1b4f58940d1c4fddd1380f91e01 -->
-				<script src="/assets/js/scale.fix.js"></script>
+					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1149065153">
+				
+				<!-- Build Revision: 1149065153 & Sha: 86bc44164bd19e2b0da90214d67437ebc2f36ac9 -->
+				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 				<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -52,7 +54,7 @@
 					<section id="precontent">
 						
 					</section>
-					<section id="contet">
+                    <section id="content">
 						
 							<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
@@ -161,7 +163,7 @@
 <p>I like how the <a href="https://vredeburg.netlify.app/" target="_blank">vredeburg</a> these handles it. Very solid objects that make pagination easy and page links available. I should be able to adapt it easy. Switching over the code seems like it should be easy enough. The pagination seems to have applied, but the <code>eleventyComputed</code> doesn't seem to be working. Oh, a good time to commit!</p>
 <p><code>git commit -am &quot;Getting tag pages working, mostly there&quot;</code></p>
 <p>Oh, I used tabs instead of spaces. That was the problem. Well, solved now! I'll add that to my editorconfig file and be good to go!</p>
-<p>git commit -am &quot;Getting the basics of tags pages working&quot;</p>
+<p><code>git commit -am &quot;Getting the basics of tags pages working&quot;</code></p>
 
 						
 					</section>
@@ -172,7 +174,9 @@
 				<footer>
 					
 	<div id="taglist">
-		Tags:&nbsp;posts,projects,Starters,11ty,Node,Sass,WiP,</div>
+		<h6>Tags: </h6>
+        <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
+	</div>
 
 					
 						<p>
