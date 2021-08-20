@@ -40,7 +40,7 @@
 	<managingEditor>
 		{{ metadata.author.email }} ({{ metadata.author.name }})
 	</managingEditor>
-	{%- for post in collections.posts %}
+	{%- for post in collections.posts | reverse %}
 	{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
 	<item>
 		<title>{{ post.data.title }}</title>
