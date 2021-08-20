@@ -105,6 +105,7 @@ First of all, I want a chunk of that page that shows my various Work in Progress
 	{% endfor %}
 </ul>
 ```
+{% endraw %}
 
 This is a good start, but what if I only want one category of WiP? Or if I want to separate it out into projects? I need to make this more reusable.
 

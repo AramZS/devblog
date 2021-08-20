@@ -124,9 +124,11 @@ If this works correctly on publish, it will resolve the last of my base requirem
 
 Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's [a plugin for Jekyll to do it](https://github.com/jekyll/github-metadata), it looks like [it does so at least partially via the Github API](https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md). It gets [a pretty good list of data too](https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md). There's also [the "Github Context" which is available to GitHub actions](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context). I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?
 
+{% raw %}
 ```yaml
         - run: export GITHUB_HEAD_SHA=${{ github.run_id }}
 ```
+{% endraw %}
 
 Now I should be able to call this in my site data, right? So I'll update the file at `src/_data/site.js`.
 
@@ -150,6 +152,7 @@ Well... the Sass sitemaps built properly, but none of the Github Actions env stu
 
 What if I set the `env` at the level of job? I think this means I could prob use `GITHUB_SHA`, but I want to see what works.
 
+{% raw %}
 ```yaml
 jobs:
   deploy:
@@ -157,6 +160,7 @@ jobs:
     env:
       MY_GITHUB_RUN_ID: ${{ github.run_id }}
 ```
+{% endraw %}
 
 Ah, that did it, so now I know how to use both!
 

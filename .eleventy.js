@@ -145,28 +145,67 @@ module.exports = function (eleventyConfig) {
 	*/
 
 	const pathNormalizer = function (pathString) {
-		return normalize(path.normalize(path.resolve(".") + pathString));
+		return normalize(
+			path.normalize(path.join(path.resolve("."), pathString))
+		);
 	};
 
 	// Nunjucks Filters
-	/**
-		let nunjucksEnvironment = Nunjucks.configure(
-			new Nunjucks.FileSystemLoader([
-				siteConfiguration.dir.includes,
+	let nunjucksFileSystem = [
+		pathNormalizer(
+			path.join(
 				siteConfiguration.dir.input,
-				siteConfiguration.dir.layouts,
-				"."
-			]),
-			{
-				throwOnUndefined: throwOnUndefinedSetting,
-				autoescape: true
-			}
-		);
-		// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
-		//eleventyConfig.addNunjucksFilter("interpolate", function(value) {
-		//	return Nunjucks.renderString(text, this.ctx);
-		//});
-	*/
+				siteConfiguration.dir.includes
+			)
+		),
+		pathNormalizer(
+			path.join(
+				siteConfiguration.dir.input,
+				siteConfiguration.dir.layouts
+			)
+		),
+		pathNormalizer(siteConfiguration.dir.input),
+		normalize(path.normalize(".")),
+	];
+	console.log("nunjucksFileSystem", nunjucksFileSystem);
+	let nunjucksEnvironment = Nunjucks.configure(
+		new Nunjucks.FileSystemLoader(nunjucksFileSystem),
+		{
+			throwOnUndefined: throwOnUndefinedSetting,
+			autoescape: true,
+		}
+	);
+	// eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+	const njkEngine = require("nunjucks").configure(
+		[
+			path.join(
+				siteConfiguration.dir.input,
+				siteConfiguration.dir.includes
+			),
+			path.join(
+				siteConfiguration.dir.input,
+				siteConfiguration.dir.layouts
+			),
+			siteConfiguration.dir.input,
+			normalize(path.normalize(".")),
+		],
+		{
+			autoescape: false,
+			throwOnUndefined: true,
+		}
+	);
+	// /Users/zuckerscharffa/Dev/fightwithtooldev/.eleventy.js
+	// /Users/zuckerscharffa/Dev/fightwithtooldev/src
+	console.log("other nunjucksFileSystem", [
+		path.join(siteConfiguration.dir.input, siteConfiguration.dir.includes),
+		path.join(siteConfiguration.dir.input, siteConfiguration.dir.layouts),
+		siteConfiguration.dir.input,
+		normalize(path.normalize(".")),
+	]);
+	eleventyConfig.setLibrary("njk", njkEngine); //: autoescape for CSS rules
+	//eleventyConfig.addNunjucksFilter("interpolate", function(value) {
+	//	return Nunjucks.renderString(text, this.ctx);
+	//});
 	eleventyConfig.addShortcode(
 		"postList",
 		function (collectionName, collectionOfPosts, order, hlevel) {
