@@ -1,22 +1,23 @@
 <!doctype html>
 {% if templateName %}
-	<html lang="{{ site.lang }}" id="template-{{ templateName }}">
+	<html lang="{{ site.lang }}" id="template-{{ templateName }}" class="base">
 	{% else %}
-		<html lang="{{ site.lang }}" id="template-base">
-		{% endif %}
+    {% set templateName = "base" %}
+	<html lang="{{ site.lang }}" id="template-base">
+{% endif %}
 		<head>
 			{% block head %}
 				<meta charset="utf-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<title>{{ title }}</title>
-				<link href="/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="/assets/css/style.css?v={{ site.github.build_revision}}">
+				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style">
+				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet">
+				<link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}">
 				{% if templateName %}
-					<link rel="stylesheet" href="/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}">
+					<link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}">
 				{% endif %}
 				<!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
-				<script src="/assets/js/scale.fix.js"></script>
+				<script src="{{site.site_url}}/assets/js/scale.fix.js"></script>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 				<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,7 +61,7 @@
 					<section id="precontent">
 						{% block precontent %}{% endblock %}
 					</section>
-					<section id="contet">
+                    <section id="content">
 						{% block content %}
 							{{ content | safe }}
 						{% endblock %}

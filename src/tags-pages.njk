@@ -1,5 +1,6 @@
 ---
 template: base
+templateName: tag
 eleventyExcludeFromCollections: true
 pagination:
     data: collections.deepTagList
@@ -11,11 +12,13 @@ eleventyComputed:
     description: "Posts tagged with {{ paged.tagName }}"
 ---
 
-{% block precontent %}
+{% block content %}
 <h2>Posts tagged: {{paged.tagName}}</h2>
-<div>
+<div id="post-summary-list">
+    <ul>
 	{%- for post in paged.posts %}
-		<p>{{post.data.title}}</p>
+		<li>{% include "partials/post-summary.njk" %}</li>
 	{%- endfor %}
+    </ul>
 </div>
 {% endblock %}

@@ -1,0 +1,22 @@
+#taglist
+    ul
+        display: block
+        position: relative
+        float: left
+        margin-bottom: 12px
+        li
+            font-size: 10px
+            line-height: 12px
+            height: 12px
+            display: block
+            float: left
+            margin: 3px 0
+            padding: 0
+            &::after, &:first-of-type::before
+                content: "|"
+                font-size: 11px
+                font-weight: bold
+                margin: 0 3px
+            &:first-of-type::before
+                margin: 0
+                margin-right: 3px

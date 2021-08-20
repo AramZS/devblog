@@ -1,10 +1,14 @@
 {% extends "base.njk" %}
 
+{% set templateName = "post" %}
+
 {% block prefooter %}
 	<div id="taglist">
-		Tags:&nbsp;
-			{%- for tag in tags -%}
-			{{ tag }},
+		<h6>Tags: </h6>
+        <ul>
+			{%- for tag in tags | filterTagList -%}
+			    <li><a href="{{ site.site_url }}/tag/{{ tag | slug }}">{{ tag }}</a></li>
 			{%- endfor -%}
+        </ul>
 	</div>
 {% endblock %}
