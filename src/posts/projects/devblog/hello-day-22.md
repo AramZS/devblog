@@ -200,6 +200,8 @@ Oh, [let's also fix the styles for my PR to the 11ty website while I'm here](htt
 
 His suggestions to add the `or` to the title, while I understand, I want to avoid, as part of the reason I want it to throw errors is specifically to catch stuff like leaving out a title where there needs to be a title.
 
+I tried a bunch of different ways to do it with the structure of code I had before, but [something is wonky](https://github.com/AramZS/devblog/pull/1/files/7a7fdd4e87fe39360c573b23da06606ae5e9b072#r692597530). I'll remove it out of the flow for now so I can deploy.
+
 Going to break for now, gotta eat.
 
-
+`git commit -am "Finishing off day 22" `
