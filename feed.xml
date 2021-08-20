@@ -2002,7 +2002,9 @@ indent_style = space
 <p>Ok now let's commit with the relative file paths working in the suggested way, since everything seems to be working.</p>
 <p>Oh, <a href="https://github.com/11ty/11ty-website/pull/1135" target="_blank">let's also fix the styles for my PR to the 11ty website while I'm here</a>. And, while checking the issues involved with the problem, I noticed <a href="https://github.com/11ty/eleventy/issues/895" target="_blank">my input may have helped push a Nunjucks config option into the eventual 11ty v1 release</a>.</p>
 <p>His suggestions to add the <code>or</code> to the title, while I understand, I want to avoid, as part of the reason I want it to throw errors is specifically to catch stuff like leaving out a title where there needs to be a title.</p>
+<p>I tried a bunch of different ways to do it with the structure of code I had before, but <a href="https://github.com/AramZS/devblog/pull/1/files/7a7fdd4e87fe39360c573b23da06606ae5e9b072#r692597530" target="_blank">something is wonky</a>. I'll remove it out of the flow for now so I can deploy.</p>
 <p>Going to break for now, gotta eat.</p>
+<p><code>git commit -am &quot;Finishing off day 22&quot; </code></p>
 </content>
   </entry>
 </feed>
