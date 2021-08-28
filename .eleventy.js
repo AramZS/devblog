@@ -2,6 +2,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
+const pluginTOC = require("eleventy-plugin-toc");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
 // const markdownItRegex = require("markdown-it-regex");
 const path = require("path");
@@ -178,32 +179,19 @@ module.exports = function (eleventyConfig) {
 	);
 	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
     */
-	const njkEngine = require("nunjucks").configure(
-		[
-			path.join(
-				siteConfiguration.dir.input,
-				siteConfiguration.dir.includes
-			),
-			path.join(
-				siteConfiguration.dir.input,
-				siteConfiguration.dir.layouts
-			),
-			siteConfiguration.dir.input,
-			normalize(path.normalize(".")),
-		],
-		{
-			autoescape: false,
-			throwOnUndefined: true,
-		}
-	);
-	// /Users/zuckerscharffa/Dev/fightwithtooldev/.eleventy.js
-	// /Users/zuckerscharffa/Dev/fightwithtooldev/src
-	console.log("other nunjucksFileSystem", [
+	const nunjucksFileSystem = [
 		path.join(siteConfiguration.dir.input, siteConfiguration.dir.includes),
 		path.join(siteConfiguration.dir.input, siteConfiguration.dir.layouts),
 		siteConfiguration.dir.input,
 		normalize(path.normalize(".")),
-	]);
+	];
+	const njkEngine = require("nunjucks").configure(nunjucksFileSystem, {
+		autoescape: false,
+		throwOnUndefined: true,
+	});
+	// /Users/zuckerscharffa/Dev/fightwithtooldev/.eleventy.js
+	// /Users/zuckerscharffa/Dev/fightwithtooldev/src
+	console.log("other nunjucksFileSystem", nunjucksFileSystem);
 	eleventyConfig.setLibrary("njk", njkEngine); //: autoescape for CSS rules
 	//eleventyConfig.addNunjucksFilter("interpolate", function(value) {
 	//	return Nunjucks.renderString(text, this.ctx);
@@ -389,6 +377,14 @@ module.exports = function (eleventyConfig) {
 		return tagSet;
 	});
 
+	eleventyConfig.addPlugin(pluginTOC, {
+		tags: ["h1", "h2", "h3", "h4"], // which heading tags are selected headings must each have an ID attribute
+		wrapper: "nav", // element to put around the root `ol`/`ul`
+		wrapperClass: "toc", // class for the element around the root `ol`/`ul`
+		ul: false, // if to use `ul` instead of `ol`
+		flat: false, // if subheadings should appear as child of parent or as a sibling
+	});
+
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		templateFormats: ["md", "njk"],
 		init: function ({ Prism }) {
@@ -438,7 +434,9 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
-		.use(require("markdown-it-anchor"), { slugify: (s) => slugify(s) });
+		.use(require("markdown-it-anchor"), {
+			slugify: (s) => slugify(s.toLowerCase()),
+		});
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =

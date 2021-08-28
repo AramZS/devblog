@@ -2,6 +2,14 @@
 
 {% set templateName = "post" %}
 
+{% block precontent %}
+<aside id="toc-container">
+    <h2>Contents</h2>
+    {{ content | toc }}
+</aside>
+{% endblock %}
+
+
 {% block prefooter %}
 	<div id="taglist">
 		<h6>Tags: </h6>

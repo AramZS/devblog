@@ -1,4 +1,4 @@
-$mobile-width: 890px
+@use 'variables'
 
 #template-index
     header h5
@@ -11,14 +11,14 @@ $mobile-width: 890px
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))
         grid-gap: 0 6px
         grid-auto-rows: minmax(200px, auto)
-        @media (max-width: $mobile-width)
+        @media (max-width: variables.$mobile-width)
             display: block
         .column:nth-of-type(2n)
             border-left: #ccc 1px solid
             padding-left: 6px
             margin-bottom: 0
             padding-bottom: 12px
-            @media (max-width: $mobile-width)
+            @media (max-width: variables.$mobile-width)
                 border: 0
                 padding-bottom: 10px
                 padding-left: 0
