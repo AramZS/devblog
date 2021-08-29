@@ -187,7 +187,8 @@ module.exports = function (eleventyConfig) {
 	];
 	const njkEngine = require("nunjucks").configure(nunjucksFileSystem, {
 		autoescape: false,
-		throwOnUndefined: true,
+		throwOnUndefined: throwOnUndefinedSetting,
+		noCache: throwOnUndefinedSetting,
 	});
 	// /Users/zuckerscharffa/Dev/fightwithtooldev/.eleventy.js
 	// /Users/zuckerscharffa/Dev/fightwithtooldev/src

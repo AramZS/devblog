@@ -1,5 +1,5 @@
 ---
-template: base
+layout: default
 templateName: tag
 eleventyExcludeFromCollections: true
 pagination:
@@ -13,12 +13,21 @@ eleventyComputed:
 ---
 
 {% block content %}
-<h2>Posts tagged: {{paged.tagName}}</h2>
-<div id="post-summary-list">
-    <ul>
-	{%- for post in paged.posts %}
-		<li>{% include "partials/post-summary.njk" %}</li>
-	{%- endfor %}
-    </ul>
-</div>
+    <h2>Posts tagged: {{paged.tagName}}</h2>
+    <div id="post-summary-list">
+        <ul>
+            {% for post in paged.posts %}
+                <li>
+                    {% include "partials/post-summary.njk" %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+<!-- Between content blocks -->
+{% block postcontent %}
+    <div class="pagination-block">
+        Pages:
+
+    </div>
 {% endblock %}

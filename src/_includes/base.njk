@@ -2,26 +2,26 @@
 {% if templateName %}
 	<html lang="{{ site.lang }}" id="template-{{ templateName }}" class="base">
 	{% else %}
-    {% set templateName = "base" %}
+	{% set templateName = "base" %}
 	<html lang="{{ site.lang }}" id="template-base">
 {% endif %}
 		<head>
 			{% block head %}
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta charset="utf-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<title>{{ title }}</title>
-				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}">
+				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style" />
+				<link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet" />
+				<link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}" />
 				{% if templateName %}
-					<link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}">
+					<link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}" />
 				{% endif %}
 				<!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
 				<script src="{{site.site_url}}/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 			{% endblock %}
 			{% block socialhead %}{% endblock %}
 			{% block stylehead %}{% endblock %}
@@ -61,13 +61,14 @@
 					<section id="precontent">
 						{% block precontent %}{% endblock %}
 					</section>
-                    <section id="content">
+					<section id="content">
 						{% block content %}
 							{{ content | safe }}
 						{% endblock %}
 					</section>
 					<section id="postcontent">
-						{% block postcontent %}{% endblock %}
+						{% block postcontent %}
+						{% endblock %}
 					</section>
 				</main>
 				<footer>

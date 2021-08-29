@@ -24,21 +24,21 @@
 		<div class="column">
 			<h3>Projects Thus Far</h3>
 			<ul>
-				{%- for project in projects %}
+				{% for project in projects %}
 					<li class="capitalize-first">
 						<a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span> <!-- last updated:  {{project.lastUpdatedPost}} -->
 					</li>
-				{%- endfor %}
+				{% endfor %}
 			</ul>
 		</div>
 		<!-- post list: -->
-		{%- for postType in postLists %}
+		{% for postType in postLists %}
 			<div class="column">
 				{% projectList postType.name,
 				collections[postType.collection],
 				postType.order,
 				"h3", 10 %}
 			</div>
-		{%- endfor %}
+		{% endfor %}
 	</div>
 {% endblock %}
