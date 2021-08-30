@@ -123,6 +123,7 @@
 <p>Ok... <a href="https://github.com/11ty/eleventy/issues/834#issuecomment-569474008" target="_blank">this is some eleventy stuff apparently. It just doesn't work as anticipated</a>. I guess it is just rendering everything in the <code>content</code> tag.</p>
 <p>Yup, that is what it is... the warning there isn't very clear but yup, can't mix and match. So no njk templates that use blocks in the base site, anywhere I want to have Nunjuck inherence I'll need to use a markdown file in my site folder and manage the actual templates using <code>_layouts</code>.</p>
 <p>Ok, that works, time to commit and quit for the night.</p>
+<p><code>git commit -am &quot;Finishing off day 23, TOC working, pagination is not.&quot;</code></p>
 </content>
   </entry>
   
