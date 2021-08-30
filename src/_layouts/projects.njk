@@ -1,22 +1,15 @@
----
-pagination:
-    data: projects
-    size: 1
-    alias: project
-permalink: "projects/{{ project.slug | slug }}/"
-eleventyComputed:
-  title: "Project: {{ project.projectName }}"
-  description: "{{ project.description }}"
----
+{% extends "base.njk" %}
 
 {% block precontent %}
+<section id="precontent">
 	<p>
 		Each project I talk about on this blog is usually executed over multiple days.
 		This page is where you can find each of those posts that describe the project as I worked on it.
 	</p>
+</section>
 {% endblock %}
 
-{% block content %}
+{% block maincontent %}
 	<p>
 		<em>This project is about:</em>
 	</p>

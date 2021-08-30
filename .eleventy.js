@@ -15,6 +15,8 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 let Nunjucks = require("nunjucks");
 const normalize = require("normalize-path");
 
+const util = require("util");
+
 loadLanguages(["yaml"]);
 
 require("dotenv").config();
@@ -230,8 +232,7 @@ module.exports = function (eleventyConfig) {
 				hblock = `<${hlevel}>${collectionName}</${hlevel}>`;
 			}
 			return `${hblock}
-		<ul>
-			<!-- Collection: ${collectionName} -->
+		<ul data-collection-name="${collectionName}">
 			${postList.join("\n")}
 		</ul>
 		`;
@@ -269,8 +270,7 @@ module.exports = function (eleventyConfig) {
 				hlevel = "p";
 			}
 			return `<${hlevel}>${collectionName}</${hlevel}>
-		<ul>
-			<!-- Collection: ${collectionName} -->
+		<ul data-collection-name="${collectionName}">
 			${postList.join("\n")}
 		</ul>
 		`;
@@ -397,6 +397,18 @@ module.exports = function (eleventyConfig) {
 				},
 			});
 		},
+	});
+
+	eleventyConfig.addFilter("console", function (value) {
+		let objToEcho;
+		if (value.posts) {
+			objToEcho = Object.assign({}, value);
+			delete objToEcho.posts;
+		} else {
+			objToEcho = value;
+		}
+		const str = util.inspect(objToEcho);
+		return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`;
 	});
 
 	let options = {

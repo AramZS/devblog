@@ -177,4 +177,4 @@ Is there an open tag somewhere?
 
 Gotta stop here.
 
-
+`git commit -am "Finishing off day 23, TOC working, pagination is not."`

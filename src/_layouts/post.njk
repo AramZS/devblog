@@ -1,12 +1,14 @@
-{% extends "base.njk" %}
+{% extends "default.njk" %}
 
 {% set templateName = "post" %}
 
 {% block precontent %}
-<aside id="toc-container">
-    <h2>Contents</h2>
-    {{ content | toc }}
-</aside>
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        {{ content | toc }}
+    </aside>
+</section>
 {% endblock %}
 
 
