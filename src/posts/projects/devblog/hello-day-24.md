@@ -116,7 +116,7 @@ Ok, this is useful, so there's three objects to concern oneself with. `paged` is
         {{ page | console | safe }}
         {{ pagination | console | safe }}
 ```
-{{% endraw %}}
+{% endraw %}
 
 Ok, that works, the code I used from the other theme gets me most of the way there, but I'll have to alter the style to make it work properly for me.
 
