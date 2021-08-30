@@ -140,4 +140,4 @@ Yup, that is what it is... the warning there isn't very clear but yup, can't mix
 
 Ok, that works, time to commit and quit for the night.
 
-
+`git commit -am "Finishing off day 23, TOC working, pagination is not."`
