@@ -1,62 +1,68 @@
 <!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 19</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Sun Aug 01 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 19
+                        </h1>
+                        <p class="header">More devblog</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#day-19">Day 19</a><ol><li><a href="#oh-let's-turn-on-gpc">Oh let's turn on GPC</a></li><li><a href="#tag-pages-let's-do-it!">Tag pages, let's do it!</a></li></ol></li></ol></nav>
+    </aside>
+</section>
 
-	<html lang="en-US" id="template-post" class="base">
-	
-		<head>
-			
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 19</title>
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1150982333">
-				
-					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1150982333">
-				
-				<!-- Build Revision: 1150982333 & Sha: 0de1b80350e3fc7ab4d6ae58307068b18be61caa -->
-				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-			
-			
-			
-		</head>
-		<body>
-			<div class="wrapper">
-				<header>
-					
-						
-							<div id="site-name-subhead">
-								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
-								
-									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
-								
-							</div>
-						
-						
-							<!-- post mode -->
-							<script>
-								console.log([object Object])
-							</script>
-							<time>Sun Aug 01 2021</time>
-							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-						
-						<h1 class="header">
-							Hello World Devblog - Pt. 19
-						</h1>
-						<p class="header">More devblog</p>
-
-					
-				</header>
-				<main>
-					<section id="precontent">
-						
-					</section>
-                    <section id="content">
-						
-							<ol>
+                    <section id="maincontent" class="maincontent">
+                    
+                        <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -125,14 +131,14 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
 </li>
 </ul>
-<h2 id="Day-19" tabindex="-1">Day 19</h2>
-<h3 id="Oh-let's-turn-on-GPC" tabindex="-1">Oh let's turn on GPC</h3>
+<h2 id="day-19" tabindex="-1">Day 19</h2>
+<h3 id="oh-let's-turn-on-gpc" tabindex="-1">Oh let's turn on GPC</h3>
 <p>Oh, I'm not doing any personalized tracking to turn off, but I might as well register my support for <a href="https://globalprivacycontrol.org/" target="_blank">GPC</a>. It should be easy enough to set up a location for me to store <code>.well-known</code> data and pass it through. I'll have an internal folder at <code>src/_well-known</code> and set up a passthrough copy from there.</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token comment">// added to .eleventy.js</span><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"src/_well-known"</span><span class="token operator">:</span> <span class="token string">".well-known"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Then I can just add a <code>gpc.json</code> file in that folder</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br><span class="token punctuation">}</span></code></pre>
 <p><code>git commit -am &quot;Add GPC .well-known file&quot;</code></p>
-<h3 id="Tag-pages-let's-do-it!" tabindex="-1">Tag pages, let's do it!</h3>
+<h3 id="tag-pages-let's-do-it!" tabindex="-1">Tag pages, let's do it!</h3>
 <p>Huh, my front page posts are no longer reversing properly. I think because <code>reverse</code> <a href="https://www.11ty.dev/docs/collections/#sort-descending" target="_blank">happens in-place</a> it's causing some issues.</p>
 <p>Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.</p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><br>		<span class="token string">"projectList"</span><span class="token punctuation">,</span><br>		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order<span class="token punctuation">,</span> hlevel<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">var</span> postCollection <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>collectionOfPosts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				postCollection <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span></code></pre>
@@ -148,27 +154,28 @@
 <p>Got distracted and ended up not finishing. The downside of weekend development.</p>
 <p><code>git commit -am &quot;First run at tag pages&quot;</code></p>
 
-						
-					</section>
-					<section id="postcontent">
-						
-					</section>
-				</main>
-				<footer>
-					
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
 	<div id="taglist">
 		<h6>Tags: </h6>
         <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li><li><a href="https://fightwithtools.dev/tag/gpc">GPC</a></li></ul>
 	</div>
 
-					
-						<p>
-							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-						</p>
-					
-					
-				</footer>
-			</div>
-			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		</body>
-	</html>
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>

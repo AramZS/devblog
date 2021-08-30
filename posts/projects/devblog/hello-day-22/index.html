@@ -1,62 +1,68 @@
 <!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 22</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Fri Aug 20 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 22
+                        </h1>
+                        <p class="header">More devblog</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#day-22">Day 22</a><ol><li><a href="#first-response!">First response!</a></li></ol></li></ol></nav>
+    </aside>
+</section>
 
-	<html lang="en-US" id="template-post" class="base">
-	
-		<head>
-			
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 22</title>
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1150982333">
-				
-					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1150982333">
-				
-				<!-- Build Revision: 1150982333 & Sha: 0de1b80350e3fc7ab4d6ae58307068b18be61caa -->
-				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-			
-			
-			
-		</head>
-		<body>
-			<div class="wrapper">
-				<header>
-					
-						
-							<div id="site-name-subhead">
-								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
-								
-									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
-								
-							</div>
-						
-						
-							<!-- post mode -->
-							<script>
-								console.log([object Object])
-							</script>
-							<time>Fri Aug 20 2021</time>
-							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-						
-						<h1 class="header">
-							Hello World Devblog - Pt. 22
-						</h1>
-						<p class="header">More devblog</p>
-
-					
-				</header>
-				<main>
-					<section id="precontent">
-						
-					</section>
-                    <section id="content">
-						
-							<ol>
+                    <section id="maincontent" class="maincontent">
+                    
+                        <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -137,7 +143,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?)</p>
 </li>
 </ul>
-<h2 id="Day-22" tabindex="-1">Day 22</h2>
+<h2 id="day-22" tabindex="-1">Day 22</h2>
 <p>Ok did the basics of finishing off tags pages. I also want to link to them on the individual posts.</p>
 <p>But we don't want to link to tag pages that I removed because they're collections but not what I think of as tags. So the same filter I applied to build out the tag pages themselves needs to be applied to the post template. Luckily, I have it set up already.</p>
 <pre class="language-js"><code class="language-js">	<span class="token keyword">function</span> <span class="token function">filterTagList</span><span class="token punctuation">(</span><span class="token parameter">tags</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token punctuation">(</span>tags <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><br>			<span class="token punctuation">(</span><span class="token parameter">tag</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>				<span class="token punctuation">[</span><span class="token string">"all"</span><span class="token punctuation">,</span> <span class="token string">"nav"</span><span class="token punctuation">,</span> <span class="token string">"post"</span><span class="token punctuation">,</span> <span class="token string">"posts"</span><span class="token punctuation">,</span> <span class="token string">"projects"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"filterTagList"</span><span class="token punctuation">,</span> filterTagList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -150,7 +156,7 @@
 <p>Hmm, even with line-height set low, I'm still seeing a large separation between lines. It doesn't appear to be based on line-height, I'm not sure where the separation is coming from, it isn't in margin or padding in the Computed area of the styles.</p>
 <p>I think it is just the nature of using <code>inline-block</code> so better to use something else. I'll use <code>display: block</code> and <code>float: left</code>. Then to make things flow properly without it colliding into the element below it I'll have to add the same to the <code>ul</code> container. So final style is like this.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">#taglist</span><br>    <span class="token selector">ul</span><br><span class="token property-line">        <span class="token property">display</span><span class="token punctuation">:</span> block</span><br><span class="token property-line">        <span class="token property">position</span><span class="token punctuation">:</span> relative</span><br><span class="token property-line">        <span class="token property">float</span><span class="token punctuation">:</span> left</span><br><span class="token property-line">        <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 12px</span><br>        <span class="token selector">li</span><br><span class="token property-line">            <span class="token property">font-size</span><span class="token punctuation">:</span> 10px</span><br><span class="token property-line">            <span class="token property">line-height</span><span class="token punctuation">:</span> 12px</span><br><span class="token property-line">            <span class="token property">height</span><span class="token punctuation">:</span> 12px</span><br><span class="token property-line">            <span class="token property">display</span><span class="token punctuation">:</span> block</span><br><span class="token property-line">            <span class="token property">float</span><span class="token punctuation">:</span> left</span><br><span class="token property-line">            <span class="token property">margin</span><span class="token punctuation">:</span> 3px 0</span><br><span class="token property-line">            <span class="token property">padding</span><span class="token punctuation">:</span> 0</span><br><span class="token property-line">            <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">after,</span> <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">before</span></span><br><span class="token property-line">                <span class="token property">content</span><span class="token punctuation">:</span> </span><span class="token string">"|"</span><br><span class="token property-line">                <span class="token property">font-size</span><span class="token punctuation">:</span> 11px</span><br><span class="token property-line">                <span class="token property">font-weight</span><span class="token punctuation">:</span> bold</span><br><span class="token property-line">                <span class="token property">margin</span><span class="token punctuation">:</span> 0 3px</span><br><span class="token property-line">            <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">before</span></span><br><span class="token property-line">                <span class="token property">margin</span><span class="token punctuation">:</span> 0</span><br><span class="token property-line">                <span class="token property">margin-right</span><span class="token punctuation">:</span> 3px</span></code></pre>
-<h3 id="First-response!" tabindex="-1">First response!</h3>
+<h3 id="first-response!" tabindex="-1">First response!</h3>
 <p>Ok, I noticed <a href="https://github.com/AramZS/devblog/pull/1" target="_blank">I have a PR</a> around <a href="https://github.com/11ty/eleventy/issues/1879" target="_blank">my attempt to open a custom environment</a>. Let's see if it solves <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-11/" target="_blank">my problems from day 11</a>.</p>
 <p>First <a href="https://github.com/pdehaan" target="_blank"><code>pdehaan</code></a> noted I had a dumb error. Let's see if we can get the array of file strings working properly.</p>
 <p>Also they ask: Why did I include the normalize function? Well, I can look back <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-10/" target="_blank">at day 10</a> and see that the reason is because, <a href="https://github.com/11ty/eleventy/blob/6776e871128cc3f9895edddadc6408db8abd7fde/src/TemplatePath.js#L95" target="_blank">that's what 11ty did</a>. Good to know. It doesn't look like I need it... on Mac at least? But I assume that this has to do with handling weird paths in a multitude of operating systems, so I'll leave it in, just in case I want to develop in another environment.</p>
@@ -174,27 +180,28 @@
 <p>Going to break for now, gotta eat.</p>
 <p><code>git commit -am &quot;Finishing off day 22&quot; </code></p>
 
-						
-					</section>
-					<section id="postcontent">
-						
-					</section>
-				</main>
-				<footer>
-					
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
 	<div id="taglist">
 		<h6>Tags: </h6>
         <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
 	</div>
 
-					
-						<p>
-							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-						</p>
-					
-					
-				</footer>
-			</div>
-			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		</body>
-	</html>
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>

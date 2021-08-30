@@ -1,62 +1,68 @@
 <!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 6</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Sat Jun 19 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 6
+                        </h1>
+                        <p class="header">Part 6 of setting up 11ty dev blog.</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#day-6">Day 6</a></li></ol></nav>
+    </aside>
+</section>
 
-	<html lang="en-US" id="template-post" class="base">
-	
-		<head>
-			
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 6</title>
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1150982333">
-				
-					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1150982333">
-				
-				<!-- Build Revision: 1150982333 & Sha: 0de1b80350e3fc7ab4d6ae58307068b18be61caa -->
-				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-			
-			
-			
-		</head>
-		<body>
-			<div class="wrapper">
-				<header>
-					
-						
-							<div id="site-name-subhead">
-								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
-								
-									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
-								
-							</div>
-						
-						
-							<!-- post mode -->
-							<script>
-								console.log([object Object])
-							</script>
-							<time>Sat Jun 19 2021</time>
-							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-						
-						<h1 class="header">
-							Hello World Devblog - Pt. 6
-						</h1>
-						<p class="header">Part 6 of setting up 11ty dev blog.</p>
-
-					
-				</header>
-				<main>
-					<section id="precontent">
-						
-					</section>
-                    <section id="content">
-						
-							<ol>
+                    <section id="maincontent" class="maincontent">
+                    
+                        <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -101,7 +107,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1 id="Day-6" tabindex="-1">Day 6</h1>
+<h1 id="day-6" tabindex="-1">Day 6</h1>
 <p>Ok, here we go on day 6. Today I write code on a Delta flight.</p>
 <p>I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.</p>
 <p>The most upvoted solution I saw for Github Pages deployment was <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
@@ -129,27 +135,28 @@
 <p>[ ] Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 <p><code>git commit -am &quot;Have I got the secret now?&quot;</code></p>
 
-						
-					</section>
-					<section id="postcontent">
-						
-					</section>
-				</main>
-				<footer>
-					
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
 	<div id="taglist">
 		<h6>Tags: </h6>
         <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
 	</div>
 
-					
-						<p>
-							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-						</p>
-					
-					
-				</footer>
-			</div>
-			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		</body>
-	</html>
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>

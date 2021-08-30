@@ -1,62 +1,68 @@
 <!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 20</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Tue Aug 03 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 20
+                        </h1>
+                        <p class="header">More devblog</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#day-20">Day 20</a></li></ol></nav>
+    </aside>
+</section>
 
-	<html lang="en-US" id="template-post" class="base">
-	
-		<head>
-			
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 20</title>
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1150982333">
-				
-					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1150982333">
-				
-				<!-- Build Revision: 1150982333 & Sha: 0de1b80350e3fc7ab4d6ae58307068b18be61caa -->
-				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-			
-			
-			
-		</head>
-		<body>
-			<div class="wrapper">
-				<header>
-					
-						
-							<div id="site-name-subhead">
-								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
-								
-									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
-								
-							</div>
-						
-						
-							<!-- post mode -->
-							<script>
-								console.log([object Object])
-							</script>
-							<time>Tue Aug 03 2021</time>
-							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-						
-						<h1 class="header">
-							Hello World Devblog - Pt. 20
-						</h1>
-						<p class="header">More devblog</p>
-
-					
-				</header>
-				<main>
-					<section id="precontent">
-						
-					</section>
-                    <section id="content">
-						
-							<ol>
+                    <section id="maincontent" class="maincontent">
+                    
+                        <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -128,34 +134,35 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with l<a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">inks to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
 </li>
 </ul>
-<h2 id="Day-20" tabindex="-1">Day 20</h2>
+<h2 id="day-20" tabindex="-1">Day 20</h2>
 <p>Ok, well, first problem was I hadn't switched the variable. Doing that got the reverse working. Let's try removing the array clone.</p>
 <p>Hmm. Interesting, doing that appears to keep the tag pages reversed, but the homepage post list from the <code>projectList</code> shortcode is broken again.</p>
 <p>I checked <a href="https://github.com/11ty/eleventy/issues/215" target="_blank">this issue</a> first and it looks this was reported, but not this exact context. <a href="https://github.com/11ty/eleventy/issues/352" target="_blank">It looks like it was an issue with getAllSorted</a>. Ok, I'm going to suggest documentation and keep <code>.slice</code> in place. I could potentially use the <code>reverse</code> filter, but I'm not sure that would work well with the functionality I'm trying to create, which gives me the ability to generate and alter these lists using arguments from the Markdown front-matter. It would be good <a href="https://github.com/11ty/11ty-website/pull/1135" target="_blank">to warn that collections manipulated in shortcodes impact other uses of the same collections</a>.</p>
 <p>Got a late start so, short day today.</p>
 <p><code>git commit -am &quot;Solve issue with shortcodes mutating collections&quot;</code></p>
 
-						
-					</section>
-					<section id="postcontent">
-						
-					</section>
-				</main>
-				<footer>
-					
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
 	<div id="taglist">
 		<h6>Tags: </h6>
         <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li><li><a href="https://fightwithtools.dev/tag/gpc">GPC</a></li></ul>
 	</div>
 
-					
-						<p>
-							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-						</p>
-					
-					
-				</footer>
-			</div>
-			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		</body>
-	</html>
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>

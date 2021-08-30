@@ -1,62 +1,68 @@
 <!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 7</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Mon Jun 21 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 7
+                        </h1>
+                        <p class="header">Part 7 of setting up 11ty dev blog.</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#day-7">Day 7</a></li></ol></nav>
+    </aside>
+</section>
 
-	<html lang="en-US" id="template-post" class="base">
-	
-		<head>
-			
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>Hello World Devblog - Pt. 7</title>
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
-				<link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-				<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1150982333">
-				
-					<link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1150982333">
-				
-				<!-- Build Revision: 1150982333 & Sha: 0de1b80350e3fc7ab4d6ae58307068b18be61caa -->
-				<script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
-				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-				<!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-			
-			
-			
-		</head>
-		<body>
-			<div class="wrapper">
-				<header>
-					
-						
-							<div id="site-name-subhead">
-								<a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
-								
-									> <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
-								
-							</div>
-						
-						
-							<!-- post mode -->
-							<script>
-								console.log([object Object])
-							</script>
-							<time>Mon Jun 21 2021</time>
-							<!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
-						
-						<h1 class="header">
-							Hello World Devblog - Pt. 7
-						</h1>
-						<p class="header">Part 7 of setting up 11ty dev blog.</p>
-
-					
-				</header>
-				<main>
-					<section id="precontent">
-						
-					</section>
-                    <section id="content">
-						
-							<ol>
+                    <section id="maincontent" class="maincontent">
+                    
+                        <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -104,7 +110,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 </ul>
-<h1 id="Day-7" tabindex="-1">Day 7</h1>
+<h1 id="day-7" tabindex="-1">Day 7</h1>
 <p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
 <p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
 <p>First is <a href="https://github.com/actions/setup-node" target="_blank">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
@@ -146,27 +152,28 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
 </ul>
 
-						
-					</section>
-					<section id="postcontent">
-						
-					</section>
-				</main>
-				<footer>
-					
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
 	<div id="taglist">
 		<h6>Tags: </h6>
         <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
 	</div>
 
-					
-						<p>
-							<small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
-						</p>
-					
-					
-				</footer>
-			</div>
-			<!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		</body>
-	</html>
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>

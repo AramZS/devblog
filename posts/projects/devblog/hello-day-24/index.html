@@ -1,0 +1,196 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 24</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1180593235" />
+            
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1180593235" />
+            
+            <!-- Build Revision: 1180593235 & Sha: 014b135ee57df77b27e6180d2a2a894c3e2f6dc7 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+        
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Mon Aug 30 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 24
+                        </h1>
+                        <p class="header">More devblog</p>
+                    
+                </header>
+                <main>
+                    
+<section id="precontent">
+    <aside id="toc-container">
+        <h2>Contents</h2>
+        <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-24">Day 24</a></li></ol></nav>
+    </aside>
+</section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+</ul>
+<h2 id="day-24" tabindex="-1">Day 24</h2>
+<p>I'm going to pause on trying to debug the nunjucks stuff not working as expected. I have no idea why content is appearing in the wrong block and I see no previous examples of this problem. It makes me more sure than ever that I likely screwed something up with an open tag <em>somewhere</em> but I have no idea where and the tooling isn't showing me like it should. Let's just try and get tag pages' content done first, even if that content is showing up in the wrong area.</p>
+<p>I think I need to get better insight into how this object is showing on the page. I want to dump it on the page and examine it. Nunjucks <a href="https://github.com/mozilla/nunjucks/issues/94#issuecomment-241729768" target="_blank">seems to have</a> <code>{{ object | dump | safe}}</code> but it isn't working with a more complicated eleventy-generated object. Let's give a custom debug filter a try. <a href="https://github.com/11ty/eleventy/issues/266#issuecomment-716176366" target="_blank">Looks like some good ideas in the eleventy issues.</a></p>
+<p>Ok, <a href="https://github.com/11ty/eleventy/issues/266#issuecomment-841304247" target="_blank">used the comment with a clean echo</a>.</p>
+<pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">'console'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">const</span> str <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">inspect</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div style="white-space: pre-wrap;"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">unescape</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/div>;</span><span class="token template-punctuation string">`</span></span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>But when it has a posts object, you end up with all the posts and their content in the middle of the object, which is no good.</p>
+<p>I'm just going to remove the posts part of the object, but I want to make sure that doesn't impact the overall object, which might be used elsewhere, so I'm going to clone it. I have to use <code>Object.assign</code> for this, because <code>JSON.stringify</code> can't deal with circular references. I may also want to <a href="https://www.11ty.dev/docs/filters/log/" target="_blank">try <code>log</code></a> if this doesn't work.</p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"console"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> objToEcho<span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">.</span>posts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			objToEcho <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">delete</span> objToEcho<span class="token punctuation">.</span>posts<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>			objToEcho <span class="token operator">=</span> value<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">const</span> str <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">inspect</span><span class="token punctuation">(</span>objToEcho<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div style="white-space: pre-wrap;"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">unescape</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/div>;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Ok, this is useful, so there's three objects to concern oneself with. <code>paged</code> is the object I created with the contents of this page. <code>page</code> is specific metadata about the page, and <code>pagination</code> gives me the information about the previous and next pages, along with information about the collection itself. I can look at them all with this:</p>
+<pre class="language-liquid"><code class="language-liquid">        Pages dump<span class="token operator">:</span><br>        {{ paged <span class="token operator">|</span> console <span class="token operator">|</span> safe }}<br>        {{ page <span class="token operator">|</span> console <span class="token operator">|</span> safe }}<br>        {{ pagination <span class="token operator">|</span> console <span class="token operator">|</span> safe }}</code></pre>
+<p>{}</p>
+<p>Ok, that works, the code I used from the other theme gets me most of the way there, but I'll have to alter the style to make it work properly for me.</p>
+<p>Ok. Now that I know what's going on, I feel a little more comfortable asking... wtf is going on with the pagination content not falling into the given block? It has to be something wrong with my <code>base.njk</code> file. But I don't know what. Let's walk it through.</p>
+<p>Ok, first I'm going to switch all spacing to spaces. Then I'm going to clean up my messy if/else in defining the <code>html</code> tag as that's difficult to read or manage.</p>
+<p>Does Nunjucks support <code>elif</code> as an &quot;else if&quot; expression as I thought on <a href="/posts/projects/devblog/hello-day-9/" target="_blank">Day 9</a>? It doesn't appear in Nunjucks docs, but I would assume it does. Removing it doesn't fix my problem, but it isn't really needed, so let's remove it anyway.</p>
+<p>It is sort of irritating to have a section before my content when I don't need it, so let's remove the precontent section HTML tag from the base template and add it in the areas I use it instead.</p>
+<p>Still nothing.</p>
+<p>I'll try a blank page.</p>
+<p>Still nothing. Maybe I'm crazy, but unless the rendering engine is broken by HTML comments, something at the rendering engine level is broken.</p>
+<p>Ok... <a href="https://github.com/11ty/eleventy/issues/834#issuecomment-569474008" target="_blank">this is some eleventy stuff apparently. It just doesn't work as anticipated</a>. I guess it is just rendering everything in the <code>content</code> tag.</p>
+<p>Yup, that is what it is... the warning there isn't very clear but yup, can't mix and match. So no njk templates that use blocks in the base site, anywhere I want to have Nunjuck inherence I'll need to use a markdown file in my site folder and manage the actual templates using <code>_layouts</code>.</p>
+<p>Ok, that works, time to commit and quit for the night.</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+                    
+                    </section>
+                </main>
+                <footer>
+                    
+	<div id="taglist">
+		<h6>Tags: </h6>
+        <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
+	</div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
