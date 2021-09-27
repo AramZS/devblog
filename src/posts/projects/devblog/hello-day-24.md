@@ -134,6 +134,8 @@ I'll try a blank page.
 
 Still nothing. Maybe I'm crazy, but unless the rendering engine is broken by HTML comments, something at the rendering engine level is broken.
 
+Let's google this and read some Github issues.
+
 Ok... [this is some eleventy stuff apparently. It just doesn't work as anticipated](https://github.com/11ty/eleventy/issues/834#issuecomment-569474008). I guess it is just rendering everything in the `content` tag.
 
 Yup, that is what it is... the warning there isn't very clear but yup, can't mix and match. So no njk templates that use blocks in the base site, anywhere I want to have Nunjuck inherence I'll need to use a markdown file in my site folder and manage the actual templates using `_layouts`.
