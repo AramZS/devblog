@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 30 Aug 2021 14:19:36 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 27 Sep 2021 00:59:42 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,146 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Hello World Devblog - Pt. 25</title>
+		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-25/?source=rss</link>
+		<pubDate>Mon, 27 Sep 2021 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-25/</guid>
+		<description>More devblog</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-25" tabindex="-1">Day 25</h2>
+<p>Ok, wow, looking back on my last &quot;day's&quot; notes and it has been a while. Almost a month. I got very busy!</p>
+<p>I did a quick review of some of my tasks and checked them off. Getting closer to catching up with my ever-broadining scope!</p>
+<p>After some examination of what is in the project thus far and what I've added and completed... I think this is the time to declare a lock on this project. I've added two more items to complete and the 7 primary features I required from this project are done. Now, once I check off all the items of the remaining To Dos I think it'll be time to shift my focus back to Backreads... or to another project.</p>
+<p>Ok! That's settled then!</p>
+<p>The tag pages do appear to have working pagination with my last changes, though they need some design work, so it seems like now is a good time to do some CSS work!</p>
+<p>I'll pull most of the preexisting classes that were on the elements from the theme I took the HTML from and add one of my own for disabled links, that'll be good to reuse. I'll also need to make sure to add an override for the hover state.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token selector">.disabled-link</span><br /><span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> grey</span><br /><span class="token property-line">    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none</span><br /><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">hover</span></span><br /><span class="token property-line">        <span class="token property">text-decoration</span><span class="token punctuation">:</span> none</span><br /><span class="token property-line">        <span class="token property">color</span><span class="token punctuation">:</span> grey</span></code></pre>
+<p>I next need to set the pagination links to align with the article block. I'll give it a left padding of <code>25px</code> to match the UL indentation on tag pages. Now I need to make it clearer what the links are and what they do.</p>
+<p>It's sort of old school, but I'll layer some basic colors and a drop shadow. Why not?</p>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</li>
+</ul>
+<p><code>git commit -m &quot;Style pagination&quot;</code></p>
+<p>Ok, I'm going to add a sass file and a few per-file overrides to support a dark theme.</p>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</li>
+</ul>
+<p><code>git commit -am &quot;Set up dark mode styles&quot;</code></p>
+<p>Ok, I'm going to move the post description to be below the table of contents and that way I can set a fixed position for the ToC on wider screens and not worry about the <code>header</code> area overlapping with the fixed contents position. And to make sure it doesn't overlap with the footer I'll give it a max-height and set it to scroll if there is too much content.</p>
+<p><code>git commit -am &quot;Set fixed table of contents&quot;</code></p>
+<p>Ok, pretty good for a short day's work!</p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Hello World Devblog - Pt. 24</title>
@@ -130,6 +270,7 @@
 <p>Still nothing.</p>
 <p>I'll try a blank page.</p>
 <p>Still nothing. Maybe I'm crazy, but unless the rendering engine is broken by HTML comments, something at the rendering engine level is broken.</p>
+<p>Let's google this and read some Github issues.</p>
 <p>Ok... <a href="https://github.com/11ty/eleventy/issues/834#issuecomment-569474008" target="_blank">this is some eleventy stuff apparently. It just doesn't work as anticipated</a>. I guess it is just rendering everything in the <code>content</code> tag.</p>
 <p>Yup, that is what it is... the warning there isn't very clear but yup, can't mix and match. So no njk templates that use blocks in the base site, anywhere I want to have Nunjuck inherence I'll need to use a markdown file in my site folder and manage the actual templates using <code>_layouts</code>.</p>
 <p>Ok, that works, time to commit and quit for the night.</p>

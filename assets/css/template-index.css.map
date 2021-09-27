@@ -5,9 +5,9 @@
 		"sass/src/_sass/template-index.sass"
 	],
 	"names": [],
-	"mappings": "AAGI,0BACI,cACA,4BACI,qBACA,cACR,iCACI,aACA,4DACA,eACA,mCACA,yBALJ,iCAMQ,eACJ,yDACI,2BACA,iBACA,gBACA,oBACA,yBALJ,yDAMQ,SACA,oBACA,gBAER,+BACI,kBACJ,+BACI",
+	"mappings": "AAGI,0BACI,cACA,4BACI,qBACA,cACJ,mCALJ,0BAMQ,cACA,4BACI,eACZ,iCACI,aACA,4DACA,eACA,mCACA,yBALJ,iCAMQ,eACJ,yDACI,2BACA,iBACA,gBACA,oBACA,yBALJ,yDAMQ,SACA,oBACA,gBAER,+BACI,kBACJ,+BACI",
 	"file": "emplate-index.css",
 	"sourcesContent": [
-		"@use 'variables'\n\n#template-index\n    header h5\n        color: #bdbdbd\n        a\n            text-decoration: none\n            color: #bdbdbd\n    .front-container\n        display: grid\n        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))\n        grid-gap: 0 6px\n        grid-auto-rows: minmax(200px, auto)\n        @media (max-width: variables.$mobile-width)\n            display: block\n        .column:nth-of-type(2n)\n            border-left: #ccc 1px solid\n            padding-left: 6px\n            margin-bottom: 0\n            padding-bottom: 12px\n            @media (max-width: variables.$mobile-width)\n                border: 0\n                padding-bottom: 10px\n                padding-left: 0\n    .front-post\n        hr\n            margin-bottom: 6px\n        h3\n            margin-top: 2px\n"
+		"@use 'variables'\n\n#template-index\n    header h5\n        color: #bdbdbd\n        a\n            text-decoration: none\n            color: #bdbdbd\n        @media (prefers-color-scheme: dark)\n            color: #424242\n            a\n                color: #424242\n    .front-container\n        display: grid\n        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))\n        grid-gap: 0 6px\n        grid-auto-rows: minmax(200px, auto)\n        @media (max-width: variables.$mobile-width)\n            display: block\n        .column:nth-of-type(2n)\n            border-left: #ccc 1px solid\n            padding-left: 6px\n            margin-bottom: 0\n            padding-bottom: 12px\n            @media (max-width: variables.$mobile-width)\n                border: 0\n                padding-bottom: 10px\n                padding-left: 0\n    .front-post\n        hr\n            margin-bottom: 6px\n        h3\n            margin-top: 2px\n"
 	]
 }

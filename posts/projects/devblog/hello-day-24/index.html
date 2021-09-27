@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 24</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1182507233" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1276400179" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1182507233" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1276400179" />
             
-            <!-- Build Revision: 1182507233 & Sha: 10a27dda8e0d2f2b1790f4a2091725b62c819f49 -->
+            <!-- Build Revision: 1276400179 & Sha: 22240416f821b3aafe4e47f3d95fc23ec3021d58 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -47,7 +47,7 @@
                         <h1 class="header">
                             Hello World Devblog - Pt. 24
                         </h1>
-                        <p class="header">More devblog</p>
+                        
                     
                 </header>
                 <main>
@@ -58,6 +58,7 @@
         <nav class="toc">
         <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-24">Day 24</a></li></ol></nav>
     </aside>
+    <div id="post-description">More devblog</div>
 </section>
 
                     <section id="maincontent" class="maincontent">
@@ -164,6 +165,7 @@
 <p>Still nothing.</p>
 <p>I'll try a blank page.</p>
 <p>Still nothing. Maybe I'm crazy, but unless the rendering engine is broken by HTML comments, something at the rendering engine level is broken.</p>
+<p>Let's google this and read some Github issues.</p>
 <p>Ok... <a href="https://github.com/11ty/eleventy/issues/834#issuecomment-569474008" target="_blank">this is some eleventy stuff apparently. It just doesn't work as anticipated</a>. I guess it is just rendering everything in the <code>content</code> tag.</p>
 <p>Yup, that is what it is... the warning there isn't very clear but yup, can't mix and match. So no njk templates that use blocks in the base site, anywhere I want to have Nunjuck inherence I'll need to use a markdown file in my site folder and manage the actual templates using <code>_layouts</code>.</p>
 <p>Ok, that works, time to commit and quit for the night.</p>
