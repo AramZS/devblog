@@ -49,7 +49,9 @@
                         <h1 class="header">
                             {{ title }}
                         </h1>
+                        {% if '/posts' not in page.url %}
                         <p class="header">{{ description }}</p>
+                        {% endif %}
                     {% endblock %}
                 </header>
                 <main>
