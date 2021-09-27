@@ -1,5 +1,8 @@
 @use 'variables'
 
+header
+    max-height: 557px
+
 #precontent
     margin-bottom: .2em
     padding-bottom: 0
@@ -16,6 +19,19 @@
             font-size: 1.5em
         @media (max-width: variables.$mobile-width)
             margin-top: 20px
+        @media (min-width: variables.$large-mobile)
+            position: fixed
+            top: 590px
+            left: 7px
+            width: calc(195px - 3em)
+            margin-top: 0
+            max-height: 280px
+            overflow: scroll
+    #post-description
+        padding: 10px 14px
+        padding-top: 20px
+        border-bottom: 2px white solid
+        margin-bottom: 2px
 #taglist
     display: block
     width: 100%
