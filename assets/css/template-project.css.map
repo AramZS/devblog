@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"sourceRoot": "https://fightwithtools.dev",
+	"sources": [
+		"sass/src/_sass/template-project.sass"
+	],
+	"names": [],
+	"mappings": "AACI,8BACI",
+	"file": "emplate-project.css",
+	"sourcesContent": [
+		"#template-project\n    #precontent\n        margin-top: 10px\n"
+	]
+}
