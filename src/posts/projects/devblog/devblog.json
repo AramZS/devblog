@@ -1,4 +1,5 @@
 {
 	"project": "Dev Blog",
-	"description": "Building this very blog for my development notes, using Eleventy."
+	"description": "Building this very blog for my development notes, using Eleventy.",
+	"repo": "https://github.com/AramZS/devblog"
 }
