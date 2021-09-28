@@ -62,7 +62,7 @@ module.exports = (domain) => {
 	});
 	templateFiles.forEach((file) => {
 		var templateOutFile =
-			"/assets/css/" + path.basename(file, ".sass").substring(1) + ".css";
+			"/assets/css/" + path.basename(file, ".sass") + ".css";
 		console.log("Sass Outfile: ", templateOutFile);
 		var templateResult = sass.renderSync({
 			includePaths: [
