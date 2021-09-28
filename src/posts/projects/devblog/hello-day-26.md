@@ -130,6 +130,7 @@ None are exactly right, but I might be able to walk backwards through parent com
 
 Ok, I know I said I'd lock scope, but this one last expansion! I want to have useful links on the homepage and a blogroll as well. Easy enough to do right? This is the last extra feature, I promise! I'm going to add them as non-post collections in their own folders at `src/links` and `src/blogroll`. I'll follow the same pattern I did with posts and projects and create a base `json` file with default values including the initial collection "tag" and the template I want to use (which won't be the standard one). As an example, I'll put a file at `src/blogroll/blogroll.json` that has these valeus:
 
+{% raw %}
 ```json
 {
 	"layout": "fwd.njk",
@@ -138,6 +139,7 @@ Ok, I know I said I'd lock scope, but this one last expansion! I want to have us
 	"date": "Last Modified"
 }
 ```
+{% endraw %}
 
 Good stuff! Now I need a template that can handle forwarding users to the correct off-site location. There's some fun and fancy ways to do this with Netlify I know, but I'm not using Netlify. So basic is the goal.
 
@@ -145,6 +147,7 @@ I'm going to use `isBasedOn` as the YAML metadata for the origin URL. This is br
 
 Here's the final template (for now).
 
+{% raw %}
 ```liquid
 <html>
     <head>
@@ -178,9 +181,11 @@ Here's the final template (for now).
     </body>
 </html>
 ```
+{% endraw %}
 
 And here's a YAML statement in `src/blogroll/hacktext.md`.
 
+{% raw %}
 ```yaml
 title: "Hack Text"
 description: "Thinking about Narrative"
@@ -189,7 +194,12 @@ isBasedOn: "https://hacktext.com"
 tags:
   - Personal Blog
 ```
+{% endraw %}
 
 Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.
 
 `git commit -am "Set up blogroll and links and write up day 26"`
+
+Oops forgot to add the `raw` tags to escape my code.
+
+`git commit -am "Add escaping tags to day 26`
