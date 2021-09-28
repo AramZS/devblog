@@ -6,7 +6,7 @@
 	],
 	"names": [],
 	"mappings": "AACI,8BACI",
-	"file": "emplate-project.css",
+	"file": "template-project.css",
 	"sourcesContent": [
 		"#template-project\n    #precontent\n        margin-top: 10px\n"
 	]

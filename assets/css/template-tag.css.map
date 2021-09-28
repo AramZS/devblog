@@ -6,7 +6,7 @@
 	],
 	"names": [],
 	"mappings": "AAAA,yBACI",
-	"file": "emplate-tag.css",
+	"file": "template-tag.css",
 	"sourcesContent": [
 		"#post-summary-list > ul > li\n    list-style-type: none\n"
 	]
