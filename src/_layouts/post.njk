@@ -5,8 +5,10 @@
 {% block precontent %}
 <section id="precontent">
     <aside id="toc-container">
-        <h2>Contents</h2>
-        {{ content | toc }}
+        <div id="toc-container__inner">
+            <h2>Contents</h2>
+            {{ content | toc }}
+        </div>
     </aside>
     <div id="post-description">{{ description }}</div>
 </section>

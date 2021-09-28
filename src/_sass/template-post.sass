@@ -9,7 +9,7 @@ header
     #toc-container
         display: table
         border: 2px solid #a2a9b1
-        padding: 1em 3em
+        padding: 1em 0
         font-size: 95%
         background-color: #f8f9fa
         max-width: 100%
@@ -17,16 +17,28 @@ header
         h2
             margin-top: .5em
             font-size: 1.5em
+            margin: 0 1em
+        #toc-container__inner
+            @media (min-width: variables.$large-mobile) and (min-height: 962px)
+                overflow-y: auto
+                max-height: 225px
+        nav
+            margin: .5em 1.5em
+        ol
+            margin-bottom: 12px
+        ol ol
+            margin-bottom: 10px
         @media (max-width: variables.$mobile-width)
             margin-top: 20px
-        @media (min-width: variables.$large-mobile)
+        @media (min-width: variables.$large-mobile) and (min-height: 962px)
             position: fixed
-            top: 590px
+            top: 490px
             left: 7px
-            width: calc(195px - 3em)
+            width: calc(195px + 3em)
             margin-top: 0
-            max-height: 280px
-            overflow: scroll
+            max-height: 278px
+            overflow: hidden
+            z-index: 100
     #post-description
         padding: 10px 14px
         padding-top: 20px
@@ -59,6 +71,15 @@ header
             &:first-of-type::before
                 margin: 0
                 margin-right: 3px
+        a
+            display: inline
+    @media (min-width: variables.$large-mobile) and (max-height: 575px)
+        display: none
+footer
+    @media (min-width: variables.$large-mobile) and (max-height: 522px)
+        display: none
 @media (prefers-color-scheme: dark)
     #taglist ul li
         font-size: 11px
+        a
+            color: #2a7ae2
