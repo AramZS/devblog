@@ -192,3 +192,4 @@ tags:
 
 Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.
 
+`git commit -am "Set up blogroll and links and write up day 26"`
