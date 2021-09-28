@@ -2,7 +2,7 @@
 title: Hello World Devblog - Pt. 26
 description: "More devblog"
 project: Dev Blog
-date: 2021-09-26 22:59:43.10 -4
+date: 2021-09-27 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
@@ -124,8 +124,71 @@ Ok, I [found some interesting ideas for traversing the Github API](https://stack
 
 None are exactly right, but I might be able to walk backwards through parent commits if I start at the HEAD. I think I'll also want to cache commits so I don't have to walk the tree of commits on every build.
 
-
+`git commit -m "Add repo URL for future API calls."`
 
 ### Blogroll and Links
 
-Ok, I know I said I'd lock scope, but this one last expansion! I want to have useful links on the homepage and a blogroll as well. Easy enough to do right? I'm going to add them
+Ok, I know I said I'd lock scope, but this one last expansion! I want to have useful links on the homepage and a blogroll as well. Easy enough to do right? This is the last extra feature, I promise! I'm going to add them as non-post collections in their own folders at `src/links` and `src/blogroll`. I'll follow the same pattern I did with posts and projects and create a base `json` file with default values including the initial collection "tag" and the template I want to use (which won't be the standard one). As an example, I'll put a file at `src/blogroll/blogroll.json` that has these valeus:
+
+```json
+{
+	"layout": "fwd.njk",
+	"description": "Aram is regularly reading",
+	"tags": [ "blogroll" ],
+	"date": "Last Modified"
+}
+```
+
+Good stuff! Now I need a template that can handle forwarding users to the correct off-site location. There's some fun and fancy ways to do this with Netlify I know, but I'm not using Netlify. So basic is the goal.
+
+I'm going to use `isBasedOn` as the YAML metadata for the origin URL. This is broadly applicable if I write posts that are not intended to forward, so it means less metadata fields to get confused over and syncs with the Schema.org property, which I like to use for this sort of thing. For the page itself, I'm going to steal an iteration of the template from Bit.ly and make some modifications. I'll give it a title, a canonical link, and a JSON-LD block. Finally, the key to all this is a META refresh tag with the refresh time sent to `0` so it forwards immediately.
+
+Here's the final template (for now).
+
+```liquid
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="canonical" href="{{ isBasedOn }}" />
+        <meta http-equiv="Link" rel="canonical" content="{{ isBasedOn }}" />
+        <meta http-equiv="refresh" content="0; URL='{{ isBasedOn }}'" />
+        <title>Fight With Tools Redirect: {{title}}</title>
+		<script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{title}}",
+            "description": "{{description}}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ isBasedOn }}"
+            },
+            "isBasedOn": "{{ isBasedOn }}",
+            "isPartOf": {
+                "@type": ["CreativeWork", "Product", "Blog"],
+                "name": "Fight With Tools.dev",
+                "productID": "fightwithtools.dev"
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <a href="{{isBasedOn}}">moved here</a>
+    </body>
+</html>
+```
+
+And here's a YAML statement in `src/blogroll/hacktext.md`.
+
+```yaml
+title: "Hack Text"
+description: "Thinking about Narrative"
+date: 2021-09-27 22:59:43.10 -4
+isBasedOn: "https://hacktext.com"
+tags:
+  - Personal Blog
+```
+
+Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.
+

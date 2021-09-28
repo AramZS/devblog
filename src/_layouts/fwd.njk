@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="canonical" href="{{ isBasedOn }}" />
+        <meta http-equiv="Link" rel="canonical" content="{{ isBasedOn }}" />
+        <meta http-equiv="refresh" content="0; URL='{{ isBasedOn }}'" />
+        <title>Fight With Tools Redirect: {{title}}</title>
+		<script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{title}}",
+            "description": "{{description}}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ isBasedOn }}"
+            },
+            "isBasedOn": "{{ isBasedOn }}",
+            "isPartOf": {
+                "@type": ["CreativeWork", "Product", "Blog"],
+                "name": "Fight With Tools.dev",
+                "productID": "fightwithtools.dev"
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <a href="{{isBasedOn}}">moved here</a>
+    </body>
+</html>
