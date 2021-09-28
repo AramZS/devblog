@@ -5,12 +5,161 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-09-27T02:59:43Z</updated>
+  <updated>2021-09-28T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Hello World Devblog - Pt. 26</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-26/"/>
+    <updated>2021-09-28T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-26/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-26" tabindex="-1">Day 26</h2>
+<p>Wait... what am I using the <code>subtitle</code> metadata for? Maybe that should go under the title on post pages? Yeah let's do that.</p>
+<h3 id="short-browsers" tabindex="-1">Short Browsers</h3>
+<p>Also, there's a chance the user can really make the browser short if they do it may cause the footer elements to overlap, so let's try and get rid of that.</p>
+<p>Using <code>@media (min-width: variables.$large-mobile) and [height argument]</code> I'll hide specific fixed elements in my makeshift sidebar based on window height. By using <code>and (max-height: 850px)</code> I can restrict fixed elements to appear only when there is room for them.</p>
+<p>I'll hide the table of contents when the window is 850px or smaller with <code>@media (min-width: variables.$large-mobile) and (max-height: 850px)</code> and hide the taglist and footer at shorter heights so if the window is very short, we'll only have the title.</p>
+<p>Actually... I'd prefer not to totally hide the Table of Contents, but have it return to place above the content if the browser is too short. While I'll keep the CSS Media Query <code>and</code> rule for the tags and footer as is, I can switch the <code>#toc-container</code> rule to be <code> and (min-height: 962px)</code></p>
+<p>But wait... the element is not going to scroll when it gets too high. Hmmm. Let's try a containing element... hmm no that's not it by itself. Oh, let's set a max-height on the content itself. Hmm, it makes it a little narrow. Let's try and attach that scrollbar somewhere else.</p>
+<p>Ok, I'll use the container div I set up when I was playing with getting <code>max-height</code> working and set my overflow CSS on that. Oh yeah, that looks much better.</p>
+<p><code>git commit -m &quot;Fix height and positioning for short browser windows&quot;</code></p>
+<h3 id="autolinks-for-git-commits" tabindex="-1">Autolinks for Git Commits?</h3>
+<p>Ok, I <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">found some interesting ideas for traversing the Github API</a> to get the actual commit links that I can auto apply to links here. Finding the strings will be it's own interesting task but for now I am experimenting with the API with the following requests:</p>
+<ul>
+<li><a href="https://api.github.com/repos/AramZS/devblog/git/refs/heads/main" target="_blank">Get the repo HEAD on the <code>main</code> branch</a>.</li>
+<li><a href="https://api.github.com/repos/AramZS/devblog/git/commits/22240416f821b3aafe4e47f3d95fc23ec3021d58" target="_blank">Get commit by hash at HEAD</a></li>
+<li><a href="https://api.github.com/repos/AramZS/devblog/git/commits/3907d1444d79208d41995dfc41db5e85d7de94f3" target="_blank">Get commit by parent hash of HEAD commit</a></li>
+<li><a href="https://api.github.com/repos/AramZS/devblog/git/trees/3cd2735001a8c60d995d49391f9b45b6ce530e6d" target="_blank">Get commit tree</a></li>
+<li><a href="https://api.github.com/repos/AramZS/devblog/events" target="_blank">Look at commits by push event</a></li>
+<li><a href="https://github.com/AramZS/devblog/commits/main.atom" target="_blank">Get latest commits via Atom feed</a></li>
+</ul>
+<p>None are exactly right, but I might be able to walk backwards through parent commits if I start at the HEAD. I think I'll also want to cache commits so I don't have to walk the tree of commits on every build.</p>
+<p><code>git commit -m &quot;Add repo URL for future API calls.&quot;</code></p>
+<h3 id="blogroll-and-links" tabindex="-1">Blogroll and Links</h3>
+<p>Ok, I know I said I'd lock scope, but this one last expansion! I want to have useful links on the homepage and a blogroll as well. Easy enough to do right? This is the last extra feature, I promise! I'm going to add them as non-post collections in their own folders at <code>src/links</code> and <code>src/blogroll</code>. I'll follow the same pattern I did with posts and projects and create a base <code>json</code> file with default values including the initial collection &quot;tag&quot; and the template I want to use (which won't be the standard one). As an example, I'll put a file at <code>src/blogroll/blogroll.json</code> that has these valeus:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br />	<span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"fwd.njk"</span><span class="token punctuation">,</span><br />	<span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Aram is regularly reading"</span><span class="token punctuation">,</span><br />	<span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"blogroll"</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br />	<span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"Last Modified"</span><br /><span class="token punctuation">}</span></code></pre>
+<p>Good stuff! Now I need a template that can handle forwarding users to the correct off-site location. There's some fun and fancy ways to do this with Netlify I know, but I'm not using Netlify. So basic is the goal.</p>
+<p>I'm going to use <code>isBasedOn</code> as the YAML metadata for the origin URL. This is broadly applicable if I write posts that are not intended to forward, so it means less metadata fields to get confused over and syncs with the <a href="http://schema.org/" target="_blank">Schema.org</a> property, which I like to use for this sort of thing. For the page itself, I'm going to steal an iteration of the template from <a href="http://bit.ly/" target="_blank">Bit.ly</a> and make some modifications. I'll give it a title, a canonical link, and a JSON-LD block. Finally, the key to all this is a META refresh tag with the refresh time sent to <code>0</code> so it forwards immediately.</p>
+<p>Here's the final template (for now).</p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token operator">&lt;</span>html<span class="token operator">></span><br />    <span class="token operator">&lt;</span>head<span class="token operator">></span><br />        <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span>"UTF<span class="token operator">-</span><span class="token number">8</span>"<span class="token operator">></span><br />        <span class="token operator">&lt;</span>meta name<span class="token operator">=</span>"viewport" content<span class="token operator">=</span>"width<span class="token operator">=</span>device<span class="token operator">-</span>width, initial<span class="token operator">-</span>scale<span class="token operator">=</span><span class="token number">1.0</span>"<span class="token operator">></span><br />        <span class="token operator">&lt;</span>link rel<span class="token operator">=</span>"canonical" href<span class="token operator">=</span>"" <span class="token operator">/</span><span class="token operator">></span><br />        <span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span>"Link" rel<span class="token operator">=</span>"canonical" content<span class="token operator">=</span>"" <span class="token operator">/</span><span class="token operator">></span><br />        <span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span>"refresh" content<span class="token operator">=</span>"<span class="token number">0</span>; URL<span class="token operator">=</span>''" <span class="token operator">/</span><span class="token operator">></span><br />        <span class="token operator">&lt;</span>title<span class="token operator">></span>Fight With Tools Redirect<span class="token operator">:</span> Hello World Devblog <span class="token operator">-</span> Pt. <span class="token number">26</span><span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span><br />		<span class="token operator">&lt;</span>script type<span class="token operator">=</span>"application<span class="token operator">/</span>ld<span class="token operator">+</span>json"<span class="token operator">></span><br />        {<br />            "@context"<span class="token operator">:</span> "http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>schema.org",<br />            "@type"<span class="token operator">:</span> "BlogPosting",<br />            "headline"<span class="token operator">:</span> "Hello World Devblog <span class="token operator">-</span> Pt. <span class="token number">26</span>",<br />            "description"<span class="token operator">:</span> "More devblog",<br />            "mainEntityOfPage"<span class="token operator">:</span> {<br />                "@type"<span class="token operator">:</span> "WebPage",<br />                "@id"<span class="token operator">:</span> ""<br />            },<br />            "isBasedOn"<span class="token operator">:</span> "",<br />            "isPartOf"<span class="token operator">:</span> {<br />                "@type"<span class="token operator">:</span> ["CreativeWork", "Product", "Blog"],<br />                "name"<span class="token operator">:</span> "Fight With Tools.dev",<br />                "productID"<span class="token operator">:</span> "fightwithtools.dev"<br />            }<br />        }<br />    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><br />    <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span><br />    <span class="token operator">&lt;</span>body<span class="token operator">></span><br />        <span class="token operator">&lt;</span>a href<span class="token operator">=</span>""<span class="token operator">></span>moved here<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span><br />    <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span><br /><span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+<p>And here's a YAML statement in <code>src/blogroll/hacktext.md</code>.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">"Hack Text"</span><br /><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Thinking about Narrative"</span><br /><span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token datetime number">2021-09-27 22:59:43.10 -4</span><br /><span class="token key atrule">isBasedOn</span><span class="token punctuation">:</span> <span class="token string">"https://hacktext.com"</span><br /><span class="token key atrule">tags</span><span class="token punctuation">:</span><br />  <span class="token punctuation">-</span> Personal Blog</code></pre>
+<p>Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.</p>
+<p><code>git commit -am &quot;Set up blogroll and links and write up day 26&quot;</code></p>
+</content>
+  </entry>
   
   <entry>
     <title>Hello World Devblog - Pt. 25</title>
