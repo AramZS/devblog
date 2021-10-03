@@ -63,7 +63,7 @@ tags:
 
 - [x] Show the latest post below the site intro on the homepage.
 
-- [ ] Tags pages with Pagination
+- [x] Tags pages with Pagination
 
 - [ ] Posts should be able to support a preview header image that can also be shown on post lists.
 
@@ -85,7 +85,7 @@ tags:
 
 - [ ] Have table of contents attach to sidebar bottom on mobile
 
-- [ ] Support dark mode
+- [x] Support dark mode
 
 - [ ] Social Icons
 
@@ -94,6 +94,17 @@ tags:
 ## Day 26
 
 Wait... what am I using the `subtitle` metadata for? Maybe that should go under the title on post pages? Yeah let's do that.
+
+{% raw %}
+```liquid
+                        {% if '/posts' not in page.url %}
+                        <p class="header">{{ description }}</p>
+                        {% endif %}
+                        {% if '/posts' in page.url and subtitle %}
+                        <p class="header">{{ subtitle }}</p>
+                        {% endif %}
+```
+{% endraw %}
 
 ### Short Browsers
 
@@ -148,7 +159,7 @@ I'm going to use `isBasedOn` as the YAML metadata for the origin URL. This is br
 Here's the final template (for now).
 
 {% raw %}
-```liquid
+```html
 <html>
     <head>
         <meta charset="UTF-8">
@@ -203,3 +214,7 @@ Looks like it works! I think for a fast put-together, this works just fine and l
 Oops forgot to add the `raw` tags to escape my code.
 
 `git commit -am "Add escaping tags to day 26`
+
+Touching up this post and realized, I didn't expand the scope, the reading log was already in there, lol.
+
+- [x] Add a technical reading log to the homepage
