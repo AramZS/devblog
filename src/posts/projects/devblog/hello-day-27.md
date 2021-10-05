@@ -105,3 +105,40 @@ I'll use `text-align: center` on the containing block to get the icons centered 
 
 - [x] Social Icons
 
+`git commit -am "Fix footer and set homepage social icons"`
+
+### Social/SEO Block
+
+Ok, let's set up some social header data. Let's refer back to [my post on social meta tags for Jekyll](https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html), as I suspect it will be useful to reuse here.
+
+First I'll set up a partial file `social-header.njk`. Like with my Jekyll site I have a `site` object that contains basic information I can keep in the mix as a default.
+
+I'll need to add a `description` to my site object, but that's easy enough.
+
+Oh and I need to have my `og:url` work without an extra trailing slash, so I'll add an if statement - {%raw %}`{{site.site_url}}{% if page.url %}/{{ page.url }}{% endif %}`{% endraw %}
+
+Huh... I still have a trailing slash.
+
+Oh interesting, the homepage `page.url` is just `/` so I don't need an if statement I guess?
+
+Yup, that works!
+
+But I don't have a truncate function here, so I'll have to [make my own filter](https://mozilla.github.io/nunjucks/api#custom-filters) to handle truncating a string.
+
+Oh wait, no, [there is a preexisting filter](https://mozilla.github.io/nunjucks/templating.html#truncate).
+
+Ok the filters I was using in Jekyll don't port over exactly. It looks like I can replace `strip_html | strip_newlines` with `| striptags(false)`.
+
+Apparently I can't put line breaks into the templates the same way I can with Jekyll, so I'll have to collapse the various line-breaks and make it slightly less readable.
+
+Ok, easy enough, I got everything figured out. Let's get the rest of the tags in.
+
+Oh, right, I can't use `excerpt`, I'm using the more... uhh... descriptive 'description' property. Let's switch that. And I can't forget to strip out `page.` for individual posts.
+
+Hmmm... [no built-in last-modified](https://github.com/11ty/eleventy/issues/869), so I guess I'll handle it the same way, it will be in place when I manually add it to the post metadata, otherwise it will get skipped.
+
+I'll switch my `section` to be the `project` property in my posts. Cool, make sure to add an if check and we're good there.
+
+The rest of my old post deals with featured images, which I haven't figured out yet, so I figure I'll handle that next time.
+
+`git commit -am "Set up initial social sharing tags"`

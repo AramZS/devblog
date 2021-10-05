@@ -295,7 +295,19 @@ module.exports = function (eleventyConfig) {
 
 		return array.slice(0, n);
 	});
+	/**
+	// Get the first `n` chracters of a `s` string.
+	eleventyConfig.addFilter("truncate", (s, n) => {
+		if ("string" != typeof s || s.length === 0) {
+			return "";
+		}
+		if (n < 0) {
+			return s;
+		}
 
+		return s.substring(0, n);
+	});
+ */
 	function filterTagList(tags) {
 		return (tags || []).filter(
 			(tag) =>
