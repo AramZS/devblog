@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 03 Oct 2021 19:39:57 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 05 Oct 2021 02:41:21 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -24,7 +24,7 @@
 	<item>
 		<title>Hello World Devblog - Pt. 26</title>
 		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-26/?source=rss</link>
-		<pubDate>Tue, 28 Sep 2021 02:59:43 GMT</pubDate>
+		<pubDate>Tue, 05 Oct 2021 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-26/</guid>
 		<description>More devblog</description>
@@ -176,6 +176,154 @@
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</li>
 </ul>
+<p><code>git commit -m &quot;Touching up day 26 post&quot;</code></p>
+]]></content:encoded>
+	</item>
+	
+	<item>
+		<title>Hello World Devblog - Pt. 27</title>
+		<link>https://fightwithtools.dev/posts/projects/devblog/hello-day-27/?source=rss</link>
+		<pubDate>Wed, 29 Sep 2021 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/hello-day-27/</guid>
+		<description>More devblog</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-27" tabindex="-1">Day 27</h2>
+<h3 id="footer-size" tabindex="-1">Footer size</h3>
+<p>I want to add a link to the repo for the blog. Hmm, the footer's <code>small</code> element is getting its style overwritten. I'll decrease the size, but it looks like the line-height isn't applying the way I'd like. Didn't this happen before? Oh yeah, on <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-27/hello-day-22.md" target="_blank">Day 22</a>. It had something to do with the <code>display</code> type in the CSS right? Yup. Ok, so let's just switch to <code>display: block</code>.</p>
+<h3 id="social-icons" tabindex="-1">Social Icons</h3>
+<p>Ok, let's create some social icons! I've pulled down some of the icons I want to use in SVG format and to create clear reusable modules here I've given each social icon its own NJK file and creating a <code>social-block</code> NJK file.</p>
+<p>Good stuff, now I just have to size and align the social media icon containers, that will size the SVGs inside.</p>
+<p>I'll use <code>text-align: center</code> on the containing block to get the icons centered underneath my byline on the homepage.</p>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</li>
+</ul>
+<p><code>git commit -am &quot;Fix footer and set homepage social icons&quot;</code></p>
+<h3 id="socialseo-block" tabindex="-1">Social/SEO Block</h3>
+<p>Ok, let's set up some social header data. Let's refer back to <a href="https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html" target="_blank">my post on social meta tags for Jekyll</a>, as I suspect it will be useful to reuse here.</p>
+<p>First I'll set up a partial file <code>social-header.njk</code>. Like with my Jekyll site I have a <code>site</code> object that contains basic information I can keep in the mix as a default.</p>
+<p>I'll need to add a <code>description</code> to my site object, but that's easy enough.</p>
+<p>Oh and I need to have my <code>og:url</code> work without an extra trailing slash, so I'll add an if statement - <code>{{site.site_url}}{% if page.url %}/{{ page.url }}{% endif %}</code></p>
+<p>Huh... I still have a trailing slash.</p>
+<p>Oh interesting, the homepage <code>page.url</code> is just <code>/</code> so I don't need an if statement I guess?</p>
+<p>Yup, that works!</p>
+<p>But I don't have a truncate function here, so I'll have to <a href="https://mozilla.github.io/nunjucks/api#custom-filters" target="_blank">make my own filter</a> to handle truncating a string.</p>
+<p>Oh wait, no, <a href="https://mozilla.github.io/nunjucks/templating.html#truncate" target="_blank">there is a preexisting filter</a>.</p>
+<p>Ok the filters I was using in Jekyll don't port over exactly. It looks like I can replace <code>strip_html | strip_newlines</code> with <code>| striptags(false)</code>.</p>
+<p>Apparently I can't put line breaks into the templates the same way I can with Jekyll, so I'll have to collapse the various line-breaks and make it slightly less readable.</p>
+<p>Ok, easy enough, I got everything figured out. Let's get the rest of the tags in.</p>
+<p>Oh, right, I can't use <code>excerpt</code>, I'm using the more... uhh... descriptive 'description' property. Let's switch that. And I can't forget to strip out <code>page.</code> for individual posts.</p>
+<p>Hmmm... <a href="https://github.com/11ty/eleventy/issues/869" target="_blank">no built-in last-modified</a>, so I guess I'll handle it the same way, it will be in place when I manually add it to the post metadata, otherwise it will get skipped.</p>
+<p>I'll switch my <code>section</code> to be the <code>project</code> property in my posts. Cool, make sure to add an if check and we're good there.</p>
+<p>The rest of my old post deals with featured images, which I haven't figured out yet, so I figure I'll handle that next time.</p>
+<p><code>git commit -am &quot;Set up initial social sharing tags&quot;</code></p>
 ]]></content:encoded>
 	</item>
 	

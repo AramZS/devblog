@@ -7,7 +7,7 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 16</title>
+            <title>Hello World Devblog - Pt. 27</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1306140812" />
@@ -26,14 +26,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 16">
+    content="Hello World Devblog - Pt. 27">
 
 <meta property="og:description"
-    content="Part 16 of setting up 11ty dev blog.">
+    content="More devblog">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-16/" />
+    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-27/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -41,20 +41,20 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 16 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="More devblog" />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 16" />
+<meta name="twitter:title" content="Hello World Devblog - Pt. 27" />
 
 
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Mon, 26 Jul 2021 02:59:43 GMT" />
+    <meta property="article:published_time" content="Wed, 29 Sep 2021 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -83,8 +83,6 @@
     
     <meta property="article:tag" content="Sass" />
     
-    <meta property="article:tag" content="Github Actions" />
-    
     <meta property="article:tag" content="WiP" />
     
 
@@ -107,18 +105,16 @@
                         
                         
                             <!-- post mode -->
-                            <time>Mon Jul 26 2021</time>
+                            <time>Wed Sep 29 2021</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 16
+                            Hello World Devblog - Pt. 27
                         </h1>
                         
-                        
-                        <p class="header">Getting this dev blog running</p>
                         
                     
                     
@@ -131,15 +127,16 @@
         <div id="toc-container__inner">
             <h2>Contents</h2>
             <nav class="toc">
-        <ol><li><a href="#day-16">Day 16</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-27">Day 27</a><ol><li><a href="#footer-size">Footer size</a></li><li><a href="#social-icons">Social Icons</a></li><li><a href="#socialseo-block">Social/SEO Block</a></li></ol></li></ol></nav>
         </div>
     </aside>
-    <div id="post-description">Part 16 of setting up 11ty dev blog.</div>
+    <div id="post-description">More devblog</div>
 </section>
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -156,7 +153,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
@@ -170,10 +167,12 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
 </ul>
 </s>
+<s>
 <ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
-</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
 </li>
@@ -192,36 +191,87 @@
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> SEO/Social/JSON-LD HEAD data</p>
+</li>
 </ul>
-<h2 id="day-16" tabindex="-1">Day 16</h2>
-<p>Ok, so I'd like to continue using my shortcuts like <code>b/c</code> or <code>prob</code>. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.</p>
-<p>We can take a look at <a href="https://github.com/markdown-it/markdown-it#api" target="_blank">Markdown-it's documentation</a> for help here.</p>
-<p>Oh, README says this is the wrong place to look at for plugins. Ok.</p>
-<p><a href="https://github.com/markdown-it/markdown-it/tree/master/docs" target="_blank">Info for plugin developers</a>... ok, two links in here.</p>
-<p>Ok... I'm not sure how useful these are. The douments are nice for understanding the philosophy involved. But not great to kick me off. Ok, <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#general-considerations-for-plugins" target="_blank">let's take recommendation 2</a> and look at some existing plugins. It sounds like I might possibly conflict with other plugins, so I prob should use an inline or block rule. That's useful.</p>
-<p>Oh, this looks useful and like a good idea, <a href="https://www.npmjs.com/package/markdown-it-anchor" target="_blank">anchor links on my headers</a>.</p>
-<p>Let's try and pull it in along with a slugify method that can make for clear URLs.</p>
-<p>It recommends I use <code>'@sindresorhus/slugify'</code> or <code>string</code> to handle the slugify process. The 2nd is basic, but the first doesn't work well with how I structured this project. (It requires being called from a module, and my project isn't set up that way.) So, I'll use <code>slugify</code> which I have used in other projects in the past.</p>
-<p>Ok, that worked!</p>
-<p><code>git commit -am &quot;Add anchors to headers&quot;</code></p>
-<p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
-<p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
-<p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
-<p>Ok, to facilitate a similar structure, I'll take the Wikilinks plugin and place it in my own folder under <code>_custom-plugins</code>. I'm not going to be taking in options right now, so I can remove that stuff from the plugin.</p>
-<p>The plugin looks like it is very dependent on a modules called <code>markdown-it-regexp</code>. So let's <a href="https://github.com/rlidwka/markdown-it-regexp" target="_blank">check out how that works</a>. It <a href="https://github.com/rlidwka/markdown-it-regexp/blob/master/lib/index.js#L61" target="_blank">looks like it handles regex rules and does the work of registering those rules</a> with the Markdown-it rules manager called <code>ruler</code>. It seems to take two arguments, a regex pattern and a function to run on that regex pattern. All this seems relatively straightforward, which makes me feel a lot better about using a library that doesn't seem to have had any activity since 2016.</p>
-<p>I have to admit, I'm not super thrilled with Markdown-it. <a href="https://glitch.com/edit/#!/thespin?path=markdown-to-col.js%3A1%3A0" target="_blank">Normally I use</a> <a href="https://www.npmjs.com/package/showdown" target="_blank">Showdown</a> for Markdown parsing, but a lot of the Eleventy docs push Markdown-it. I guess I'll stick with it for now, but I'm not sure I'd recommend it or use it in a future project.</p>
-<p>Ok, let's strip it down to the basics.</p>
-<p>First my regex, I want to replace my use of <code>prob</code> with <code>probably</code>. So easy enough, gotta surround it with spaces. <code>/\sprob\s/</code> is a start. But it looks from the example that I should also have a capture group. Ok so instead I'll make it <code>/\s(prob)\s/,</code> Let's assume I'll eventually have a bunch of patterns, so I need to check to see that the pattern is giving me back one of a set of specific patterns. Then I can apply my specific transform.</p>
-<p>Hmmm it should work now, but I'm not seeing any results. I tried adding a console.log, but still nothing.</p>
-<p>Oh, oops, the pattern I'm using from the Wikilinks plugin, <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks#usage" target="_blank">means I have to execute it as a function first</a>.</p>
-<p>Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.</p>
-<p>Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during <code>watch</code> mode?). But it isn't treating my text?</p>
-<p>Ok, <a href="https://jsfiddle.net/yd2gLxev/" target="_blank">the sample code</a> given in the Readme of <code>markdown-it-regexp</code> doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.</p>
-<p>Ok, now I am even more annoyed that this isn't working. It should, by all rights. All I can think is that it must have something to do with the specific way eleventy implements Markdown-It?</p>
-<p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
-<p>Ok, trying to use <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">markdown-it-regex</a>. But it won't work either. I keep getting <code>plugin.apply is not a function</code>. Which makes me think the problem with the last plugin might be showing up here, where the way the markdown-it tool is being applied by eleventy isn't normal or at least isn't what some of these plugin authors expect.</p>
-<p>Ok, nothing working here. Time to switch approaches. <a href="https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/" target="_blank">This walkthrough looks like it might be promising</a>.</p>
-<p><code>git commit -am &quot;Day 16 - I fail to write a Markdown-it plugin&quot;</code></p>
+<h2 id="day-27" tabindex="-1">Day 27</h2>
+<h3 id="footer-size" tabindex="-1">Footer size</h3>
+<p>I want to add a link to the repo for the blog. Hmm, the footer's <code>small</code> element is getting its style overwritten. I'll decrease the size, but it looks like the line-height isn't applying the way I'd like. Didn't this happen before? Oh yeah, on <a href="./hello-day-22.md" target="_blank">Day 22</a>. It had something to do with the <code>display</code> type in the CSS right? Yup. Ok, so let's just switch to <code>display: block</code>.</p>
+<h3 id="social-icons" tabindex="-1">Social Icons</h3>
+<p>Ok, let's create some social icons! I've pulled down some of the icons I want to use in SVG format and to create clear reusable modules here I've given each social icon its own NJK file and creating a <code>social-block</code> NJK file.</p>
+<p>Good stuff, now I just have to size and align the social media icon containers, that will size the SVGs inside.</p>
+<p>I'll use <code>text-align: center</code> on the containing block to get the icons centered underneath my byline on the homepage.</p>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Social Icons</li>
+</ul>
+<p><code>git commit -am &quot;Fix footer and set homepage social icons&quot;</code></p>
+<h3 id="socialseo-block" tabindex="-1">Social/SEO Block</h3>
+<p>Ok, let's set up some social header data. Let's refer back to <a href="https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html" target="_blank">my post on social meta tags for Jekyll</a>, as I suspect it will be useful to reuse here.</p>
+<p>First I'll set up a partial file <code>social-header.njk</code>. Like with my Jekyll site I have a <code>site</code> object that contains basic information I can keep in the mix as a default.</p>
+<p>I'll need to add a <code>description</code> to my site object, but that's easy enough.</p>
+<p>Oh and I need to have my <code>og:url</code> work without an extra trailing slash, so I'll add an if statement - <code>{{site.site_url}}{% if page.url %}/{{ page.url }}{% endif %}</code></p>
+<p>Huh... I still have a trailing slash.</p>
+<p>Oh interesting, the homepage <code>page.url</code> is just <code>/</code> so I don't need an if statement I guess?</p>
+<p>Yup, that works!</p>
+<p>But I don't have a truncate function here, so I'll have to <a href="https://mozilla.github.io/nunjucks/api#custom-filters" target="_blank">make my own filter</a> to handle truncating a string.</p>
+<p>Oh wait, no, <a href="https://mozilla.github.io/nunjucks/templating.html#truncate" target="_blank">there is a preexisting filter</a>.</p>
+<p>Ok the filters I was using in Jekyll don't port over exactly. It looks like I can replace <code>strip_html | strip_newlines</code> with <code>| striptags(false)</code>.</p>
+<p>Apparently I can't put line breaks into the templates the same way I can with Jekyll, so I'll have to collapse the various line-breaks and make it slightly less readable.</p>
+<p>Ok, easy enough, I got everything figured out. Let's get the rest of the tags in.</p>
+<p>Oh, right, I can't use <code>excerpt</code>, I'm using the more... uhh... descriptive 'description' property. Let's switch that. And I can't forget to strip out <code>page.</code> for individual posts.</p>
+<p>Hmmm... <a href="https://github.com/11ty/eleventy/issues/869" target="_blank">no built-in last-modified</a>, so I guess I'll handle it the same way, it will be in place when I manually add it to the post metadata, otherwise it will get skipped.</p>
+<p>I'll switch my <code>section</code> to be the <code>project</code> property in my posts. Cool, make sure to add an if check and we're good there.</p>
+<p>The rest of my old post deals with featured images, which I haven't figured out yet, so I figure I'll handle that next time.</p>
+<p><code>git commit -am &quot;Set up initial social sharing tags&quot;</code></p>
 
                     
                     </section>
@@ -234,7 +284,7 @@
                     
 	<div id="taglist">
 		<h6>Tags: </h6>
-        <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
+        <ul><li><a href="https://fightwithtools.dev/tag/starters">Starters</a></li><li><a href="https://fightwithtools.dev/tag/11ty">11ty</a></li><li><a href="https://fightwithtools.dev/tag/node">Node</a></li><li><a href="https://fightwithtools.dev/tag/sass">Sass</a></li><li><a href="https://fightwithtools.dev/tag/wip">WiP</a></li></ul>
 	</div>
 
                     
