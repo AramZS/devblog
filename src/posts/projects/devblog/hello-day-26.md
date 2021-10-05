@@ -2,7 +2,7 @@
 title: Hello World Devblog - Pt. 26
 description: "More devblog"
 project: Dev Blog
-date: 2021-10-04 22:59:43.10 -4
+date: 2021-09-27 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
