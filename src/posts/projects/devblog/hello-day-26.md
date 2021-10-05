@@ -2,7 +2,7 @@
 title: Hello World Devblog - Pt. 26
 description: "More devblog"
 project: Dev Blog
-date: 2021-09-27 22:59:43.10 -4
+date: 2021-10-04 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
@@ -218,3 +218,5 @@ Oops forgot to add the `raw` tags to escape my code.
 Touching up this post and realized, I didn't expand the scope, the reading log was already in there, lol.
 
 - [x] Add a technical reading log to the homepage
+
+`git commit -m "Touching up day 26 post"`
