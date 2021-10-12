@@ -26,6 +26,13 @@
 <!-- This property is for the article title, not site title. -->
 <meta name="twitter:title" content="{% if title %}{{ title | striptags(false) | safe | truncate(160) }}{% else %}{{ site.site_name }}{% endif %}" />
 
+{% if featuredImage %}
+
+<meta property="og:image" content="{{site.site_url}}/img/{{featuredImage}}" />
+<meta name="twitter:image" content="{{site.site_url}}/img/{{featuredImage}}" />
+
+{% endif %}
+
 {% if '/posts' in page.url %}
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
@@ -51,5 +58,9 @@
     {% for tag in tags %}
     <meta property="article:tag" content="{{tag}}" />
     {% endfor %}
+
+{% else %}
+
+<meta property="og:type" content="website" />
 
 {% endif %}

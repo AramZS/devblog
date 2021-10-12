@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 27
+title: Hello World Devblog - Pt. 28
 description: "More devblog"
 project: Dev Blog
 date: 2021-10-07 22:59:43.10 -4
@@ -114,4 +114,40 @@ featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
 featuredImageAlt: "Close up photo of keys."
 ```
 
+I can add the following block to my `social-header.njk` file now:
 
+{% raw %}
+```liquid
+{% if featuredImage %}
+
+<meta property="og:image" content="{{site.site_url}}/img/{{featuredImage}}" />
+<meta name="twitter:image" content="{{site.site_url}}/img/{{featuredImage}}" />
+
+{% endif %}
+```
+{% endraw %}
+
+[In my Jekyll site](https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html) I had to code a page-level value with a site-level fallback. [11ty's deep data merge process](https://www.11ty.dev/docs/data-deep-merge/) allows me to just rely on the cascade of settings and JSON files to properly select a default.
+
+Ok, that's the social tags! I'll set an else condition to make sure that there is always an og:type (default to `content="website"`) and we're good to go.
+
+Oh, I want to add the post image to the template too, but only when it is one set at the post level. Being a good web citizen, I should always have alt text on my image, so I'm going to only include it in the post template when I have alt text, that's an easy way to assure not every post has the default image.
+
+I dunno what the right tag is for this? Sometimes I use `aside` but I think I'm supposed to use `figure` right? I'll use that here.
+
+{% raw %}
+```liquid
+    {% if featuredImageAlt %}
+    <figure class="figure preview-image">
+        <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
+        {% if featuredImageCaption or featuredImageCredit %}
+        <figcaption class="figcaption">
+            {% if featuredImageCaption  %}{{featuredImageCaption}}{% endif %}{% if featuredImageCredit  %} | <em><a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a></em> | {% endif %}
+        </figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+```
+{% endraw %}
+
+Ok, basic image stuff works! 
