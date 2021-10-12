@@ -8,5 +8,6 @@ module.exports = (info) => {
 		site_url: process.env.DOMAIN,
 		site_name: "Fight With Tools: A Dev Blog",
 		description: "A site opening up my development process to all.",
+		featuredImage: "nyc_noir.jpg",
 	};
 };

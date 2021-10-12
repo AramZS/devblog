@@ -1,5 +1,6 @@
 {
 	"project": "Dev Blog",
 	"description": "Building this very blog for my development notes, using Eleventy.",
-	"repo": "https://github.com/AramZS/devblog"
+	"repo": "https://github.com/AramZS/devblog",
+	"featuredImage": "radial_crosshair.jpg"
 }
