@@ -2,6 +2,12 @@
 
 {% set templateName = "post" %}
 
+{% block bodytags %}itemscope itemtype="https://schema.org/Blog"{% endblock %}
+
+{% block header_bottom %}
+{% include "partials/byline.njk" %}
+{% endblock %}
+
 {% block precontent %}
 <section id="precontent">
     <aside id="toc-container">
@@ -11,6 +17,7 @@
         </div>
     </aside>
     <div id="post-description">{{ description }}</div>
+
     {% if featuredImageAlt %}
     <figure class="figure preview-image">
         <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
@@ -21,6 +28,7 @@
         {% endif %}
     </figure>
     {% endif %}
+
 </section>
 {% endblock %}
 

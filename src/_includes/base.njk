@@ -25,10 +25,11 @@
         {% endblock %}
         {% block socialhead %}
             {% include "partials/social-header.njk" %}
+            {% include "partials/json-ld-header.njk" %}
         {% endblock %}
         {% block stylehead %}{% endblock %}
         </head>
-        <body>
+        <body {% block bodytags %}{% endblock %}>
             <div class="wrapper">
                 <header>
                     {% block header %}

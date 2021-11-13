@@ -1,8 +1,8 @@
 ---
-title: Hello World Devblog - Pt. 28
+title: Hello World Devblog - Pt. 29
 description: "More devblog"
 project: Dev Blog
-date: 2021-10-07 22:59:43.10 -4
+date: 2021-11-12 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
@@ -85,7 +85,7 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [ ] [Hide](https://developer.mozilla.org/en-US/docs/Web/CSS/:empty) empty sections.
 
-- [ ] Add byline to post pages
+- [x] Add byline to post pages
 
 - [x] Have table of contents attach to sidebar bottom on mobile
 
@@ -93,65 +93,40 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [x] Social Icons
 
-- [ ] SEO/Social/JSON-LD HEAD data
+- [x] SEO/Social/JSON-LD HEAD data
 
-## Day 28
+## Day 29
 
-Ok, we're blocked from finishing the various social and search tags by the lack of feature images in the blog. So that's next.
+Ok, all the SEO/SEM stuff is good. It's been a while so let's knock out an easy one and add my byline to post pages.
 
-### Featured Images
+I'll pull the byline header from the index page and turn it into a partial. But I don't want people to click off the site to my ID page like they are now. I should use [the Microdata for the Person object](https://schema.org/Person) to link my identity page on Github to my byline on this site.
 
-So I want to have intellegent defaults here as well. I can have defaults at the project level, the site level and the individual post level. For the Devblog project I'll add to the `devblog.json` file `"featuredImage": "radial_crosshair.jpg"`. All my images will be in `../img/` so to keep it DRY let's leave that out of the filepaths.
+Hopefully I'll get this right. It looks like way to handle it is with a container of `itemprop` with the Person type.
 
-I'll set the same property at the site level, taking my default image from my GitHub blog.
+`<h5 itemprop="author" itemscope itemtype="https://schema.org/Person">`
 
-Ok, for the individual blog posts I guess I'll need a little more detail. Since I'll often be taking photos from Creative Commons I need to have a place to put credit. Ok, so I've got a few things to add to the YAML metadata.
+I want to keep the link to my ID and it [looks like the way to do that](https://schema.org/Person#eg-0189) is using a self-closing `link` tag.
 
-```yaml
-featuredImage: "close-up-keys.jpg"
-featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
-featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
-featuredImageAlt: "Close up photo of keys."
-```
+`<link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />`
 
-I can add the following block to my `social-header.njk` file now:
+But if I want it to properly designate this as 'author' it can't stand on it's own. It'll need to be in a larger schema object. I guess that means giving my blog posts the Schema.org markup for a [Creative Work](https://schema.org/CreativeWork). Might not be worth it but I wonder... can I have a block that is just properties for a tag?
+
+Looks like yes:
 
 {% raw %}
-```liquid
-{% if featuredImage %}
-
-<meta property="og:image" content="{{site.site_url}}/img/{{featuredImage}}" />
-<meta name="twitter:image" content="{{site.site_url}}/img/{{featuredImage}}" />
-
-{% endif %}
-```
+`<body {% block bodytags %}{% endblock %}>`
 {% endraw %}
 
-`git commit -am "Day 28 half way done."`
-
-[In my Jekyll site](https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html) I had to code a page-level value with a site-level fallback. [11ty's deep data merge process](https://www.11ty.dev/docs/data-deep-merge/) allows me to just rely on the cascade of settings and JSON files to properly select a default.
-
-Ok, that's the social tags! I'll set an else condition to make sure that there is always an og:type (default to `content="website"`) and we're good to go.
-
-Oh, I want to add the post image to the template too, but only when it is one set at the post level. Being a good web citizen, I should always have alt text on my image, so I'm going to only include it in the post template when I have alt text, that's an easy way to assure not every post has the default image.
-
-I dunno what the right tag is for this? Sometimes I use `aside` but I think I'm supposed to use `figure` right? I'll use that here.
+And then I can fill that in with:
 
 {% raw %}
-```liquid
-    {% if featuredImageAlt %}
-    <figure class="figure preview-image">
-        <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
-        {% if featuredImageCaption or featuredImageCredit %}
-        <figcaption class="figcaption">
-            {% if featuredImageCaption  %}{{featuredImageCaption}}{% endif %}{% if featuredImageCredit  %} | <em><a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a></em> | {% endif %}
-        </figcaption>
-        {% endif %}
-    </figure>
-    {% endif %}
-```
+`{% block bodytags %}itemscope itemtype="https://schema.org/CreativeWork"{% endblock %}`
 {% endraw %}
 
-Ok, basic image stuff works!
+End then I can add a little custom styling to make it smaller for the article context where it is less relevant. I'll move the style up to my `user.sass` file and then add a post specific rule to change the size.
 
-`git commit -am "Last commit from day 28"`
+Looks good and [looks like it validates](https://validator.schema.org/)!
+
+Ok, didn't have much time today, so just a short dip of the toe.
+
+
