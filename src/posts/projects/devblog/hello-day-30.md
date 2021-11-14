@@ -139,4 +139,8 @@ Looks good!
 
 - [x] Add a Things I Learned section to the project pages that are the things I learned from that specific project.
 
-I put in a dummy post for things I learned 
+`git commit -am "Style work for  day 30"`
+
+I put in a dummy post for things I learned just to make sure everything worked and it did. Don't forget, I need a `h2` level header in every post. I'll remove it now.
+
+
