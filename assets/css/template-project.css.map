@@ -5,9 +5,9 @@
 		"sass/src/_sass/template-project.sass"
 	],
 	"names": [],
-	"mappings": "AACI,8BACI",
+	"mappings": "AACI,8BACI,gBACA,oBACJ,sCACI,8BAEA,wDACI,aACA,uBACA,2CAHJ,wDAIQ,eACJ,sEACI,eACA,cACA,mFACI,iBACA,kBACA,2BACJ,2CAPJ,sEAQQ,UACA,mFACI,cACA,cACA,WAEhB,kCACI,gBACA",
 	"file": "template-project.css",
 	"sourcesContent": [
-		"#template-project\n    #precontent\n        margin-top: 10px\n"
+		"#template-project\n    #precontent\n        margin-top: 10px\n        padding-bottom: 14px\n    section#maincontent\n        padding-bottom: 2px !important\n    #postcontent\n        .content-lists-container\n            display: flex\n            justify-content: center\n            @media print, screen and (max-width: 630px)\n                display: block\n            .content-list\n                padding: 0 10px\n                min-width: 38%\n                &:nth-child(2)\n                    margin-left: 10px\n                    padding-left: 10px\n                    border-left: 1px solid black\n                @media print, screen and (max-width: 630px)\n                    padding: 0\n                    &:nth-child(2)\n                        border-left: 0\n                        margin-left: 0\n                        padding: 0\n\n        h4\n            margin-top: 10px\n            margin-bottom: 10px\n"
 	]
 }
