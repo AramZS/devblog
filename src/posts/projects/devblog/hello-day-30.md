@@ -143,4 +143,4 @@ Looks good!
 
 I put in a dummy post for things I learned just to make sure everything worked and it did. Don't forget, I need a `h2` level header in every post. I'll remove it now.
 
-
+`git commit -am "Finish off day 30"`
