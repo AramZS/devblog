@@ -3,30 +3,47 @@
 {% set templateName = "project" %}
 
 {% block precontent %}
-<section id="precontent">
-	<p>
+    <section id="precontent">
+        <p>
 		Each project I talk about on this blog is usually executed over multiple days.
 		This page is where you can find each of those posts that describe the project as I worked on it.
 	</p>
-</section>
+    </section>
 {% endblock %}
 
 {% block maincontent %}
-	<p>
-		<em>This project is about:</em>
-	</p>
-	<p>{{ description }}</p>
-	<h3>Follow along with my work on {{project.projectName}}:</h3>
+    <p>
+        <em>This project is about:</em>
+    </p>
+    <p>{{ description }}</p>
+    <h3>Follow along with my work on {{project.projectName}}:</h3>
 {% endblock %}
 
 {% block postcontent %}
-	<ul>
-		{%- for post in collections.projects -%}
-			{% if post.data.project == project.projectName %}
-				<li>
-					<a href="{{ post.url }}">{{ post.data.title }}</a>
-				</li>
-			{% endif %}
-		{%- endfor -%}
-	</ul>
+    <div class="content-lists-container">
+        <div class="content-list">
+            <h4>Work</h4>
+            <ul>
+                {%- for post in collections.projects -%}
+                    {% if post.data.project == project.projectName and not post.data.wrapup %}
+                        <li>
+                            <a href="{{ post.url }}">{{ post.data.title }}</a>
+                        </li>
+                    {% endif %}
+                {%- endfor -%}
+            </ul>
+        </div>
+        <div class="content-list">
+            <h4>Things I learned</h4>
+            <ul>
+                {%- for post in collections.projects -%}
+                    {% if post.data.project == project.projectName and post.data.wrapup %}
+                        <li>
+                            <a href="{{ post.url }}">{{ post.data.title }}</a>
+                        </li>
+                    {% endif %}
+                {%- endfor -%}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

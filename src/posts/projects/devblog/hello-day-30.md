@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 29
+title: Hello World Devblog - Pt. 30
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4
@@ -95,38 +95,48 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [x] SEO/Social/JSON-LD HEAD data
 
-## Day 29
+## Day 30
 
-Ok, all the SEO/SEM stuff is good. It's been a while so let's knock out an easy one and add my byline to post pages.
+Ok, day 30. Pretty big benchmark and it looks like I'm getting close to being done.
 
-I'll pull the byline header from the index page and turn it into a partial. But I don't want people to click off the site to my ID page like they are now. I should use [the Microdata for the Person object](https://schema.org/Person) to link my identity page on Github to my byline on this site.
+Let's check a small one off the list first and hide the empties.
 
-Hopefully I'll get this right. It looks like way to handle it is with a container of `itemprop` with the Person type.
+- [x] [Hide](https://developer.mozilla.org/en-US/docs/Web/CSS/:empty) empty sections.
 
-`<h5 itemprop="author" itemscope itemtype="https://schema.org/Person">`
+### Adding Things I Learned to the Project Page
 
-I want to keep the link to my ID and it [looks like the way to do that](https://schema.org/Person#eg-0189) is using a self-closing `link` tag.
+I am going to want to create some boxes if I want to set up Things I Learned on the project pages. That's going to mean collapsing some boxes too.
 
-`<link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />`
+Ok, I'm on a new computer and for some reason the Sass file for the project template is not rebuilding. What's going on here?
 
-But if I want it to properly designate this as 'author' it can't stand on it's own. It'll need to be in a larger schema object. I guess that means giving my blog posts the Schema.org markup for a [Creative Work](https://schema.org/CreativeWork). Might not be worth it but I wonder... can I have a block that is just properties for a tag?
+Oh, something weird must be going on because for some reason on this computer (which is an old laptop I've tried to reclaim some usefulness via setting it up with Ubuntu) is not passing the `process.env.DOMAIN` variable. Oops... forgot to set up my `.env` file with `IS_LOCAL=true`. Ok, everything is working now!
 
-Looks like yes:
+Ok, everything is loading now and I did some styling with Flexbox for a fast and easy two column layout.
 
-{% raw %}
-`<body {% block bodytags %}{% endblock %}>`
-{% endraw %}
+```scss
+ #postcontent
+        .content-lists-container
+            display: flex
+            justify-content: center
+            @media print, screen and (max-width: 630px)
+                display: block
+            .content-list
+                padding: 0 10px
+                min-width: 38%
+                &:nth-child(2)
+                    margin-left: 10px
+                    padding-left: 10px
+                    border-left: 1px solid black
+                @media print, screen and (max-width: 630px)
+                    padding: 0
+                    &:nth-child(2)
+                        border-left: 0
+                        margin-left: 0
+                        padding: 0
+```
 
-And then I can fill that in with:
+Looks good!
 
-{% raw %}
-`{% block bodytags %}itemscope itemtype="https://schema.org/CreativeWork"{% endblock %}`
-{% endraw %}
+- [x] Add a Things I Learned section to the project pages that are the things I learned from that specific project.
 
-End then I can add a little custom styling to make it smaller for the article context where it is less relevant. I'll move the style up to my `user.sass` file and then add a post specific rule to change the size.
-
-Looks good and [looks like it validates](https://validator.schema.org/)!
-
-Ok, didn't have much time today, so just a short dip of the toe.
-
-`git commit -am "Set up byline on posts"`
+I put in a dummy post for things I learned 

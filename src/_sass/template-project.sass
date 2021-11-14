@@ -1,3 +1,29 @@
 #template-project
     #precontent
         margin-top: 10px
+        padding-bottom: 14px
+    section#maincontent
+        padding-bottom: 2px !important
+    #postcontent
+        .content-lists-container
+            display: flex
+            justify-content: center
+            @media print, screen and (max-width: 630px)
+                display: block
+            .content-list
+                padding: 0 10px
+                min-width: 38%
+                &:nth-child(2)
+                    margin-left: 10px
+                    padding-left: 10px
+                    border-left: 1px solid black
+                @media print, screen and (max-width: 630px)
+                    padding: 0
+                    &:nth-child(2)
+                        border-left: 0
+                        margin-left: 0
+                        padding: 0
+
+        h4
+            margin-top: 10px
+            margin-bottom: 10px
