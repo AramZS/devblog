@@ -303,25 +303,6 @@ module.exports = function (eleventyConfig) {
 		function (collection, page, project){
 			let index = -1;
 			return getNProjectItem(collection, page, project, index, function(i){return i-1})
-			let found = false;
-			if (project){
-				let lastPost;
-				while (found === false) {
-					lastPost = getCollectionItem(collection, page, index)
-					if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == project){
-						found = true;
-					} else {
-						if (!lastPost){
-							return false;
-						}
-						index = index-1;
-					}
-				}
-				return lastPost;
-			} else {
-				return false;
-			}
-
 		}
 	);
 	eleventyConfig.addFilter(
@@ -329,24 +310,6 @@ module.exports = function (eleventyConfig) {
 		function (collection, page, project){
 			let index = 1;
 			return getNProjectItem(collection, page, project, index, function(i){return i+1})
-			let found = false;
-			if (project){
-				let lastPost;
-				while (found === false) {
-					lastPost = getCollectionItem(collection, page, index)
-					if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == project){
-						found = true;
-					} else {
-						if (!lastPost){
-							return false;
-						}
-						index = index+1;
-					}
-				}
-				return lastPost;
-			} else {
-				return false;
-			}
 		}
 	);
 	eleventyConfig.addFilter("relproject", function (url) {

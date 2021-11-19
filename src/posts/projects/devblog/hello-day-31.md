@@ -250,4 +250,28 @@ if (
 ){
 ```
 
-Ok it's looking good! 
+Ok it's looking good!
+
+`git commit -am "Setting up in-post pagination for projects"`
+
+Ok, clean up time. Oh and I should make sure this is only for project work days, so an `if` check for that in the template.
+
+{% raw %}
+```liquid
+    {% if project and not wrapup %}
+        {% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
+        {% set nextPost = collections.posts | getNextProjectItem(page, project) %}
+        <div class="pagination">
+            <a href="{% if previousPost %}{{ previousPost.url }}{% else %}javascript:void(0){% endif %}" class="pagination-link {% if previousPost %}cursor-pointer {% else %} cursor-default disabled-link{% endif %}">Previous Project Days</a>
+
+            <a href="{% if nextPost %}{{ nextPost.url }}{% else %}javascript:void(0){% endif %}" class="pagination-link {% if nextPost %}cursor-pointer {% else %} disabled-link cursor-default{% endif %}">Next Project Day</a>
+        </div>
+    {% endif %}
+```
+{% endraw %}
+
+Ok, looking good. One more thing to check off the list!
+
+- [x] Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects
+
+`git commit -am "Finish off day 31"`
