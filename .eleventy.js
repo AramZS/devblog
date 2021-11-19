@@ -3,6 +3,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
 const pluginTOC = require("eleventy-plugin-toc");
+const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
 // const markdownItRegex = require("markdown-it-regex");
 const path = require("path");
@@ -274,6 +275,78 @@ module.exports = function (eleventyConfig) {
 			${postList.join("\n")}
 		</ul>
 		`;
+		}
+	);
+	function getNProjectItem(collection, page, projectName, index, operation){
+		let found = false;
+		let i = index;
+		if (projectName){
+			let lastPost;
+			while (found === false) {
+				lastPost = getCollectionItem(collection, page, i)
+				if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == projectName && !lastPost.data.hasOwnProperty('wrapup')){
+					found = true;
+				} else {
+					if (!lastPost){
+						return false;
+					}
+					i = operation(i);
+				}
+			}
+			return lastPost;
+		} else {
+			return false;
+		}
+	}
+	eleventyConfig.addFilter(
+		"getPreviousProjectItem",
+		function (collection, page, project){
+			let index = -1;
+			return getNProjectItem(collection, page, project, index, function(i){return i-1})
+			let found = false;
+			if (project){
+				let lastPost;
+				while (found === false) {
+					lastPost = getCollectionItem(collection, page, index)
+					if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == project){
+						found = true;
+					} else {
+						if (!lastPost){
+							return false;
+						}
+						index = index-1;
+					}
+				}
+				return lastPost;
+			} else {
+				return false;
+			}
+
+		}
+	);
+	eleventyConfig.addFilter(
+		"getNextProjectItem",
+		function (collection, page, project){
+			let index = 1;
+			return getNProjectItem(collection, page, project, index, function(i){return i+1})
+			let found = false;
+			if (project){
+				let lastPost;
+				while (found === false) {
+					lastPost = getCollectionItem(collection, page, index)
+					if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == project){
+						found = true;
+					} else {
+						if (!lastPost){
+							return false;
+						}
+						index = index+1;
+					}
+				}
+				return lastPost;
+			} else {
+				return false;
+			}
 		}
 	);
 	eleventyConfig.addFilter("relproject", function (url) {
