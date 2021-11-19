@@ -5,45 +5,57 @@
 {% block bodytags %}itemscope itemtype="https://schema.org/Blog"{% endblock %}
 
 {% block header_bottom %}
-{% include "partials/byline.njk" %}
+    {% include "partials/byline.njk" %}
 {% endblock %}
 
 {% block precontent %}
-<section id="precontent">
-    <aside id="toc-container">
-        <div id="toc-container__inner">
-            <h2>Contents</h2>
-            {{ content | toc }}
-        </div>
-    </aside>
-    <div id="post-description">{{ description }}</div>
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                {{ content | toc }}
+            </div>
+        </aside>
+        <div id="post-description">{{ description }}</div>
 
-    {% if featuredImageAlt %}
-    <figure class="figure preview-image">
-        <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
-        {% if featuredImageCaption or featuredImageCredit %}
-        <figcaption class="figcaption">
-            {% if featuredImageCaption  %}{{featuredImageCaption}}{% endif %}{% if featuredImageCredit  %} | <em><a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a></em> | {% endif %}
-        </figcaption>
+        {% if featuredImageAlt %}
+            <figure class="figure preview-image">
+                <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
+                {% if featuredImageCaption or featuredImageCredit %}
+                    <figcaption class="figcaption">
+                        {% if featuredImageCaption %}{{featuredImageCaption}}
+                        {% endif %}
+                        {% if featuredImageCredit %} | <em>
+                                <a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a>
+                            </em> | {% endif %}
+                    </figcaption>
+                {% endif %}
+            </figure>
         {% endif %}
-    </figure>
-    {% endif %}
 
-</section>
+    </section>
 {% endblock %}
 
 {% block postcontent %}
-{% include "partials/social-block.njk" %}
+    {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+    {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+    <div class="pagination">
+        <a href="{% if previousPost %}{{ previousPost.url }}{% else %}javascript:void(0){% endif %}" class="pagination-link {% if previousPost %}cursor-pointer {% else %} cursor-default disabled-link{% endif %}">Previous</a>
+
+        <a href="{% if nextPost %}{{ nextPost.url }}{% else %}javascript:void(0){% endif %}" class="pagination-link {% if nextPost %}cursor-pointer {% else %} disabled-link cursor-default{% endif %}">Next</a>
+    </div>
+    {% include "partials/social-block.njk" %}
 {% endblock %}
 
-
 {% block prefooter %}
-	<div id="taglist">
-		<h6>Tags: </h6>
+    <div id="taglist">
+        <h6>Tags: </h6>
         <ul>
-			{%- for tag in tags | filterTagList -%}
-			    <li><a href="{{ site.site_url }}/tag/{{ tag | slug }}">{{ tag }}</a></li>
-			{%- endfor -%}
+            {%- for tag in tags | filterTagList -%}
+                <li>
+                    <a href="{{ site.site_url }}/tag/{{ tag | slug }}">{{ tag }}</a>
+                </li>
+            {%- endfor -%}
         </ul>
-	</div>
+    </div>
 {% endblock %}
