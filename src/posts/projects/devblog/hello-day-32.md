@@ -163,4 +163,6 @@ Ok, had to make sure my styles are in place but it looks good. I may want to mod
 
 Now I want to add it to the front page as well. But I'll save that until the next day of working on this project.
 
+`git commit -am "Finishing off day 32"`
+
 
