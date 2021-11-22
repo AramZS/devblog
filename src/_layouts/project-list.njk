@@ -6,7 +6,7 @@
     <section id="precontent">
         <p>
             Each project I talk about on this blog is usually executed over multiple days.
-            This page is a list of these projects.
+            This page is a list of these projects. Click on any of them to see a list of days worked.
         </p>
     </section>
 {% endblock %}
@@ -15,17 +15,21 @@
 
     <div id="all-projects">
         <ul>
-				{% for project in projects %}
-					<li class="capitalize-first">
-						<a href="{{project.url}}">{{project.title}}</a> <p><span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span> <!-- last updated:  {{project.lastUpdatedPost}} -->
-                        <br />{{project.description}}</p>
-					</li>
-				{% endfor %}
+            {% for project in projects %}
+                <li class="capitalize-first listed-project">
+                    <h3>
+                        <a href="{{project.url}}">{{project.title}}</a>
+                    </h3>
+                    <p>
+                        <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span>
+                        <!-- last updated:  {{project.lastUpdatedPost}} -->
+                        <br/>{{project.description}}
+                    </p>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 
 {% endblock %}
 
-{% block postcontent %}
-
-{% endblock %}
+{% block postcontent %}{% endblock %}

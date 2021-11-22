@@ -148,3 +148,19 @@ And I'll remove the dots on the li elements.
         li
             list-style: none
 ```
+
+Ok, did a little touching up of the formatting, and now we've got that page. Good to go.
+
+### Preview Images on Lists
+
+Ok, next thing I wanted to check off is including the image on some of the post preview pages. Let's start with the tag pages.
+
+First I'll set up a stand-alone Sass file for the post preview component. Then I'll add a containing class to the post-summary component itself.
+
+Then I'm going to pull the post image HTML out of `post.njk` and into its own file in the `partials` folder. This way I can reuse the basic HTML structure of the image across the site.
+
+Ok, had to make sure my styles are in place but it looks good. I may want to modify the styles a little bit, it isn't perfect and I may want to play with it a bit.
+
+Now I want to add it to the front page as well. But I'll save that until the next day of working on this project.
+
+
