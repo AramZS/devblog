@@ -13,6 +13,145 @@
   </author>
   
   <entry>
+    <title>Hello World Devblog - Pt. 32</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-32/"/>
+    <updated>2021-11-13T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-32/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-32" tabindex="-1">Day 32</h2>
+<h3 id="projects-page" tabindex="-1">Projects Page</h3>
+<p>I realized that at some point I'm going to have too many projects to fit on the home page, so I <a href="https://github.com/AramZS/devblog/issues/4" target="_blank">need to limit the number that show up and set up a page to list the overall projects</a>.</p>
+<p>I want it to sit at <code>/projects</code> so I'll create a MD file to handle that and a template to handle this specific page type.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span><br /><span class="token key atrule">layout</span><span class="token punctuation">:</span> project<span class="token punctuation">-</span>list<br /><span class="token key atrule">pagination</span><span class="token punctuation">:</span><br />    <span class="token key atrule">data</span><span class="token punctuation">:</span> projects<br />    <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token number">1</span><br />    <span class="token key atrule">alias</span><span class="token punctuation">:</span> project<br /><span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token string">"projects/"</span><br /><span class="token key atrule">eleventyComputed</span><span class="token punctuation">:</span><br />  <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">"Project List"</span><br />  <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"A list of projects that Aram Zucker-Scharff has documented working on."</span><br /><span class="token punctuation">---</span></code></pre>
+<p>I'll start with the project page as the template. Then I can take the loop through the projects object from the front page.</p>
+<pre class="language-liquid"><code class="language-liquid">				{<span class="token operator">%</span> <span class="token keyword">for</span> project <span class="token keyword">in</span> projects <span class="token operator">%</span>}<br />					<span class="token operator">&lt;</span>li class<span class="token operator">=</span>"capitalize<span class="token operator">-</span>first"<span class="token operator">></span><br />						<span class="token operator">&lt;</span>a href<span class="token operator">=</span>"{{project.url}}"<span class="token operator">></span>{{project.title}}<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span> <span class="token operator">|</span> <span class="token operator">&lt;</span>span<span class="token operator">></span>Days worked<span class="token operator">:</span> {{project.count}}<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">|</span> <span class="token operator">&lt;</span>span<span class="token operator">></span>Status<span class="token operator">:</span> {{project.complete}}<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token function">last</span> updated<span class="token operator">:</span>  {{project.lastUpdatedPost}} <span class="token operator">--</span><span class="token operator">></span><br />					<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span><br />				{<span class="token operator">%</span> <span class="token keyword">endfor</span> <span class="token operator">%</span>}</code></pre>
+<p>Ok this is good. To make this easy to debug I should put the link on the front page. So to do that I need to do two things, break the project <code>for</code> loop, and add a link to the new projects page.</p>
+<p>Hmm, <a href="https://github.com/mozilla/nunjucks/issues/296" target="_blank">it doesn't look like there is actually a <code>break</code> in Nunjucks</a>. Perhaps I should try altering the array?</p>
+<p>Can I use an if check like <code> if loop.index &lt; 6</code> in the for statement? No that doesn't work. Looks like the <code>if</code> check <a href="https://stackoverflow.com/questions/22150273/how-can-i-break-a-for-loop-in-jinja2" target="_blank">is only for properties of the looped object</a>.</p>
+<p>Ah, no, that's not it at all. That doesn't work. Ah, ok, the best thing to do here is to slice the array before looping it. Instead of a <code>break</code> for this situation, we use slice.</p>
+<p><code>for project in projects | slice(5)</code></p>
+<p>Yup, that worked!</p>
+<p>And I'll remove the dots on the li elements.</p>
+<pre class="language-css"><code class="language-css">    #all-projects<br />        li<br />            <span class="token property">list-style</span><span class="token punctuation">:</span> none</code></pre>
+<p>Ok, did a little touching up of the formatting, and now we've got that page. Good to go.</p>
+<h3 id="preview-images-on-lists" tabindex="-1">Preview Images on Lists</h3>
+<p>Ok, next thing I wanted to check off is including the image on some of the post preview pages. Let's start with the tag pages.</p>
+<p>First I'll set up a stand-alone Sass file for the post preview component. Then I'll add a containing class to the post-summary component itself.</p>
+<p>Then I'm going to pull the post image HTML out of <code>post.njk</code> and into its own file in the <code>partials</code> folder. This way I can reuse the basic HTML structure of the image across the site.</p>
+<p>Ok, had to make sure my styles are in place but it looks good. I may want to modify the styles a little bit, it isn't perfect and I may want to play with it a bit.</p>
+<p>Now I want to add it to the front page as well. But I'll save that until the next day of working on this project.</p>
+<p><code>git commit -am &quot;Finishing off day 32&quot;</code></p>
+</content>
+  </entry>
+  
+  <entry>
     <title>Hello World Devblog - Pt. 31</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-31/"/>
     <updated>2021-11-13T02:59:43Z</updated>
