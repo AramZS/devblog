@@ -137,7 +137,7 @@ So no project property. The project proprty of the post is escaped into its own 
 So now the template calls the filter like:
 
 {% raw %}
-```liquid
+```njk
 	{% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
 	{% set nextPost = collections.posts | getNextProjectItem(page, project) %}
 ```

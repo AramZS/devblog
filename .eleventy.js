@@ -277,17 +277,22 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
-	function getNProjectItem(collection, page, projectName, index, operation){
+	function getNProjectItem(collection, page, projectName, index, operation) {
 		let found = false;
 		let i = index;
-		if (projectName){
+		if (projectName) {
 			let lastPost;
 			while (found === false) {
-				lastPost = getCollectionItem(collection, page, i)
-				if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == projectName && !lastPost.data.hasOwnProperty('wrapup')){
+				lastPost = getCollectionItem(collection, page, i);
+				if (
+					lastPost &&
+					lastPost.data.hasOwnProperty("project") &&
+					lastPost.data.project == projectName &&
+					!lastPost.data.hasOwnProperty("wrapup")
+				) {
 					found = true;
 				} else {
-					if (!lastPost){
+					if (!lastPost) {
 						return false;
 					}
 					i = operation(i);
@@ -300,16 +305,32 @@ module.exports = function (eleventyConfig) {
 	}
 	eleventyConfig.addFilter(
 		"getPreviousProjectItem",
-		function (collection, page, project){
+		function (collection, page, project) {
 			let index = -1;
-			return getNProjectItem(collection, page, project, index, function(i){return i-1})
+			return getNProjectItem(
+				collection,
+				page,
+				project,
+				index,
+				function (i) {
+					return i - 1;
+				}
+			);
 		}
 	);
 	eleventyConfig.addFilter(
 		"getNextProjectItem",
-		function (collection, page, project){
+		function (collection, page, project) {
 			let index = 1;
-			return getNProjectItem(collection, page, project, index, function(i){return i+1})
+			return getNProjectItem(
+				collection,
+				page,
+				project,
+				index,
+				function (i) {
+					return i + 1;
+				}
+			);
 		}
 	);
 	eleventyConfig.addFilter("relproject", function (url) {
@@ -444,6 +465,20 @@ module.exports = function (eleventyConfig) {
 					inside: Prism.languages.yaml,
 				},
 			});
+			//console.log(Prism.languages);
+			Prism.languages.liquid = Prism.languages.extend("html", {
+				templateTag: {
+					pattern: /(?<=\{\%).*?(?=\%\})/g,
+					greedy: true,
+					inside: Prism.languages.javascript,
+				},
+				templateTagBoundary: {
+					pattern: /\{\%}?|\%\}?/g,
+					greedy: false,
+					alias: "template-tag-boundary",
+				},
+			});
+			Prism.languages.njk = Prism.languages.extend("liquid", {});
 		},
 	});
 
