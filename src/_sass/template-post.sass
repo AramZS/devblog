@@ -22,6 +22,9 @@ header
             @media (min-width: variables.$large-mobile) and (min-height: 962px)
                 overflow-y: auto
                 max-height: 225px
+            @media (min-width: variables.$ultra-large)
+                overflow-y: auto
+                max-height: 80%
         nav
             margin: .5em 1.5em
         ol
@@ -39,6 +42,11 @@ header
             max-height: 278px
             overflow: hidden
             z-index: 100
+        @media (min-width: variables.$ultra-large)
+            position: fixed
+            top: 10px
+            left: 1005px
+            width: 295px
     #post-description
         padding: 10px 14px
         padding-top: 20px
