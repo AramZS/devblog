@@ -529,6 +529,7 @@ module.exports = function (eleventyConfig) {
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
+		.use(require("./_custom-plugins/markdown-it-short-phrases"))
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase()),
