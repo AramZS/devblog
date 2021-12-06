@@ -27,12 +27,13 @@
 		<div class="column">
 			<h3>Projects Thus Far</h3>
 			<ul>
-				{% for project in projects %}
+				{% for project in projects | slice(5) %}
 					<li class="capitalize-first">
 						<a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.count}}</span> | <span>Status: {{project.complete}}</span> <!-- last updated:  {{project.lastUpdatedPost}} -->
 					</li>
 				{% endfor %}
 			</ul>
+            <a href="/projects/">Full Project List</a>
 		</div>
 		<!-- post list: -->
 		{% for postType in postLists %}
