@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 1</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -237,26 +237,26 @@
 <li>Once it gets going, I want template changes to be easy.</li>
 <li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
 </ol>
-<p>So, after being completly put off by the Hugo quickstart page, I decided to go to 11ty. I'd been using 11ty for a very basic build process on another project, so I wanted to see what it would be like for a more complex blog. Everyone I know seems to love 11ty so if I complain about it on Twitter someone will likely give me an answer. This is a requirement I only just realized:</p>
+<p data-wordfix="true">So, after being completly put off by the Hugo quickstart page, I decided to go to Eleventy. I'd been using Eleventy for a very basic build process on another project, so I wanted to see what it would be like for a more complex blog. Everyone I know seems to love Eleventy so if I complain about it on Twitter someone will likely give me an answer. This is a requirement I only just realized:</p>
 <ol start="6">
 <li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
 </ol>
-<p>Ok. 11ty it is.</p>
+<p data-wordfix="true">Ok. Eleventy it is.</p>
 <p>Ok, first things first. New folder. <code>git init</code>.</p>
 <p>Oh, it starts new projects with the <code>master</code> branch? I don't like that, I like using <code>main</code>. I can checkout main and delete master right?</p>
 <p>Huh... if you don't have anything committed to any branch and you checkout a new branch the <code>master</code> branch ceases to exist. Cool. I guess I don't need to do <a href="https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/" target="_blank">this</a>.</p>
-<p>Wait... does 11ty work with GitHub Actions to build? I have no idea. <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">Looks like yes</a>... let's move forward.</p>
+<p data-wordfix="true">Wait... does Eleventy work with GitHub Actions to build? I have no idea. <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">Looks like yes</a>... let's move forward.</p>
 <p><code>npm init -y</code></p>
 <p><code>npm install --save-dev @11ty/eleventy</code></p>
-<p>Here we go with 11ty! Only...</p>
-<p>All the pre-built... ughhh &quot;Themes&quot; or &quot;Starters&quot; (I can't say template here, because searching for &quot;11ty templates&quot;, while a logical thing to do, just gives me a ton of pages about using Nunjucks) suck. They all suck hardcore. I mean, they're all single page sites with no clear navigation or nav bar and look barely worked out beyond the Bootstrap Starter Template phase. I can't stand any of them. Is there a secret location for good 11ty themes or is it just that the type of folks most likely to use 11ty lack design skills?</p>
+<p data-wordfix="true">Here we go with Eleventy! Only...</p>
+<p data-wordfix="true">All the pre-built... ughhh &quot;Themes&quot; or &quot;Starters&quot; (I can't say template here, because searching for &quot;Eleventy templates&quot;, while a logical thing to do, just gives me a ton of pages about using Nunjucks) suck. They all suck hardcore. I mean, they're all single page sites with no clear navigation or nav bar and look barely worked out beyond the Bootstrap Starter Template phase. I can't stand any of them. Is there a secret location for good Eleventy themes or is it just that the type of folks most likely to use Eleventy lack design skills?</p>
 <p>But... I really like the Jekyll dinky theme. All I really need is the CSS and I can pull a copy of its template into whatever. Easy enough in theory (never in practice).</p>
 <p>I'm going to pull it in as a submodule. I forgot how to do submodules. <a href="https://github.blog/2016-02-01-working-with-submodules/" target="_blank">Here we go</a>.</p>
 <p><code>git submodule add git@github.com:pages-themes/dinky.git</code></p>
 <p><code>git submodule update --init --recursive</code></p>
 <p>Alright, what have we got here.</p>
 <p>Sass. We've got Sass. That's going to need to be figured out.</p>
-<p>Let's go to the 11ty plugins and see what, if anything, can help me here.</p>
+<p data-wordfix="true">Let's go to the Eleventy plugins and see what, if anything, can help me here.</p>
 <p>Oh and let's grab some cool looking ones.</p>
 <p><code>npm install @11ty/eleventy-img</code></p>
 <p>Huh, some funkyness on the install... because I forgot that, for various complicated reasons, my Node install defaults to 8.*.</p>
@@ -268,16 +268,16 @@
 <code>npm install @11ty/eleventy-navigation --save-dev</code><br>
 <code>npm install @11ty/eleventy-plugin-rss --save-dev</code></p>
 <p><code>npm install eleventy-plugin-sass --save </code></p>
-<p>Ok, that didn't work. And the whole point of looking at plugins was a SASS processor integrated into the 11ty build process. Not great. What's wrong?</p>
+<p data-wordfix="true">Ok, that didn't work. And the whole point of looking at plugins was a SASS processor integrated into the Eleventy build process. Not great. What's wrong?</p>
 <p>Looks like something with <code>node-gyp</code>. Frequently a problem.</p>
 <p>Let's check <code>node-gyp</code>.</p>
 <p>Ok, a whole thing for problems from an upgrade.</p>
 <p>Let's do all of <a href="https://github.com/nodejs/node-gyp/blob/master/macOS_Catalina.md" target="_blank">that</a>. XCode needed an update and for some reason updating to Catalina also wiped out my XCode CLI tools... didn't realize that. Reinstall those:</p>
 <p><code>xcode-select --install</code></p>
 <p>Ok, cool. Moving on...</p>
-<p>Oh, I am looking at the configuration options for <code>gulp-sass</code> which get passed into the 11ty plugin and looks like <code>gulp-sass</code> is depreciated. So this plugin is not one I want to use. And it looks like there isn't an up to date Sass plugin.</p>
+<p data-wordfix="true">Oh, I am looking at the configuration options for <code>gulp-sass</code> which get passed into the Eleventy plugin and looks like <code>gulp-sass</code> is depreciated. So this plugin is not one I want to use. And it looks like there isn't an up to date Sass plugin.</p>
 <p>lol.</p>
-<p>So, let's assume I'm going to have to write my own plugin. I know nothing about 11ty plugins. Find a real basic one and use that as the template to start a new one.</p>
+<p data-wordfix="true">So, let's assume I'm going to have to write my own plugin. I know nothing about Eleventy plugins. Find a real basic one and use that as the template to start a new one.</p>
 <p>This <a href="https://www.npmjs.com/package/eleventy-plugin-meta-generator" target="_blank">one</a> looks pretty simple! So I'm going to keep that tab open for reference as I build out a Sass processor.</p>
 <p>[ ] Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
 <p>[ ] So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
@@ -295,19 +295,19 @@
 <p><em>sigh</em></p>
 <p>Ok, using latest version of Node, clearly a bad choice.</p>
 <p><code>.nvmrc</code> changed to <code>15</code>. I like 15, I've used 15 for other stuff. Hopefully no problem.</p>
-<p>You know... reading node-fiber's documentation... I... don't actually need it anyway. I want <code>renderSync</code>, to block the build process of 11ty until the right assets are done.</p>
+<p data-wordfix="true">You know... reading node-fiber's documentation... I... don't actually need it anyway. I want <code>renderSync</code>, to block the build process of Eleventy until the right assets are done.</p>
 <p>Whatever... never use latest Node... it always causes problems. I have encountered this time and time again. Clear out package-lock and node_modules.</p>
 <p><code>npm install</code></p>
 <p>Ok at this point my process has already become more muddled then I'm comfortable with. Better start documenting it actually. Oh wait, this is a dev blog, I should start documenting it AS A BLOG POST.</p>
-<p>I forgot the pattern for 11ty posts' folders in a project. <a href="https://github.com/11ty/eleventy-base-blog/tree/master/posts" target="_blank">Here it is</a>.</p>
+<p data-wordfix="true">I forgot the pattern for Eleventy posts' folders in a project. <a href="https://github.com/11ty/eleventy-base-blog/tree/master/posts" target="_blank">Here it is</a>.</p>
 <p>Started this file.</p>
-<p>Forgot the number of dashes for the metadata format for markdown that 11ty likes because it is not 8:30pm and I have not yet had dinner. I was reading about some feature that mentioned it in the context of merging data from templates with markdown files, I should likely note that.</p>
-<p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true">Forgot the number of dashes for the metadata format for markdown that Eleventy likes because it is not 8:30pm and I have not yet had dinner. I was reading about some feature that mentioned it in the context of merging data from templates with markdown files, I should likely note that.</p>
+<p data-wordfix="true">[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>Ok now:</p>
 <p>[x] Write everything down that I've done to this point before it zeroes out of my head.</p>
 <p>God bless CLI and browser history.</p>
 <p>Ok, back to the Sass plugin. And also: this would be a good time to do a commit huh?</p>
-<p><code>git commit -am &quot;a real 11ty blog... I don't know wtf I'm doing to make this work yet&quot;</code></p>
+<p data-wordfix="true"><code>git commit -am &quot;a real 11ty blog... I don't know wtf I'm doing to make this work yet&quot;</code></p>
 <p>Ok, <code>dart-sass</code>. I don't know what any of these listed options are...</p>
 <p>Annoying, since they are emulating the <code>node-sass</code> API, it's just a link to the <code>node-sass</code> README documentation. Ok, taking a look.</p>
 <ol start="7">
@@ -315,13 +315,13 @@
 </ol>
 <p>I also would like to have smart CSS, where it only loads the CSS files it needs for a template, so we'd have a main CSS file and then per-template CSS files? That would be cool. Or maybe <a href="https://github.com/addyosmani/critical#usage" target="_blank">this thing</a>? You know what... table that... let's just render the damn CSS first.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
-<p>Huh... a thought... can I just run any arbitrary function in 11ty as part of the build?</p>
-<p><a href="https://www.11ty.dev/docs/data-js/" target="_blank">Looks like</a> the <code>_data</code> folder can contain functions that output arbitrary files?</p>
+<p data-wordfix="true">Huh... a thought... can I just run any arbitrary function in Eleventy as part of the build?</p>
+<p data-wordfix="true"><a href="https://www.11ty.dev/docs/data-js/" target="_blank">Looks like</a> the <code>_data</code> folder can contain functions that output arbitrary files?</p>
 <p>Should I do that? I mean... I likely could... but it isn't elegant, it isn't the <em>right</em> way. Skip it.</p>
-<p>Ok, set it up with the most basic Sass build rules. Let's hold there, I'm going to want to try it out, but first, let's make sure the normal 11ty build works.</p>
+<p data-wordfix="true">Ok, set it up with the most basic Sass build rules. Let's hold there, I'm going to want to try it out, but first, let's make sure the normal Eleventy build works.</p>
 <p>Ok, to do that I need a layout in place. Get it in <a href="https://github.com/11ty/eleventy-base-blog/tree/master/_includes/layouts" target="_blank">the right place</a>.</p>
-<p>To make sure my CSS works properly, I should prob set up the dinky layout here. <code>dinky/_layouts</code>. Ok... only one file, easy enough. And the template syntax looks basically identical. Copy it and paste it into the <code>_includes/layouts</code> folder and rename it to <code>default.njk</code>.</p>
-<p>NOTE: I'm pretty sure that Nunjucks can process HTML files. Do I want to just add a 11ty alias to just pull default.html from dinky in the style of <code>eleventyConfig.addLayoutAlias(&quot;base&quot;, &quot;dinky/_layouts/default.html&quot;);</code>? Would that work? Put a pin in that:</p>
+<p data-wordfix="true">To make sure my CSS works properly, I should probably set up the dinky layout here. <code>dinky/_layouts</code>. Ok... only one file, easy enough. And the template syntax looks basically identical. Copy it and paste it into the <code>_includes/layouts</code> folder and rename it to <code>default.njk</code>.</p>
+<p data-wordfix="true">NOTE: I'm pretty sure that Nunjucks can process HTML files. Do I want to just add a Eleventy alias to just pull default.html from dinky in the style of <code>eleventyConfig.addLayoutAlias(&quot;base&quot;, &quot;dinky/_layouts/default.html&quot;);</code>? Would that work? Put a pin in that:</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
 <p>Pull the .eleventy.js return from the <a href="https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js" target="_blank">base blog</a> and change output to <code>docs</code> for Github Pages...</p>
 <pre class="language-javascript"><code class="language-javascript">		dir<span class="token operator">:</span> <span class="token punctuation">{</span><br>			input<span class="token operator">:</span> <span class="token string">"."</span><span class="token punctuation">,</span><br>			includes<span class="token operator">:</span> <span class="token string">"_includes"</span><span class="token punctuation">,</span><br>			data<span class="token operator">:</span> <span class="token string">"_data"</span><span class="token punctuation">,</span><br>			output<span class="token operator">:</span> <span class="token string">"docs"</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>

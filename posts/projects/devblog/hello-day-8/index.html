@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 8</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -250,7 +250,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -266,7 +266,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
@@ -275,7 +275,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
@@ -303,7 +303,7 @@
 <p>Huh... about to try this but a thought occurs... should I just export the whole <code>github</code> object? Would that work? Wait... <a href="https://docs.github.com/en/actions/reference/environment-variables" target="_blank">is it already there</a>? Let me try that both ways and see what I get.</p>
 <p><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></p>
 <p>Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling <code>process.env.GITHUB_JOB</code> just got me <code>deploy</code>. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.</p>
-<p>What if I set the <code>env</code> at the level of job? I think this means I could prob use <code>GITHUB_SHA</code>, but I want to see what works.</p>
+<p data-wordfix="true">What if I set the <code>env</code> at the level of job? I think this means I could probably use <code>GITHUB_SHA</code>, but I want to see what works.</p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p>Ah, that did it, so now I know how to use both!</p>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
@@ -316,7 +316,7 @@
 <p>Huh, I'm getting this in the output now: <code>Benchmark (Configuration): &quot;htmlToAbsoluteUrls&quot; Nunjucks Async Filter took 40ms (8.9%, called 8×, 5.0ms each)</code> and the domain name is wrong in the RSS feed. Found some info on building permalinks that may be useful for my more dynamic link urls, but doesn't seem to be for this. Huh, looks like this generates an Atom feed, not an RSS standard one. Going to rename the file accordingly.</p>
 <p>Still no go on getting those URLs set up properly. I need to pass the calculated domain in to the page metadata, but using template tags or JS functions doesn't seem to be doing it. The domain data just isn't going through.</p>
 <p>Ok, I had thought the functions in the <code>js</code> layout-based front matter would execute themselves, but it looks like I have to write them to execute in the context of the front matter itself. So now the front matter looks like this:</p>
-<pre class="language-liquid"><code class="language-liquid"><span class="token operator">--</span><span class="token operator">-</span>js<br>{<br>  "permalink"<span class="token operator">:</span> "feed.xml",<br>  "eleventyExcludeFromCollections"<span class="token operator">:</span> true,<br>  "metadata"<span class="token operator">:</span> {<br>    "title"<span class="token operator">:</span> "Feed <span class="token keyword">for</span> Fight With Tools <span class="token operator">-</span> Aram's Dev Blog",<br>    "subtitle"<span class="token operator">:</span> "Notes on various projects",<br>    "url"<span class="token operator">:</span> (function(){ return process.env.DOMAIN <span class="token operator">+</span> "<span class="token operator">/</span>" })(),<br>    "feedUrl"<span class="token operator">:</span> (function(){ return process.env.DOMAIN <span class="token operator">+</span> "<span class="token operator">/</span>feed.xml" })(),<br>    "author"<span class="token operator">:</span> {<br>      "name"<span class="token operator">:</span> "Aram Zucker<span class="token operator">-</span>Scharff",<br>      "email"<span class="token operator">:</span> "aramdevblog@aramzs.me"<br>    }<br>  },<br>  "internalPageTypes"<span class="token operator">:</span> [ "feed" ]<br>}<br><span class="token operator">--</span><span class="token operator">-</span></code></pre>
+<pre class="language-liquid"><code class="language-liquid">---js<br>{<br>  "permalink": "feed.xml",<br>  "eleventyExcludeFromCollections": true,<br>  "metadata": {<br>    "title": "Feed for Fight With Tools - Aram's Dev Blog",<br>    "subtitle": "Notes on various projects",<br>    "url": (function(){ return process.env.DOMAIN + "/" })(),<br>    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),<br>    "author": {<br>      "name": "Aram Zucker-Scharff",<br>      "email": "aramdevblog@aramzs.me"<br>    }<br>  },<br>  "internalPageTypes": [ "feed" ]<br>}<br>---</code></pre>
 <p>Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>

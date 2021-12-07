@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 21</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -248,7 +248,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -264,7 +264,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
@@ -273,7 +273,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
@@ -324,13 +324,13 @@
 <p>Hmm. Better.</p>
 <p>Now I'll have to adjust the pagination permalink it looks like to resolve this error:</p>
 <pre class="language-bash"><code class="language-bash">Problem writing Eleventy templates: <span class="token punctuation">(</span>more <span class="token keyword">in</span> DEBUG output<span class="token punctuation">)</span><br><span class="token operator">></span> Having trouble rendering njk template ./src/tags-pages.njk<br><br><span class="token variable"><span class="token variable">`</span>TemplateContentRenderError<span class="token variable">`</span></span> was thrown<br><span class="token operator">></span> <span class="token punctuation">(</span>./src/tags-pages.njk<span class="token punctuation">)</span><br>  Error: slugify: string argument expected<br><br><span class="token variable"><span class="token variable">`</span>Template render error<span class="token variable">`</span></span> was thrown:<br>    Template render error: <span class="token punctuation">(</span>./src/tags-pages.njk<span class="token punctuation">)</span><br>      Error: slugify: string argument expected</code></pre>
-<p>Oh, right, I can't access <code>Set</code>s with <code>[0]</code>. I don't think 11ty anticipates Sets anyway, so I should likely take the time to convert the Sets of posts into Arrays.</p>
+<p data-wordfix="true">Oh, right, I can't access <code>Set</code>s with <code>[0]</code>. I don't think Eleventy anticipates Sets anyway, so I should likely take the time to convert the Sets of posts into Arrays.</p>
 <p>Ok, easy enough, let's use the spread operator, that's what it is for right?</p>
 <pre class="language-javascript"><code class="language-javascript">		Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>tagSet<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token comment">// console.log(key);        // the name of the current key.</span><br>			<span class="token comment">// console.log(myObj[key]); // the value of the current key.</span><br>			tagSet<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>tagSet<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br>			<span class="token string">"tagset"</span><span class="token punctuation">,</span><br>			tagSet<span class="token punctuation">[</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>tagSet<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>verticalTag<br>		<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Ok, I'm getting the right information here in the console.log statement. It would seem that this is set up properly as a collection, but something about how it is being handled into the tags-pages isn't working.</p>
-<p>I'm going to take a look around and see how it works. There's <a href="https://www.11ty.dev/docs/quicktips/tag-pages/" target="_blank">a basic tag page post on the 11ty.dev site</a>, but it doesn't allow for pagination of the tag pages in the way I was hoping.</p>
-<p>Ok. So I think that, <a href="https://www.11ty.dev/docs/pagination/nav/" target="_blank">judging from the page on Pagination Navigation</a>, I have to pass an array, not an object. Let's change the transformation into a set into a transformation from an object to an array.</p>
-<p>Nope, that doesn't do it. And checking the docs it makes it clear that <a href="https://www.11ty.dev/docs/pagination/#paging-an-object" target="_blank">we can indeed paginate an object</a>.</p>
+<p data-wordfix="true">I'm going to take a look around and see how it works. There's <a href="https://www.11ty.dev/docs/quicktips/tag-pages/" target="_blank">a basic tag page post on the Eleventy.dev site</a>, but it doesn't allow for pagination of the tag pages in the way I was hoping.</p>
+<p data-wordfix="true">Ok. So I think that, <a href="https://www.11ty.dev/docs/pagination/nav/" target="_blank">judging from the page on Pagination Navigation</a>, I have to pass an array, not an object. Let's change the transformation into a set into a transformation from an object to an array.</p>
+<p data-wordfix="true">Nope, that doesn't do it. And checking the docs it makes it clear that <a href="https://www.11ty.dev/docs/pagination/#paging-an-object" target="_blank">we can indeed paginate an object</a>.</p>
 <p>Hmmm. So I think maybe this just isn't working the way I would have hoped. <a href="https://github.com/11ty/eleventy/issues/332" target="_blank">It looks like I'm not the only person to want to do this</a>. <a href="https://github.com/11ty/eleventy/blob/master/src/Plugins/Pagination.js" target="_blank">Judging by the pagination code</a> this is indeed the best way to do what I want to do, which seems, sort of a shame. <a href="https://github.com/dafiulh/vredeburg/blob/master/src/tag.njk" target="_blank">Others have taken a similar approach as well it looks like</a>.</p>
 <p>I like how the <a href="https://vredeburg.netlify.app/" target="_blank">vredeburg</a> these handles it. Very solid objects that make pagination easy and page links available. I should be able to adapt it easy. Switching over the code seems like it should be easy enough. The pagination seems to have applied, but the <code>eleventyComputed</code> doesn't seem to be working. Oh, a good time to commit!</p>
 <p><code>git commit -am &quot;Getting tag pages working, mostly there&quot;</code></p>

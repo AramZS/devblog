@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 7</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -250,7 +250,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
@@ -266,7 +266,7 @@
 <p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for 11ty?</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
@@ -275,7 +275,7 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 </ul>
 <h1 id="day-7" tabindex="-1">Day 7</h1>
@@ -300,7 +300,7 @@
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
 <p>While I'm here I should <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io" target="_blank">github.io</a> user page.</p>
-<p>I'll create the correct CNAME file and set up 11ty to pass it through to the build process.</p>
+<p data-wordfix="true">I'll create the correct CNAME file and set up Eleventy to pass it through to the build process.</p>
 <p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
 <p>And I'm going to set up my site data using <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> in order to have my local <code>http://localhost:8080</code> server used for the site domain when local and otherwise have it use my domain.</p>
 <p><code>git commit -am &quot;Setting up dotenv to have proper site data and domain use&quot;</code></p>
@@ -309,7 +309,7 @@
 <p>Ok, it looks like it is all working for my my base level requirements 1-6. I still want a source map for my CSS and that isn't done yet, but that is a Sass task.</p>
 <p>I still have some other major tasks... like building a real home page, including serious SE/MO and a few other things, but now I can move forward on that work confident that this system hits my baseline requirements and I can invest more time into it.</p>
 <p>Finishing off my requirements means handling some Sass to get mapping to work. I can define <code>sourceMap</code> and write the file appropriately, but it looks like I'll need handle two complications, first the relative paths to the source file will have to be passed through so the Sass files can be exposed on the front end. That's easy enough with a few functions in <code>.eleventy.js</code>. But it also apparently will need to have a full, not relative, url.</p>
-<p>I thought I might be able to use <a href="https://www.11ty.dev/docs/data-global-custom/" target="_blank">global data added at the config level, but it looks like that isn't available yet</a>. Didn't see that on my first run through as it isn't super obviously called out.</p>
+<p data-wordfix="true">I thought I might be able to use <a href="https://www.11ty.dev/docs/data-global-custom/" target="_blank">global data added at the config level, but it looks like that isn't available yet</a>. Didn't see that on my first run through as it isn't super obviously called out.</p>
 <p>I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.</p>
 <p>Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.</p>
 <pre class="language-javascript"><code class="language-javascript">		<span class="token function-variable function">replaceLink</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">link<span class="token punctuation">,</span> env</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token comment">// console.log("env:", env);</span><br>			<span class="token keyword">var</span> imageLinkRegex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^..\/img\/</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>link <span class="token operator">&amp;&amp;</span> imageLinkRegex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token punctuation">(</span><br>					env<span class="token punctuation">.</span>site<span class="token punctuation">.</span>site_url <span class="token operator">+</span><br>					<span class="token string">"/img/"</span> <span class="token operator">+</span><br>					link<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>imageLinkRegex<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> link<span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span></code></pre>

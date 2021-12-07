@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 4</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -240,11 +240,11 @@
 <p>[ ] Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
 <p>[ ] So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
 <p>[ ] Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
-<p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true">[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
 <p>[ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
-<p>[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
+<p data-wordfix="true">[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
 <p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
 <p>[ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 <h1 id="day-4" tabindex="-1">Day 4</h1>
@@ -255,10 +255,10 @@
 <p>What I want would look like this:</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>language-markdown<span class="token punctuation">"</span></span> <span class="token attr-name">data-lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>markdown<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>na<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>layout<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pi<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>s<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>post<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>---<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span></code></pre>
 <p>See the greater level of styling detail available via the additional span tags?</p>
-<p>Ok. So, like I said, surely a lot of people are using 11ty to demo code. Why not take a step back?</p>
+<p data-wordfix="true">Ok. So, like I said, surely a lot of people are using Eleventy to demo code. Why not take a step back?</p>
 <p>Instead of trying to get some increasingly complex markdown processor in play to do this, let's see if there is a code block plugin instead? If anyone uses it I bet 11ty's website does?</p>
 <p><a href="https://github.com/11ty/11ty-website/blob/master/.eleventy.js#L14" target="_blank">Yup</a>!</p>
-<p><a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/" target="_blank">Reading the docs</a>. Looks like it uses Prism, which I'm also familiar with. I'll try to implement like the 11ty site does.</p>
+<p data-wordfix="true"><a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/" target="_blank">Reading the docs</a>. Looks like it uses Prism, which I'm also familiar with. I'll try to implement like the Eleventy site does.</p>
 <p>Ok, that looks a LOT better! I'll have to walk through some examples to make sure it works.</p>
 <p>git commit -am &quot;Syntax highlighting actually working now?&quot;</p>
 

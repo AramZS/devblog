@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 3</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1488637246" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1550124856" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1488637246" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1550124856" />
             
-            <!-- Build Revision: 1488637246 & Sha: f738429d2fd507f2076240c68f6704b645cb468d -->
+            <!-- Build Revision: 1550124856 & Sha: a901930b83fe4006c4f5759b0041f9192312585d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -240,23 +240,23 @@
 <p>[ ] Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
 <p>[ ] So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
 <p>[ ] Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
-<p>[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true">[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
 <h2 id="day-3" tabindex="-1">Day 3</h2>
 <p>Ok, so I'm at day 3 and everything is working at a basic level. I need an index/entry page and some ways to present posts in lists. I also am not a huge fan of the <code>site/posts/post-name</code> structure.</p>
 <p>[ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
-<p>There's also an open question of Why Nunjucks? I'm not the biggest fan of Nunjucks, outside of the 11ty community that seems to be heavily invested into it, not many people seem to be using it. Documentation is (as we've already seen) sorta iffy and its relatively low adoption makes it harder to get questions answered.</p>
+<p data-wordfix="true">There's also an open question of Why Nunjucks? I'm not the biggest fan of Nunjucks, outside of the Eleventy community that seems to be heavily invested into it, not many people seem to be using it. Documentation is (as we've already seen) sorta iffy and its relatively low adoption makes it harder to get questions answered.</p>
 <p>I also haven't quite gotten syntax highlighting to work for <code>njk</code> files in VS Code, which is <em>very</em> frustrating and often turns me off from using something.</p>
-<p>I could, at this point, switch to Mustache, which I'm <a href="https://glitch.com/edit/#!/thespin?path=server.js" target="_blank">already pretty familiar</a> with. Mustache also has the advantage of having template tags that are more similar to Jekyll and more familiar to Javascript users. But, unless I hit a real bad obstacle I don't think I will, for two reasons. First, the point of this is to learn something new! Second, when I last tried 11ty to basically generate a few quick pages from a common template, it had terrible trouble rendering with Mustache, even with the instructions from their site. I've got other things to complicate first, can save that for later. If I get everything working, I might come back to this issue.</p>
+<p data-wordfix="true">I could, at this point, switch to Mustache, which I'm <a href="https://glitch.com/edit/#!/thespin?path=server.js" target="_blank">already pretty familiar</a> with. Mustache also has the advantage of having template tags that are more similar to Jekyll and more familiar to Javascript users. But, unless I hit a real bad obstacle I don't think I will, for two reasons. First, the point of this is to learn something new! Second, when I last tried Eleventy to basically generate a few quick pages from a common template, it had terrible trouble rendering with Mustache, even with the instructions from their site. I've got other things to complicate first, can save that for later. If I get everything working, I might come back to this issue.</p>
 <p>Ok, <a href="https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks" target="_blank">got Nunjucks syntax highlighting to properly work</a> for now!</p>
 <p>Stepping back it looks like the rendered site in the <code>docs</code> folder is generally looking ok. There's one issue, my passthrough of assets includes an <code>assets/css</code> folder with an entirely useless sass file that would be public-facing. So I'm going to have to do subdirectories of assets instead. Should be easy enough.</p>
 <p>Huh... it doesn't clean up the now defunct <code>css</code> folder. Is there a build tool to clean things up?</p>
 <p><a href="https://github.com/11ty/eleventy/issues/19" target="_blank">Looks like it doesn't ship with 11ty</a>. But there <a href="https://github.com/11ty/eleventy/issues/744" target="_blank">are other solutions that people have done</a>.</p>
 <p>I like <a href="https://github.com/11ty/eleventy/issues/744#issuecomment-800323968" target="_blank">the solution that defines the site configuration earlier</a>, it seems generally useful. I'll give it a try.</p>
 <p>That works! Deleting the whole folder and building it all new seems super inefficient, but there doesn't seem to be another way to handle things.</p>
-<p>One other throught now occurs. I saw that the dinky template uses some sort of build version number passed by github on build to cachebreak. I'm not sure how that works or if it can work the same way for 11ty. Perhaps I need to pass a datetime stamp for each build instead? Something to figure out later.</p>
-<p>[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for 11ty?</p>
+<p data-wordfix="true">One other throught now occurs. I saw that the dinky template uses some sort of build version number passed by github on build to cachebreak. I'm not sure how that works or if it can work the same way for Eleventy. Perhaps I need to pass a datetime stamp for each build instead? Something to figure out later.</p>
+<p data-wordfix="true">[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
 <p><code>git commit -am &quot;Self-cleaning builds&quot;</code></p>
 <p>11ty build is now stable enough that I might be able to develop with <code>npx @11ty/eleventy --serve</code> and check in on it. Let's see what it looks like.</p>
 <p>Gotta adjust my CSS output path to match the template file's.</p>
@@ -267,7 +267,7 @@
 <p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.<br>
 [ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 <p>I <a href="https://github.com/AramZS/aramzs.github.io/blob/master/_sass/_syntax-highlighting.scss" target="_blank">have syntax highlighting styles</a> I like on my Github user Pages site. Let's just reuse it.</p>
-<p>Huh... why doesn't the plugin for building Sass re-trigger on watch? <a href="https://www.11ty.dev/docs/events/#beforewatch" target="_blank">Looks like there's a way to fix that</a>.</p>
+<p data-wordfix="true">Huh... why doesn't the plugin for building Sass re-trigger on watch? <a href="https://www.11ty.dev/docs/events/#beforewatch" target="_blank">Looks like there's a way to fix that</a>.</p>
 <p>Ugh... apparently the Sass syntax has changed significantly since the last time I used it and also since it was set up in my other site. I'll need to correct.</p>
 <p><em>sigh</em></p>
 <p>Ok <a href="https://stackoverflow.com/questions/56858150/i-am-gettiing-an-error-expected-new-line-while-compiling-sass" target="_blank">it's changed a lot</a>. And the Sass build tools are dickishly specific about spaces over tabs. Need to add a new section to my <code>.editorconfig</code>.</p>
@@ -297,9 +297,9 @@ indent_style = space
 <p>Confusingly, GitHub Pages renders Markdown differently than GitHub does. GitHub uses its own Markdown processor; GitHub Pages uses jekyll-commonmark.</p>
 </blockquote>
 <p>lol <a href="https://www.markdownguide.org/tools/github-pages/" target="_blank">thanks</a>.</p>
-<p>Looks like <a href="https://www.npmjs.com/package/markdown-it" target="_blank">Markdown-It</a> is <a href="https://www.11ty.dev/docs/languages/markdown/" target="_blank">a popular choice</a> on 11ty to switch to commonmark.</p>
+<p data-wordfix="true">Looks like <a href="https://www.npmjs.com/package/markdown-it" target="_blank">Markdown-It</a> is <a href="https://www.11ty.dev/docs/languages/markdown/" target="_blank">a popular choice</a> on Eleventy to switch to commonmark.</p>
 <p>Oh no, <a href="https://www.npmjs.com/package/markdown-it#syntax-highlighting" target="_blank">it doesn't ship with syntax highlighting</a>.</p>
-<p>Ok, <code>highlight.js</code> is still not applying good tags. Is it an 11ty issue, or is it that I need to use Pygments, which is apparently the code syntax highlighting engine that Github Pages uses? Ok, how does that work in Node? There <a href="https://www.npmjs.com/package/pygments" target="_blank">is a package, let's read up</a>!</p>
+<p data-wordfix="true">Ok, <code>highlight.js</code> is still not applying good tags. Is it an Eleventy issue, or is it that I need to use Pygments, which is apparently the code syntax highlighting engine that Github Pages uses? Ok, how does that work in Node? There <a href="https://www.npmjs.com/package/pygments" target="_blank">is a package, let's read up</a>!</p>
 <p>I am concerned that it hasn't been update in 5 years. You know what? let's try <a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a> and see if I can force it to build better styles.</p>
 <p>Oh no... white text on bright red background. This is a bad sign.</p>
 <p>Ok, this looks like it actually should work ok though, what is going on? I'm going to add some <code>console.log</code> statements.</p>
