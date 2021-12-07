@@ -9,19 +9,25 @@ module.exports = Plugin(/s11tys/g, (match, utils) => {
 });
  */
 
+// A nice reference on this - https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/
+
 const myWords = () => {
 	return [
 		{
-			pattern: /(?<=[\s\S\( )])11ty(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\S\( ])11ty(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "Eleventy",
 		},
 		{
-			pattern: /(?<=[\s\S\( )])prob(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\( ])prob(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "probably",
 		},
 		{
-			pattern: /(?<=[\s\S\( )])graf(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\( ])graf(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "paragraph",
+		},
+		{
+			pattern: /(?<=[\t\s\( ])b\/c(?=[\?\.\,\s\r\n\!\) ])/gi,
+			replace: "because",
 		},
 	];
 };
@@ -33,7 +39,7 @@ const hasMyWords = (token) => {
 		// myWords().forEach((word) => {
 		for (let i = 0; i < myWords().length; i++) {
 			if (myWords()[i].pattern.test(token.content)) {
-				console.log("Word Replacement Time");
+				// console.log("Word Replacement Time");
 				return true;
 			}
 		}
@@ -61,12 +67,18 @@ function isMyWords(tokens, index) {
 }
 
 function fixMyWords(wordReplace, token, TokenConstructor) {
+	if (token.tag == "code") {
+		// Don't change text inside codeblocks
+		// console.log("do not replace text in code", token.type, token.tag);
+		return;
+	}
 	const betterWord = new TokenConstructor("inline", "", 0);
 	const replaced = token.content.replace(
 		wordReplace.pattern,
 		wordReplace.replace
 	);
 	if (replaced) {
+		// console.log(token);
 		betterWord.content = replaced;
 		token.content = betterWord.content;
 	}
@@ -79,7 +91,7 @@ function fixWordify(token, TokenConstructor) {
 	//const sliceIndex = wordChoice.length;
 	const replaceMe = myWords();
 	try {
-		console.log("Run Replacement.");
+		// console.log("Run Replacement.");
 		replaceMe.forEach((wordReplace) => {
 			fixMyWords(wordReplace, token, TokenConstructor);
 			for (let i = 0; i < token.children.length; i++) {
@@ -122,13 +134,10 @@ function fixWordify(token, TokenConstructor) {
 module.exports = (md) => {
 	md.core.ruler.after("inline", "short-phrase-fixer", (state) => {
 		const tokens = state.tokens;
-		console.log(
-			"Walking through possible words to fix3"
-			// state.tokens.filter((token) => token.type === "text")
-		);
+		// console.log("Walking through possible words to fix3");
 		for (let i = 0; i < tokens.length; i++) {
 			if ((tokens, isMyWords(tokens, i))) {
-				console.log("Trying to fix some words!");
+				// console.log("Trying to fix some words!");
 				fixWordify(tokens[i], state.Token);
 				setAttr(tokens[i - 1], "data-wordfix", "true");
 			}

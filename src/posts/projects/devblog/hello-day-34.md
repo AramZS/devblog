@@ -183,7 +183,7 @@ But what if more than one word that I need to correct is in the paragraph? I'll 
 
 ### Better replacement of words
 
-So what if I want to use both prob and 11ty in a sentence or if I want to use 11ty twice? I need to set it up so I can use both.
+So what if I want to use both `prob` and `11ty` in a sentence or if I want to use `11ty` twice? I need to set it up so I can use both.
 
 Ok, so my instinct here is to set up a set of patterns and their replacements than walk through it. Only, I'm getting an error `token.content.replaceAll is not a function`. Ok, is this applying to everything or is there some weird edge case?
 
@@ -213,6 +213,8 @@ const replaceMe = [
 ```
 
 Ok, now build continues, but notably the replacements don't seem to be happening. So it looks like it is breaking every time. Some of the tokens are indeed very complex like:
+
+#### A More Complex Markdown-It Token
 
 ```javascript
 Token {
@@ -391,21 +393,21 @@ Last thing I want to do... make sure this works if one of my replacement words i
 
 ### Replacing the word with punctuation
 
-This one should be pretty easy, I just need to add a look ahead for a variety of eligible punctuation. `(?=[\?\.\,\s\S\! ])` should do it.
+This one should be pretty easy, I just need to add a look ahead for a variety of eligible punctuation. `(?=[\?\.\,\s\! ])` should do it.
 
 Now the `myWords` function looks like this:
 
 ```javascript
 const myWords = () => {
 	return [
-		{ pattern: / 11ty(?=[\?\.\,\s\S\! ])/gi, replace: " Eleventy" },
-		{ pattern: / prob(?=[\?\.\,\s\S\! ])/gi, replace: " probably" },
-		{ pattern: / graf(?=[\?\.\,\s\S\! ])/gi, replace: " paragraph" },
+		{ pattern: / 11ty(?=[\?\.\,\s\! ])/gi, replace: " Eleventy" },
+		{ pattern: / prob(?=[\?\.\,\s\! ])/gi, replace: " probably" },
+		{ pattern: / graf(?=[\?\.\,\s\! ])/gi, replace: " paragraph" },
 	];
 };
 ```
 
-I specifically don't want to include quotes in this But what about parenthesis? It looks like `Markdown-It` does indeed break out the chunks of text in such a way that I don't have to worry about breaking Markdown links. Should be easy enough. Just need a lookbehind
+I specifically don't want to include quotes in this But what about parenthesis? It looks like `Markdown-It` does indeed break out the chunks of text in such a way that I don't have to worry about breaking Markdown links. Should be easy enough. Just need a lookbehind. Also, I can add in new lines or tabs as characters as well.
 
 Now it looks like this:
 
@@ -413,15 +415,15 @@ Now it looks like this:
 const myWords = () => {
 	return [
 		{
-			pattern: /(?<=[\s\S\( )])11ty(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\S\( ])11ty(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "Eleventy",
 		},
 		{
-			pattern: /(?<=[\s\S\( )])prob(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\( ])prob(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "probably",
 		},
 		{
-			pattern: /(?<=[\s\S\( )])graf(?=[\?\.\,\s\S\! ])/gi,
+			pattern: /(?<=[\t\s\( ])graf(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "paragraph",
 		},
 	];
@@ -433,3 +435,9 @@ Looking good! I can test and add more words later, landing now.
 - [x] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
 
 `git commit -am "Finish day 34"`
+
+## A few notes on touch up
+
+Just noting on here that I touched up the above Regex which had a few bad errors I didn't want anyone to repeat. Most importantly, I removed my use of `\S`.
+
+`git commit -am "Touch up day 34 stuff"`
