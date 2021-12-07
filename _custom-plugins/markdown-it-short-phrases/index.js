@@ -41,6 +41,8 @@ function fixMyWords(token, TokenConstructor) {
 	} else if (/ prob /.test(token.content)) {
 		betterWord.content = " probably ";
 		wordChoice = " prob ";
+	} else {
+		return { betterWord: false, wordChoice: false };
 	}
 
 	return { betterWord, wordChoice };
@@ -49,7 +51,7 @@ function fixMyWords(token, TokenConstructor) {
 function fixWordify(token, TokenConstructor) {
 	const { betterWord, wordChoice } = fixMyWords(token, TokenConstructor);
 	// token.children.unshift(betterWord);
-
+	if (!betterWord) return false;
 	//const sliceIndex = wordChoice.length;
 	token.content = token.content.replace(wordChoice, betterWord.content);
 	const fixedContent = new TokenConstructor("inline", "", 0);
@@ -58,18 +60,19 @@ function fixWordify(token, TokenConstructor) {
 	//	wordChoice,
 	//	betterWord.content
 	// );
-	token.children[0].content = fixedContent;
+	token.children[0].content = fixedContent.content;
+	console.log("token:", token);
 }
 
 module.exports = (md) => {
-	md.core.ruler.after("inline", "evernote-todo", (state) => {
+	md.core.ruler.after("inline", "short-phrase-fixer", (state) => {
 		const tokens = state.tokens;
 		console.log(
 			"Walking through possible words to fix3",
 			state.tokens.filter((token) => token.type === "text")
 		);
 		for (let i = 0; i < tokens.length; i++) {
-			if (isMyWords(tokens, i)) {
+			if ((tokens, isMyWords(tokens, i))) {
 				console.log("Trying to fix some words!");
 				fixWordify(tokens[i], state.Token);
 				setAttr(tokens[i - 1], "data-wordfix", "true");
