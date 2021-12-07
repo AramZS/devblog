@@ -387,5 +387,48 @@ That works!
 
 Last thing I want to do... make sure this works if one of my replacement words is at the end of a sentence or has a comma after it and still needs to be replaced. I forgot about this case.
 
+`git commit -am "Get replacement working with complex tokens"`
+
 ### Replacing the word with punctuation
+
+This one should be pretty easy, I just need to add a look ahead for a variety of eligible punctuation. `(?=[\?\.\,\s\S\! ])` should do it.
+
+Now the `myWords` function looks like this:
+
+```javascript
+const myWords = () => {
+	return [
+		{ pattern: / 11ty(?=[\?\.\,\s\S\! ])/gi, replace: " Eleventy" },
+		{ pattern: / prob(?=[\?\.\,\s\S\! ])/gi, replace: " probably" },
+		{ pattern: / graf(?=[\?\.\,\s\S\! ])/gi, replace: " paragraph" },
+	];
+};
+```
+
+I specifically don't want to include quotes in this But what about parenthesis? It looks like `Markdown-It` does indeed break out the chunks of text in such a way that I don't have to worry about breaking Markdown links. Should be easy enough. Just need a lookbehind
+
+Now it looks like this:
+
+```javascript
+const myWords = () => {
+	return [
+		{
+			pattern: /(?<=[\s\S\( )])11ty(?=[\?\.\,\s\S\! ])/gi,
+			replace: "Eleventy",
+		},
+		{
+			pattern: /(?<=[\s\S\( )])prob(?=[\?\.\,\s\S\! ])/gi,
+			replace: "probably",
+		},
+		{
+			pattern: /(?<=[\s\S\( )])graf(?=[\?\.\,\s\S\! ])/gi,
+			replace: "paragraph",
+		},
+	];
+};
+```
+
+Looking good! I can test and add more words later, landing now.
+
+- [x] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
 

@@ -11,9 +11,18 @@ module.exports = Plugin(/s11tys/g, (match, utils) => {
 
 const myWords = () => {
 	return [
-		{ pattern: / 11ty /gi, replace: " Eleventy " },
-		{ pattern: / prob /gi, replace: " probably " },
-		{ pattern: / graf /gi, replace: " paragraph " },
+		{
+			pattern: /(?<=[\s\S\( )])11ty(?=[\?\.\,\s\S\! ])/gi,
+			replace: "Eleventy",
+		},
+		{
+			pattern: /(?<=[\s\S\( )])prob(?=[\?\.\,\s\S\! ])/gi,
+			replace: "probably",
+		},
+		{
+			pattern: /(?<=[\s\S\( )])graf(?=[\?\.\,\s\S\! ])/gi,
+			replace: "paragraph",
+		},
 	];
 };
 
@@ -68,11 +77,6 @@ function fixWordify(token, TokenConstructor) {
 	// token.children.unshift(betterWord);
 	if (!token || !token.content) return false;
 	//const sliceIndex = wordChoice.length;
-	const oldReplaceMe = [
-		{ pattern: / 11ty /gi, replace: " Eleventy " },
-		{ pattern: / prob /gi, replace: " probably " },
-		{ pattern: / graf /gi, replace: " paragraph " },
-	];
 	const replaceMe = myWords();
 	try {
 		console.log("Run Replacement.");
