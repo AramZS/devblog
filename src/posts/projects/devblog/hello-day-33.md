@@ -7,10 +7,8 @@ tags:
   - Starters
   - 11ty
   - Node
-  - Sass
   - WiP
-  - SEO
-  - SMO
+  - Markdown-It
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
 featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
