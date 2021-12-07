@@ -101,7 +101,7 @@ Ok, took some real vacation time, so on the flight back and back to work on tryi
 
 ### Modifying the Markdown-It Plugin
 
-Ok, dealing with some errors when it does processing. But I made a good choice this time before getting on the flight, I loaded up the documentaiton page on Markdown-It. The problem is I needed to give my rule a unique (non-overlapping name with the to-do rule).
+Ok, dealing with some errors when it does processing. But I made a good choice this time before getting on the flight, I loaded up the documentation page on Markdown-It. The problem is I needed to give my rule a unique (non-overlapping name with the to-do rule).
 
 Changed it to `md.core.ruler.after("inline", "short-phrase-fixer", (state) => {` and now the plugin isn't crashing the build process!
 
@@ -180,3 +180,212 @@ module.exports = (md) => {
 ```
 
 But what if more than one word that I need to correct is in the paragraph? I'll need to set it up to run more than once on any piece of content, or do a smarter replace process.
+
+### Better replacement of words
+
+So what if I want to use both prob and 11ty in a sentence or if I want to use 11ty twice? I need to set it up so I can use both.
+
+Ok, so my instinct here is to set up a set of patterns and their replacements than walk through it. Only, I'm getting an error `token.content.replaceAll is not a function`. Ok, is this applying to everything or is there some weird edge case?
+
+I'm going to try this for the new `fixWordify` setup.
+
+```javascript
+const replaceMe = [
+		{ pattern: / 11ty /, replace: " Eleventy " },
+		{ pattern: / prob /, replace: " probably " },
+		{ pattern: / graf /, replace: " paragraph " },
+	];
+	try {
+		replaceMe.forEach((wordReplace) => {
+			const betterWord = new TokenConstructor("inline", "", 0);
+			betterWord.content = token.content.replaceAll(
+				wordReplace.pattern,
+				wordReplace.replace
+			);
+			token.content = betterWord.content;
+			token.children[0].content = betterWord.content;
+			console.log("token:", token);
+		});
+	} catch (e) {
+		console.log("Could not replace content in token: ", token);
+		console.log(e);
+	}
+```
+
+Ok, now build continues, but notably the replacements don't seem to be happening. So it looks like it is breaking every time. Some of the tokens are indeed very complex like:
+
+```javascript
+Token {
+  type: 'inline',
+  tag: '',
+  attrs: null,
+  map: [ 82, 83 ],
+  nesting: 0,
+  level: 1,
+  children: [
+    Token {
+      type: 'text',
+      tag: '',
+      attrs: null,
+      map: null,
+      nesting: 0,
+      level: 0,
+      children: null,
+      content: "First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly ",
+      markup: '',
+      info: '',
+      meta: null,
+      block: false,
+      hidden: false
+    },
+    Token {
+      type: 'link_open',
+      tag: 'a',
+      attrs: [Array],
+      map: null,
+      nesting: 1,
+      level: 0,
+      children: null,
+      content: '',
+      markup: '',
+      info: '',
+      meta: null,
+      block: false,
+      hidden: false
+    },
+    Token {
+      type: 'text',
+      tag: '',
+      attrs: null,
+      map: null,
+      nesting: 0,
+      level: 1,
+      children: null,
+      content: 'to create an 11ty collection',
+      markup: '',
+      info: '',
+      meta: null,
+      block: false,
+      hidden: false
+    },
+    Token {
+      type: 'link_close',
+      tag: 'a',
+      attrs: null,
+      map: null,
+      nesting: -1,
+      level: 0,
+      children: null,
+      content: '',
+      markup: '',
+      info: '',
+      meta: null,
+      block: false,
+      hidden: false
+    },
+    Token {
+      type: 'text',
+      tag: '',
+      attrs: null,
+      map: null,
+      nesting: 0,
+      level: 0,
+      children: null,
+      content: ", but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.",
+      markup: '',
+      info: '',
+      meta: null,
+      block: false,
+      hidden: false
+    }
+  ],
+  content: "First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly [to create an 11ty collection](https://www.11ty.dev/docs/collections/), but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.",
+  markup: '',
+  info: '',
+  meta: null,
+  block: true,
+  hidden: false
+}
+```
+
+But some are simple. And they all have content I can replace.
+
+Ok, let's add more detail to the log.
+
+```javascript
+		console.log(
+			"Could not replace content in token: ",
+			token.content,
+			token.children[0].content,
+			token
+		);
+```
+
+I'm still not seeing what could go wrong. These things are strings and should have `replaceAll`? I double checked and indeed, `replace` works just fine. I guess we can just use `replace` if I have the right configuration for the regex, ending it with `/gi`.
+
+Ok, that's working! Now let's remove my potential future human error opportunity by keeping the patterns I'm walking through in a single place:
+
+```javascript
+const myWords = () => {
+	return [
+		{ pattern: / 11ty /gi, replace: " Eleventy " },
+		{ pattern: / prob /gi, replace: " probably " },
+		{ pattern: / graf /gi, replace: " paragraph " },
+	];
+};
+```
+
+and now my check is a little more complex:
+
+```javascript
+const hasMyWords = (token) => {
+	if (token) {
+		// myWords().forEach((word) => {
+		for (let i = 0; i < myWords().length; i++) {
+			if (myWords()[i].pattern.test(token.content)) {
+				console.log("Word Replacement Time");
+				return true;
+			}
+		}
+	}
+	return false;
+};
+```
+
+Ok. Looking good. But it turns out this method doesn't handle the more complicated objects like the one above, instead of expecting only one child, we'll need to walk through all the children and do their replacements individually.
+
+### Handle each token child
+
+Ok, let's turn the `token.content` process into its own function I can use during the interation of token children:
+
+```javascript
+function fixMyWords(wordReplace, token, TokenConstructor) {
+	const betterWord = new TokenConstructor("inline", "", 0);
+	const replaced = token.content.replace(
+		wordReplace.pattern,
+		wordReplace.replace
+	);
+	if (replaced) {
+		betterWord.content = replaced;
+		token.content = betterWord.content;
+	}
+}
+```
+
+Now we can use a simpler version of `replaceMe` that works with walking over the children!
+
+```javascript
+replaceMe.forEach((wordReplace) => {
+	fixMyWords(wordReplace, token, TokenConstructor);
+	for (let i = 0; i < token.children.length; i++) {
+		fixMyWords(wordReplace, token.children[i], TokenConstructor);
+	}
+})
+```
+
+That works!
+
+Last thing I want to do... make sure this works if one of my replacement words is at the end of a sentence or has a comma after it and still needs to be replaced. I forgot about this case.
+
+### Replacing the word with punctuation
+

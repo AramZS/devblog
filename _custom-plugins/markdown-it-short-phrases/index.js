@@ -9,9 +9,28 @@ module.exports = Plugin(/s11tys/g, (match, utils) => {
 });
  */
 
+const myWords = () => {
+	return [
+		{ pattern: / 11ty /gi, replace: " Eleventy " },
+		{ pattern: / prob /gi, replace: " probably " },
+		{ pattern: / graf /gi, replace: " paragraph " },
+	];
+};
+
 const isInline = (token) => token && token.type === "inline";
 const isParagraph = (token) => token && token.type === "paragraph_open";
-const hasMyWords = (token) => token && / 11ty | prob /.test(token.content);
+const hasMyWords = (token) => {
+	if (token) {
+		// myWords().forEach((word) => {
+		for (let i = 0; i < myWords().length; i++) {
+			if (myWords()[i].pattern.test(token.content)) {
+				console.log("Word Replacement Time");
+				return true;
+			}
+		}
+	}
+	return false;
+};
 
 function setAttr(token, name, value) {
 	const index = token.attrIndex(name);
@@ -32,44 +51,76 @@ function isMyWords(tokens, index) {
 	);
 }
 
-function fixMyWords(token, TokenConstructor) {
-	let wordChoice = "";
+function fixMyWords(wordReplace, token, TokenConstructor) {
 	const betterWord = new TokenConstructor("inline", "", 0);
-	if (/ 11ty /.test(token.content)) {
-		betterWord.content = " Eleventy ";
-		wordChoice = " 11ty ";
-	} else if (/ prob /.test(token.content)) {
-		betterWord.content = " probably ";
-		wordChoice = " prob ";
-	} else {
-		return { betterWord: false, wordChoice: false };
+	const replaced = token.content.replace(
+		wordReplace.pattern,
+		wordReplace.replace
+	);
+	if (replaced) {
+		betterWord.content = replaced;
+		token.content = betterWord.content;
 	}
-
-	return { betterWord, wordChoice };
 }
 
 function fixWordify(token, TokenConstructor) {
-	const { betterWord, wordChoice } = fixMyWords(token, TokenConstructor);
+	// const { betterWord, wordChoice } = fixMyWords(token, TokenConstructor);
 	// token.children.unshift(betterWord);
-	if (!betterWord) return false;
+	if (!token || !token.content) return false;
 	//const sliceIndex = wordChoice.length;
-	token.content = token.content.replace(wordChoice, betterWord.content);
-	const fixedContent = new TokenConstructor("inline", "", 0);
-	fixedContent.content = token.content;
+	const oldReplaceMe = [
+		{ pattern: / 11ty /gi, replace: " Eleventy " },
+		{ pattern: / prob /gi, replace: " probably " },
+		{ pattern: / graf /gi, replace: " paragraph " },
+	];
+	const replaceMe = myWords();
+	try {
+		console.log("Run Replacement.");
+		replaceMe.forEach((wordReplace) => {
+			fixMyWords(wordReplace, token, TokenConstructor);
+			for (let i = 0; i < token.children.length; i++) {
+				fixMyWords(wordReplace, token.children[i], TokenConstructor);
+			}
+			/**
+			const betterWord = new TokenConstructor("inline", "", 0);
+			const replaced = token.content.replace(
+				wordReplace.pattern,
+				wordReplace.replace
+			);
+			if (replaced) {
+				betterWord.content = replaced;
+				token.content = betterWord.content;
+				token.children[0].content = betterWord.content;
+			}
+			*/
+			// console.log("token:", token);
+		});
+	} catch (e) {
+		console.log(
+			"Could not replace content in token: ",
+			token.content,
+			token.children[0].content,
+			token
+		);
+		console.log(e);
+	}
+	//token.content = token.content.replace(wordChoice, betterWord.content);
+	//const fixedContent = new TokenConstructor("inline", "", 0);
+	//fixedContent.content = token.content;
 	// token.children[0].content = token.children[0].content.replace(
 	//	wordChoice,
 	//	betterWord.content
 	// );
-	token.children[0].content = fixedContent.content;
-	console.log("token:", token);
+	// token.children[0].content = fixedContent.content;
+	// console.log("token:", token);
 }
 
 module.exports = (md) => {
 	md.core.ruler.after("inline", "short-phrase-fixer", (state) => {
 		const tokens = state.tokens;
 		console.log(
-			"Walking through possible words to fix3",
-			state.tokens.filter((token) => token.type === "text")
+			"Walking through possible words to fix3"
+			// state.tokens.filter((token) => token.type === "text")
 		);
 		for (let i = 0; i < tokens.length; i++) {
 			if ((tokens, isMyWords(tokens, i))) {
