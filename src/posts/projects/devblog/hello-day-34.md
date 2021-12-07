@@ -93,7 +93,7 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [x] SEO/Social/JSON-LD HEAD data
 
-## Day 33
+## Day 34
 
 Ok, took some real vacation time, so on the flight back and back to work on trying to build my own markdown-it plugin.
 

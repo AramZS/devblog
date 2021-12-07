@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 32
+title: Hello World Devblog - Pt. 33
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4
@@ -93,7 +93,7 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [x] SEO/Social/JSON-LD HEAD data
 
-## Day 32
+## Day 33
 
 Ok, got some plane time today. Let's see how far I can get without connecting to the internet.
 
