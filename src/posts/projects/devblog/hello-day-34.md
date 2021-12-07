@@ -432,3 +432,4 @@ Looking good! I can test and add more words later, landing now.
 
 - [x] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
 
+`git commit -am "Finish day 34"`
