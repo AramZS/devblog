@@ -683,3 +683,5 @@ Ok, so a search of `https --auth AramZS:[token] https://api.github.com/search/co
 ```
 
 So I can even use a more precise search and get back more useful results, like: `https --auth AramZS:[token] https://api.github.com/search/commits?q=repo:AramZS/devblog+Finish+day+34` will give me back 2 results which is more useful.
+
+I [tried out Httpie on the CLI](https://httpie.io/docs#examples) for this and it worked pretty well.
