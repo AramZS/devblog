@@ -533,6 +533,22 @@ module.exports = function (eleventyConfig) {
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase()),
+		})
+		.use((md) => {
+			console.log('rules', Object.keys(md.renderer.rules))
+			const 	defaultRender = md.renderer.rules.code_inline,
+					testPattern = /git commit \-am \"/i
+
+			md.renderer.rules.code_inline = function (tokens, idx, options, env, self) {
+				console.log('env ', Object.keys(env), env.repo)
+				var token = tokens[idx],
+				content = token.content;
+				if (testPattern.test(content)) {
+					console.log('git content:', content)
+				}
+				// pass token to default renderer.
+				return defaultRender(tokens, idx, options, env, self);
+			}
 		});
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
