@@ -534,39 +534,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase()),
 		})
-		.use((md) => {
-			// console.log("rules", Object.keys(md.renderer.rules));
-			const defaultRender = md.renderer.rules.code_inline,
-				testPattern = /(?<=git commit \-am [\"|\'])(.*)(?=[\"|\'])/i;
-
-			md.renderer.rules.code_inline = function (
-				tokens,
-				idx,
-				options,
-				env,
-				self
-			) {
-				let title = env.hasOwnProperty("title")
-					? env.title
-					: "no title";
-				// console.log("env", Object.keys(env));
-				console.log(
-					"env repo:",
-					env.hasOwnProperty("repo")
-						? `${title} has no repo`
-						: env.repo
-				);
-				var token = tokens[idx],
-					content = token.content;
-				if (testPattern.test(content) && env.hasOwnProperty("repo")) {
-					tokens[
-						idx
-					].content = `<a href="${env.repo}" target="_blank">${tokens[idx].content}</a>`;
-				}
-				// pass token to default renderer.
-				return defaultRender(tokens, idx, options, env, self);
-			};
-		});
+		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"));
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
