@@ -374,6 +374,16 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addFilter("filterTagList", filterTagList);
 
+	const paginate = (arr, size) => {
+		return arr.reduce((acc, val, i) => {
+		  let idx = Math.floor(i / size)
+		  let page = acc[idx] || (acc[idx] = [])
+		  page.push(val)
+
+		  return acc
+		}, [])
+	}
+
 	let tagSet = new Set();
 	let tagList = [];
 
@@ -390,6 +400,40 @@ module.exports = function (eleventyConfig) {
 		tagList = [...tagSet];
 		return tagList;
 	};
+
+	getPostClusters = (allPosts) => {
+		aSet = new Set()
+		let postArray = []
+		allPosts.forEach((item) => {
+			if ("tags" in item.data) {
+				let tagsCheck = item.data.tags.includes('posts');
+				if (tagsCheck){
+					postArray.push(item)
+				}
+			}
+		});
+		aSet = [...postArray];
+		postArray = paginate(aSet,10)
+		let paginatedPostArray = []
+		postArray.forEach((p,i) => {
+			paginatedPostArray.push(
+				{
+					tagName: 'Posts',
+					number: i+1,
+					posts: p,
+					first: i === 1,
+					last: i === (postArray.length-1),
+				}
+			)
+		})
+		// console.log(paginatedPostArray)
+		return paginatedPostArray;
+	};
+
+	eleventyConfig.addCollection("postsPages", (collection) => {
+		return getPostClusters(collection.getAll());
+	});
+
 	// Create an array of all tags
 	eleventyConfig.addCollection("tagList", (collection) => {
 		return getAllTags(collection.getAll());
@@ -534,7 +578,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase()),
 		})
-		.use((md) => {
+		/**.use((md) => {
 			console.log('rules', Object.keys(md.renderer.rules))
 			const 	defaultRender = md.renderer.rules.code_inline,
 					testPattern = /git commit \-am \"/i
@@ -549,7 +593,7 @@ module.exports = function (eleventyConfig) {
 				// pass token to default renderer.
 				return defaultRender(tokens, idx, options, env, self);
 			}
-		});
+		}); */
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
