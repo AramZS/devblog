@@ -403,15 +403,7 @@ module.exports = function (eleventyConfig) {
 
 	getPostClusters = (allPosts) => {
 		aSet = new Set()
-		let postArray = []
-		allPosts.forEach((item) => {
-			if ("tags" in item.data) {
-				let tagsCheck = item.data.tags.includes('posts');
-				if (tagsCheck){
-					postArray.push(item)
-				}
-			}
-		});
+		let postArray = allPosts.reverse()
 		aSet = [...postArray];
 		postArray = paginate(aSet,10)
 		let paginatedPostArray = []
@@ -421,7 +413,7 @@ module.exports = function (eleventyConfig) {
 					tagName: 'Posts',
 					number: i+1,
 					posts: p,
-					first: i === 1,
+					first: i === 0,
 					last: i === (postArray.length-1),
 				}
 			)
@@ -431,7 +423,7 @@ module.exports = function (eleventyConfig) {
 	};
 
 	eleventyConfig.addCollection("postsPages", (collection) => {
-		return getPostClusters(collection.getAll());
+		return getPostClusters(collection.getFilteredByTag('posts'));
 	});
 
 	// Create an array of all tags
