@@ -2,6 +2,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
+const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
@@ -17,6 +18,8 @@ let Nunjucks = require("nunjucks");
 const normalize = require("normalize-path");
 
 const util = require("util");
+
+var slugify = require("slugify");
 
 loadLanguages(["yaml"]);
 
@@ -239,6 +242,7 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
+
 	eleventyConfig.addShortcode(
 		"projectList",
 		function (collectionName, collectionOfPosts, order, hlevel, limit) {
@@ -376,13 +380,13 @@ module.exports = function (eleventyConfig) {
 
 	const paginate = (arr, size) => {
 		return arr.reduce((acc, val, i) => {
-		  let idx = Math.floor(i / size)
-		  let page = acc[idx] || (acc[idx] = [])
-		  page.push(val)
+			let idx = Math.floor(i / size);
+			let page = acc[idx] || (acc[idx] = []);
+			page.push(val);
 
-		  return acc
-		}, [])
-	}
+			return acc;
+		}, []);
+	};
 
 	let tagSet = new Set();
 	let tagList = [];
@@ -401,29 +405,35 @@ module.exports = function (eleventyConfig) {
 		return tagList;
 	};
 
-	getPostClusters = (allPosts) => {
-		aSet = new Set()
-		let postArray = allPosts.reverse()
+	getPostClusters = (allPosts, tagName, slug) => {
+		aSet = new Set();
+		let postArray = allPosts.reverse();
 		aSet = [...postArray];
-		postArray = paginate(aSet,10)
-		let paginatedPostArray = []
-		postArray.forEach((p,i) => {
-			paginatedPostArray.push(
-				{
-					tagName: 'Posts',
-					number: i+1,
-					posts: p,
-					first: i === 0,
-					last: i === (postArray.length-1),
-				}
-			)
-		})
+		postArray = paginate(aSet, 10);
+		let paginatedPostArray = [];
+		postArray.forEach((p, i) => {
+			paginatedPostArray.push({
+				tagName,
+				slug: slug ? slug : slugify(tagName.toLowerCase()),
+				number: i + 1,
+				posts: p,
+				first: i === 0,
+				last: i === postArray.length - 1,
+			});
+		});
 		// console.log(paginatedPostArray)
 		return paginatedPostArray;
 	};
 
 	eleventyConfig.addCollection("postsPages", (collection) => {
-		return getPostClusters(collection.getFilteredByTag('posts'));
+		return getPostClusters(collection.getFilteredByTag("posts"), "Posts");
+	});
+
+	eleventyConfig.addCollection("projectsPages", (collection) => {
+		return getPostClusters(
+			collection.getFilteredByTag("projects"),
+			"Projects"
+		);
 	});
 
 	// Create an array of all tags
@@ -481,6 +491,51 @@ module.exports = function (eleventyConfig) {
 		});
 		console.log("tagset", taggedArray[0][0].data.verticalTag);
 		return tagSet;
+	});
+
+	eleventyConfig.addCollection("deepProjectPostsList", (collection) => {
+		let deepProjectPostList = [];
+		console.log("projectSet", projectSet);
+		projectSet.forEach((project) => {
+			console.log("aProject", project);
+			if (project.count > 0) {
+				let allProjectPosts = collection.getFilteredByTag("projects");
+				// console.log(allProjectPosts[2].data.project, project.projectName);
+				let allPosts = allProjectPosts.filter((post) => {
+					if (post.data.project == project.projectName) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				const postClusters = getPostClusters(
+					allPosts,
+					project.projectName,
+					project.slug
+				);
+				console.log("allPosts", postClusters);
+				deepProjectPostList.push(
+					getPostClusters(allPosts, project.projectName, project.slug)
+				);
+			}
+		});
+		console.log("deepProjectPostList", deepProjectPostList);
+		return deepProjectPostList;
+
+		// It looks like I can't build collections based on previous custom collections?
+		/** return collection.deepTagList.filter((deepTagCollection) => {
+			let projectNames = collection.projects.reduce(
+				(previousValue, currentValue) => {
+					previousValue.push(currentValue.slug);
+				},
+				[]
+			);
+			if (projectNames.includes(deepTagCollection.tagName)) {
+				return true;
+			} else {
+				return false;
+			}
+		});**/
 	});
 
 	eleventyConfig.addPlugin(pluginTOC, {
@@ -561,7 +616,6 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
-	var slugify = require("slugify");
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
@@ -569,8 +623,8 @@ module.exports = function (eleventyConfig) {
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase()),
-		})
-		/**.use((md) => {
+		});
+	/**.use((md) => {
 			console.log('rules', Object.keys(md.renderer.rules))
 			const 	defaultRender = md.renderer.rules.code_inline,
 					testPattern = /git commit \-am \"/i
