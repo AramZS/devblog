@@ -508,6 +508,7 @@ module.exports = function (eleventyConfig) {
 						return false;
 					}
 				});
+				allPosts.reverse();
 				const postClusters = getPostClusters(
 					allPosts,
 					project.projectName,
@@ -520,7 +521,24 @@ module.exports = function (eleventyConfig) {
 			}
 		});
 		console.log("deepProjectPostList", deepProjectPostList);
-		return deepProjectPostList;
+		let pagedDeepProjectList = [];
+		deepProjectPostList.forEach((projectCluster) => {
+			/**
+			 * 	tagName,
+				slug: slug ? slug : slugify(tagName.toLowerCase()),
+				number: i + 1,
+				posts: p,
+				first: i === 0,
+				last: i === postArray.length - 1,
+
+			projectCluster.forEach((projectCollectionPage) => {
+				pagedDeepProjectList.push(projectCollectionPage);
+			});
+			*/
+			pagedDeepProjectList.push(...projectCluster);
+		});
+		console.log("pagedDeepProjectList", pagedDeepProjectList);
+		return pagedDeepProjectList;
 
 		// It looks like I can't build collections based on previous custom collections?
 		/** return collection.deepTagList.filter((deepTagCollection) => {
