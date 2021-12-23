@@ -134,6 +134,7 @@ const createLinkTokens = (TokenConstructor, commitLink) => {
 	 *
 	 * Arguably I should use `link_open` here? But [it](https://github.com/markdown-it/markdown-it/blob/df4607f1d4d4be7fdc32e71c04109aea8cc373fa/lib/rules_inline/link.js) seems to be reserved for specific functionality within the plugin? So perhaps not.
 	 */
+	// This is haunting me, so I asked - https://github.com/markdown-it/markdown-it/issues/834
 	const link_close = new TokenConstructor("html_inline", "", 0);
 	link_close.content = "</a>";
 	return { link_open, link_close };
