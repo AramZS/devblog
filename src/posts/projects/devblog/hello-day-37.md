@@ -692,3 +692,4 @@ Then I can add the CSS.
         height: 12px
 ```
 
+`git commit -am "Set the default link for repos to go to the main commit log"`
