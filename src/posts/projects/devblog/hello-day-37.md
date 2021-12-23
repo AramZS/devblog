@@ -389,7 +389,7 @@ Oh, look at that. Everything I need to handle it at the rule level, instead of t
 
 Ok, so now I can make a plugin pretty similar to the one I did before.
 
-I can find the commit message by searching through `inline` tokens, and pull the repo out of `state.env.repo`. Ican then pull the commit message out of the inline token's `content` and use it with Octokit to search for the repo. The API query results in a `data` object with an `items` property that returns an array that looks like:
+I can find the commit message by searching through `inline` tokens, and pull the repo out of `state.env.repo`. I can then pull the commit message out of the inline token's `content` and use it with Octokit to search for the repo. The API query results in a `data` object with an `items` property that returns an array that looks like:
 
 ```javascript
 [
@@ -503,6 +503,192 @@ I can find the commit message by searching through `inline` tokens, and pull the
 
 So what I need is def in there. Now I just need to figure out how to get it out of the async request on on to my new token.
 
-Hmm, [it looks like getting the async data into there is going to be the most complex part](https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#i-need-async-rule-how-to-do-it). The right answer has to be caching, and it looks like there is [an 11ty native tool for that](https://www.11ty.dev/docs/plugins/cache/), but I think that might be overkill. Especially because I want somethng I *can* save as basically a static file, since this won't be changing. Also, the 11ty plugin won't work because it is still async. This means I'm basically required to handle this as a file. Also, need to watch out as if I write to the directory I'm watching, I may end up triggering the watch in a loop.
+Hmm, [it looks like getting the async data into there is going to be the most complex part](https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#i-need-async-rule-how-to-do-it). The right answer has to be caching, and it looks like there is [an 11ty native tool for that](https://www.11ty.dev/docs/plugins/cache/), but I think that might be overkill. Especially because I want something I *can* save as basically a static file, since this won't be changing. Also, the 11ty plugin won't work because it is still async. This means I'm basically required to handle this as a file. Also, need to watch out as if I write to the directory I'm watching, I may end up triggering the watch in a loop.
 
 Another thing I'll need to be careful of when caching this data is if I'm automatically creating files, I should likely be using the query as a file key, that query may contain characters not safe for file names, so I'll need to pull something in to handle sanitization.
+
+```javascript
+var sanitizeFilename = require("sanitize-filename");
+```
+
+Ok, so let's start putting it down.
+
+```javascript
+const commit_pattern = () => {
+	return /(?<=git commit \-am [\"|\'])(.+)(?=[\"|\'])/i;
+}
+// I can get the "repo" from the post object
+// Then I need to change the commit message I captured
+// Queries don't allow spaces, so replace them with "+"
+const gitSearchQuery = (repo, commitMsg) => {
+	const searchCommitMsg = commitMsg.replace(" ", "+")
+	const repoName = repo.replace("https://github.com/", "")
+	return `repo:${repoName}+${searchCommitMsg}`
+}
+```
+
+Now let's create a function to figure out the path to the new cache folder.
+
+```javascript
+const cacheFilePath = (pageFilePath, searchKey) => {
+	const cacheFolder = path.join(__dirname, "../../", '/_queryCache', pageFilePath)
+	const cacheFile = cacheFolder+sanitizeFilename(slugify(searchKey).replace(".", ""))
+	// console.log('cacheFile: ', cacheFile)
+	return { cacheFolder, cacheFile }
+}
+```
+
+I can use `fs.accessSync` to check if the file exists before creating a cache. After all I don't want to query GitHub every time I do a build. So we can use this in the process to find the repo commit link.
+
+```javascript
+const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
+	const searchKey = gitSearchQuery(repo, commitMsg)
+	const {cacheFolder, cacheFile} = cacheFilePath(pageFilePath, searchKey)
+	try {
+		fs.accessSync(cacheFile, fs.constants.F_OK)
+		return true;
+```
+
+If it exists the function ends here and returns true.
+
+But when we know the file doesn't exist we will have to continue using the `catch`. I'll make a request to GitHub using Octokit. I'm pretty much skipping over how I set up Octokit because this is basically the boilerplate.
+
+The only thing that I have added into the mix here is to get my Github Key using the environment. Locally I'll use DotEnv `require('dotenv').config()`. But I'll have to figure out how to handle it on GitHub next. And I get the searchKey using my above function `gitSearchQuery`.
+
+```javascript
+} catch (e) {
+		console.log('Query is not cached: ', cacheFile, e)
+		const MyOctokit = Octokit.plugin(retry, throttling);
+
+		const myOctokit = new MyOctokit({
+		auth: process.env.GITHUB_KEY,
+		throttle: {
+			onRateLimit: (retryAfter, options) => {
+			myOctokit.log.warn(
+				`Request quota exhausted for request ${options.method} ${options.url}`
+			);
+
+			if (options.request.retryCount === 0) {
+				// only retries once
+				myOctokit.log.info(`Retrying after ${retryAfter} seconds!`);
+				return true;
+			}
+			},
+			onAbuseLimit: (retryAfter, options) => {
+			// does not retry, only logs a warning
+				myOctokit.log.warn(
+					`Abuse detected for request ${options.method} ${options.url}`
+				);
+			},
+		},
+		retry: {
+			doNotRetry: ["429"],
+		},
+		});
+		const r = await myOctokit.rest.search.commits({
+			q: searchKey,
+		});
+		if (r && r.data && r.data.items && r.data.items.length){
+```
+
+Once the commit is found, I'll try to cache it by writing a file using the path to the post and then the search query as a file key.
+
+```javascript
+try {
+	fs.mkdirSync(cacheFolder, { recursive: true })
+	// console.log('write data to file', cacheFile)
+	fs.writeFileSync(cacheFile, r.data.items[0].html_url)
+} catch (e) {
+	console.log('writing to cache failed:', e)
+}
+return r.data.items[0].html_url
+```
+
+Now that I have a way to handle caching, I need to trigger it as part of the markdown building process.
+
+I'll need a process to actually create the link on the commit in the `markdown-it` way.
+
+I'll need to create HTML tokens for the link open and close as follows:
+
+```javascript
+const createLinkTokens = (TokenConstructor,commitLink) => {
+	const link_open = new TokenConstructor('html_inline', '', 0)
+	link_open.content = '<a href="'+commitLink+'" target="_blank">'
+	const link_close = new TokenConstructor('html_inline', '', 0)
+	link_close.content = '</a>'
+	return {link_open, link_close}
+}
+```
+
+I'll need to take the markdown-it object and create a new `ruler` rule. I'll use `state.env` to check for the `repo` property and test for the commit pattern in each `inline` token. By using `inline` instead of `code_inline` I will be able to place my new `html_inline` token around the commit text.
+
+```javascript
+
+const gitCommitRule = (md) => {
+	md.core.ruler.after('inline', 'git_commit', state => {
+		const tokens = state.tokens
+		if (state.env.hasOwnProperty('repo')){
+			for (let i = 0; i < tokens.length; i++) {
+				if (commit_pattern().test(tokens[i].content) && tokens[i].type === 'inline') {
+					// console.log('tokens round 1: ', tokens[i])
+					const commitMessage = tokens[i].content.match(commit_pattern())[0]
+					const searchKey = gitSearchQuery(state.env.repo, commitMessage)
+					const {cacheFolder, cacheFile} = cacheFilePath(state.env.page.url, searchKey)
+					getLinkToRepo(state.env.repo, commitMessage, state.env.page.url).then((commitLink) => {
+
+					})
+					let envRepo = state.env.repo;
+					let linkToRepo = ''
+					// Let's make the default link go to the commit log, that makes more sense.
+					linkToRepo = envRepo
+					if (envRepo.slice(-1) != "/"){
+						// Assure the last character is a "/"
+						linkToRepo += "/"
+					}
+					linkToRepo += "commits/main"
+					try {
+						fs.accessSync(cacheFile, fs.constants.F_OK)
+						linkToRepo = (fs.readFileSync(cacheFile)).toString()
+					} catch (e) {
+						// No file yet
+						console.log('Cached link to repo not ready', e)
+					}
+					const { link_open, link_close } = createLinkTokens(state.Token,linkToRepo)
+					tokens[i].children.unshift(link_open)
+					tokens[i].children.push(link_close)
+
+				}
+			}
+		}
+	})
+}
+
+module.exports = (md) => {
+	gitCommitRule(md)
+};
+```
+
+It's looking good here, though it isn't super clear that it is a link. Maybe I can add some style to it. Let me grab an [image of a link](https://www.pinclipart.com/downpngs/iRxxRho_link-icon-navy-blue-blue-link-icon-png/) to add to the style. [I'll need to size it down](https://onlinepngtools.com/resize-png).
+
+`git commit -am "Adding links to commits across all new posts along with a whole new plugin for building links to commits automatically into new posts for day 37"`
+
+Then I can add the CSS.
+
+```scss
+.git-commit-link
+    text-decoration: underline
+    &:hover
+        text-decoration-color: grey
+    &:after
+        content: ' '
+        background: transparent url(/img/linkicon-s.png) center right no-repeat
+        font-weight: normal
+        font-style: normal
+        margin: 0px 0px 0px 10px
+        text-decoration: none
+        background-size: contain
+        display: inline-block
+        width: 12px
+        height: 12px
+```
+

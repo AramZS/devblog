@@ -83,7 +83,7 @@ const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
 
 const createLinkTokens = (TokenConstructor,commitLink) => {
 	const link_open = new TokenConstructor('html_inline', '', 0)
-	link_open.content = '<a href="'+commitLink+'" target="_blank">'
+	link_open.content = '<a href="'+commitLink+'" class="git-commit-link" target="_blank">'
 	const link_close = new TokenConstructor('html_inline', '', 0)
 	link_close.content = '</a>'
 	return {link_open, link_close}
@@ -103,11 +103,18 @@ const gitCommitRule = (md) => {
 					getLinkToRepo(state.env.repo, commitMessage, state.env.page.url).then((commitLink) => {
 
 					})
-					let linkToRepo = state.env.repo;
+					let envRepo = state.env.repo;
+					let linkToRepo = ''
+					// Let's make the default link go to the commit log, that makes more sense.
+					linkToRepo = envRepo
+					if (envRepo.slice(-1) != "/"){
+						// Assure the last character is a "/"
+						linkToRepo += "/"
+					}
+					linkToRepo += "commits/main"
 					try {
 						fs.accessSync(cacheFile, fs.constants.F_OK)
 						linkToRepo = (fs.readFileSync(cacheFile)).toString()
-						console.log('Cached link to repo found', linkToRepo)
 					} catch (e) {
 						// No file yet
 						console.log('Cached link to repo not ready', e)
@@ -120,43 +127,6 @@ const gitCommitRule = (md) => {
 			}
 		}
 	})
-}
-
-const reruleForGitLink = (md) => {
-	// console.log("rules", Object.keys(md.renderer.rules));
-	const defaultRender = md.renderer.rules.inline,
-	testPattern = /(?<=git commit \-am [\"|\'])(.*)(?=[\"|\'])/i;
-
-	// console.dir(md.core.ruler)
-
-	md.renderer.rules.inline = function (
-		tokens,
-		idx,
-		options,
-		env,
-		self
-	) {
-		let title = env.hasOwnProperty("title")
-			? env.title
-			: "no title";
-		// console.log("env", Object.keys(env));
-		console.log(
-			"env repo:",
-			env.hasOwnProperty("repo")
-				? `${title} has no repo`
-				: env.repo
-		);
-		var token = tokens[idx],
-			content = token.content;
-		if (testPattern.test(content) && env.hasOwnProperty("repo")) {
-			console.log(tokens[idx])
-			tokens[
-				idx
-			].content = `<a href="${env.repo}" target="_blank">${tokens[idx].content}</a>`;
-		}
-		// pass token to default renderer.
-		return defaultRender(tokens, idx, options, env, self);
-	};
 }
 
 module.exports = (md) => {
