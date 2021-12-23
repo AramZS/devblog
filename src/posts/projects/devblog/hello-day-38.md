@@ -346,3 +346,5 @@ eleventyComputed:
 `git commit -am "Trying to figure out the project pages"`
 
 And this should resolve Issue 7!
+
+`git commit -am "Finish off day 38 and resolve #7"`
