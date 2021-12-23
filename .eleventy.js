@@ -405,21 +405,34 @@ module.exports = function (eleventyConfig) {
 		return tagList;
 	};
 
-	getPostClusters = (allPosts, tagName, slug) => {
+	const makePageObject = (tagName, slug, number, posts, first, last) => {
+		return {
+			tagName: tagName,
+			slug: slug ? slug : slugify(tagName.toLowerCase()),
+			number: number,
+			posts: posts,
+			first: first,
+			last: last
+		}
+	}
+
+	const getPostClusters = (allPosts, tagName, slug) => {
 		aSet = new Set();
 		let postArray = allPosts.reverse();
 		aSet = [...postArray];
 		postArray = paginate(aSet, 10);
 		let paginatedPostArray = [];
 		postArray.forEach((p, i) => {
-			paginatedPostArray.push({
-				tagName,
-				slug: slug ? slug : slugify(tagName.toLowerCase()),
-				number: i + 1,
-				posts: p,
-				first: i === 0,
-				last: i === postArray.length - 1,
-			});
+			paginatedPostArray.push(
+				makePageObject(
+					tagName,
+					slug,
+					i+1,
+					p,
+					i === 0,
+					i === postArray.length - 1
+				)
+			);
 		});
 		// console.log(paginatedPostArray)
 		return paginatedPostArray;
@@ -458,13 +471,16 @@ module.exports = function (eleventyConfig) {
 				const sliceFrom = (pageNum - 1) * maxPostsPerPage;
 				const sliceTo = sliceFrom + maxPostsPerPage;
 
-				pagedPosts.push({
-					tagName: tagName,
-					number: pageNum,
-					posts: taggedPosts.slice(sliceFrom, sliceTo),
-					first: pageNum === 1,
-					last: pageNum === numberOfPages,
-				});
+				pagedPosts.push(
+					makePageObject(
+						tagName,
+						false,
+						pageNum,
+						taggedPosts.slice(sliceFrom, sliceTo),
+						pageNum === 1,
+						pageNum === numberOfPages
+					)
+				);
 			}
 		});
 		console.log("pagedPosts", pagedPosts[0].tagName);
@@ -495,9 +511,9 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addCollection("deepProjectPostsList", (collection) => {
 		let deepProjectPostList = [];
-		console.log("projectSet", projectSet);
+		// console.log("projectSet", projectSet);
 		projectSet.forEach((project) => {
-			console.log("aProject", project);
+			// console.log("aProject", project);
 			if (project.count > 0) {
 				let allProjectPosts = collection.getFilteredByTag("projects");
 				// console.log(allProjectPosts[2].data.project, project.projectName);
@@ -514,13 +530,13 @@ module.exports = function (eleventyConfig) {
 					project.projectName,
 					project.slug
 				);
-				console.log("allPosts", postClusters);
+				// console.log("allPosts", postClusters);
 				deepProjectPostList.push(
 					getPostClusters(allPosts, project.projectName, project.slug)
 				);
 			}
 		});
-		console.log("deepProjectPostList", deepProjectPostList);
+		// console.log("deepProjectPostList", deepProjectPostList);
 		let pagedDeepProjectList = [];
 		deepProjectPostList.forEach((projectCluster) => {
 			/**
@@ -530,30 +546,11 @@ module.exports = function (eleventyConfig) {
 				posts: p,
 				first: i === 0,
 				last: i === postArray.length - 1,
-
-			projectCluster.forEach((projectCollectionPage) => {
-				pagedDeepProjectList.push(projectCollectionPage);
-			});
 			*/
 			pagedDeepProjectList.push(...projectCluster);
 		});
-		console.log("pagedDeepProjectList", pagedDeepProjectList);
+		// console.log("pagedDeepProjectList", pagedDeepProjectList);
 		return pagedDeepProjectList;
-
-		// It looks like I can't build collections based on previous custom collections?
-		/** return collection.deepTagList.filter((deepTagCollection) => {
-			let projectNames = collection.projects.reduce(
-				(previousValue, currentValue) => {
-					previousValue.push(currentValue.slug);
-				},
-				[]
-			);
-			if (projectNames.includes(deepTagCollection.tagName)) {
-				return true;
-			} else {
-				return false;
-			}
-		});**/
 	});
 
 	eleventyConfig.addPlugin(pluginTOC, {
