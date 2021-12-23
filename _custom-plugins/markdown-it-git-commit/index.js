@@ -125,9 +125,15 @@ const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
 const createLinkTokens = (TokenConstructor, commitLink) => {
 	const link_open = new TokenConstructor("html_inline", "", 0);
 	link_open.content = `<a target="_blank" href="${commitLink}" class="git-commit-link">`;
+	// Why doesn't this work?
 	// setAttr(link_open, "target", "_blank");
 	// setAttr(link_open, "href", commitLink);
 	// setAttr(link_open, "class", "git-commit-link");
+	/**
+	 * Ah, `html_inline` is not a "real" token type as per https://github.com/markdown-it/markdown-it/issues/320. It can't have any further processing.
+	 *
+	 * Arguably I should use `link_open` here? But [it](https://github.com/markdown-it/markdown-it/blob/df4607f1d4d4be7fdc32e71c04109aea8cc373fa/lib/rules_inline/link.js) seems to be reserved for specific functionality within the plugin? So perhaps not.
+	 */
 	const link_close = new TokenConstructor("html_inline", "", 0);
 	link_close.content = "</a>";
 	return { link_open, link_close };
