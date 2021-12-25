@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 7</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -288,24 +288,24 @@
 <p>But what could be the issue, it must be me gitignoring the docs folder, I guess it has to commit the folder? I still don't want the docs folder on my main branch if I can avoid it. What if I just remove the docs gitignore during the build process?</p>
 <p>I'll add the line to the top of the commands run, it basically echoes the contents of .gitignore starting at the 2nd line back into the .gitignore file:</p>
 <p><code>- run: echo &quot;$(tail -n +2 .gitignore)&quot; &gt; .gitignore</code></p>
-<p><code>git commit -am &quot;Update build process and attempt to commit the docs folder in the build process&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/6749588d3451a8f787932430adeec07aa72ce567" class="git-commit-link"><code>git commit -am &quot;Update build process and attempt to commit the docs folder in the build process&quot;</code></a></p>
 <p>Hmmm still no go. Let's read <a href="https://github.com/peaceiris/actions-gh-pages#github-actions-for-github-pages" target="_blank">the actions-gh-pages docs</a> from zero instead.</p>
 <p>It looks like <code>publish_dir:</code> in the build task says is the <em>source</em> folder to publish onto the gh-pages branch. A good lesson to read the docs right here because literally line 2 is</p>
 <blockquote>
 <p>The next example step will deploy ./public directory to the remote gh-pages branch.</p>
 </blockquote>
-<p><code>git commit -am &quot;Is the issue the docs directory needs to be the public_dir?&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/4301b2aed961f6df305f227ec7ea5429cc65a162" class="git-commit-link"><code>git commit -am &quot;Is the issue the docs directory needs to be the public_dir?&quot;</code></a></p>
 <p>Interesting, now the content is properly in the gh-pages branch! I might not even need the gitignore change?</p>
-<p><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0a5c8daaedff730db83931f989458d8b12fbb02d" class="git-commit-link"><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></a></p>
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
 <p>While I'm here I should <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io" target="_blank">github.io</a> user page.</p>
 <p data-wordfix="true">I'll create the correct CNAME file and set up Eleventy to pass it through to the build process.</p>
 <p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
 <p>And I'm going to set up my site data using <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> in order to have my local <code>http://localhost:8080</code> server used for the site domain when local and otherwise have it use my domain.</p>
-<p><code>git commit -am &quot;Setting up dotenv to have proper site data and domain use&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/4d7e6819540e013935077525b0c3274f9f8b8a5c" class="git-commit-link"><code>git commit -am &quot;Setting up dotenv to have proper site data and domain use&quot;</code></a></p>
 <p>Oops, swapped my prod and local domains.</p>
-<p><code>git commit -am &quot;Ooops mixed up my local and prod urls&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/d6f84e6d95d1635bec1681e4959fc479ed544e4d" class="git-commit-link"><code>git commit -am &quot;Ooops mixed up my local and prod urls&quot;</code></a></p>
 <p>Ok, it looks like it is all working for my my base level requirements 1-6. I still want a source map for my CSS and that isn't done yet, but that is a Sass task.</p>
 <p>I still have some other major tasks... like building a real home page, including serious SE/MO and a few other things, but now I can move forward on that work confident that this system hits my baseline requirements and I can invest more time into it.</p>
 <p>Finishing off my requirements means handling some Sass to get mapping to work. I can define <code>sourceMap</code> and write the file appropriately, but it looks like I'll need handle two complications, first the relative paths to the source file will have to be passed through so the Sass files can be exposed on the front end. That's easy enough with a few functions in <code>.eleventy.js</code>. But it also apparently will need to have a full, not relative, url.</p>
@@ -315,7 +315,7 @@
 <pre class="language-javascript"><code class="language-javascript">		<span class="token function-variable function">replaceLink</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">link<span class="token punctuation">,</span> env</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token comment">// console.log("env:", env);</span><br>			<span class="token keyword">var</span> imageLinkRegex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^..\/img\/</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>link <span class="token operator">&amp;&amp;</span> imageLinkRegex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token punctuation">(</span><br>					env<span class="token punctuation">.</span>site<span class="token punctuation">.</span>site_url <span class="token operator">+</span><br>					<span class="token string">"/img/"</span> <span class="token operator">+</span><br>					link<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>imageLinkRegex<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> link<span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span></code></pre>
 <p>While I'm fiddling with markdown-it, I should also <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer" target="_blank">add <code>target=&quot;_blank&quot;</code> to all my links</a>.</p>
 <p>Still looking at how to get <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map" target="_blank">sourcemaps</a> working.</p>
-<p><code>git commit -am &quot;Fixing a number of path and link issues, still trying to get Sass working with sourcemaps&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/ab13317595a5affa40ded39e3fda0926e4687d2e" class="git-commit-link"><code>git commit -am &quot;Fixing a number of path and link issues, still trying to get Sass working with sourcemaps&quot;</code></a></p>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
 </ul>

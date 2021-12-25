@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 33</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -370,7 +370,7 @@
 <p>Oh, this <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior.html" target="_blank">overscroll behavior</a> looks useful. Maybe I'll add that, even if it isn't widely supported. Using <code>overscroll-behavior-x: contain</code> will hopefully at least prevent some of the browsers from bouncing when the user overscrolls on the <code>pre</code> elements on mobile.</p>
 <p>I'm also going to shrink the size a bit, make it so that more fits into the pre box on smaller screens.</p>
 <p>All together I think that should help make the code samples a little more readable on mobile.</p>
-<p><code>git commit -am &quot;Touching up syntax highlighting&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/12cae322c05692f40a201fbe4e7ffb3f064a6277" class="git-commit-link"><code>git commit -am &quot;Touching up syntax highlighting&quot;</code></a></p>
 <h3 id="touching-up-table-of-contents" tabindex="-1">Touching up Table of Contents</h3>
 <p>Hmmm, while I was in here touching up the CSS I was not happy with some of the behavior of the table of contents. It really needs a <em>lot</em> of vertical space. But why not support big screens when they are available? A few small touch ups and I can make my site a little easier to navigate on larger screens.</p>
 <p>Let's add a size to my variables Sass for the minimum width I'll need to fit everything in: <code>$ultra-large: 1336px</code> and now I'll want to cover ultra long TOCs, just in case:</p>
@@ -378,7 +378,7 @@
 <p>And then I can fix the unit itself to the side of the content.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@media</span> (min-width: variables.$ultra-large)</span><br><span class="token property-line">    <span class="token property">position</span><span class="token punctuation">:</span> fixed</span><br><span class="token property-line">    <span class="token property">top</span><span class="token punctuation">:</span> 10px</span><br><span class="token property-line">    <span class="token property">left</span><span class="token punctuation">:</span> 1005px</span><br><span class="token property-line">    <span class="token property">width</span><span class="token punctuation">:</span> 295px</span></code></pre>
 <p>Perfect and I put it below the left sidebar, so it'll prefer this new layout if the screen is large enough, even if there is enough height available on the screen.</p>
-<p><code>git commit -am &quot;Fix up TOC for ultra wide screens&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/9b4cf1ddf51990e57461923aa104b766a224845a" class="git-commit-link"><code>git commit -am &quot;Fix up TOC for ultra wide screens&quot;</code></a></p>
 <h3 id="continuing-to-muck-with-markdown-it" tabindex="-1">Continuing to muck with Markdown It</h3>
 <p>Ok, now that I've got a lot of big stuff out of the way I'd really like to see if I can load in my own Markdown-It plugin. I've still not connected to the internet, so let's examine one of the simple plugins I've got in my <code>node_modules</code> to see if I can learn something from that. I'll try <code>markdown-it-todo</code> as it seems closest to some of the stuff I want to do.</p>
 <p>Ok, promising choice! The code totals 68 lines.</p>
@@ -394,7 +394,7 @@
 <p>Oops, I need to use <code>fixWordify</code>!</p>
 <p>Ok, the todo plugin is just cutting the first few characters off the string. That's fine for it I guess, but I'm operating on the middle of the string. It looks like I may need to (from the code they have) change the content of both the <code>token.content</code> value and the <code>token.children[1].content</code> value? (Presumably because it <code>unshift</code>s the new token in to the beginning of that array, for some reason?) Well let's take it once at a time.</p>
 <p>Hmmm, still no good. But I think I'm getting closer. Ok backs straight, tables in the upright position time.</p>
-<p><code>git commit -am &quot;Save day 33&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f7df50a19efdb36b4c15098670c08967f041dd78" class="git-commit-link"><code>git commit -am &quot;Save day 33&quot;</code></a></p>
 
                     
                     </section>

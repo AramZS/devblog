@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 8</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -301,14 +301,14 @@
 <p>Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
 <pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token punctuation">{</span><br>		lang<span class="token operator">:</span> <span class="token string">"en-US"</span><span class="token punctuation">,</span><br>		github<span class="token operator">:</span> <span class="token punctuation">{</span><br>			build_revision<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">GITHUB_HEAD_SHA</span> <span class="token operator">||</span> <span class="token number">1.0</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span><br>		site_url<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Huh... about to try this but a thought occurs... should I just export the whole <code>github</code> object? Would that work? Wait... <a href="https://docs.github.com/en/actions/reference/environment-variables" target="_blank">is it already there</a>? Let me try that both ways and see what I get.</p>
-<p><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e25ca3229277e2348f288607e48322d1ee66fef1" class="git-commit-link"><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></a></p>
 <p>Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling <code>process.env.GITHUB_JOB</code> just got me <code>deploy</code>. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.</p>
 <p data-wordfix="true">What if I set the <code>env</code> at the level of job? I think this means I could probably use <code>GITHUB_SHA</code>, but I want to see what works.</p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p>Ah, that did it, so now I know how to use both!</p>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
 <p>Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.</p>
-<p><code>git commit -am &quot;Set up sitemap&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e527c030ea5012de9b0d77fb1d8abeaf92f51bf8" class="git-commit-link"><code>git commit -am &quot;Set up sitemap&quot;</code></a></p>
 <p>Just checking off stuff in this post!</p>
 <p>Looks like the Deep Data Merge is up and running already. I'll do a quick double check and it does appear to work fine!</p>
 <p>RSS feed next. Need to add the collection tag to my <code>posts.json</code> in <code>src/posts</code> in order to have it properly in a <code>posts</code> collection.</p>
@@ -320,7 +320,7 @@
 <p>Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>
-<p><code>git commit -am &quot;Set up various feeds and crawling tools&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/016bcea57a7cdde543f314b07b98f4adf544a569" class="git-commit-link"><code>git commit -am &quot;Set up various feeds and crawling tools&quot;</code></a></p>
 
                     
                     </section>

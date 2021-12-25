@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 16</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -294,7 +294,7 @@
 <p>Let's try and pull it in along with a slugify method that can make for clear URLs.</p>
 <p>It recommends I use <code>'@sindresorhus/slugify'</code> or <code>string</code> to handle the slugify process. The 2nd is basic, but the first doesn't work well with how I structured this project. (It requires being called from a module, and my project isn't set up that way.) So, I'll use <code>slugify</code> which I have used in other projects in the past.</p>
 <p>Ok, that worked!</p>
-<p><code>git commit -am &quot;Add anchors to headers&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f7e81ae7548dda8e7f9186f9a0d4861b366a7482" class="git-commit-link"><code>git commit -am &quot;Add anchors to headers&quot;</code></a></p>
 <p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
 <p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
 <p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
@@ -312,7 +312,7 @@
 <p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
 <p>Ok, trying to use <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">markdown-it-regex</a>. But it won't work either. I keep getting <code>plugin.apply is not a function</code>. Which makes me think the problem with the last plugin might be showing up here, where the way the markdown-it tool is being applied by eleventy isn't normal or at least isn't what some of these plugin authors expect.</p>
 <p>Ok, nothing working here. Time to switch approaches. <a href="https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/" target="_blank">This walkthrough looks like it might be promising</a>.</p>
-<p><code>git commit -am &quot;Day 16 - I fail to write a Markdown-it plugin&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/89bf4940ef9ccd80deef9151549a3fd1da77d66a" class="git-commit-link"><code>git commit -am &quot;Day 16 - I fail to write a Markdown-it plugin&quot;</code></a></p>
 
                     
                     </section>

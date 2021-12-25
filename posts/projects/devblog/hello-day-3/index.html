@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 3</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -257,7 +257,7 @@
 <p>That works! Deleting the whole folder and building it all new seems super inefficient, but there doesn't seem to be another way to handle things.</p>
 <p data-wordfix="true">One other throught now occurs. I saw that the dinky template uses some sort of build version number passed by github on build to cachebreak. I'm not sure how that works or if it can work the same way for Eleventy. Perhaps I need to pass a datetime stamp for each build instead? Something to figure out later.</p>
 <p data-wordfix="true">[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
-<p><code>git commit -am &quot;Self-cleaning builds&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/27dbbaf47799a901a62857a34742d12418edc0cc" class="git-commit-link"><code>git commit -am &quot;Self-cleaning builds&quot;</code></a></p>
 <p>11ty build is now stable enough that I might be able to develop with <code>npx @11ty/eleventy --serve</code> and check in on it. Let's see what it looks like.</p>
 <p>Gotta adjust my CSS output path to match the template file's.</p>
 <p>Ok, content is rendering as escaped HTML. That's not right at all.</p>
@@ -307,7 +307,7 @@ indent_style = space
 <p>Ok, they aren't triggering. No logging, this isn't working.</p>
 <p>The eleventy website has good syntax highlighting. <a href="https://github.com/11ty/11ty-website/blob/master/.eleventy.js" target="_blank">How are they doing it</a>?</p>
 <p>Ok, there's a lot going on there and I need a break. Break time.</p>
-<p><code>git commit -am &quot;Trying to get better syntax highlighting&quot; </code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/619a3292f27005d85a771d304bad09aafd858d88" class="git-commit-link"><code>git commit -am &quot;Trying to get better syntax highlighting&quot; </code></a></p>
 
                     
                     </section>

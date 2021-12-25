@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 6</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -294,14 +294,14 @@
 <p>Hmmm, still not working.</p>
 <p>Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but <a href="https://github.com/actions/checkout" target="_blank">the default configuration of the checkout action doesn't</a>. I just need to add that property to the yml file.</p>
 <p>Oh, and fix my <code>.editorconfig</code> to work better with yml files.</p>
-<p><code>git commit -am &quot;Get submodules working for github actions hopefully&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/88c0d76e164179a2626941d0e3c1f35113e39326" class="git-commit-link"><code>git commit -am &quot;Get submodules working for github actions hopefully&quot;</code></a></p>
 <p>Good news, a new error!</p>
 <pre class="language-bash"><code class="language-bash">Run peaceiris/actions-gh-pages@v3<br><span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Usage https://github.com/peaceiris/actions-gh-pages<span class="token comment">#readme</span><br>Dump inputs<br>Setup auth token<br>  Error: Action failed with <span class="token string">"not found deploy key or tokens"</span></code></pre>
 <p>Oops, but the secret in a custom environment instead of the <code>github-pages</code> <a href="https://github.com/AramZS/devblog/settings/environments" target="_blank">environment</a>.</p>
 <p data-wordfix="true">Hmmm... deploy was a success this time, but no-go on seeing any pages? Looks like it just deleted everything but the nojekyll file? I should probably look a little deeper into what is going on with these GitHub actions.</p>
 <p>Ooooh. I should make a markdown code to expand my little typing shortcuts!</p>
 <p data-wordfix="true">[ ] Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
-<p><code>git commit -am &quot;Have I got the secret now?&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/74db6c5f65a117b4c8590422703a30317ad6e524" class="git-commit-link"><code>git commit -am &quot;Have I got the secret now?&quot;</code></a></p>
 
                     
                     </section>

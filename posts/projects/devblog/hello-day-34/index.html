@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 34</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1586140522" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622333932" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1586140522" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622333932" />
             
-            <!-- Build Revision: 1586140522 & Sha: 016d8cf0e549e254fa92a1e373890429b821bbfd -->
+            <!-- Build Revision: 1622333932 & Sha: bf48130f2941d83e4b0d647ee6d15fa365bf6433 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -380,7 +380,7 @@
 <pre class="language-javascript"><code class="language-javascript">replaceMe<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">wordReplace</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token function">fixMyWords</span><span class="token punctuation">(</span>wordReplace<span class="token punctuation">,</span> token<span class="token punctuation">,</span> TokenConstructor<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> token<span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token function">fixMyWords</span><span class="token punctuation">(</span>wordReplace<span class="token punctuation">,</span> token<span class="token punctuation">.</span>children<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> TokenConstructor<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>That works!</p>
 <p>Last thing I want to do... make sure this works if one of my replacement words is at the end of a sentence or has a comma after it and still needs to be replaced. I forgot about this case.</p>
-<p><code>git commit -am &quot;Get replacement working with complex tokens&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e71045edccd9dcbeabb4828137b287a855a37a78" class="git-commit-link"><code>git commit -am &quot;Get replacement working with complex tokens&quot;</code></a></p>
 <h3 id="replacing-the-word-with-punctuation" tabindex="-1">Replacing the word with punctuation</h3>
 <p>This one should be pretty easy, I just need to add a look ahead for a variety of eligible punctuation. <code>(?=[\?\.\,\s\! ])</code> should do it.</p>
 <p>Now the <code>myWords</code> function looks like this:</p>
@@ -392,10 +392,10 @@
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</li>
 </ul>
-<p><code>git commit -am &quot;Finish day 34&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/08a817d45c3cd5d9e888b640326159c8f3023c4f" class="git-commit-link"><code>git commit -am &quot;Finish day 34&quot;</code></a></p>
 <h2 id="a-few-notes-on-touch-up" tabindex="-1">A few notes on touch up</h2>
 <p>Just noting on here that I touched up the above Regex which had a few bad errors I didn't want anyone to repeat. Most importantly, I removed my use of <code>\S</code>.</p>
-<p><code>git commit -am &quot;Touch up day 34 stuff&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/a901930b83fe4006c4f5759b0041f9192312585d" class="git-commit-link"><code>git commit -am &quot;Touch up day 34 stuff&quot;</code></a></p>
 
                     
                     </section>
