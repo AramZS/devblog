@@ -135,7 +135,121 @@ Finally, for the very long code blocks, they *badly* need skip links, both for a
 
 I guess... this needs to be another markdown-it plugin? That is where the code-blocks are made. Ok!
 
+`git commit -am "Fix some basic readability issues"`
+
 ### Add skip links to code blocks
 
-Ok, I'm not going to 
+Ok, I'm not going to make the same mistake I did before of starting in my `.eleventy` file. Let's open up a new custom plugin folder.
+
+Now, because of my investigation on [Day 36](https://fightwithtools.dev/posts/projects/devblog/hello-day-36/) I know that there is a `code_block` rule that is absolutely the one I'm going to need to deal with. And, because I need to manipulate the token tree *around* the code block, I know that I'm going to have to use `ruler` and not `renderer`.
+
+Ok, so first I'm going to figure out what token types exist:
+
+```javascript
+console.log('Token Types', state.tokens.reduce((prevV, currV) => {
+	return prevV.add(currV.type)
+},new Set()))
+```
+
+Result:
+
+```javascript
+[
+  'ordered_list_open',
+  'list_item_open',
+  'paragraph_open',
+  'inline',
+  'paragraph_close',
+  'list_item_close',
+  'ordered_list_close',
+  'bullet_list_open',
+  'bullet_list_close',
+  'html_block',
+  'heading_open',
+  'heading_close',
+  'blockquote_open',
+  'blockquote_close',
+  'fence'
+]
+```
+
+Ok, so nothing clearly shows my codeblocks. So, let's try a different strategy. What about looking for my markdown codeblock indicator the three backticks?
+
+```javascript
+for (let i = 0; i < tokens.length; i++) {
+	if (/```/.test(tokens[i].content)){
+		console.log(tokens[i])
+	}
+}
+```
+
+Nope...
+
+Ok, let's look for `<code>`?
+
+```javascript
+for (let i = 0; i < tokens.length; i++) {
+	if (/\<code\>/.test(tokens[i].content)){
+		console.log(tokens[i])
+	}
+}
+```
+
+Ok, that sort of worked! This is good!
+
+```javascript
+Token {
+  type: 'fence',
+  tag: 'code',
+  attrs: null,
+  map: [ 161, 168 ],
+  nesting: 0,
+  level: 0,
+  children: null,
+  content: 'for (let i = 0; i < tokens.length; i++) {\n' +
+    '\tif (/```/.test(tokens[i].content)){\n' +
+    '\t\tconsole.log(tokens[i])\n' +
+    '\t}\n' +
+    '}\n',
+  markup: '```',
+  info: 'javascript',
+  meta: null,
+  block: true,
+  hidden: false
+}
+```
+
+Interesting. Maybe this could eventually be a way to fix some of the bad tabbing? I think this is a little out of scope, so I'll put that aside for now. This is a good place to start!
+
+What does this token tree look like? Maybe I can look around it.
+
+```javascript
+for (let i = 0; i < tokens.length; i++) {
+	if (tokens[i].type == "fence" && tokens[i].tag == "code"){
+		console.log(tokens[i-1], tokens[i], tokens[i+1])
+	}
+}
+```
+
+Ok, I guess there isn't anything relevant? All are surrounded by `paragraph_close` and `paragraph_open`. So I'll need to construct the skip links around the token basically from scratch. Likely I'll need to create new paragraphs?
+
+Though to make the skip link work effectively I think I'll need to add an ID to the following `paragraph_open` token that looks like this:
+
+```javascript
+Token {
+  type: 'paragraph_open',
+  tag: 'p',
+  attrs: [ [ 'data-wordfix', 'true' ] ],
+  map: [ 113, 114 ],
+  nesting: 1,
+  level: 0,
+  children: null,
+  content: '',
+  markup: '',
+  info: '',
+  meta: null,
+  block: true,
+  hidden: false
+}
+```
 

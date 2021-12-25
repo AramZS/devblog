@@ -639,7 +639,8 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
-		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"));
+		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"))
+		.use(require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js"));
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
