@@ -123,25 +123,18 @@ const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
 };
 
 const createLinkTokens = (TokenConstructor, commitLink) => {
-	const link_open = new TokenConstructor("html_inline", "", 0);
-	link_open.content = `<a target="_blank" href="${commitLink}" class="git-commit-link">`;
-	// Why doesn't this work?
-	// setAttr(link_open, "target", "_blank");
-	// setAttr(link_open, "href", commitLink);
-	// setAttr(link_open, "class", "git-commit-link");
-	/**
-	 * Ah, `html_inline` is not a "real" token type as per https://github.com/markdown-it/markdown-it/issues/320. It can't have any further processing.
-	 *
-	 * Arguably I should use `link_open` here? But [it](https://github.com/markdown-it/markdown-it/blob/df4607f1d4d4be7fdc32e71c04109aea8cc373fa/lib/rules_inline/link.js) seems to be reserved for specific functionality within the plugin? So perhaps not.
-	 */
+	const link_open = new TokenConstructor("link_open", "a", 1);
+	setAttr(link_open, "target", "_blank");
+	setAttr(link_open, "href", commitLink);
+	setAttr(link_open, "class", "git-commit-link");
 	// This is haunting me, so I asked - https://github.com/markdown-it/markdown-it/issues/834
-	const link_close = new TokenConstructor("html_inline", "", 0);
-	link_close.content = "</a>";
+	const link_close = new TokenConstructor("link_close", "a", -1);
 	return { link_open, link_close };
 };
 
 const gitCommitRule = (md) => {
-	md.core.ruler.after("inline", "git_commit", (state) => {
+	//console.log('md.core.ruler', md.core.ruler.__rules__[md.core.ruler.__rules__.length-1])
+	md.core.ruler.push('git_commit', state => {
 		const tokens = state.tokens;
 		if (state.env.hasOwnProperty("repo")) {
 			for (let i = 0; i < tokens.length; i++) {
