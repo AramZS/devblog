@@ -72,7 +72,7 @@ const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
 		const MyOctokit = Octokit.plugin(retry, throttling);
 
 		const myOctokit = new MyOctokit({
-			auth: process.env.GITHUB_KEY,
+			auth: process.env.APIS_GITHUB_KEY,
 			throttle: {
 				onRateLimit: (retryAfter, options) => {
 					myOctokit.log.warn(

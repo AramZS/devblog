@@ -746,3 +746,7 @@ The 1/-1 here allows me to open and close the `a` tag and now I can use the `att
 Great!
 
 `git commit -am "Switching git-commit process to build link using link_open and link_close"`
+
+#### Can't start secrets with GITHUB
+
+While prepping to merge I wanted to add the GITHUB_KEY `env` secret. But it turns out I can't start my keynames with `GITHUB_`. So I gotta rename it. 
