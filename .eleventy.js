@@ -2,6 +2,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sassBuild = require("./_custom-plugins/sass-manager");
+const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
@@ -17,6 +18,8 @@ let Nunjucks = require("nunjucks");
 const normalize = require("normalize-path");
 
 const util = require("util");
+
+var slugify = require("slugify");
 
 loadLanguages(["yaml"]);
 
@@ -239,6 +242,7 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
+
 	eleventyConfig.addShortcode(
 		"projectList",
 		function (collectionName, collectionOfPosts, order, hlevel, limit) {
@@ -374,6 +378,16 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addFilter("filterTagList", filterTagList);
 
+	const paginate = (arr, size) => {
+		return arr.reduce((acc, val, i) => {
+			let idx = Math.floor(i / size);
+			let page = acc[idx] || (acc[idx] = []);
+			page.push(val);
+
+			return acc;
+		}, []);
+	};
+
 	let tagSet = new Set();
 	let tagList = [];
 
@@ -390,6 +404,51 @@ module.exports = function (eleventyConfig) {
 		tagList = [...tagSet];
 		return tagList;
 	};
+
+	const makePageObject = (tagName, slug, number, posts, first, last) => {
+		return {
+			tagName: tagName,
+			slug: slug ? slug : slugify(tagName.toLowerCase()),
+			number: number,
+			posts: posts,
+			first: first,
+			last: last
+		}
+	}
+
+	const getPostClusters = (allPosts, tagName, slug) => {
+		aSet = new Set();
+		let postArray = allPosts.reverse();
+		aSet = [...postArray];
+		postArray = paginate(aSet, 10);
+		let paginatedPostArray = [];
+		postArray.forEach((p, i) => {
+			paginatedPostArray.push(
+				makePageObject(
+					tagName,
+					slug,
+					i+1,
+					p,
+					i === 0,
+					i === postArray.length - 1
+				)
+			);
+		});
+		// console.log(paginatedPostArray)
+		return paginatedPostArray;
+	};
+
+	eleventyConfig.addCollection("postsPages", (collection) => {
+		return getPostClusters(collection.getFilteredByTag("posts"), "Posts");
+	});
+
+	eleventyConfig.addCollection("projectsPages", (collection) => {
+		return getPostClusters(
+			collection.getFilteredByTag("projects"),
+			"Projects"
+		);
+	});
+
 	// Create an array of all tags
 	eleventyConfig.addCollection("tagList", (collection) => {
 		return getAllTags(collection.getAll());
@@ -412,13 +471,16 @@ module.exports = function (eleventyConfig) {
 				const sliceFrom = (pageNum - 1) * maxPostsPerPage;
 				const sliceTo = sliceFrom + maxPostsPerPage;
 
-				pagedPosts.push({
-					tagName: tagName,
-					number: pageNum,
-					posts: taggedPosts.slice(sliceFrom, sliceTo),
-					first: pageNum === 1,
-					last: pageNum === numberOfPages,
-				});
+				pagedPosts.push(
+					makePageObject(
+						tagName,
+						false,
+						pageNum,
+						taggedPosts.slice(sliceFrom, sliceTo),
+						pageNum === 1,
+						pageNum === numberOfPages
+					)
+				);
 			}
 		});
 		console.log("pagedPosts", pagedPosts[0].tagName);
@@ -445,6 +507,50 @@ module.exports = function (eleventyConfig) {
 		});
 		console.log("tagset", taggedArray[0][0].data.verticalTag);
 		return tagSet;
+	});
+
+	eleventyConfig.addCollection("deepProjectPostsList", (collection) => {
+		let deepProjectPostList = [];
+		// console.log("projectSet", projectSet);
+		projectSet.forEach((project) => {
+			// console.log("aProject", project);
+			if (project.count > 0) {
+				let allProjectPosts = collection.getFilteredByTag("projects");
+				// console.log(allProjectPosts[2].data.project, project.projectName);
+				let allPosts = allProjectPosts.filter((post) => {
+					if (post.data.project == project.projectName) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				allPosts.reverse();
+				const postClusters = getPostClusters(
+					allPosts,
+					project.projectName,
+					project.slug
+				);
+				// console.log("allPosts", postClusters);
+				deepProjectPostList.push(
+					getPostClusters(allPosts, project.projectName, project.slug)
+				);
+			}
+		});
+		// console.log("deepProjectPostList", deepProjectPostList);
+		let pagedDeepProjectList = [];
+		deepProjectPostList.forEach((projectCluster) => {
+			/**
+			 * 	tagName,
+				slug: slug ? slug : slugify(tagName.toLowerCase()),
+				number: i + 1,
+				posts: p,
+				first: i === 0,
+				last: i === postArray.length - 1,
+			*/
+			pagedDeepProjectList.push(...projectCluster);
+		});
+		// console.log("pagedDeepProjectList", pagedDeepProjectList);
+		return pagedDeepProjectList;
 	});
 
 	eleventyConfig.addPlugin(pluginTOC, {
@@ -525,7 +631,6 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
-	var slugify = require("slugify");
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
