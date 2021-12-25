@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 38</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622342890" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622342890" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
             
-            <!-- Build Revision: 1622342890 & Sha: bea352663a945095840f8cfaf6726432023cb666 -->
+            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -61,7 +61,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sat, 13 Nov 2021 02:59:43 GMT" />
+    <meta property="article:published_time" content="Tue, 23 Nov 2021 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -189,7 +189,7 @@
                         
                         
                             <!-- post mode -->
-                            <time>Sat Nov 13 2021</time>
+                            <time>Tue Nov 23 2021</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
@@ -215,7 +215,7 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-38">Day 38</a><ol><li><a href="#filling-in-"fake"-tags">Filling in &quot;Fake&quot; Tags</a></li></ol></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-38">Day 38</a><ol><li><a href="#filling-in-fake-tags">Filling in &quot;Fake&quot; Tags</a></li></ol></li></ol></nav>
             </div>
         </aside>
         <div id="post-description">More devblog</div>
@@ -349,7 +349,7 @@
 <h2 id="day-38" tabindex="-1">Day 38</h2>
 <p>Ok, as I listed in <a href="https://github.com/AramZS/devblog/issues/7" target="_blank">Issue 7</a> there are a few URL paths in my site that I don't want to see 404ing.</p>
 <p>I thought this would be a pretty straightforward but it turned out to be harder than I thought, so instead of letting it go undocumented I figured I'd write it up.</p>
-<h3 id="filling-in-&quot;fake&quot;-tags" tabindex="-1">Filling in &quot;Fake&quot; Tags</h3>
+<h3 id="filling-in-fake-tags" tabindex="-1">Filling in &quot;Fake&quot; Tags</h3>
 <p>Ok so I want a paginated list of all things tagged &quot;posts&quot; in a place other than the previously created <code>tag</code> structure. I can reuse the <code>tag</code> layout. But I'll need a new data structure to handle it.</p>
 <p>I'm going to create a <code>postsPages</code> collection to fill <code>/posts/</code>.</p>
 <p>I'll need to grab the <code>posts</code> collection with <code>collection.getFilteredByTag(&quot;posts&quot;)</code>.</p>
@@ -385,12 +385,12 @@
 <p>The end result is a much simpler array that can work with the page functionality.</p>
 <p>Now I have an array of objects that look like this:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>	<span class="token punctuation">{</span><br>	 	tagName<span class="token punctuation">,</span><br>		slug<span class="token operator">:</span> slug<span class="token punctuation">,</span><br>		number<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>		posts<span class="token operator">:</span> postsObject<span class="token punctuation">,</span><br>		first<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		last<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><br>	<span class="token operator">...</span><br><span class="token punctuation">]</span></code></pre>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
 <p>See I forgot that I control the permalink structure not through the structures in the array, but the objects. So I can now take this array and use it to generate any number of paged collections at <code>/posts/projects/projectSlug/</code>. So now I can use this new collection with this <code>md</code> file:</p>
 <pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.deepProjectPostsList<br>    size: 1<br>    alias: paged<br>permalink: "posts/projects/{{ paged.slug }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "Posts from Project: {{ paged.tagName }}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Project Posts tagged with {{ paged.tagName }}"<br>---</code></pre>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
 <p>And this should resolve Issue 7!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Finish off day 38 and resolve #7&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0ce4a9689d154be15876bd3190fd39ba8a0899a7" class="git-commit-link"><code>git commit -am &quot;Finish off day 38 and resolve #7&quot;</code></a></p>
 
                     
                     </section>
@@ -400,9 +400,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/devblog/hello-day-36/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/devblog/hello-day-37/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/devblog/hello-day-37/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="/posts/projects/devblog/hello-day-39/" class="pagination-link cursor-pointer ">Next Day</a>
         </div>
     
     <div class="social-icons-block">
