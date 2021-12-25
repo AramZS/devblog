@@ -163,6 +163,8 @@ Ruler {
 }
 ```
 
+### Finding the inline token
+
 Ok, so I need to set up a token type starting with inline. Let's try and match the right token:
 
 ```javascript
@@ -214,6 +216,8 @@ Results:
   hidden: false
 }
 ```
+
+### Markdown-it State Obj
 
 Good to know, ok, what is in this state object anyway?
 
@@ -389,6 +393,8 @@ Oh, look at that. Everything I need to handle it at the rule level, instead of t
 
 Ok, so now I can make a plugin pretty similar to the one I did before.
 
+### Searching for git commit via API
+
 I can find the commit message by searching through `inline` tokens, and pull the repo out of `state.env.repo`. I can then pull the commit message out of the inline token's `content` and use it with Octokit to search for the repo. The API query results in a `data` object with an `items` property that returns an array that looks like:
 
 ```javascript
@@ -503,6 +509,8 @@ I can find the commit message by searching through `inline` tokens, and pull the
 
 So what I need is def in there. Now I just need to figure out how to get it out of the async request on on to my new token.
 
+### Caching Commit Links
+
 Hmm, [it looks like getting the async data into there is going to be the most complex part](https://github.com/markdown-it/markdown-it/blob/master/docs/development.md#i-need-async-rule-how-to-do-it). The right answer has to be caching, and it looks like there is [an 11ty native tool for that](https://www.11ty.dev/docs/plugins/cache/), but I think that might be overkill. Especially because I want something I *can* save as basically a static file, since this won't be changing. Also, the 11ty plugin won't work because it is still async. This means I'm basically required to handle this as a file. Also, need to watch out as if I write to the directory I'm watching, I may end up triggering the watch in a loop.
 
 Another thing I'll need to be careful of when caching this data is if I'm automatically creating files, I should likely be using the query as a file key, that query may contain characters not safe for file names, so I'll need to pull something in to handle sanitization.
@@ -606,6 +614,8 @@ return r.data.items[0].html_url
 
 Now that I have a way to handle caching, I need to trigger it as part of the markdown building process.
 
+### Rendering link with Markdown It
+
 I'll need a process to actually create the link on the commit in the `markdown-it` way.
 
 I'll need to create HTML tokens for the link open and close as follows:
@@ -668,6 +678,8 @@ module.exports = (md) => {
 };
 ```
 
+### Adding Link CSS
+
 It's looking good here, though it isn't super clear that it is a link. Maybe I can add some style to it. Let me grab an [image of a link](https://www.pinclipart.com/downpngs/iRxxRho_link-icon-navy-blue-blue-link-icon-png/) to add to the style. [I'll need to size it down](https://onlinepngtools.com/resize-png).
 
 `git commit -am "Adding links to commits across all new posts along with a whole new plugin for building links to commits automatically into new posts for day 37"`
@@ -693,3 +705,44 @@ Then I can add the CSS.
 ```
 
 `git commit -am "Set the default link for repos to go to the main commit log"`
+
+### Touch Up of Markdown It Link Process
+
+After [getting a very helpful response from the Markdown-It team](https://github.com/markdown-it/markdown-it/issues/834) it looks like the `html_inline` process I used to add the link isn't really best practice.
+
+#### Push to end of core rules
+
+So I found two changes I needed to make. First, I needed to push the rule as the last `core` rule. It turns out there is a function specifically for this, so I used it and now declare my rule using `md.core.ruler.push('git_commit', state => {`.
+
+#### Create link tokens
+
+The other change is to use `TokenConstructer` to make a real token and not `html_inline` which doesn't have any of the tools and hooks that a normal token does. So now my function to create tokens looks like:
+
+```javascript
+function setAttr(token, name, value) {
+	const index = token.attrIndex(name);
+	const attr = [name, value];
+
+	if (index < 0) {
+		token.attrPush(attr);
+	} else {
+		token.attrs[index] = attr;
+	}
+}
+
+const createLinkTokens = (TokenConstructor, commitLink) => {
+	const link_open = new TokenConstructor("link_open", "a", 1);
+	setAttr(link_open, "target", "_blank");
+	setAttr(link_open, "href", commitLink);
+	setAttr(link_open, "class", "git-commit-link");
+	// This is haunting me, so I asked - https://github.com/markdown-it/markdown-it/issues/834
+	const link_close = new TokenConstructor("link_close", "a", -1);
+	return { link_open, link_close };
+};
+```
+
+The 1/-1 here allows me to open and close the `a` tag and now I can use the `attrPush` on the token which is a much better practice.
+
+Great!
+
+`git commit -am "Switching git-commit process to build link using link_open and link_close"`
