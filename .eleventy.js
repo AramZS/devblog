@@ -637,7 +637,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("./_custom-plugins/markdown-it-short-phrases"))
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
-			slugify: (s) => slugify(s.toLowerCase()),
+			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
 		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"));
 
