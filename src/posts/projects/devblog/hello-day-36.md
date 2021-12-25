@@ -101,6 +101,22 @@ Ok, so I'm checking in the callback passed into `md.core.ruler.after` and I'm no
 
 Ok, it looks like `ruler.after` isn't the right place to be. I've gone into `rerender.rules` instead.
 
+Cool to see all my rules by logging them!
+
+```javascript
+[
+  'code_inline',
+  'code_block',
+  'fence',
+  'image',
+  'hardbreak',
+  'softbreak',
+  'text',
+  'html_block',
+  'html_inline'
+]
+```
+
 Now I've got a small plugin
 
 ```javascript
@@ -115,6 +131,19 @@ Now I've got a small plugin
 		});
 ```
 Perfect! I can see the global vars coming from [the data cascade](https://www.11ty.dev/docs/data-cascade/) inside `env` as passed to the function.
+
+```javascript
+[
+  'defaults',      'description',
+  'layout',        'projects',
+  'site',          'pkg',
+  'tags',          'date',
+  'project',       'repo',
+  'featuredImage', 'title',
+  'subtitle',      'page',
+  'collections'
+]
+```
 
 Ok, a little more exprementation and it looks like I can definetly use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!
 

@@ -29,6 +29,10 @@ const myWords = () => {
 			pattern: /(?<=[\t\s\( ])b\/c(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "because",
 		},
+		{
+			pattern: /(?<=[\t\s\( ])def(?=[\?\.\,\s\r\n\!\) ])/gi,
+			replace: "definitely",
+		}
 	];
 };
 
