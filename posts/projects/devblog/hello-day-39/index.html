@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 39</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623367201" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623371028" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623367201" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623371028" />
             
-            <!-- Build Revision: 1623367201 & Sha: c786f12bc6709dfec2ed1104c0a078e3eb101a0e -->
+            <!-- Build Revision: 1623371028 & Sha: cdb3f39da43ca09dea818f031d55c53d62330dc4 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -457,9 +457,10 @@
 <p>Oh, duh, ok the for loop is hitting the same item over and over again as new items are added above it. I'm dumb. I can <a href="https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/linkify.js#L39" target="_blank">take the approach from the linkify plugin</a> and just reverse it.</p>
 <p>Oh, only now my little renderer hack for adding <code>_blank</code> targets to all the links is adding targets to the skip links which is bad. I can use the <code>meta</code> property of the tokens to note that these links are skip links and they should not be treated to <code>_blank</code> targeting.</p>
 <p>Ok, looking good. It's working!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Adding skip links to code blocks&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f0cf05c92218260c5f768cbe40aa6d60616fde9b" class="git-commit-link"><code>git commit -am &quot;Adding skip links to code blocks&quot;</code></a></p>
 <p>Ok. So now I just need to give it some better styling!</p>
 <p>Looking good enough for now! I may want to play with it a bit but this looks like a good place to stop.</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/c786f12bc6709dfec2ed1104c0a078e3eb101a0e" class="git-commit-link"><code>git commit -am &quot;Finish day 39&quot;</code></a></p>
 
                     
                     </section>

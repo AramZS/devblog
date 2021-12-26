@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 26 Dec 2021 05:30:07 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 26 Dec 2021 05:32:41 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -261,9 +261,10 @@
 <p>Oh, duh, ok the for loop is hitting the same item over and over again as new items are added above it. I'm dumb. I can <a href="https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/linkify.js#L39" target="_blank">take the approach from the linkify plugin</a> and just reverse it.</p>
 <p>Oh, only now my little renderer hack for adding <code>_blank</code> targets to all the links is adding targets to the skip links which is bad. I can use the <code>meta</code> property of the tokens to note that these links are skip links and they should not be treated to <code>_blank</code> targeting.</p>
 <p>Ok, looking good. It's working!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Adding skip links to code blocks&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f0cf05c92218260c5f768cbe40aa6d60616fde9b" class="git-commit-link"><code>git commit -am &quot;Adding skip links to code blocks&quot;</code></a></p>
 <p>Ok. So now I just need to give it some better styling!</p>
 <p>Looking good enough for now! I may want to play with it a bit but this looks like a good place to stop.</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/c786f12bc6709dfec2ed1104c0a078e3eb101a0e" class="git-commit-link"><code>git commit -am &quot;Finish day 39&quot;</code></a></p>
 ]]></content:encoded>
 	</item>
 	
