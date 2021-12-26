@@ -253,3 +253,148 @@ Token {
 }
 ```
 
+`git commit -am "Saving part way through day 39"`
+
+I'll also need some way to name the skip links. I've been thinking about this and I think I should be able to just increment a count on `state.env` since Markdown It processing occurs synchronously, right? I can pull the `fileSlug` off the page object just to be sure the anchor links are unique enough.
+
+Ok, so I'm going to create the skip link name:
+
+```javascript
+if (!env.state.page.hasOwnProperty('skipCount')){
+	env.state.page.skipCount = 0;
+}
+const skipCount = env.state.page.skipCount + 1
+env.state.page.skipCount = skipCount;
+const skipName = `code-skip-${skipCount}`
+```
+
+And I'm going to apply the skip name to the following paragraph. But, what if the next block isn't a paragraph? I guess we got to check for that.
+
+```javascript
+const foundGraf = false
+let nextI = 0;
+while (!foundGraf) {
+	if (tokens[i+(++nextI)].type === "paragraph_open"){
+		foundGraf = true;
+		break;
+	}
+}
+```
+
+Ok, didn't quite work. I guess there could be an end of the article or a non-paragraph token? Let's take that into account.
+
+```javascript
+while (!foundGraf) {
+	if (tokens[i+(++nextI)] && tokens[i+nextI].hasOwnProperty('type') && tokens[i+nextI].type === "paragraph_open"){
+		foundGraf = true;
+		addSkipGrafID(tokens[i+nextI], skipName)
+		break;
+	} else if (!tokens[i+nextI]){
+		// do something
+		// I guess we're at the end?
+		foundGraf = true;
+		break
+	}
+}
+```
+
+
+
+Ok so this applies the needed ID! I now need to build the paragraph block above the code block and place te skip link. Good to refer to [the complex Markdown It chain I recorded on Day 34](https://fightwithtools.dev/posts/projects/devblog/hello-day-34/#a-more-complex-markdown-it-token).
+
+I'm really unclear how the nesting property is supposed to work? I guess we will just try it and see!
+
+```javascript
+const createSkipLink = (TokenConstructor, skipName) => {
+	const p_open = new TokenConstructor("paragraph_open", "p", 1);
+	setAttr(p_open, "class", "skip-link-graf");
+	p_open.children = []
+	const link_open = new TokenConstructor("link_open", "a", 2);
+	setAttr(link_open, "href", `#${skipName}`);
+	setAttr(link_open, "id", `skip-to-${skipName}`);
+	setAttr(link_open, "class", "skip-link");
+	p_open.children.push(link_open);
+	const link_text = new TokenConstructor("text", "", 3);
+	link_text.content = "Skip code block &#9660;"
+	p_open.children.push(link_text);
+	const link_close = new TokenConstructor("link_close", "a", 2);
+	p_open.children.push(link_close);
+	const p_close = new TokenConstructor("paragraph_close", "p", -1);
+	return { p_open, p_close };
+};
+```
+
+Once I have my tokens, I can splce them into the token tree!
+
+```javascript
+console.log('Create skip link')
+const { p_open, p_close } = createSkipLink(state.Token, skipName)
+tokens.splice(i, 0, p_close)
+tokens.splice(i, 0, p_open)
+```
+
+Ok, apparently doing this drives the build process into an infinite loop? That's not great. What do I do now?
+
+Ok, found the nesting info:
+
+> Level change (number in {-1, 0, 1} set), where:
+> - 1 means the tag is opening
+> - 0 means the tag is self-closing
+> - -1 means the tag is closing
+
+Got it. Well, fixing that doesn't seem to have fixed anything, still looping.
+
+Let's [read some docs I guess](https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md)!
+
+Well [it looks like](https://markdown-it.github.io/) I'm not supposed to put children on the paragraph token. In fact, it looks like it is supposed to be flat.
+
+Ok tried:
+
+```javascript
+const createSkipLink = (TokenConstructor, skipName) => {
+	const p_open = new TokenConstructor("paragraph_open", "p", 1);
+	setAttr(p_open, "class", "skip-link-graf");
+	p_open.level = 0
+	// p_open.children = []
+	const link_open = new TokenConstructor("link_open", "a", 1);
+	setAttr(link_open, "href", `#${skipName}`);
+	setAttr(link_open, "id", `skip-to-${skipName}`);
+	setAttr(link_open, "class", "skip-link");
+	link_open.level = 1
+	// p_open.children.push(link_open);
+	const link_text = new TokenConstructor("text", "", 0);
+	link_text.content = "Skip code block &#9660;"
+	link_text.level = 2
+	// p_open.children.push(link_text);
+	const link_close = new TokenConstructor("link_close", "a", -1);
+	link_close.level = 1
+	// p_open.children.push(link_close);
+	const p_close = new TokenConstructor("paragraph_close", "p", -1);
+	return { p_open, link_open, link_text, link_close, p_close };
+};
+```
+
+Still looping.
+
+Ok, it is not my token making process, it's what happens when I splice the tokens into the chain.
+
+Ok... so how *do* I add new tokens?
+
+Ok, did some searching and [maybe there are functions to handle this](https://docs.joshuatz.com/cheatsheets/node-and-npm/markdown-it/) on the `state` object?
+
+Let's see what keys are available on the `state` object.
+
+```javascript
+[ 'src', 'env', 'tokens', 'inlineMode', 'md' ]
+```
+
+Ok, not useful.
+
+Ok, maybe it is an issue with a particular token? My approach [looks](https://github.com/valeriangalliat/markdown-it-anchor/issues/100) like it should work. Let's see what we can add without the loop happening.
+
+Oh, duh, ok the for loop is hitting the same item over and over again as new items are added above it. I'm dumb. I can [take the approach from the linkify plugin](https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/linkify.js#L39) and just reverse it.
+
+Oh, only now my little renderer hack for adding `_blank` targets to all the links is adding targets to the skip links which is bad. I can use the `meta` property of the tokens to note that these links are skip links and they should not be treated to `_blank` targeting.
+
+Ok, looking good. It's working!
+

@@ -655,6 +655,9 @@ module.exports = function (eleventyConfig) {
 		env,
 		self
 	) {
+		if (tokens[idx].meta && tokens[idx].meta.includes("skip-link")){
+			return defaultRender(tokens, idx, options, env, self);
+		}
 		// If you are sure other plugins can't add `target` - drop check below
 		var aIndex = tokens[idx].attrIndex("target");
 
