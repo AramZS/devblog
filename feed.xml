@@ -5,24 +5,12 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-12-22T02:59:43Z</updated>
+  <updated>2021-11-26T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
-  
-  <entry>
-    <title>This is a backreads post</title>
-    <link href="https://fightwithtools.dev/posts/projects/backreads/backreads-1/"/>
-    <updated>2021-12-22T02:59:43Z</updated>
-    <id>https://fightwithtools.dev/posts/projects/backreads/backreads-1/</id>
-    <content type="html"><h2 id="what-is-backreads" tabindex="-1">What is backreads</h2>
-<p>A project</p>
-<h2 id="what-is-this" tabindex="-1">What is this</h2>
-<p>A test post!</p>
-</content>
-  </entry>
   
   <entry>
     <title>Hello World Devblog - Pt. 39</title>

@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 26 Dec 2021 05:32:41 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 26 Dec 2021 05:41:36 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,20 +20,6 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
-	
-	<item>
-		<title>This is a backreads post</title>
-		<link>https://fightwithtools.dev/posts/projects/backreads/backreads-1/?source=rss</link>
-		<pubDate>Wed, 22 Dec 2021 02:59:43 GMT</pubDate>
-		<dc:creator>Aram Zucker-Scharff</dc:creator>
-		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/backreads/backreads-1/</guid>
-		<description>More backreads</description>
-		<content:encoded><![CDATA[<h2 id="what-is-backreads" tabindex="-1">What is backreads</h2>
-<p>A project</p>
-<h2 id="what-is-this" tabindex="-1">What is this</h2>
-<p>A test post!</p>
-]]></content:encoded>
-	</item>
 	
 	<item>
 		<title>Hello World Devblog - Pt. 39</title>
