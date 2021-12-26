@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block postcontent %}
-    {% if project and not wrapup %}
+    {% if project and tags.includes("WiP") %}
         {% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
         {% set nextPost = collections.posts | getNextProjectItem(page, project) %}
         <div class="pagination">

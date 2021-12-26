@@ -292,7 +292,7 @@ module.exports = function (eleventyConfig) {
 					lastPost &&
 					lastPost.data.hasOwnProperty("project") &&
 					lastPost.data.project == projectName &&
-					!lastPost.data.hasOwnProperty("wrapup")
+					lastPost.data.tags.includes("WiP")
 				) {
 					found = true;
 				} else {

@@ -20,12 +20,16 @@ const directorySet = getDirectories("src/posts/projects/").map((projectDir) => {
 		).toString();
 	});
 	// console.log("project files", projectFilesContent);
+	let daysWorked = 0;
 	lastUpdated = projectFilesContent.reduce((prevValue, fileContent) => {
 		try {
 			const mdObject = matter(fileContent);
-			// console.log("data", mdObject.data);
+			//console.log("project data", mdObject.data);
 			if (!mdObject.data || !mdObject.data.date) {
 				return 0;
+			}
+			if (mdObject.data.tags.includes("WiP")) {
+				++daysWorked;
 			}
 			const datetime = Date.parse(mdObject.data.date);
 			if (prevValue > datetime) {
@@ -49,6 +53,7 @@ const directorySet = getDirectories("src/posts/projects/").map((projectDir) => {
 			return process.env.DOMAIN + "/projects/" + projectDir;
 		})(),
 		count: projectFiles.length - 1, // minus one for the project description json file.
+		daysWorked: daysWorked,
 		complete: projectData.complete ? projectData.complete : "In-progress",
 		lastUpdatedPost: lastUpdated,
 	};
