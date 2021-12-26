@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 30</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -361,8 +361,10 @@
 <p>Ok, I'm on a new computer and for some reason the Sass file for the project template is not rebuilding. What's going on here?</p>
 <p>Oh, something weird must be going on because for some reason on this computer (which is an old laptop I've tried to reclaim some usefulness via setting it up with Ubuntu) is not passing the <code>process.env.DOMAIN</code> variable. Oops... forgot to set up my <code>.env</code> file with <code>IS_LOCAL=true</code>. Ok, everything is working now!</p>
 <p>Ok, everything is loading now and I did some styling with Flexbox for a fast and easy two column layout.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-30-1" id="skip-to-code-skip-hello-day-30-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-scss"><code class="language-scss"> #postcontent<br>        .content-lists-container<br>            <span class="token property">display</span><span class="token punctuation">:</span> flex<br>            <span class="token property">justify-content</span><span class="token punctuation">:</span> center<br>            @media print<span class="token punctuation">,</span> screen <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 630px<span class="token punctuation">)</span><br>                <span class="token property">display</span><span class="token punctuation">:</span> block<br>            .content-list<br>                <span class="token property">padding</span><span class="token punctuation">:</span> 0 10px<br>                <span class="token property">min-width</span><span class="token punctuation">:</span> 38%<br>                &amp;<span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span><br>                    <span class="token property">margin-left</span><span class="token punctuation">:</span> 10px<br>                    <span class="token property">padding-left</span><span class="token punctuation">:</span> 10px<br>                    <span class="token property">border-left</span><span class="token punctuation">:</span> 1px solid black<br>                @media print<span class="token punctuation">,</span> screen <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 630px<span class="token punctuation">)</span><br>                    <span class="token property">padding</span><span class="token punctuation">:</span> 0<br>                    &amp;<span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span><br>                        <span class="token property">border-left</span><span class="token punctuation">:</span> 0<br>                        <span class="token property">margin-left</span><span class="token punctuation">:</span> 0<br>                        <span class="token property">padding</span><span class="token punctuation">:</span> 0</code></pre>
-<p>Looks good!</p>
+<p id="code-skip-hello-day-30-1">Looks good!</p>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</li>
 </ul>

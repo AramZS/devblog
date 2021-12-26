@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 3</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -271,26 +271,34 @@
 <p>Ugh... apparently the Sass syntax has changed significantly since the last time I used it and also since it was set up in my other site. I'll need to correct.</p>
 <p><em>sigh</em></p>
 <p>Ok <a href="https://stackoverflow.com/questions/56858150/i-am-gettiing-an-error-expected-new-line-while-compiling-sass" target="_blank">it's changed a lot</a>. And the Sass build tools are dickishly specific about spaces over tabs. Need to add a new section to my <code>.editorconfig</code>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-3-5" id="skip-to-code-skip-hello-day-3-5" class="skip-link">Skip code block ▼</a></p>
 <pre><code>
 [*.sass]
 indent_style = space
 
 </code></pre>
-<p>Ok, I tried building the extendable <a href="https://sass-lang.com/documentation/style-rules/placeholder-selectors" target="_blank">placeholder</a> into a standalone Sass file and a standalone Scss file and <a href="https://sass-lang.com/documentation/at-rules/extend#placeholder-selectors" target="_blank">it looks right</a>. But <code>@extend %vertical-rhythm</code> still isn't working.</p>
+<p id="code-skip-hello-day-3-5">Ok, I tried building the extendable <a href="https://sass-lang.com/documentation/style-rules/placeholder-selectors" target="_blank">placeholder</a> into a standalone Sass file and a standalone Scss file and <a href="https://sass-lang.com/documentation/at-rules/extend#placeholder-selectors" target="_blank">it looks right</a>. But <code>@extend %vertical-rhythm</code> still isn't working.</p>
 <p>My ordering looks correct!</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-3-4" id="skip-to-code-skip-hello-day-3-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> '_sass/base-syntax-highlighting'</span><br><span class="token atrule-line"><span class="token atrule">@use</span> '_sass/syntax-highlighting'</span></code></pre>
-<p>What's going on?</p>
+<p id="code-skip-hello-day-3-4">What's going on?</p>
 <p>First error is a depreciation error. It <em>shouldn't</em> be a problem, but let's just get rid of it.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-3-3" id="skip-to-code-skip-hello-day-3-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-bash"><code class="language-bash">DEPRECATION WARNING: Using / <span class="token keyword">for</span> division is deprecated and will be removed <span class="token keyword">in</span> Dart Sass <span class="token number">2.0</span>.0.<br><br>Recommendation: math.div<span class="token punctuation">(</span><span class="token variable">$spacing</span>-unit, <span class="token number">2</span><span class="token punctuation">)</span><br><br>More info and automated migrator: https://sass-lang.com/d/slash-div</code></pre>
-<p>Alrighty. <a href="https://sass-lang.com/documentation/breaking-changes/slash-div" target="_blank">Go to the docs and do what it says</a>. Side comment... this is dumb. Why is it <em>easier</em> to do this type of math with standard CSS (where it would be <code>calc()</code>) than it is with Sass. Why is Sass harder to use now than it was when I got deep into it years ago? Grrrrr.</p>
+<p id="code-skip-hello-day-3-3">Alrighty. <a href="https://sass-lang.com/documentation/breaking-changes/slash-div" target="_blank">Go to the docs and do what it says</a>. Side comment... this is dumb. Why is it <em>easier</em> to do this type of math with standard CSS (where it would be <code>calc()</code>) than it is with Sass. Why is Sass harder to use now than it was when I got deep into it years ago? Grrrrr.</p>
 <p>OMG why does this documentation start off with <code>// Future Sass, doesn't work yet!</code>?!?! Why would you start off a documentation file with a suggested solution that <strong>doesn't work</strong>?!</p>
 <p>Ok. Down to one error. Still not importing the placeholder, why not?</p>
 <p>Oh no. This is <a href="https://github.com/sass/dart-sass/issues/1042#issuecomment-656338728" target="_blank">A Problem</a>. Apparently the move to @use has not synced well with the old ways of using mixins, imports and placeholders?</p>
 <p>The answer seems to be that you can't have a master file import a variables and expect them to be picked up by downstream files <code>@use</code>ed by that master file, instead you have to import them directly into the file you inted to use? I could have sworn that worked differently before? That isn't how it seems to work in my Jekyll site, perhaps there is a better way to do this?</p>
 <p>[ ] Why is the logic around <code>@use</code> not working how I expect it to? Is there a better way?</p>
 <p>Ok, I'm... not sure the styles are applying. Let's replicate a markdown block from my other site and see if it looks good.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-3-2" id="skip-to-code-skip-hello-day-3-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-markdown"><code class="language-markdown"><span class="token frontmatter"><span class="token punctuation">---</span><br><span class="token key atrule">layout</span><span class="token punctuation">:</span> page<br><span class="token punctuation">---</span></span></code></pre>
-<p>It doesn't look good, but looking at the HTML markup... it looks like the problem is 11ty's processing and output of the actual markup.</p>
+<p id="code-skip-hello-day-3-2">It doesn't look good, but looking at the HTML markup... it looks like the problem is 11ty's processing and output of the actual markup.</p>
 <p>:/</p>
 <p>What does Jekyll use?</p>
 <blockquote>
@@ -303,8 +311,10 @@ indent_style = space
 <p>I am concerned that it hasn't been update in 5 years. You know what? let's try <a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a> and see if I can force it to build better styles.</p>
 <p>Oh no... white text on bright red background. This is a bad sign.</p>
 <p>Ok, this looks like it actually should work ok though, what is going on? I'm going to add some <code>console.log</code> statements.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-3-1" id="skip-to-code-skip-hello-day-3-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">let</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><br>		html<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		breaks<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		linkify<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		langPrefix<span class="token operator">:</span> <span class="token string">"language-"</span><span class="token punctuation">,</span><br>		<span class="token function-variable function">highlight</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> lang</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>lang <span class="token operator">&amp;&amp;</span> hljs<span class="token punctuation">.</span><span class="token function">getLanguage</span><span class="token punctuation">(</span>lang<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">try</span> <span class="token punctuation">{</span><br>					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Syntax highlight good"</span><span class="token punctuation">,</span> lang<span class="token punctuation">)</span><span class="token punctuation">;</span><br>					<span class="token keyword">return</span> hljs<span class="token punctuation">.</span><span class="token function">highlight</span><span class="token punctuation">(</span>lang<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span><br>				<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Syntax highlight fail"</span><span class="token punctuation">,</span> lang<span class="token punctuation">)</span><span class="token punctuation">;</span><br>				<span class="token punctuation">}</span><br>			<span class="token punctuation">}</span><br><br>			<span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span> <span class="token comment">// use external default escaping</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"md"</span><span class="token punctuation">,</span> <span class="token function">markdownIt</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"markdown"</span><span class="token punctuation">,</span> <span class="token function">markdownIt</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Ok, they aren't triggering. No logging, this isn't working.</p>
+<p id="code-skip-hello-day-3-1">Ok, they aren't triggering. No logging, this isn't working.</p>
 <p>The eleventy website has good syntax highlighting. <a href="https://github.com/11ty/11ty-website/blob/master/.eleventy.js" target="_blank">How are they doing it</a>?</p>
 <p>Ok, there's a lot going on there and I need a break. Break time.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/619a3292f27005d85a771d304bad09aafd858d88" class="git-commit-link"><code>git commit -am &quot;Trying to get better syntax highlighting&quot; </code></a></p>

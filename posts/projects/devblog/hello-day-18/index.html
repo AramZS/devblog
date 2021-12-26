@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 18</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -303,13 +303,17 @@
 <p>Ok, I'm still disappointed with markdown-it. So let's take on a different task today. I'm going to take on showing the latest post and the tags pages, if I can pull off both.</p>
 <p>For the home page, it looks like <a href="https://stackoverflow.com/questions/64337175/get-latest-post-to-show-on-home-page-with-eleventy" target="_blank">I can pull a good example</a>. It is dependent on <a href="https://github.com/11ty/eleventy-base-blog/blob/1be6346bde9ebe4afc23d7feaf0370817ad90f15/.eleventy.js#L31" target="_blank">a filter</a> though. Oh this idea, to truncate an array with a filter, is really cool. I wish I hard realized it existed before I set up the limit number on the collection. But I'll pull it over. That said, I prefer to name it what it actually does and call it <code>slice</code>. Ok, now I can have a single post on the homepage. But I don't really want the whole thing. Time to use the &quot;description&quot; metadata key and value. I'll need it for SEO anyway, so good to have something else on the site that uses the value. I want to have a good separator in place to differentiate the post content. I can add an <code>hr</code>, but it will need some custom styling.</p>
 <p>I'll use my index-specific Sass here.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-18-2" id="skip-to-code-skip-hello-day-18-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-css"><code class="language-css">    .front-post<br>        hr<br>            <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 6px<br>        h3<br>            <span class="token property">margin-top</span><span class="token punctuation">:</span> 2px</code></pre>
-<p>Ok, on to the tag pages.</p>
+<p id="code-skip-hello-day-18-2">Ok, on to the tag pages.</p>
 <p>I'll start by duplicating the projects page. Now the question is how to get a list of collections.</p>
 <p data-wordfix="true">There doesn't seem to be a native way, but <a href="https://github.com/11ty/eleventy-base-blog/blob/1be6346bde9ebe4afc23d7feaf0370817ad90f15/.eleventy.js#L47" target="_blank">I can build on the techniques that the Eleventy site itself uses</a>.</p>
 <p>Ok, what does that create exactly? According to <code>console.log</code>:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-18-1" id="skip-to-code-skip-hello-day-18-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>  <span class="token string">'projects'</span><span class="token punctuation">,</span><br>  <span class="token string">'Starters'</span><span class="token punctuation">,</span><br>  <span class="token string">'11ty'</span><span class="token punctuation">,</span><br>  <span class="token string">'Node'</span><span class="token punctuation">,</span><br>  <span class="token string">'Sass'</span><span class="token punctuation">,</span><br>  <span class="token string">'WiP'</span><span class="token punctuation">,</span><br>  <span class="token string">'Github Actions'</span><br><span class="token punctuation">]</span></code></pre>
-<p data-wordfix="true">Ok and from there I can base the new page off <a href="https://www.11ty.dev/docs/pagination/#paging-a-collection" target="_blank">the example from the eleventy site</a>. It worked! Now I have a set of pages.</p>
+<p data-wordfix="true" id="code-skip-hello-day-18-1">Ok and from there I can base the new page off <a href="https://www.11ty.dev/docs/pagination/#paging-a-collection" target="_blank">the example from the eleventy site</a>. It worked! Now I have a set of pages.</p>
 <p>I can use my postList shortcode here to get a list of posts. Just have to update it so the posts are linked.</p>
 <p>This is a good start, next step is paginating these tag pages!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/5c52159e6bd3edfe79a54f8b9e6d66c56cb02c11" class="git-commit-link"><code>git commit -am &quot;Setting up homepage post and tag pages&quot;</code></a></p>

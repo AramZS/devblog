@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 32</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -354,18 +354,24 @@
 <h3 id="projects-page" tabindex="-1">Projects Page</h3>
 <p>I realized that at some point I'm going to have too many projects to fit on the home page, so I <a href="https://github.com/AramZS/devblog/issues/4" target="_blank">need to limit the number that show up and set up a page to list the overall projects</a>.</p>
 <p>I want it to sit at <code>/projects</code> so I'll create a MD file to handle that and a template to handle this specific page type.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-32-3" id="skip-to-code-skip-hello-day-32-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span><br><span class="token key atrule">layout</span><span class="token punctuation">:</span> project<span class="token punctuation">-</span>list<br><span class="token key atrule">pagination</span><span class="token punctuation">:</span><br>    <span class="token key atrule">data</span><span class="token punctuation">:</span> projects<br>    <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token number">1</span><br>    <span class="token key atrule">alias</span><span class="token punctuation">:</span> project<br><span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token string">"projects/"</span><br><span class="token key atrule">eleventyComputed</span><span class="token punctuation">:</span><br>  <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">"Project List"</span><br>  <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"A list of projects that Aram Zucker-Scharff has documented working on."</span><br><span class="token punctuation">---</span></code></pre>
-<p>I'll start with the project page as the template. Then I can take the loop through the projects object from the front page.</p>
+<p id="code-skip-hello-day-32-3">I'll start with the project page as the template. Then I can take the loop through the projects object from the front page.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-32-2" id="skip-to-code-skip-hello-day-32-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> project <span class="token keyword">in</span> projects </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>capitalize-first<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>						<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{project.url}}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project.title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Days worked: {{project.count}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Status: {{project.complete}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- last updated:  {{project.lastUpdatedPost}} --></span><br>					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p>Ok this is good. To make this easy to debug I should put the link on the front page. So to do that I need to do two things, break the project <code>for</code> loop, and add a link to the new projects page.</p>
+<p id="code-skip-hello-day-32-2">Ok this is good. To make this easy to debug I should put the link on the front page. So to do that I need to do two things, break the project <code>for</code> loop, and add a link to the new projects page.</p>
 <p>Hmm, <a href="https://github.com/mozilla/nunjucks/issues/296" target="_blank">it doesn't look like there is actually a <code>break</code> in Nunjucks</a>. Perhaps I should try altering the array?</p>
 <p>Can I use an if check like <code> if loop.index &lt; 6</code> in the for statement? No that doesn't work. Looks like the <code>if</code> check <a href="https://stackoverflow.com/questions/22150273/how-can-i-break-a-for-loop-in-jinja2" target="_blank">is only for properties of the looped object</a>.</p>
 <p>Ah, no, that's not it at all. That doesn't work. Ah, ok, the best thing to do here is to slice the array before looping it. Instead of a <code>break</code> for this situation, we use slice.</p>
 <p><code>for project in projects | slice(5)</code></p>
 <p>Yup, that worked!</p>
 <p>And I'll remove the dots on the li elements.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-32-1" id="skip-to-code-skip-hello-day-32-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-css"><code class="language-css">    #all-projects<br>        li<br>            <span class="token property">list-style</span><span class="token punctuation">:</span> none</code></pre>
-<p>Ok, did a little touching up of the formatting, and now we've got that page. Good to go.</p>
+<p id="code-skip-hello-day-32-1">Ok, did a little touching up of the formatting, and now we've got that page. Good to go.</p>
 <h3 id="preview-images-on-lists" tabindex="-1">Preview Images on Lists</h3>
 <p>Ok, next thing I wanted to check off is including the image on some of the post preview pages. Let's start with the tag pages.</p>
 <p>First I'll set up a stand-alone Sass file for the post preview component. Then I'll add a containing class to the post-summary component itself.</p>

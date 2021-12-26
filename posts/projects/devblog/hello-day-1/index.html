@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 1</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -324,8 +324,10 @@
 <p data-wordfix="true">NOTE: I'm pretty sure that Nunjucks can process HTML files. Do I want to just add a Eleventy alias to just pull default.html from dinky in the style of <code>eleventyConfig.addLayoutAlias(&quot;base&quot;, &quot;dinky/_layouts/default.html&quot;);</code>? Would that work? Put a pin in that:</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
 <p>Pull the .eleventy.js return from the <a href="https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js" target="_blank">base blog</a> and change output to <code>docs</code> for Github Pages...</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-1-1" id="skip-to-code-skip-hello-day-1-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">		dir<span class="token operator">:</span> <span class="token punctuation">{</span><br>			input<span class="token operator">:</span> <span class="token string">"."</span><span class="token punctuation">,</span><br>			includes<span class="token operator">:</span> <span class="token string">"_includes"</span><span class="token punctuation">,</span><br>			data<span class="token operator">:</span> <span class="token string">"_data"</span><span class="token punctuation">,</span><br>			output<span class="token operator">:</span> <span class="token string">"docs"</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
-<p>Wait... it's pulling njk files from the base of the project? Mixing project files with build configuration files? That's HOT NONSENSE. I did that last time, but it was becaause I wanted to build some real basic pages and only a few of them. Not good for a larger project IMO. Create an <code>src</code> folder.</p>
+<p id="code-skip-hello-day-1-1">Wait... it's pulling njk files from the base of the project? Mixing project files with build configuration files? That's HOT NONSENSE. I did that last time, but it was becaause I wanted to build some real basic pages and only a few of them. Not good for a larger project IMO. Create an <code>src</code> folder.</p>
 <p><code>input: &quot;src&quot;,</code></p>
 <p>Crap... what of these folders do I need to move in? I guess <code>posts</code>? That is likely it. I'll find out later!</p>
 <p>Ok, theoretically should be able to make a build. Moment of truth.</p>

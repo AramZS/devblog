@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 25</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -343,8 +343,10 @@
 <p>Ok! That's settled then!</p>
 <p>The tag pages do appear to have working pagination with my last changes, though they need some design work, so it seems like now is a good time to do some CSS work!</p>
 <p>I'll pull most of the preexisting classes that were on the elements from the theme I took the HTML from and add one of my own for disabled links, that'll be good to reuse. I'll also need to make sure to add an override for the hover state.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-25-1" id="skip-to-code-skip-hello-day-25-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.disabled-link</span><br><span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> grey</span><br><span class="token property-line">    <span class="token property">text-decoration</span><span class="token punctuation">:</span> none</span><br><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">hover</span></span><br><span class="token property-line">        <span class="token property">text-decoration</span><span class="token punctuation">:</span> none</span><br><span class="token property-line">        <span class="token property">color</span><span class="token punctuation">:</span> grey</span></code></pre>
-<p>I next need to set the pagination links to align with the article block. I'll give it a left padding of <code>25px</code> to match the UL indentation on tag pages. Now I need to make it clearer what the links are and what they do.</p>
+<p id="code-skip-hello-day-25-1">I next need to set the pagination links to align with the article block. I'll give it a left padding of <code>25px</code> to match the UL indentation on tag pages. Now I need to make it clearer what the links are and what they do.</p>
 <p>It's sort of old school, but I'll layer some basic colors and a drop shadow. Why not?</p>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags pages with Pagination</li>

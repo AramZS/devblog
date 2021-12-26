@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 15</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -287,17 +287,25 @@
 <h2 id="day-15" tabindex="-1">Day 15</h2>
 <p>Ok, let's add a little styling to handle mobile devices. Looking at the sizes the changes happen and also when the lines tend to start to break, I think I want a custom break point for the frontpage grid.</p>
 <p>I'll put <code>$mobile-width: 890px</code> at the top of my stylesheet and set the width there. Then I can reuse it on per-unit queries like:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-15-4" id="skip-to-code-skip-hello-day-15-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-css"><code class="language-css">        @media <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $mobile-width<span class="token punctuation">)</span><br>            <span class="token property">display</span><span class="token punctuation">:</span> block</code></pre>
-<p>Ok, I want to set a link to the home page on every page. I started with a query to check for <code>/posts</code> and <code>/projects</code> in the base template. But I don't like how it looks if it is below the main content of the header. Let's switch up the design.</p>
+<p id="code-skip-hello-day-15-4">Ok, I want to set a link to the home page on every page. I started with a query to check for <code>/posts</code> and <code>/projects</code> in the base template. But I don't like how it looks if it is below the main content of the header. Let's switch up the design.</p>
 <p>Ok, that's looking better. But I want the title of the page to span longer then it does now.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-15-3" id="skip-to-code-skip-hello-day-15-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-css"><code class="language-css">@media print<span class="token punctuation">,</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> $large-mobile<span class="token punctuation">)</span><br>    header<br>        <span class="token property">padding-right</span><span class="token punctuation">:</span> 260px</code></pre>
-<p>Hm. That's not working.</p>
+<p id="code-skip-hello-day-15-3">Hm. That's not working.</p>
 <p>I'll come back to it in a second. I want to get a breadcrumb path working, but there's no way to split the URL at the build process, at least not one that I can see that's built in. I guess the answer is a filter I can run the URL through.</p>
 <p>To manipulate chunks of the URL I am going to have to turn the URL into an array and manipulate it, along with handling the domain env variable.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-15-2" id="skip-to-code-skip-hello-day-15-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"relproject"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">var</span> urlArray <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> urlFiltered <span class="token operator">=</span> urlArray<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> e<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove post path</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove `posts/`</span><br>		<span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> urlFiltered<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>	  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Now I can use it in a template tag like this:</p>
+<p id="code-skip-hello-day-15-2">Now I can use it in a template tag like this:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-15-1" id="skip-to-code-skip-hello-day-15-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>project-link<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ page.url | relproject }}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
-<p>Ok, back to SaaS. What's going on there?</p>
+<p id="code-skip-hello-day-15-1">Ok, back to SaaS. What's going on there?</p>
 <p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
 <p>Ok. That works now.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e09597eb8e2539dbdfb2dd861fa5356886296eb3" class="git-commit-link"><code>git commit -am &quot;Set up changes to styles and add some additional elements to the design&quot;</code></a></p>

@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 7</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -312,8 +312,10 @@
 <p data-wordfix="true">I thought I might be able to use <a href="https://www.11ty.dev/docs/data-global-custom/" target="_blank">global data added at the config level, but it looks like that isn't available yet</a>. Didn't see that on my first run through as it isn't super obviously called out.</p>
 <p>I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.</p>
 <p>Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-7-1" id="skip-to-code-skip-hello-day-7-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">		<span class="token function-variable function">replaceLink</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">link<span class="token punctuation">,</span> env</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token comment">// console.log("env:", env);</span><br>			<span class="token keyword">var</span> imageLinkRegex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^..\/img\/</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>link <span class="token operator">&amp;&amp;</span> imageLinkRegex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token punctuation">(</span><br>					env<span class="token punctuation">.</span>site<span class="token punctuation">.</span>site_url <span class="token operator">+</span><br>					<span class="token string">"/img/"</span> <span class="token operator">+</span><br>					link<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>imageLinkRegex<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> link<span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span></code></pre>
-<p>While I'm fiddling with markdown-it, I should also <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer" target="_blank">add <code>target=&quot;_blank&quot;</code> to all my links</a>.</p>
+<p id="code-skip-hello-day-7-1">While I'm fiddling with markdown-it, I should also <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer" target="_blank">add <code>target=&quot;_blank&quot;</code> to all my links</a>.</p>
 <p>Still looking at how to get <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map" target="_blank">sourcemaps</a> working.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/ab13317595a5affa40ded39e3fda0926e4687d2e" class="git-commit-link"><code>git commit -am &quot;Fixing a number of path and link issues, still trying to get Sass working with sourcemaps&quot;</code></a></p>
 <ul class="task-list">

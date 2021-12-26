@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 19</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1622636397" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1623364921" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1622636397" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1623364921" />
             
-            <!-- Build Revision: 1622636397 & Sha: 28b520ed3b9bdad03c8c470a9113c330ea69fb94 -->
+            <!-- Build Revision: 1623364921 & Sha: f0cf05c92218260c5f768cbe40aa6d60616fde9b -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -304,15 +304,21 @@
 <h2 id="day-19" tabindex="-1">Day 19</h2>
 <h3 id="oh-let's-turn-on-gpc" tabindex="-1">Oh let's turn on GPC</h3>
 <p>Oh, I'm not doing any personalized tracking to turn off, but I might as well register my support for <a href="https://globalprivacycontrol.org/" target="_blank">GPC</a>. It should be easy enough to set up a location for me to store <code>.well-known</code> data and pass it through. I'll have an internal folder at <code>src/_well-known</code> and set up a passthrough copy from there.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-19-3" id="skip-to-code-skip-hello-day-19-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token comment">// added to .eleventy.js</span><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"src/_well-known"</span><span class="token operator">:</span> <span class="token string">".well-known"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Then I can just add a <code>gpc.json</code> file in that folder</p>
+<p id="code-skip-hello-day-19-3">Then I can just add a <code>gpc.json</code> file in that folder</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-19-2" id="skip-to-code-skip-hello-day-19-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"gpc"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>	<span class="token property">"lastUpdate"</span><span class="token operator">:</span> <span class="token string">"2021-07-31"</span><br><span class="token punctuation">}</span></code></pre>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f320bf640e1538d18f03f157f6279dee1111f4c5" class="git-commit-link"><code>git commit -am &quot;Add GPC .well-known file&quot;</code></a></p>
+<p id="code-skip-hello-day-19-2"><a target="_blank" href="https://github.com/AramZS/devblog/commit/f320bf640e1538d18f03f157f6279dee1111f4c5" class="git-commit-link"><code>git commit -am &quot;Add GPC .well-known file&quot;</code></a></p>
 <h3 id="tag-pages-let's-do-it!" tabindex="-1">Tag pages, let's do it!</h3>
 <p data-wordfix="true">Huh, my front page posts are no longer reversing properly. I think because <code>reverse</code> <a href="https://www.11ty.dev/docs/collections/#sort-descending" target="_blank">happens in-place</a> it's causing some issues.</p>
 <p>Let's clone the array before we operate on it in the shortcode. This will be an easy way to avoid any accidental problems.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-19-1" id="skip-to-code-skip-hello-day-19-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><br>		<span class="token string">"projectList"</span><span class="token punctuation">,</span><br>		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order<span class="token punctuation">,</span> hlevel<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">var</span> postCollection <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>collectionOfPosts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				postCollection <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span></code></pre>
-<p>Ok, good stuff!</p>
+<p id="code-skip-hello-day-19-1">Ok, good stuff!</p>
 <p>Now let's look into pagination of tags pages.</p>
 <p>Ok, the reverse is not working again... wtf...</p>
 <p data-wordfix="true">Yeah, I'm pretty sure every place I'm calling reverse now is on a clone of the collections array. My post collection pull for the index page isn't reversing, it's just slicing one off the end. I'm not sure why the ordering here is wonky. Especially because it shouldn't even be a problem. <a href="https://www.11ty.dev/docs/collections/#advanced-custom-filtering-and-sorting" target="_blank">According to the Eleventy site</a>:</p>
