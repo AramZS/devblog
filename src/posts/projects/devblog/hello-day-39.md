@@ -398,3 +398,10 @@ Oh, only now my little renderer hack for adding `_blank` targets to all the link
 
 Ok, looking good. It's working!
 
+`git commit -am "Adding skip links to code blocks"`
+
+Ok. So now I just need to give it some better styling!
+
+Looking good enough for now! I may want to play with it a bit but this looks like a good place to stop.
+
+
