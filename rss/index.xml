@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 26 Dec 2021 05:28:28 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 26 Dec 2021 05:30:07 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -173,7 +173,7 @@
 <p>There's one problem that I don't think I can solve with CSS? Some of my early code blocks take the tab level of their files so they have a bunch of extra tabs that aren't needed and make them less readable. Is there a way to fix this? I can't think of one, so I'll just try and remember to collapse my code blocks to start at zero tabs.</p>
 <p>Finally, for the very long code blocks, they <em>badly</em> need skip links, both for accessibility and good UI reasons.</p>
 <p>I guess... this needs to be another markdown-it plugin? That is where the code-blocks are made. Ok!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Fix some basic readability issues&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/47464cbd5d34d5a1ad5ed1aef0bc001ccde6956b" class="git-commit-link"><code>git commit -am &quot;Fix some basic readability issues&quot;</code></a></p>
 <h3 id="add-skip-links-to-code-blocks" tabindex="-1">Add skip links to code blocks</h3>
 <p>Ok, I'm not going to make the same mistake I did before of starting in my <code>.eleventy</code> file. Let's open up a new custom plugin folder.</p>
 <p>Now, because of my investigation on <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-36/" target="_blank">Day 36</a> I know that there is a <code>code_block</code> rule that is absolutely the one I'm going to need to deal with. And, because I need to manipulate the token tree <em>around</em> the code block, I know that I'm going to have to use <code>ruler</code> and not <code>renderer</code>.</p>
@@ -208,7 +208,7 @@
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-39/#code-skip-hello-day-39-8" id="skip-to-code-skip-hello-day-39-8" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">Token <span class="token punctuation">{</span><br />  type<span class="token operator">:</span> <span class="token string">'paragraph_open'</span><span class="token punctuation">,</span><br />  tag<span class="token operator">:</span> <span class="token string">'p'</span><span class="token punctuation">,</span><br />  attrs<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span> <span class="token string">'data-wordfix'</span><span class="token punctuation">,</span> <span class="token string">'true'</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br />  map<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token number">113</span><span class="token punctuation">,</span> <span class="token number">114</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br />  nesting<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br />  level<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br />  children<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br />  content<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br />  markup<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br />  info<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br />  meta<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br />  block<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />  hidden<span class="token operator">:</span> <span class="token boolean">false</span><br /><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-39-8"><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Saving part way through day 39&quot;</code></a></p>
+<p id="code-skip-hello-day-39-8"><a target="_blank" href="https://github.com/AramZS/devblog/commit/28b520ed3b9bdad03c8c470a9113c330ea69fb94" class="git-commit-link"><code>git commit -am &quot;Saving part way through day 39&quot;</code></a></p>
 <p>I'll also need some way to name the skip links. I've been thinking about this and I think I should be able to just increment a count on <code>state.env</code> since Markdown It processing occurs synchronously, right? I can pull the <code>fileSlug</code> off the page object just to be sure the anchor links are unique enough.</p>
 <p>Ok, so I'm going to create the skip link name:</p>
 <p class="skip-link-graf">
@@ -261,6 +261,9 @@
 <p>Oh, duh, ok the for loop is hitting the same item over and over again as new items are added above it. I'm dumb. I can <a href="https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/linkify.js#L39" target="_blank">take the approach from the linkify plugin</a> and just reverse it.</p>
 <p>Oh, only now my little renderer hack for adding <code>_blank</code> targets to all the links is adding targets to the skip links which is bad. I can use the <code>meta</code> property of the tokens to note that these links are skip links and they should not be treated to <code>_blank</code> targeting.</p>
 <p>Ok, looking good. It's working!</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Adding skip links to code blocks&quot;</code></a></p>
+<p>Ok. So now I just need to give it some better styling!</p>
+<p>Looking good enough for now! I may want to play with it a bit but this looks like a good place to stop.</p>
 ]]></content:encoded>
 	</item>
 	
