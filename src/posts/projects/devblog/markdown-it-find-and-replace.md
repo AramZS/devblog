@@ -160,6 +160,8 @@ Awesome, made it into a module that hopefully some other people will find useful
 
 I'll add some documentation and update that and we're done! Very useful!
 
-`npm publish` to update the package listing. 
+`npm publish` to update the package listing.
+
+[Markdown It plugin package is live and ready for others to use](https://www.npmjs.com/package/markdown-it-find-and-replace)!
 
 `git commit -am "Switching to use my newly published markdown-it plugin"`
