@@ -160,4 +160,4 @@ Awesome, made it into a module that hopefully some other people will find useful
 
 I'll add some documentation and update that and we're done! Very useful!
 
-
+`git commit -am "Switching to use my newly published markdown-it plugin"`
