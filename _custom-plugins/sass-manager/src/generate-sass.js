@@ -4,7 +4,7 @@ var path = require("path");
 
 const handleSassResult = (resultOfRenderSync, domain, filename) => {
 	const result = resultOfRenderSync;
-	console.log("Sass renderSync result", result);
+	// console.log("Sass renderSync result", result);
 	var fullCSS = result.css.toString();
 	var map = JSON.parse(result.map);
 	map.sourceRoot = domain;
@@ -31,30 +31,30 @@ const handleSassResult = (resultOfRenderSync, domain, filename) => {
 		`./docs/assets/css/${filename}.css.map`,
 		fullMap
 	);
-	console.log(
+	/** console.log(
 		"Sass file write result",
 		writeResult,
 		"Sass map write result",
 		writeMapResult
-	);
+	); */
 };
 
 module.exports = (domain) => {
-	console.log(
+	/** console.log(
 		"Generate Sass with domain",
 		domain,
 		"target file",
 		`${domain}/assets/css/style.css`,
 		"cwd",
 		process.cwd()
-	);
+	); */
 	const outFile = "/assets/css/style.css";
 	const sassTemplateFiles = fs.readdirSync(path.resolve(`./src/_sass`));
 	const templateFiles = sassTemplateFiles.filter((sassFile) => {
-		console.log("sassFile", sassFile);
+		// console.log("sassFile", sassFile);
 		var sassName = sassFile;
 		if (sassName.includes("template-")) {
-			console.log("Sass File ");
+			// console.log("Sass File ");
 			return true;
 		} else {
 			return false;
@@ -63,7 +63,7 @@ module.exports = (domain) => {
 	templateFiles.forEach((file) => {
 		var templateOutFile =
 			"/assets/css/" + path.basename(file, ".sass") + ".css";
-		console.log("Sass Outfile: ", templateOutFile);
+		// console.log("Sass Outfile: ", templateOutFile);
 		var templateResult = sass.renderSync({
 			includePaths: [
 				"src/_sass/*.{scss,sass}",

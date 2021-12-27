@@ -82,6 +82,9 @@ module.exports = function (eleventyConfig) {
 	const dirToClean = path.join(siteConfiguration.dir.output, "*");
 	del.sync(dirToClean, { dot: true });
 
+	// https://www.11ty.dev/docs/data-deep-merge/
+	eleventyConfig.setDataDeepMerge(true);
+
 	// var markdownIt = new mdProcessor();
 
 	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
@@ -105,18 +108,20 @@ module.exports = function (eleventyConfig) {
 		},
 	});
 	eleventyConfig.addWatchTarget("./_custom-plugins/");
-	eleventyConfig.addWatchTarget("./src/_sass");
-	sassBuild(domain_name);
+	// eleventyConfig.addWatchTarget("./src/_sass");
+	// sassBuild(domain_name);
 	eleventyConfig.on("beforeWatch", (changedFiles) => {
 		// changedFiles is an array of files that changed
 		// to trigger the watch/serve build
-		sassBuild(domain_name);
+		// sassBuild(domain_name);
+	});
+	eleventyConfig.addPlugin(require("eleventy-plugin-dart-sass"), {
+		//sassLocation: path.join(path.resolve("."), "src/_sass/"),
+		//outDir: path.join(path.resolve("."), "docs"),
+		domainName: domain_name,
 	});
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
-
-	// https://www.11ty.dev/docs/data-deep-merge/
-	eleventyConfig.setDataDeepMerge(true);
 
 	// Alias `layout: post` to `layout: layouts/post.njk`
 	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");

@@ -53,7 +53,7 @@ const cacheFilePath = (pageFilePath, searchKey) => {
 		pageFilePath
 	);
 	const cacheFile =
-		cacheFolder + sanitizeFilename(slugify(searchKey).replace(".", ""));
+		cacheFolder + sanitizeFilename(slugify(searchKey).replace(/\./g, ""));
 	// console.log('cacheFile: ', cacheFile)
 	return { cacheFolder, cacheFile };
 };
@@ -134,7 +134,7 @@ const createLinkTokens = (TokenConstructor, commitLink) => {
 
 const gitCommitRule = (md) => {
 	//console.log('md.core.ruler', md.core.ruler.__rules__[md.core.ruler.__rules__.length-1])
-	md.core.ruler.push('git_commit', state => {
+	md.core.ruler.push("git_commit", (state) => {
 		const tokens = state.tokens;
 		if (state.env.hasOwnProperty("repo")) {
 			for (let i = 0; i < tokens.length; i++) {

@@ -12,9 +12,11 @@
             <title>{{ title }}</title>
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}" />
+            <!-- <link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}" /> -->
+            {% sassFile false, "?v=" + site.github.build_revision %}
             {% if templateName %}
-                <link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}" />
+                <!-- <link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}" /> -->
+                {% sassFile templateName, "?v=" + site.github.build_revision %}
             {% endif %}
             <!-- Build Revision: {{ site.github.build_revision }} & Sha: {{ site.github.build_sha }} -->
             <script src="{{site.site_url}}/assets/js/scale.fix.js"></script>
