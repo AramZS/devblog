@@ -10,11 +10,11 @@
             <title>Hello World Devblog - Pt. 10</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1624930659" />
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1625585762" />
             
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1624930659" />
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1625585762" />
             
-            <!-- Build Revision: 1624930659 & Sha: 39b46c6f5fa6f46d55eb299cb7704095cc3806dc -->
+            <!-- Build Revision: 1625585762 & Sha: 62875231fffaea0961edac74911e3788d213bd3f -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -290,7 +290,7 @@
 <p>So... progress!</p>
 <p>Now let's try and figure out how to make it more useful.</p>
 <p>There are some interesting things you can do with Macros! I really would like to get it to work, so before we go the filter route, let's see if we can make my intended methodology work. This seems like it would be a thing people would want to do! So some more web searching may be in order.</p>
-<p data-wordfix="true">Ok, after trying a few different search terms <a href="https://stackoverflow.com/questions/50685814/nunjucks-nested-variables" target="_blank">I've found a useful middle ground</a>. But I know that <a href="https://www.11ty.dev/docs/languages/nunjucks/#filters" target="_blank">Nunjucks applies filters in a specific way in 11ty</a>.</p>
+<p data-wordfix="true">Ok, after trying a few different search terms <a href="https://stackoverflow.com/questions/50685814/nunjucks-nested-variables" target="_blank">I've found a useful middle ground</a>. But I know that <a href="https://www.11ty.dev/docs/languages/nunjucks/#filters" target="_blank">Nunjucks applies filters in a specific way in Eleventy</a>.</p>
 <p data-wordfix="true">Hmmm, apparently part of the issue <a href="https://github.com/11ty/eleventy/issues/354#issuecomment-449904901" target="_blank">is that Nunjucks fails silently on rendering stuff</a>. Is there a way to turn it off? Looks like first <a href="https://www.11ty.dev/docs/languages/nunjucks/#optional-use-your-nunjucks-environment" target="_blank">I'll have to redefine the Nunjucks rendering environment</a>.</p>
 <p data-wordfix="true">The Nunjucks page on Eleventy suggests we pass in the <code>_includes</code> folder name as a string: <code>new Nunjucks.FileSystemLoader(&quot;_includes&quot;)</code>. But that's an extra instance of that string to keep track of. Better to use my Eleventy config object instead. I also want to switch <code>throwOnUndefined</code> to <code>true</code>, but only in the local environment. Another good use for <code>process.env.DOMAIN</code>.</p>
 <p>Now at the top of my <code>.eleventy.js</code> file I have</p>

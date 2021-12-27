@@ -7,7 +7,7 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 28</title>
+            <title>Markdown It Find and Replace as Plugin</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1625585762" />
@@ -26,14 +26,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 28">
+    content="Markdown It Find and Replace as Plugin">
 
 <meta property="og:description"
     content="More devblog">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-28/" />
+    content="https://fightwithtools.dev/posts/projects/devblog/markdown-it-find-and-replace/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -48,7 +48,7 @@
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 28" />
+<meta name="twitter:title" content="Markdown It Find and Replace as Plugin" />
 
 
 
@@ -61,7 +61,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Fri, 08 Oct 2021 02:59:43 GMT" />
+    <meta property="article:published_time" content="Sat, 27 Nov 2021 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -82,19 +82,17 @@
     
     <meta property="article:tag" content="projects" />
     
-    <meta property="article:tag" content="Starters" />
-    
     <meta property="article:tag" content="11ty" />
     
     <meta property="article:tag" content="Node" />
     
-    <meta property="article:tag" content="Sass" />
-    
     <meta property="article:tag" content="WiP" />
     
-    <meta property="article:tag" content="SEO" />
+    <meta property="article:tag" content="Markdown-It" />
     
-    <meta property="article:tag" content="SMO" />
+    <meta property="article:tag" content="NPM" />
+    
+    <meta property="article:tag" content="Mocha" />
     
 
 
@@ -103,8 +101,8 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-28/",
-        "headline": "Hello World Devblog - Pt. 28",
+        "url": "https://fightwithtools.dev/posts/projects/devblog/markdown-it-find-and-replace/",
+        "headline": "Markdown It Find and Replace as Plugin",
         "about": "More devblog",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -193,14 +191,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Fri Oct 08 2021</time>
+                            <time>Sat Nov 27 2021</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 28
+                            Markdown It Find and Replace as Plugin
                         </h1>
                         
                         
@@ -219,7 +217,7 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-28">Day 28</a><ol><li><a href="#featured-images">Featured Images</a></li></ol></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-40">Day 40</a></li></ol></nav>
             </div>
         </aside>
         <div id="post-description">More devblog</div>
@@ -253,12 +251,12 @@
 <li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
 </ol>
 <ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
-</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</li>
+</ul>
+<s>
+- [ ] So does the [reading time one](https://www.npmjs.com/package/eleventy-plugin-reading-time).
+</s>
+<ul class="task-list">
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
 </li>
@@ -290,13 +288,17 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
+</ul>
+</s>
+<ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
@@ -311,13 +313,13 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags pages with Pagination</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
@@ -326,16 +328,16 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a technical reading log to the homepage</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Add byline to post pages</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add byline to post pages</p>
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Have table of contents attach to sidebar bottom on mobile</p>
@@ -347,32 +349,41 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Social Icons</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> SEO/Social/JSON-LD HEAD data</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> SEO/Social/JSON-LD HEAD data</p>
 </li>
 </ul>
-<h2 id="day-28" tabindex="-1">Day 28</h2>
-<p>Ok, we're blocked from finishing the various social and search tags by the lack of feature images in the blog. So that's next.</p>
-<h3 id="featured-images" tabindex="-1">Featured Images</h3>
-<p>So I want to have intellegent defaults here as well. I can have defaults at the project level, the site level and the individual post level. For the Devblog project I'll add to the <code>devblog.json</code> file <code>&quot;featuredImage&quot;: &quot;radial_crosshair.jpg&quot;</code>. All my images will be in <code>../img/</code> so to keep it DRY let's leave that out of the filepaths.</p>
-<p>I'll set the same property at the site level, taking my default image from my GitHub blog.</p>
-<p>Ok, for the individual blog posts I guess I'll need a little more detail. Since I'll often be taking photos from Creative Commons I need to have a place to put credit. Ok, so I've got a few things to add to the YAML metadata.</p>
+<h2 id="day-40" tabindex="-1">Day 40</h2>
+<p>Ok, so I want to make my pretty simple but very useful Markdown-it short phrase replacer into a stand alone NPM package that others can use.</p>
+<p>I need to set up the project, add the package.json file, the .npmignore file, the README and the other chunks of the initial setup.</p>
+<p>The other thing I need to do is set it up so that a developer can pass in the patterns and replacement rules. So no more using a function outside of the exported function. Instead I need to let others pull it in. I also want to add some test coverage. I've always used Jest for testing, but never Mocha, so <a href="https://mochajs.org/#installation" target="_blank">let's try doing that</a>! I'll review the docs.</p>
+<p>Good thing I wish they called out with more emphasis:</p>
+<blockquote>
+<p>Passing arrow functions (aka “lambdas”) to Mocha is discouraged. Lambdas lexically bind this and cannot access the Mocha context.</p>
+</blockquote>
+<p>I want to start testing, but that will mean a devDependency for markdown-it. It also made me realize <a href="https://nodejs.org/es/blog/npm/peer-dependencies/" target="_blank">I need to define a <code>peerDependencies</code> object</a>.</p>
 <p class="skip-link-graf">
-<a href="#code-skip-hello-day-28-3" id="skip-to-code-skip-hello-day-28-3" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">featuredImage</span><span class="token punctuation">:</span> <span class="token string">"close-up-keys.jpg"</span><br><span class="token key atrule">featuredImageCredit</span><span class="token punctuation">:</span> <span class="token string">"'TYPE' by SarahDeer is licensed with CC BY 2.0"</span><br><span class="token key atrule">featuredImageLink</span><span class="token punctuation">:</span> <span class="token string">"https://www.flickr.com/photos/40393390@N00/2386752252"</span><br><span class="token key atrule">featuredImageAlt</span><span class="token punctuation">:</span> <span class="token string">"Close up photo of keys."</span></code></pre>
-<p id="code-skip-hello-day-28-3">I can add the following block to my <code>social-header.njk</code> file now:</p>
+<a href="#code-skip-markdown-it-find-and-replace-2" id="skip-to-code-skip-markdown-it-find-and-replace-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token property">"peerDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>  <span class="token property">"markdown-it"</span><span class="token operator">:</span> <span class="token string">"*"</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-markdown-it-find-and-replace-2">I want to test that the errors being thrown are working as expected, so <a href="https://github.com/Automattic/expect.js" target="_blank">I'm going to grab <code>expect.js</code></a>.</p>
+<p>Using that I need to initiate the function I want to dump and error into the <code>expect</code> statement. And I need it to explicitly match a regex pattern (feeding a string in apparently doesn't work).</p>
+<p>Ok, this works!</p>
 <p class="skip-link-graf">
-<a href="#code-skip-hello-day-28-2" id="skip-to-code-skip-hello-day-28-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> featuredImage </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{site.site_url}}/img/{{featuredImage}}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>twitter:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{site.site_url}}/img/{{featuredImage}}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-28-2"><a target="_blank" href="https://github.com/AramZS/devblog/commit/0dd045779d40d7e34b5461b6cc8547f33c1d9bc9" class="git-commit-link"><code>git commit -am &quot;Day 28 half way done.&quot;</code></a></p>
-<p data-wordfix="true"><a href="https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html" target="_blank">In my Jekyll site</a> I had to code a page-level value with a site-level fallback. <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">11ty's deep data merge process</a> allows me to just rely on the cascade of settings and JSON files to properly select a default.</p>
-<p>Ok, that's the social tags! I'll set an else condition to make sure that there is always an og:type (default to <code>content=&quot;website&quot;</code>) and we're good to go.</p>
-<p>Oh, I want to add the post image to the template too, but only when it is one set at the post level. Being a good web citizen, I should always have alt text on my image, so I'm going to only include it in the post template when I have alt text, that's an easy way to assure not every post has the default image.</p>
-<p>I dunno what the right tag is for this? Sometimes I use <code>aside</code> but I think I'm supposed to use <code>figure</code> right? I'll use that here.</p>
-<p class="skip-link-graf">
-<a href="#code-skip-hello-day-28-1" id="skip-to-code-skip-hello-day-28-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-liquid"><code class="language-liquid">    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> featuredImageAlt </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>figure preview-image<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{site.site_url}}/img/{{featuredImage}}<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{featuredImageAlt}}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> featuredImageCaption or featuredImageCredit </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>figcaption<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> featuredImageCaption  </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{featuredImageCaption}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> featuredImageCredit  </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ featuredImageLink }}<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{featuredImageCredit}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span> | <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">></span></span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-28-1">Ok, basic image stuff works!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0f04a9efac2aad66546be0131707a6ae2a4d9060" class="git-commit-link"><code>git commit -am &quot;Last commit from day 28&quot;</code></a></p>
+<a href="#code-skip-markdown-it-find-and-replace-1" id="skip-to-code-skip-markdown-it-find-and-replace-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"should not initiate without an array"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token function">expect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">mdProcessor</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>plugin<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">throwException</span><span class="token punctuation">(</span><br>		<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">Markdown-It-Find-and-Replace requires that options\.replaceRules be an array\.</span><span class="token regex-delimiter">/</span></span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-markdown-it-find-and-replace-1">Let's throw some more tests on there!</p>
+<p>Ok, it works.</p>
+<p data-wordfix="true">Oh, and in writing the tests I realized I don't have a setup for when it starts a sentence or token content or when it ends one! I can fix that though with a few more regexs.</p>
+<p>Ok, plugin looks good. Tests work. You know what's sort of strange, I've never created an NPM module that I've also published before. I guess this is the first time! <a href="https://docs.npmjs.com/creating-a-new-npm-user-account" target="_blank">Let's go</a>!</p>
+<p>I already have an NPM account I created earlier, so that part is easy.</p>
+<p>I'll reformat my author property to match their requirements.</p>
+<p>I tried pulling it into this project and it looks like it works, so I think the code is good to go.</p>
+<p><code>npm publish --access public</code></p>
+<p>Ok, that was easy!</p>
+<p>I'll pull it in to this project and see if that version works.</p>
+<p>And it does!</p>
+<p>Awesome, made it into a module that hopefully some other people will find useful!</p>
+<p>I'll add some documentation and update that and we're done! Very useful!</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Switching to use my newly published markdown-it plugin&quot;</code></a></p>
 
                     
                     </section>
@@ -382,9 +393,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/devblog/hello-day-27/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/devblog/hello-day-39/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/devblog/hello-day-29/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -424,19 +435,17 @@
     <div id="taglist">
         <h6>Tags: </h6>
         <ul><li>
-                    <a href="https://fightwithtools.dev/tag/starters">Starters</a>
-                </li><li>
                     <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/node">Node</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/sass">Sass</a>
-                </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/seo">SEO</a>
+                    <a href="https://fightwithtools.dev/tag/markdown-it">Markdown-It</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/smo">SMO</a>
+                    <a href="https://fightwithtools.dev/tag/npm">NPM</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/mocha">Mocha</a>
                 </li></ul>
     </div>
 
