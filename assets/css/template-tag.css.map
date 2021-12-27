@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"sourceRoot": "https://fightwithtools.dev",
+	"sources": [
+		"sass/file:///home/runner/work/devblog/devblog/src/_sass/template-tag.sass"
+	],
+	"names": [],
+	"mappings": "AAAA,yBACI",
+	"file": "template-tag.css",
+	"sourcesContent": [
+		"#post-summary-list > ul > li\n    list-style-type: none\n"
+	]
+}

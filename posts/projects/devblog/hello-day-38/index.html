@@ -1,0 +1,493 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Hello World Devblog - Pt. 38</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1628665517" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1628665517" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1628665517" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1628665517" id=""></link>
+
+            
+            <!-- Build Revision: 1628665517 & Sha: fcb360743fd7a3f92f3402eaf3acac5d551f8ad3 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Hello World Devblog - Pt. 38">
+
+<meta property="og:description"
+    content="More devblog">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-38/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="More devblog" />
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Hello World Devblog - Pt. 38" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Tue, 23 Nov 2021 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Dev Blog" />
+    
+
+    <!-- I use the page.categories property for OG tags. -->
+    
+    <meta property="article:tag" content="posts" />
+    
+    <meta property="article:tag" content="projects" />
+    
+    <meta property="article:tag" content="Starters" />
+    
+    <meta property="article:tag" content="11ty" />
+    
+    <meta property="article:tag" content="Node" />
+    
+    <meta property="article:tag" content="WiP" />
+    
+    <meta property="article:tag" content="Markdown-It" />
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-38/",
+        "headline": "Hello World Devblog - Pt. 38",
+        "about": "More devblog",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "aramzs.github.io"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "http://aramzs.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Tue Nov 23 2021</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Hello World Devblog - Pt. 38
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name">Aram Zucker-Scharff</span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-38">Day 38</a><ol><li><a href="#filling-in-fake-tags">Filling in &quot;Fake&quot; Tags</a></li></ol></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">More devblog</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/close-up-keys.jpg" alt="Close up photo of keyboard keys.">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://www.flickr.com/photos/40393390@N00/2386752252" target="_blank">'TYPE' by SarahDeer is licensed with CC BY 2.0</a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-38" tabindex="-1">Day 38</h2>
+<p>Ok, as I listed in <a href="https://github.com/AramZS/devblog/issues/7" target="_blank">Issue 7</a> there are a few URL paths in my site that I don't want to see 404ing.</p>
+<p>I thought this would be a pretty straightforward but it turned out to be harder than I thought, so instead of letting it go undocumented I figured I'd write it up.</p>
+<h3 id="filling-in-fake-tags" tabindex="-1">Filling in &quot;Fake&quot; Tags</h3>
+<p>Ok so I want a paginated list of all things tagged &quot;posts&quot; in a place other than the previously created <code>tag</code> structure. I can reuse the <code>tag</code> layout. But I'll need a new data structure to handle it.</p>
+<p>I'm going to create a <code>postsPages</code> collection to fill <code>/posts/</code>.</p>
+<p>I'll need to grab the <code>posts</code> collection with <code>collection.getFilteredByTag(&quot;posts&quot;)</code>.</p>
+<p>Then I'll need to sort the collection into page-ready objects the same way I had done for <code>deepTagList</code>.</p>
+<p>The first step is I'll define the form of the page object as a function.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-11" id="skip-to-code-skip-hello-day-38-11" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">makePageObject</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tagName<span class="token punctuation">,</span> slug<span class="token punctuation">,</span> number<span class="token punctuation">,</span> posts<span class="token punctuation">,</span> first<span class="token punctuation">,</span> last</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token punctuation">{</span><br>	tagName<span class="token operator">:</span> tagName<span class="token punctuation">,</span><br>	slug<span class="token operator">:</span> slug <span class="token operator">?</span> slug <span class="token operator">:</span> <span class="token function">slugify</span><span class="token punctuation">(</span>tagName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>	number<span class="token operator">:</span> number<span class="token punctuation">,</span><br>	posts<span class="token operator">:</span> posts<span class="token punctuation">,</span><br>	first<span class="token operator">:</span> first<span class="token punctuation">,</span><br>	last<span class="token operator">:</span> last<span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p data-wordfix="true" id="code-skip-hello-day-38-11">This is the object that I can handle via the Eleventy <a href="https://www.11ty.dev/docs/pagination/" target="_blank">paginate</a> process.</p>
+<p>Next I want to get the posts per each page object. I want 10 per page and I'll again be using a similar process to the <code>deepTagList</code> in order to do so.</p>
+<p>First a function to take a single array and turn it into an array of arrays, each containing the contents of my 10-post long page. I took this function straight from a Stack Overflow response.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-10" id="skip-to-code-skip-hello-day-38-10" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> <span class="token function-variable function">paginate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">arr<span class="token punctuation">,</span> size</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">acc<span class="token punctuation">,</span> val<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> idx <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>i <span class="token operator">/</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> page <span class="token operator">=</span> acc<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">(</span>acc<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		page<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>		<span class="token keyword">return</span> acc<span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br></code></pre>
+<p id="code-skip-hello-day-38-10">Now I have the tools to make the collection.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-9" id="skip-to-code-skip-hello-day-38-9" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><br><span class="token function-variable function">getPostClusters</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">allPosts<span class="token punctuation">,</span> tagName<span class="token punctuation">,</span> slug</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  aSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">let</span> postArray <span class="token operator">=</span> allPosts<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  aSet <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>postArray<span class="token punctuation">]</span><span class="token punctuation">;</span><br>  postArray <span class="token operator">=</span> <span class="token function">paginate</span><span class="token punctuation">(</span>aSet<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">let</span> paginatedPostArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>  postArray<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">p<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  	paginatedPostArray<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  		tagName<span class="token punctuation">,</span><br>  		slug<span class="token operator">:</span> slug <span class="token operator">?</span> slug <span class="token operator">:</span> <span class="token function">slugify</span><span class="token punctuation">(</span>tagName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>  		number<span class="token operator">:</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  		posts<span class="token operator">:</span> p<span class="token punctuation">,</span><br>  		first<span class="token operator">:</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  		last<span class="token operator">:</span> i <span class="token operator">===</span> postArray<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token comment">// console.log(paginatedPostArray)</span><br>  <span class="token keyword">return</span> paginatedPostArray<span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span><span class="token string">"postsPages"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">collection</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token function">getPostClusters</span><span class="token punctuation">(</span>collection<span class="token punctuation">.</span><span class="token function">getFilteredByTag</span><span class="token punctuation">(</span><span class="token string">"posts"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Posts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-hello-day-38-9">I can use the exact same process to build a collection for projects.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-8" id="skip-to-code-skip-hello-day-38-8" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span><span class="token string">"projectsPages"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">collection</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token function">getPostClusters</span><span class="token punctuation">(</span><br>		collection<span class="token punctuation">.</span><span class="token function">getFilteredByTag</span><span class="token punctuation">(</span><span class="token string">"projects"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		<span class="token string">"Projects"</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p data-wordfix="true" id="code-skip-hello-day-38-8">With these new collections I can build corresponding pages in Eleventy.</p>
+<p>Posts:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-7" id="skip-to-code-skip-hello-day-38-7" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.postsPages<br>    size: 1<br>    alias: paged<br>permalink: "posts/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "All Posts<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Posts"<br>---</code></pre>
+<p id="code-skip-hello-day-38-7">Projects:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-6" id="skip-to-code-skip-hello-day-38-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.deepProjectPostsList<br>    size: 1<br>    alias: paged<br>permalink: "posts/projects/{{ paged.slug }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "Posts from Project: {{ paged.tagName }}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Project Posts tagged with {{ paged.tagName }}"<br>---</code></pre>
+<p id="code-skip-hello-day-38-6">Now for the last step I need to generate pages to fill <code>posts/projects/projectName</code> pages.</p>
+<p>Now I can query posts into collections by their project property. I can use my <code>projects</code> collection and filter posts based on matches.</p>
+<p>Now, this is my second try. The first time I did this I screwed up because of two reasons. I forgot that it needed to be a flat array (that is one array of posts).</p>
+<p>The other hard thing for me to wrap my mind around is that I don't need to separate each project into its own array or project.</p>
+<p>So first I need to get the posts, separated out by projects.</p>
+<p>It seems like the global data object isn't set up in <code>.eleventy.js</code>. So I'll need to import the object for use in this project with <code>const projectSet = require(&quot;./src/_data/projects&quot;);</code></p>
+<p>Then I can use it to filter my posts by their project property.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-5" id="skip-to-code-skip-hello-day-38-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> deepProjectPostList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br><span class="token comment">// Run this for each of the projects in the `project` collection I build in my data file.</span><br>projectSet<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">project</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token comment">// Step into an individual project and only run this process for projects that have posts, otherwise we'll throw errors during the build process.</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span>project<span class="token punctuation">.</span>count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token comment">// This gets all posts with the project tag, those that fall under the `src/posts/projects` folder.</span><br>		<span class="token keyword">let</span> allProjectPosts <span class="token operator">=</span> collection<span class="token punctuation">.</span><span class="token function">getFilteredByTag</span><span class="token punctuation">(</span><span class="token string">"projects"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// Now I'm going to use the filter function to return only those posts that match the project I've stepped into.</span><br>		<span class="token keyword">let</span> allPosts <span class="token operator">=</span> allProjectPosts<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>post<span class="token punctuation">.</span>data<span class="token punctuation">.</span>project <span class="token operator">==</span> project<span class="token punctuation">.</span>projectName<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// Now I have an array of all the posts that are in this particular project, based on their project property. This isn't being called at the post level, and it is a new array anyway, so I seem to be safe to reverse it.</span><br>		allPosts<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// I take the set of all the project posts and turn it into page clusters.</span><br>		<span class="token keyword">const</span> postClusters <span class="token operator">=</span> <span class="token function">getPostClusters</span><span class="token punctuation">(</span><br>			allPosts<span class="token punctuation">,</span><br>			project<span class="token punctuation">.</span>projectName<span class="token punctuation">,</span><br>			project<span class="token punctuation">.</span>slug<br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// And I can put those clusters into an array.</span><br>		deepProjectPostList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><br>			<span class="token function">getPostClusters</span><span class="token punctuation">(</span>allPosts<span class="token punctuation">,</span> project<span class="token punctuation">.</span>projectName<span class="token punctuation">,</span> project<span class="token punctuation">.</span>slug<span class="token punctuation">)</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-hello-day-38-5">So now I have an array of pages. This is good, but too deep.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-4" id="skip-to-code-skip-hello-day-38-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span> <span class="token comment">// deepProjectPostList</span><br>	<span class="token punctuation">[</span> <span class="token comment">// Level of a project</span><br>		<span class="token punctuation">[</span> <span class="token comment">// a "page" of 10 posts</span><br><br>		<span class="token punctuation">]</span><br>	<span class="token punctuation">]</span><br><span class="token punctuation">]</span></code></pre>
+<p data-wordfix="true" id="code-skip-hello-day-38-4">That's way too deep. Like I said earlier, my initial mistake was leaving this as is. I forgot that it needs to be one layer deep to work with how Eleventy does pagination.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-3" id="skip-to-code-skip-hello-day-38-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> pagedDeepProjectList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>deepProjectPostList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">projectCluster</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token comment">// Inside each projectCluster array is a set of "pages" each with this object.</span><br>	<span class="token comment">/**<br>	 * 	tagName,<br>		slug: slug ? slug : slugify(tagName.toLowerCase()),<br>		number: i + 1,<br>		posts: p,<br>		first: i === 0,<br>		last: i === postArray.length - 1,<br>	*/</span><br>	pagedDeepProjectList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>projectCluster<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-hello-day-38-3">So I can use the spread operator here! Makes it much easier. This takes the array of arrays and pulls out the inner array and delivers it into the single level array I intend to use.</p>
+<p>The end result is a much simpler array that can work with the page functionality.</p>
+<p>Now I have an array of objects that look like this:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-2" id="skip-to-code-skip-hello-day-38-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>	<span class="token punctuation">{</span><br>	 	tagName<span class="token punctuation">,</span><br>		slug<span class="token operator">:</span> slug<span class="token punctuation">,</span><br>		number<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>		posts<span class="token operator">:</span> postsObject<span class="token punctuation">,</span><br>		first<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		last<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><br>	<span class="token operator">...</span><br><span class="token punctuation">]</span></code></pre>
+<p id="code-skip-hello-day-38-2"><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
+<p>See I forgot that I control the permalink structure not through the structures in the array, but the objects. So I can now take this array and use it to generate any number of paged collections at <code>/posts/projects/projectSlug/</code>. So now I can use this new collection with this <code>md</code> file:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-hello-day-38-1" id="skip-to-code-skip-hello-day-38-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.deepProjectPostsList<br>    size: 1<br>    alias: paged<br>permalink: "posts/projects/{{ paged.slug }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "Posts from Project: {{ paged.tagName }}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Project Posts tagged with {{ paged.tagName }}"<br>---</code></pre>
+<p id="code-skip-hello-day-38-1"><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
+<p>And this should resolve Issue 7!</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0ce4a9689d154be15876bd3190fd39ba8a0899a7" class="git-commit-link"><code>git commit -am &quot;Finish off day 38 and resolve #7&quot;</code></a></p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/devblog/hello-day-37/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="/posts/projects/devblog/hello-day-39/" class="pagination-link cursor-pointer ">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/starters">Starters</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/markdown-it">Markdown-It</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
