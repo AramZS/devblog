@@ -138,4 +138,26 @@ Let's throw some more tests on there!
 
 Ok, it works.
 
-Oh, and in writing the tests I realized I don't have a setup for when it starts a sentence or token content! I can fix that tho!
+Oh, and in writing the tests I realized I don't have a setup for when it starts a sentence or token content or when it ends one! I can fix that tho with a few more regexs.
+
+Ok, plugin looks good. Tests work. You know what's sort of strange, I've never created an NPM module that I've also published before. I guess this is the first time! [Let's go](https://docs.npmjs.com/creating-a-new-npm-user-account)!
+
+I already have an NPM account I created earlier, so that part is easy.
+
+I'll reformat my author property to match their requirements.
+
+I tried pulling it into this project and it looks like it works, so I think the code is good to go.
+
+`npm publish --access public`
+
+Ok, that was easy!
+
+I'll pull it in to this project and see if that version works.
+
+And it does!
+
+Awesome, made it into a module that hopefully some other people will find useful!
+
+I'll add some documentation and update that and we're done! Very useful!
+
+

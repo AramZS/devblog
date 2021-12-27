@@ -412,9 +412,9 @@ module.exports = function (eleventyConfig) {
 			number: number,
 			posts: posts,
 			first: first,
-			last: last
-		}
-	}
+			last: last,
+		};
+	};
 
 	const getPostClusters = (allPosts, tagName, slug) => {
 		aSet = new Set();
@@ -427,7 +427,7 @@ module.exports = function (eleventyConfig) {
 				makePageObject(
 					tagName,
 					slug,
-					i+1,
+					i + 1,
 					p,
 					i === 0,
 					i === postArray.length - 1
@@ -634,13 +634,16 @@ module.exports = function (eleventyConfig) {
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
-		.use(require("./_custom-plugins/markdown-it-short-phrases"))
+		// .use(require("./_custom-plugins/markdown-it-short-phrases"))
+		.use(require("markdown-it-find-and-replace"))
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
 		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"))
-		.use(require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js"));
+		.use(
+			require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js")
+		);
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
@@ -655,7 +658,7 @@ module.exports = function (eleventyConfig) {
 		env,
 		self
 	) {
-		if (tokens[idx].meta && tokens[idx].meta.includes("skip-link")){
+		if (tokens[idx].meta && tokens[idx].meta.includes("skip-link")) {
 			return defaultRender(tokens, idx, options, env, self);
 		}
 		// If you are sure other plugins can't add `target` - drop check below
