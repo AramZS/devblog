@@ -32,12 +32,11 @@ const myWords = () => {
 		{
 			pattern: /(?<=[\t\s\( ])def(?=[\?\.\,\s\r\n\!\) ])/gi,
 			replace: "definitely",
-		}
+		},
 	];
 };
 
 const isInline = (token) => token && token.type === "inline";
-const isParagraph = (token) => token && token.type === "paragraph_open";
 const hasMyWords = (token) => {
 	if (token) {
 		// myWords().forEach((word) => {

@@ -25,7 +25,7 @@
             <h4>Work</h4>
             <ul>
                 {%- for post in collections.projects -%}
-                    {% if post.data.project == project.projectName and post.data.includes("WiP") %}
+                    {% if post.data.project == project.projectName and post.data.tags.includes("WiP") %}
                         <li>
                             <a href="{{ post.url }}">{{ post.data.title }}</a>
                         </li>
