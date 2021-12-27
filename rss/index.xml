@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 27 Dec 2021 02:35:34 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 27 Dec 2021 02:46:51 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -171,7 +171,8 @@
 <p>And it does!</p>
 <p>Awesome, made it into a module that hopefully some other people will find useful!</p>
 <p>I'll add some documentation and update that and we're done! Very useful!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Switching to use my newly published markdown-it plugin&quot;</code></a></p>
+<p><code>npm publish</code> to update the package listing.</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/874612e280360a5ca95f22278c4ce5949cf50fb9" class="git-commit-link"><code>git commit -am &quot;Switching to use my newly published markdown-it plugin&quot;</code></a></p>
 ]]></content:encoded>
 	</item>
 	
