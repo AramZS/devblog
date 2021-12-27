@@ -116,8 +116,8 @@ module.exports = function (eleventyConfig) {
 		// sassBuild(domain_name);
 	});
 	eleventyConfig.addPlugin(require("eleventy-plugin-dart-sass"), {
-		//sassLocation: path.join(path.resolve("."), "src/_sass/"),
-		//outDir: path.join(path.resolve("."), "docs"),
+		sassLocation: path.join(path.resolve("."), "src/_sass/"),
+		outDir: path.join(path.resolve("."), "docs"),
 		domainName: domain_name,
 	});
 
