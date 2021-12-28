@@ -309,3 +309,7 @@ Ok, yeah, everything is working now and even smoother than before! I guess I sho
 Oh, right, I need to path the paths until I update the NPM package. Ok, I will fix that annnnnddddd..... yeah, it works! Yay!
 
 Ok, let's add the readme!
+
+And [it is published](https://www.npmjs.com/package/eleventy-plugin-dart-sass)!
+
+`git commit -am "Add final notes for the Sass Plugin"`
