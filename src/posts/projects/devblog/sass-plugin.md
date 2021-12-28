@@ -305,3 +305,7 @@ const pluginDefaults = {
 ```
 
 Ok, yeah, everything is working now and even smoother than before! I guess I should write some tests? But that seems really really complicated right? I'm not sure where to start. Ok... well... maybe something to come back to. I'm going to write the docs and update the package. Let's test how it builds on remote first.
+
+Oh, right, I need to path the paths until I update the NPM package. Ok, I will fix that annnnnddddd..... yeah, it works! Yay!
+
+Ok, let's add the readme!
