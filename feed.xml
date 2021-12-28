@@ -5,7 +5,7 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-12-27T02:59:43Z</updated>
+  <updated>2021-12-29T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
@@ -15,7 +15,7 @@
   <entry>
     <title>Getting back to SASS</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/"/>
-    <updated>2021-12-27T02:59:43Z</updated>
+    <updated>2021-12-29T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/</id>
     <content type="html"><h2 id="back-into-sass" tabindex="-1">Back Into Sass</h2>
 <p>I've dipped my toe in and out of Sass many times over the years.</p>
@@ -25,7 +25,7 @@
   <entry>
     <title>Extract Sass into an Eleventy Plugin</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/sass-plugin/"/>
-    <updated>2021-11-27T02:59:43Z</updated>
+    <updated>2021-11-28T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/sass-plugin/</id>
     <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>

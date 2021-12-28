@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 28 Dec 2021 01:20:01 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 28 Dec 2021 06:24:09 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -24,7 +24,7 @@
 	<item>
 		<title>Getting back to SASS</title>
 		<link>https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/?source=rss</link>
-		<pubDate>Mon, 27 Dec 2021 02:59:43 GMT</pubDate>
+		<pubDate>Wed, 29 Dec 2021 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/</guid>
 		<description>Setting this devblog up ran me through a Sass refresher course, and presents an opportunity.</description>
@@ -36,7 +36,7 @@
 	<item>
 		<title>Extract Sass into an Eleventy Plugin</title>
 		<link>https://fightwithtools.dev/posts/projects/devblog/sass-plugin/?source=rss</link>
-		<pubDate>Sat, 27 Nov 2021 02:59:43 GMT</pubDate>
+		<pubDate>Sun, 28 Nov 2021 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/sass-plugin/</guid>
 		<description>More devblog</description>
