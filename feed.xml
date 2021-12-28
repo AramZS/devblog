@@ -187,6 +187,8 @@
 <p id="code-skip-sass-plugin-1">Ok, yeah, everything is working now and even smoother than before! I guess I should write some tests? But that seems really really complicated right? I'm not sure where to start. Ok... well... maybe something to come back to. I'm going to write the docs and update the package. Let's test how it builds on remote first.</p>
 <p>Oh, right, I need to path the paths until I update the NPM package. Ok, I will fix that annnnnddddd..... yeah, it works! Yay!</p>
 <p>Ok, let's add the readme!</p>
+<p>And <a href="https://www.npmjs.com/package/eleventy-plugin-dart-sass" target="_blank">it is published</a>!</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Add final notes for the Sass Plugin&quot;</code></a></p>
 </content>
   </entry>
   
