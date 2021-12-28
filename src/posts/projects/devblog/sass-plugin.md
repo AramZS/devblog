@@ -2,7 +2,7 @@
 title: Extract Sass into an Eleventy Plugin
 description: "More devblog"
 project: Dev Blog
-date: 2021-11-26 22:59:43.10 -4
+date: 2021-11-27 22:59:43.10 -4
 tags:
   - 11ty
   - Node

@@ -1,7 +1,7 @@
 ---
 title: Getting back to SASS
 description: Setting this devblog up ran me through a Sass refresher course, and presents an opportunity.
-date: 2021-12-26 22:59:43.10 -4
+date: 2021-12-28 22:59:43.10 -4
 tags:
   - 11ty
   - Node
