@@ -28,7 +28,7 @@
     "@octokit/plugin-throttling": "^3.5.2",
     "@octokit/rest": "^18.12.0",
     "dotenv": "^10.0.0",
-    "eleventy-plugin-dart-sass": "^1.0.0",
+    "eleventy-plugin-dart-sass": "^1.0.3",
     "eleventy-plugin-toc": "^1.1.0",
     "gray-matter": "^4.0.3",
     "lit": "^2.0.2",

@@ -29,7 +29,9 @@ featuredImageAlt: "Close up photo of keyboard keys."
 - [x] Also [the sitemap plugin](https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap) looks cool. Should grab that later.
 
 <s>
+
 - [ ] So does the [reading time one](https://www.npmjs.com/package/eleventy-plugin-reading-time).
+
 </s>
 
 - [x] Also [this TOC plugin](https://github.com/jdsteinbach/eleventy-plugin-toc/) mby?
