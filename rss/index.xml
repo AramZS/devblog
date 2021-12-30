@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 28 Dec 2021 06:31:30 GMT</lastBuildDate>
+	<lastBuildDate>Thu, 30 Dec 2021 01:26:18 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -27,9 +27,79 @@
 		<pubDate>Wed, 29 Dec 2021 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/</guid>
-		<description>Setting this devblog up ran me through a Sass refresher course, and presents an opportunity.</description>
+		<description>Setting this devblog up ran me through a Sass refresher course, and presented an opportunity. But I'm not sure it was worth it</description>
 		<content:encoded><![CDATA[<h2 id="back-into-sass" tabindex="-1">Back Into Sass</h2>
-<p>I've dipped my toe in and out of Sass many times over the years.</p>
+<p>I've dipped my toe in and out of Sass many times over the years. This, though, is the most I've focused on it in a while.</p>
+<h3 id="rebuilding-my-build-process-from-scratch" tabindex="-1">Rebuilding my build process from scratch</h3>
+<p>I think it was pretty wild to basically have to re-figure-out what is essentially a CSS build process from scratch with the end of Node Sass. It was a real slow down. Also, hardly the first time I have had to do that for a Sass project. It feels like I've had to rebuild my Sass build process every time I've worked on it. I'm also not sure when the split between SCSS and SASS formats happened? Perhaps it has always been there and I've just forgotten... or my build tools took care of it for me? It was easy enough to change grooves, but weird.</p>
+<p data-wordfix="true">On the flip side, Dart Sass in Node seems to be significantly simpler than its predecessor. I will give it this: it is definitely an improvement. Once I was able to struggle through the meager documentation and log my way towards how it functioned I was able to get it working well enough and able to do some flexible things with it. Obviously, once I got the hang of it I was able to really get it working for me; well enough that I was able to write an Eleventy plugin based on my code and approach. It works so well and is so much clearer to me code-wise than the Node Sass alternative I was even ready to <a href="https://github.com/11ty/11ty-website/pull/1257#pullrequestreview-841555379" target="_blank">submit it</a> to the <a href="https://www.11ty.dev/docs/plugins/" target="_blank">Eleventy plugin directory</a>.</p>
+<h3 id="leveraging-best-practices" tabindex="-1">Leveraging best practices</h3>
+<p data-wordfix="true">I don't know if I used Sass as well as I could. I'd hoped to find some way to do intelligent code splitting, but the build process Dart Sass has doesn't interact with Eleventy in a way I could see that happening automatically, and so I ended up doing it manually. I also am not sure I fully took advantage of Sass features. I could likely do something better in regards to variables, mixins, etc... but having built my CSS by hand on my last few projects, I think it likely would have been simpler to have done that for this project and maybe stitch the files together for ease of managing my rules.</p>
+<p>There's just a lot of advanced CSS features that are native now. Features like <code>calc</code>, CSS variables, and the ever growing list of nifty pseudo-selectors seems to make <strong>unnecessary</strong> much of the stuff I once relied on Sass to do.</p>
+<h3 id="project-feel-and-future-use" tabindex="-1">Project feel and future use</h3>
+<p>Compounding the issue, it doesn't feel like the Sass project is especially stable these days. It was extremely disconcerting to discover that one of their main rendering functions had apparently been marked for depreciation over the course of this project (about 10 minor versions in half a year). Especially considering that this switch to a new function didn't maintain the interface of the previous function which, as far as I can see, is one which most Sass projects would have used. Worse, the transition didn't seem to be clearly documented.</p>
+<p>Perhaps this is all just a result of my distance from Sass over the last few years, where I was either ending up using hand-cranked CSS or I was going to go the CSS-in-JS route. But it doesn't feel that way. My last Sass project was in June of last year. It really makes me doubt if I should go the Sass route in the future. With Eleventy especially I feel like I could likely find or build a CSS compression + source map process that would be just as effective performance-wise and easier to use. It might be worth it to try, or to look into one of the fancy frameworks like <a href="https://tailwindcss.com/" target="_blank">Tailwind</a> or a CSS-in-JS <a href="https://lit.dev/" target="_blank">process</a> that doesn't feel gross and renders out to one or more stylesheets (though those seem to be hard to find).</p>
+<h3 id="what-i-learned-(other-than-the-code-in-my-blog-posts)" tabindex="-1">What I Learned (other than the code in my blog posts)</h3>
+<p>I think one of the major things I learned working on the Sass part of this project is how <em>bad</em> the reliance on the community to provide documentation is. In trying to get this to work I encountered:</p>
+<ul>
+<li>a ton of malfunctioning code examples;</li>
+<li>a plugin that looks like it should work, was only 10 months old, but is completely non functional;</li>
+<li>a full on <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-2/" target="_blank">documentation error in the core Dart Sass library</a>;</li>
+<li>some misleading blog posts with bad, old or just wrong info;</li>
+<li>a major depreciation mid-project;</li>
+</ul>
+<p>None of this makes me feel great about reusing Sass but also I think it highlights a major realization:</p>
+<p>A lot of these modern projects like Sass provide <a href="https://twitter.com/Chronotope/status/1472118035205042178" target="_blank">really</a> <a href="https://twitter.com/Chronotope/status/1374369144100024322" target="_blank">bare</a> <a href="https://twitter.com/Chronotope/status/1419441920951169027" target="_blank">minimum</a> documentation. I think they rely on the community to write about their libraries and then have those show up in search. And a lot of them do have communities that <strong>do</strong> write about their use of the code libraries and how to do interesting stuff with them but...</p>
+<p><strong>All that is pointless if you change your library so frequently and radically as to invalidate community-generated materials.</strong></p>
+<p>This isn't just a Sass problem, it seems to be a major issue I've seen a lot ever since React started becoming popular. I don't know why this is the case, maybe it comes from some mother projects, maybe it's just a Node community tendency? I'm not sure what it is but it <em>is</em> annoying.</p>
+<p>It means that there are a ton of well-meaning developer bloggers (like myself now!) who write posts that are &quot;this is how to do x&quot; without a lot of information about why, or how they navigated the library to figure out how to do X, or how others might learn for themselves. Without better docs in the actual library site the end result is that picking up any of these packages new is made <em>harder</em> when there are more people blogging about the library because it is so easy to burn time on frustrating dead ends. I think I'll do a Markdown It retro as well, but a notable overlap is that the period I gave myself to work on it without referring to developer blogs or Stack Exchange was the time I was most productive in unlocking the library's value. There are just too many out-of-date blogs and false leads. The best source material ends up being Github Issues, which at least are easy to search and sort by date.</p>
+<p>The two main things I took away from this to apply to my own projects are:</p>
+<p>I should apply extensive documentation and examples in the core project documentation. It's nice when your project is popular enough that people start writing about it, but it's a mistake to act in a way that assumes those resource exist or are kept up to date. Sadly, blog posts don't have a filter that checks them for forward compatibility. Instead, I need to keep documentation for my own projects verbose, up to date, and explanatory.</p>
+<p>The second take away is for how I blog here on this and future projects. I endeavored here not just to document what I did but also how I figured it out; what bad processes and incorrect assumptions I made; and how I taught myself the correct way forward. I think that for this type of blog that information is far more useful than a bunch of minimally documented code samples of &quot;How to do X&quot;. Even when the code itself might no longer be usable because of library changes my process will hopefully still be useful to future developers.</p>
+<h3 id="self-check:-assumptions-and-validations" tabindex="-1">Self-check: Assumptions and Validations</h3>
+<h4 id="should-i-prefer-sass-for-future-projects" tabindex="-1">Should I <strong>prefer</strong> Sass for future projects?</h4>
+<ul>
+<li>I went in with the assumption being yes. I made a beeline for Sass both because of preference and experience.</li>
+<li>I did not validate this assumption. I should not start future projects with the assumption that Sass is the best tool for the job.</li>
+</ul>
+<h4 id="was-sass-effective" tabindex="-1">Was Sass effective?</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>Validated. It was effective. It was easy to build with, I was able to fly with it once I learned how. I <strong>can</strong> use it for projects like this. I don't know if it saved me time, but it didn't feel like it took up a ton of extra time.</li>
+</ul>
+<h4 id="does-sass-block-collaboration" tabindex="-1">Does Sass block collaboration?</h4>
+<ul>
+<li>I went in assuming no.</li>
+<li>Validated. It was easy to form Site Maps once I nosed out a few errors. I think it creates easy to read code on both site maps and Github. It's hard to be final on this without hearing from others, but I think it worked out.</li>
+</ul>
+<h4 id="sass-is-a-broad-project-with-good-documentation-either-on-it's-site-or-through-self-documentation" tabindex="-1">Sass is a broad project with good documentation either on it's site or through self-documentation</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>Invalidated. See above. But also it turned out that getting a good VS Code plugin <em>significantly</em> helped the process.</li>
+</ul>
+<h4 id="sass-will-be-easy-to-maintain" tabindex="-1">Sass will be easy to maintain</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>Unclear. I stumbled on errors in the docs, at least two cases of depreciation, and one feature that was marked as for future use only. Major changes in Sass meant I basically had to starting over for everything but writing the style rules themselves. We'll have to see if the project gets leveled out, but for now it worries me for something like this where I want to do minimal maintenance of the project's core code.</li>
+</ul>
+<h4 id="did-learning-sass-give-me-broadly-applicable-skills-that-i-could-use-elsewhere" tabindex="-1">Did learning Sass give me broadly applicable skills that I could use elsewhere?</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>Unclear. One of the major things I noticed looking up CSS info was that people seem to be frequently moving to Tailwind or CSS-in-JS techniques. I'm not sure I appreciate either from an abstract or best practices perspective, but it doesn't speak to Sass skills being broadly applicable. Maybe I'll see a lot of users on the plugin I built and come back to this and say that the answer is yes later.</li>
+</ul>
+<h4 id="sass-will-help-me-do-smart-code-splitting" tabindex="-1">Sass will help me do smart code splitting</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>Invalid. It really didn't. I had to build that functionality on top entirely myself.</li>
+</ul>
+<h4 id="working-on-this-will-allow-me-to-give-something-back-to-the-community" tabindex="-1">Working on this will allow me to give something back to the community</h4>
+<ul>
+<li>I went in assuming no.</li>
+<li>Invalid. It turned out that Eleventy's Sass plugin, though not even a year old, wasn't really working anymore. I built a new one. Maybe people will use it? It turned out that there were big things I needed to learn myself and ways I could take what I learned and make it broadly applicable. If everything else had been bad, this would have made using Sass worth it all on its own. It's good to give back.</li>
+</ul>
+<h3 id="conclusion" tabindex="-1">Conclusion</h3>
+<p>Using Sass more may not be in my future, but I think it was a worthwhile process to go through for this project. At some future point I may switch the relatively simple CSS I'm maintaining for this project to just plain CSS files, but right now I think it'll be good to keep iterating using Sass. There are clearly others who want to use it. Continuing to have it in this project will help me maintain my plugin and help the wider community.</p>
+<p><strong>Use of Sass</strong>: <em>Validated</em></p>
 ]]></content:encoded>
 	</item>
 	
