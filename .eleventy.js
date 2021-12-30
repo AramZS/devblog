@@ -1,7 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const sassBuild = require("./_custom-plugins/sass-manager");
 const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
@@ -641,7 +640,19 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
 		// .use(require("./_custom-plugins/markdown-it-short-phrases"))
-		.use(require("markdown-it-find-and-replace"))
+		.use(require("markdown-it-find-and-replace"), {
+			defaults: true,
+			replaceRules: [
+				{
+					pattern: /(?<=[\t\s\S\( ])thru(?=[\?\.\,\s\r\n\!\) ]|$)/g,
+					replace: "through",
+				},
+				{
+					pattern: /(?<=[\t\s\S\( ]|^)Thru(?=[\?\.\,\s\r\n\!\) ])/g,
+					replace: "Through",
+				},
+			],
+		})
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
