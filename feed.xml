@@ -5,12 +5,74 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-12-29T02:59:43Z</updated>
+  <updated>2021-12-31T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Brute Forcing My Way Through Markdown-It</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/retro-markdown-it/"/>
+    <updated>2021-12-31T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/retro-markdown-it/</id>
+    <content type="html"><h2 id="markdown-it-so-crunchy-so-useful-such-a-pain" tabindex="-1">Markdown-It - So Crunchy, So Useful, Such a Pain</h2>
+<p>I am going to be critical of Markdown-It here, so I want to put this up front: the community was helpful, I got fast feedback on an issue, once I figured it out it was hugely useful. If you've got time and a willingness to figure stuff out yourself and a whole bunch of patience to really explore the tool... well then I couldn't recommend it more. If all you want to do is zero-config your way to a basic Markdown to HTML pipeline, then this should be fine (along with a variety of other tools). But if you want to do some basic modification, like some text-to-fun-CSS or shortcode-style template tags in Markdown itself instead of in something like Eleventy or Nunjucks (this is <a href="https://glitch.com/edit/#!/thespin?path=markdown-to-col.js%3A20%3A27" target="_blank">a thing I have definitely done</a>), then this likely isn't the Markdown renderer you're looking for.</p>
+<p>And like... that's fine. That's totally cool. There's room in the world for more than one Markdown renderer. No one get mad. I'm not insulting any library here. Ok, onward.</p>
+<h3 id="the-frustration" tabindex="-1">The Frustration</h3>
+<p>I think it is generous to say that Markdown It's documentation is unclear. <a href="https://markdown-it.github.io/markdown-it/" target="_blank">It's very sparse</a> and everything about the project is difficult to navigate. At least it isn't misleading, which is good! But even the available in-project resources were difficult to find! The <a href="https://markdown-it.github.io/" target="_blank">Markdown-It demo page</a> was <em>really</em> useful or at least it would have been if I had found it earlier than a month+ into this project. I'm not even totally sure how I got to it? I don't think it is linked on the project readme. Maybe I just went to the URL because I was curious what the site home page was, not expecting anything? It should really be at the top of their readme. Also, <a href="https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md" target="_blank">their architecture doc</a> was hugely useful, but it was linked as plugin developer docs, so I almost didn't get to it.</p>
+<p>The unclear documentation is especially difficult when paired with the standard problems of the Node ecosystem, which is a lot of badly maintained, no longer functioning, libraries. You can see me <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-16/" target="_blank">wasting a lot of time on day 16 on the supposed Markdown-It Regex plugin</a>. This isn't Markdown It's fault, but it almost put me off using the tool at all.</p>
+<p data-wordfix="true">I already noted that this combination of bad package maintenance, too many blog posts, and misleading resources seems to be especially common in Node for reasons that are unclear to me. Increasingly I think I'm going to rely less on random blogs and plugins and more on just trying to figure out how libraries work by tweezing them apart through use and logging and <strong>then</strong> maybe code reading (though good inline documentation is even more rare, even on otherwise good projects). I wish that wasn't the case, but I'm not sure what the alternatives are. One would think a more robust community would be an advantage, but it doesn't feel like it is in many mid-size projects' cases.</p>
+<h3 id="project-feel-and-future-use" tabindex="-1">Project Feel and Future Use</h3>
+<p>Now that I've bull-headed my way through learning Markdown It, I finally understand it. The decisions make sense. It's a smart project that is centered on a number of smart decisions that, while they might not be easy to find or initially figure out, all feel right. I understand now why the project is so popular, it's flexible, it's holistic, it's comprehensive. Like all the best libraries getting the hang of it feels like unlocking a super power.</p>
+<p>It's likely that, for my future projects where I use Markdown, Markdown-It will be the project I'll use. There may be a few exceptions for extremely simple Markdown parsing, but I think I'll be continuing to use Markdown-It. It's a great tool.</p>
+<h3 id="what-i-learned-(other-than-the-code-in-my-blog-posts)" tabindex="-1">What I Learned (other than the code in my blog posts)</h3>
+<p>Working with Markdown-It was a great excuse to stretch my Regex legs and really try for some more complex patterns than I would usually deal with.</p>
+<p>Other than that, and <a href="https://fightwithtools.dev/posts/projects/devblog/retro-getting-back-to-sass/#what-i-learned-(other-than-the-code-in-my-blog-posts)" target="_blank">what I learned about being more self-reliant when exploring libraries in the Sass project</a>, I think learning to use Markdown-It was a very code heavy experience. Which isn't at all a bad thing.</p>
+<p>It was also great how responsive the project maintainers were. I don't think you can rely on that in every project, but in this case it was a great reminder that GitHub issues, if you follow the instructions and put together your example effectively, are a great place to ask questions and learn stuff, not just mark errors. I think phrasing it as &quot;what's the best practice for using your code&quot; is the right way to go, and an approach I might employ in the future.</p>
+<p>Also, all things considered, I validated my approach of trying a new thing just for the sake of it being something different. I had no particular reason to stick with Markdown-It, but I'm glad I did.</p>
+<h3 id="self-check:-assumptions-and-validations" tabindex="-1">Self-check: Assumptions and Validations</h3>
+<h4 id="should-i-prefer-markdown-it-for-future-projects" tabindex="-1">Should I <strong>prefer</strong> Markdown-It for future projects?</h4>
+<ul>
+<li>I went in with the assumption being no. I assumed this would be a one-off experiment where I'd return to using Showdown later.</li>
+<li>I did not validate this assumption. I will definitely use Markdown-It in the future.</li>
+</ul>
+<h4 id="was-markdown-it-effective" tabindex="-1">Was Markdown-It effective?</h4>
+<ul>
+<li>I did not go in with any particular assumptions, but early into the project I was highly frustrated and questioning Markdown It's effectiveness.</li>
+<li>Invalidated. Markdown-It is absolutely effective.</li>
+</ul>
+<h4 id="does-markdown-it-block-collaboration" tabindex="-1">Does Markdown-It block collaboration?</h4>
+<ul>
+<li>I went in assuming yes.</li>
+<li>This is a mixed bag. People familiar with the project already are out there and seem ready to collaborate, but I'm not sure I established enough information in my writing to make it easy for newcomers to enter my Markdown-It related code and understand what's going on.</li>
+</ul>
+<h4 id="does-markdown-it-have-effective-documentation-either-external-or-internal" tabindex="-1">Does Markdown-It Have Effective Documentation either External or Internal</h4>
+<ul>
+<li>I went in with no idea, but feeling no.</li>
+<li>Validated. The documentation for Markdown-It just isn't there, either in the project or the community.</li>
+</ul>
+<h4 id="will-it-be-easy-to-maintain" tabindex="-1">Will it be easy to maintain?</h4>
+<ul>
+<li>I went in assuming no.</li>
+<li>I... think it will be? Markdown It's structures, once understood, are pretty straightforward, make use of very standardized code and objects, and seem to be very stable and built on well-thought-out architecture.</li>
+</ul>
+<h4 id="did-learning-markdown-it-give-me-broadly-applicable-skills" tabindex="-1">Did learning Markdown-It give me broadly applicable skills?</h4>
+<ul>
+<li>I went in assuming no.</li>
+<li>I think the exercise with Regex was very useful, but I'm not sure the rest is. Markdown is a thing I use for personal projects, but not a thing I ever anticipate using for professional projects. While their Token structure makes a lot of sense, it doesn't have a lot of overlap with text/html processing engines I've used.</li>
+</ul>
+<h4 id="working-on-this-will-allow-me-to-give-something-back-to-the-community" tabindex="-1">Working on this will allow me to give something back to the community</h4>
+<ul>
+<li>I went in assuming no.</li>
+<li>Invalid. I have <a href="https://www.npmjs.com/package/markdown-it-find-and-replace" target="_blank">contributed one plugin</a> and could easily see myself writing another. There's a lot of cool things Markdown-It can do that I think I could leverage in new ways that the existing community (while large) hasn't done yet.</li>
+</ul>
+<h3 id="conclusion" tabindex="-1">Conclusion</h3>
+<p>What an unexpected delight. After I got through the frustration of decoding how Markdown-It works, getting more advanced features up and running on my blog was just a lot of fun. I don't really know why I barreled forward on using Markdown-It, but I'm glad I did.</p>
+<p><strong>Use of Markdown-It</strong>: <em>Validated</em></p>
+</content>
+  </entry>
   
   <entry>
     <title>Getting back to SASS</title>
@@ -89,6 +151,138 @@
 <h3 id="conclusion" tabindex="-1">Conclusion</h3>
 <p>Using Sass more may not be in my future, but I think it was a worthwhile process to go through for this project. At some future point I may switch the relatively simple CSS I'm maintaining for this project to just plain CSS files, but right now I think it'll be good to keep iterating using Sass. There are clearly others who want to use it. Continuing to have it in this project will help me maintain my plugin and help the wider community.</p>
 <p><strong>Use of Sass</strong>: <em>Validated</em></p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>Day 42 - Analytics time!</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-42/"/>
+    <updated>2021-12-01T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-42/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-42" tabindex="-1">Day 42</h2>
+<p>Ok. This site is almost ready to go. There are some enhancements I still want to do to code blocks and I want to add some more advanced content to tag pages, but it is at the point where I want to take this and show it to other people.</p>
+<p>So one of the things I want to do is set up privacy-respecting analytics. I <a href="https://twitter.com/Chronotope/status/1444744757037707272" target="_blank">polled folks on this a while back and got some options</a>. I considered them and have basically come down to two options: <a href="https://plausible.io/privacy-focused-web-analytics" target="_blank">Plausible</a> or <a href="https://usefathom.com/" target="_blank">Fathom</a>. I'm going to read around both of them.</p>
+<p>They both seem very privacy forward. They run in the EU to use GDPR to help them protect data. They both contribute to climate issues and have smart export settings. I think they both seem like fine services. I'm leaning towards Plausible because it is slightly cheaper, more open source, and the script itself seems to be just slightly lighter-weight (though they are both <em>very</em> lightweight). Also, I sort of like the idea of <a href="https://plausible.io/docs/visibility" target="_blank">opening up my analytics to anyone</a>. I think I'm going to start there. Oh... interesting... they let me do the 30 day trial for free, without entering anything credit card wise!</p>
+<p>Very cool. Let's try it out.</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/ce0b3656ed505d2f9f73279f76e25b9e588afc68" class="git-commit-link"><code>git commit -am &quot;Early commit to try out Plausible&quot;</code></a></p>
+<p>Ok, it works, <a href="https://plausible.io/fightwithtools.dev" target="_blank">and I can flip on a public dashboard as well</a>!</p>
+<p>Oh and it has a nice Google Search Console integration. I'll set that up as well. Huh, can I add a TXT record but there but it looks like this whole process has changed somewhat since the last time I was there. Ok. That's fine. I can get it working easily enough. Seems to be integrated now!</p>
+<p>I guess that's it, it's working? Yeah! Ok. Well I don't think there's much blocking me now, I hit almost everything I wanted to hit.</p>
+<p>There are a few features I'd still like to implement here, but I think things are well formed enough that I can put this out there for feedback. Last thing to do is some touch up regarding featured images, tags and titles that I can take care of tonight or tomorrow.</p>
 </content>
   </entry>
   
@@ -417,133 +611,6 @@
 <p><code>npm publish</code> to update the package listing.</p>
 <p><a href="https://www.npmjs.com/package/markdown-it-find-and-replace" target="_blank">Markdown It plugin package is live and ready for others to use</a>!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/874612e280360a5ca95f22278c4ce5949cf50fb9" class="git-commit-link"><code>git commit -am &quot;Switching to use my newly published markdown-it plugin&quot;</code></a></p>
-</content>
-  </entry>
-  
-  <entry>
-    <title>Markdown It Find and Replace as Plugin</title>
-    <link href="https://fightwithtools.dev/posts/projects/devblog/day-42/"/>
-    <updated>2021-11-27T02:59:43Z</updated>
-    <id>https://fightwithtools.dev/posts/projects/devblog/day-42/</id>
-    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
-<ol>
-<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
-<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
-<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
-<li>Once it gets going, I want template changes to be easy.</li>
-<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
-<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
-<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
-</ol>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</li>
-</ul>
-<s>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</li>
-</ul>
-</s>
-<ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
-</li>
-<li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
-</li>
-</ul>
-<s>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
-</ul>
-</s>
-<s>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
-</ul>
-</s>
-<ul class="task-list">
-<li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
-</li>
-<li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
-</li>
-</ul>
-<s>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
-</ul>
-</s>
-<ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add byline to post pages</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
-</li>
-</ul>
-<h2 id="day-42" tabindex="-1">Day 42</h2>
-<p>Ok. This site is almost ready to go. There are some enhancements I still want to do to code blocks and I want to add some more advanced content to tag pages, but it is at the point where I want to take this and show it to other people.</p>
-<p>So one of the things I want to do is set up privacy-respecting analytics. I <a href="https://twitter.com/Chronotope/status/1444744757037707272" target="_blank">polled folks on this a while back and got some options</a>. I considered them and have basically come down to two options: <a href="https://plausible.io/privacy-focused-web-analytics" target="_blank">Plausible</a> or <a href="https://usefathom.com/" target="_blank">Fathom</a>. I'm going to read around both of them.</p>
-<p>They both seem very privacy forward. They run in the EU to use GDPR to help them protect data. They both contribute to climate issues and have smart export settings. I think they both seem like fine services. I'm leaning towards Plausible because it is slightly cheaper, more open source, and the script itself seems to be just slightly lighter-weight (though they are both <em>very</em> lightweight). Also, I sort of like the idea of opening up my analytics to anyone. I think I'm going to start there. Oh... interesting... they let me do the 30 day trial for free, without entering anything credit card wise!</p>
-<p>Very cool. Let's try it out.</p>
 </content>
   </entry>
   
