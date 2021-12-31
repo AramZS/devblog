@@ -9,7 +9,8 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - Markdown-It
+  - Markdown
   - WiP
 ---
 
