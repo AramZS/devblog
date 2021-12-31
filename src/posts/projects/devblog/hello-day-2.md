@@ -10,9 +10,12 @@ tags:
   - Node
   - Sass
   - WiP
+  - Nunjucks
+  - dinky
+  - Dart Sass
 ---
 
-# Day 2
+## Day 2
 
 Ok, day 2. Let's restate the requirements and todos!
 
@@ -36,6 +39,8 @@ Ok, day 2. Let's restate the requirements and todos!
 [ ] Decide if I want to render the CSS fancier than just a base file.
 
 [ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?
+
+## Setting up Layouts folder
 
 Ok, so why isn't it picking up the layout from either `_layouts/post.njk` or `_layouts/default.njk`? Maybe I need to define a default [at the data level](https://www.11ty.dev/docs/data-template-dir/)? Or do I need to move it to `src` even if I define the location in the returned configuration?
 
@@ -106,6 +111,8 @@ Yay, 11ty defaults work now! Good place to commit.
 
 `git commit -am "Ok, renders and defaults are working now"`
 
+### Sass - figuring out _renderSync
+
 Hmmm... ok I guess that I picked a bad example plugin, because the one I used [doesn't have a typical footprint](https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage). Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add `sassBuild();` to the inside of my .eleventy.js function inside of `module.exports = function (eleventyConfig) {`?
 
 Ok... renderSync from `dart-sass` threw an error:
@@ -135,6 +142,8 @@ Oh, [lol](https://sass-lang.com/documentation/js-api#outfile)
 > Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.
 
 Ok, gotta do that.
+
+### Writing out the Sass file
 
 Ok, I want to use `fs` to write the resulting file into `docs/styles/styles.css`. Only, the `styles` directory does not predictably exist so `fs` fails because I have to make that folder. Of course, forgot. Easy enough.
 

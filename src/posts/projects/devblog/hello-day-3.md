@@ -39,11 +39,15 @@ Ok, so I'm at day 3 and everything is working at a basic level. I need an index/
 
 [ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?
 
+### Nunjucks vs Mustache
+
 There's also an open question of Why Nunjucks? I'm not the biggest fan of Nunjucks, outside of the 11ty community that seems to be heavily invested into it, not many people seem to be using it. Documentation is (as we've already seen) sorta iffy and its relatively low adoption makes it harder to get questions answered.
 
 I also haven't quite gotten syntax highlighting to work for `njk` files in VS Code, which is *very* frustrating and often turns me off from using something.
 
 I could, at this point, switch to Mustache, which I'm [already pretty familiar](https://glitch.com/edit/#!/thespin?path=server.js) with. Mustache also has the advantage of having template tags that are more similar to Jekyll and more familiar to Javascript users. But, unless I hit a real bad obstacle I don't think I will, for two reasons. First, the point of this is to learn something new! Second, when I last tried 11ty to basically generate a few quick pages from a common template, it had terrible trouble rendering with Mustache, even with the instructions from their site. I've got other things to complicate first, can save that for later. If I get everything working, I might come back to this issue.
+
+### Build Process
 
 Ok, [got Nunjucks syntax highlighting to properly work](https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks) for now!
 
@@ -56,6 +60,8 @@ Huh... it doesn't clean up the now defunct `css` folder. Is there a build tool t
 I like [the solution that defines the site configuration earlier](https://github.com/11ty/eleventy/issues/744#issuecomment-800323968), it seems generally useful. I'll give it a try.
 
 That works! Deleting the whole folder and building it all new seems super inefficient, but there doesn't seem to be another way to handle things.
+
+### Eleventy Build and Serve
 
 One other throught now occurs. I saw that the dinky template uses some sort of build version number passed by github on build to cachebreak. I'm not sure how that works or if it can work the same way for 11ty. Perhaps I need to pass a datetime stamp for each build instead? Something to figure out later.
 
@@ -77,6 +83,8 @@ Hmmm also some other problems:
 
 [ ] Make link text look less shitty. It looks like it is a whole, lighter, font.
 [ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.
+
+### Sass and Syntax Highlighting
 
 I [have syntax highlighting styles](https://github.com/AramZS/aramzs.github.io/blob/master/_sass/_syntax-highlighting.scss) I like on my Github user Pages site. Let's just reuse it.
 
