@@ -1,15 +1,15 @@
 ---
-title: Markdown It Find and Replace as Plugin
+title: Day 42 - Analytics time!
 description: "More devblog"
 project: Dev Blog
-date: 2021-11-26 22:59:43.10 -4
+date: 2021-11-30 22:59:43.10 -4
 tags:
   - 11ty
   - Node
   - WiP
-  - Markdown-It
-  - NPM
-  - Mocha
+  - Analytics
+  - Privacy
+  - Metrics
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
 featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
@@ -108,6 +108,16 @@ Ok. This site is almost ready to go. There are some enhancements I still want to
 
 So one of the things I want to do is set up privacy-respecting analytics. I [polled folks on this a while back and got some options](https://twitter.com/Chronotope/status/1444744757037707272). I considered them and have basically come down to two options: [Plausible](https://plausible.io/privacy-focused-web-analytics) or [Fathom](https://usefathom.com/). I'm going to read around both of them.
 
-They both seem very privacy forward. They run in the EU to use GDPR to help them protect data. They both contribute to climate issues and have smart export settings. I think they both seem like fine services. I'm leaning towards Plausible because it is slightly cheaper, more open source, and the script itself seems to be just slightly lighter-weight (though they are both *very* lightweight). Also, I sort of like the idea of opening up my analytics to anyone. I think I'm going to start there. Oh... interesting... they let me do the 30 day trial for free, without entering anything credit card wise!
+They both seem very privacy forward. They run in the EU to use GDPR to help them protect data. They both contribute to climate issues and have smart export settings. I think they both seem like fine services. I'm leaning towards Plausible because it is slightly cheaper, more open source, and the script itself seems to be just slightly lighter-weight (though they are both *very* lightweight). Also, I sort of like the idea of [opening up my analytics to anyone](https://plausible.io/docs/visibility). I think I'm going to start there. Oh... interesting... they let me do the 30 day trial for free, without entering anything credit card wise!
 
 Very cool. Let's try it out.
+
+`git commit -am "Early commit to try out Plausible"`
+
+Ok, it works, [and I can flip on a public dashboard as well](https://plausible.io/fightwithtools.dev)!
+
+Oh and it has a nice Google Search Console integration. I'll set that up as well. Huh, can I add a TXT record but there but it looks like this whole process has changed somewhat since the last time I was there. Ok. That's fine. I can get it working easily enough. Seems to be integrated now!
+
+I guess that's it, it's working? Yeah! Ok. Well I don't think there's much blocking me now, I hit almost everything I wanted to hit.
+
+There are a few features I'd still like to implement here, but I think things are well formed enough that I can put this out there for feedback. Last thing to do is some touch up regarding featured images, tags and titles that I can take care of tonight or tomorrow. 
