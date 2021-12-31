@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 15
+title: "Part 15: Mobile Style Tweaks"
 subtitle: Getting this dev blog running
-description: Part 14 of setting up 11ty dev blog.
+description: Day 15 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-24 22:59:43.10 -4
 tags:
@@ -9,10 +9,10 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
-  - WiP
+  - CSS
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

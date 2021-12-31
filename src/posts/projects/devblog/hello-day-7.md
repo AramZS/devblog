@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 7
+title: "Part 7: Getting GitHub Actions to Publish my Site"
 subtitle: Getting this dev blog running
-description: Part 7 of setting up 11ty dev blog.
+description: Day 7 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-06-20 22:59:43.10 -4
 tags:
@@ -9,10 +9,12 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - GitHub Actions
   - WiP
+  - GitHub
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -48,11 +50,13 @@ tags:
 
 - [ ] Build a Markdown-it plugin to take my typing shortcuts `[prob, b/c, ...?]` and expand them on build.
 
-# Day 7
+## Day 7
 
 Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.
 
 Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.
+
+### GitHub Actions with Node
 
 First is [setup-node](https://github.com/actions/setup-node). And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in `.nvmrc` and rebooting my terminal.
 
@@ -86,6 +90,8 @@ I also originally had the folder set for Github Pages to be `/docs` but that's n
 
 Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!
 
+### Mapping the site
+
 While I'm here I should [map my apex domain to the Github Site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my `www` record CNAME to my github.io user page.
 
 I'll create the correct CNAME file and set up 11ty to pass it through to the build process.
@@ -109,6 +115,8 @@ Finishing off my requirements means handling some Sass to get mapping to work. I
 I thought I might be able to use [global data added at the config level, but it looks like that isn't available yet](https://www.11ty.dev/docs/data-global-custom/). Didn't see that on my first run through as it isn't super obviously called out.
 
 I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.
+
+### Image and Link Conflicts
 
 Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.
 

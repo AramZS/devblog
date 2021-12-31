@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 36
+title: "Part 36: A Markdown It Plugin - Understand the Ruler"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4
@@ -145,7 +145,7 @@ Perfect! I can see the global vars coming from [the data cascade](https://www.11
 ]
 ```
 
-Ok, a little more exprementation and it looks like I can definetly use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!
+Ok, a little more experimentation and it looks like I can definitely use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!
 
 ```javascript
 .use((md) => {

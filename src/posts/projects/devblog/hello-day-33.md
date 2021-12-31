@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 33
+title: "Part 33: Markdown It Playtime and CSS Touchups"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4
@@ -8,6 +8,7 @@ tags:
   - 11ty
   - Node
   - WiP
+  - Nunjucks
   - Markdown-It
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"

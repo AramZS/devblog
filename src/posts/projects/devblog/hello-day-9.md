@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 9
-subtitle: Getting this dev blog running
-description: Part 8 of setting up 11ty dev blog.
+title: "Part 9: Post Data in Templates"
+subtitle: Building out more Eleventy Data and places to use it
+description: Day 9 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-06-28 22:59:43.10 -4
 tags:
@@ -9,10 +9,12 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
   - WiP
+  - RSS
+  - Nunjucks
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -54,11 +56,15 @@ tags:
 
 ## Day 9
 
+### RSS Feed and File Type on GitHub
+
 Looks like the RSS feed is correct but being served from Github Pages as "application/octet-stream". I found a Stack Overflow that said it needs a trailing slash. But now that serves it as text/html. Apparently it needs to have an xml ending, but if we want to keep `/rss/` [we need to create an xml file](https://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/).
 
 `git commit -am "Set an xml index for the rss path"`
 
 That did it! Good to know that Github Pages is *very* dependent on file endings, and if it doesn't get them it defaults `/path-with-no-ending-slash` to a downloadable octet-stream and `/path-with-ending-slash/` to HTML.
+
+### Filling in Post Data and Templates
 
 I want to build some post-only conditionals into a common base template. The goal here is to make my templates as DRY as possible. No code should have to be repeated. Looks like there [are some tools to do that in Nunjucks](https://bryanlrobinson.com/blog/using-nunjucks-if-expressions-to-create-an-active-navigation-state-in-11ty/).
 
@@ -93,6 +99,8 @@ With the basics in place, I can actually drop the entire content of `post.njk` a
 {% endraw %}
 
 The original dinky template was designed for single page sites. So the post template works pretty much unchanged with no issues. But what about my index page? I'm going to want to add stuff to there.
+
+### Post Lists
 
 First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly [to create an 11ty collection](https://www.11ty.dev/docs/collections/), but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.
 
@@ -133,7 +141,7 @@ Oh, these dates aren't great, they seem to be pulling from some info that isn't 
 
 Surprising no one, dates are a [Common Pitfall](https://www.11ty.dev/docs/pitfalls/). [11ty documentation advises to directly set the date](https://www.11ty.dev/docs/dates/). And I can't just set them any which way, I need to set them [via the YAML date format](https://yaml.org/type/timestamp.html). Once that's done, I can display them using that built-in toDateString function in a way that makes the dates more human readable.
 
-git commit -am "Adding template parts"
+`git commit -am "Adding template parts"`
 
 Ok back to my reusable post list. I started with a pretty basic version, but it looks to me like [the right approach is Macros](https://www.trysmudford.com/blog/encapsulated-11ty-components/).
 

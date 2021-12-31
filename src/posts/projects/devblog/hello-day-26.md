@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 26
+title: "Part 26: Metadata and Short Browsers"
 description: "More devblog"
 project: Dev Blog
 date: 2021-09-27 22:59:43.10 -4
@@ -8,7 +8,8 @@ tags:
   - 11ty
   - Node
   - Sass
-  - CSS
+  - YAML
+  - Nunjucks
   - WiP
   - Aggregation
 ---

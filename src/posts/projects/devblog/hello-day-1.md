@@ -1,6 +1,6 @@
 ---
-title: Hello World Devblog - Pt. 1
-subtitle: Getting this dev blog running
+title: Hello World - A Dev Blog
+subtitle: Day 1 of starting an Eleventy blog
 date: 2021-06-12 22:59:43.10 -5
 tags:
   - Starters
@@ -8,9 +8,12 @@ tags:
   - Node
   - Sass
   - WiP
+  - dinky
+  - nvm
+  - GitHub Pages
 ---
 
-# Day 1
+## Day 1
 
 I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:
 

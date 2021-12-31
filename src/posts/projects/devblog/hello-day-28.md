@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 28
+title: "Part 28: Featured Images"
 description: "More devblog"
 project: Dev Blog
 date: 2021-10-07 22:59:43.10 -4

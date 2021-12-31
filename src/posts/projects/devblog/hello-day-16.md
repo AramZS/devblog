@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 16
+title: "Part 16: Taking a run at Markdown It Plugins"
 subtitle: Getting this dev blog running
-description: Part 16 of setting up 11ty dev blog.
+description: Day 16 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-25 22:59:43.10 -4
 tags:
@@ -14,6 +14,7 @@ tags:
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -57,6 +58,8 @@ tags:
 
 Ok, so I'd like to continue using my shortcuts like `b/c` or `prob`. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.
 
+### Run One at a Markdown It Plugins
+
 We can take a look at [Markdown-it's documentation](https://github.com/markdown-it/markdown-it#api) for help here.
 
 Oh, README says this is the wrong place to look at for plugins. Ok.
@@ -76,6 +79,8 @@ Ok, that worked!
 `git commit -am "Add anchors to headers"`
 
 Oh, there are some good looking markdown-it plugins here. I'm going to install [the footnote one](https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote) as well. Oh that didn't work. I'll try [the base one instead](https://github.com/markdown-it/markdown-it-footnote) in a little bit.
+
+### Trying to Figure Out the Markdown It Data Structure
 
 Ok... What's a basic looking plugin I can look at easily as an example? The [Wikilinks plugin](https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js) looks good.
 
@@ -98,6 +103,8 @@ Oh, oops, the pattern I'm using from the Wikilinks plugin, [means I have to exec
 Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.
 
 Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during `watch` mode?). But it isn't treating my text?
+
+### Markdown It and Regexp
 
 Ok, [the sample code](https://jsfiddle.net/yd2gLxev/) given in the Readme of `markdown-it-regexp` doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.
 
