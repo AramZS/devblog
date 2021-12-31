@@ -11,15 +11,15 @@
             <title>Hello World Devblog - Pt. 2</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639342528" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639342528" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639342528" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639342528" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
 
             
-            <!-- Build Revision: 1639342528 & Sha: ce0b3656ed505d2f9f73279f76e25b9e588afc68 -->
+            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -96,6 +96,12 @@
     <meta property="article:tag" content="Sass" />
     
     <meta property="article:tag" content="WiP" />
+    
+    <meta property="article:tag" content="Nunjucks" />
+    
+    <meta property="article:tag" content="dinky" />
+    
+    <meta property="article:tag" content="Dart Sass" />
     
 
 
@@ -222,7 +228,7 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-2">Day 2</a></li></ol></nav>
+        <ol><li><a href="#day-2">Day 2</a></li><li><a href="#setting-up-layouts-folder">Setting up Layouts folder</a><ol><li><a href="#sass-figuring-out-_rendersync">Sass - figuring out _renderSync</a></li><li><a href="#writing-out-the-sass-file">Writing out the Sass file</a></li></ol></li></ol></nav>
             </div>
         </aside>
         <div id="post-description">Part 2 of setting up 11ty dev blog.</div>
@@ -233,7 +239,7 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <h1 id="day-2" tabindex="-1">Day 2</h1>
+                        <h2 id="day-2" tabindex="-1">Day 2</h2>
 <p>Ok, day 2. Let's restate the requirements and todos!</p>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
@@ -250,6 +256,7 @@
 <p data-wordfix="true">[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
+<h2 id="setting-up-layouts-folder" tabindex="-1">Setting up Layouts folder</h2>
 <p data-wordfix="true">Ok, so why isn't it picking up the layout from either <code>_layouts/post.njk</code> or <code>_layouts/default.njk</code>? Maybe I need to define a default <a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">at the data level</a>? Or do I need to move it to <code>src</code> even if I define the location in the returned configuration?</p>
 <p data-wordfix="true">Moving it into <code>src</code> doesn't seem to do anything. But it looks like all the files I configure into Eleventy in the returned object do need to be in there, so apparently I can't set a default layout in the <code>data</code> folder?</p>
 <p>Adding a template to <code>src/posts/posts.json</code></p>
@@ -286,6 +293,7 @@
 <p>So to get a default <code>description</code> value in my template I can set it up with a file at <code>src/_data/description.js</code> and have the content of that file be <code>module.exports = &quot;Talking about code&quot;;</code>. Ok, that works!</p>
 <p data-wordfix="true">Yay, Eleventy defaults work now! Good place to commit.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/2b51f07a382a3c0311810197e50b603eff45b5be" class="git-commit-link"><code>git commit -am &quot;Ok, renders and defaults are working now&quot;</code></a></p>
+<h3 id="sass-figuring-out-_rendersync" tabindex="-1">Sass - figuring out _renderSync</h3>
 <p>Hmmm... ok I guess that I picked a bad example plugin, because the one I used <a href="https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage" target="_blank">doesn't have a typical footprint</a>. Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add <code>sassBuild();</code> to the inside of my .eleventy.js function inside of <code>module.exports = function (eleventyConfig) {</code>?</p>
 <p>Ok... renderSync from <code>dart-sass</code> threw an error:</p>
 <p class="skip-link-graf">
@@ -302,6 +310,7 @@
 <p>Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.</p>
 </blockquote>
 <p>Ok, gotta do that.</p>
+<h3 id="writing-out-the-sass-file" tabindex="-1">Writing out the Sass file</h3>
 <p>Ok, I want to use <code>fs</code> to write the resulting file into <code>docs/styles/styles.css</code>. Only, the <code>styles</code> directory does not predictably exist so <code>fs</code> fails because I have to make that folder. Of course, forgot. Easy enough.</p>
 <p>Ok, it works! This is a good place to stop because it is almost midnight.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f4a1307dcf0fbe5dcc03b2ae4d2be737177c3276" class="git-commit-link"><code>git commit -am &quot;Compile that sass&quot;</code></a></p>
@@ -366,6 +375,12 @@
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/nunjucks">Nunjucks</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/dinky">dinky</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/dart-sass">Dart Sass</a>
                 </li></ul>
     </div>
 

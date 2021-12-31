@@ -5082,15 +5082,18 @@
 <h2 id="day-3" tabindex="-1">Day 3</h2>
 <p>Ok, so I'm at day 3 and everything is working at a basic level. I need an index/entry page and some ways to present posts in lists. I also am not a huge fan of the <code>site/posts/post-name</code> structure.</p>
 <p>[ ] Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+<h3 id="nunjucks-vs-mustache" tabindex="-1">Nunjucks vs Mustache</h3>
 <p data-wordfix="true">There's also an open question of Why Nunjucks? I'm not the biggest fan of Nunjucks, outside of the Eleventy community that seems to be heavily invested into it, not many people seem to be using it. Documentation is (as we've already seen) sorta iffy and its relatively low adoption makes it harder to get questions answered.</p>
 <p>I also haven't quite gotten syntax highlighting to work for <code>njk</code> files in VS Code, which is <em>very</em> frustrating and often turns me off from using something.</p>
 <p data-wordfix="true">I could, at this point, switch to Mustache, which I'm <a href="https://glitch.com/edit/#!/thespin?path=server.js" target="_blank">already pretty familiar</a> with. Mustache also has the advantage of having template tags that are more similar to Jekyll and more familiar to Javascript users. But, unless I hit a real bad obstacle I don't think I will, for two reasons. First, the point of this is to learn something new! Second, when I last tried Eleventy to basically generate a few quick pages from a common template, it had terrible trouble rendering with Mustache, even with the instructions from their site. I've got other things to complicate first, can save that for later. If I get everything working, I might come back to this issue.</p>
+<h3 id="build-process" tabindex="-1">Build Process</h3>
 <p>Ok, <a href="https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks" target="_blank">got Nunjucks syntax highlighting to properly work</a> for now!</p>
 <p>Stepping back it looks like the rendered site in the <code>docs</code> folder is generally looking ok. There's one issue, my passthrough of assets includes an <code>assets/css</code> folder with an entirely useless sass file that would be public-facing. So I'm going to have to do subdirectories of assets instead. Should be easy enough.</p>
 <p>Huh... it doesn't clean up the now defunct <code>css</code> folder. Is there a build tool to clean things up?</p>
 <p><a href="https://github.com/11ty/eleventy/issues/19" target="_blank">Looks like it doesn't ship with 11ty</a>. But there <a href="https://github.com/11ty/eleventy/issues/744" target="_blank">are other solutions that people have done</a>.</p>
 <p>I like <a href="https://github.com/11ty/eleventy/issues/744#issuecomment-800323968" target="_blank">the solution that defines the site configuration earlier</a>, it seems generally useful. I'll give it a try.</p>
 <p>That works! Deleting the whole folder and building it all new seems super inefficient, but there doesn't seem to be another way to handle things.</p>
+<h3 id="eleventy-build-and-serve" tabindex="-1">Eleventy Build and Serve</h3>
 <p data-wordfix="true">One other throught now occurs. I saw that the dinky template uses some sort of build version number passed by github on build to cachebreak. I'm not sure how that works or if it can work the same way for Eleventy. Perhaps I need to pass a datetime stamp for each build instead? Something to figure out later.</p>
 <p data-wordfix="true">[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/27dbbaf47799a901a62857a34742d12418edc0cc" class="git-commit-link"><code>git commit -am &quot;Self-cleaning builds&quot;</code></a></p>
@@ -5102,6 +5105,7 @@
 <p>Hmmm also some other problems:</p>
 <p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.<br />
 [ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+<h3 id="sass-and-syntax-highlighting" tabindex="-1">Sass and Syntax Highlighting</h3>
 <p>I <a href="https://github.com/AramZS/aramzs.github.io/blob/master/_sass/_syntax-highlighting.scss" target="_blank">have syntax highlighting styles</a> I like on my Github user Pages site. Let's just reuse it.</p>
 <p data-wordfix="true">Huh... why doesn't the plugin for building Sass re-trigger on watch? <a href="https://www.11ty.dev/docs/events/#beforewatch" target="_blank">Looks like there's a way to fix that</a>.</p>
 <p>Ugh... apparently the Sass syntax has changed significantly since the last time I used it and also since it was set up in my other site. I'll need to correct.</p>
@@ -5162,7 +5166,7 @@ indent_style = space
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-2/"/>
     <updated>2021-06-14T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-2/</id>
-    <content type="html"><h1 id="day-2" tabindex="-1">Day 2</h1>
+    <content type="html"><h2 id="day-2" tabindex="-1">Day 2</h2>
 <p>Ok, day 2. Let's restate the requirements and todos!</p>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
@@ -5179,6 +5183,7 @@ indent_style = space
 <p data-wordfix="true">[ ] Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 <p>[ ] Decide if I want to render the CSS fancier than just a base file.</p>
 <p>[ ] Can I use the template inside of dinky that already exists instead of copy/pasting it?</p>
+<h2 id="setting-up-layouts-folder" tabindex="-1">Setting up Layouts folder</h2>
 <p data-wordfix="true">Ok, so why isn't it picking up the layout from either <code>_layouts/post.njk</code> or <code>_layouts/default.njk</code>? Maybe I need to define a default <a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">at the data level</a>? Or do I need to move it to <code>src</code> even if I define the location in the returned configuration?</p>
 <p data-wordfix="true">Moving it into <code>src</code> doesn't seem to do anything. But it looks like all the files I configure into Eleventy in the returned object do need to be in there, so apparently I can't set a default layout in the <code>data</code> folder?</p>
 <p>Adding a template to <code>src/posts/posts.json</code></p>
@@ -5215,6 +5220,7 @@ indent_style = space
 <p>So to get a default <code>description</code> value in my template I can set it up with a file at <code>src/_data/description.js</code> and have the content of that file be <code>module.exports = &quot;Talking about code&quot;;</code>. Ok, that works!</p>
 <p data-wordfix="true">Yay, Eleventy defaults work now! Good place to commit.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/2b51f07a382a3c0311810197e50b603eff45b5be" class="git-commit-link"><code>git commit -am &quot;Ok, renders and defaults are working now&quot;</code></a></p>
+<h3 id="sass-figuring-out-_rendersync" tabindex="-1">Sass - figuring out _renderSync</h3>
 <p>Hmmm... ok I guess that I picked a bad example plugin, because the one I used <a href="https://www.npmjs.com/package/eleventy-plugin-meta-generator#usage" target="_blank">doesn't have a typical footprint</a>. Well, I'm not going to have a typical footprint I guess. Let's start without that. It runs sync, so I can just call the function during setup mby? Just add <code>sassBuild();</code> to the inside of my .eleventy.js function inside of <code>module.exports = function (eleventyConfig) {</code>?</p>
 <p>Ok... renderSync from <code>dart-sass</code> threw an error:</p>
 <p class="skip-link-graf">
@@ -5231,6 +5237,7 @@ indent_style = space
 <p>Despite the name, Sass does not write the CSS output to this file. The caller must do that themselves.</p>
 </blockquote>
 <p>Ok, gotta do that.</p>
+<h3 id="writing-out-the-sass-file" tabindex="-1">Writing out the Sass file</h3>
 <p>Ok, I want to use <code>fs</code> to write the resulting file into <code>docs/styles/styles.css</code>. Only, the <code>styles</code> directory does not predictably exist so <code>fs</code> fails because I have to make that folder. Of course, forgot. Easy enough.</p>
 <p>Ok, it works! This is a good place to stop because it is almost midnight.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f4a1307dcf0fbe5dcc03b2ae4d2be737177c3276" class="git-commit-link"><code>git commit -am &quot;Compile that sass&quot;</code></a></p>
@@ -5239,11 +5246,11 @@ indent_style = space
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 1</title>
+    <title>Day 1 of starting an Eleventy blog</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-1/"/>
     <updated>2021-06-13T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-1/</id>
-    <content type="html"><h1 id="day-1" tabindex="-1">Day 1</h1>
+    <content type="html"><h2 id="day-1" tabindex="-1">Day 1</h2>
 <p>I have decided I want a blog to write down some of my decisions as I build various public projects. So, inital requirements:</p>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
