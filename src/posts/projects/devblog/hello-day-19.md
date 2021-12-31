@@ -1,19 +1,19 @@
 ---
-title: Hello World Devblog - Pt. 19
+title: "Part 19: Project Tag Pages"
 subtitle: Getting this dev blog running
-description: "More devblog"
+description: "Generating multiple tag pages"
 project: Dev Blog
 date: 2021-07-31 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
   - Node
-  - Sass
-  - Github Actions
+  - Privacy
   - WiP
   - GPC
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

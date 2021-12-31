@@ -1,6 +1,6 @@
 ---
-title: Day 1 of starting an Eleventy blog
-subtitle: Getting this dev blog running
+title: Hello World - A Dev Blog
+subtitle: Day 1 of starting an Eleventy blog
 date: 2021-06-12 22:59:43.10 -5
 tags:
   - Starters

@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 39
+title: "Part 39: Tweaking Code Blocks and Adding Skip Links"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-25 22:59:43.10 -4
@@ -9,6 +9,8 @@ tags:
   - Node
   - WiP
   - Markdown-It
+  - Sass
+  - a11y
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
 featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"

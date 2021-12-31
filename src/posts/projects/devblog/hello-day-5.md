@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 5
+title: "Part 5: Image Handling and CSS Improvements"
 subtitle: Getting this dev blog running
-description: Part 3 of setting up 11ty dev blog.
+description: Part 5 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-06-16 22:59:43.10 -5
 tags:
@@ -10,8 +10,12 @@ tags:
   - Node
   - Sass
   - WiP
+  - CSS
+  - GitHub
+  - Cache breaking
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -45,9 +49,11 @@ tags:
 
 - [x] Code blocks do not have good syntax highlighting. I want good syntax highlighting.
 
-# Day 5
+## Day 5
 
 Ok, yesterday I didn't have that much time to work, but today I'm feeling as good as I can after having my main battery and a whole bunch of USB sticks, a Yubi key, and my main external Anker power battery robbed out of the back of a rental car in San Antonio yesterday.
+
+### Figuring out the Images
 
 Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.
 
@@ -86,6 +92,8 @@ There's [no way to really get the base URL](https://www.11ty.dev/docs/data-eleve
 ![Links look bad inside the text.](../img/links-and-not-links.png)
 
 </div>
+
+### Making Links More Visible
 
 This comes from that whole annoying school of "native link styles are ugly so let's change them as much as possible and try to use some other thing to indicate they are links."
 

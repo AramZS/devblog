@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 24
+title: "Parg 24: Page Template, Nunjucks and Eleventy Filters"
 subtitle: Getting this dev blog running
 description: "More devblog"
 project: Dev Blog
@@ -8,6 +8,7 @@ tags:
   - Starters
   - 11ty
   - Node
+  - Nunjucks
   - Sass
   - WiP
 ---

@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 37
+title: "Part 37: Markdown It in it's Environment"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-17 22:59:43.10 -4
@@ -749,4 +749,4 @@ Great!
 
 #### Can't start secrets with GITHUB
 
-While prepping to merge I wanted to add the GITHUB_KEY `env` secret. But it turns out I can't start my keynames with `GITHUB_`. So I gotta rename it. 
+While prepping to merge I wanted to add the GITHUB_KEY `env` secret. But it turns out I can't start my keynames with `GITHUB_`. So I gotta rename it.

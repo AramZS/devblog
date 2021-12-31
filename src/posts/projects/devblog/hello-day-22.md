@@ -8,10 +8,10 @@ tags:
   - Starters
   - 11ty
   - Node
-  - Sass
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

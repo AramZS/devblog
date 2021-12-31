@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 23
+title: "Part 23: A Table of Contents"
 subtitle: Getting this dev blog running
 description: "More devblog"
 project: Dev Blog
@@ -8,7 +8,6 @@ tags:
   - Starters
   - 11ty
   - Node
-  - Sass
   - WiP
 ---
 

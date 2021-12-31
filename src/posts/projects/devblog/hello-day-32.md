@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 32
+title: "Part 32: Project Pages and loops"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4

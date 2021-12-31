@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 3
+title: "Part 3: Deciding on a template tool"
 subtitle: Getting this dev blog running
 description: Part 3 of setting up 11ty dev blog.
 project: Dev Blog
@@ -10,7 +10,12 @@ tags:
   - Node
   - Sass
   - WiP
+  - Nunjucks
+  - Mustache
+  - Code Blocks
 ---
+
+## Project Scope and ToDos
 
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages

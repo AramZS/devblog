@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 25
+title: "Part 25: Tweaking TOC Styles"
 subtitle: Getting this dev blog running
 description: "More devblog"
 project: Dev Blog

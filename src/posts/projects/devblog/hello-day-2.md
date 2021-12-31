@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 2
+title: Hello World Devblog - Day 2
 subtitle: Getting this dev blog running
 description: Part 2 of setting up 11ty dev blog.
 project: Dev Blog
@@ -19,6 +19,7 @@ tags:
 
 Ok, day 2. Let's restate the requirements and todos!
 
+### Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

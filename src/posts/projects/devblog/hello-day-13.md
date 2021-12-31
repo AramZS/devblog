@@ -1,17 +1,17 @@
 ---
-title: Hello World Devblog - Pt. 13
+title: "Part 13: Building new Eleventy Taxonomies"
 subtitle: Getting this dev blog running
-description: Part 13 of setting up 11ty dev blog.
+description: Day 13 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-22 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
   - Node
-  - Sass
-  - Github Actions
   - WiP
 ---
+
+## Project Scope and ToDos
 
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
@@ -61,6 +61,8 @@ The main thing to note here is I want to be able to get:
 1. A list of "projects"
 2. A list of posts under each Project.
 
+### Global Data and new Taxonomies
+
 So instead I'm going to use the global data folder `_data` and move my operation over there.
 
 ```javascript
@@ -98,6 +100,8 @@ Oh wait, that didn't work. It doesn't have the capacity to handle empty collecti
 `git commit -m "Setting up home page structure with local prism css"`
 
 Ok. That worked. Time to read about [building Pages from Data with 11ty](https://www.11ty.dev/docs/pages-from-data/).
+
+### Implementing Tag Data for New Templates
 
 Ok so, let's build it out at `project-pages.njk`.
 
@@ -145,6 +149,8 @@ Ok, I'm getting the title now. But I want to filter the list of project posts by
 This is more complicated.
 
 But ok, here's what I ended up doing
+
+### Folder Based Tags
 
 First, I needed to make the project global data object even more complicated. It now needs a Title, a slug and a `projectName`.
 
