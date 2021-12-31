@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 13</title>
+            <title>Part 13: Building new Eleventy Taxonomies</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 13">
+    content="Part 13: Building new Eleventy Taxonomies">
 
 <meta property="og:description"
-    content="Part 13 of setting up 11ty dev blog.">
+    content="Day 13 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 13 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Day 13 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 13" />
+<meta name="twitter:title" content="Part 13: Building new Eleventy Taxonomies" />
 
 
 
@@ -93,10 +93,6 @@
     
     <meta property="article:tag" content="Node" />
     
-    <meta property="article:tag" content="Sass" />
-    
-    <meta property="article:tag" content="Github Actions" />
-    
     <meta property="article:tag" content="WiP" />
     
 
@@ -107,8 +103,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-13/",
-        "headline": "Hello World Devblog - Pt. 13",
-        "about": "Part 13 of setting up 11ty dev blog.",
+        "headline": "Part 13: Building new Eleventy Taxonomies",
+        "about": "Day 13 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -203,7 +199,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 13
+                            Part 13: Building new Eleventy Taxonomies
                         </h1>
                         
                         
@@ -224,10 +220,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-13">Day 13</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-13">Day 13</a><ol><li><a href="#global-data-and-new-taxonomies">Global Data and new Taxonomies</a></li><li><a href="#implementing-tag-data-for-new-templates">Implementing Tag Data for New Templates</a></li><li><a href="#folder-based-tags">Folder Based Tags</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 13 of setting up 11ty dev blog.</div>
+        <div id="post-description">Day 13 of setting up 11ty dev blog.</div>
 
         
 
@@ -235,7 +231,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -296,6 +293,7 @@
 <li>A list of &quot;projects&quot;</li>
 <li>A list of posts under each Project.</li>
 </ol>
+<h3 id="global-data-and-new-taxonomies" tabindex="-1">Global Data and new Taxonomies</h3>
 <p>So instead I'm going to use the global data folder <code>_data</code> and move my operation over there.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-6" id="skip-to-code-skip-hello-day-13-6" class="skip-link">Skip code block ▼</a></p>
@@ -310,6 +308,7 @@
 <p>Oh wait, that didn't work. It doesn't have the capacity to handle empty collections. I thought I'd get an empty array, but apparently not. Ok, I'll write some checks in to my shortcode.</p>
 <p><code>git commit -m &quot;Setting up home page structure with local prism css&quot;</code></p>
 <p data-wordfix="true">Ok. That worked. Time to read about <a href="https://www.11ty.dev/docs/pages-from-data/" target="_blank">building Pages from Data with Eleventy</a>.</p>
+<h3 id="implementing-tag-data-for-new-templates" tabindex="-1">Implementing Tag Data for New Templates</h3>
 <p>Ok so, let's build it out at <code>project-pages.njk</code>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-4" id="skip-to-code-skip-hello-day-13-4" class="skip-link">Skip code block ▼</a></p>
@@ -323,6 +322,7 @@
 <p id="code-skip-hello-day-13-3">Ok, I'm getting the title now. But I want to filter the list of project posts by the project metadata.</p>
 <p>This is more complicated.</p>
 <p>But ok, here's what I ended up doing</p>
+<h3 id="folder-based-tags" tabindex="-1">Folder Based Tags</h3>
 <p>First, I needed to make the project global data object even more complicated. It now needs a Title, a slug and a <code>projectName</code>.</p>
 <p data-wordfix="true">To fill out that projectName I need to stop putting the project data in the blog post and instead put it in the<br>
 <a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">directory's data file</a>.</p>
@@ -396,10 +396,6 @@
                     <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/node">Node</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/sass">Sass</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>

@@ -548,7 +548,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 39</title>
+    <title>Part 39: Tweaking Code Blocks and Adding Skip Links</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-39/"/>
     <updated>2021-11-26T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-39/</id>
@@ -779,7 +779,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 38</title>
+    <title>Part 38: Tag Level Pagination</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-38/"/>
     <updated>2021-11-23T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-38/</id>
@@ -962,7 +962,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 37</title>
+    <title>Part 37: Markdown It in it's Environment</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-37/"/>
     <updated>2021-11-18T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-37/</id>
@@ -1171,7 +1171,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 36</title>
+    <title>Part 36: A Markdown It Plugin - Understand the Ruler</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-36/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-36/</id>
@@ -1299,7 +1299,7 @@
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-36/#code-skip-hello-day-36-2" id="skip-to-code-skip-hello-day-36-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br />  <span class="token string">'defaults'</span><span class="token punctuation">,</span>      <span class="token string">'description'</span><span class="token punctuation">,</span><br />  <span class="token string">'layout'</span><span class="token punctuation">,</span>        <span class="token string">'projects'</span><span class="token punctuation">,</span><br />  <span class="token string">'site'</span><span class="token punctuation">,</span>          <span class="token string">'pkg'</span><span class="token punctuation">,</span><br />  <span class="token string">'tags'</span><span class="token punctuation">,</span>          <span class="token string">'date'</span><span class="token punctuation">,</span><br />  <span class="token string">'project'</span><span class="token punctuation">,</span>       <span class="token string">'repo'</span><span class="token punctuation">,</span><br />  <span class="token string">'featuredImage'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">,</span><br />  <span class="token string">'subtitle'</span><span class="token punctuation">,</span>      <span class="token string">'page'</span><span class="token punctuation">,</span><br />  <span class="token string">'collections'</span><br /><span class="token punctuation">]</span></code></pre>
-<p id="code-skip-hello-day-36-2">Ok, a little more exprementation and it looks like I can definetly use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!</p>
+<p id="code-skip-hello-day-36-2">Ok, a little more experimentation and it looks like I can definitely use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-36/#code-skip-hello-day-36-1" id="skip-to-code-skip-hello-day-36-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">md</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'rules'</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">)</span><span class="token punctuation">)</span><br />			<span class="token keyword">const</span> 	defaultRender <span class="token operator">=</span> md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">.</span>code_inline<span class="token punctuation">,</span><br />					testPattern <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">git commit \-am \"</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><br /><br />			md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">.</span><span class="token function-variable function">code_inline</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">tokens<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> options<span class="token punctuation">,</span> env<span class="token punctuation">,</span> self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'env '</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> env<span class="token punctuation">.</span>repo<span class="token punctuation">)</span><br />				<span class="token keyword">var</span> token <span class="token operator">=</span> tokens<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span><br />				content <span class="token operator">=</span> token<span class="token punctuation">.</span>content<span class="token punctuation">;</span><br />				<span class="token keyword">if</span> <span class="token punctuation">(</span>testPattern<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'git content:'</span><span class="token punctuation">,</span> content<span class="token punctuation">)</span><br />				<span class="token punctuation">}</span><br />				<span class="token comment">// pass token to default renderer.</span><br />				<span class="token keyword">return</span> <span class="token function">defaultRender</span><span class="token punctuation">(</span>tokens<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> options<span class="token punctuation">,</span> env<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span><br />		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -1309,7 +1309,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 35</title>
+    <title>Part 35: GitHub's API - How Does It Work?</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-35/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-35/</id>
@@ -1438,7 +1438,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 34</title>
+    <title>Part 34: In Which I Really Dig Into Markdown It</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-34/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-34/</id>
@@ -1624,7 +1624,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 33</title>
+    <title>Part 33: Markdown It Playtime and CSS Touchups</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-33/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-33/</id>
@@ -1805,7 +1805,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 32</title>
+    <title>Part 32: Project Pages and loops</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-32/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-32/</id>
@@ -1950,7 +1950,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 31</title>
+    <title>Part 31: Pagination</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-31/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-31/</id>
@@ -2121,7 +2121,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 30</title>
+    <title>Part 30: Learning how to do Things I Learned</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-30/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-30/</id>
@@ -2258,7 +2258,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 29</title>
+    <title>Part 29: Schema.org and Authorship</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-29/"/>
     <updated>2021-11-13T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-29/</id>
@@ -2390,7 +2390,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 28</title>
+    <title>Part 28: Featured Images</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-28/"/>
     <updated>2021-10-08T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-28/</id>
@@ -2529,7 +2529,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 27</title>
+    <title>Part 27: CSS and Social Tags</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-27/"/>
     <updated>2021-10-05T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-27/</id>
@@ -2674,7 +2674,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 26</title>
+    <title>Part 26: Metadata and Short Browsers</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-26/"/>
     <updated>2021-09-28T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-26/</id>
@@ -2839,7 +2839,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 25</title>
+    <title>Part 25: Tweaking TOC Styles</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-25/"/>
     <updated>2021-09-27T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-25/</id>
@@ -2979,7 +2979,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 24</title>
+    <title>Parg 24: Page Template, Nunjucks and Eleventy Filters</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-24/"/>
     <updated>2021-08-30T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-24/</id>
@@ -3100,7 +3100,7 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 23</title>
+    <title>Part 23: A Table of Contents</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-23/"/>
     <updated>2021-08-29T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-23/</id>
@@ -3236,7 +3236,8 @@
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-22/"/>
     <updated>2021-08-20T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-22/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3369,11 +3370,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 21</title>
+    <title>Part 21: Complex Eleventy Tags</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-21/"/>
     <updated>2021-08-17T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-21/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3495,11 +3497,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 20</title>
+    <title>Part 20: Working with Shortcodes and Collections</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-20/"/>
     <updated>2021-08-03T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-20/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3581,11 +3584,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 19</title>
+    <title>Part 19: Project Tag Pages</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-19/"/>
     <updated>2021-08-01T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-19/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3686,11 +3690,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 18</title>
+    <title>Part 18: Tag Pages</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-18/"/>
     <updated>2021-07-31T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-18/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3781,11 +3786,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 17</title>
+    <title>Homepage Fixes on Day 17</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-17/"/>
     <updated>2021-07-30T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-17/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3899,11 +3905,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 16</title>
+    <title>Part 16: Taking a run at Markdown It Plugins</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-16/"/>
     <updated>2021-07-26T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-16/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -3959,6 +3966,7 @@
 </ul>
 <h2 id="day-16" tabindex="-1">Day 16</h2>
 <p>Ok, so I'd like to continue using my shortcuts like <code>b/c</code> or <code>prob</code>. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.</p>
+<h3 id="run-one-at-a-markdown-it-plugins" tabindex="-1">Run One at a Markdown It Plugins</h3>
 <p>We can take a look at <a href="https://github.com/markdown-it/markdown-it#api" target="_blank">Markdown-it's documentation</a> for help here.</p>
 <p>Oh, README says this is the wrong place to look at for plugins. Ok.</p>
 <p><a href="https://github.com/markdown-it/markdown-it/tree/master/docs" target="_blank">Info for plugin developers</a>... ok, two links in here.</p>
@@ -3969,6 +3977,7 @@
 <p>Ok, that worked!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f7e81ae7548dda8e7f9186f9a0d4861b366a7482" class="git-commit-link"><code>git commit -am &quot;Add anchors to headers&quot;</code></a></p>
 <p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
+<h3 id="trying-to-figure-out-the-markdown-it-data-structure" tabindex="-1">Trying to Figure Out the Markdown It Data Structure</h3>
 <p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
 <p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
 <p>Ok, to facilitate a similar structure, I'll take the Wikilinks plugin and place it in my own folder under <code>_custom-plugins</code>. I'm not going to be taking in options right now, so I can remove that stuff from the plugin.</p>
@@ -3980,6 +3989,7 @@
 <p>Oh, oops, the pattern I'm using from the Wikilinks plugin, <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks#usage" target="_blank">means I have to execute it as a function first</a>.</p>
 <p>Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.</p>
 <p>Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during <code>watch</code> mode?). But it isn't treating my text?</p>
+<h3 id="markdown-it-and-regexp" tabindex="-1">Markdown It and Regexp</h3>
 <p>Ok, <a href="https://jsfiddle.net/yd2gLxev/" target="_blank">the sample code</a> given in the Readme of <code>markdown-it-regexp</code> doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.</p>
 <p>Ok, now I am even more annoyed that this isn't working. It should, by all rights. All I can think is that it must have something to do with the specific way eleventy implements Markdown-It?</p>
 <p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
@@ -3990,11 +4000,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 15</title>
+    <title>Part 15: Mobile Style Tweaks</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-15/"/>
     <updated>2021-07-25T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-15/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4077,11 +4088,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 14</title>
+    <title>Part 14: Project Pages</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-14/"/>
     <updated>2021-07-24T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-14/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4145,6 +4157,7 @@
 <p>This also seems like a good time to move my posts over to the right folder.</p>
 <p>Ok, adding the site name to the non-index pages and now its time to do some css.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/a3c97b376a74b52a6b79a1d4e2b33bcbe634d061" class="git-commit-link"><code>git commit -am &quot;Done with setting up vertical content, on to vertical styles.&quot;</code></a></p>
+<h3 id="better-styles-ready-for-reuse" tabindex="-1">Better styles, ready for reuse</h3>
 <p>Ok, to get the layouts the way I want while still having the base template be very reusable, I need to have some custom CSS that applies only to specific pages. I can handle that by adding an ID with the template name to the <code>body</code> HTML tag. That's easy. But I don't want to load down the CSS file with these file specific rules where I don't need them. So let's accomplish one of my early goals and split the CSS into smaller files.</p>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</li>
@@ -4159,11 +4172,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 13</title>
+    <title>Part 13: Building new Eleventy Taxonomies</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-13/"/>
     <updated>2021-07-23T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-13/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4224,6 +4238,7 @@
 <li>A list of &quot;projects&quot;</li>
 <li>A list of posts under each Project.</li>
 </ol>
+<h3 id="global-data-and-new-taxonomies" tabindex="-1">Global Data and new Taxonomies</h3>
 <p>So instead I'm going to use the global data folder <code>_data</code> and move my operation over there.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-13/#code-skip-hello-day-13-6" id="skip-to-code-skip-hello-day-13-6" class="skip-link">Skip code block ▼</a></p>
@@ -4238,6 +4253,7 @@
 <p>Oh wait, that didn't work. It doesn't have the capacity to handle empty collections. I thought I'd get an empty array, but apparently not. Ok, I'll write some checks in to my shortcode.</p>
 <p><code>git commit -m &quot;Setting up home page structure with local prism css&quot;</code></p>
 <p data-wordfix="true">Ok. That worked. Time to read about <a href="https://www.11ty.dev/docs/pages-from-data/" target="_blank">building Pages from Data with Eleventy</a>.</p>
+<h3 id="implementing-tag-data-for-new-templates" tabindex="-1">Implementing Tag Data for New Templates</h3>
 <p>Ok so, let's build it out at <code>project-pages.njk</code>.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-13/#code-skip-hello-day-13-4" id="skip-to-code-skip-hello-day-13-4" class="skip-link">Skip code block ▼</a></p>
@@ -4251,6 +4267,7 @@
 <p id="code-skip-hello-day-13-3">Ok, I'm getting the title now. But I want to filter the list of project posts by the project metadata.</p>
 <p>This is more complicated.</p>
 <p>But ok, here's what I ended up doing</p>
+<h3 id="folder-based-tags" tabindex="-1">Folder Based Tags</h3>
 <p>First, I needed to make the project global data object even more complicated. It now needs a Title, a slug and a <code>projectName</code>.</p>
 <p data-wordfix="true">To fill out that projectName I need to stop putting the project data in the blog post and instead put it in the<br />
 <a href="https://www.11ty.dev/docs/data-template-dir/" target="_blank">directory's data file</a>.</p>
@@ -4272,11 +4289,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 12</title>
+    <title>Part 12: How to make a collection?</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-12/"/>
     <updated>2021-07-06T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-12/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4354,11 +4372,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 11</title>
+    <title>Part 11: Nunjucks and Shortcodes</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-11/"/>
     <updated>2021-07-06T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-11/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4416,12 +4435,14 @@
 <p data-wordfix="true">Ok, still not getting Macros working exactly the way I wanted. It would be really useful to have Eleventy throw actual errors as part of this, but when I tried to set my own version of the Nunjucks Environment I kept hitting against undocumented settings that Eleventy apparently sets up. This is getting way off the main thing I was trying to build. I could dive deeper in, but this site still isn't live and I would like to get it to that point first. So, for now, I'm going to just drop it.</p>
 <p>But before I do, I do think this is a major problem and would be useful for eleventy to fix. So, let's check issues one last time, and check if there is something for me to file.</p>
 <p>It looks like <a href="https://github.com/11ty/eleventy/issues/895" target="_blank">there is an issue in the right space</a>, but the suggested solution on the issue doesn't work. If I <a href="https://github.com/pdehaan/11ty-blog-ideas/issues/7" target="_blank">follow through the tickets</a> a little more I can <a href="https://github.com/pdehaan/11ty-nunjucks-config/blob/master/.eleventy.js" target="_blank">see another suggested solution</a>. But it doesn't solve the issue with the raw tags no longer working either.</p>
+<h3 id="difficulties-with-nunjucks-library-setup" tabindex="-1">Difficulties with Nunjucks Library Setup</h3>
 <p>I don't understand. <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L128" target="_blank">This</a> <em>should</em> work. I even checked to make sure my version of Nunjucks is the same! I even tried removing one of the files, but now my Nunjucks execution is failing on a different chunk of JS in the <code>js</code> front matter block in <code>rss2-feed.njk</code>.</p>
 <p>So let's add my voice.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f8732c00f54cbf1bf2b50e258b0bb8500af58487" class="git-commit-link"><code>git commit -am &quot;Bookmarking attempt to set custom NJK library.&quot;</code></a></p>
 <p>A quick bookmark of the current state of the site to help the Eleventy folks with debugging my issue!</p>
 <p>And now <a href="https://github.com/11ty/eleventy/issues/1879" target="_blank">a write up</a>!</p>
 <p>Ok, let's move on!</p>
+<h3 id="shortcodes" tabindex="-1">Shortcodes</h3>
 <p data-wordfix="true">I'm going to give up on Macros for now and instead I'll <a href="https://www.11ty.dev/docs/languages/nunjucks/#single-shortcode" target="_blank">use a Shortcode</a>.</p>
 <p>Ok, honestly this is a <strong>ton</strong> easier. I should have just gone this direction in the first place.</p>
 <p class="skip-link-graf">
@@ -4448,11 +4469,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 10</title>
+    <title>Part 11: Nunjucks and Macros</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-10/"/>
     <updated>2021-07-05T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-10/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4511,6 +4533,7 @@
 <p>Ok, I forgot to change the argument that was passed in the macros file and when I did that it worked.</p>
 <p>So... progress!</p>
 <p>Now let's try and figure out how to make it more useful.</p>
+<h3 id="macros" tabindex="-1">Macros</h3>
 <p>There are some interesting things you can do with Macros! I really would like to get it to work, so before we go the filter route, let's see if we can make my intended methodology work. This seems like it would be a thing people would want to do! So some more web searching may be in order.</p>
 <p data-wordfix="true">Ok, after trying a few different search terms <a href="https://stackoverflow.com/questions/50685814/nunjucks-nested-variables" target="_blank">I've found a useful middle ground</a>. But I know that <a href="https://www.11ty.dev/docs/languages/nunjucks/#filters" target="_blank">Nunjucks applies filters in a specific way in Eleventy</a>.</p>
 <p data-wordfix="true">Hmmm, apparently part of the issue <a href="https://github.com/11ty/eleventy/issues/354#issuecomment-449904901" target="_blank">is that Nunjucks fails silently on rendering stuff</a>. Is there a way to turn it off? Looks like first <a href="https://www.11ty.dev/docs/languages/nunjucks/#optional-use-your-nunjucks-environment" target="_blank">I'll have to redefine the Nunjucks rendering environment</a>.</p>
@@ -4525,6 +4548,7 @@
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">let</span> nunjucksEnvironment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>Environment</span><span class="token punctuation">(</span><br />		<span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>FileSystemLoader</span><span class="token punctuation">(</span>siteConfiguration<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>includes<span class="token punctuation">,</span><br />		<span class="token punctuation">{</span><br />			throwOnUndefined<span class="token operator">:</span> throwOnUndefinedSetting<br />		<span class="token punctuation">}</span><br />	<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"njk"</span><span class="token punctuation">,</span> nunjucksEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-10-2">Ok... interesting... when I set it up, it no longer reads the include statement properly, which calls a template located in <code>src/_layouts</code> and passed into the configuration object to Eleventy as <code>dir.layouts</code>:</p>
 <p><code>{% extends &quot;base.njk&quot; %}</code></p>
+<h3 data-wordfix="true" id="eleventy-and-nunjucks" tabindex="-1">Eleventy and Nunjucks</h3>
 <p data-wordfix="true">Hmmmm. Well <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L124" target="_blank">let's take a look at how Eleventy configures it</a>.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-10/#code-skip-hello-day-10-1" id="skip-to-code-skip-hello-day-10-1" class="skip-link">Skip code block ▼</a></p>
@@ -4537,11 +4561,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 9</title>
+    <title>Part 9: Post Data in Templates</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-9/"/>
     <updated>2021-06-29T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-9/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4596,9 +4621,11 @@
 </li>
 </ul>
 <h2 id="day-9" tabindex="-1">Day 9</h2>
+<h3 id="rss-feed-and-file-type-on-github" tabindex="-1">RSS Feed and File Type on GitHub</h3>
 <p>Looks like the RSS feed is correct but being served from Github Pages as &quot;application/octet-stream&quot;. I found a Stack Overflow that said it needs a trailing slash. But now that serves it as text/html. Apparently it needs to have an xml ending, but if we want to keep <code>/rss/</code> <a href="https://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/" target="_blank">we need to create an xml file</a>.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/03e5122bbc07fd0a51d777087c7162a96954beca" class="git-commit-link"><code>git commit -am &quot;Set an xml index for the rss path&quot;</code></a></p>
 <p>That did it! Good to know that Github Pages is <em>very</em> dependent on file endings, and if it doesn't get them it defaults <code>/path-with-no-ending-slash</code> to a downloadable octet-stream and <code>/path-with-ending-slash/</code> to HTML.</p>
+<h3 id="filling-in-post-data-and-templates" tabindex="-1">Filling in Post Data and Templates</h3>
 <p>I want to build some post-only conditionals into a common base template. The goal here is to make my templates as DRY as possible. No code should have to be repeated. Looks like there <a href="https://bryanlrobinson.com/blog/using-nunjucks-if-expressions-to-create-an-active-navigation-state-in-11ty/" target="_blank">are some tools to do that in Nunjucks</a>.</p>
 <p>Ok, so I'm going to split this into a few chunks.</p>
 <p>First I'm going to establish a base template, one that all the others can pull off of. This can set up the basic HTML structure, my HTML, HEAD and BODY tags. It can also establish the baseline HTML to make the template work, like the wrapper-classed div and the semantic HTML5 tags within.</p>
@@ -4610,6 +4637,7 @@
 <p id="code-skip-hello-day-9-4">With the basics in place, I can actually drop the entire content of <code>post.njk</code> and replace it with an <code>extends</code> statement.</p>
 <p>{% extends &quot;base.njk&quot; %}</p>
 <p>The original dinky template was designed for single page sites. So the post template works pretty much unchanged with no issues. But what about my index page? I'm going to want to add stuff to there.</p>
+<h3 id="post-lists" tabindex="-1">Post Lists</h3>
 <p data-wordfix="true">First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly <a href="https://www.11ty.dev/docs/collections/" target="_blank">to create an Eleventy collection</a>, but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-9/#code-skip-hello-day-9-3" id="skip-to-code-skip-hello-day-9-3" class="skip-link">Skip code block ▼</a></p>
@@ -4618,10 +4646,10 @@
 <p>But what about sorting? I may need to sort by date and dates are always messy. To make sure I can get them work right, I should start by adding a date to all post templates. I could add it in the post template itself, but I suspect there may be other pages I want to have the date on, so I'm going to handle it with an if/else chain at the base template.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-9/#code-skip-hello-day-9-2" id="skip-to-code-skip-hello-day-9-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-liquid"><code class="language-liquid">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><br />	<br /><br />		<br />		<span class="token comment">&lt;!-- post mode --></span><br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">></span></span>Tue Jun 29 2021<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><br />		<br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Hello World Devblog - Pt. 9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Part 8 of setting up 11ty dev blog.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br /><br />	<br />	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-liquid"><code class="language-liquid">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><br />	<br /><br />		<br />		<span class="token comment">&lt;!-- post mode --></span><br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">></span></span>Tue Jun 29 2021<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><br />		<br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Part 9: Post Data in Templates<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br />		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Day 9 of setting up 11ty dev blog.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br /><br />	<br />	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-9-2">Oh, these dates aren't great, they seem to be pulling from some info that isn't totally accurate via the Eleventy defaults</p>
 <p data-wordfix="true">Surprising no one, dates are a <a href="https://www.11ty.dev/docs/pitfalls/" target="_blank">Common Pitfall</a>. <a href="https://www.11ty.dev/docs/dates/" target="_blank">Eleventy documentation advises to directly set the date</a>. And I can't just set them any which way, I need to set them <a href="https://yaml.org/type/timestamp.html" target="_blank">via the YAML date format</a>. Once that's done, I can display them using that built-in toDateString function in a way that makes the dates more human readable.</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e59d4078e5fc07346e15ecc897922e9f583209cc" class="git-commit-link">git commit -am &quot;Adding template parts&quot;</a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e59d4078e5fc07346e15ecc897922e9f583209cc" class="git-commit-link"><code>git commit -am &quot;Adding template parts&quot;</code></a></p>
 <p>Ok back to my reusable post list. I started with a pretty basic version, but it looks to me like <a href="https://www.trysmudford.com/blog/encapsulated-11ty-components/" target="_blank">the right approach is Macros</a>.</p>
 <p>Huh... that didn't work.</p>
 <p>Ok maybe this:</p>
@@ -4635,11 +4663,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 8</title>
+    <title>Source Maps, Site Paths and GitHub Actions</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/"/>
     <updated>2021-06-23T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-8/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4694,7 +4723,9 @@
 </li>
 </ul>
 <h2 id="day-8" tabindex="-1">Day 8</h2>
+<h3 id="source-maps" tabindex="-1">Source Maps</h3>
 <p>So, the Sass source-map is still giving me file:// URLs. This is apparently some sort of weird error in the dart-sass implementation? I found a few issues, all of which seem to point at <a href="https://github.com/sass/libsass/issues/908#issuecomment-76452477" target="_blank">one issue's set of solutions</a>. But none of these worked for me. I'm not really sure why. I think because dart-sass assumes source maps are only used for local development, not also for public-facing examples like I want. But the top of that thread pointed me <a href="https://github.com/joliss/node-sass-source-map-example/blob/master/better-output.js" target="_blank">at a useful build script example</a>.</p>
+<h4 id="filename-fixes" tabindex="-1">Filename Fixes</h4>
 <p>On the basis of that (which still uses dirname for local file paths) I altered it to match my reality of running a local server&quot;</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-9" id="skip-to-code-skip-hello-day-8-9" class="skip-link">Skip code block ▼</a></p>
@@ -4713,6 +4744,7 @@
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-6" id="skip-to-code-skip-hello-day-8-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br />		<span class="token string">"dinky/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/dinky/_sass"</span><span class="token punctuation">,</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br />		<span class="token string">"src/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/src/_sass"</span><span class="token punctuation">,</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-8-6">If this works correctly on publish, it will resolve the last of my base requirements!</p>
+<h3 id="cache-break-with-github" tabindex="-1">Cache Break with GitHub</h3>
 <p>Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's <a href="https://github.com/jekyll/github-metadata" target="_blank">a plugin for Jekyll to do it</a>, it looks like <a href="https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md" target="_blank">it does so at least partially via the Github API</a>. It gets <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">a pretty good list of data too</a>. There's also <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">the &quot;Github Context&quot; which is available to GitHub actions</a>. I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-5" id="skip-to-code-skip-hello-day-8-5" class="skip-link">Skip code block ▼</a></p>
@@ -4729,11 +4761,13 @@
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-3" id="skip-to-code-skip-hello-day-8-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br />  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br />    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br />    <span class="token key atrule">env</span><span class="token punctuation">:</span><br />      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p id="code-skip-hello-day-8-3">Ah, that did it, so now I know how to use both!</p>
+<h3 id="site-maps" tabindex="-1">Site Maps</h3>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
 <p>Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e527c030ea5012de9b0d77fb1d8abeaf92f51bf8" class="git-commit-link"><code>git commit -am &quot;Set up sitemap&quot;</code></a></p>
 <p>Just checking off stuff in this post!</p>
 <p>Looks like the Deep Data Merge is up and running already. I'll do a quick double check and it does appear to work fine!</p>
+<h3 id="managing-page-data" tabindex="-1">Managing Page Data</h3>
 <p>RSS feed next. Need to add the collection tag to my <code>posts.json</code> in <code>src/posts</code> in order to have it properly in a <code>posts</code> collection.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-2" id="skip-to-code-skip-hello-day-8-2" class="skip-link">Skip code block ▼</a></p>
@@ -4745,6 +4779,7 @@
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/#code-skip-hello-day-8-1" id="skip-to-code-skip-hello-day-8-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---js<br />{<br />  "permalink": "feed.xml",<br />  "eleventyExcludeFromCollections": true,<br />  "metadata": {<br />    "title": "Feed for Fight With Tools - Aram's Dev Blog",<br />    "subtitle": "Notes on various projects",<br />    "url": (function(){ return process.env.DOMAIN + "/" })(),<br />    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),<br />    "author": {<br />      "name": "Aram Zucker-Scharff",<br />      "email": "aramdevblog@aramzs.me"<br />    }<br />  },<br />  "internalPageTypes": [ "feed" ]<br />}<br />---</code></pre>
 <p id="code-skip-hello-day-8-1">Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
+<h3 id="robots.txt" tabindex="-1">Robots.txt</h3>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/016bcea57a7cdde543f314b07b98f4adf544a569" class="git-commit-link"><code>git commit -am &quot;Set up various feeds and crawling tools&quot;</code></a></p>
@@ -4752,11 +4787,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 7</title>
+    <title>Part 7: Getting GitHub Actions to Publish my Site</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-7/"/>
     <updated>2021-06-21T02:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-7/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4804,9 +4840,10 @@
 <p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 </ul>
-<h1 id="day-7" tabindex="-1">Day 7</h1>
+<h2 id="day-7" tabindex="-1">Day 7</h2>
 <p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
 <p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
+<h3 id="github-actions-with-node" tabindex="-1">GitHub Actions with Node</h3>
 <p>First is <a href="https://github.com/actions/setup-node" target="_blank">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
 <p>Oh, NVM doesn't automatically use the latest node version huh? Ok, I'll specify the version to match the action on Github. Downloading and installing it now.</p>
 <p><code>npm install</code></p>
@@ -4825,6 +4862,7 @@
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0a5c8daaedff730db83931f989458d8b12fbb02d" class="git-commit-link"><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></a></p>
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
+<h3 id="mapping-the-site" tabindex="-1">Mapping the site</h3>
 <p>While I'm here I should <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io/" target="_blank">github.io</a> user page.</p>
 <p data-wordfix="true">I'll create the correct CNAME file and set up Eleventy to pass it through to the build process.</p>
 <p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
@@ -4837,6 +4875,7 @@
 <p>Finishing off my requirements means handling some Sass to get mapping to work. I can define <code>sourceMap</code> and write the file appropriately, but it looks like I'll need handle two complications, first the relative paths to the source file will have to be passed through so the Sass files can be exposed on the front end. That's easy enough with a few functions in <code>.eleventy.js</code>. But it also apparently will need to have a full, not relative, url.</p>
 <p data-wordfix="true">I thought I might be able to use <a href="https://www.11ty.dev/docs/data-global-custom/" target="_blank">global data added at the config level, but it looks like that isn't available yet</a>. Didn't see that on my first run through as it isn't super obviously called out.</p>
 <p>I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.</p>
+<h3 id="image-and-link-conflicts" tabindex="-1">Image and Link Conflicts</h3>
 <p>Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/devblog/hello-day-7/#code-skip-hello-day-7-1" id="skip-to-code-skip-hello-day-7-1" class="skip-link">Skip code block ▼</a></p>
@@ -4851,11 +4890,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 6</title>
+    <title>Part 6: Starting to deal with GitHub Actions</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-6/"/>
     <updated>2021-06-19T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-6/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4900,9 +4940,10 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1 id="day-6" tabindex="-1">Day 6</h1>
+<h2 id="day-6" tabindex="-1">Day 6</h2>
 <p>Ok, here we go on day 6. Today I write code on a Delta flight.</p>
 <p data-wordfix="true">I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an Eleventy blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.</p>
+<h3 id="looking-at-the-examples" tabindex="-1">Looking at the Examples</h3>
 <p>The most upvoted solution I saw for Github Pages deployment was <a href="https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/" target="_blank">the LinkedIn post by Lea Tortay</a> I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.</p>
 <p>Oh, lol the wifi was only free for the first 5 minutes I guess? Ok, I'll pay.</p>
 <p>Hmmmmm Captive Portal problems. Time to reboot.</p>
@@ -4913,10 +4954,12 @@
 <p>Ooops, I was fiddling with trying to build a useful gitignore file for docs and passing it through and accidentally deleted all my layouts.</p>
 <p>Let me pull those files back in from the last good commit: <code>git checkout 32e6206c0680d9009a316b85e33461479058d81d src/_layouts/*</code></p>
 <p>Yup that did it. My Index file is back.</p>
+<h3 id="finding-github-actions-log" tabindex="-1">Finding GitHub Actions log</h3>
 <p>Build still isn't working. Hmmm where are the logs for this?</p>
 <p>Ok, <a href="https://github.com/AramZS/devblog/actions" target="_blank">in the Actions tab</a>, not in settings.</p>
 <p>Looks like it isn't pulling in Dinky properly as a submodule because <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages" target="_blank">Github Pages needs the https url for the repo in .gitsubmodules</a>.</p>
 <p>Hmmm, still not working.</p>
+<h3 id="fixing-submodules" tabindex="-1">Fixing Submodules</h3>
 <p>Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but <a href="https://github.com/actions/checkout" target="_blank">the default configuration of the checkout action doesn't</a>. I just need to add that property to the yml file.</p>
 <p>Oh, and fix my <code>.editorconfig</code> to work better with yml files.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/88c0d76e164179a2626941d0e3c1f35113e39326" class="git-commit-link"><code>git commit -am &quot;Get submodules working for github actions hopefully&quot;</code></a></p>
@@ -4933,11 +4976,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 5</title>
+    <title>Part 5: Image Handling and CSS Improvements</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-5/"/>
     <updated>2021-06-17T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-5/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -4982,8 +5026,9 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1 id="day-5" tabindex="-1">Day 5</h1>
+<h2 id="day-5" tabindex="-1">Day 5</h2>
 <p>Ok, yesterday I didn't have that much time to work, but today I'm feeling as good as I can after having my main battery and a whole bunch of USB sticks, a Yubi key, and my main external Anker power battery robbed out of the back of a rental car in San Antonio yesterday.</p>
+<h3 id="figuring-out-the-images" tabindex="-1">Figuring out the Images</h3>
 <p>Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.</p>
 <p>So, since it hasn't been a great 24hs IRL, let's see if I can harvest a few more easy wins.</p>
 <p>How do the GitHub variables work for cachebreaking? That seems like a potentially non-obvious but relatively easy win. A-searching we do go.</p>
@@ -5003,6 +5048,7 @@
 <div style="border: 2px black solid">
 <p><img src="https://fightwithtools.dev/img/links-and-not-links.png" alt="Links look bad inside the text." /></p>
 </div>
+<h3 id="making-links-more-visible" tabindex="-1">Making Links More Visible</h3>
 <p>This comes from that whole annoying school of &quot;native link styles are ugly so let's change them as much as possible and try to use some other thing to indicate they are links.&quot;</p>
 <p>That school is one I do not attend. Clear and legible UX has to build on top of standards of design the user is familiar with lest a site confuse the reader. I can give any theme some room, you can remove underlines, or change the color to something other than close-to-link-blue, but both?! Nien.</p>
 <p>Huh... first things first... that Sass folder should really be in <code>src</code>.</p>
@@ -5015,11 +5061,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 4</title>
+    <title>Part 4: A quick run at syntax highlighting</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-4/"/>
     <updated>2021-06-16T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-4/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -5038,7 +5085,7 @@
 <p data-wordfix="true">[ ] How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
 <p>[ ] Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
 <p>[ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
-<h1 id="day-4" tabindex="-1">Day 4</h1>
+<h2 id="day-4" tabindex="-1">Day 4</h2>
 <p>Ok, don't have a ton of time to work today, but I've been thinking more about the shitty code blocks.</p>
 <p>The core of the problem is that I can't even apply styles the way I want because the code is not being broken down properly.</p>
 <p>Here's what I'm getting:</p>
@@ -5060,11 +5107,12 @@
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 3</title>
+    <title>Part 3: Deciding on a template tool</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-3/"/>
     <updated>2021-06-15T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-3/</id>
-    <content type="html"><ol>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -5162,12 +5210,13 @@ indent_style = space
   </entry>
   
   <entry>
-    <title>Hello World Devblog - Pt. 2</title>
+    <title>Hello World Devblog - Day 2</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-2/"/>
     <updated>2021-06-14T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-2/</id>
     <content type="html"><h2 id="day-2" tabindex="-1">Day 2</h2>
 <p>Ok, day 2. Let's restate the requirements and todos!</p>
+<h3 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h3>
 <ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
@@ -5246,7 +5295,7 @@ indent_style = space
   </entry>
   
   <entry>
-    <title>Day 1 of starting an Eleventy blog</title>
+    <title>Hello World - A Dev Blog</title>
     <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-1/"/>
     <updated>2021-06-13T03:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-1/</id>

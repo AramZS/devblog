@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 11</title>
+            <title>Part 11: Nunjucks and Shortcodes</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 11">
+    content="Part 11: Nunjucks and Shortcodes">
 
 <meta property="og:description"
-    content="Part 8 of setting up 11ty dev blog.">
+    content="Day 8 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 8 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Day 8 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 11" />
+<meta name="twitter:title" content="Part 11: Nunjucks and Shortcodes" />
 
 
 
@@ -95,7 +95,9 @@
     
     <meta property="article:tag" content="Sass" />
     
-    <meta property="article:tag" content="Github Actions" />
+    <meta property="article:tag" content="Nunjucks" />
+    
+    <meta property="article:tag" content="Shortcodes" />
     
     <meta property="article:tag" content="WiP" />
     
@@ -107,8 +109,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-11/",
-        "headline": "Hello World Devblog - Pt. 11",
-        "about": "Part 8 of setting up 11ty dev blog.",
+        "headline": "Part 11: Nunjucks and Shortcodes",
+        "about": "Day 8 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -203,11 +205,11 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 11
+                            Part 11: Nunjucks and Shortcodes
                         </h1>
                         
                         
-                        <p class="header">Getting this dev blog running</p>
+                        <p class="header">Figuring out how to use shortcodes</p>
                         
                     
                     
@@ -224,10 +226,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-11">Day 11</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-11">Day 11</a><ol><li><a href="#difficulties-with-nunjucks-library-setup">Difficulties with Nunjucks Library Setup</a></li><li><a href="#shortcodes">Shortcodes</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 8 of setting up 11ty dev blog.</div>
+        <div id="post-description">Day 8 of setting up 11ty dev blog.</div>
 
         
 
@@ -235,7 +237,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -293,12 +296,14 @@
 <p data-wordfix="true">Ok, still not getting Macros working exactly the way I wanted. It would be really useful to have Eleventy throw actual errors as part of this, but when I tried to set my own version of the Nunjucks Environment I kept hitting against undocumented settings that Eleventy apparently sets up. This is getting way off the main thing I was trying to build. I could dive deeper in, but this site still isn't live and I would like to get it to that point first. So, for now, I'm going to just drop it.</p>
 <p>But before I do, I do think this is a major problem and would be useful for eleventy to fix. So, let's check issues one last time, and check if there is something for me to file.</p>
 <p>It looks like <a href="https://github.com/11ty/eleventy/issues/895" target="_blank">there is an issue in the right space</a>, but the suggested solution on the issue doesn't work. If I <a href="https://github.com/pdehaan/11ty-blog-ideas/issues/7" target="_blank">follow through the tickets</a> a little more I can <a href="https://github.com/pdehaan/11ty-nunjucks-config/blob/master/.eleventy.js" target="_blank">see another suggested solution</a>. But it doesn't solve the issue with the raw tags no longer working either.</p>
+<h3 id="difficulties-with-nunjucks-library-setup" tabindex="-1">Difficulties with Nunjucks Library Setup</h3>
 <p>I don't understand. <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L128" target="_blank">This</a> <em>should</em> work. I even checked to make sure my version of Nunjucks is the same! I even tried removing one of the files, but now my Nunjucks execution is failing on a different chunk of JS in the <code>js</code> front matter block in <code>rss2-feed.njk</code>.</p>
 <p>So let's add my voice.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f8732c00f54cbf1bf2b50e258b0bb8500af58487" class="git-commit-link"><code>git commit -am &quot;Bookmarking attempt to set custom NJK library.&quot;</code></a></p>
 <p>A quick bookmark of the current state of the site to help the Eleventy folks with debugging my issue!</p>
 <p>And now <a href="https://github.com/11ty/eleventy/issues/1879" target="_blank">a write up</a>!</p>
 <p>Ok, let's move on!</p>
+<h3 id="shortcodes" tabindex="-1">Shortcodes</h3>
 <p data-wordfix="true">I'm going to give up on Macros for now and instead I'll <a href="https://www.11ty.dev/docs/languages/nunjucks/#single-shortcode" target="_blank">use a Shortcode</a>.</p>
 <p>Ok, honestly this is a <strong>ton</strong> easier. I should have just gone this direction in the first place.</p>
 <p class="skip-link-graf">
@@ -380,7 +385,9 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
+                    <a href="https://fightwithtools.dev/tag/nunjucks">Nunjucks</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/shortcodes">Shortcodes</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>

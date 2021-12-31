@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 10</title>
+            <title>Part 11: Nunjucks and Macros</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 10">
+    content="Part 11: Nunjucks and Macros">
 
 <meta property="og:description"
-    content="Part 8 of setting up 11ty dev blog.">
+    content="Day 10 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 8 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Day 10 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 10" />
+<meta name="twitter:title" content="Part 11: Nunjucks and Macros" />
 
 
 
@@ -93,9 +93,7 @@
     
     <meta property="article:tag" content="Node" />
     
-    <meta property="article:tag" content="Sass" />
-    
-    <meta property="article:tag" content="Github Actions" />
+    <meta property="article:tag" content="Nunjucks" />
     
     <meta property="article:tag" content="WiP" />
     
@@ -107,8 +105,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-10/",
-        "headline": "Hello World Devblog - Pt. 10",
-        "about": "Part 8 of setting up 11ty dev blog.",
+        "headline": "Part 11: Nunjucks and Macros",
+        "about": "Day 10 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -203,7 +201,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 10
+                            Part 11: Nunjucks and Macros
                         </h1>
                         
                         
@@ -224,10 +222,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-10">Day 10</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-10">Day 10</a><ol><li><a href="#macros">Macros</a></li><li><a href="#eleventy-and-nunjucks">Eleventy and Nunjucks</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 8 of setting up 11ty dev blog.</div>
+        <div id="post-description">Day 10 of setting up 11ty dev blog.</div>
 
         
 
@@ -235,7 +233,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -294,6 +293,7 @@
 <p>Ok, I forgot to change the argument that was passed in the macros file and when I did that it worked.</p>
 <p>So... progress!</p>
 <p>Now let's try and figure out how to make it more useful.</p>
+<h3 id="macros" tabindex="-1">Macros</h3>
 <p>There are some interesting things you can do with Macros! I really would like to get it to work, so before we go the filter route, let's see if we can make my intended methodology work. This seems like it would be a thing people would want to do! So some more web searching may be in order.</p>
 <p data-wordfix="true">Ok, after trying a few different search terms <a href="https://stackoverflow.com/questions/50685814/nunjucks-nested-variables" target="_blank">I've found a useful middle ground</a>. But I know that <a href="https://www.11ty.dev/docs/languages/nunjucks/#filters" target="_blank">Nunjucks applies filters in a specific way in Eleventy</a>.</p>
 <p data-wordfix="true">Hmmm, apparently part of the issue <a href="https://github.com/11ty/eleventy/issues/354#issuecomment-449904901" target="_blank">is that Nunjucks fails silently on rendering stuff</a>. Is there a way to turn it off? Looks like first <a href="https://www.11ty.dev/docs/languages/nunjucks/#optional-use-your-nunjucks-environment" target="_blank">I'll have to redefine the Nunjucks rendering environment</a>.</p>
@@ -308,6 +308,7 @@
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">let</span> nunjucksEnvironment <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>Environment</span><span class="token punctuation">(</span><br>		<span class="token keyword">new</span> <span class="token class-name">Nunjucks<span class="token punctuation">.</span>FileSystemLoader</span><span class="token punctuation">(</span>siteConfiguration<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>includes<span class="token punctuation">,</span><br>		<span class="token punctuation">{</span><br>			throwOnUndefined<span class="token operator">:</span> throwOnUndefinedSetting<br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><span class="token string">"njk"</span><span class="token punctuation">,</span> nunjucksEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-10-2">Ok... interesting... when I set it up, it no longer reads the include statement properly, which calls a template located in <code>src/_layouts</code> and passed into the configuration object to Eleventy as <code>dir.layouts</code>:</p>
 <p><code>{% extends &quot;base.njk&quot; %}</code></p>
+<h3 data-wordfix="true" id="eleventy-and-nunjucks" tabindex="-1">Eleventy and Nunjucks</h3>
 <p data-wordfix="true">Hmmmm. Well <a href="https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L124" target="_blank">let's take a look at how Eleventy configures it</a>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-10-1" id="skip-to-code-skip-hello-day-10-1" class="skip-link">Skip code block ▼</a></p>
@@ -373,9 +374,7 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/node">Node</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/sass">Sass</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
+                    <a href="https://fightwithtools.dev/tag/nunjucks">Nunjucks</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>

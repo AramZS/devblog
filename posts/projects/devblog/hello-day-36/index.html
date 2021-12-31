@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 36</title>
+            <title>Part 36: A Markdown It Plugin - Understand the Ruler</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 36">
+    content="Part 36: A Markdown It Plugin - Understand the Ruler">
 
 <meta property="og:description"
     content="More devblog">
@@ -53,7 +53,7 @@
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 36" />
+<meta name="twitter:title" content="Part 36: A Markdown It Plugin - Understand the Ruler" />
 
 
 
@@ -105,7 +105,7 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-36/",
-        "headline": "Hello World Devblog - Pt. 36",
+        "headline": "Part 36: A Markdown It Plugin - Understand the Ruler",
         "about": "More devblog",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -201,7 +201,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 36
+                            Part 36: A Markdown It Plugin - Understand the Ruler
                         </h1>
                         
                         
@@ -367,7 +367,7 @@
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-36-2" id="skip-to-code-skip-hello-day-36-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>  <span class="token string">'defaults'</span><span class="token punctuation">,</span>      <span class="token string">'description'</span><span class="token punctuation">,</span><br>  <span class="token string">'layout'</span><span class="token punctuation">,</span>        <span class="token string">'projects'</span><span class="token punctuation">,</span><br>  <span class="token string">'site'</span><span class="token punctuation">,</span>          <span class="token string">'pkg'</span><span class="token punctuation">,</span><br>  <span class="token string">'tags'</span><span class="token punctuation">,</span>          <span class="token string">'date'</span><span class="token punctuation">,</span><br>  <span class="token string">'project'</span><span class="token punctuation">,</span>       <span class="token string">'repo'</span><span class="token punctuation">,</span><br>  <span class="token string">'featuredImage'</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">,</span><br>  <span class="token string">'subtitle'</span><span class="token punctuation">,</span>      <span class="token string">'page'</span><span class="token punctuation">,</span><br>  <span class="token string">'collections'</span><br><span class="token punctuation">]</span></code></pre>
-<p id="code-skip-hello-day-36-2">Ok, a little more exprementation and it looks like I can definetly use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!</p>
+<p id="code-skip-hello-day-36-2">Ok, a little more experimentation and it looks like I can definitely use this approach to capture my commit messages in my posts! Function now looks like this and I am seeing the git commit messages I write to mark my commits in blog posts!</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-36-1" id="skip-to-code-skip-hello-day-36-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">md</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'rules'</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">)</span><span class="token punctuation">)</span><br>			<span class="token keyword">const</span> 	defaultRender <span class="token operator">=</span> md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">.</span>code_inline<span class="token punctuation">,</span><br>					testPattern <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">git commit \-am \"</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><br><br>			md<span class="token punctuation">.</span>renderer<span class="token punctuation">.</span>rules<span class="token punctuation">.</span><span class="token function-variable function">code_inline</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">tokens<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> options<span class="token punctuation">,</span> env<span class="token punctuation">,</span> self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'env '</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> env<span class="token punctuation">.</span>repo<span class="token punctuation">)</span><br>				<span class="token keyword">var</span> token <span class="token operator">=</span> tokens<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span><br>				content <span class="token operator">=</span> token<span class="token punctuation">.</span>content<span class="token punctuation">;</span><br>				<span class="token keyword">if</span> <span class="token punctuation">(</span>testPattern<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'git content:'</span><span class="token punctuation">,</span> content<span class="token punctuation">)</span><br>				<span class="token punctuation">}</span><br>				<span class="token comment">// pass token to default renderer.</span><br>				<span class="token keyword">return</span> <span class="token function">defaultRender</span><span class="token punctuation">(</span>tokens<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> options<span class="token punctuation">,</span> env<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>

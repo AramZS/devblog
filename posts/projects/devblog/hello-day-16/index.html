@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 16</title>
+            <title>Part 16: Taking a run at Markdown It Plugins</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 16">
+    content="Part 16: Taking a run at Markdown It Plugins">
 
 <meta property="og:description"
-    content="Part 16 of setting up 11ty dev blog.">
+    content="Day 16 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 16 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Day 16 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 16" />
+<meta name="twitter:title" content="Part 16: Taking a run at Markdown It Plugins" />
 
 
 
@@ -95,7 +95,7 @@
     
     <meta property="article:tag" content="Sass" />
     
-    <meta property="article:tag" content="Github Actions" />
+    <meta property="article:tag" content="Markdown-It" />
     
     <meta property="article:tag" content="WiP" />
     
@@ -107,8 +107,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-16/",
-        "headline": "Hello World Devblog - Pt. 16",
-        "about": "Part 16 of setting up 11ty dev blog.",
+        "headline": "Part 16: Taking a run at Markdown It Plugins",
+        "about": "Day 16 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -203,7 +203,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 16
+                            Part 16: Taking a run at Markdown It Plugins
                         </h1>
                         
                         
@@ -224,10 +224,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-16">Day 16</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-16">Day 16</a><ol><li><a href="#run-one-at-a-markdown-it-plugins">Run One at a Markdown It Plugins</a></li><li><a href="#trying-to-figure-out-the-markdown-it-data-structure">Trying to Figure Out the Markdown It Data Structure</a></li><li><a href="#markdown-it-and-regexp">Markdown It and Regexp</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 16 of setting up 11ty dev blog.</div>
+        <div id="post-description">Day 16 of setting up 11ty dev blog.</div>
 
         
 
@@ -235,7 +235,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -291,6 +292,7 @@
 </ul>
 <h2 id="day-16" tabindex="-1">Day 16</h2>
 <p>Ok, so I'd like to continue using my shortcuts like <code>b/c</code> or <code>prob</code>. Seems like the way to go there is to set it up as a markdown-it shortcode. I'd like to try my hand at that.</p>
+<h3 id="run-one-at-a-markdown-it-plugins" tabindex="-1">Run One at a Markdown It Plugins</h3>
 <p>We can take a look at <a href="https://github.com/markdown-it/markdown-it#api" target="_blank">Markdown-it's documentation</a> for help here.</p>
 <p>Oh, README says this is the wrong place to look at for plugins. Ok.</p>
 <p><a href="https://github.com/markdown-it/markdown-it/tree/master/docs" target="_blank">Info for plugin developers</a>... ok, two links in here.</p>
@@ -301,6 +303,7 @@
 <p>Ok, that worked!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/f7e81ae7548dda8e7f9186f9a0d4861b366a7482" class="git-commit-link"><code>git commit -am &quot;Add anchors to headers&quot;</code></a></p>
 <p>Oh, there are some good looking markdown-it plugins here. I'm going to install <a href="https://www.npmjs.com/package/@gerhobbelt/markdown-it-footnote" target="_blank">the footnote one</a> as well. Oh that didn't work. I'll try <a href="https://github.com/markdown-it/markdown-it-footnote" target="_blank">the base one instead</a> in a little bit.</p>
+<h3 id="trying-to-figure-out-the-markdown-it-data-structure" tabindex="-1">Trying to Figure Out the Markdown It Data Structure</h3>
 <p>Ok... What's a basic looking plugin I can look at easily as an example? The <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks/blob/master/index.js" target="_blank">Wikilinks plugin</a> looks good.</p>
 <p>Ok so... no particular described format and I don't feel like digging through the markdown-it code to figure out how these plugins are supposed to work. Not the most developer friendly library I guess.</p>
 <p>Ok, to facilitate a similar structure, I'll take the Wikilinks plugin and place it in my own folder under <code>_custom-plugins</code>. I'm not going to be taking in options right now, so I can remove that stuff from the plugin.</p>
@@ -312,6 +315,7 @@
 <p>Oh, oops, the pattern I'm using from the Wikilinks plugin, <a href="https://github.com/kwvanderlinde/markdown-it-wikilinks#usage" target="_blank">means I have to execute it as a function first</a>.</p>
 <p>Hmmmm. Still no go. Is the plugin even initiating? Let's put a console.log outside of the return statement and see.</p>
 <p>Ok, the console.log outside of the return fired (once I exited watch mode and restarted it, I guess plugins don't get reloaded during <code>watch</code> mode?). But it isn't treating my text?</p>
+<h3 id="markdown-it-and-regexp" tabindex="-1">Markdown It and Regexp</h3>
 <p>Ok, <a href="https://jsfiddle.net/yd2gLxev/" target="_blank">the sample code</a> given in the Readme of <code>markdown-it-regexp</code> doesn't work. It's just failing silently. This isn't a good sign. But there seem to be more modern plugins using it fine? Ok, the issue seems to be with how the jsfiddle is setup. When I set it up in a Glitch site, it seems to work just fine.</p>
 <p>Ok, now I am even more annoyed that this isn't working. It should, by all rights. All I can think is that it must have something to do with the specific way eleventy implements Markdown-It?</p>
 <p>I tried returning the <code>Plugin</code> function from <code>markdown-it-regexp</code>. No go there either. Frustrating. Just none of this stuff is executing. I'm starting to think that maybe this is a lost cause. It isn't working and I'm wondering if I should <a href="https://www.npmjs.com/package/markdown-it-regex" target="_blank">switch to trying out another option</a>. Nothing but silent failures. Nothing is working.</p>
@@ -327,7 +331,7 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/devblog/hello-day-15/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/devblog/hello-day-14/" class="pagination-link cursor-pointer ">Previous Day</a>
 
             <a href="/posts/projects/devblog/hello-day-17/" class="pagination-link cursor-pointer ">Next Day</a>
         </div>
@@ -377,7 +381,7 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
+                    <a href="https://fightwithtools.dev/tag/markdown-it">Markdown-It</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>

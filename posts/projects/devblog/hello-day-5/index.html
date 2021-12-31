@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 5</title>
+            <title>Part 5: Image Handling and CSS Improvements</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 5">
+    content="Part 5: Image Handling and CSS Improvements">
 
 <meta property="og:description"
-    content="Part 3 of setting up 11ty dev blog.">
+    content="Part 5 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 3 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Part 5 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 5" />
+<meta name="twitter:title" content="Part 5: Image Handling and CSS Improvements" />
 
 
 
@@ -97,6 +97,12 @@
     
     <meta property="article:tag" content="WiP" />
     
+    <meta property="article:tag" content="CSS" />
+    
+    <meta property="article:tag" content="GitHub" />
+    
+    <meta property="article:tag" content="Cache breaking" />
+    
 
 
 
@@ -105,8 +111,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-5/",
-        "headline": "Hello World Devblog - Pt. 5",
-        "about": "Part 3 of setting up 11ty dev blog.",
+        "headline": "Part 5: Image Handling and CSS Improvements",
+        "about": "Part 5 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -201,7 +207,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 5
+                            Part 5: Image Handling and CSS Improvements
                         </h1>
                         
                         
@@ -222,10 +228,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-5">Day 5</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-5">Day 5</a><ol><li><a href="#figuring-out-the-images">Figuring out the Images</a></li><li><a href="#making-links-more-visible">Making Links More Visible</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 3 of setting up 11ty dev blog.</div>
+        <div id="post-description">Part 5 of setting up 11ty dev blog.</div>
 
         
 
@@ -233,7 +239,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -278,8 +285,9 @@
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 </ul>
-<h1 id="day-5" tabindex="-1">Day 5</h1>
+<h2 id="day-5" tabindex="-1">Day 5</h2>
 <p>Ok, yesterday I didn't have that much time to work, but today I'm feeling as good as I can after having my main battery and a whole bunch of USB sticks, a Yubi key, and my main external Anker power battery robbed out of the back of a rental car in San Antonio yesterday.</p>
+<h3 id="figuring-out-the-images" tabindex="-1">Figuring out the Images</h3>
 <p>Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.</p>
 <p>So, since it hasn't been a great 24hs IRL, let's see if I can harvest a few more easy wins.</p>
 <p>How do the GitHub variables work for cachebreaking? That seems like a potentially non-obvious but relatively easy win. A-searching we do go.</p>
@@ -299,6 +307,7 @@
 <div style="border: 2px black solid">
 <p><img src="https://fightwithtools.dev/img/links-and-not-links.png" alt="Links look bad inside the text."></p>
 </div>
+<h3 id="making-links-more-visible" tabindex="-1">Making Links More Visible</h3>
 <p>This comes from that whole annoying school of &quot;native link styles are ugly so let's change them as much as possible and try to use some other thing to indicate they are links.&quot;</p>
 <p>That school is one I do not attend. Clear and legible UX has to build on top of standards of design the user is familiar with lest a site confuse the reader. I can give any theme some room, you can remove underlines, or change the color to something other than close-to-link-blue, but both?! Nien.</p>
 <p>Huh... first things first... that Sass folder should really be in <code>src</code>.</p>
@@ -367,6 +376,12 @@
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/css">CSS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/github">GitHub</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/cache-breaking">Cache breaking</a>
                 </li></ul>
     </div>
 

@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 8</title>
+            <title>Source Maps, Site Paths and GitHub Actions</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 8">
+    content="Source Maps, Site Paths and GitHub Actions">
 
 <meta property="og:description"
     content="Part 8 of setting up 11ty dev blog.">
@@ -53,7 +53,7 @@
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 8" />
+<meta name="twitter:title" content="Source Maps, Site Paths and GitHub Actions" />
 
 
 
@@ -95,7 +95,17 @@
     
     <meta property="article:tag" content="Sass" />
     
-    <meta property="article:tag" content="Github Actions" />
+    <meta property="article:tag" content="CSS" />
+    
+    <meta property="article:tag" content="Source Maps" />
+    
+    <meta property="article:tag" content="Sitemaps" />
+    
+    <meta property="article:tag" content="SEO" />
+    
+    <meta property="article:tag" content="GitHub Actions" />
+    
+    <meta property="article:tag" content="Cachebreak" />
     
     <meta property="article:tag" content="WiP" />
     
@@ -107,7 +117,7 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-8/",
-        "headline": "Hello World Devblog - Pt. 8",
+        "headline": "Source Maps, Site Paths and GitHub Actions",
         "about": "Part 8 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -203,11 +213,11 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 8
+                            Source Maps, Site Paths and GitHub Actions
                         </h1>
                         
                         
-                        <p class="header">Getting this dev blog running</p>
+                        <p class="header">Deploying a site friendly to View Source</p>
                         
                     
                     
@@ -224,7 +234,7 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-8">Day 8</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-8">Day 8</a><ol><li><a href="#source-maps">Source Maps</a><ol><li><a href="#filename-fixes">Filename Fixes</a></li></ol></li><li><a href="#cache-break-with-github">Cache Break with GitHub</a></li><li><a href="#site-maps">Site Maps</a></li><li><a href="#managing-page-data">Managing Page Data</a></li><li><a href="#robots.txt">Robots.txt</a></li></ol></li></ol></nav>
             </div>
         </aside>
         <div id="post-description">Part 8 of setting up 11ty dev blog.</div>
@@ -235,7 +245,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -290,7 +301,9 @@
 </li>
 </ul>
 <h2 id="day-8" tabindex="-1">Day 8</h2>
+<h3 id="source-maps" tabindex="-1">Source Maps</h3>
 <p>So, the Sass source-map is still giving me file:// URLs. This is apparently some sort of weird error in the dart-sass implementation? I found a few issues, all of which seem to point at <a href="https://github.com/sass/libsass/issues/908#issuecomment-76452477" target="_blank">one issue's set of solutions</a>. But none of these worked for me. I'm not really sure why. I think because dart-sass assumes source maps are only used for local development, not also for public-facing examples like I want. But the top of that thread pointed me <a href="https://github.com/joliss/node-sass-source-map-example/blob/master/better-output.js" target="_blank">at a useful build script example</a>.</p>
+<h4 id="filename-fixes" tabindex="-1">Filename Fixes</h4>
 <p>On the basis of that (which still uses dirname for local file paths) I altered it to match my reality of running a local server&quot;</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-9" id="skip-to-code-skip-hello-day-8-9" class="skip-link">Skip code block ▼</a></p>
@@ -309,6 +322,7 @@
 <a href="#code-skip-hello-day-8-6" id="skip-to-code-skip-hello-day-8-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string">"dinky/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/dinky/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string">"src/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/src/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-8-6">If this works correctly on publish, it will resolve the last of my base requirements!</p>
+<h3 id="cache-break-with-github" tabindex="-1">Cache Break with GitHub</h3>
 <p>Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's <a href="https://github.com/jekyll/github-metadata" target="_blank">a plugin for Jekyll to do it</a>, it looks like <a href="https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md" target="_blank">it does so at least partially via the Github API</a>. It gets <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">a pretty good list of data too</a>. There's also <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">the &quot;Github Context&quot; which is available to GitHub actions</a>. I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-5" id="skip-to-code-skip-hello-day-8-5" class="skip-link">Skip code block ▼</a></p>
@@ -325,11 +339,13 @@
 <a href="#code-skip-hello-day-8-3" id="skip-to-code-skip-hello-day-8-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
 <p id="code-skip-hello-day-8-3">Ah, that did it, so now I know how to use both!</p>
+<h3 id="site-maps" tabindex="-1">Site Maps</h3>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
 <p>Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e527c030ea5012de9b0d77fb1d8abeaf92f51bf8" class="git-commit-link"><code>git commit -am &quot;Set up sitemap&quot;</code></a></p>
 <p>Just checking off stuff in this post!</p>
 <p>Looks like the Deep Data Merge is up and running already. I'll do a quick double check and it does appear to work fine!</p>
+<h3 id="managing-page-data" tabindex="-1">Managing Page Data</h3>
 <p>RSS feed next. Need to add the collection tag to my <code>posts.json</code> in <code>src/posts</code> in order to have it properly in a <code>posts</code> collection.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-2" id="skip-to-code-skip-hello-day-8-2" class="skip-link">Skip code block ▼</a></p>
@@ -341,6 +357,7 @@
 <a href="#code-skip-hello-day-8-1" id="skip-to-code-skip-hello-day-8-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---js<br>{<br>  "permalink": "feed.xml",<br>  "eleventyExcludeFromCollections": true,<br>  "metadata": {<br>    "title": "Feed for Fight With Tools - Aram's Dev Blog",<br>    "subtitle": "Notes on various projects",<br>    "url": (function(){ return process.env.DOMAIN + "/" })(),<br>    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),<br>    "author": {<br>      "name": "Aram Zucker-Scharff",<br>      "email": "aramdevblog@aramzs.me"<br>    }<br>  },<br>  "internalPageTypes": [ "feed" ]<br>}<br>---</code></pre>
 <p id="code-skip-hello-day-8-1">Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
+<h3 id="robots.txt" tabindex="-1">Robots.txt</h3>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/016bcea57a7cdde543f314b07b98f4adf544a569" class="git-commit-link"><code>git commit -am &quot;Set up various feeds and crawling tools&quot;</code></a></p>
@@ -403,7 +420,17 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
+                    <a href="https://fightwithtools.dev/tag/css">CSS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/source-maps">Source Maps</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/sitemaps">Sitemaps</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/seo">SEO</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/github-actions">GitHub Actions</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/cachebreak">Cachebreak</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>

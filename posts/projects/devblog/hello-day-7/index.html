@@ -8,18 +8,18 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 7</title>
+            <title>Part 7: Getting GitHub Actions to Publish my Site</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1639654977" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1641531097" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1639654977" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1641531097" id=""></link>
 
             
-            <!-- Build Revision: 1639654977 & Sha: 8c2a0ae0578c3488ecdab7abc332911b43acefc8 -->
+            <!-- Build Revision: 1641531097 & Sha: 67708bceb014bc0f17910921bb8decce682358d2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -31,10 +31,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Hello World Devblog - Pt. 7">
+    content="Part 7: Getting GitHub Actions to Publish my Site">
 
 <meta property="og:description"
-    content="Part 7 of setting up 11ty dev blog.">
+    content="Day 7 of setting up 11ty dev blog.">
 
 
 <meta property="og:url"
@@ -46,14 +46,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 7 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Day 7 of setting up 11ty dev blog." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Hello World Devblog - Pt. 7" />
+<meta name="twitter:title" content="Part 7: Getting GitHub Actions to Publish my Site" />
 
 
 
@@ -95,9 +95,11 @@
     
     <meta property="article:tag" content="Sass" />
     
-    <meta property="article:tag" content="Github Actions" />
+    <meta property="article:tag" content="GitHub Actions" />
     
     <meta property="article:tag" content="WiP" />
+    
+    <meta property="article:tag" content="GitHub" />
     
 
 
@@ -107,8 +109,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-7/",
-        "headline": "Hello World Devblog - Pt. 7",
-        "about": "Part 7 of setting up 11ty dev blog.",
+        "headline": "Part 7: Getting GitHub Actions to Publish my Site",
+        "about": "Day 7 of setting up 11ty dev blog.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -203,7 +205,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Hello World Devblog - Pt. 7
+                            Part 7: Getting GitHub Actions to Publish my Site
                         </h1>
                         
                         
@@ -224,10 +226,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#day-7">Day 7</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-7">Day 7</a><ol><li><a href="#github-actions-with-node">GitHub Actions with Node</a></li><li><a href="#mapping-the-site">Mapping the site</a></li><li><a href="#image-and-link-conflicts">Image and Link Conflicts</a></li></ol></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 7 of setting up 11ty dev blog.</div>
+        <div id="post-description">Day 7 of setting up 11ty dev blog.</div>
 
         
 
@@ -235,7 +237,8 @@
 
                     <section id="maincontent" class="maincontent">
                     
-                        <ol>
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
 <li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
 <li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
 <li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
@@ -283,9 +286,10 @@
 <p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 </ul>
-<h1 id="day-7" tabindex="-1">Day 7</h1>
+<h2 id="day-7" tabindex="-1">Day 7</h2>
 <p>Ok, after struggling with the plane wifi and spending some time talking to my row-mate about us both being web engineers, I didn't get quite as much as I had planned done on the plane. So we're back with an empty build branch.</p>
 <p>Time to get back to it. I think the first thing is to check the various GitHub actions. I'd hoped they'd work right out of the box but no-go (maybe?). The LinkedIn post was helpful, but the fact that the author's project is no longer public makes it a pain to make sure I'm following directions properly.</p>
+<h3 id="github-actions-with-node" tabindex="-1">GitHub Actions with Node</h3>
 <p>First is <a href="https://github.com/actions/setup-node" target="_blank">setup-node</a>. And some immediate things pop out at me. First I'd set up with Node 15 locally. But it looks like this action is only able to use up to and including Node 14. So, let's use nvm and rebuild the node_modules and package-lock.json files with Node 14. Deleting them both, changing the value in <code>.nvmrc</code> and rebooting my terminal.</p>
 <p>Oh, NVM doesn't automatically use the latest node version huh? Ok, I'll specify the version to match the action on Github. Downloading and installing it now.</p>
 <p><code>npm install</code></p>
@@ -304,6 +308,7 @@
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0a5c8daaedff730db83931f989458d8b12fbb02d" class="git-commit-link"><code>git commit -am &quot;Remove the gitignore rewrite&quot;</code></a></p>
 <p>I also originally had the folder set for Github Pages to be <code>/docs</code> but that's not how this works, the action publishes the content inside the docs folder to the root of the <code>gh-pages</code> branch. I have to fix that in the repo settings.</p>
 <p>Sweet, I see a page now! Just have to fix how the stylesheet works in the build environment!</p>
+<h3 id="mapping-the-site" tabindex="-1">Mapping the site</h3>
 <p>While I'm here I should <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">map my apex domain to the Github Site</a>. Easy enough, create a bunch of A records in GoDaddy's DNS controls and then direct my <code>www</code> record CNAME to my <a href="http://github.io" target="_blank">github.io</a> user page.</p>
 <p data-wordfix="true">I'll create the correct CNAME file and set up Eleventy to pass it through to the build process.</p>
 <p><code>eleventyConfig.addPassthroughCopy(&quot;./CNAME&quot;);</code></p>
@@ -316,6 +321,7 @@
 <p>Finishing off my requirements means handling some Sass to get mapping to work. I can define <code>sourceMap</code> and write the file appropriately, but it looks like I'll need handle two complications, first the relative paths to the source file will have to be passed through so the Sass files can be exposed on the front end. That's easy enough with a few functions in <code>.eleventy.js</code>. But it also apparently will need to have a full, not relative, url.</p>
 <p data-wordfix="true">I thought I might be able to use <a href="https://www.11ty.dev/docs/data-global-custom/" target="_blank">global data added at the config level, but it looks like that isn't available yet</a>. Didn't see that on my first run through as it isn't super obviously called out.</p>
 <p>I decided to use a combination of dotenv and setting some internal Node-level variables here to set up the domain name once and reuse it elsewhere.</p>
+<h3 id="image-and-link-conflicts" tabindex="-1">Image and Link Conflicts</h3>
 <p>Hmmm, while trying to debug I noticed my image rewrite method was also applying to all links. Oops. I'll need to pass in a smarter function.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-7-1" id="skip-to-code-skip-hello-day-7-1" class="skip-link">Skip code block ▼</a></p>
@@ -385,9 +391,11 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/github-actions">Github Actions</a>
+                    <a href="https://fightwithtools.dev/tag/github-actions">GitHub Actions</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/github">GitHub</a>
                 </li></ul>
     </div>
 
