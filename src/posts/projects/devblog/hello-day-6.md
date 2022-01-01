@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 6
+title: "Part 6: Starting to deal with GitHub Actions"
 subtitle: Getting this dev blog running
-description: Part 6 of setting up 11ty dev blog.
+description: Day 6 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-06-18 22:59:43.10 -5
 tags:
@@ -9,10 +9,12 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - GitHub
+  - GitHub Actions
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -46,11 +48,13 @@ tags:
 
 - [x] Code blocks do not have good syntax highlighting. I want good syntax highlighting.
 
-# Day 6
+## Day 6
 
 Ok, here we go on day 6. Today I write code on a Delta flight.
 
 I've resolved some of the very basic blockers that were absolute need-to-haves from a design perspective. There is more work to be done on the design side (obviously, I still don't have a home page) but I think I need to answer questions about the GitHub Pages deployment process before I go any further. I know I can make an 11ty blog that satisfies me now, but can I do so while also satisfying the ease of deployment and management that comes with Jekyll-style Github Pages deployment? Luckily the internet is free today, so I can find out at no added cost to my flight.
+
+### Looking at the Examples
 
 The most upvoted solution I saw for Github Pages deployment was [the LinkedIn post by Lea Tortay](https://www.linkedin.com/pulse/eleventy-github-pages-lea-tortay/) I found earlier. While I've managed a number of other deploy approaches, I actually have never written my own Github Pages deployment process, so figuring that out was one of my goals with this project. Let's start with that.
 
@@ -72,6 +76,8 @@ Let me pull those files back in from the last good commit: `git checkout 32e6206
 
 Yup that did it. My Index file is back.
 
+### Finding GitHub Actions log
+
 Build still isn't working. Hmmm where are the logs for this?
 
 Ok, [in the Actions tab](https://github.com/AramZS/devblog/actions), not in settings.
@@ -79,6 +85,8 @@ Ok, [in the Actions tab](https://github.com/AramZS/devblog/actions), not in sett
 Looks like it isn't pulling in Dinky properly as a submodule because [Github Pages needs the https url for the repo in .gitsubmodules](https://docs.github.com/en/pages/getting-started-with-github-pages/using-submodules-with-github-pages).
 
 Hmmm, still not working.
+
+### Fixing Submodules
 
 Ah, the issue is that the default configuration of Jekyll github pages pulls in submodules, but [the default configuration of the checkout action doesn't](https://github.com/actions/checkout). I just need to add that property to the yml file.
 

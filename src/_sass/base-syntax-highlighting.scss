@@ -7,3 +7,8 @@ $spacing-unit: 30px;
 %vertical-rhythm {
 	margin-bottom: math.div($spacing-unit, 2);
 }
+
+code[class*="language-"], pre[class*="language-"] {
+	white-space:pre-wrap;
+	tab-size: 1em;
+}

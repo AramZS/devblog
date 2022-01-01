@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 4
+title: "Part 4: A quick run at syntax highlighting"
 subtitle: Getting this dev blog running
-description: Part 3 of setting up 11ty deb blog.
+description: Part 4 of setting up 11ty deb blog.
 project: Dev Blog
 date: 2021-06-15 22:59:43.10 -5
 tags:
@@ -10,8 +10,11 @@ tags:
   - Node
   - Sass
   - WiP
+  - Prism
+  - Code Blocks
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -41,7 +44,7 @@ tags:
 
 [ ] Code blocks do not have good syntax highlighting. I want good syntax highlighting.
 
-# Day 4
+## Day 4
 
 Ok, don't have a ton of time to work today, but I've been thinking more about the shitty code blocks.
 

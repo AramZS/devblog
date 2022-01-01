@@ -1,6 +1,6 @@
 ---
-title: Hello World Devblog - Pt. 8
-subtitle: Getting this dev blog running
+title: "Source Maps, Site Paths and GitHub Actions"
+subtitle: Deploying a site friendly to View Source
 description: Part 8 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-06-22 22:59:43.10 -4
@@ -9,10 +9,16 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - CSS
+  - Source Maps
+  - Sitemaps
+  - SEO
+  - GitHub Actions
+  - Cachebreak
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -54,7 +60,11 @@ tags:
 
 ## Day 8
 
+### Source Maps
+
 So, the Sass source-map is still giving me file:// URLs. This is apparently some sort of weird error in the dart-sass implementation? I found a few issues, all of which seem to point at [one issue's set of solutions](https://github.com/sass/libsass/issues/908#issuecomment-76452477). But none of these worked for me. I'm not really sure why. I think because dart-sass assumes source maps are only used for local development, not also for public-facing examples like I want. But the top of that thread pointed me [at a useful build script example](https://github.com/joliss/node-sass-source-map-example/blob/master/better-output.js).
+
+#### Filename Fixes
 
 On the basis of that (which still uses dirname for local file paths) I altered it to match my reality of running a local server"
 
@@ -122,6 +132,8 @@ And I can also change my passthroughs in `.eleventy.js`.
 
 If this works correctly on publish, it will resolve the last of my base requirements!
 
+### Cache Break with GitHub
+
 Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's [a plugin for Jekyll to do it](https://github.com/jekyll/github-metadata), it looks like [it does so at least partially via the Github API](https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md). It gets [a pretty good list of data too](https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md). There's also [the "Github Context" which is available to GitHub actions](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context). I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?
 
 {% raw %}
@@ -164,6 +176,8 @@ jobs:
 
 Ah, that did it, so now I know how to use both!
 
+### Site Maps
+
 The sitemap plugin looks easy to implement. Let's try that!
 
 Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.
@@ -173,6 +187,8 @@ Looks good! A little basic as sitemaps go, and if this site gets extensive I may
 Just checking off stuff in this post!
 
 Looks like the Deep Data Merge is up and running already. I'll do a quick double check and it does appear to work fine!
+
+### Managing Page Data
 
 RSS feed next. Need to add the collection tag to my `posts.json` in `src/posts` in order to have it properly in a `posts` collection.
 
@@ -213,6 +229,8 @@ Ok, I had thought the functions in the `js` layout-based front matter would exec
 {% endraw %}
 
 Looks like the solution was to use a immediately-invoked function there. Working well now!
+
+### Robots.txt
 
 Looks like [there is a straightforward way to handle building a good robots.txt](https://obsolete29.com/posts/ogp-seo-favicons-eleventy/) file.
 

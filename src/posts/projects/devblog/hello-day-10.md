@@ -1,18 +1,18 @@
 ---
-title: Hello World Devblog - Pt. 10
+title: "Part 11: Nunjucks and Macros"
 subtitle: Getting this dev blog running
-description: Part 8 of setting up 11ty dev blog.
+description: Day 10 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-04 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
   - Node
-  - Sass
-  - Github Actions
+  - Nunjucks
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -62,6 +62,8 @@ So... progress!
 
 Now let's try and figure out how to make it more useful.
 
+### Macros
+
 There are some interesting things you can do with Macros! I really would like to get it to work, so before we go the filter route, let's see if we can make my intended methodology work. This seems like it would be a thing people would want to do! So some more web searching may be in order.
 
 Ok, after trying a few different search terms [I've found a useful middle ground](https://stackoverflow.com/questions/50685814/nunjucks-nested-variables). But I know that [Nunjucks applies filters in a specific way in 11ty](https://www.11ty.dev/docs/languages/nunjucks/#filters).
@@ -101,6 +103,8 @@ Ok... interesting... when I set it up, it no longer reads the include statement 
 {% raw %}
 `{% extends "base.njk" %}`
 {% endraw %}
+
+### 11ty and Nunjucks
 
 Hmmmm. Well [let's take a look at how 11ty configures it](https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L124).
 

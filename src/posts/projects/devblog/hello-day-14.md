@@ -1,18 +1,17 @@
 ---
-title: Hello World Devblog - Pt. 14
+title: "Part 14: Project Pages"
 subtitle: Getting this dev blog running
-description: Part 14 of setting up 11ty dev blog.
+description: Day 14 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-23 22:59:43.10 -4
 tags:
   - Starters
   - 11ty
   - Node
-  - Sass
-  - Github Actions
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -71,6 +70,8 @@ This also seems like a good time to move my posts over to the right folder.
 Ok, adding the site name to the non-index pages and now its time to do some css.
 
 `git commit -am "Done with setting up vertical content, on to vertical styles."`
+
+### Better styles, ready for reuse
 
 Ok, to get the layouts the way I want while still having the base template be very reusable, I need to have some custom CSS that applies only to specific pages. I can handle that by adding an ID with the template name to the `body` HTML tag. That's easy. But I don't want to load down the CSS file with these file specific rules where I don't need them. So let's accomplish one of my early goals and split the CSS into smaller files.
 

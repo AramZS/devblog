@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 31
+title: "Part 31: Pagination"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-12 22:59:43.10 -4
@@ -9,8 +9,7 @@ tags:
   - Node
   - Sass
   - WiP
-  - SEO
-  - SMO
+  - Nunjucks
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
 featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
@@ -137,7 +136,7 @@ So no project property. The project proprty of the post is escaped into its own 
 So now the template calls the filter like:
 
 {% raw %}
-```liquid
+```njk
 	{% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
 	{% set nextPost = collections.posts | getNextProjectItem(page, project) %}
 ```

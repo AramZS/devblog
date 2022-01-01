@@ -1,4 +1,5 @@
-@use 'base-syntax-highlighting';
+@use "base-syntax-highlighting";
+@use "variables";
 
 /**
  * Syntax highlighting styles
@@ -203,4 +204,22 @@
 	.il {
 		color: #099;
 	} // Literal.Number.Integer.Long
+}
+
+pre[class*="language-"] {
+	width: 100%;
+	overscroll-behavior-x: contain;
+	.template-tag-boundary {
+		color: #ec4984;
+	}
+
+	.tag > .tag > .punctuation,
+	.tag > .punctuation:last-of-type {
+		color: #1cf08d;
+	}
+	@media (max-width: variables.$mobile-width) {
+		code[class*="language-"] {
+			font-size: 12px;
+		}
+	}
 }

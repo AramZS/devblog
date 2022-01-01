@@ -1,0 +1,38 @@
+@use 'variables'
+
+#post-summary-list
+    ul
+        padding-left: 0
+        li
+            padding: 6px
+            border: 2px #b7b7b7 solid
+            margin: 12px 0
+.post-summary
+    display: block
+    h3
+        margin-top: 8px
+    figure.preview-image
+        padding: 0
+        width: 50%
+        border: 0
+        font-size: 7px
+        position: relative
+        margin: 0
+        margin-left: auto
+        figcaption
+            max-width: 75%
+            text-align: right
+            margin-top: -20px
+            background-color: white
+            padding: 0 5px
+            margin: 0
+            position: absolute
+            right: 1px
+            bottom: 1px
+
+@media (max-width: variables.$mobile-width)
+    .post-summary
+        figure.preview-image
+            margin: 0 auto
+            figcaption
+                display: none

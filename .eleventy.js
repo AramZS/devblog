@@ -1,7 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const sassBuild = require("./_custom-plugins/sass-manager");
+const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
@@ -17,6 +17,8 @@ let Nunjucks = require("nunjucks");
 const normalize = require("normalize-path");
 
 const util = require("util");
+
+var slugify = require("slugify");
 
 loadLanguages(["yaml"]);
 
@@ -79,6 +81,9 @@ module.exports = function (eleventyConfig) {
 	const dirToClean = path.join(siteConfiguration.dir.output, "*");
 	del.sync(dirToClean, { dot: true });
 
+	// https://www.11ty.dev/docs/data-deep-merge/
+	eleventyConfig.setDataDeepMerge(true);
+
 	// var markdownIt = new mdProcessor();
 
 	// https://www.11ty.dev/docs/plugins/syntaxhighlight/
@@ -102,18 +107,21 @@ module.exports = function (eleventyConfig) {
 		},
 	});
 	eleventyConfig.addWatchTarget("./_custom-plugins/");
-	eleventyConfig.addWatchTarget("./src/_sass");
-	sassBuild(domain_name);
+	// eleventyConfig.addWatchTarget("./src/_sass");
+	// sassBuild(domain_name);
 	eleventyConfig.on("beforeWatch", (changedFiles) => {
 		// changedFiles is an array of files that changed
 		// to trigger the watch/serve build
-		sassBuild(domain_name);
+		// sassBuild(domain_name);
+	});
+	eleventyConfig.addPlugin(require("eleventy-plugin-dart-sass"), {
+		sassLocation: path.join(path.resolve("."), "src/_sass/"),
+		perTemplateFiles: "template-",
+		outDir: path.join(path.resolve("."), "docs"),
+		domainName: domain_name,
 	});
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
-
-	// https://www.11ty.dev/docs/data-deep-merge/
-	eleventyConfig.setDataDeepMerge(true);
 
 	// Alias `layout: post` to `layout: layouts/post.njk`
 	// eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
@@ -239,6 +247,7 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
+
 	eleventyConfig.addShortcode(
 		"projectList",
 		function (collectionName, collectionOfPosts, order, hlevel, limit) {
@@ -277,17 +286,22 @@ module.exports = function (eleventyConfig) {
 		`;
 		}
 	);
-	function getNProjectItem(collection, page, projectName, index, operation){
+	function getNProjectItem(collection, page, projectName, index, operation) {
 		let found = false;
 		let i = index;
-		if (projectName){
+		if (projectName) {
 			let lastPost;
 			while (found === false) {
-				lastPost = getCollectionItem(collection, page, i)
-				if (lastPost && lastPost.data.hasOwnProperty("project") && lastPost.data.project == projectName && !lastPost.data.hasOwnProperty('wrapup')){
+				lastPost = getCollectionItem(collection, page, i);
+				if (
+					lastPost &&
+					lastPost.data.hasOwnProperty("project") &&
+					lastPost.data.project == projectName &&
+					lastPost.data.tags.includes("WiP")
+				) {
 					found = true;
 				} else {
-					if (!lastPost){
+					if (!lastPost) {
 						return false;
 					}
 					i = operation(i);
@@ -300,16 +314,32 @@ module.exports = function (eleventyConfig) {
 	}
 	eleventyConfig.addFilter(
 		"getPreviousProjectItem",
-		function (collection, page, project){
+		function (collection, page, project) {
 			let index = -1;
-			return getNProjectItem(collection, page, project, index, function(i){return i-1})
+			return getNProjectItem(
+				collection,
+				page,
+				project,
+				index,
+				function (i) {
+					return i - 1;
+				}
+			);
 		}
 	);
 	eleventyConfig.addFilter(
 		"getNextProjectItem",
-		function (collection, page, project){
+		function (collection, page, project) {
 			let index = 1;
-			return getNProjectItem(collection, page, project, index, function(i){return i+1})
+			return getNProjectItem(
+				collection,
+				page,
+				project,
+				index,
+				function (i) {
+					return i + 1;
+				}
+			);
 		}
 	);
 	eleventyConfig.addFilter("relproject", function (url) {
@@ -353,6 +383,16 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addFilter("filterTagList", filterTagList);
 
+	const paginate = (arr, size) => {
+		return arr.reduce((acc, val, i) => {
+			let idx = Math.floor(i / size);
+			let page = acc[idx] || (acc[idx] = []);
+			page.push(val);
+
+			return acc;
+		}, []);
+	};
+
 	let tagSet = new Set();
 	let tagList = [];
 
@@ -369,6 +409,51 @@ module.exports = function (eleventyConfig) {
 		tagList = [...tagSet];
 		return tagList;
 	};
+
+	const makePageObject = (tagName, slug, number, posts, first, last) => {
+		return {
+			tagName: tagName,
+			slug: slug ? slug : slugify(tagName.toLowerCase()),
+			number: number,
+			posts: posts,
+			first: first,
+			last: last,
+		};
+	};
+
+	const getPostClusters = (allPosts, tagName, slug) => {
+		aSet = new Set();
+		let postArray = allPosts.reverse();
+		aSet = [...postArray];
+		postArray = paginate(aSet, 10);
+		let paginatedPostArray = [];
+		postArray.forEach((p, i) => {
+			paginatedPostArray.push(
+				makePageObject(
+					tagName,
+					slug,
+					i + 1,
+					p,
+					i === 0,
+					i === postArray.length - 1
+				)
+			);
+		});
+		// console.log(paginatedPostArray)
+		return paginatedPostArray;
+	};
+
+	eleventyConfig.addCollection("postsPages", (collection) => {
+		return getPostClusters(collection.getFilteredByTag("posts"), "Posts");
+	});
+
+	eleventyConfig.addCollection("projectsPages", (collection) => {
+		return getPostClusters(
+			collection.getFilteredByTag("projects"),
+			"Projects"
+		);
+	});
+
 	// Create an array of all tags
 	eleventyConfig.addCollection("tagList", (collection) => {
 		return getAllTags(collection.getAll());
@@ -391,13 +476,16 @@ module.exports = function (eleventyConfig) {
 				const sliceFrom = (pageNum - 1) * maxPostsPerPage;
 				const sliceTo = sliceFrom + maxPostsPerPage;
 
-				pagedPosts.push({
-					tagName: tagName,
-					number: pageNum,
-					posts: taggedPosts.slice(sliceFrom, sliceTo),
-					first: pageNum === 1,
-					last: pageNum === numberOfPages,
-				});
+				pagedPosts.push(
+					makePageObject(
+						tagName,
+						false,
+						pageNum,
+						taggedPosts.slice(sliceFrom, sliceTo),
+						pageNum === 1,
+						pageNum === numberOfPages
+					)
+				);
 			}
 		});
 		console.log("pagedPosts", pagedPosts[0].tagName);
@@ -426,6 +514,50 @@ module.exports = function (eleventyConfig) {
 		return tagSet;
 	});
 
+	eleventyConfig.addCollection("deepProjectPostsList", (collection) => {
+		let deepProjectPostList = [];
+		// console.log("projectSet", projectSet);
+		projectSet.forEach((project) => {
+			// console.log("aProject", project);
+			if (project.count > 0) {
+				let allProjectPosts = collection.getFilteredByTag("projects");
+				// console.log(allProjectPosts[2].data.project, project.projectName);
+				let allPosts = allProjectPosts.filter((post) => {
+					if (post.data.project == project.projectName) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				allPosts.reverse();
+				const postClusters = getPostClusters(
+					allPosts,
+					project.projectName,
+					project.slug
+				);
+				// console.log("allPosts", postClusters);
+				deepProjectPostList.push(
+					getPostClusters(allPosts, project.projectName, project.slug)
+				);
+			}
+		});
+		// console.log("deepProjectPostList", deepProjectPostList);
+		let pagedDeepProjectList = [];
+		deepProjectPostList.forEach((projectCluster) => {
+			/**
+			 * 	tagName,
+				slug: slug ? slug : slugify(tagName.toLowerCase()),
+				number: i + 1,
+				posts: p,
+				first: i === 0,
+				last: i === postArray.length - 1,
+			*/
+			pagedDeepProjectList.push(...projectCluster);
+		});
+		// console.log("pagedDeepProjectList", pagedDeepProjectList);
+		return pagedDeepProjectList;
+	});
+
 	eleventyConfig.addPlugin(pluginTOC, {
 		tags: ["h1", "h2", "h3", "h4"], // which heading tags are selected headings must each have an ID attribute
 		wrapper: "nav", // element to put around the root `ol`/`ul`
@@ -444,6 +576,20 @@ module.exports = function (eleventyConfig) {
 					inside: Prism.languages.yaml,
 				},
 			});
+			//console.log(Prism.languages);
+			Prism.languages.liquid = Prism.languages.extend("html", {
+				templateTag: {
+					pattern: /(?<=\{\%).*?(?=\%\})/g,
+					greedy: true,
+					inside: Prism.languages.javascript,
+				},
+				templateTagBoundary: {
+					pattern: /\{\%}?|\%\}?/g,
+					greedy: false,
+					alias: "template-tag-boundary",
+				},
+			});
+			Prism.languages.njk = Prism.languages.extend("liquid", {});
 		},
 	});
 
@@ -490,14 +636,31 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
-	var slugify = require("slugify");
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
+		// .use(require("./_custom-plugins/markdown-it-short-phrases"))
+		.use(require("markdown-it-find-and-replace"), {
+			defaults: true,
+			replaceRules: [
+				{
+					pattern: /(?<=[\t\s\S\( ])thru(?=[\?\.\,\s\r\n\!\) ]|$)/g,
+					replace: "through",
+				},
+				{
+					pattern: /(?<=[\t\s\S\( ]|^)Thru(?=[\?\.\,\s\r\n\!\) ])/g,
+					replace: "Through",
+				},
+			],
+		})
 		// .use(require('@gerhobbelt/markdown-it-footnote'))
 		.use(require("markdown-it-anchor"), {
-			slugify: (s) => slugify(s.toLowerCase()),
-		});
+			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
+		})
+		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"))
+		.use(
+			require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js")
+		);
 
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
@@ -512,6 +675,9 @@ module.exports = function (eleventyConfig) {
 		env,
 		self
 	) {
+		if (tokens[idx].meta && tokens[idx].meta.includes("skip-link")) {
+			return defaultRender(tokens, idx, options, env, self);
+		}
 		// If you are sure other plugins can't add `target` - drop check below
 		var aIndex = tokens[idx].attrIndex("target");
 

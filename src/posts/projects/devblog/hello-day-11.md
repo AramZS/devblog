@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 11
-subtitle: Getting this dev blog running
-description: Part 8 of setting up 11ty dev blog.
+title: "Part 11: Nunjucks and Shortcodes"
+subtitle: Figuring out how to use shortcodes
+description: Day 8 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-05 22:59:43.10 -4
 tags:
@@ -9,10 +9,12 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - Nunjucks
+  - Shortcodes
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -60,6 +62,8 @@ But before I do, I do think this is a major problem and would be useful for elev
 
 It looks like [there is an issue in the right space](https://github.com/11ty/eleventy/issues/895), but the suggested solution on the issue doesn't work. If I [follow through the tickets](https://github.com/pdehaan/11ty-blog-ideas/issues/7) a little more I can [see another suggested solution](https://github.com/pdehaan/11ty-nunjucks-config/blob/master/.eleventy.js). But it doesn't solve the issue with the raw tags no longer working either.
 
+### Difficulties with Nunjucks Library Setup
+
 I don't understand. [This](https://github.com/11ty/eleventy/blob/master/src/Engines/Nunjucks.js#L128) *should* work. I even checked to make sure my version of Nunjucks is the same! I even tried removing one of the files, but now my Nunjucks execution is failing on a different chunk of JS in the `js` front matter block in `rss2-feed.njk`.
 
 So let's add my voice.
@@ -71,6 +75,8 @@ A quick bookmark of the current state of the site to help the Eleventy folks wit
 And now [a write up](https://github.com/11ty/eleventy/issues/1879)!
 
 Ok, let's move on!
+
+### Shortcodes
 
 I'm going to give up on Macros for now and instead I'll [use a Shortcode](https://www.11ty.dev/docs/languages/nunjucks/#single-shortcode).
 

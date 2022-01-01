@@ -18,26 +18,13 @@
         </aside>
         <div id="post-description">{{ description }}</div>
 
-        {% if featuredImageAlt %}
-            <figure class="figure preview-image">
-                <img src="{{site.site_url}}/img/{{featuredImage}}" alt="{{featuredImageAlt}}">
-                {% if featuredImageCaption or featuredImageCredit %}
-                    <figcaption class="figcaption">
-                        {% if featuredImageCaption %}{{featuredImageCaption}}
-                        {% endif %}
-                        {% if featuredImageCredit %} | <em>
-                                <a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a>
-                            </em> | {% endif %}
-                    </figcaption>
-                {% endif %}
-            </figure>
-        {% endif %}
+        {% include "partials/post-image.njk" %}
 
     </section>
 {% endblock %}
 
 {% block postcontent %}
-    {% if project and not wrapup %}
+    {% if project and tags.includes("WiP") %}
         {% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
         {% set nextPost = collections.posts | getNextProjectItem(page, project) %}
         <div class="pagination">

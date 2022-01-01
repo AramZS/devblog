@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 27
+title: "Part 27: CSS and Social Tags"
 description: "More devblog"
 project: Dev Blog
 date: 2021-10-04 22:59:43.10 -4
@@ -8,6 +8,7 @@ tags:
   - 11ty
   - Node
   - Sass
+  - CSS
   - WiP
   - SEO
   - SMO

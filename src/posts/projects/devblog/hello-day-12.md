@@ -1,7 +1,7 @@
 ---
-title: Hello World Devblog - Pt. 12
+title: "Part 12: How to make a collection?"
 subtitle: Getting this dev blog running
-description: Part 12 of setting up 11ty dev blog.
+description: Day 12 of setting up 11ty dev blog.
 project: Dev Blog
 date: 2021-07-05 22:59:43.10 -4
 tags:
@@ -9,10 +9,11 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - GitHub Actions
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

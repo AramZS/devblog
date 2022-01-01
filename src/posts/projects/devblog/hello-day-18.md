@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 18
+title: "Part 18: Tag Pages"
 subtitle: Getting this dev blog running
 description: "Ok, I'm still disappointed with markdown-it. So let's take on a different task today. I'm going to take on showing the latest post and the tags pages, if I can pull off both."
 project: Dev Blog
@@ -9,10 +9,11 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
+  - GitHub Actions
   - WiP
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.

@@ -1,5 +1,5 @@
 ---
-title: Hello World Devblog - Pt. 20
+title: "Part 20: Working with Shortcodes and Collections"
 subtitle: Getting this dev blog running
 description: "More devblog"
 project: Dev Blog
@@ -9,11 +9,11 @@ tags:
   - 11ty
   - Node
   - Sass
-  - Github Actions
   - WiP
   - GPC
 ---
 
+## Project Scope and ToDos
 
 1. Static Site Generator that can build the blog and let me host it on Github Pages
 2. I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.
@@ -73,6 +73,6 @@ Hmm. Interesting, doing that appears to keep the tag pages reversed, but the hom
 
 I checked [this issue](https://github.com/11ty/eleventy/issues/215) first and it looks this was reported, but not this exact context. [It looks like it was an issue with getAllSorted](https://github.com/11ty/eleventy/issues/352). Ok, I'm going to suggest documentation and keep `.slice` in place. I could potentially use the `reverse` filter, but I'm not sure that would work well with the functionality I'm trying to create, which gives me the ability to generate and alter these lists using arguments from the Markdown front-matter. It would be good [to warn that collections manipulated in shortcodes impact other uses of the same collections](https://github.com/11ty/11ty-website/pull/1135).
 
-Got a late start so, short day today. 
+Got a late start so, short day today.
 
 `git commit -am "Solve issue with shortcodes mutating collections"`
