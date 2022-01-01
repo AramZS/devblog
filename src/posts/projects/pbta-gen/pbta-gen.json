@@ -1,6 +1,7 @@
 {
-	"project": "Powered By The Apocalypse Generator",
-	"description": "A tool for building Powered By The Apocalypse games and keeping them organized",
+	"project": "PBTA-Gen",
+	"description": "A generator for building Powered By The Apocalypse games and keeping them organized",
 	"repo": "https://github.com/AramZS/pbta-gen",
-	"featuredImage": "pbta.jpg"
+	"featuredImage": "pbta.jpg",
+	"slug": "pbta-gen"
 }
