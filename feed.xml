@@ -5,12 +5,77 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2021-12-31T02:59:43Z</updated>
+  <updated>2022-01-02T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Day 1: Building a tool to generate context pages</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-pages/day-1/"/>
+    <updated>2022-01-02T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-pages/day-1/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Archive links on <a href="http://archive.org/" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate it into the site to be able to make context pages here.</li>
+</ul>
+<h2 id="day-1" tabindex="-1">Day 1</h2>
+<p>Ok, so this is a thing that happens a lot. I collect a bunch of links to a particular topic, and I want to share it. But it's hard to read a bunch of links, so how do I make it more readable?</p>
+<p>I thought through some scope requirements and to dos and put them on the top of this page first. My first goal is to take a list of links and turn them into something more easy to read. I think the best way is by creating Open Graph style share cards for each link and replacing the link in place with those cards. So let's handle that request process.</p>
+<h3 id="selecting-test-tool" tabindex="-1">Selecting test tool</h3>
+<p>I think the easiest way to move forward is to build some test processes first so that I can run links through the function I'm building and test my outputs. I've now done tests with Jest and Mocha. Another popular library is <a href="https://www.chaijs.com/" target="_blank">Chai</a>, so let's try that.</p>
+<h3 id="archiving-tools-refrerence" tabindex="-1">Archiving Tools Refrerence</h3>
+<p>It's also worthwhile to do exactly the sort of thing I'm talking about here and record some info about archiving links.</p>
+<ul>
+<li><a href="https://github.com/palewire/savemy.news" target="_blank">https://github.com/palewire/savemy.news</a></li>
+<li><a href="https://github.com/palewire/archiveis" target="_blank">https://github.com/palewire/archiveis</a></li>
+<li><a href="https://perma.cc/docs/developer" target="_blank">https://perma.cc/docs/developer</a></li>
+<li><a href="https://conifer.rhizome.org/" target="_blank">https://conifer.rhizome.org/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine#JavaScript_bookmarklet" target="_blank">https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine#JavaScript_bookmarklet</a></li>
+<li><a href="https://help.archive.org/hc/en-us/articles/360001513491-Save-Pages-in-the-Wayback-Machine" target="_blank">https://help.archive.org/hc/en-us/articles/360001513491-Save-Pages-in-the-Wayback-Machine</a></li>
+<li><a href="http://mementoweb.org/depot/native/archiveis/" target="_blank">http://mementoweb.org/depot/native/archiveis/</a></li>
+<li><a href="http://mementoweb.org/guide/quick-intro/" target="_blank">http://mementoweb.org/guide/quick-intro/</a></li>
+<li><a href="https://wiki.archiveteam.org/index.php/ArchiveTeam_Warrior" target="_blank">https://wiki.archiveteam.org/index.php/ArchiveTeam_Warrior</a></li>
+<li><a href="https://wiki.archiveteam.org/index.php/Software" target="_blank">https://wiki.archiveteam.org/index.php/Software</a></li>
+<li><a href="https://github.com/eloquence/freeyourstuff.cc" target="_blank">https://github.com/eloquence/freeyourstuff.cc</a></li>
+<li><a href="https://github.com/dhamaniasad/WARCTools" target="_blank">https://github.com/dhamaniasad/WARCTools</a></li>
+<li><a href="https://blog.risingstack.com/pdf-from-html-node-js-puppeteer/" target="_blank">https://blog.risingstack.com/pdf-from-html-node-js-puppeteer/</a></li>
+<li><a href="https://www.npmjs.com/package/html-pdf-node" target="_blank">https://www.npmjs.com/package/html-pdf-node</a></li>
+<li><a href="https://github.com/mozilla/readability" target="_blank">https://github.com/mozilla/readability</a></li>
+</ul>
+<p>This is all pretty much more extensive then I want to do for my first run at this project, but it is good to have a list. To start, let's turn link lists into HTML cards.</p>
+<h3 id="sanitizing-the-url" tabindex="-1">Sanitizing the URL</h3>
+<p>Ok, first thing is to sanitize the URL.</p>
+<p>There's a fairly popular Node sanitation library, I'll start there.</p>
+<p>I'll pull the regex WordPress uses to clean URLs, as I've used that in PHP and it's fairly reliable.</p>
+<p>Finally, I want to strip marketing params that are commonly used in links. I could make my own code here, but a quick search around has revealed that <a href="https://github.com/mihaip/utm-stripper/blob/master/extension/background.js" target="_blank">someone built some good regexes to handle this</a>.</p>
+<p>Ok, this makes for a good test setup. It looks like Chai builds on top of Mocha, so let's install that too.</p>
+<p>Ok, it looks like <a href="https://www.chaijs.com/guide/styles/" target="_blank">Chai has a suite of tools, the major ones are should, expect and assert</a>.</p>
+<p>Ok, let's make some bad links.</p>
+<p>I want to invalidate <code>mailto</code> links also. So let's see if I can throw an error and capture it in Chai.</p>
+<p>I should be able to capture the tests with <code>.should.Throw</code> and <code>expect(fn).to.throw(new Error('text'))</code></p>
+<p>Hmm, that's not working.</p>
+<p>Ok, <a href="https://stackoverflow.com/a/22340179" target="_blank">it looks like it has a different format</a> and does require we put the error-throwing function inside another function... for some reason. I also can't use the error object, just the error text. Also unclear from the docs.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-pages/day-1/#code-skip-day-1-1" id="skip-to-code-skip-day-1-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"should throw on mailto links"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	<span class="token function">expect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />		<span class="token function">linkModule</span><span class="token punctuation">(</span><span class="token string">"mailto:test@example.com?subject=hello+world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">throw</span><span class="token punctuation">(</span><span class="token string">"Invalid Mailto Link"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-1-1">Ok, my sanitizer looks good and I think that I have some good coverage. Next step will be handling the Fetch step and building out the data model. But this is a good place to stop.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/222119ccab48e086f4c59e1f96328bd384e57517" class="git-commit-link"><code>git commit -am &quot;Set up sanitizer and unit tests&quot;</code></a></p>
+</content>
+  </entry>
   
   <entry>
     <title>Brute Forcing My Way Through Markdown-It</title>
