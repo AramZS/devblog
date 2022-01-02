@@ -1,8 +1,7 @@
 ---
 title: "Day 1: Building a tool to generate context pages"
 description: "I want to share lists of links, but make them readable and archived"
-project: Dev Blog
-date: 2021-11-30 22:59:43.10 -4
+date: 2022-1-1 22:59:43.10 -4
 tags:
   - 11ty
   - Node

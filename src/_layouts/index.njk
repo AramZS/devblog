@@ -32,7 +32,7 @@
             <ul>
                 {% for project in projects | slice(5) %}
                     <li class="capitalize-first">
-                        <a href="{{project.url}}">{{project.title}}</a> | <span>Days worked: {{project.daysWorked}}</span> | <span>Status: {{project.complete}}</span>
+                        <a href="{{project.url}}">{{project.projectName}}</a> | <span>Days worked: {{project.daysWorked}}</span> | <span>Status: {{project.complete}}</span>
                         <!-- last updated:  {{project.lastUpdatedPost}} -->
                     </li>
                 {% endfor %}
