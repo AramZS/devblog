@@ -16,7 +16,7 @@
     </div>
     {% if templateName and templateName == "index" %}
     <div class="a-social-icon">
-        <a href="http://localhost:8080/rss/index.xml" target="_blank">
+        <a href="{{ site.site_url }}/rss/index.xml" target="_blank">
             {% include "partials/social-icons/rss.njk" %}
         </a>
     </div>
