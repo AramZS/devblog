@@ -47,6 +47,9 @@
                 postType.order,
                 "h3",
                 10 %}
+                {% if postType.collection == "links" %}
+                    <a href="/links/">More Links</a>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
