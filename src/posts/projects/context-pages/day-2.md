@@ -1,7 +1,7 @@
 ---
 title: "Day 2: Building a tool to generate context pages"
 description: "I want to share lists of links, but make them readable and archived"
-date: 2022-1-1 22:59:43.10 -4
+date: 2022-1-8 22:59:43.10 -4
 tags:
   - 11ty
   - Node
@@ -342,7 +342,7 @@ Ok, first step is to log the result. Here's what I get
 }
 ```
 
-Ok, I can test for that. I should really modal the response instead of making an actual HTTP request, but for now this is a good place to be. Last thing I want to test is if it can make a request to Facebook.
+Ok, I can test for that. I should really modal the response instead of making an actual HTTP request, but for now this is a good place to be. Last thing I want to test is [if it can make a request to Facebook](https://developers.facebook.com/docs/features-reference/oembed-read).
 
 Hmm, trying some URLs and all I'm getting is `nulls`. That's annoying.
 
