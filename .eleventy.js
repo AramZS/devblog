@@ -413,7 +413,9 @@ module.exports = function (eleventyConfig) {
 	const makePageObject = (tagName, slug, number, posts, first, last) => {
 		return {
 			tagName: tagName,
-			slug: slug ? slug : slugify(tagName.toLowerCase()),
+			slug: slug
+				? slug
+				: slugify(tagName.toLowerCase()),
 			number: number,
 			posts: posts,
 			first: first,

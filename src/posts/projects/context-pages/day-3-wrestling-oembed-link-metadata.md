@@ -1,5 +1,5 @@
 ---
-title: "Day 3: Wrestling with OEmbed"
+title: "Day 3: Wrestling with OEmbed and Metadata"
 description: "I want to share lists of links, but make them readable and archived"
 date: 2022-1-9 22:59:43.10 -4
 tags:
@@ -7,6 +7,13 @@ tags:
   - Node
   - WiP
   - oembed
+  - opengraph
+  - metadata
+  - hcard
+  - RDF
+  - "JSON-LD"
+  - Schema Dot Org
+  - Structured Data
 featuredImage: "close-up-keys.jpg"
 featuredImageCredit: "'TYPE' by SarahDeer is licensed with CC BY 2.0"
 featuredImageLink: "https://www.flickr.com/photos/40393390@N00/2386752252"
