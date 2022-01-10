@@ -1,0 +1,373 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Day 3: Wrestling with OEmbed</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1675281237" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1675281237" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1675281237" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1675281237" id=""></link>
+
+            
+            <!-- Build Revision: 1675281237 & Sha: 34acf9a3158807d3504e8e9ed86d63dd7aee5459 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Day 3: Wrestling with OEmbed">
+
+<meta property="og:description"
+    content="I want to share lists of links, but make them readable and archived">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/context-pages/day-3-wrestling-oembed-link-metadata/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="I want to share lists of links, but make them readable and archived" />
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Day 3: Wrestling with OEmbed" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Mon, 10 Jan 2022 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Context Pages" />
+    
+
+    <!-- I use the page.categories property for OG tags. -->
+    
+    <meta property="article:tag" content="posts" />
+    
+    <meta property="article:tag" content="projects" />
+    
+    <meta property="article:tag" content="11ty" />
+    
+    <meta property="article:tag" content="Node" />
+    
+    <meta property="article:tag" content="WiP" />
+    
+    <meta property="article:tag" content="oembed" />
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/context-pages/day-3-wrestling-oembed-link-metadata/",
+        "headline": "Day 3: Wrestling with OEmbed",
+        "about": "I want to share lists of links, but make them readable and archived",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "aramzs.github.io"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "http://aramzs.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/context-pages">Context Pages</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Mon Jan 10 2022</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Day 3: Wrestling with OEmbed
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name">Aram Zucker-Scharff</span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-3">Day 3</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">I want to share lists of links, but make them readable and archived</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/close-up-keys.jpg" alt="Close up photo of keyboard keys.">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://www.flickr.com/photos/40393390@N00/2386752252" target="_blank">'TYPE' by SarahDeer is licensed with CC BY 2.0</a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Archive links on <a href="http://Archive.org" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate it into the site to be able to make context pages here.</li>
+</ul>
+<h2 id="day-3" tabindex="-1">Day 3</h2>
+<p>Ok, yesterday I was trying to knock down the oEmbed process from Facebook and getting nothing. Let's take this back to base principles and see if I can make a request outside of Node that gets what I need</p>
+<p>Ok, it looks like I don't have the right permissions for my Facebook app? Sort of taking the o out of oEmbed if I need an app, permissions and a key isn't it Facebook?</p>
+<p>Ok, to get the oEmbed process working I need to have my App verified on Facebook... which means uploading a photo of my government provided ID? Nope, fk that. Ok, just no Facebook oembeds in this process then.</p>
+<p>Ok, let's grab the page data that tells us about a post now. To do that, I'm going to use a classic package I've done some work in before: JSDOM.</p>
+<p>JSDOM can do its own requests, but I would prefer to handle that as a separate step.</p>
+<p>First I'm going to build a basic object that can contain data about the page that should be useful. I want to predefine a few namespaces I would use. Let's pull <a href="https://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html" target="_blank">the standard stuff from the meta tags</a> and <a href="https://aramzs.github.io/jekyll/schema-dot-org/2018/04/27/how-to-make-your-jekyll-site-structured.html" target="_blank">JSON-LD</a>. I can also use <a href="https://en.wikipedia.org/wiki/Dublin_Core#Levels_of_the_standard" target="_blank">Dublin Core potentially</a>. I <a href="https://microformats.org/wiki/h-card" target="_blank">can also use h-card</a> <a href="https://indieweb.org/h-card" target="_blank">perhaps</a> or <a href="https://indieweb.org/authorship" target="_blank">h-entry</a>? We can try that out at some later point.</p>
+<p>Ok, so once I have the DOM set up how can I grab the data I need?</p>
+<p>On the DOM object I can execute <code>window.document.getElementsByTagName(&quot;meta&quot;);</code> and get a list back. Interestingly tags using the <code>name</code> property are accessible on the resulting object by name. For OpenGraph we can use <a href="https://stackoverflow.com/questions/8714090/queryselector-wildcard-element-match" target="_blank">a wildcard search</a> of <code>querySelectorAll</code>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-wrestling-oembed-link-metadata-5" id="skip-to-code-skip-day-3-wrestling-oembed-link-metadata-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> openGraphNodes <span class="token operator">=</span> window<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><br>	<span class="token string">"meta[property^='og:']"</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-wrestling-oembed-link-metadata-5">Ok, so I need to set up some tests to make sure it is working as expected.</p>
+<p>Can I use <code>to.equal</code> in mocha?</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-wrestling-oembed-link-metadata-4" id="skip-to-code-skip-day-3-wrestling-oembed-link-metadata-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>keyvalues<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>	<span class="token string">"jekyll"</span><span class="token punctuation">,</span><br>	<span class="token string">"social-media"</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-wrestling-oembed-link-metadata-4">Apparently not.</p>
+<p>Ok, did some searching around and <a href="https://stackoverflow.com/questions/41726208/chai-testing-for-values-in-array-of-objects" target="_blank">it looks like the right way to handle this</a>:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-wrestling-oembed-link-metadata-3" id="skip-to-code-skip-day-3-wrestling-oembed-link-metadata-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>keyvalues<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>have<span class="token punctuation">.</span><span class="token function">members</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>	<span class="token string">"jekyll"</span><span class="token punctuation">,</span><br>	<span class="token string">"social-media"</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-3-wrestling-oembed-link-metadata-3">Ok, things are working. But I think I can make this better code by simplifying and abstracting the functions around the <code>querySelector</code>. There OpenGraph and Twitter based meta values are all based on RDF and we can analyze them in a similar way.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-wrestling-oembed-link-metadata-2" id="skip-to-code-skip-day-3-wrestling-oembed-link-metadata-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">pullMetadataFromRDFProperty</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">documentObj<span class="token punctuation">,</span> topNode</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">const</span> graphNodes <span class="token operator">=</span> documentObj<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><br>		<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">meta[property^='</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>topNode<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:']</span><span class="token template-punctuation string">`</span></span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">const</span> openGraphObject <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>graphNodes<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> curr</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">const</span> keyValue <span class="token operator">=</span> curr<span class="token punctuation">.</span>attributes<br>			<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><br>			<span class="token punctuation">.</span>nodeValue<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>topNode<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>keyValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">const</span> lastValue <span class="token operator">=</span> prev<span class="token punctuation">[</span>keyValue<span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>lastValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				prev<span class="token punctuation">[</span>keyValue<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>curr<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				prev<span class="token punctuation">[</span>keyValue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>lastValue<span class="token punctuation">,</span> curr<span class="token punctuation">.</span>content<span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>			prev<span class="token punctuation">[</span>keyValue<span class="token punctuation">]</span> <span class="token operator">=</span> curr<span class="token punctuation">.</span>content<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">return</span> prev<span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token comment">// console.log("openGraphObject", openGraphObject);</span><br>	<span class="token keyword">return</span> openGraphObject<span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-wrestling-oembed-link-metadata-2"><a target="_blank" href="https://github.com/AramZS/contexter/commit/86f38d2528212411a27644c1e0ff4423d0c846fd" class="git-commit-link"><code>git commit -am &quot;Setting up scrape of OpenGraph data and supporting unit tests&quot;</code></a></p>
+<p>Now I can use this function to capture the Twitter metadata as well!</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/12b3775646157162049a771a46a8843169d909bc" class="git-commit-link"><code>git commit -am &quot;Setting up scrape of twitter data&quot;</code></a></p>
+<p>Oh wait, I need to account for the fact that some tags are using <code>name</code> and some are using <code>property</code>.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/b5ed2079a6b000bb32067748735824bf6a60571a" class="git-commit-link"><code>git commit -am &quot;Fix pullMetadataFromRDFProperty to have a prop type&quot;</code></a></p>
+<p>A few more modifications and I can get it to capture DublinCore if available as well.</p>
+<p>I can even build some tests to prove some negative cases. That should be useful for more comprehensive testing.</p>
+<p>Basically this should allow me to compose a bunch of different tests with different HTML.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/42fb1e5e426286c8536d5f285042074de4f1e141" class="git-commit-link"><code>git commit -am &quot;More extensive test coverage&quot;</code></a></p>
+<p>Looking good. Now I want to test it end to end.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-wrestling-oembed-link-metadata-1" id="skip-to-code-skip-day-3-wrestling-oembed-link-metadata-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">	<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"should create link objects from a domain requests"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">timeout</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"should resolve a basic URL"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> linkModule<span class="token punctuation">.</span><span class="token function">getLinkData</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>				sanitizedLink<span class="token operator">:</span><br>					<span class="token string">"http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html"</span><span class="token punctuation">,</span><br>				link<span class="token operator">:</span> <span class="token string">"http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>status<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>title<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"How to make your Jekyll site show up on social"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>author<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"Aram Zucker-Scharff"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>description<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"Here's how to make Jekyll posts easier for others to see and share on social networks."</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>canonical<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>keywords<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>have<span class="token punctuation">.</span><span class="token function">members</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>				<span class="token string">"jekyll"</span><span class="token punctuation">,</span><br>				<span class="token string">"social-media"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>opengraph<span class="token punctuation">.</span>title<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"How to make your Jekyll site show up on social"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>opengraph<span class="token punctuation">.</span>locale<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"en_US"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>opengraph<span class="token punctuation">.</span>description<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"Here's how to make Jekyll posts easier for others to see and share on social networks."</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>opengraph<span class="token punctuation">.</span>url<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>twitter<span class="token punctuation">.</span>card<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"summary_large_image"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>twitter<span class="token punctuation">.</span>creator<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"@chronotope"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>twitter<span class="token punctuation">.</span>title<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"How to make your Jekyll site show up on social"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>twitter<span class="token punctuation">.</span>image<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/tumblr_nwncf1T2ht1rl195mo1_1280.jpg"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>dublinCore<span class="token punctuation">.</span>Format<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"video/mpeg; 10 minutes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>dublinCore<span class="token punctuation">.</span>Language<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"en"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>dublinCore<span class="token punctuation">.</span>Publisher<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"publisher-name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>dublinCore<span class="token punctuation">.</span>Title<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"HYP"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>jsonLd<span class="token punctuation">[</span><span class="token string">"@type"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token string">"BlogPosting"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>jsonLd<span class="token punctuation">.</span>headline<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"How to make your Jekyll site show up on social"</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			result<span class="token punctuation">.</span>jsonLd<span class="token punctuation">.</span>description<span class="token punctuation">.</span>should<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><br>				<span class="token string">"Here's how to make Jekyll posts easier for others to see and share on social networks."</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>jsonLd<span class="token punctuation">.</span>image<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>have<span class="token punctuation">.</span><span class="token function">members</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>				<span class="token string">"https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/tumblr_nwncf1T2ht1rl195mo1_1280.jpg"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-wrestling-oembed-link-metadata-1">Oh, I forgot, I need to await <code>response.text()</code>!</p>
+<p>Ok, a few more tweaks and a reminder that I don't have Dublin Core on my actual site and it should be good to go.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/152cecd946499b8375e00e37ab09fcfffb0de1e1" class="git-commit-link"><code>git commit -am &quot;End to end unit test for building a link object&quot; </code></a></p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/context-pages/day-2/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/oembed">oembed</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
