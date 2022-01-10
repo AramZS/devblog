@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 10 Jan 2022 00:31:41 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 10 Jan 2022 01:41:40 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,7 +22,7 @@
 	</managingEditor>
 	
 	<item>
-		<title>Day 3: Wrestling with OEmbed</title>
+		<title>Day 3: Wrestling with OEmbed and Metadata</title>
 		<link>https://fightwithtools.dev/posts/projects/context-pages/day-3-wrestling-oembed-link-metadata/?source=rss</link>
 		<pubDate>Mon, 10 Jan 2022 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
