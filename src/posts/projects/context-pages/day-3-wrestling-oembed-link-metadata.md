@@ -193,3 +193,106 @@ Oh, I forgot, I need to await `response.text()`!
 Ok, a few more tweaks and a reminder that I don't have Dublin Core on my actual site and it should be good to go.
 
 `git commit -am "End to end unit test for building a link object" `
+
+Now I have a good looking data object I can use to build context cards:
+
+```javascript
+{
+  originalLink: 'http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html',
+  sanitizedLink: 'http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html',
+  oembed: false,
+  jsonLd: {
+    '@type': 'BlogPosting',
+    headline: 'How to make your Jekyll site show up on social',
+    description: "Here's how to make Jekyll posts easier for others to see and share on social networks.",
+    image: [
+      'https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/tumblr_nwncf1T2ht1rl195mo1_1280.jpg'
+    ],
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html'
+    },
+    datePublished: '2015-11-11 10:34:51 -0500',
+    dateModified: '2015-11-11 10:34:51 -0500',
+    isAccessibleForFree: 'True',
+    isPartOf: {
+      '@type': [ 'CreativeWork', 'Product', 'Blog' ],
+      name: 'Fight With Tools',
+      productID: 'aramzs.github.io'
+    },
+    discussionUrl: false,
+    license: 'http://creativecommons.org/licenses/by-sa/4.0/',
+    author: {
+      '@type': 'Person',
+      name: 'Aram Zucker-Scharff',
+      description: 'Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.',
+      sameAs: 'http://aramzs.github.io/aramzs/',
+      image: {
+        '@type': 'ImageObject',
+        url: 'https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg'
+      },
+      givenName: 'Aram',
+      familyName: 'Zucker-Scharff',
+      alternateName: 'AramZS',
+      publishingPrinciples: 'http://aramzs.github.io/about/'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Fight With Tools',
+      description: "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+      sameAs: 'http://aramzs.github.io',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg'
+      },
+      publishingPrinciples: 'http://aramzs.github.io/about/'
+    },
+    editor: {
+      '@type': false,
+      name: false,
+      description: false,
+      sameAs: false,
+      image: { '@type': false, url: false },
+      givenName: false,
+      familyName: false,
+      alternateName: false,
+      publishingPrinciples: false
+    },
+    '@context': 'http://schema.org'
+  },
+  status: 200,
+  metadata: {
+    author: 'Aram Zucker-Scharff',
+    title: 'How to make your Jekyll site show up on social',
+    description: "Here's how to make Jekyll posts easier for others to see and share on social networks.",
+    canonical: 'http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html',
+    keywords: [ 'jekyll', 'social-media' ]
+  },
+  dublinCore: {},
+  opengraph: {
+    title: 'How to make your Jekyll site show up on social',
+    description: "Here's how to make Jekyll posts easier for others to see and share on social networks.",
+    url: 'http://aramzs.github.io/jekyll/social-media/2015/11/11/be-social-with-jekyll.html',
+    site_name: 'Fight With Tools by AramZS',
+    locale: 'en_US',
+    type: 'article',
+    typeObject: {
+      published_time: '2015-11-11 10:34:51 -0500',
+      modified_time: false,
+      author: 'http://facebook.com/aramzs',
+      publisher: 'https://www.facebook.com/aramzs',
+      section: 'Code',
+      tag: [ 'jekyll', 'social-media' ]
+    },
+    image: 'https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/tumblr_nwncf1T2ht1rl195mo1_1280.jpg'
+  },
+  twitter: {
+    site: '@chronotope',
+    description: "Here's how to make Jekyll posts easier for others to see and share on social networks.",
+    card: 'summary_large_image',
+    creator: '@chronotope',
+    title: 'How to make your Jekyll site show up on social',
+    image: 'https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/tumblr_nwncf1T2ht1rl195mo1_1280.jpg'
+  }
+}
+```
