@@ -49,6 +49,8 @@
                 10 %}
                 {% if postType.collection == "links" %}
                     <a href="/links/">More Links</a>
+                {% elif postType.collection %}
+                    <a href="/tag/{{postType.collection.toLowerCase()}}">More {{postType.name}}</a>
                 {% endif %}
             </div>
         {% endfor %}
