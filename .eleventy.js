@@ -413,7 +413,9 @@ module.exports = function (eleventyConfig) {
 	const makePageObject = (tagName, slug, number, posts, first, last) => {
 		return {
 			tagName: tagName,
-			slug: slug ? slug : slugify(tagName.toLowerCase()),
+			slug: slug
+				? slug
+				: slugify(tagName.toLowerCase()),
 			number: number,
 			posts: posts,
 			first: first,
@@ -441,6 +443,50 @@ module.exports = function (eleventyConfig) {
 		});
 		// console.log(paginatedPostArray)
 		return paginatedPostArray;
+	};
+
+	const deepList = (collection, tag) => {
+		let deepProjectPostList = [];
+		// console.log("projectSet", projectSet);
+		projectSet.forEach((project) => {
+			// console.log("aProject", project);
+			if (project.count > 0) {
+				let allProjectPosts = collection.getFilteredByTag(tag);
+				// console.log(allProjectPosts[2].data.project, project.projectName);
+				let allPosts = allProjectPosts.filter((post) => {
+					if (post.data.project == project.projectName) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				allPosts.reverse();
+				const postClusters = getPostClusters(
+					allPosts,
+					project.projectName,
+					project.slug
+				);
+				// console.log("allPosts", postClusters);
+				deepProjectPostList.push(
+					getPostClusters(allPosts, project.projectName, project.slug)
+				);
+			}
+		});
+		// console.log("deepProjectPostList", deepProjectPostList);
+		let pagedDeepProjectList = [];
+		deepProjectPostList.forEach((projectCluster) => {
+			/**
+			 * 	tagName,
+				slug: slug ? slug : slugify(tagName.toLowerCase()),
+				number: i + 1,
+				posts: p,
+				first: i === 0,
+				last: i === postArray.length - 1,
+			*/
+			pagedDeepProjectList.push(...projectCluster);
+		});
+		// console.log("For tag", tag, pagedDeepProjectList);
+		return pagedDeepProjectList;
 	};
 
 	eleventyConfig.addCollection("postsPages", (collection) => {
@@ -515,47 +561,15 @@ module.exports = function (eleventyConfig) {
 	});
 
 	eleventyConfig.addCollection("deepProjectPostsList", (collection) => {
-		let deepProjectPostList = [];
-		// console.log("projectSet", projectSet);
-		projectSet.forEach((project) => {
-			// console.log("aProject", project);
-			if (project.count > 0) {
-				let allProjectPosts = collection.getFilteredByTag("projects");
-				// console.log(allProjectPosts[2].data.project, project.projectName);
-				let allPosts = allProjectPosts.filter((post) => {
-					if (post.data.project == project.projectName) {
-						return true;
-					} else {
-						return false;
-					}
-				});
-				allPosts.reverse();
-				const postClusters = getPostClusters(
-					allPosts,
-					project.projectName,
-					project.slug
-				);
-				// console.log("allPosts", postClusters);
-				deepProjectPostList.push(
-					getPostClusters(allPosts, project.projectName, project.slug)
-				);
-			}
-		});
-		// console.log("deepProjectPostList", deepProjectPostList);
-		let pagedDeepProjectList = [];
-		deepProjectPostList.forEach((projectCluster) => {
-			/**
-			 * 	tagName,
-				slug: slug ? slug : slugify(tagName.toLowerCase()),
-				number: i + 1,
-				posts: p,
-				first: i === 0,
-				last: i === postArray.length - 1,
-			*/
-			pagedDeepProjectList.push(...projectCluster);
-		});
-		// console.log("pagedDeepProjectList", pagedDeepProjectList);
-		return pagedDeepProjectList;
+		return deepList(collection, "projects");
+	});
+
+	eleventyConfig.addCollection("deepLinkPostsList", (collection) => {
+		let allLinkPosts = collection.getFilteredByTag("links");
+		allLinkPosts.reverse();
+		const postClusters = getPostClusters(allLinkPosts, "Links", "links");
+		// console.log("links", postClusters);
+		return postClusters;
 	});
 
 	eleventyConfig.addPlugin(pluginTOC, {
