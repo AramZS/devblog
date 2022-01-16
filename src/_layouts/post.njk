@@ -42,7 +42,7 @@
         <ul>
             {%- for tag in tags | filterTagList -%}
                 <li>
-                    <a href="{{ site.site_url }}/tag/{{ tag | slug }}">{{ tag }}</a>
+                    <a href="{{ site.site_url }}/tag/{{ tag.toLowerCase() | slug }}">{{ tag }}</a>
                 </li>
             {%- endfor -%}
         </ul>

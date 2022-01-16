@@ -28,6 +28,7 @@ featuredImageAlt: "Close up photo of keyboard keys."
 - [ ] Archive links on Archive.org and save the resulting archival links
 - [ ] Create link IDs that can be used to cache related content
 - [ ] Integrate it into the site to be able to make context pages here.
+- [ ] Archive linked YouTubes
 
 ## Day 1
 
