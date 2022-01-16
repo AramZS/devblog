@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 16 Jan 2022 20:51:09 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 16 Jan 2022 21:00:38 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -52,7 +52,7 @@
 <p>So, from this realization that my math education was injured by a lack of play, I realized that what I needed for my side projects was to spend significantly more time showing my work than showing the resulting product. If I was going to be able to keep track of projects and enjoy my time on them, they had to be a vehicle for play, and the way you play with code is by working through it, sometimes down the wrong path, sometimes down an unexpected one.</p>
 <h3 id="streaming-code" tabindex="-1">Streaming Code</h3>
 <p>Three: Then I saw someone who had really encoded the first two realizations I had into their programming process and turned it into not just a way to work but a <strong>resource</strong>. I'm talking about <a href="https://twitter.com/pfrazee/status/1371174362531962880" target="_blank">this very cool thing that Paul Frazee is doing with his work</a> where he livestreams himself coding, working on his project. He talks through what he's doing and the decisions he's making, and opens himself up to feedback from a live and later reviewing audience. This is very much like the writing-circle-style coding approach that I want to create.</p>
-<p>Even better, his code livestream becomes a permanent resource about his work that others can look to through his [dev-vlog](<a href="https://ctzn.network/dev-vlog" target="_blank">https://ctzn.network/dev-vlog</a>, which links commits he's made during livestreams to the actual video where he's making those commits.</p>
+<p>Even better, his code livestream becomes a permanent resource about his work that others can look to through his <a href="https://ctzn.network/dev-vlog" target="_blank">dev-vlog</a>, which links commits he's made during livestreams to the actual video where he's making those commits.</p>
 <p>I think that, in some regards, streaming oneself doing code is terrifying. It means admitting that you have to look things up, that you don't know everything, and that maybe your code isn't always the best. It also means opening yourself up to a community of feedback, for better or worse.</p>
 <p>I think my main hesitation with opening up my workflow like this is I worried that process is less interesting, even when I'm just thinking through an approach. I was disabused of this notion <a href="https://twitter.com/helenhousandi/status/1306277814551928832" target="_blank">when I watched Helen 侯-Sandí do her bug scrub livestream as part of the WordPress development workflow</a>. Watching people at work is interesting, regardless of the work.</p>
 <h2 id="principles-of-the-dev-blog" tabindex="-1">Principles of the Dev Blog</h2>
