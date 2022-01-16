@@ -58,7 +58,7 @@ So, from this realization that my math education was injured by a lack of play, 
 
 Three: Then I saw someone who had really encoded the first two realizations I had into their programming process and turned it into not just a way to work but a **resource**. I'm talking about [this very cool thing that Paul Frazee is doing with his work](https://twitter.com/pfrazee/status/1371174362531962880) where he livestreams himself coding, working on his project. He talks through what he's doing and the decisions he's making, and opens himself up to feedback from a live and later reviewing audience. This is very much like the writing-circle-style coding approach that I want to create.
 
-Even better, his code livestream becomes a permanent resource about his work that others can look to through his [dev-vlog](https://ctzn.network/dev-vlog, which links commits he's made during livestreams to the actual video where he's making those commits.
+Even better, his code livestream becomes a permanent resource about his work that others can look to through his [dev-vlog](https://ctzn.network/dev-vlog), which links commits he's made during livestreams to the actual video where he's making those commits.
 
 I think that, in some regards, streaming oneself doing code is terrifying. It means admitting that you have to look things up, that you don't know everything, and that maybe your code isn't always the best. It also means opening yourself up to a community of feedback, for better or worse.
 
