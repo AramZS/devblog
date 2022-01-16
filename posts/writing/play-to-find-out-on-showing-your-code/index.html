@@ -1,0 +1,341 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        
+            <!-- Sub Template: post -->
+        
+        
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Play to Find Out: On Showing Your (Code) Work</title>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1705241839" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1705241839" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1705241839" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1705241839" id=""></link>
+
+            
+            <!-- Build Revision: 1705241839 & Sha: a94d4833aabbe52d2739d5497d814a24dfc823a6 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Play to Find Out: On Showing Your (Code) Work">
+
+<meta property="og:description"
+    content="You can't learn without exploring. Working in the open, while scary, makes for easy collaboration, better results.">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/writing/play-to-find-out-on-showing-your-code/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="You can't learn without exploring. Working in the open, while scary, makes for easy collaboration, better results." />
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Play to Find Out: On Showing Your (Code) Work" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/play-to-find-out.png" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/play-to-find-out.png" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Sun, 16 Jan 2022 20:30:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+
+    <!-- I use the page.categories property for OG tags. -->
+    
+    <meta property="article:tag" content="posts" />
+    
+    <meta property="article:tag" content="Writing" />
+    
+    <meta property="article:tag" content="11ty" />
+    
+    <meta property="article:tag" content="Collaboration" />
+    
+    <meta property="article:tag" content="Open Source" />
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/writing/play-to-find-out-on-showing-your-code/",
+        "headline": "Play to Find Out: On Showing Your (Code) Work",
+        "about": "You can't learn without exploring. Working in the open, while scary, makes for easy collaboration, better results.",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "aramzs.github.io"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Director for Ad Engineering at Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "http://aramzs.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Sun Jan 16 2022</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                        <h1 class="header">
+                            Play to Find Out: On Showing Your (Code) Work
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name">Aram Zucker-Scharff</span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#how-do-you-solve-a-problem-of-unseen-code">How do you solve a problem of unseen-code?</a><ol><li><a href="#play-to-find-out">Play To Find Out</a></li><li><a href="#math-and-showing-your-work">Math and Showing Your Work</a></li><li><a href="#streaming-code">Streaming Code</a></li></ol></li><li><a href="#principles-of-the-dev-blog">Principles of the Dev Blog</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">You can't learn without exploring. Working in the open, while scary, makes for easy collaboration, better results.</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/play-to-find-out.png" alt="White text on black background: Play to Find Out">
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="how-do-you-solve-a-problem-of-unseen-code" tabindex="-1">How do you solve a problem of unseen-code?</h2>
+<p>I've <a href="https://twitter.com/Chronotope/status/1390700217838841860" target="_blank">been thinking a lot about how to get better at code when it's in my own side projects</a>. I do these side projects pretty much in isolation. Maybe sometimes I get a comment or, if I tweet about it enough and it's relevant, it might get rolled into some blog post. When that happens it's great! But it doesn't really give me feedback on my work or the quality of it. Without feedback it's hard to improve.</p>
+<p>Don't get me wrong, I do these projects for myself. I do them because I want to find something out and I need a tool to do it. I do them to learn new things because learning is fun. I do them because I want to create something cool that lets me play in code. These are all core to why I even bother with side projects.</p>
+<p>I don't want to stagnate in these side projects. I want them to get better, I want them to make me better, I want to make <em>the projects</em> better, and I want to advance my skills while working on them.</p>
+<p>At work, when I'm putting code together, I get opportunities to talk over ideas, plan architecture, and then, of course, I get feedback on my approach and technique in pull requests. PRs can be frustrating, revelatory, or any feeling in between, but I always learn something, even if it is just another way to approach how to write code.</p>
+<p>This process makes better coders. It makes me a better coder. Exponentially so. I badly miss it when it comes to side projects, but there doesn't really seem to be any formal structures around how to make getting feedback part of casual coding projects. So, I thought about this for a while.</p>
+<p>Then three things happened.</p>
+<h3 id="play-to-find-out" tabindex="-1">Play To Find Out</h3>
+<p>One: I started to play more Powered by the Apocalypse (PbtA) tabletop games. Then I started to write Powered by the Apocalypse games. Then I started to write rulesets for Powered by the Apocalypse games. This meant reading a lot of other people's PbtA games. I saw and came to appreciate one of the core rules for all Powered by the Apocalypse games, which is &quot;<a href="https://twitter.com/lumpleygames/status/1152247889885876224" target="_blank">Play to Find Out</a>&quot;.</p>
+<p>Play to Find Out is deceptively simple; it means that you don't pre-decide the outcomes. It means that games don't go off the rails because they don't have the rails. You have a general endpoint in mind... maybe... but the more important thing is to not be a game &quot;master&quot; in the way D&amp;D games are run, but to be a facilitator. It's to let go of the style of absolute control and realize that sometimes decisions come from outside and are driven by accident and play as much as they are by starting intention.</p>
+<p>This was the first idea to build on. I started thinking about these side projects less as end goals that leveraged things I knew and more as opportunities to explore the ecosystems and communities of the libraries and code samples I built on top of and potentially contribute back to them. I wasn't just going to go with my favorite tool, or what I wanted to learn, I was also going to go with the flow to some extent, <a href="https://fightwithtools.dev/posts/projects/devblog/retro-markdown-it/" target="_blank">even if it meant trying a library I neither needed to learn or would get any particular job-relevant knowledge from</a>.</p>
+<p>I know it seems strange to say this, but this sort of thinking led me towards moving more with the flow of the work. I began treating side projects less as an outcome or desired product and more of an exploration. This has led me down some weird roads, but I think has made the process more sustainable and fun and will continue to do so!</p>
+<h3 id="math-and-showing-your-work" tabindex="-1">Math and Showing Your Work</h3>
+<p>Two: I started to get more into math. I know people generally expect those who work with code are &quot;math-y&quot; (for lack of a better term). But that was never my path. I wasn't particularly engaged (and, therefore, not particularly good) with math in high school or college. I never enjoyed it, nor could I focus on it. However, I've been encountering more complex math and math concepts through my work with the W3C.</p>
+<p>I discovered that math was fun to read about and, more importantly, fun to play with conceptually. This is something I've been doing more. I think there's an image painted in most people's minds that an outcome of learning math in-depth is becoming the Math Expert, standing at a chalkboard working through equations. But I'm starting to think that's not the outcome, but the path.</p>
+<p>To learn and refine our practice as coders we play towards an outcome with sketching system architecture, or pseudo code, both at a whiteboard.</p>
+<p>Learning math isn't about getting to the point where you can stand at a whiteboard and do equations, it's about the process of learning through playing at the whiteboard.</p>
+<p>The problems of my math education came out of a solutionism approach. So many of the problems that I've had trying to figure stuff out with code stem from the same frustrations I had as a kid with math: that there is only one methodology, only one solution, only one way, and I just have to find it like I'm digging up an artifact.</p>
+<p>Solutionism isn't just a problem in how I learned math, <a href="https://www.macmillandictionary.com/us/buzzword/entries/solutionism.html" target="_blank">solutionism is a fundamental tech issue</a>. Approaching these projects as if they had ready-made solutions walls me off from collaboration in work. If I assume the solution is already there, ready formed in the metaphorical block of marble, I block out other viewpoints unlike mine and I remove the fun from the process of building, the exact opposite of what I want to do.</p>
+<p>When I learned math, we always had to &quot;show our work&quot;. But showing our work wasn't really the point of my math education. &quot;Showing your work&quot; was code for &quot;prove you didn't cheat,&quot; and it wasn't about exploring the problem... it was about showing you could recite back rote methodology. It was an approach that enforced the opposite of what showing your work should be about. It was trying to enforce the concept that there was only <em>one</em> solution to any math problem. Math became something to be whipped into you.</p>
+<p>No wonder Americans resisted so hard when math educators proclaimed that there might be more than one way to Do Math and that they were going to teach a different way to do so with Common Core. The math education I, and I suspect most others, received was designed to enforce that--not only was there a single solution--there was only one way to get to it. Learning some other approach to math hit a wall of dogma that the education system had handed down in math classrooms for decades.</p>
+<p>So, from this realization that my math education was injured by a lack of play, I realized that what I needed for my side projects was to spend significantly more time showing my work than showing the resulting product. If I was going to be able to keep track of projects and enjoy my time on them, they had to be a vehicle for play, and the way you play with code is by working through it, sometimes down the wrong path, sometimes down an unexpected one.</p>
+<h3 id="streaming-code" tabindex="-1">Streaming Code</h3>
+<p>Three: Then I saw someone who had really encoded the first two realizations I had into their programming process and turned it into not just a way to work but a <strong>resource</strong>. I'm talking about <a href="https://twitter.com/pfrazee/status/1371174362531962880" target="_blank">this very cool thing that Paul Frazee is doing with his work</a> where he livestreams himself coding, working on his project. He talks through what he's doing and the decisions he's making, and opens himself up to feedback from a live and later reviewing audience. This is very much like the writing-circle-style coding approach that I want to create.</p>
+<p>Even better, his code livestream becomes a permanent resource about his work that others can look to through his [dev-vlog](<a href="https://ctzn.network/dev-vlog" target="_blank">https://ctzn.network/dev-vlog</a>, which links commits he's made during livestreams to the actual video where he's making those commits.</p>
+<p>I think that, in some regards, streaming oneself doing code is terrifying. It means admitting that you have to look things up, that you don't know everything, and that maybe your code isn't always the best. It also means opening yourself up to a community of feedback, for better or worse.</p>
+<p>I think my main hesitation with opening up my workflow like this is I worried that process is less interesting, even when I'm just thinking through an approach. I was disabused of this notion <a href="https://twitter.com/helenhousandi/status/1306277814551928832" target="_blank">when I watched Helen 侯-Sandí do her bug scrub livestream as part of the WordPress development workflow</a>. Watching people at work is interesting, regardless of the work.</p>
+<h2 id="principles-of-the-dev-blog" tabindex="-1">Principles of the Dev Blog</h2>
+<p>So, taking these inspirations, I decided that what I really needed was a dev blog... heavy on the <strong>log</strong> part.</p>
+<p>I could have done a video stream, like a number of other people do. Clearly, there <a href="https://www.youtube.com/channel/UCSkcL4my2wgDRFvjQOJzrlg" target="_blank">are</a> <a href="https://www.twitch.tv/williamchyr" target="_blank">some</a> <a href="https://www.twitch.tv/mvandevander" target="_blank">great</a> <a href="https://www.twitch.tv/devwars/videos" target="_blank">examples</a> out there. But I don't think that model fits for me. I don't code regularly. This is a fun thing to do in my free time and I don't want to make a schedule for it in the way that livestreaming seems to require. Also, sometimes I think up something at lunch and jot a note about it and some code down. Or, I do very little one day. Or, I spread it out over small sessions. My approach for the projects I want to document just doesn't seem to be the right one for livestreaming.</p>
+<p>It's less of a resource that way too, at least when it isn't attached to a specific project. I want this to be as much of a reference as a log. Part of the goal here is to create stuff that is useful to people. Even if maybe I need to de-index things via robots.txt with some regularity.</p>
+<p>So, instead, I decided to create a written blog, which lets me exercise my writing too. This is another practice I enjoy but don't spend enough time doing.</p>
+<p>On top of everything else, this will help me solve a problem where I often like to put projects down for a while, or switch projects, and then when I come back to it I can't remember what I was doing. With an active log, it'll be easier to pick up and put down projects, which will be more fun.</p>
+<p>I decided it needs principles</p>
+<ul>
+<li>Commit often: better to save a reasonable mistake than forget it and repeat it.</li>
+<li>Work in the open: with errors and frustration on display.</li>
+<li>Play to learn: work through the problems instead of around them, even if it means sticking with a library that might frustrate me.</li>
+<li>Document the mistakes.</li>
+<li>Always take the opportunity to contribute: so that means building plugins, making PRs, leaving Issues and taking feedback in my own issues or PRs. Engage in the communities around the code I use, even if it means slowing down and breaking from working on a project.</li>
+<li>Work towards readability: The goal should always be to make my work readable in both log and code formats and to be clearer through things like leaving in scrap print statements and comments so others can reuse my shown work as much as the end product.</li>
+<li>Write messy, clean another day: Logs should be raw first and then edited and cleaned up on a later date.</li>
+<li>Define scope, but don't make it the absolute limit.</li>
+</ul>
+<p>And I decided I needed to make <a href="https://fightwithtools.dev/projects/devblog/" target="_blank">the first project this blog documented the making of the blog itself</a>.</p>
+<p>So, that's what this is about, trying to code but without a solutionism bent, instead with a mind to show my work, to show that this is a process, and not always an easy one. That this type of work is better done with a community, open to input, and out in the open. That I might <strong>fight with my tools,</strong> but that's part of the process. Hopefully, by opening up that process, I can help others.</p>
+<p>Also, I'm just a big <a href="https://open.spotify.com/album/2mSCSmEjNdJUic3fcqse57?si=8GiAlR9XT2aD1mK54NLQ3Q" target="_blank">Flobots fan</a>.</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/writing">Writing</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/collaboration">Collaboration</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/open-source">Open Source</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
