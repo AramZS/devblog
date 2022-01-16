@@ -1,5 +1,5 @@
 ---
-title: "Part 37: Markdown It in it's Environment"
+title: "Part 37:  Markdown It, Caching and Automatic Commit Links"
 description: "More devblog"
 project: Dev Blog
 date: 2021-11-17 22:59:43.10 -4
