@@ -1,7 +1,7 @@
 ---
 title: "Play to Find Out: On Showing Your (Code) Work"
 description: "You can't learn without exploring. Working in the open, while scary, makes for easy collaboration, better results."
-date: 2022-1-3 22:59:43.10 -4
+date: 2022-1-16 15:30:43.10 -5
 tags:
   - 11ty
   - Collaboration
