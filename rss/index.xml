@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 16 Jan 2022 21:13:34 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 17 Jan 2022 01:56:55 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,57 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Day 6: Looking into Memento and Readability processing</title>
+		<link>https://fightwithtools.dev/posts/projects/context-pages/day-6/?source=rss</link>
+		<pubDate>Mon, 17 Jan 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-pages/day-6/</guid>
+		<description>I want to share lists of links, but make them readable and archived</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Archive links on <a href="http://archive.org/" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate it into the site to be able to make context pages here.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Check if a link is still available at build time and rebuild the block with links to an archived link</li>
+</ul>
+<h2 id="day-6" tabindex="-1">Day 6</h2>
+<p>It looks like if I want to get any more complicated than the basics of the Wayback Machine's <code>/save/</code> URL, I'll likely need to explore the Memento API structure. So, we'll <a href="http://mementoweb.org/guide/quick-intro/" target="_blank">start with the Memento intro</a>.</p>
+<h3 id="examining-memento" tabindex="-1">Examining Memento</h3>
+<p>Ok the main points here are that there are three Memento entities joined over a link-based time map:</p>
+<ul>
+<li>TimeGate</li>
+<li>TimeMap</li>
+<li>Memento</li>
+</ul>
+<p>It seems that whoever builds the site would be responsible for the first two entities, so I want to really (at least for now) drill down into the Mementos. There is <a href="http://mementoweb.org/guide/rfc/#overview" target="_blank">a spec for Mementos</a> as well and <a href="https://www.slideshare.net/hvdsomp/memento-101" target="_blank">a useful slideshow</a>. But most of this is looking at the access protocol, not the actual process of creating the archive.</p>
+<p>Let's look for some guidance from the Archive Team projects. There are a few places that might be useful starts. There's <a href="https://github.com/ArchiveTeam/grab-site" target="_blank">grab-site</a> and <a href="https://github.com/ArchiveTeam/wpull" target="_blank">wpull</a>.</p>
+<p>I think the place to start is running a little test of <code>grab-site</code> locally. Let's try it out.</p>
+<h3 id="adding-readability-to-the-link-object" tabindex="-1">Adding Readability to the Link Object</h3>
+<p>I also wonder if it makes sense to have a less complex archive shipped in this initial package, like taking the already downloaded HTML document and processing it <a href="https://github.com/mozilla/readability" target="_blank">with Readability</a>.</p>
+<p>I'll start with <code>npm install @mozilla/readability</code> and incorporate it into building my link object.</p>
+<p>Like I did with the other sources of metadata, I'll add it to the core object so people can do what they wish with it when they pull in this package. Let's make sure that this new property is properly covered with unit tests.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/7571ed989d9a6287894b2254bac14dfa990d9915" class="git-commit-link"><code>git commit -am &quot;Add readability object to output&quot;</code></a></p>
+<p>Ok. I got that working!</p>
+<h3 id="trying-out-grab-site" tabindex="-1">Trying out grab-site</h3>
+<p>I want to switch back--now that I've installed it--to <code>grab-site</code> and see how it works.</p>
+<p>Hmmm, it does not. It appears I have some missing libraries here. I'll <a href="https://stackoverflow.com/questions/63972113/big-sur-clang-invalid-version-error-due-to-macosx-deployment-target" target="_blank">have to run some system level updates</a>. Let's see if that works.</p>
+<p>It looks like the key was running <code>softwareupdate --all --install --force</code> and then <code>sudo xcode-select --switch /Applications/Xcode.app/</code> on my OSX machine. Yup, that got it working!</p>
+<p>Wow, when I archive a page with no additional actions it crawls way deep into every related page and link huh? I was thinking it might be possible to run this <a href="https://github.com/actions/virtual-environments" target="_blank">in a Github Action virtual machine</a>. But if I even want to try that I'll have to think about <a href="https://github.com/ArchiveTeam/grab-site#grab-site-options-ordered-by-importance" target="_blank">ways to limit it</a>. And on top of everything else, <code>grab-site</code> at least creates WARC files, which aren't ready to deploy to a static site that can then be browsed in a normal browser the way I would want to have this work. I'd either have to find different tools or some way to transform the WARC file into a browser accessible website. I'm sure there's a way, perhaps <a href="https://replayweb.page/docs/embedding" target="_blank">this ReplayWeb package</a> or some <a href="https://github.com/webrecorder/wabac.js" target="_blank">other</a> method, but I'll have to dig into it.</p>
+<p>As I'm starting to examine <code>grab-site</code> and <code>wpull</code> and I'm wondering if building a Memento of a site is something that is going to be easy to do in Node. There are some utilities that it looks like have been adapted from Python into node that I can explore: <a href="https://github.com/webrecorder/warcio.js" target="_blank">warcio.js</a> and <a href="https://github.com/N0taN3rd/node-warc" target="_blank">node-warc</a>. At least if I do go down that route it will be a major project. It looks like I can also <a href="https://archiveweb.page/guide" target="_blank">look at ArchiveWeb as a possible tool to emulate</a> or <a href="https://webrecorder.net/tools" target="_blank">some related tools</a>? It might make more sense to handle it in another way. It's still worth digging into, but I'm wondering if I need to put a more complex archiving process aside to work on some other components. Let's put a pin in it for now.</p>
+<p>Ok, I think it's a good place to stop for tonight!</p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Play to Find Out: On Showing Your (Code) Work</title>
@@ -81,7 +132,7 @@
 	<item>
 		<title>Day 5: Simple Wayback Machine Archiving</title>
 		<link>https://fightwithtools.dev/posts/projects/context-pages/day-5/?source=rss</link>
-		<pubDate>Wed, 12 Jan 2022 02:59:43 GMT</pubDate>
+		<pubDate>Sun, 16 Jan 2022 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-pages/day-5/</guid>
 		<description>I want to share lists of links, but make them readable and archived</description>
@@ -103,7 +154,7 @@
 </ul>
 <h2 id="day-5" tabindex="-1">Day 5</h2>
 <p>Ok, the <a href="http://archive.is/" target="_blank">Archive.is</a> stuff isn't working for no clear reason. Let's step back and try <a href="http://archive.org/" target="_blank">Archive.org</a>. I want to first standardize to a single set of finalized meta values. I built a function to find the right values moving down priorities from <code>metadata</code> to OpenGraph to JSON-LD, with JSON-LD (where there) being the most likely to have accurate metadata.</p>
-<p>Ok, let's look at Web Arcvhive documentation</p>
+<p>Ok, let's look at Web Archive documentation</p>
 <ul>
 <li><a href="https://blog.archive.org/2017/01/25/see-something-save-something/" target="_blank">https://blog.archive.org/2017/01/25/see-something-save-something/</a></li>
 <li><a href="https://github.com/ArchiveTeam" target="_blank">https://github.com/ArchiveTeam</a></li>
