@@ -1,7 +1,7 @@
 ---
 title: "Day 5: Simple Wayback Machine Archiving"
 description: "I want to share lists of links, but make them readable and archived"
-date: 2022-1-11 22:59:43.10 -4
+date: 2022-1-15 22:59:43.10 -4
 tags:
   - 11ty
   - Node
@@ -33,7 +33,7 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 Ok, the Archive.is stuff isn't working for no clear reason. Let's step back and try Archive.org. I want to first standardize to a single set of finalized meta values. I built a function to find the right values moving down priorities from `metadata` to OpenGraph to JSON-LD, with JSON-LD (where there) being the most likely to have accurate metadata.
 
-Ok, let's look at Web Arcvhive documentation
+Ok, let's look at Web Archive documentation
 
 - https://blog.archive.org/2017/01/25/see-something-save-something/
 - https://github.com/ArchiveTeam
