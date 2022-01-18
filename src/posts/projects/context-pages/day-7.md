@@ -8,10 +8,6 @@ tags:
   - WiP
   - archiving
   - Twitter
-featuredImage: "memento.png"
-featuredImageCredit: "From: Memento Guide - Introduction to Memento"
-featuredImageLink: "http://mementoweb.org/guide/quick-intro/"
-featuredImageAlt: "Chart of the Memento architecture"
 ---
 
 ## Project Scope and ToDos
