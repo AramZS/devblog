@@ -125,6 +125,16 @@ it("should capture a single tweet", async function () {
 });
 ```
 
-Ok, that works!
+That works!
 
 `git commit -am "Basic Twitter query functionality"`
+
+This is a little troubling though. There's no information about the tweet as a thread. That information is in a standard response from the Twitter API. Do I need to access the API directly or do I need to change my function call here?
+
+Ok, it looks like [I have to use expansions and optional fields](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets) to get the info I want. I can look in the defined types file for this module to understand a little more about how these get passed (easy enough to pull up with the Peak feature in VS Code).
+
+Using that, I can get a much more complex object back!
+
+Now I can have the whole tweet object I'm generating in the test, useful for reference.
+
+`git commit -am "Get and test a more complex single tweet"`
