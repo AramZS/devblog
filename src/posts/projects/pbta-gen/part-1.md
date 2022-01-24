@@ -29,7 +29,7 @@ Ok, so I want to be able to quickly generate sites that can host my ideas around
 
 I think that the best way to handle this is to have a way to quickly set up Eleventy sites with the correct structure and base data. In the same way that Eleventy has a CLI command to set up sites, I would like to have a version of that which sets up stuff in the same way.
 
-I'd also like to be able build out indiviual scenarios for these games within a folder.
+I'd also like to be able build out individual scenarios for these games within a folder.
 
 I've never done a node-based CLI tool. So let's try and do that!
 
