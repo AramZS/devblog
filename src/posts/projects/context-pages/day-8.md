@@ -25,7 +25,7 @@ tags:
 - [ ] Integrate it into the site to be able to make context pages here.
 - [ ] Check if a link is still available at build time and rebuild the block with links to an archived link
 
-## Day 7
+## Day 8
 
 Last time I worked on this project I got a basic Twitter tweet object worked out. It looked like this:
 
