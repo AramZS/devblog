@@ -10,7 +10,7 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Day 8: Getting a Twitter Thread</title>
+            <title>Day 10: Getting Quoted Tweets</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
             <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1767762040" /> -->
@@ -33,14 +33,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Day 8: Getting a Twitter Thread">
+    content="Day 10: Getting Quoted Tweets">
 
 <meta property="og:description"
-    content="I want to get a Twitter thread when I link to a single Tweet that is part of a thread">
+    content="I want to get the full tweet and thread when a Tweet quotes another tweet.">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-pages/day-9/" />
+    content="https://fightwithtools.dev/posts/projects/context-pages/day-10/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -48,14 +48,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="I want to get a Twitter thread when I link to a single Tweet that is part of a thread" />
+<meta name="twitter:description" content="I want to get the full tweet and thread when a Tweet quotes another tweet." />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Day 8: Getting a Twitter Thread" />
+<meta name="twitter:title" content="Day 10: Getting Quoted Tweets" />
 
 
 
@@ -68,7 +68,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Fri, 28 Jan 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Mon, 31 Jan 2022 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -106,9 +106,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-pages/day-9/",
-        "headline": "Day 8: Getting a Twitter Thread",
-        "about": "I want to get a Twitter thread when I link to a single Tweet that is part of a thread",
+        "url": "https://fightwithtools.dev/posts/projects/context-pages/day-10/",
+        "headline": "Day 10: Getting Quoted Tweets",
+        "about": "I want to get the full tweet and thread when a Tweet quotes another tweet. ",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -196,14 +196,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Fri Jan 28 2022</time>
+                            <time>Mon Jan 31 2022</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Day 8: Getting a Twitter Thread
+                            Day 10: Getting Quoted Tweets
                         </h1>
                         
                         
@@ -222,10 +222,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-9">Day 9</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-10">Day 10</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">I want to get a Twitter thread when I link to a single Tweet that is part of a thread</div>
+        <div id="post-description">I want to get the full tweet and thread when a Tweet quotes another tweet. </div>
 
         
 
@@ -249,17 +249,23 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate it into the site to be able to make context pages here.</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Check if a link is still available at build time and rebuild the block with links to an archived link</li>
 </ul>
-<h2 id="day-9" tabindex="-1">Day 9</h2>
-<p>Ok, so last time we were here it wasn't looping properly with the While and I assumed it had something to do with the Promises. I'm not so sure now. I forgot that I added the first tweet into the array which means it never even loops once. So this means the loop isn't advancing, but it's unclear why. My conditions seem to be correct.</p>
-<p>After adding a little logging, it seems like it doesn't even finish that first loop.</p>
-<p>Oops, looks like I captured the wrong Tweet to test with. Well, that's a good reason why.</p>
-<p>Ok, code works, it's a little messy but it works!</p>
-<p>Cleaned it up, refined the test. Here's the final function to walk a Tweet thread:</p>
+<h2 id="day-10" tabindex="-1">Day 10</h2>
+<p>Ok, I got my stuff pretty well working yesterday, but I want to check to see if it works with a thread that's not just me.</p>
+<p>It isn't quite working though. It looks like I can't depend on the replied_to tweet data to be in the first position consistently. I'll use a <code>find</code> instead of making that assumption.</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-9-1" id="skip-to-code-skip-day-9-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> <span class="token function-variable function">getTweetThread</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">tweetObj <span class="token operator">=</span> defaultTweetObj</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">let</span> threadCheck <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>	<span class="token keyword">let</span> threadFirstCheck <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>	<span class="token keyword">let</span> conversation <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>	<span class="token comment">// const promises = [];</span><br>	<span class="token keyword">const</span> tweetData <span class="token operator">=</span> tweetObj<span class="token punctuation">.</span>data<span class="token punctuation">;</span><br>	<span class="token keyword">const</span> tweetIncludes <span class="token operator">=</span> tweetObj<span class="token punctuation">.</span>includes<span class="token punctuation">;</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span>tweetData<span class="token punctuation">.</span>in_reply_to_user_id<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		threadFirstCheck <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span><br>		Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>tweetIncludes<span class="token punctuation">.</span>users<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span><br>		tweetIncludes<span class="token punctuation">.</span>users<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span><br>		tweetIncludes<span class="token punctuation">.</span>users<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>users <span class="token operator">&amp;&amp;</span><br>		tweetData<span class="token punctuation">.</span>in_reply_to_user_id <span class="token operator">&amp;&amp;</span><br>		tweetData<span class="token punctuation">.</span>conversation_id <span class="token operator">!=</span> tweetData<span class="token punctuation">.</span>id<br>	<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		threadFirstCheck <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>threadFirstCheck<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		conversation <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getTwitterClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span><br>			<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">conversation_id:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tweetData<span class="token punctuation">.</span>conversation_id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> to:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tweetIncludes<span class="token punctuation">.</span>users<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> from:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tweetIncludes<span class="token punctuation">.</span>users<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>			tweetFields<br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">const</span> fullConversation <span class="token operator">=</span> conversation<span class="token punctuation">.</span>_realData<span class="token punctuation">.</span>data<span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>conversation<span class="token punctuation">.</span>_realData<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		fullConversation<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>tweetObj<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		console<span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>fullConversation<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">return</span> fullConversation<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>		console<span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>tweetData<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		conversation <span class="token operator">=</span> <span class="token punctuation">[</span>tweetObj<span class="token punctuation">]</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> nextTweet <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>		<span class="token keyword">while</span> <span class="token punctuation">(</span>nextTweet <span class="token operator">!=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"nextTweet"</span><span class="token punctuation">,</span> nextTweet<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>nextTweet <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				nextTweet <span class="token operator">=</span> <span class="token function">getRepliedTo</span><span class="token punctuation">(</span>tweetData<span class="token punctuation">)</span><span class="token punctuation">;</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"nextTweet true"</span><span class="token punctuation">,</span> nextTweet<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>			<span class="token keyword">var</span> tweet <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getTwitterClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">singleTweet</span><span class="token punctuation">(</span><br>				<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>nextTweet<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>				tweetFields<br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token comment">// promises.push(tweet);</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"tweet true"</span><span class="token punctuation">,</span> tweet<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			conversation<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>tweet<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			nextTweet <span class="token operator">=</span> <span class="token function">getRepliedTo</span><span class="token punctuation">(</span>tweet<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token comment">// await Promise.all(promises);</span><br>		<span class="token keyword">return</span> conversation<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-9-1">Cool stuff. I can now capture a twitter thread either bottom up or top down. Next step here is to capture any quote tweets and their threads. Luckily this thread provides an example quote tweet, I'll have to find another thread to give me a quoted thread.</p>
-<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/a3e1e68c05093ee6c6eb47102e47c8b16b442462" class="git-commit-link"><code>git commit -am &quot;Capture a Twitter thread&quot;</code></a></p>
+<a href="#code-skip-day-10-1" id="skip-to-code-skip-day-10-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">getRepliedTo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tweetData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span>tweetData<span class="token punctuation">.</span>referenced_tweets <span class="token operator">&amp;&amp;</span> tweetData<span class="token punctuation">.</span>referenced_tweets<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">const</span> repliedTo <span class="token operator">=</span> tweetData<span class="token punctuation">.</span>referenced_tweets<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">tweet</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>tweet<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"replied_to"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>repliedTo<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"referenced_tweet 0"</span><span class="token punctuation">,</span> repliedTo<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">return</span> repliedTo<span class="token punctuation">.</span>id<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>			<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-10-1">Ok, now when I want to get a quoted tweet, I can build a similar function to extract the ID as a first step. Then I can get the full Tweet. I can try pulling that Tweet's thread... But what if that tweet is the middle of a thread? I should likely check that as well. Do I need to do that in every case, or just this case? I think it would be unwise to assume I want to do it in every case, so let's just do it in this case. Get the assumed Thread AND the conversation thread?</p>
+<p>I guess it is a little more complicated and requires a little more complex of a return than a simple array to handle all the cases. Ok, time to refactor it.</p>
+<p>Oh, ok, you don't get a <code>data</code> object with every tweet. It's only per query (though not the search query I guess?). Let's refactor some more to remove it from the equation and make my functions generally usable.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Fix incorrect use of Twitter Query data object and make the thread finder more versatile.&quot;</code></a></p>
+<p>Ok, so now let's set up a situation where we need this new feature to work! I've found a good Tweet, so now I'll give it a try.</p>
+<p>Hmmmm</p>
+<p>And for some reason my conversation_id based query isn't working. The query is going through, but it isn't getting results. Even though checking the search it should be.</p>
+<p>Oh, I see, <a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction" target="_blank">the search endpoint only goes back 7 days</a>. Annoying.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Tweet archiver test if tweets were more recent this would work&quot;</code></a></p>
+<p>Ok, I'm getting my quoted tweets and tweet threads!</p>
+<p>Last step is a function for grabbing the media from tweets to archive and then I can build a function that takes tweet objects and turns them into something useful and embedable, and easy to archive.</p>
 
                     
                     </section>
@@ -269,9 +275,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/context-pages/day-8/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/context-pages/day-9/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-pages/day-10/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">

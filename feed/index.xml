@@ -5,12 +5,53 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2022-01-28T02:59:43Z</updated>
+  <updated>2022-01-31T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Day 10: Getting Quoted Tweets</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-pages/day-10/"/>
+    <updated>2022-01-31T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-pages/day-10/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Archive links on <a href="http://archive.org/" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate it into the site to be able to make context pages here.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Check if a link is still available at build time and rebuild the block with links to an archived link</li>
+</ul>
+<h2 id="day-10" tabindex="-1">Day 10</h2>
+<p>Ok, I got my stuff pretty well working yesterday, but I want to check to see if it works with a thread that's not just me.</p>
+<p>It isn't quite working though. It looks like I can't depend on the replied_to tweet data to be in the first position consistently. I'll use a <code>find</code> instead of making that assumption.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-pages/day-10/#code-skip-day-10-1" id="skip-to-code-skip-day-10-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">getRepliedTo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tweetData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	<span class="token keyword">if</span> <span class="token punctuation">(</span>tweetData<span class="token punctuation">.</span>referenced_tweets <span class="token operator">&amp;&amp;</span> tweetData<span class="token punctuation">.</span>referenced_tweets<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />		<span class="token keyword">const</span> repliedTo <span class="token operator">=</span> tweetData<span class="token punctuation">.</span>referenced_tweets<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">tweet</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />			<span class="token keyword">if</span> <span class="token punctuation">(</span>tweet<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"replied_to"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />				<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />				<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br />			<span class="token punctuation">}</span><br />		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />		<span class="token keyword">if</span> <span class="token punctuation">(</span>repliedTo<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"referenced_tweet 0"</span><span class="token punctuation">,</span> repliedTo<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><br />			<span class="token keyword">return</span> repliedTo<span class="token punctuation">.</span>id<span class="token punctuation">;</span><br />		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />			<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br />		<span class="token punctuation">}</span><br />	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br />	<span class="token punctuation">}</span><br /><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-10-1">Ok, now when I want to get a quoted tweet, I can build a similar function to extract the ID as a first step. Then I can get the full Tweet. I can try pulling that Tweet's thread... But what if that tweet is the middle of a thread? I should likely check that as well. Do I need to do that in every case, or just this case? I think it would be unwise to assume I want to do it in every case, so let's just do it in this case. Get the assumed Thread AND the conversation thread?</p>
+<p>I guess it is a little more complicated and requires a little more complex of a return than a simple array to handle all the cases. Ok, time to refactor it.</p>
+<p>Oh, ok, you don't get a <code>data</code> object with every tweet. It's only per query (though not the search query I guess?). Let's refactor some more to remove it from the equation and make my functions generally usable.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Fix incorrect use of Twitter Query data object and make the thread finder more versatile.&quot;</code></a></p>
+<p>Ok, so now let's set up a situation where we need this new feature to work! I've found a good Tweet, so now I'll give it a try.</p>
+<p>Hmmmm</p>
+<p>And for some reason my conversation_id based query isn't working. The query is going through, but it isn't getting results. Even though checking the search it should be.</p>
+<p>Oh, I see, <a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction" target="_blank">the search endpoint only goes back 7 days</a>. Annoying.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Tweet archiver test if tweets were more recent this would work&quot;</code></a></p>
+<p>Ok, I'm getting my quoted tweets and tweet threads!</p>
+<p>Last step is a function for grabbing the media from tweets to archive and then I can build a function that takes tweet objects and turns them into something useful and embedable, and easy to archive.</p>
+</content>
+  </entry>
   
   <entry>
     <title>Day 8: Getting a Twitter Thread</title>
