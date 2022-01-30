@@ -13,15 +13,15 @@
             <title>Day 10: Getting Quoted Tweets</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1767762040" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1767762040" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1767762919" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1767762919" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1767762040" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1767762040" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1767762919" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1767762919" id=""></link>
 
             
-            <!-- Build Revision: 1767762040 & Sha: 2ef54a78278a025f8355d46b8a47f5ac7bd06779 -->
+            <!-- Build Revision: 1767762919 & Sha: 0db9b5caa192e07b479a162cf97f75a5f14a0a96 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -258,12 +258,12 @@
 <p id="code-skip-day-10-1">Ok, now when I want to get a quoted tweet, I can build a similar function to extract the ID as a first step. Then I can get the full Tweet. I can try pulling that Tweet's thread... But what if that tweet is the middle of a thread? I should likely check that as well. Do I need to do that in every case, or just this case? I think it would be unwise to assume I want to do it in every case, so let's just do it in this case. Get the assumed Thread AND the conversation thread?</p>
 <p>I guess it is a little more complicated and requires a little more complex of a return than a simple array to handle all the cases. Ok, time to refactor it.</p>
 <p>Oh, ok, you don't get a <code>data</code> object with every tweet. It's only per query (though not the search query I guess?). Let's refactor some more to remove it from the equation and make my functions generally usable.</p>
-<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Fix incorrect use of Twitter Query data object and make the thread finder more versatile.&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/7f2d16b0fa351c597fd17dac9da3bebd90a8616a" class="git-commit-link"><code>git commit -am &quot;Fix incorrect use of Twitter Query data object and make the thread finder more versatile.&quot;</code></a></p>
 <p>Ok, so now let's set up a situation where we need this new feature to work! I've found a good Tweet, so now I'll give it a try.</p>
 <p>Hmmmm</p>
 <p>And for some reason my conversation_id based query isn't working. The query is going through, but it isn't getting results. Even though checking the search it should be.</p>
 <p>Oh, I see, <a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/introduction" target="_blank">the search endpoint only goes back 7 days</a>. Annoying.</p>
-<p><a target="_blank" href="https://github.com/AramZS/contexter/commits/main" class="git-commit-link"><code>git commit -am &quot;Tweet archiver test if tweets were more recent this would work&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/47d8051fe7aef67d2f0a892d4d35f30c8b25b987" class="git-commit-link"><code>git commit -am &quot;Tweet archiver test if tweets were more recent this would work&quot;</code></a></p>
 <p>Ok, I'm getting my quoted tweets and tweet threads!</p>
 <p>Last step is a function for grabbing the media from tweets to archive and then I can build a function that takes tweet objects and turns them into something useful and embedable, and easy to archive.</p>
 
