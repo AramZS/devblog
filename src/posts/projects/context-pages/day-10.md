@@ -1,7 +1,7 @@
 ---
 title: "Day 10: Getting Quoted Tweets"
 description: "I want to get the full tweet and thread when a Tweet quotes another tweet. "
-date: 2022-1-30 22:59:43.10 -4
+date: 2022-1-29 22:59:43.10 -4
 tags:
   - 11ty
   - Node
