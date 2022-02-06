@@ -78,3 +78,9 @@ There are likely some other things that I could add to that `finalizedMeta` obje
 Ok, once I have everything passed into the template I want to test it using jsDom to make sure it has all the right stuff passed in.
 
 `git commit -am "Set up creation of link block"`
+
+I'm pretty much ready. I think it's good to take a look at the archive link which isn't really hooked in yet. I can check the request and...
+
+Yup the GET request to the web archive returns the link that gets created by the request. Ok, I can include that in the object and yeah! This looks like it's good to go! Next step is to try integrating it into something.
+
+`git commit -am "Hook in archive url."`
