@@ -5,12 +5,44 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2022-02-06T02:59:43Z</updated>
+  <updated>2022-02-07T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Day 13: Building a block to show link data</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-pages/day-13/"/>
+    <updated>2022-02-07T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-pages/day-13/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Archive links on <a href="http://archive.org/" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate it into the site to be able to make context pages here.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Check if a link is still available at build time and rebuild the block with links to an archived link</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Use v1 Twitter API to get Gifs and videos</li>
+</ul>
+<h2 id="day-13" tabindex="-1">Day 13</h2>
+<p>Ok, forgot to do one thing, hook in the Twitter work. The one big issue is that I want to tie a bunch of oembeds together but the query doesn't seem to actually return a Twitter URL, just the ID. Is there a way to link to a Tweet without having to query up the user?</p>
+<p>Looks like there is a way to construct this by putting the UID for the tweet on to the end of <code>https://twitter.com/i/web/status/</code>. Can I use this structure to get an oembed?</p>
+<p>Nope.</p>
+<p>Ok, it looks like even though this link doesn't work on the web and it isn't documented, you <a href="https://stackoverflow.com/questions/64917470/which-url-are-you-supposed-to-use-for-the-twitter-oembed-api" target="_blank">can take the ID and pass it into the oembed endpoint</a> in the format of <code>twitter.com/twitter/status/{id}</code>. This is a very irritating hack, but hey, it works. I can get real complicated here, but I think it would be good to get to actually integrating this into a blog setup to get a better handle on how it works.</p>
+<p>It looks like my oEmbed tool doesn't work with Twitter, but I can make a custom fetch to that process. It will get me back an object with an <code>html</code> property. I can then use <code>reduce</code> to pull all those oembeds together into a single string. Each comes with a script tag, so I'll just remove that. The final version that gets stitched together can have the tag added to the end.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/aab665170673b07325726506e05b03cfae5bc15a" class="git-commit-link"><code>git commit -am &quot;Combine blockquotes, remove scripts and set up twitter thread oembeds.&quot;</code></a></p>
+</content>
+  </entry>
   
   <entry>
     <title>Day 12: Building a block to show link data</title>

@@ -10,7 +10,7 @@
         
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 5: Image Handling and CSS Improvements</title>
+            <title>Day 13: Building a block to show link data</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
             <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
@@ -33,14 +33,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Part 5: Image Handling and CSS Improvements">
+    content="Day 13: Building a block to show link data">
 
 <meta property="og:description"
-    content="Part 5 of setting up 11ty dev blog.">
+    content="I want to get the data set up in an HTML block a user can style">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-5/" />
+    content="https://fightwithtools.dev/posts/projects/context-pages/day-13/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -48,14 +48,14 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Part 5 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="I want to get the data set up in an HTML block a user can style" />
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Part 5: Image Handling and CSS Improvements" />
+<meta name="twitter:title" content="Day 13: Building a block to show link data" />
 
 
 
@@ -68,7 +68,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Thu, 17 Jun 2021 03:59:43 GMT" />
+    <meta property="article:published_time" content="Mon, 07 Feb 2022 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -80,7 +80,7 @@
 
     
     <!-- Article section isn't a required property, but it can be good to have -->
-    <meta property="article:section" content="Dev Blog" />
+    <meta property="article:section" content="Context Pages" />
     
 
     <!-- I use the page.categories property for OG tags. -->
@@ -89,21 +89,15 @@
     
     <meta property="article:tag" content="projects" />
     
-    <meta property="article:tag" content="Starters" />
-    
-    <meta property="article:tag" content="11ty" />
-    
     <meta property="article:tag" content="Node" />
-    
-    <meta property="article:tag" content="Sass" />
     
     <meta property="article:tag" content="WiP" />
     
-    <meta property="article:tag" content="CSS" />
+    <meta property="article:tag" content="archiving" />
     
-    <meta property="article:tag" content="GitHub" />
+    <meta property="article:tag" content="embeds" />
     
-    <meta property="article:tag" content="Cache breaking" />
+    <meta property="article:tag" content="Twitter" />
     
 
 
@@ -112,9 +106,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/devblog/hello-day-5/",
-        "headline": "Part 5: Image Handling and CSS Improvements",
-        "about": "Part 5 of setting up 11ty dev blog.",
+        "url": "https://fightwithtools.dev/posts/projects/context-pages/day-13/",
+        "headline": "Day 13: Building a block to show link data",
+        "about": "I want to get the data set up in an HTML block a user can style",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -196,24 +190,22 @@
                             <div id="site-name-subhead">
                                 <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
                                 
-                                    > <a id="project-link" href="https://fightwithtools.dev/projects/devblog">Dev Blog</a>
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/context-pages">Context Pages</a>
                                 
                             </div>
                         
                         
                             <!-- post mode -->
-                            <time>Thu Jun 17 2021</time>
+                            <time>Mon Feb 07 2022</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Part 5: Image Handling and CSS Improvements
+                            Day 13: Building a block to show link data
                         </h1>
                         
-                        
-                        <p class="header">Getting this dev blog running</p>
                         
                     
                     
@@ -230,10 +222,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-5">Day 5</a><ol><li><a href="#figuring-out-the-images">Figuring out the Images</a></li><li><a href="#making-links-more-visible">Making Links More Visible</a></li></ol></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-13">Day 13</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Part 5 of setting up 11ty dev blog.</div>
+        <div id="post-description">I want to get the data set up in an HTML block a user can style</div>
 
         
 
@@ -243,81 +235,28 @@
                     
                         <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
-<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
-<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
-<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
-<li>Once it gets going, I want template changes to be easy.</li>
-<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
-<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
-<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+<li>Take a link and turn it into an oEmbed/Open Graph style share card</li>
+<li>Take a link and archive it in the most reliable way</li>
+<li>When the link is a tweet, display the tweet but also the whole tweet thread.</li>
+<li>When the link is a tweet, archive the tweets, and display them if the live ones are not available.</li>
+<li>Capture any embedded retweets in the thread. Capture their thread if one exists</li>
+<li>Capture any links in the Tweet</li>
+<li>Create the process as an abstract function that returns the data in a savable way</li>
 </ol>
 <ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
-</li>
-<li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
-</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Archive links on <a href="http://Archive.org" target="_blank">Archive.org</a> and save the resulting archival links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create link IDs that can be used to cache related content</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate it into the site to be able to make context pages here.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Check if a link is still available at build time and rebuild the block with links to an archived link</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Use v1 Twitter API to get Gifs and videos</li>
 </ul>
-<s>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
-</ul>
-</s>
-<ul class="task-list">
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
-</li>
-<li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is how Jekyll accomplishes this, but is there a way to push that into the build process for Eleventy?</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
-</li>
-<li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
-</li>
-</ul>
-<h2 id="day-5" tabindex="-1">Day 5</h2>
-<p>Ok, yesterday I didn't have that much time to work, but today I'm feeling as good as I can after having my main battery and a whole bunch of USB sticks, a Yubi key, and my main external Anker power battery robbed out of the back of a rental car in San Antonio yesterday.</p>
-<h3 id="figuring-out-the-images" tabindex="-1">Figuring out the Images</h3>
-<p>Good news, finally a check mark on my ever-expanding scope list. Some bad news for the task list as well, in that I'm now 99% sure I can't just pull the template from the dinky submodule. I think there are just too significant a set of differences between Jekyll and Nunjucks. I could explore more similar templating languages, but getting better at Nunjucks is part of the point of all this, so I'm going to dismiss that from my work scope for now.</p>
-<p>So, since it hasn't been a great 24hs IRL, let's see if I can harvest a few more easy wins.</p>
-<p>How do the GitHub variables work for cachebreaking? That seems like a potentially non-obvious but relatively easy win. A-searching we do go.</p>
-<p>Interesting to see someone <a href="https://snook.ca/archives/servers/deploying-11ty-to-gh-pages" target="_blank">handling their build via Travis</a>, good to remember.</p>
-<p>Ok, that was unexpected. No one seems to have asked this question? Maybe it just works? I guess I'll have to wait to deploy in order to see. Moving on to something entirely in my hands, let's make the links look less shitty.</p>
-<p>Let me show you the problem.</p>
-<p>Oh, wait, need to get the image folder working first...</p>
-<p>Ok, following the pattern of posts the <code>img</code> folder should be inside of <code>src</code>. Gotta fix the passthrough <code>eleventyConfig.addPassthroughCopy(&quot;src/img&quot;, &quot;img&quot;);</code>.</p>
-<p data-wordfix="true">Oh, I actually <a href="https://www.11ty.dev/docs/copy/#how-passthrough-file-copy-handles-input-directories" target="_blank">don't need to be that explicit</a>. <code>eleventyConfig.addPassthroughCopy(&quot;src/img&quot;, &quot;img&quot;);</code> works just fine.</p>
-<p>Hmmm, I could do full URLs, but this is actually one of the things I hate about Jekyll.</p>
-<p>Ugh... <a href="https://github.com/11ty/eleventy/issues/379" target="_blank">it looks like the general strategy in GitHub issues is to copy images to be relative to the folders of the associated posts</a>. That's... meh. I dislike it intensely. What if I want to reuse the image? Now I have multiples. One image, one URL IMHO.</p>
-<p>Ok, looks like I'm not the only one fiddling around with this, <a href="https://www.npmjs.com/package/markdown-it-replace-link" target="_blank">someone else wrote all the annoying regexes for me in a markdown-it plugin</a>.</p>
-<p data-wordfix="true">There's <a href="https://www.11ty.dev/docs/data-eleventy-supplied/" target="_blank">no way to really get the base URL</a>, but at least I can do it <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a>.</p>
-<aside>
-<p data-wordfix="true">(I also saw <a href="https://www.11ty.dev/docs/quicktips/eliminate-js/" target="_blank">how Eleventy pulls from the Github API on build</a>, which may be useful if I need to use <a href="https://docs.github.com/en/rest/reference/repos#get" target="_blank">that sort of info</a> for cachebreaking later.)</p>
-</aside>
-<div style="border: 2px black solid">
-<p><img src="https://fightwithtools.dev/img/links-and-not-links.png" alt="Links look bad inside the text."></p>
-</div>
-<h3 id="making-links-more-visible" tabindex="-1">Making Links More Visible</h3>
-<p>This comes from that whole annoying school of &quot;native link styles are ugly so let's change them as much as possible and try to use some other thing to indicate they are links.&quot;</p>
-<p>That school is one I do not attend. Clear and legible UX has to build on top of standards of design the user is familiar with lest a site confuse the reader. I can give any theme some room, you can remove underlines, or change the color to something other than close-to-link-blue, but both?! Nien.</p>
-<p>Huh... first things first... that Sass folder should really be in <code>src</code>.</p>
-<p>Ok, now to set up a <code>user</code> overwrite to be the last file in the Sass compile process, and t/f the one that overrides general site-level stuff. Let's fix it to a blue color and remove that <em>very</em> annoying light weight on the font.</p>
-<p>Much better.</p>
-<p>Oh, I want to make those checkboxes show up correctly. Bet there's a markdown-it plugin I can use. It looks like there are 2 possible node modules, <a href="https://www.npmjs.com/package/markdown-it-task-checkbox" target="_blank">a more used one with some unresolved PRs and ignored issues</a> and <a href="https://www.npmjs.com/package/markdown-it-todo" target="_blank">a barely used one that correctly makes checkboxes readonly</a>. It might be less popular, but I'm going with the version that works the way I want right out of the box. It also happens to be a very simple plugin, so if it goes wrong, I can always hack at it.</p>
-<p>Looks good!</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/62f4e132faa143fa7d1a81234018076c594c319c" class="git-commit-link"><code>git commit -am &quot;Adding days 4 and 5 progress and notes&quot;</code></a></p>
+<h2 id="day-13" tabindex="-1">Day 13</h2>
+<p>Ok, forgot to do one thing, hook in the Twitter work. The one big issue is that I want to tie a bunch of oembeds together but the query doesn't seem to actually return a Twitter URL, just the ID. Is there a way to link to a Tweet without having to query up the user?</p>
+<p>Looks like there is a way to construct this by putting the UID for the tweet on to the end of <code>https://twitter.com/i/web/status/</code>. Can I use this structure to get an oembed?</p>
+<p>Nope.</p>
+<p>Ok, it looks like even though this link doesn't work on the web and it isn't documented, you <a href="https://stackoverflow.com/questions/64917470/which-url-are-you-supposed-to-use-for-the-twitter-oembed-api" target="_blank">can take the ID and pass it into the oembed endpoint</a> in the format of <code>twitter.com/twitter/status/{id}</code>. This is a very irritating hack, but hey, it works. I can get real complicated here, but I think it would be good to get to actually integrating this into a blog setup to get a better handle on how it works.</p>
+<p>It looks like my oEmbed tool doesn't work with Twitter, but I can make a custom fetch to that process. It will get me back an object with an <code>html</code> property. I can then use <code>reduce</code> to pull all those oembeds together into a single string. Each comes with a script tag, so I'll just remove that. The final version that gets stitched together can have the tag added to the end.</p>
+<p><a target="_blank" href="https://github.com/AramZS/contexter/commit/aab665170673b07325726506e05b03cfae5bc15a" class="git-commit-link"><code>git commit -am &quot;Combine blockquotes, remove scripts and set up twitter thread oembeds.&quot;</code></a></p>
 
                     
                     </section>
@@ -327,9 +266,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/devblog/hello-day-4/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/context-pages/day-12/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/devblog/hello-day-6/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -370,21 +309,15 @@
     <div id="taglist">
         <h6>Tags: </h6>
         <ul><li>
-                    <a href="https://fightwithtools.dev/tag/starters">Starters</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
-                </li><li>
                     <a href="https://fightwithtools.dev/tag/node">Node</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/sass">Sass</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/css">CSS</a>
+                    <a href="https://fightwithtools.dev/tag/archiving">archiving</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/github">GitHub</a>
+                    <a href="https://fightwithtools.dev/tag/embeds">embeds</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/cache-breaking">Cache breaking</a>
+                    <a href="https://fightwithtools.dev/tag/twitter">Twitter</a>
                 </li></ul>
     </div>
 
