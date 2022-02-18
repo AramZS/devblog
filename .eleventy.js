@@ -4,6 +4,8 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
+const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
+const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
 // const markdownItRegex = require("markdown-it-regex");
 const path = require("path");
@@ -120,6 +122,7 @@ module.exports = function (eleventyConfig) {
 		outDir: path.join(path.resolve("."), "docs"),
 		domainName: domain_name,
 	});
+	// eleventyConfig.addPlugin(inclusiveLangPlugin);
 
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 
@@ -413,9 +416,7 @@ module.exports = function (eleventyConfig) {
 	const makePageObject = (tagName, slug, number, posts, first, last) => {
 		return {
 			tagName: tagName,
-			slug: slug
-				? slug
-				: slugify(tagName.toLowerCase()),
+			slug: slug ? slug : slugify(tagName.toLowerCase()),
 			number: number,
 			posts: posts,
 			first: first,
@@ -619,6 +620,8 @@ module.exports = function (eleventyConfig) {
 		return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`;
 	});
 
+	eleventyConfig.addPlugin(UpgradeHelper);
+
 	let options = {
 		html: true,
 		breaks: true,
@@ -707,5 +710,8 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.setLibrary("md", markdownSetup);
 
+	eleventyConfig.addPlugin(require("./_custom-plugins/markdown-contexter"), {
+		existingRenderer: markdownSetup,
+	});
 	return siteConfiguration;
 };

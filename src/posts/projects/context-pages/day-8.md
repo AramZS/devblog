@@ -1,6 +1,6 @@
 ---
 title: "Day 8: Getting a Twitter Thread"
-description: "I want to get get a Twitter thread when I link to a single Tweet that is part of a thread"
+description: "I want to get a Twitter thread when I link to a single Tweet that is part of a thread"
 date: 2022-1-25 22:59:43.10 -4
 tags:
   - 11ty

@@ -39,3 +39,5 @@ Ok, it looks like even though this link doesn't work on the web and it isn't doc
 It looks like my oEmbed tool doesn't work with Twitter, but I can make a custom fetch to that process. It will get me back an object with an `html` property. I can then use `reduce` to pull all those oembeds together into a single string. Each comes with a script tag, so I'll just remove that. The final version that gets stitched together can have the tag added to the end.
 
 `git commit -am "Combine blockquotes, remove scripts and set up twitter thread oembeds."`
+
+Oh wait, I need to fix the finalized meta date object not filling properly!
