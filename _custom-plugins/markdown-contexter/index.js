@@ -5,7 +5,7 @@ var slugify = require("slugify");
 var sanitizeFilename = require("sanitize-filename");
 
 const urlRegex =
-	/^((\t?| )?\- )?(\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))(?=\n|\r)$)+/gim;
+	/^(?:[\t\- ]*)(?<main>(\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))(?=\n|\r)$)+)/gim;
 
 module.exports = (eleventyConfig, userOptions) => {
 	let options = {
@@ -37,53 +37,65 @@ module.exports = (eleventyConfig, userOptions) => {
 				resolve("foo");
 			}, 300);
 		});
-		const urls = urlRegex.exec(inputContent);
-		if (urls) {
-			console.log("Found URLs", urls);
-		}
-		if (
-			inputContent.includes(
-				"https://twitter.com/Chronotope/status/1402628536121319424"
-			)
-		) {
-			const link =
-				"https://twitter.com/Chronotope/status/1402628536121319424";
-			console.log("inputContent Process");
-			inputContent = inputContent.replace(
-				"https://twitter.com/Chronotope/status/1402628536121319424",
-				"https://twitter.com/Chronotope/status/1402628536121319424?ab=123"
-			);
-			// console.log("inputContent treated", inputContent);
-			const { cacheFolder, cacheFile } = cacheFilePath(
-				"",
-				contexter.uidLink(contexter.sanitizeLink(link))
-			);
-			try {
-				fs.accessSync(cacheFile, fs.constants.F_OK);
-				const contextString = fs.readFileSync(cacheFile).toString();
-				const contextData = JSON.parse(contextString);
-				// console.log("contextData", contextData);
-			} catch (e) {
-				let pContext = contexter.context(
-					"https://twitter.com/Chronotope/status/1485620069229027329"
+		const urls = urlRegex.exec(inputContent); // .exec(inputContent);
+		let matchArray = [];
+		let urlsArray = [];
+		let counter = 0;
+		while ((matchArray = urlRegex.exec(inputContent)) != null) {
+			if (urls) {
+				console.log(
+					"Found URLs",
+					matchArray.groups.main,
+					matchArray[0]
 				);
-				// No file yet
-				console.log("Cached link " + cacheFile + " to repo not ready");
-				pContext.then((r) => {
-					console.log("Context ready", r.linkId);
+				urlsArray.push({
+					url: matchArray.groups.main,
+					replace: matchArray[0],
+				});
+				counter++;
+			}
+		}
+		if (urlsArray.length) {
+			urlsArray.forEach((urlObj) => {
+				const link = urlObj.url;
+				console.log("inputContent Process");
+				// console.log("inputContent treated", inputContent);
+				const { cacheFolder, cacheFile } = cacheFilePath(
+					"",
+					contexter.uidLink(contexter.sanitizeLink(link))
+				);
+				try {
+					fs.accessSync(cacheFile, fs.constants.F_OK);
+					const contextString = fs.readFileSync(cacheFile).toString();
+					const contextData = JSON.parse(contextString);
+					// console.log("contextData", contextData);
+					// const contextData = JSON.parse(contextString);
+					inputContent = inputContent.replace(
+						urlObj.replace,
+						contextData.htmlEmbed
+					);
+				} catch (e) {
+					let pContext = contexter.context(link);
 					// No file yet
 					console.log(
-						"Cached link for " + cacheFile + " ready to write."
+						"Cached link " + cacheFile + " to repo not ready"
 					);
-					try {
-						fs.mkdirSync(cacheFolder, { recursive: true });
-						// console.log('write data to file', cacheFile)
-						fs.writeFileSync(cacheFile, JSON.stringify(r));
-					} catch (e) {
-						console.log("writing to cache failed:", e);
-					}
-				});
-			}
+					pContext.then((r) => {
+						console.log("Context ready", r.linkId);
+						// No file yet
+						console.log(
+							"Cached link for " + cacheFile + " ready to write."
+						);
+						try {
+							fs.mkdirSync(cacheFolder, { recursive: true });
+							// console.log('write data to file', cacheFile)
+							fs.writeFileSync(cacheFile, JSON.stringify(r));
+						} catch (e) {
+							console.log("writing to cache failed:", e);
+						}
+					});
+				}
+			});
 		}
 		// 2nd argument sets env
 		return options.existingRenderer.render(inputContent, data);
