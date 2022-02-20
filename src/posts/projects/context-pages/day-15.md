@@ -311,4 +311,4 @@ Here's how I handled the walkthrough of the regex results:
 		}
 ```
 
-Ok, my treatment here looks good! Only, the embeds don't look so good. Ok, looks like we have some work to do in terms of how the HTML can work, but the basic concept is very sound.
+Ok, my treatment here [looks good](https://github.com/AramZS/devblog/commit/b76853b38f74735fc7a1783ee176ce65b9bbdf84)! Only, the embeds don't look so good. Ok, looks like we have some work to do in terms of how the HTML can work, but the basic concept is very sound.

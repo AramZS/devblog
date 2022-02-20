@@ -712,6 +712,8 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPlugin(require("./_custom-plugins/markdown-contexter"), {
 		existingRenderer: markdownSetup,
+		publicPath: "assets/images/contexter",
+		domain: domain_name,
 	});
 	return siteConfiguration;
 };
