@@ -312,3 +312,9 @@ Here's how I handled the walkthrough of the regex results:
 ```
 
 Ok, my treatment here [looks good](https://github.com/AramZS/devblog/commit/b76853b38f74735fc7a1783ee176ce65b9bbdf84)! Only, the embeds don't look so good. Ok, looks like we have some work to do in terms of how the HTML can work, but the basic concept is very sound.
+
+The last difficulty is setting up some archive pages that I can generate out of the JSON I cache local to the site on the basis of links. It isn't perfect, but a simple run at this makes sense first, I can have more complex archive pages, or WARCs or both later. This [also turns out to be more complicated than I expected](https://github.com/AramZS/devblog/commit/8a58ec6a9255301dd095694870d37939b2aa1d75). There's some weirdness here. For some reason `eleventyComputed` doesn't take every property I set up in it, but I can use the object itself. I took a first run at a Twitter object, but [it doesn't work like I'd hoped](https://github.com/AramZS/devblog/commit/8a58ec6a9255301dd095694870d37939b2aa1d75#diff-2921b80376a7612f0dc51a098f3d81ad1f5d8a94c9955b6e1795313c3f0ca960R108).
+
+I am going to need richer user data. Let's give it a try.
+
+`git commit -am "Just use the data property, like everywhere else, on the main tweet and add in user data"`

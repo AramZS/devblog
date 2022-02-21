@@ -92,7 +92,7 @@
                     </div>
 
                             <div id="share-embed">
-                                <span>Use this site embed on your own site:</span>
+                                <span>Use this page embed on your own site:</span>
                                 <textarea id="html-embed" name="story" rows="8" cols="40">
                                     {{ archive.htmlEmbed }}
                                 </textarea><br />
@@ -108,21 +108,16 @@
                 {% if archive.data.twitterObj %}
                     <!-- Twitter Mode -->
                     {% for tweetObj in archive.data.twitterObj %}
-                        <p>{{ tweetObj.tweetText }}</p>
-                        {% if tweetObj.tweetData.entities and tweetObj.tweetData.entities.urls %}
-                            {% for linkObj in tweetObj.tweetData.entities.urls %}
-                            <blockquote>Link: {{ linkObj.expanded_url }}</blockquote>
-                            {% endfor %}
-                            {% if tweetObj.tweetData and tweetObj.tweetData.attachments and tweetObj.tweetData.attachments.media_keys %}
-                                    {% for linkObj in tweetObj.tweetData.attachments.media_keys %}
-                                    {% if linkObj.url %}
-                                    <img src={{ linkObj.url }} />
-                                    {% endif %}
-                                    {% endfor %}
-                                {% endif %}
-                        {% endif %}
+                        {% include "partials/tweetObj.njk" %}
                         {% if tweetObj.quotedTweet %}
-                            <blockquote>{{ tweetObj.quotedTweetData.quotedTweet.data.text }}
+                            <!-- In reply to {% if tweetObj.data.in_reply_to_user_data and tweetObj.data.in_reply_to_user_data.username %}{{tweetObj.data.in_reply_to_user_data.username}} {% endif %} -->
+                            <blockquote>
+                            {% if tweetObj.quotedTweetData.quotedTweet.data.author_data and tweetObj.quotedTweetData.quotedTweet.data.author_data.name %}
+                            {{tweetObj.quotedTweetData.quotedTweet.data.author_data.name}}
+                            {% endif %}
+                            {% if tweetObj.quotedTweetData.quotedTweet.data.author_data and tweetObj.quotedTweetData.quotedTweet.data.author_data.username %}
+                            ({{tweetObj.quotedTweetData.quotedTweet.data.author_data.username}}): {% endif %}
+                            {{ tweetObj.quotedTweetData.quotedTweet.data.text }}
                                 {% for linkObj in tweetObj.quotedTweetData.quotedTweet.data.entities.urls %}
                                 <blockquote>Link: {{ linkObj.expanded_url }}</blockquote>
                                 {% endfor %}
