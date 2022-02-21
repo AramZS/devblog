@@ -551,3 +551,7 @@ if (
 		);
 }
 ```
+
+Oops, I also need to add that to the initial build of in-article embeds too.
+
+Ok, things are looking good! This is a good place to stop! 
