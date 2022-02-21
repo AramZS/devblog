@@ -2,6 +2,10 @@
 
 {% set templateName = "post" %}
 
+{% block endhead %}
+<link rel="canonical" href="{{ site.site_url }}{{ page.url }}" />
+{% endblock %}
+
 {% block bodytags %}itemscope itemtype="https://schema.org/Blog"{% endblock %}
 
 {% block header_bottom %}

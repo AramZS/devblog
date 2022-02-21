@@ -1,18 +1,8 @@
 <!doctype html>
     <html lang="{{ site.lang }}" id="{% if templateName %}template-{{ templateName }}{% else %}template-base{% endif %}" class="base">
         <head>
-        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="{{site.site_name}} RSS" href="{{site.site_url}}/rss/" />
-    	<link rel="alternate" type="application/atom+xml" title="{{site.site_name}} Feed" href="{{site.site_url}}/feed/" />
-        {% if templateName %}
-            <!-- Sub Template: {{ templateName }} -->
-        {% else %}
-            {% set templateName = "base" %}
-        {% endif %}
+        {% include "partials/head-block.njk" %}
         {% block metahead %}
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>{{ title }}</title>
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet" />
             <!-- <link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}" /> -->
@@ -33,6 +23,7 @@
             {% include "partials/json-ld-header.njk" %}
         {% endblock %}
         {% block stylehead %}{% endblock %}
+        {% block endhead %}{% endblock %}
         </head>
         <body {% block bodytags %}{% endblock %}>
             <div class="wrapper">

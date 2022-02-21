@@ -15,9 +15,11 @@ module.exports = (eleventyConfig, userOptions) => {
 		cachePath: "_contexterCache",
 		publicPath: "assets/images/contexter",
 		domain: "http://localhost:8080",
+		buildArchive: true,
 		existingRenderer: function () {},
 		...userOptions,
 	};
+
 	console.log("markdown-contexter-go");
 	eleventyConfig.addPassthroughCopy({
 		[`${options.cachePath}/images`]: options.publicPath,
@@ -49,7 +51,7 @@ module.exports = (eleventyConfig, userOptions) => {
 		let urlsArray = [];
 		let counter = 0;
 		while ((matchArray = urlRegex.exec(inputContent)) != null) {
-			console.log("Found URLs", matchArray.groups.main, matchArray[0]);
+			// console.log("Found URLs", matchArray.groups.main, matchArray[0]);
 			urlsArray.push({
 				url: matchArray.groups.main,
 				replace: matchArray[0],
@@ -59,7 +61,7 @@ module.exports = (eleventyConfig, userOptions) => {
 		if (urlsArray.length) {
 			urlsArray.forEach((urlObj) => {
 				const link = urlObj.url;
-				console.log("inputContent Process: ", link);
+				// console.log("inputContent Process: ", link);
 				// console.log("inputContent treated", inputContent);
 				const fileName = sanitizeFilename(
 					slugify(contexter.sanitizeLink(link)).replace(/\./g, "")
@@ -124,13 +126,22 @@ module.exports = (eleventyConfig, userOptions) => {
 						try {
 							console.log("Writing data for: ", link);
 							fs.mkdirSync(cacheFolder, { recursive: true });
-							imageHandler.handleImageFromObject(
-								r,
-								fileName,
-								cacheFilePath
-							);
-							// console.log('write data to file', cacheFile)
-							fs.writeFileSync(cacheFile, JSON.stringify(r));
+							imageHandler
+								.handleImageFromObject(
+									r,
+									fileName,
+									cacheFilePath
+								)
+								.then((localImageFileName) => {
+									if (localImageFileName) {
+										r.localImage = `/${options.publicPath}/${fileName}/${localImageFileName}`;
+										// console.log('write data to file', cacheFile)
+									}
+									fs.writeFileSync(
+										cacheFile,
+										JSON.stringify(r)
+									);
+								});
 						} catch (e) {
 							console.log("writing to cache failed:", e);
 						}
@@ -172,6 +183,63 @@ module.exports = (eleventyConfig, userOptions) => {
 		read: true,
 		compile: compiler,
 	});
+	const archiveFilesList = (() => {
+		const directoryPath = options.cachePath;
+		const files = [];
+		//passsing directoryPath and callback function
+		try {
+			const filesSet = fs.readdirSync(directoryPath);
+			//listing all files using forEach
+			filesSet.forEach(function (file) {
+				// Do whatever you want to do with the file
+
+				if (/\.json$/.test(file)) {
+					console.log("archivesFile", file);
+					files.push(file);
+				}
+			});
+		} catch (err) {
+			return console.log("Unable to scan directory: " + err);
+		}
+		return files;
+	})();
+	if (options.buildArchive) {
+		eleventyConfig.addGlobalData("archivesFiles", () => {
+			return archiveFilesList;
+		});
+		eleventyConfig.addCollection("archives", function (collection) {
+			console.log("Archives Collection ");
+			const archives = [];
+			archiveFilesList.forEach((cacheFile) => {
+				const fileContents = fs
+					.readFileSync(options.cachePath + "/" + cacheFile)
+					.toString();
+				// Rebuild conditions?
+				// Mby https://attacomsian.com/blog/nodejs-get-file-last-modified-date
+				const contextData = JSON.parse(fileContents);
+				if (contextData) {
+					try {
+						console.log(
+							contextData.sanitizedLink,
+							contextData.data.finalizedMeta.title,
+							contextData.data.finalizedMeta.description,
+							contextData.data.finalizedMeta.image,
+							contextData.data.finalizedMeta.date
+						);
+						archives.push(contextData);
+					} catch (e) {
+						console.log(
+							"Failed to assure clean data",
+							contextData.sanitizedLink,
+							contextData.data.finalizedMeta
+						);
+					}
+				}
+			});
+
+			return archives;
+		});
+	}
 	/**
 	eleventyConfig.addTransform(
 		"async-contexter",
