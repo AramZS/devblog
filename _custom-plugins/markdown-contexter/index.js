@@ -13,7 +13,8 @@ module.exports = (eleventyConfig, userOptions) => {
 		name: "markdown-contexter",
 		extension: "md",
 		cachePath: "_contexterCache",
-		publicPath: "assets/images/contexter",
+		publicImagePath: "assets/images/contexter",
+		publicPath: "timegate",
 		domain: "http://localhost:8080",
 		buildArchive: true,
 		existingRenderer: function () {},
@@ -22,7 +23,7 @@ module.exports = (eleventyConfig, userOptions) => {
 
 	console.log("markdown-contexter-go");
 	eleventyConfig.addPassthroughCopy({
-		[`${options.cachePath}/images`]: options.publicPath,
+		[`${options.cachePath}/images`]: options.publicImagePath,
 	});
 
 	const cacheFilePath = (pageFilePath, searchKey, notJson = false) => {
@@ -87,7 +88,7 @@ module.exports = (eleventyConfig, userOptions) => {
 						imageCheck = true;
 						console.log(
 							"Local Cached Image",
-							`${options.domain}/${options.publicPath}/${fileName}/${localImageName}`
+							`${options.domain}/${options.publicImagePath}/${fileName}/${localImageName}`
 						);
 						let image = "";
 						if (
@@ -99,7 +100,17 @@ module.exports = (eleventyConfig, userOptions) => {
 						}
 						htmlEmbed = htmlEmbed.replace(
 							image,
-							`${options.domain}/${options.publicPath}/${fileName}/${localImageName}`
+							`${options.domain}/${options.publicImagePath}/${fileName}/${localImageName}`
+						);
+					}
+					if (
+						options.buildArchive &&
+						!contextData.data.archivedData.link &&
+						!contextData.data.twitterObj
+					) {
+						htmlEmbed = htmlEmbed.replace(
+							`</contexter-box>`,
+							`<a href="${options.domain}/${options.publicPath}/${contextData.sanitizedLink}" is="contexter-link" target="_blank" class="read-link archive-link" itemprop="archivedAt" slot="archive-link">Archived</a></contexter-box>`
 						);
 					}
 					// console.log("contextData", contextData);
@@ -134,7 +145,7 @@ module.exports = (eleventyConfig, userOptions) => {
 								)
 								.then((localImageFileName) => {
 									if (localImageFileName) {
-										r.localImage = `/${options.publicPath}/${fileName}/${localImageFileName}`;
+										r.localImage = `/${options.publicImagePath}/${fileName}/${localImageFileName}`;
 										// console.log('write data to file', cacheFile)
 									}
 									fs.writeFileSync(
@@ -226,12 +237,23 @@ module.exports = (eleventyConfig, userOptions) => {
 							contextData.data.finalizedMeta.image,
 							contextData.data.finalizedMeta.date
 						);
+						if (
+							!contextData.data.archivedData.link &&
+							!contextData.data.twitterObj
+						) {
+							contextData.htmlEmbed =
+								contextData.htmlEmbed.replace(
+									`</contexter-box>`,
+									`<a href="${options.domain}/${options.publicPath}/${contextData.sanitizedLink}" is="contexter-link" target="_blank" class="read-link archive-link" itemprop="archivedAt" slot="archive-link">Archived</a></contexter-box>`
+								);
+						}
 						archives.push(contextData);
 					} catch (e) {
 						console.log(
 							"Failed to assure clean data",
 							contextData.sanitizedLink,
-							contextData.data.finalizedMeta
+							contextData.data.finalizedMeta,
+							e
 						);
 					}
 				}

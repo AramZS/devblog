@@ -534,3 +534,20 @@ I originally set the links in a single element that contained both links. But I 
 I had to [fix my access of element properties](https://github.com/AramZS/contexter/commit/291723fedaff8ba161937ce2f14802972e05fc01#diff-ad1cab4880eef9b423964380f642350431350ddddf8f3ffd30572e0875ee2fb0R38), [check the readability object as a backup](https://github.com/AramZS/contexter/commit/291723fedaff8ba161937ce2f14802972e05fc01#diff-ad1cab4880eef9b423964380f642350431350ddddf8f3ffd30572e0875ee2fb0R314) for some of the finalizedMeta data, and [fix the oembed for Twitter](https://github.com/AramZS/contexter/commit/291723fedaff8ba161937ce2f14802972e05fc01#diff-ad1cab4880eef9b423964380f642350431350ddddf8f3ffd30572e0875ee2fb0R494) so [it doesn't show replies in a thread](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/overview) that already includes replies.
 
 I want to bring images used in the embeds local to the site. [This turned out a lot harder than I expected](https://github.com/AramZS/devblog/commit/7e80d4e9a508e0c0c50f4e58d2417c05a89802b8).
+
+I pulled tweets in easily enough, but realized [I needed to print the author data for the Tweet to really make the archive readable](https://github.com/AramZS/devblog/commit/014f41df54410348ca11a66eb985b088c54467c3).
+
+Now that I have a local archive, I can take advantage of the slot at the point where I build the collection. If I don't have the archive link from Wayback I can use my own site's archive.
+
+```javascript
+if (
+	!contextData.data.archivedData.link &&
+	!contextData.data.twitterObj
+) {
+	contextData.htmlEmbed =
+		contextData.htmlEmbed.replace(
+			`</contexter-box>`,
+			`<a href="${options.domain}/${options.publicPath}/${contextData.sanitizedLink}" is="contexter-link" target="_blank" class="read-link archive-link" itemprop="archivedAt" slot="archive-link">Archived</a></contexter-box>`
+		);
+}
+```
