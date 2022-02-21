@@ -552,6 +552,6 @@ if (
 }
 ```
 
-Oops, I also need to add that to the initial build of in-article embeds too.
+Oops, I also need to [add that to the initial build of in-article embeds too](https://github.com/AramZS/devblog/commit/b0d06bed36ff3a8c3c215c5fe28dbbf744faabf3).
 
-Ok, things are looking good! This is a good place to stop! 
+Ok, things are looking good! This is a good place to stop!
