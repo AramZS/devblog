@@ -4,6 +4,62 @@ const fs = require("fs");
 var path = require("path");
 var slugify = require("slugify");
 
+const generateImageFilename = function (imageUrl, cacheFile, cacheFilePath) {
+	const imageFileNameArray = imageUrl.split("/");
+	const imageFileName = imageFileNameArray[imageFileNameArray.length - 1];
+	const imageFile = imageFileName.split("?")[0];
+	console.log(
+		"Image file pieces",
+		imageFileNameArray,
+		imageFileName,
+		imageFile
+	);
+	const fileObj = cacheFilePath("images/" + cacheFile + "/", imageFile, true);
+	const imageCacheFolder = fileObj.cacheFolder;
+	const imageCacheFile = fileObj.cacheFile;
+	console.log("File Path Generation", imageCacheFolder, imageCacheFile);
+	return fileObj;
+};
+
+const pullImageFromTwitter = async (twitterObj, cacheFile, cacheFilePath) => {
+	const twitterObjAdjustedPromises = r.twitterObj.map(async (tweetObj) => {
+		if (
+			tweetObj &&
+			tweetObj.data &&
+			tweetObj.data.attachments &&
+			tweetObj.data.attachments.media_keys
+		) {
+			const tweetObjAdjustedMedia =
+				tweetObj.data.attachments.media_keys.map(async (mediaObj) => {
+					const imageUrl = mediaObj.url;
+					const fileObj = generateImageFilename(
+						imageUrl,
+						cacheFile,
+						cacheFilePath
+					);
+					try {
+						fs.accessSync(fileObj.cacheFile, fs.constants.F_OK);
+						mediaObj.local_url = fileObj.cacheFile;
+						return mediaObj;
+					} catch (e) {
+						const localImage = await getImageAndWriteLocally(
+							imageUrl,
+							fileObj.cacheFile
+						);
+						mediaObj.local_url = localImage;
+						// mediaObj.local_url = false;
+						return mediaObj;
+					}
+				});
+			const mediaObjs = await Promise.all(tweetObjAdjustedMedia);
+			tweetObj.data.attachments.media_keys = mediaObjs;
+			return tweetObj;
+		}
+	});
+	const twitterObjAdjusted = await Promise.all(twitterObjAdjustedPromises);
+	return twitterObjAdjusted;
+};
+
 const imageCheck = (response, cacheFile, cacheFilePath) => {
 	const r = response.data;
 	if (
@@ -17,21 +73,7 @@ const imageCheck = (response, cacheFile, cacheFilePath) => {
 		} else {
 			image = r.finalizedMeta.image;
 		}
-		console.log("Image found ", image);
-		const imageFileNameArray = image.split("/");
-		const imageFileName = imageFileNameArray[imageFileNameArray.length - 1];
-		const imageFile = imageFileName.split("?")[0];
-		console.log(
-			"Image file pieces",
-			imageFileNameArray,
-			imageFileName,
-			imageFile
-		);
-		const fileObj = cacheFilePath(
-			"images/" + cacheFile + "/",
-			imageFile,
-			true
-		);
+		const fileObj = generateImageFilename(image, cacheFile, cacheFilePath);
 		const imageCacheFolder = fileObj.cacheFolder;
 		const imageCacheFile = fileObj.cacheFile;
 		console.log("File Path Generation", imageCacheFolder, imageCacheFile);
@@ -42,6 +84,10 @@ const imageCheck = (response, cacheFile, cacheFilePath) => {
 			handleImageFromObject(response, cacheFile, cacheFilePath);
 			return false;
 		}
+	} else if (r.twitterObj && r.twitterObj.length) {
+		return pullImageFromTwitter(twitterObj, cacheFile, cacheFilePath);
+	} else {
+		return false;
 	}
 };
 

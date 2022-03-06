@@ -4,6 +4,7 @@
     <html lang="{{ site.lang }}" id="{% if templateName %}template-{{ templateName }}{% else %}template-base{% endif %}" class="base">
         <head>
         {% include "partials/head-block.njk" %}
+        <link rel="original" http-equiv href="{{ archive.sanitizedLink }}" />
         {% block metahead %}
             {% if templateName %}
                 <!-- <link rel="stylesheet" href="{{site.site_url}}/assets/css/template-{{ templateName }}.css?v={{ site.github.build_revision}}" /> -->

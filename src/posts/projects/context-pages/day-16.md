@@ -26,6 +26,8 @@ tags:
 - [ ] Check if a link is still available at build time and rebuild the block with links to an archived link
 - [ ] Use v1 Twitter API to get Gifs and videos
 - [ ] Pull Twitter images into 11ty archive.
+- [ ] Add YouTube DL tool.
+- [ ] Use https://github.com/oduwsdl/archivenow?
 
 ## Day 16
 

@@ -21,6 +21,8 @@ module.exports = (eleventyConfig, userOptions) => {
 		...userOptions,
 	};
 
+	const completeAllPromiseArray = [];
+
 	console.log("markdown-contexter-go");
 	eleventyConfig.addPassthroughCopy({
 		[`${options.cachePath}/images`]: options.publicImagePath,
@@ -44,9 +46,11 @@ module.exports = (eleventyConfig, userOptions) => {
 	const reMarkdown = (inputContent, data) => {
 		let promiseContext = new Promise((resolve, reject) => {
 			setTimeout(() => {
-				resolve("foo");
-			}, 300);
+				console.log("Initiating Promise Resolution Process");
+				resolve(true);
+			}, 30);
 		});
+		completeAllPromiseArray.push(promiseContext);
 		// const urls = urlRegex.exec(inputContent); // .exec(inputContent);
 		let matchArray = [];
 		let urlsArray = [];
@@ -69,6 +73,7 @@ module.exports = (eleventyConfig, userOptions) => {
 				);
 				const { cacheFolder, cacheFile } = cacheFilePath("", fileName);
 				let imageCheck = false;
+				// @TODO: this should just write the file, processing it and adding local images and archive links should happen at the point of building the collection I think? Especially since the collection can take an async function. Also... needs something for audio and youtube right?
 				try {
 					fs.accessSync(cacheFile, fs.constants.F_OK);
 					const contextString = fs.readFileSync(cacheFile).toString();
@@ -110,7 +115,7 @@ module.exports = (eleventyConfig, userOptions) => {
 					) {
 						htmlEmbed = htmlEmbed.replace(
 							`</contexter-box>`,
-							`<a href="${options.domain}/${options.publicPath}/${contextData.sanitizedLink}" is="contexter-link" target="_blank" class="read-link archive-link" itemprop="archivedAt" slot="archive-link">Archived</a></contexter-box>`
+							`<a href="${options.domain}/${options.publicPath}/${contextData.sanitizedLink}" is="contexter-link" target="_blank" class="read-link archive-link" itemprop="archivedAt" rel="timemap" slot="archive-link">Archived</a></contexter-box>`
 						);
 					}
 					// console.log("contextData", contextData);
@@ -215,10 +220,8 @@ module.exports = (eleventyConfig, userOptions) => {
 		return files;
 	})();
 	if (options.buildArchive) {
-		eleventyConfig.addGlobalData("archivesFiles", () => {
-			return archiveFilesList;
-		});
-		eleventyConfig.addCollection("archives", function (collection) {
+		eleventyConfig.addCollection("archives", async (collection) => {
+			await Promise.all(completeAllPromiseArray);
 			console.log("Archives Collection ");
 			const archives = [];
 			archiveFilesList.forEach((cacheFile) => {
