@@ -1,5 +1,5 @@
 ---
-title: "Day 8: Getting a Twitter Thread"
+title: "Day 9: Handle a Twitter Thread"
 description: "I want to get a Twitter thread when I link to a single Tweet that is part of a thread"
 date: 2022-1-27 22:59:43.10 -4
 tags:
