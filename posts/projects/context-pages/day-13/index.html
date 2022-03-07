@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Day 13: Getting Twitter Threads Working</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Day 13: Building a block to show link data</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -33,7 +34,7 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Day 13: Building a block to show link data">
+    content="Day 13: Getting Twitter Threads Working">
 
 <meta property="og:description"
     content="I want to get the data set up in an HTML block a user can style">
@@ -55,7 +56,7 @@
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Day 13: Building a block to show link data" />
+<meta name="twitter:title" content="Day 13: Getting Twitter Threads Working" />
 
 
 
@@ -107,7 +108,7 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/context-pages/day-13/",
-        "headline": "Day 13: Building a block to show link data",
+        "headline": "Day 13: Getting Twitter Threads Working",
         "about": "I want to get the data set up in an HTML block a user can style",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -116,7 +117,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -169,7 +170,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -181,6 +182,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-pages/day-13/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -203,7 +207,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Day 13: Building a block to show link data
+                            Day 13: Getting Twitter Threads Working
                         </h1>
                         
                         
@@ -257,6 +261,7 @@
 <p>Ok, it looks like even though this link doesn't work on the web and it isn't documented, you <a href="https://stackoverflow.com/questions/64917470/which-url-are-you-supposed-to-use-for-the-twitter-oembed-api" target="_blank">can take the ID and pass it into the oembed endpoint</a> in the format of <code>twitter.com/twitter/status/{id}</code>. This is a very irritating hack, but hey, it works. I can get real complicated here, but I think it would be good to get to actually integrating this into a blog setup to get a better handle on how it works.</p>
 <p>It looks like my oEmbed tool doesn't work with Twitter, but I can make a custom fetch to that process. It will get me back an object with an <code>html</code> property. I can then use <code>reduce</code> to pull all those oembeds together into a single string. Each comes with a script tag, so I'll just remove that. The final version that gets stitched together can have the tag added to the end.</p>
 <p><a target="_blank" href="https://github.com/AramZS/contexter/commit/aab665170673b07325726506e05b03cfae5bc15a" class="git-commit-link"><code>git commit -am &quot;Combine blockquotes, remove scripts and set up twitter thread oembeds.&quot;</code></a></p>
+<p>Oh wait, I need to fix the finalized meta date object not filling properly!</p>
 
                     
                     </section>
@@ -268,7 +273,7 @@
         <div class="pagination">
             <a href="/posts/projects/context-pages/day-12/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+            <a href="/posts/projects/context-pages/day-14/" class="pagination-link cursor-pointer ">Next Day</a>
         </div>
     
     <div class="social-icons-block">

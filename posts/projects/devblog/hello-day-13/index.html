@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 13: Building new Eleventy Taxonomies</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 13: Building new Eleventy Taxonomies</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -114,7 +115,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -167,7 +168,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -179,6 +180,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-13/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -301,10 +305,12 @@
 <a href="#code-skip-hello-day-13-6" id="skip-to-code-skip-hello-day-13-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token comment">// In src/_data/projects.js</span><br><span class="token keyword">const</span> <span class="token punctuation">{</span> readdirSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">getDirectories</span> <span class="token operator">=</span> <span class="token parameter">source</span> <span class="token operator">=></span><br><span class="token function">readdirSync</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> <span class="token punctuation">{</span> withFileTypes<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>	<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">dirent</span> <span class="token operator">=></span> dirent<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>	<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">dirent</span> <span class="token operator">=></span> dirent<span class="token punctuation">.</span>name<span class="token punctuation">)</span><br><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getDirectories</span><span class="token punctuation">(</span><span class="token string">'src/posts/projects/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">getDirectories</span><span class="token punctuation">(</span><span class="token string">'src/posts/projects/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-13-6">And now I have a global data object I can iterate over. Sweet!</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-5" id="skip-to-code-skip-hello-day-13-5" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> <span class="token keyword">for</span> project <span class="token keyword">in</span> projects </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>capitalize-first<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-13-5">Ok, now that I have the list of projects. I need to do something with them. Basically these should link to project pages that work like category pages in WordPress.</p>
+<p id="code-skip-hello-day-13-5">{% endraw %}</p>
+<p>Ok, now that I have the list of projects. I need to do something with them. Basically these should link to project pages that work like category pages in WordPress.</p>
 <p>But before I get to that, every time I go through a tunnel my local environment dies because it is loading a remote URL for my Prism styles. Let's fix that. I'm going to copy it locally and set up a passthrough.</p>
 <p>Ok, and while I'm here, let me add proper categories for the home page.</p>
 <p>Oh wait, that didn't work. It doesn't have the capacity to handle empty collections. I thought I'd get an empty array, but apparently not. Ok, I'll write some checks in to my shortcode.</p>
@@ -312,16 +318,20 @@
 <p data-wordfix="true">Ok. That worked. Time to read about <a href="https://www.11ty.dev/docs/pages-from-data/" target="_blank">building Pages from Data with Eleventy</a>.</p>
 <h3 id="implementing-tag-data-for-new-templates" tabindex="-1">Implementing Tag Data for New Templates</h3>
 <p>Ok so, let's build it out at <code>project-pages.njk</code>.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-4" id="skip-to-code-skip-hello-day-13-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---<br>pagination:<br>    data: projects<br>    size: 1<br>    alias: project<br>permalink: "projects/{{ project | slug }}/"<br>title: "Project: {{ project | slug }}"<br>---<br><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block postcontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>capitalize-first<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><br>	<span class="token comment">&lt;!-- post list: --></span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-13-4">Alright, the page is getting built, but the title meta isn't populated. How to fix?</p>
+<p id="code-skip-hello-day-13-4">{% endraw %}</p>
+<p>Alright, the page is getting built, but the title meta isn't populated. How to fix?</p>
 <p>Ok, <a href="https://github.com/11ty/eleventy/issues/1061#issuecomment-606217361" target="_blank">it doesn't appear to be clearly documented, but I need to use</a> <code>eleventyComputed</code></p>
 <p>So I replace the <code>title</code> property as follows:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-3" id="skip-to-code-skip-hello-day-13-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---<br>pagination:<br>    data: projects<br>    size: 1<br>    alias: project<br>permalink: "projects/{{ project | slug }}/"<br>eleventyComputed:<br>  title: "Project: {{ project.title }}"<br>---</code></pre>
-<p id="code-skip-hello-day-13-3">Ok, I'm getting the title now. But I want to filter the list of project posts by the project metadata.</p>
+<p id="code-skip-hello-day-13-3">{% endraw %}</p>
+<p>Ok, I'm getting the title now. But I want to filter the list of project posts by the project metadata.</p>
 <p>This is more complicated.</p>
 <p>But ok, here's what I ended up doing</p>
 <h3 id="folder-based-tags" tabindex="-1">Folder Based Tags</h3>
@@ -333,10 +343,12 @@
 <a href="#code-skip-hello-day-13-2" id="skip-to-code-skip-hello-day-13-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> readdirSync <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">getDirectories</span> <span class="token operator">=</span> <span class="token parameter">source</span> <span class="token operator">=></span><br><span class="token function">readdirSync</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> <span class="token punctuation">{</span> withFileTypes<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>	<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">dirent</span> <span class="token operator">=></span> dirent<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>	<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">dirent</span> <span class="token operator">=></span> dirent<span class="token punctuation">.</span>name<span class="token punctuation">)</span><br><br><span class="token keyword">const</span> directorySet <span class="token operator">=</span> <span class="token function">getDirectories</span><span class="token punctuation">(</span><span class="token string">'src/posts/projects/'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><br>	<span class="token punctuation">(</span><span class="token parameter">projectDir</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token punctuation">{</span><br>			title<span class="token operator">:</span> projectDir<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> projectDir<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>			slug<span class="token operator">:</span> projectDir<span class="token punctuation">,</span><br>			projectName<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/posts/projects/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>projectDir<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>projectDir<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.json</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>project<br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-13-2">Now the pages that I'm generating for individual projects can filter by that value:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-13-1" id="skip-to-code-skip-hello-day-13-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections<span class="token punctuation">.</span>projects <span class="token operator">-</span></span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> post<span class="token punctuation">.</span>data<span class="token punctuation">.</span>project <span class="token operator">==</span> project<span class="token punctuation">.</span>projectName </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><br>					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ post.url }}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ post.data.title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> endfor <span class="token operator">-</span></span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-13-1">Ok, it works!</p>
+<p id="code-skip-hello-day-13-1">{% endraw %}</p>
+<p>Ok, it works!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/61cfcbae41c8366fca24541455faf5a571421bc4" class="git-commit-link"><code>git commit -am &quot;Project pages&quot;</code></a></p>
 <p>Ok, I'm going to add a description for the overall project and make it available the same way. Looks good.</p>
 <p>I want to show tags in the sidebar/footer but the current layout isn't great. I'll have to add CSS to handle it.</p>

@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 15: Mobile Style Tweaks</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 15: Mobile Style Tweaks</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -116,7 +117,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -169,7 +170,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -181,6 +182,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-15/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -308,10 +312,12 @@
 <a href="#code-skip-hello-day-15-2" id="skip-to-code-skip-hello-day-15-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"relproject"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">var</span> urlArray <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>		<span class="token keyword">var</span> urlFiltered <span class="token operator">=</span> urlArray<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> e<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove post path</span><br>		urlFiltered<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Remove `posts/`</span><br>		<span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> urlFiltered<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><br>	  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p id="code-skip-hello-day-15-2">Now I can use it in a template tag like this:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-15-1" id="skip-to-code-skip-hello-day-15-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>project-link<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ page.url | relproject }}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-15-1">Ok, back to SaaS. What's going on there?</p>
+<p id="code-skip-hello-day-15-1">{% endraw %}</p>
+<p>Ok, back to SaaS. What's going on there?</p>
 <p>Oops, forgot to give it a <code>px</code> for the unit type.</p>
 <p>Ok. That works now.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e09597eb8e2539dbdfb2dd861fa5356886296eb3" class="git-commit-link"><code>git commit -am &quot;Set up changes to styles and add some additional elements to the design&quot;</code></a></p>

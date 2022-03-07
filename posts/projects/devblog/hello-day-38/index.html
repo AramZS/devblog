@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 38: Tag Level Pagination</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 38: Tag Level Pagination</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -116,7 +117,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -169,7 +170,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -181,6 +182,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-38/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -381,14 +385,18 @@
 <pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span><span class="token string">"projectsPages"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">collection</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token function">getPostClusters</span><span class="token punctuation">(</span><br>		collection<span class="token punctuation">.</span><span class="token function">getFilteredByTag</span><span class="token punctuation">(</span><span class="token string">"projects"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		<span class="token string">"Projects"</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-38-8">With these new collections I can build corresponding pages in Eleventy.</p>
 <p>Posts:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-38-7" id="skip-to-code-skip-hello-day-38-7" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.postsPages<br>    size: 1<br>    alias: paged<br>permalink: "posts/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "All Posts<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Posts"<br>---</code></pre>
-<p id="code-skip-hello-day-38-7">Projects:</p>
+<p id="code-skip-hello-day-38-7">{% endraw %}</p>
+<p>Projects:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-38-6" id="skip-to-code-skip-hello-day-38-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.deepProjectPostsList<br>    size: 1<br>    alias: paged<br>permalink: "posts/projects/{{ paged.slug }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "Posts from Project: {{ paged.tagName }}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Project Posts tagged with {{ paged.tagName }}"<br>---</code></pre>
-<p id="code-skip-hello-day-38-6">Now for the last step I need to generate pages to fill <code>posts/projects/projectName</code> pages.</p>
+<p id="code-skip-hello-day-38-6">{% endraw %}</p>
+<p>Now for the last step I need to generate pages to fill <code>posts/projects/projectName</code> pages.</p>
 <p>Now I can query posts into collections by their project property. I can use my <code>projects</code> collection and filter posts based on matches.</p>
 <p>Now, this is my second try. The first time I did this I screwed up because of two reasons. I forgot that it needed to be a flat array (that is one array of posts).</p>
 <p>The other hard thing for me to wrap my mind around is that I don't need to separate each project into its own array or project.</p>
@@ -414,10 +422,12 @@
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><br>	<span class="token punctuation">{</span><br>	 	tagName<span class="token punctuation">,</span><br>		slug<span class="token operator">:</span> slug<span class="token punctuation">,</span><br>		number<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>		posts<span class="token operator">:</span> postsObject<span class="token punctuation">,</span><br>		first<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>		last<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><br>	<span class="token operator">...</span><br><span class="token punctuation">]</span></code></pre>
 <p id="code-skip-hello-day-38-2"><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
 <p>See I forgot that I control the permalink structure not through the structures in the array, but the objects. So I can now take this array and use it to generate any number of paged collections at <code>/posts/projects/projectSlug/</code>. So now I can use this new collection with this <code>md</code> file:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-38-1" id="skip-to-code-skip-hello-day-38-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-njk"><code class="language-njk">---<br>layout: tags<br>templateName: tag<br>eleventyExcludeFromCollections: true<br>pagination:<br>    data: collections.deepProjectPostsList<br>    size: 1<br>    alias: paged<br>permalink: "posts/projects/{{ paged.slug }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span>{{ paged.number }}/<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>index.html"<br>eleventyComputed:<br>    title: "Posts from Project: {{ paged.tagName }}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> paged<span class="token punctuation">.</span>number <span class="token operator">></span> <span class="token number">1</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span> | Page {{paged.number}}<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span>"<br>    description: "Project Posts tagged with {{ paged.tagName }}"<br>---</code></pre>
-<p id="code-skip-hello-day-38-1"><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
+<p id="code-skip-hello-day-38-1">{% endraw %}</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c930f0c719377b204c0919ac83d5eb340261dce" class="git-commit-link"><code>git commit -am &quot;Trying to figure out the project pages&quot;</code></a></p>
 <p>And this should resolve Issue 7!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0ce4a9689d154be15876bd3190fd39ba8a0899a7" class="git-commit-link"><code>git commit -am &quot;Finish off day 38 and resolve #7&quot;</code></a></p>
 

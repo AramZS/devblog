@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 9: Post Data in Templates</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 9: Post Data in Templates</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -120,7 +121,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -173,7 +174,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -185,6 +186,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-9/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -304,33 +308,41 @@
 <p>Ok, so I'm going to split this into a few chunks.</p>
 <p>First I'm going to establish a base template, one that all the others can pull off of. This can set up the basic HTML structure, my HTML, HEAD and BODY tags. It can also establish the baseline HTML to make the template work, like the wrapper-classed div and the semantic HTML5 tags within.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/c5393b66b174dea6da6a5487ba85488b974cd3b6" class="git-commit-link"><code>git commit -am &quot;Setting up some templates to inheret from.&quot;</code></a></p>
-<p>Then I'll want to define the areas that the layouts that pull off the base can pull from. Nunjucks seems to do this with <code>block</code> tags. So I'll set up some of these block tags in the <code>&lt;main&gt;</code> area to start with.</p>
+<p>Then I'll want to define the areas that the layouts that pull off the base can pull from. Nunjucks seems to do this with <code>block</code> tags. So I'll set up some of these block tags in the {% raw %}<code>&lt;main&gt;</code>{% endraw %} area to start with.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-9-4" id="skip-to-code-skip-hello-day-9-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block precontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span><br>				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block content </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>				{{ content | safe }}<br>				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block postcontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-9-4">With the basics in place, I can actually drop the entire content of <code>post.njk</code> and replace it with an <code>extends</code> statement.</p>
-<p>{% extends &quot;base.njk&quot; %}</p>
+<p id="code-skip-hello-day-9-4">{% endraw %}</p>
+<p>With the basics in place, I can actually drop the entire content of <code>post.njk</code> and replace it with an <code>extends</code> statement.</p>
+<p>{% raw %}<br>
+{% extends &quot;base.njk&quot; %}<br>
+{% endraw %}</p>
 <p>The original dinky template was designed for single page sites. So the post template works pretty much unchanged with no issues. But what about my index page? I'm going to want to add stuff to there.</p>
 <h3 id="post-lists" tabindex="-1">Post Lists</h3>
 <p data-wordfix="true">First of all, I want a chunk of that page that shows my various Work in Progress posts. I've tagged the posts themselves correctly <a href="https://www.11ty.dev/docs/collections/" target="_blank">to create an Eleventy collection</a>, but I need to figure out how to call it. And I may want to display it elsewhere, so I'm going to create a component I can easily include that walks through the WiP tag.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-9-3" id="skip-to-code-skip-hello-day-9-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections<span class="token punctuation">.</span>WiP </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>{{post.data.title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-9-3">This is a good start, but what if I only want one category of WiP? Or if I want to separate it out into projects? I need to make this more reusable.</p>
+<p id="code-skip-hello-day-9-3">{% endraw %}</p>
+<p>This is a good start, but what if I only want one category of WiP? Or if I want to separate it out into projects? I need to make this more reusable.</p>
 <p>But what about sorting? I may need to sort by date and dates are always messy. To make sure I can get them work right, I should start by adding a date to all post templates. I could add it in the post template itself, but I suspect there may be other pages I want to have the date on, so I'm going to handle it with an if/else chain at the base template.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-9-2" id="skip-to-code-skip-hello-day-9-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-liquid"><code class="language-liquid">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><br>	<br><br>		<br>		<span class="token comment">&lt;!-- post mode --></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">></span></span>Tue Jun 29 2021<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><br>		<br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Part 9: Post Data in Templates<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Day 9 of setting up 11ty dev blog.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br>	<br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-liquid"><code class="language-liquid">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block header </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> <span class="token string">'/posts'</span> <span class="token keyword">in</span> page<span class="token punctuation">.</span>url </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token comment">&lt;!-- post mode --></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span><span class="token punctuation">></span></span>{{ page.date.toDateString() }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> elif <span class="token string">'/projects'</span> <span class="token keyword">in</span> page<span class="token punctuation">.</span>url </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token comment">&lt;!-- projects mode --></span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">else</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token comment">&lt;!-- else mode --></span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ description }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-9-2">Oh, these dates aren't great, they seem to be pulling from some info that isn't totally accurate via the Eleventy defaults</p>
 <p data-wordfix="true">Surprising no one, dates are a <a href="https://www.11ty.dev/docs/pitfalls/" target="_blank">Common Pitfall</a>. <a href="https://www.11ty.dev/docs/dates/" target="_blank">Eleventy documentation advises to directly set the date</a>. And I can't just set them any which way, I need to set them <a href="https://yaml.org/type/timestamp.html" target="_blank">via the YAML date format</a>. Once that's done, I can display them using that built-in toDateString function in a way that makes the dates more human readable.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e59d4078e5fc07346e15ecc897922e9f583209cc" class="git-commit-link"><code>git commit -am &quot;Adding template parts&quot;</code></a></p>
 <p>Ok back to my reusable post list. I started with a pretty basic version, but it looks to me like <a href="https://www.trysmudford.com/blog/encapsulated-11ty-components/" target="_blank">the right approach is Macros</a>.</p>
 <p>Huh... that didn't work.</p>
 <p>Ok maybe this:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-9-1" id="skip-to-code-skip-hello-day-9-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token comment">&lt;!-- https://www.11ty.dev/docs/collections/ --></span><br><span class="token comment">&lt;!-- Should I use {{ "abcdef" | reverse }} --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>	<span class="token comment">&lt;!-- Collection: {{collectionName}} --></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> post <span class="token keyword">in</span> collections<span class="token punctuation">.</span><span class="token punctuation">{</span><span class="token punctuation">{</span>collectionName<span class="token punctuation">}</span><span class="token punctuation">}</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>{{post.data.title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br></code></pre>
-<p data-wordfix="true" id="code-skip-hello-day-9-1">Especially with the variable name in the <code>for</code> deceleration? I don't know if that works the way I think it does and I may even just need <a href="https://www.11ty.dev/docs/languages/nunjucks/#shortcodes" target="_blank">a shortcode instead</a>. But I'd like to get it working. Let's try just echoing out the passed in value first.</p>
+<p id="code-skip-hello-day-9-1">{% endraw %}</p>
+<p data-wordfix="true">Especially with the variable name in the <code>for</code> deceleration? I don't know if that works the way I think it does and I may even just need <a href="https://www.11ty.dev/docs/languages/nunjucks/#shortcodes" target="_blank">a shortcode instead</a>. But I'd like to get it working. Let's try just echoing out the passed in value first.</p>
 <p>Damn, still no go.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/b67b72c0a011aecb0fd6bf070fed41ddcbf9ed2e" class="git-commit-link"><code>git commit -am &quot;Get macros in the mix.&quot;</code></a></p>
 

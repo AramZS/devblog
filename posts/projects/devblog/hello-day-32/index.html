@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 32: Project Pages and loops</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 32: Project Pages and loops</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -120,7 +121,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -173,7 +174,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -185,6 +186,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-32/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -365,10 +369,12 @@
 <a href="#code-skip-hello-day-32-3" id="skip-to-code-skip-hello-day-32-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span><br><span class="token key atrule">layout</span><span class="token punctuation">:</span> project<span class="token punctuation">-</span>list<br><span class="token key atrule">pagination</span><span class="token punctuation">:</span><br>    <span class="token key atrule">data</span><span class="token punctuation">:</span> projects<br>    <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token number">1</span><br>    <span class="token key atrule">alias</span><span class="token punctuation">:</span> project<br><span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token string">"projects/"</span><br><span class="token key atrule">eleventyComputed</span><span class="token punctuation">:</span><br>  <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">"Project List"</span><br>  <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"A list of projects that Aram Zucker-Scharff has documented working on."</span><br><span class="token punctuation">---</span></code></pre>
 <p id="code-skip-hello-day-32-3">I'll start with the project page as the template. Then I can take the loop through the projects object from the front page.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-32-2" id="skip-to-code-skip-hello-day-32-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> project <span class="token keyword">in</span> projects </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>capitalize-first<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>						<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{project.url}}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{project.title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Days worked: {{project.count}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Status: {{project.complete}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- last updated:  {{project.lastUpdatedPost}} --></span><br>					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>				<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-32-2">Ok this is good. To make this easy to debug I should put the link on the front page. So to do that I need to do two things, break the project <code>for</code> loop, and add a link to the new projects page.</p>
+<p id="code-skip-hello-day-32-2">{% endraw %}</p>
+<p>Ok this is good. To make this easy to debug I should put the link on the front page. So to do that I need to do two things, break the project <code>for</code> loop, and add a link to the new projects page.</p>
 <p>Hmm, <a href="https://github.com/mozilla/nunjucks/issues/296" target="_blank">it doesn't look like there is actually a <code>break</code> in Nunjucks</a>. Perhaps I should try altering the array?</p>
 <p>Can I use an if check like <code> if loop.index &lt; 6</code> in the for statement? No that doesn't work. Looks like the <code>if</code> check <a href="https://stackoverflow.com/questions/22150273/how-can-i-break-a-for-loop-in-jinja2" target="_blank">is only for properties of the looped object</a>.</p>
 <p>Ah, no, that's not it at all. That doesn't work. Ah, ok, the best thing to do here is to slice the array before looping it. Instead of a <code>break</code> for this situation, we use slice.</p>

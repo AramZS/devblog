@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 23: A Table of Contents</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 23: A Table of Contents</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -114,7 +115,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -167,7 +168,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -179,6 +180,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-23/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -345,14 +349,18 @@
 <p>Hmm, just pulling it in doesn't seem to work, but doesn't throw any useful errors either.</p>
 <p>My <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">block rendering</a> doesn't seem to be working as expected?</p>
 <p>Here are my blocks:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-23-2" id="skip-to-code-skip-hello-day-23-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block content </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>  	{{ content | safe }}<br>  <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>postcontent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block postcontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token comment">&lt;!-- postcontent --></span><br>    Post Content Test<br>  <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-23-2">And my extending template:</p>
+<p id="code-skip-hello-day-23-2">{% endraw %}</p>
+<p>And my extending template:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-23-1" id="skip-to-code-skip-hello-day-23-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block content </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Posts tagged: {{paged.tagName}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post-summary-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> <span class="token keyword">for</span> post <span class="token keyword">in</span> paged<span class="token punctuation">.</span>posts </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"partials/post-summary.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block postcontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagination-block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        Pages:<br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> collections<span class="token punctuation">.</span>tagList<span class="token punctuation">[</span>paged<span class="token punctuation">.</span>tagName<span class="token punctuation">]</span> <span class="token operator">></span> site<span class="token punctuation">.</span>paginate </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>            <span class="token comment">&lt;!--Pagination--></span><br>            <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"partials/pagination.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-23-1">But for some reason the content of <code>postcontent</code> is showing up in the <code>content</code> block.</p>
+<p id="code-skip-hello-day-23-1">{% endraw %}</p>
+<p>But for some reason the content of <code>postcontent</code> is showing up in the <code>content</code> block.</p>
 <p>Is there an open tag somewhere?</p>
 <p>(<a href="https://symfony.com/blog/better-white-space-control-in-twig-templates" target="_blank">Found out that I was copying code with newline controls in it, not a problem, but good to know.</a>)</p>
 <p>Gotta stop here.</p>

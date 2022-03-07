@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Parg 24: Page Template, Nunjucks and Eleventy Filters</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Parg 24: Page Template, Nunjucks and Eleventy Filters</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -118,7 +119,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -171,7 +172,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -183,6 +184,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-24/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -323,7 +327,7 @@
 </ul>
 <h2 id="day-24" tabindex="-1">Day 24</h2>
 <p>I'm going to pause on trying to debug the nunjucks stuff not working as expected. I have no idea why content is appearing in the wrong block and I see no previous examples of this problem. It makes me more sure than ever that I likely screwed something up with an open tag <em>somewhere</em> but I have no idea where and the tooling isn't showing me like it should. Let's just try and get tag pages' content done first, even if that content is showing up in the wrong area.</p>
-<p>I think I need to get better insight into how this object is showing on the page. I want to dump it on the page and examine it. Nunjucks <a href="https://github.com/mozilla/nunjucks/issues/94#issuecomment-241729768" target="_blank">seems to have</a> <code>{{ object | dump | safe}}</code> but it isn't working with a more complicated eleventy-generated object. Let's give a custom debug filter a try. <a href="https://github.com/11ty/eleventy/issues/266#issuecomment-716176366" target="_blank">Looks like some good ideas in the eleventy issues.</a></p>
+<p>I think I need to get better insight into how this object is showing on the page. I want to dump it on the page and examine it. Nunjucks <a href="https://github.com/mozilla/nunjucks/issues/94#issuecomment-241729768" target="_blank">seems to have</a> {% raw %}<code>{{ object | dump | safe}}</code>{% endraw %} but it isn't working with a more complicated eleventy-generated object. Let's give a custom debug filter a try. <a href="https://github.com/11ty/eleventy/issues/266#issuecomment-716176366" target="_blank">Looks like some good ideas in the eleventy issues.</a></p>
 <p>Ok, <a href="https://github.com/11ty/eleventy/issues/266#issuecomment-841304247" target="_blank">used the comment with a clean echo</a>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-24-3" id="skip-to-code-skip-hello-day-24-3" class="skip-link">Skip code block ▼</a></p>
@@ -334,10 +338,12 @@
 <a href="#code-skip-hello-day-24-2" id="skip-to-code-skip-hello-day-24-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"console"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> objToEcho<span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">.</span>posts<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			objToEcho <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">delete</span> objToEcho<span class="token punctuation">.</span>posts<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>			objToEcho <span class="token operator">=</span> value<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">const</span> str <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">inspect</span><span class="token punctuation">(</span>objToEcho<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div style="white-space: pre-wrap;"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">unescape</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/div>;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-24-2">Ok, this is useful, so there's three objects to concern oneself with. <code>paged</code> is the object I created with the contents of this page. <code>page</code> is specific metadata about the page, and <code>pagination</code> gives me the information about the previous and next pages, along with information about the collection itself. I can look at them all with this:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-24-1" id="skip-to-code-skip-hello-day-24-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">        Pages dump:<br>        {{ paged | console | safe }}<br>        {{ page | console | safe }}<br>        {{ pagination | console | safe }}</code></pre>
-<p id="code-skip-hello-day-24-1">Ok, that works, the code I used from the other theme gets me most of the way there, but I'll have to alter the style to make it work properly for me.</p>
+<p id="code-skip-hello-day-24-1">{% endraw %}</p>
+<p>Ok, that works, the code I used from the other theme gets me most of the way there, but I'll have to alter the style to make it work properly for me.</p>
 <p>Ok. Now that I know what's going on, I feel a little more comfortable asking... wtf is going on with the pagination content not falling into the given block? It has to be something wrong with my <code>base.njk</code> file. But I don't know what. Let's walk it through.</p>
 <p>Ok, first I'm going to switch all spacing to spaces. Then I'm going to clean up my messy if/else in defining the <code>html</code> tag as that's difficult to read or manage.</p>
 <p>Does Nunjucks support <code>elif</code> as an &quot;else if&quot; expression as I thought on <a href="/posts/projects/devblog/hello-day-9/" target="_blank">Day 9</a>? It doesn't appear in Nunjucks docs, but I would assume it does. Removing it doesn't fix my problem, but it isn't really needed, so let's remove it anyway.</p>

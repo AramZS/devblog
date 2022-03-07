@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 26: Metadata and Short Browsers</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 26: Metadata and Short Browsers</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -122,7 +123,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -175,7 +176,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -187,6 +188,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-26/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -349,11 +353,13 @@
 </ul>
 <h2 id="day-26" tabindex="-1">Day 26</h2>
 <p>Wait... what am I using the <code>subtitle</code> metadata for? Maybe that should go under the title on post pages? Yeah let's do that.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-26-4" id="skip-to-code-skip-hello-day-26-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">                        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> <span class="token string">'/posts'</span> not <span class="token keyword">in</span> page<span class="token punctuation">.</span>url </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ description }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>                        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>                        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> <span class="token string">'/posts'</span> <span class="token keyword">in</span> page<span class="token punctuation">.</span>url and subtitle </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ subtitle }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>                        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
+<p id="code-skip-hello-day-26-4">{% endraw %}</p>
 <h3 id="short-browsers" tabindex="-1">Short Browsers</h3>
-<p id="code-skip-hello-day-26-4">Also, there's a chance the user can really make the browser short if they do it may cause the footer elements to overlap, so let's try and get rid of that.</p>
+<p>Also, there's a chance the user can really make the browser short if they do it may cause the footer elements to overlap, so let's try and get rid of that.</p>
 <p>Using <code>@media (min-width: variables.$large-mobile) and [height argument]</code> I'll hide specific fixed elements in my makeshift sidebar based on window height. By using <code>and (max-height: 850px)</code> I can restrict fixed elements to appear only when there is room for them.</p>
 <p>I'll hide the table of contents when the window is 850px or smaller with <code>@media (min-width: variables.$large-mobile) and (max-height: 850px)</code> and hide the taglist and footer at shorter heights so if the window is very short, we'll only have the title.</p>
 <p>Actually... I'd prefer not to totally hide the Table of Contents, but have it return to place above the content if the browser is too short. While I'll keep the CSS Media Query <code>and</code> rule for the tags and footer as is, I can switch the <code>#toc-container</code> rule to be <code> and (min-height: 962px)</code></p>
@@ -374,20 +380,26 @@
 <p><code>git commit -m &quot;Add repo URL for future API calls.&quot;</code></p>
 <h3 id="blogroll-and-links" tabindex="-1">Blogroll and Links</h3>
 <p>Ok, I know I said I'd lock scope, but this one last expansion! I want to have useful links on the homepage and a blogroll as well. Easy enough to do right? This is the last extra feature, I promise! I'm going to add them as non-post collections in their own folders at <code>src/links</code> and <code>src/blogroll</code>. I'll follow the same pattern I did with posts and projects and create a base <code>json</code> file with default values including the initial collection &quot;tag&quot; and the template I want to use (which won't be the standard one). As an example, I'll put a file at <code>src/blogroll/blogroll.json</code> that has these valeus:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-26-3" id="skip-to-code-skip-hello-day-26-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"layout"</span><span class="token operator">:</span> <span class="token string">"fwd.njk"</span><span class="token punctuation">,</span><br>	<span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Aram is regularly reading"</span><span class="token punctuation">,</span><br>	<span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"blogroll"</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br>	<span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"Last Modified"</span><br><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-26-3">Good stuff! Now I need a template that can handle forwarding users to the correct off-site location. There's some fun and fancy ways to do this with Netlify I know, but I'm not using Netlify. So basic is the goal.</p>
+<p id="code-skip-hello-day-26-3">{% endraw %}</p>
+<p>Good stuff! Now I need a template that can handle forwarding users to the correct off-site location. There's some fun and fancy ways to do this with Netlify I know, but I'm not using Netlify. So basic is the goal.</p>
 <p>I'm going to use <code>isBasedOn</code> as the YAML metadata for the origin URL. This is broadly applicable if I write posts that are not intended to forward, so it means less metadata fields to get confused over and syncs with the <a href="http://Schema.org" target="_blank">Schema.org</a> property, which I like to use for this sort of thing. For the page itself, I'm going to steal an iteration of the template from <a href="http://Bit.ly" target="_blank">Bit.ly</a> and make some modifications. I'll give it a title, a canonical link, and a JSON-LD block. Finally, the key to all this is a META refresh tag with the refresh time sent to <code>0</code> so it forwards immediately.</p>
 <p>Here's the final template (for now).</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-26-2" id="skip-to-code-skip-hello-day-26-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>canonical<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ isBasedOn }}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Link<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>canonical<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ isBasedOn }}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>refresh<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0; URL=<span class="token punctuation">'</span>{{ isBasedOn }}<span class="token punctuation">'</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Fight With Tools Redirect: {{title}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>application/ld+json<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>        <span class="token punctuation">{</span><br>            <span class="token string">"@context"</span><span class="token operator">:</span> <span class="token string">"http://schema.org"</span><span class="token punctuation">,</span><br>            <span class="token string">"@type"</span><span class="token operator">:</span> <span class="token string">"BlogPosting"</span><span class="token punctuation">,</span><br>            <span class="token string">"headline"</span><span class="token operator">:</span> <span class="token string">"{{title}}"</span><span class="token punctuation">,</span><br>            <span class="token string">"description"</span><span class="token operator">:</span> <span class="token string">"{{description}}"</span><span class="token punctuation">,</span><br>            <span class="token string">"mainEntityOfPage"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>                <span class="token string">"@type"</span><span class="token operator">:</span> <span class="token string">"WebPage"</span><span class="token punctuation">,</span><br>                <span class="token string">"@id"</span><span class="token operator">:</span> <span class="token string">"{{ isBasedOn }}"</span><br>            <span class="token punctuation">}</span><span class="token punctuation">,</span><br>            <span class="token string">"isBasedOn"</span><span class="token operator">:</span> <span class="token string">"{{ isBasedOn }}"</span><span class="token punctuation">,</span><br>            <span class="token string">"isPartOf"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>                <span class="token string">"@type"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"CreativeWork"</span><span class="token punctuation">,</span> <span class="token string">"Product"</span><span class="token punctuation">,</span> <span class="token string">"Blog"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>                <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"Fight With Tools.dev"</span><span class="token punctuation">,</span><br>                <span class="token string">"productID"</span><span class="token operator">:</span> <span class="token string">"fightwithtools.dev"</span><br>            <span class="token punctuation">}</span><br>        <span class="token punctuation">}</span><br>    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{isBasedOn}}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>moved here<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-hello-day-26-2">And here's a YAML statement in <code>src/blogroll/hacktext.md</code>.</p>
+<p id="code-skip-hello-day-26-2">{% endraw %}</p>
+<p>And here's a YAML statement in <code>src/blogroll/hacktext.md</code>.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-26-1" id="skip-to-code-skip-hello-day-26-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">"Hack Text"</span><br><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Thinking about Narrative"</span><br><span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token datetime number">2021-09-27 22:59:43.10 -4</span><br><span class="token key atrule">isBasedOn</span><span class="token punctuation">:</span> <span class="token string">"https://hacktext.com"</span><br><span class="token key atrule">tags</span><span class="token punctuation">:</span><br>  <span class="token punctuation">-</span> Personal Blog</code></pre>
-<p id="code-skip-hello-day-26-1">Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.</p>
+<p id="code-skip-hello-day-26-1">{% endraw %}</p>
+<p>Looks like it works! I think for a fast put-together, this works just fine and lets me do what I want! Good stuff. If I'm going to open a scope, I might as well close it on the same day. But no more of that, let's focus on closing the last remaining todos for next days.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/29ae79850439397742e0b7147a0fd9b5683058a4" class="git-commit-link"><code>git commit -am &quot;Set up blogroll and links and write up day 26&quot;</code></a></p>
 <p>Oops forgot to add the <code>raw</code> tags to escape my code.</p>
 <p><code>git commit -am &quot;Add escaping tags to day 26</code></p>

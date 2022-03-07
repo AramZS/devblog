@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Hello World Devblog - Pt. 22</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Hello World Devblog - Pt. 22</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -114,7 +115,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -167,7 +168,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -179,6 +180,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-22/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -322,10 +326,12 @@
 <a href="#code-skip-hello-day-22-6" id="skip-to-code-skip-hello-day-22-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-js"><code class="language-js">	<span class="token keyword">function</span> <span class="token function">filterTagList</span><span class="token punctuation">(</span><span class="token parameter">tags</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token punctuation">(</span>tags <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><br>			<span class="token punctuation">(</span><span class="token parameter">tag</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>				<span class="token punctuation">[</span><span class="token string">"all"</span><span class="token punctuation">,</span> <span class="token string">"nav"</span><span class="token punctuation">,</span> <span class="token string">"post"</span><span class="token punctuation">,</span> <span class="token string">"posts"</span><span class="token punctuation">,</span> <span class="token string">"projects"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token string">"filterTagList"</span><span class="token punctuation">,</span> filterTagList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-22-6">And now I can run my tags list through that filter in the template.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-22-5" id="skip-to-code-skip-hello-day-22-5" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block prefooter </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>taglist<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h6</span><span class="token punctuation">></span></span>Tags: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h6</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> <span class="token keyword">for</span> tag <span class="token keyword">in</span> tags <span class="token operator">|</span> filterTagList <span class="token operator">-</span></span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>			    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ site.site_url }}/tag/{{ tag | slug }}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ tag }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>			<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> endfor <span class="token operator">-</span></span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-22-5">I don't like how that looks though, so let's apply some styling. We'll keep it in the semantically correct unordered list HTML, but I want to change the layout. First let's move it to be an <code>inline-block</code>. Then let's add some symbols.</p>
+<p id="code-skip-hello-day-22-5">{% endraw %}</p>
+<p>I don't like how that looks though, so let's apply some styling. We'll keep it in the semantically correct unordered list HTML, but I want to change the layout. First let's move it to be an <code>inline-block</code>. Then let's add some symbols.</p>
 <p>Ok we're going to use <code>:after</code>. Oh, why is it autocorrecting me to use <code>::after</code>?</p>
 <p><a href="https://stackoverflow.com/questions/17684797/should-i-use-single-colons-or-double-colons-for-before-after-first-le" target="_blank">Apparently, that's the standard!</a> Did not know that. Ok, so I want to have a <code>|</code> seperater between each element, along with the list starting with the character. I know the pseudo-classes for this!</p>
 <p class="skip-link-graf">

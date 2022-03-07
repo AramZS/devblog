@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Source Maps, Site Paths and GitHub Actions</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Source Maps, Site Paths and GitHub Actions</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -128,7 +129,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -181,7 +182,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -193,6 +194,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -316,20 +320,26 @@
 <pre class="language-json"><code class="language-json">	<span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span><br>	<span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8080"</span><span class="token punctuation">,</span><br>	<span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>		<span class="token string">"dinky/_sass/jekyll-theme-dinky.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"dinky/_sass/rouge-github.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/base-syntax-highlighting.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/syntax-highlighting.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/user.sass"</span><br>	<span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre>
 <p id="code-skip-hello-day-8-8">The code sample says &quot;HACK 1: Force all &quot;sources&quot; to be relative to project root&quot; but it apparently does this so that dart-sass... gets rid of the project root? I find this process very confusing, I'm adding the project root so Sass can remove the project root? This is fking baffling to me and apparently hits some process that is very badly documented in dart-sass. The other hack &quot;node-sass does not support sourceRoot, but we can add it&quot; at least makes sense. Seems like something you should support! It looks like some iteration of Node-based Sass takes the <code>sourceMapRoot</code> configuration property, but not dart-sass. The documentation and debugging process is very confusing for this because dart-sass links to node-sass for most of its documentation, but node-sass clearly has some features that dart-sass does not, and the fact that issues are often in node-sass that are actually about dart-sass is just a <em>mess</em>.</p>
 <p>Anyway, this works now... and it gives me a really useful insight into how the source map is built. I can hack better paths for sources! The paths themselves are useful for the project, but having them at the base of the website sort of irks me. Now I can put them all in a nice <code>sass</code> folder, makes it neat.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-7" id="skip-to-code-skip-hello-day-8-7" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">var</span> newSources <span class="token operator">=</span> map<span class="token punctuation">.</span>sources<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token string">"sass/"</span> <span class="token operator">+</span> source<span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	map<span class="token punctuation">.</span>sources <span class="token operator">=</span> newSources<span class="token punctuation">;</span></code></pre>
-<p id="code-skip-hello-day-8-7">And I can also change my passthroughs in <code>.eleventy.js</code>.</p>
+<p id="code-skip-hello-day-8-7">{% endraw %}</p>
+<p>And I can also change my passthroughs in <code>.eleventy.js</code>.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-6" id="skip-to-code-skip-hello-day-8-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string">"dinky/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/dinky/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string">"src/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/src/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-hello-day-8-6">If this works correctly on publish, it will resolve the last of my base requirements!</p>
+<p id="code-skip-hello-day-8-6">{% endraw %}</p>
+<p>If this works correctly on publish, it will resolve the last of my base requirements!</p>
 <h3 id="cache-break-with-github" tabindex="-1">Cache Break with GitHub</h3>
 <p>Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's <a href="https://github.com/jekyll/github-metadata" target="_blank">a plugin for Jekyll to do it</a>, it looks like <a href="https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md" target="_blank">it does so at least partially via the Github API</a>. It gets <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">a pretty good list of data too</a>. There's also <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">the &quot;Github Context&quot; which is available to GitHub actions</a>. I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-5" id="skip-to-code-skip-hello-day-8-5" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml">        <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> export GITHUB_HEAD_SHA=$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-8-5">Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
+<p id="code-skip-hello-day-8-5">{% endraw %}</p>
+<p>Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-4" id="skip-to-code-skip-hello-day-8-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token punctuation">{</span><br>		lang<span class="token operator">:</span> <span class="token string">"en-US"</span><span class="token punctuation">,</span><br>		github<span class="token operator">:</span> <span class="token punctuation">{</span><br>			build_revision<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">GITHUB_HEAD_SHA</span> <span class="token operator">||</span> <span class="token number">1.0</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span><br>		site_url<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
@@ -337,10 +347,12 @@
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e25ca3229277e2348f288607e48322d1ee66fef1" class="git-commit-link"><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></a></p>
 <p>Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling <code>process.env.GITHUB_JOB</code> just got me <code>deploy</code>. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.</p>
 <p data-wordfix="true">What if I set the <code>env</code> at the level of job? I think this means I could probably use <code>GITHUB_SHA</code>, but I want to see what works.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-3" id="skip-to-code-skip-hello-day-8-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-8-3">Ah, that did it, so now I know how to use both!</p>
+<p id="code-skip-hello-day-8-3">{% endraw %}</p>
+<p>Ah, that did it, so now I know how to use both!</p>
 <h3 id="site-maps" tabindex="-1">Site Maps</h3>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
 <p>Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.</p>
@@ -355,10 +367,12 @@
 <p id="code-skip-hello-day-8-2">Huh, I'm getting this in the output now: <code>Benchmark (Configuration): &quot;htmlToAbsoluteUrls&quot; Nunjucks Async Filter took 40ms (8.9%, called 8×, 5.0ms each)</code> and the domain name is wrong in the RSS feed. Found some info on building permalinks that may be useful for my more dynamic link urls, but doesn't seem to be for this. Huh, looks like this generates an Atom feed, not an RSS standard one. Going to rename the file accordingly.</p>
 <p>Still no go on getting those URLs set up properly. I need to pass the calculated domain in to the page metadata, but using template tags or JS functions doesn't seem to be doing it. The domain data just isn't going through.</p>
 <p>Ok, I had thought the functions in the <code>js</code> layout-based front matter would execute themselves, but it looks like I have to write them to execute in the context of the front matter itself. So now the front matter looks like this:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-1" id="skip-to-code-skip-hello-day-8-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---js<br>{<br>  "permalink": "feed.xml",<br>  "eleventyExcludeFromCollections": true,<br>  "metadata": {<br>    "title": "Feed for Fight With Tools - Aram's Dev Blog",<br>    "subtitle": "Notes on various projects",<br>    "url": (function(){ return process.env.DOMAIN + "/" })(),<br>    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),<br>    "author": {<br>      "name": "Aram Zucker-Scharff",<br>      "email": "aramdevblog@aramzs.me"<br>    }<br>  },<br>  "internalPageTypes": [ "feed" ]<br>}<br>---</code></pre>
-<p id="code-skip-hello-day-8-1">Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
+<p id="code-skip-hello-day-8-1">{% endraw %}</p>
+<p>Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
 <h3 id="robots.txt" tabindex="-1">Robots.txt</h3>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>

@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 31: Pagination</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 31: Pagination</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -118,7 +119,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -171,7 +172,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -183,6 +184,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-31/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -373,10 +377,12 @@
 <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span><br>  date<span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">16</span>T03<span class="token operator">:</span><span class="token number">59</span><span class="token operator">:</span><span class="token number">43.100</span>Z<span class="token punctuation">,</span><br>  inputPath<span class="token operator">:</span> <span class="token string">'./src/posts/projects/devblog/hello-day-4.md'</span><span class="token punctuation">,</span><br>  fileSlug<span class="token operator">:</span> <span class="token string">'hello-day-4'</span><span class="token punctuation">,</span><br>  filePathStem<span class="token operator">:</span> <span class="token string">'/posts/projects/devblog/hello-day-4'</span><span class="token punctuation">,</span><br>  url<span class="token operator">:</span> <span class="token string">'/posts/projects/devblog/hello-day-4/'</span><span class="token punctuation">,</span><br>  outputPath<span class="token operator">:</span> <span class="token string">'docs/posts/projects/devblog/hello-day-4/index.html'</span><br><span class="token punctuation">}</span></code></pre>
 <p id="code-skip-hello-day-31-8">So no project property. The project proprty of the post is escaped into its own variable in the page template</p>
 <p>So now the template calls the filter like:</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-31-7" id="skip-to-code-skip-hello-day-31-7" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-njk"><code class="language-njk">	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">set</span> previousPost <span class="token operator">=</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> <span class="token function">getPreviousProjectItem</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> project<span class="token punctuation">)</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">set</span> nextPost <span class="token operator">=</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> <span class="token function">getNextProjectItem</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> project<span class="token punctuation">)</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-31-7">Ok so now I have passed into the function the posts collection, the page object and the project name. Now to set up a function to walk through the posts collection and find the right post that is a project post and this project's post in particular.</p>
+<p id="code-skip-hello-day-31-7">{% endraw %}</p>
+<p>Ok so now I have passed into the function the posts collection, the page object and the project name. Now to set up a function to walk through the posts collection and find the right post that is a project post and this project's post in particular.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-31-6" id="skip-to-code-skip-hello-day-31-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span><br>		<span class="token string">"getPreviousProjectItem"</span><span class="token punctuation">,</span><br>		<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">collection<span class="token punctuation">,</span> page<span class="token punctuation">,</span> project</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>			<span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><br>			<span class="token keyword">let</span> found <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>project<span class="token punctuation">)</span><span class="token punctuation">{</span><br>				<span class="token keyword">let</span> lastPost<span class="token punctuation">;</span><br>				<span class="token keyword">while</span> <span class="token punctuation">(</span>found <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>					lastPost <span class="token operator">=</span> <span class="token function">getCollectionItem</span><span class="token punctuation">(</span>collection<span class="token punctuation">,</span> page<span class="token punctuation">,</span> index<span class="token punctuation">)</span><br>					<span class="token keyword">if</span> <span class="token punctuation">(</span>lastPost<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">"project"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> lastPost<span class="token punctuation">.</span>data<span class="token punctuation">.</span>project <span class="token operator">==</span> project<span class="token punctuation">)</span><span class="token punctuation">{</span><br>						found <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>					<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>						index <span class="token operator">=</span> index<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><br>					<span class="token punctuation">}</span><br>				<span class="token punctuation">}</span><br>				<span class="token keyword">return</span> lastPost<span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -402,10 +408,12 @@
 <p id="code-skip-hello-day-31-2">Ok it's looking good!</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/0c62e6ab21d2556e2bcd3df554e3342ad5dfc7e9" class="git-commit-link"><code>git commit -am &quot;Setting up in-post pagination for projects&quot;</code></a></p>
 <p>Ok, clean up time. Oh and I should make sure this is only for project work days, so an <code>if</code> check for that in the template.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-31-1" id="skip-to-code-skip-hello-day-31-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> project and not wrapup </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">set</span> previousPost <span class="token operator">=</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> <span class="token function">getPreviousProjectItem</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> project<span class="token punctuation">)</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">set</span> nextPost <span class="token operator">=</span> collections<span class="token punctuation">.</span>posts <span class="token operator">|</span> <span class="token function">getNextProjectItem</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> project<span class="token punctuation">)</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagination<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{% if previousPost %}{{ previousPost.url }}{% else %}javascript:void(0){% endif %}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagination-link {% if previousPost %}cursor-pointer {% else %} cursor-default disabled-link{% endif %}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Previous Project Days<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{% if nextPost %}{{ nextPost.url }}{% else %}javascript:void(0){% endif %}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagination-link {% if nextPost %}cursor-pointer {% else %} disabled-link cursor-default{% endif %}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Next Project Day<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-31-1">Ok, looking good. One more thing to check off the list!</p>
+<p id="code-skip-hello-day-31-1">{% endraw %}</p>
+<p>Ok, looking good. One more thing to check off the list!</p>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</li>
 </ul>

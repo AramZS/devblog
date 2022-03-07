@@ -1,27 +1,28 @@
 <!doctype html>
     <html lang="en-US" id="template-post" class="base">
         <head>
+        
         <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Part 11: Nunjucks and Shortcodes</title>
         
             <!-- Sub Template: post -->
         
         
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title>Part 11: Nunjucks and Shortcodes</title>
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1803957584" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=1943155440" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1803957584" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=1943155440" id=""></link>
 
             
-            <!-- Build Revision: 1803957584 & Sha: 40c96a7e18bcea18d2241aab8e5d2ca8e3598109 -->
+            <!-- Build Revision: 1943155440 & Sha: 243079d8566b9c75b5f7504107b8528fd8042b9a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -120,7 +121,7 @@
         "isPartOf": {
             "@type": ["CreativeWork", "Product"],
             "name": "Fight With Tools",
-            "productID": "aramzs.github.io"
+            "productID": "fightwithtools.dev"
         },
         "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
         "author": {
@@ -173,7 +174,7 @@
             "@type": "Organization",
             "name": "Fight With Tools",
             "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
-            "sameAs": "http://aramzs.github.io",
+            "sameAs": "https://fightwithtools.dev/",
             "logo": {
                 "@type": "ImageObject",
                 "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -185,6 +186,9 @@
 
         
         
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-11/" />
+
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
             <div class="wrapper">
@@ -312,7 +316,9 @@
 <a href="#code-skip-hello-day-11-4" id="skip-to-code-skip-hello-day-11-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><span class="token string">"postList"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> postList <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;li></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>post<span class="token punctuation">.</span>data<span class="token punctuation">.</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/li></span><span class="token template-punctuation string">`</span></span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>collectionName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>		&lt;ul><br>			&lt;!-- Collection: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>collectionName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> --><br>			</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>postList<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>		&lt;/ul><br>		</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p data-wordfix="true" id="code-skip-hello-day-11-4">and then I can call it easily with Eleventy data like this:</p>
-<p><code>{% postList &quot;WiP&quot;, collections[&quot;WiP&quot;] %}</code></p>
+<p>{% raw %}<br>
+<code>{% postList &quot;WiP&quot;, collections[&quot;WiP&quot;] %}</code><br>
+{% endraw %}</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/909ea707e6297787a6dc7508458be964addfac97" class="git-commit-link"><code>git commit -am &quot;Set up a shortcode for postlist&quot;</code></a></p>
 <p>Ok, now I want to be able to pass the post type I want to list in the Markdown file.</p>
 <p>New markdown front matter to make that work:</p>
@@ -324,10 +330,12 @@
 <a href="#code-skip-hello-day-11-2" id="skip-to-code-skip-hello-day-11-2" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addShortcode</span><span class="token punctuation">(</span><span class="token string">"postList"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">collectionName<span class="token punctuation">,</span> collectionOfPosts<span class="token punctuation">,</span> order</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">!</span><span class="token operator">!</span>order<span class="token punctuation">)</span><span class="token punctuation">{</span><br>			order <span class="token operator">=</span> <span class="token string">"reverse"</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>order <span class="token operator">===</span> <span class="token string">"reverse"</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>			collectionOfPosts<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">let</span> postList <span class="token operator">=</span> collectionOfPosts<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;li></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>post<span class="token punctuation">.</span>data<span class="token punctuation">.</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/li></span><span class="token template-punctuation string">`</span></span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><br>		<span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>collectionName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>		&lt;ul><br>			&lt;!-- Collection: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>collectionName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> --><br>			</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>postList<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>		&lt;/ul><br>		</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p id="code-skip-hello-day-11-2">and now my <code>index.njk</code> file is reusable for any vertical file I wish to reuse it with.</p>
+<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-11-1" id="skip-to-code-skip-hello-day-11-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">extends</span> <span class="token string">"base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block postcontent </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token comment">&lt;!-- post list: --></span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> <span class="token keyword">for</span> postType <span class="token keyword">in</span> postLists </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>		<span class="token templateTagBoundary template-tag-boundary">{%</span> postList postType.name,<br>		collections[postType.collection],<br>		postType.order <span class="token templateTagBoundary template-tag-boundary">%}</span><br>	<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"><span class="token operator">-</span> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-hello-day-11-1"><a target="_blank" href="https://github.com/AramZS/devblog/commit/16489980c08be5ebaab225ed4178fb314d8f80f9" class="git-commit-link"><code>git commit -am &quot;Got shortcode + vertical layout template working&quot;</code></a></p>
+<p id="code-skip-hello-day-11-1">{% endraw %}</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/16489980c08be5ebaab225ed4178fb314d8f80f9" class="git-commit-link"><code>git commit -am &quot;Got shortcode + vertical layout template working&quot;</code></a></p>
 
                     
                     </section>
