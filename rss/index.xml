@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 07 Mar 2022 02:34:40 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 07 Mar 2022 03:52:36 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -422,7 +422,7 @@
 	</item>
 	
 	<item>
-		<title>Day 8: Getting a Twitter Thread</title>
+		<title>Day 9: Handle a Twitter Thread</title>
 		<link>https://fightwithtools.dev/posts/projects/context-pages/day-9/?source=rss</link>
 		<pubDate>Fri, 28 Jan 2022 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
