@@ -215,4 +215,6 @@ That said, I think my actual Context objects are solid now? I think that the act
 
 Hmm... looks like there is already a `contexter` library on NPM so I'll name it something else. We'll be even more specific and call it `link-contexter`.
 
-Ok, [that is set up](https://www.npmjs.com/package/link-contexter)! 
+Ok, [that is set up](https://www.npmjs.com/package/link-contexter)!
+
+I'm now able to merge this branch of my blog into production!
