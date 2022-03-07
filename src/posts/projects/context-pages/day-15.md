@@ -1,5 +1,5 @@
 ---
-title: "Day 15: Testing the Contexter in action"
+title: "Day 15: Working with Eleventy's Compiler "
 description: "I want to get the data set up in an HTML block a user can style"
 date: 2022-2-17 22:59:43.10 -4
 tags:

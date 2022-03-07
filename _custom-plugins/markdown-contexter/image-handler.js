@@ -17,12 +17,13 @@ const generateImageFilename = function (imageUrl, cacheFile, cacheFilePath) {
 	const fileObj = cacheFilePath("images/" + cacheFile + "/", imageFile, true);
 	const imageCacheFolder = fileObj.cacheFolder;
 	const imageCacheFile = fileObj.cacheFile;
+	fileObj.imageFileName = imageFile;
 	console.log("File Path Generation", imageCacheFolder, imageCacheFile);
 	return fileObj;
 };
 
 const pullImageFromTwitter = async (twitterObj, cacheFile, cacheFilePath) => {
-	const twitterObjAdjustedPromises = r.twitterObj.map(async (tweetObj) => {
+	const twitterObjAdjustedPromises = twitterObj.map(async (tweetObj) => {
 		if (
 			tweetObj &&
 			tweetObj.data &&
@@ -42,6 +43,7 @@ const pullImageFromTwitter = async (twitterObj, cacheFile, cacheFilePath) => {
 						mediaObj.local_url = fileObj.cacheFile;
 						return mediaObj;
 					} catch (e) {
+						// @TODO: This is NOT a web ready URL.
 						const localImage = await getImageAndWriteLocally(
 							imageUrl,
 							fileObj.cacheFile
@@ -60,7 +62,7 @@ const pullImageFromTwitter = async (twitterObj, cacheFile, cacheFilePath) => {
 	return twitterObjAdjusted;
 };
 
-const imageCheck = (response, cacheFile, cacheFilePath) => {
+const imageCheck = (response, cacheFile, cacheFilePath, promiseArray) => {
 	const r = response.data;
 	if (
 		r.finalizedMeta &&
@@ -76,16 +78,40 @@ const imageCheck = (response, cacheFile, cacheFilePath) => {
 		const fileObj = generateImageFilename(image, cacheFile, cacheFilePath);
 		const imageCacheFolder = fileObj.cacheFolder;
 		const imageCacheFile = fileObj.cacheFile;
-		console.log("File Path Generation", imageCacheFolder, imageCacheFile);
+		console.log(
+			"File Path Generation",
+			imageCacheFolder,
+			imageCacheFile,
+			fileObj.imageFileName
+		);
 		try {
 			fs.accessSync(imageCacheFile, fs.constants.F_OK);
-			return imageFile;
+			return {
+				localImageName: imageCacheFile,
+				originalImage: image,
+				imageName: fileObj.imageFileName,
+			};
 		} catch (e) {
-			handleImageFromObject(response, cacheFile, cacheFilePath);
+			const imageResult = handleImageFromObject(
+				response,
+				cacheFile,
+				cacheFilePath
+			);
+			promiseArray.push(imageResult);
 			return false;
 		}
 	} else if (r.twitterObj && r.twitterObj.length) {
-		return pullImageFromTwitter(twitterObj, cacheFile, cacheFilePath);
+		try {
+			const twitterObjResult = pullImageFromTwitter(
+				twitterObj,
+				cacheFile,
+				cacheFilePath
+			);
+			//@TODO Process the Twitter Object usefully?
+			return false;
+		} catch (e) {
+			return false;
+		}
 	} else {
 		return false;
 	}

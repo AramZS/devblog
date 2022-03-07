@@ -1,4 +1,4 @@
-const contexter = require("../../../contexter");
+const contexter = require("link-contexter");
 const fs = require("fs");
 var path = require("path");
 var slugify = require("slugify");
@@ -46,7 +46,7 @@ module.exports = (eleventyConfig, userOptions) => {
 	const reMarkdown = (inputContent, data) => {
 		let promiseContext = new Promise((resolve, reject) => {
 			setTimeout(() => {
-				console.log("Initiating Promise Resolution Process");
+				// console.log("Initiating Promise Resolution Process");
 				resolve(true);
 			}, 30);
 		});
@@ -80,38 +80,35 @@ module.exports = (eleventyConfig, userOptions) => {
 					// Rebuild conditions?
 					// Mby https://attacomsian.com/blog/nodejs-get-file-last-modified-date
 					const contextData = JSON.parse(contextString);
+					// Markdown system reads tabs as code blocks no matter what.
 					let htmlEmbed = contextData.htmlEmbed.replace(
 						/\t|^\s+|\n|\r/gim,
 						""
 					);
-					const localImageName = imageHandler.imageCheck(
+					const localImageObj = imageHandler.imageCheck(
 						contextData,
 						fileName,
-						cacheFilePath
+						cacheFilePath,
+						completeAllPromiseArray
 					);
-					if (localImageName) {
+					if (localImageObj) {
+						const { localImageName, originalImage, imageName } =
+							localImageObj;
 						imageCheck = true;
 						console.log(
 							"Local Cached Image",
-							`${options.domain}/${options.publicImagePath}/${fileName}/${localImageName}`
+							`${options.domain}/${options.publicImagePath}/${fileName}/${imageName}`
 						);
-						let image = "";
-						if (
-							Array.isArray(contextData.data.finalizedMeta.image)
-						) {
-							image = contextData.data.finalizedMeta.image[0];
-						} else {
-							image = contextData.data.finalizedMeta.image;
-						}
+						let image = originalImage;
 						htmlEmbed = htmlEmbed.replace(
 							image,
-							`${options.domain}/${options.publicImagePath}/${fileName}/${localImageName}`
+							`${options.domain}/${options.publicImagePath}/${fileName}/${imageName}`
 						);
 					}
 					if (
 						options.buildArchive &&
 						!contextData.data.archivedData.link &&
-						!contextData.data.twitterObj
+						!contextData.data.twitterObj // Because we build pages with the Twitter Object when it is available.
 					) {
 						htmlEmbed = htmlEmbed.replace(
 							`</contexter-box>`,
@@ -129,38 +126,50 @@ module.exports = (eleventyConfig, userOptions) => {
 						console.log("Image issue possibly", e);
 					}
 					let pContext = contexter.context(link);
+					completeAllPromiseArray.push(pContext);
 					// No file yet
 					console.log(
 						"Cached link " + cacheFile + " to repo not ready"
 					);
 					pContext.then((r) => {
-						console.log("Context ready", r.linkId);
-						// No file yet
-						console.log(
-							"Cached link for " + cacheFile + " ready to write."
+						const fileWritePromise = new Promise(
+							(resolve, reject) => {
+								console.log("Context ready", r.linkId);
+								// No file yet
+								console.log(
+									"Cached link for " +
+										cacheFile +
+										" ready to write."
+								);
+								try {
+									console.log("Writing data for: ", link);
+									fs.mkdirSync(cacheFolder, {
+										recursive: true,
+									});
+									imageHandler
+										.handleImageFromObject(
+											r,
+											fileName,
+											cacheFilePath
+										)
+										.then((localImageFileName) => {
+											if (localImageFileName) {
+												r.localImage = `/${options.publicImagePath}/${fileName}/${localImageFileName}`;
+												// console.log('write data to file', cacheFile)
+											}
+											fs.writeFileSync(
+												cacheFile,
+												JSON.stringify(r)
+											);
+											resolve(cacheFile);
+										});
+								} catch (e) {
+									console.log("writing to cache failed:", e);
+									reject(e);
+								}
+							}
 						);
-						try {
-							console.log("Writing data for: ", link);
-							fs.mkdirSync(cacheFolder, { recursive: true });
-							imageHandler
-								.handleImageFromObject(
-									r,
-									fileName,
-									cacheFilePath
-								)
-								.then((localImageFileName) => {
-									if (localImageFileName) {
-										r.localImage = `/${options.publicImagePath}/${fileName}/${localImageFileName}`;
-										// console.log('write data to file', cacheFile)
-									}
-									fs.writeFileSync(
-										cacheFile,
-										JSON.stringify(r)
-									);
-								});
-						} catch (e) {
-							console.log("writing to cache failed:", e);
-						}
+						completeAllPromiseArray.push(fileWritePromise);
 					});
 				}
 			});
@@ -183,7 +192,10 @@ module.exports = (eleventyConfig, userOptions) => {
 		return function (data) {
 			// console.log("msc compile", data);
 			// options.md.set(data);
-			if (remark && data.layout && /post/.test(data.layout)) {
+			if (
+				(remark && data.layout && /post/.test(data.layout)) ||
+				/fwd/.test(data.layout)
+			) {
 				// console.log("msc compile");
 
 				const rmResult = reMarkdown(inputContent, data);
@@ -199,7 +211,7 @@ module.exports = (eleventyConfig, userOptions) => {
 		read: true,
 		compile: compiler,
 	});
-	const archiveFilesList = (() => {
+	const buildArchiveFileList = () => {
 		const directoryPath = options.cachePath;
 		const files = [];
 		//passsing directoryPath and callback function
@@ -218,11 +230,13 @@ module.exports = (eleventyConfig, userOptions) => {
 			return console.log("Unable to scan directory: " + err);
 		}
 		return files;
-	})();
+	};
+	let archiveFilesList = [];
 	if (options.buildArchive) {
 		eleventyConfig.addCollection("archives", async (collection) => {
 			await Promise.all(completeAllPromiseArray);
 			console.log("Archives Collection ");
+			archiveFilesList = buildArchiveFileList();
 			const archives = [];
 			archiveFilesList.forEach((cacheFile) => {
 				const fileContents = fs

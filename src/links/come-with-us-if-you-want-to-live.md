@@ -8,3 +8,5 @@ tags:
   - Blockchain
   - Cryptocurrency
 ---
+
+https://harpers.org/archive/2015/01/come-with-us-if-you-want-to-live/

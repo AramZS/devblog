@@ -40,8 +40,8 @@ Ok, let's look at Web Archive documentation
 - https://wiki.archiveteam.org/index.php/Dev/Source_Code
 - https://github.com/ArchiveTeam/seesaw-kit
 - https://github.com/ArchiveTeam/grab-site
-- https://help.archive.org/hc/en-us/articles/360017788831-How-to-upload-files-to-create-a-new-item-page
-- https://help.archive.org/hc/en-us/articles/360060767911-Example-of-good-metadata-for-items
+- https://help.archive.org/how-to-upload-files-to-create-a-new-item-page/
+- https://help.archive.org/example-of-good-metadata-for-items/
 - https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine
 
 It can definitely get complicated depending on how complex we want our archiving process to be. But let's start with [a very basic version](https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine#To_save_a_live_page). It looks like I should just be able to send a request and start the archiving process off? Let's try setting up a basic fetch.

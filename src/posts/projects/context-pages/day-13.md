@@ -1,5 +1,5 @@
 ---
-title: "Day 13: Building a block to show link data"
+title: "Day 13: Getting Twitter Threads Working"
 description: "I want to get the data set up in an HTML block a user can style"
 date: 2022-2-06 22:59:43.10 -4
 tags:

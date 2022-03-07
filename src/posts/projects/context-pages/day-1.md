@@ -49,7 +49,7 @@ It's also worthwhile to do exactly the sort of thing I'm talking about here and 
 - https://perma.cc/docs/developer
 - https://conifer.rhizome.org/
 - https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine#JavaScript_bookmarklet
-- https://help.archive.org/hc/en-us/articles/360001513491-Save-Pages-in-the-Wayback-Machine
+- https://help.archive.org/save-pages-in-the-wayback-machine/
 - http://mementoweb.org/depot/native/archiveis/
 - http://mementoweb.org/guide/quick-intro/
 - https://wiki.archiveteam.org/index.php/ArchiveTeam_Warrior

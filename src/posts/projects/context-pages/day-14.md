@@ -34,15 +34,19 @@ Ok, let's make sure that the finalized meta object is as filled out as possible.
 
 Let's try to embed a tweet and a link in this post! What would this look like for Eleventy? We can't just pull the module in, we'll need to build something to process it.
 
-So first a Tweet:
+So first a Tweet in a thread:
 
 https://twitter.com/Chronotope/status/1402628536121319424
 
+A single tweet:
+
 - https://twitter.com/Chronotope/status/1485620069229027329
 
-And a link:
+A link:
 
 https://aramzs.github.io/jekyll/schema-dot-org/2018/04/27/how-to-make-your-jekyll-site-structured.html
+
+A tabbed link:
 
  https://www.regular-expressions.info/lookaround.html
 
