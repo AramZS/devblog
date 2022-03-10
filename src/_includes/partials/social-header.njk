@@ -19,6 +19,8 @@
 
 <meta name="twitter:description" content="{% if description %}{{ description | striptags(false) | truncate(160) }}{% else %}{{ site.description }}{% endif %}" />
 
+<meta name="description" content="{% if description %}{{ description | striptags(false) | truncate(160) }}{% else %}{{ site.description }}{% endif %}">
+
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
@@ -54,10 +56,13 @@
     <meta property="article:section" content="{{project}}" />
     {% endif %}
 
-    <!-- I use the page.categories property for OG tags. -->
-    {% for tag in tags %}
-    <meta property="article:tag" content="{{tag}}" />
-    {% endfor %}
+    {% if tags %}
+        <!-- I use the page.categories property for OG tags. -->
+        {% for tag in tags %}
+        <meta property="article:tag" content="{{tag}}" />
+        {% endfor %}
+        <meta name="keywords" content="{{ tags | join(', ') }">
+    {% endif %}
 
 {% else %}
 
