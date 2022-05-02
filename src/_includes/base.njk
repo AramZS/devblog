@@ -3,6 +3,7 @@
         <head>
         {% include "partials/head-block.njk" %}
         {% block metahead %}
+            <link rel="preload" as="font">
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="{{site.site_url}}/assets/prism-okaidia.css" rel="stylesheet" />
             <!-- <link rel="stylesheet" href="{{site.site_url}}/assets/css/style.css?v={{ site.github.build_revision}}" /> -->
