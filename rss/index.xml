@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 02 May 2022 04:06:05 GMT</lastBuildDate>
+	<lastBuildDate>Fri, 13 May 2022 22:53:15 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,37 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>S</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/?source=rss</link>
+		<pubDate>Sat, 14 May 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/</guid>
+		<description>Setting this devblog up ran me through a Sass refresher course, and presented an opportunity. But I'm not sure it was worth it</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+</ul>
+<h2 id="setting-up-a-timeline-plugin" tabindex="-1">Setting up a Timeline Plugin?</h2>
+<p>Ok, so I really love the work that <a href="http://www.mollywhite.net/" target="_blank">Molly White</a> has put in to create timelines in their work. Molly has created a great starting point in <a href="https://github.com/molly/static-timeline-generator" target="_blank">an open-source 11ty-based timeline project</a> and then <a href="https://github.com/molly/web3-is-going-great" target="_blank">a much more advanced timeline for their coverage of &quot;web3&quot; that is also open-source</a>.</p>
+<p>So, I decided to set up a version for myself. I want to build multiple timelines within my context-center site so I set up <a href="https://github.com/AramZS/context-center/tree/timeline" target="_blank">a branch to try and set up a way to do that</a>. My hope is that not only can I set it up for multiple timelines within my own site, but I can also set it up within a plugin that other people (and future sites of mine) can use easily. I haven't really seen templates packaged up this way so this feels like unexplored ground. I think it might be possible, but maybe not! I guess we'll find out.</p>
+<p>So first I want to port over Molly's basic timeline work, this gives me a good starting point and lets me avoid the fact that I'm bad at design. I'll set up a timeline plugin and start moving it over. I don't want to deal with trying to do Sass builds inside the plugin so I'll also try to move her Sass work into standard CSS for now.</p>
+<p>I've set up a basic plugin structure to start me off and contain the work.</p>
+<p>I'll start with the variables.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Set up first folder and start porting CSS&quot;</code></a></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Day 18: Ok, I used it a whole bunch. Now time to adjust.</title>
