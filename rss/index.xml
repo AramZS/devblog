@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Fri, 13 May 2022 22:53:15 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 24 May 2022 16:01:31 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,12 +22,12 @@
 	</managingEditor>
 	
 	<item>
-		<title>S</title>
+		<title>Context Center Timelines - Day 1</title>
 		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/?source=rss</link>
 		<pubDate>Sat, 14 May 2022 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/</guid>
-		<description>Setting this devblog up ran me through a Sass refresher course, and presented an opportunity. But I'm not sure it was worth it</description>
+		<description>Setting up context-rich timelines</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create timeline pages where one can see the whole timeline of a particular event</li>
