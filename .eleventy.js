@@ -276,7 +276,7 @@ module.exports = function (eleventyConfig) {
 						postName =
 							"<em>" + post.data.project + "</em> | " + postName;
 					}
-					return `<li><a href="${post.url}">${postName}</a></li>`;
+					return `<li class="h-entry"><a href="${post.url}">${postName}</a></li>`;
 				});
 			}
 			if (!!!hlevel) {

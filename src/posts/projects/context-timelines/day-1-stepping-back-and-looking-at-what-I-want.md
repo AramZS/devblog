@@ -1,18 +1,13 @@
 ---
-title: S
-description: "Setting this devblog up ran me through a Sass refresher course, and presented an opportunity. But I'm not sure it was worth it"
+title: Context Center Timelines - Day 1
+description: "Setting up context-rich timelines"
 date: 2022-05-13 22:59:43.10 -4
 tags:
   - 11ty
   - Node
-  - Retros
-  - Sass
-  - SCSS
-  - 30m
-featuredImage: "sass-logo.png"
-featuredImageCredit: "Sass project logo is in the public domain."
-featuredImageLink: "https://en.wikipedia.org/wiki/Sass_(stylesheet_language)"
-featuredImageAlt: "Sass project logo."
+  - Timelines
+  - SSG
+  - Context
 ---
 
 ## Project Scope and ToDos
