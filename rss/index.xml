@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 24 May 2022 16:01:31 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 31 May 2022 00:48:30 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,45 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 2 - Layouts and Collections</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/?source=rss</link>
+		<pubDate>Sat, 14 May 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/</guid>
+		<description>Setting up context-rich timeline collections and layouts</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+</ul>
+<h2 id="bringing-over-the-template-for-the-timeline" tabindex="-1">Bringing over the Template for the Timeline</h2>
+<p>So I think it won't be so easy to directly port over the code, even if I transform the EJS to Nunjucks. What's worth doing is seeing if I can transform the data approach so it matches the different structure of content I'm trying to do.</p>
+<p>I think I can use the Project structures I have in my devblog as a starting point.</p>
+<p>I was really hoping that a plugin could come in and establish some template file, but <a href="https://github.com/11ty/eleventy/blob/e386ec5f70e08254284e76a41dcbc591762282c8/src/TemplateLayoutPathResolver.js#L79" target="_blank">it looks like that can't be done with a simple template alias</a>. Instead I'm going to have to set up some way to handle it as a path relative to the site's <code>_layouts</code> folder. That's pretty awkward. But I do think I can make it work, especially if I pass in the depth I'll have to traverse the file structure up.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/#code-skip-day-2-creating-collections-and-layouts-2" id="skip-to-code-skip-day-2-creating-collections-and-layouts-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">const</span> dirs <span class="token operator">=</span> __dirname<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token keyword">const</span> pluginLayoutPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><br />		pluginConfig<span class="token punctuation">.</span>layoutFolderDepth<span class="token punctuation">,</span><br />		dirs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br />		<span class="token string">"src"</span><span class="token punctuation">,</span><br />		<span class="token string">"layouts"</span><br />	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-2-creating-collections-and-layouts-2">Yeah, that is not the easiest, but it does look like it works. Definitely not as intended by Eleventy core, but hey, it works. This gets the template system to traverse up from _layouts in my core site by a <code>layoutFolderDepth</code> value of <code>../../</code>. It then travels into the plugin parent folder, the plugin, then--internal to the plugin--<code>src/layouts</code> where my layout folders are.</p>
+<p>Once that file path is in place I can use layout aliases that lead to template files local to my plugin folder, like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/#code-skip-day-2-creating-collections-and-layouts-1" id="skip-to-code-skip-day-2-creating-collections-and-layouts-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br />		<span class="token string">"timeline"</span><span class="token punctuation">,</span><br />		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline.njk"</span><span class="token punctuation">)</span><br />	<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br />		<span class="token string">"timeline-item"</span><span class="token punctuation">,</span><br />		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline-item.njk"</span><span class="token punctuation">)</span><br />	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-2-creating-collections-and-layouts-1">Nice, that looks good! Now I can just pass in my timelines collection and start building some pages!</p>
+<p>Next up, getting those templates actually working.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up Context Timeline templates and collections&quot;</code></a></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 1</title>
