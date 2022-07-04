@@ -59,8 +59,8 @@ const directorySet = getDirectories("src/posts/projects/").map((projectDir) => {
 	};
 });
 
-console.log(getDirectories("src/posts/projects/"));
-
 directorySet.sort((a, b) => b.lastUpdatedPost - a.lastUpdatedPost);
+
+console.log(directorySet);
 
 module.exports = directorySet;
