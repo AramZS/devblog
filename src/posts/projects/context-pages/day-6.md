@@ -10,6 +10,7 @@ tags:
   - Internet Archive
   - research
   - Memento API
+  - Memento
 featuredImage: "memento.png"
 featuredImageCredit: "From: Memento Guide - Introduction to Memento"
 featuredImageLink: "http://mementoweb.org/guide/quick-intro/"
