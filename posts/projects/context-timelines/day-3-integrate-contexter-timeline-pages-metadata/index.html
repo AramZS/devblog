@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Context Center Timelines - Day 2 - Layouts and Collections</title>
+        <title>Context Center Timelines - Day 3 - Integrate Contexter and add data to the timeline page.</title>
         
             <!-- Sub Template: post -->
         
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Context Center Timelines - Day 2 - Layouts and Collections">
+    content="Context Center Timelines - Day 3 - Integrate Contexter and add data to the timeline page.">
 
 <meta property="og:description"
-    content="Setting up context-rich timeline collections and layouts">
+    content="Setting up context-rich timeline collections and layouts now with archiving and more metadata">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" />
+    content="https://fightwithtools.dev/posts/projects/context-timelines/day-3-integrate-contexter-timeline-pages-metadata/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -50,16 +50,16 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Setting up context-rich timeline collections and layouts" />
+<meta name="twitter:description" content="Setting up context-rich timeline collections and layouts now with archiving and more metadata" />
 
-<meta name="description" content="Setting up context-rich timeline collections and layouts">
+<meta name="description" content="Setting up context-rich timeline collections and layouts now with archiving and more metadata">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Context Center Timelines - Day 2 - Layouts and Collections" />
+<meta name="twitter:title" content="Context Center Timelines - Day 3 - Integrate Contexter and add data to the timeline page." />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sat, 14 May 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Tue, 26 Jul 2022 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -115,9 +115,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/",
-        "headline": "Context Center Timelines - Day 2 - Layouts and Collections",
-        "about": "Setting up context-rich timeline collections and layouts",
+        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-3-integrate-contexter-timeline-pages-metadata/",
+        "headline": "Context Center Timelines - Day 3 - Integrate Contexter and add data to the timeline page.",
+        "about": "Setting up context-rich timeline collections and layouts now with archiving and more metadata",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -191,7 +191,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-3-integrate-contexter-timeline-pages-metadata/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -208,14 +208,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Sat May 14 2022</time>
+                            <time>Tue Jul 26 2022</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Context Center Timelines - Day 2 - Layouts and Collections
+                            Context Center Timelines - Day 3 - Integrate Contexter and add data to the timeline page.
                         </h1>
                         
                         
@@ -234,10 +234,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#bringing-over-the-template-for-the-timeline">Bringing over the Template for the Timeline</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-3">Day 3</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Setting up context-rich timeline collections and layouts</div>
+        <div id="post-description">Setting up context-rich timeline collections and layouts now with archiving and more metadata</div>
 
         
     <figure class="figure preview-image">
@@ -271,21 +271,22 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
 </ul>
-<h2 id="bringing-over-the-template-for-the-timeline" tabindex="-1">Bringing over the Template for the Timeline</h2>
-<p>So I think it won't be so easy to directly port over the code, even if I transform the EJS to Nunjucks. What's worth doing is seeing if I can transform the data approach so it matches the different structure of content I'm trying to do.</p>
-<p>I think I can use the Project structures I have in my devblog as a starting point.</p>
-<p>I was really hoping that a plugin could come in and establish some template file, but <a href="https://github.com/11ty/eleventy/blob/e386ec5f70e08254284e76a41dcbc591762282c8/src/TemplateLayoutPathResolver.js#L79" target="_blank">it looks like that can't be done with a simple template alias</a>. Instead I'm going to have to set up some way to handle it as a path relative to the site's <code>_layouts</code> folder. That's pretty awkward. But I do think I can make it work, especially if I pass in the depth I'll have to traverse the file structure up.</p>
+<h2 id="day-3" tabindex="-1">Day 3</h2>
+<p>Ok, after playing around with the CSS for a bit I think I've got the basic layout working. Now I need to get the metadata passed on to the page. First I should take the JSON file and merge it in to the timeline object I'm creating.</p>
+<p>I've been passing this data in through the MD file, but I should be able to handle it in the NJK file with a <code>js</code> header.</p>
+<p>Previously I've been setting up self executing functions, however, it looks like I no longer need to do that. And if I pass these functions inside the <code>eleventyComputed</code> object I'll get access to the global data.</p>
+<p>I was able to verify it using a custom function that I passed into there. It looks like this.</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-2-creating-collections-and-layouts-2" id="skip-to-code-skip-day-2-creating-collections-and-layouts-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">const</span> dirs <span class="token operator">=</span> __dirname<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">const</span> pluginLayoutPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><br>		pluginConfig<span class="token punctuation">.</span>layoutFolderDepth<span class="token punctuation">,</span><br>		dirs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>		<span class="token string">"src"</span><span class="token punctuation">,</span><br>		<span class="token string">"layouts"</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-2-creating-collections-and-layouts-2">Yeah, that is not the easiest, but it does look like it works. Definitely not as intended by Eleventy core, but hey, it works. This gets the template system to traverse up from _layouts in my core site by a <code>layoutFolderDepth</code> value of <code>../../</code>. It then travels into the plugin parent folder, the plugin, then--internal to the plugin--<code>src/layouts</code> where my layout folders are.</p>
-<p>Once that file path is in place I can use layout aliases that lead to template files local to my plugin folder, like so:</p>
+<a href="#code-skip-day-3-integrate-contexter-timeline-pages-metadata-2" id="skip-to-code-skip-day-3-integrate-contexter-timeline-pages-metadata-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span><br>    eleventyComputed<span class="token operator">:</span> <span class="token punctuation">{</span><br>        applyThis<span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token function-variable function">timelineCheck</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>                <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token punctuation">)</span><span class="token punctuation">{</span><br>                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">,</span> <span class="token string">"Global check"</span><span class="token punctuation">)</span><br>                <span class="token punctuation">}</span><br>            <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">title</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>title<br><br>            <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">description</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>description<br><br>            <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">tags</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>tags<br><br>            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">categories</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>categories<br><br>            <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">filters</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>filters<br><br>            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">date</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>date<br><br>            <span class="token keyword">return</span> <span class="token string">"Last Modified"</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">header</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>header<br><br>            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">color</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>color<br><br>            <span class="token keyword">return</span> <span class="token string">'grey'</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token function-variable function">shortdate</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">siteContext</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span>siteContext<span class="token operator">?.</span>timeline<span class="token punctuation">)</span><br>                <span class="token keyword">return</span> siteContext<span class="token punctuation">.</span>timeline<span class="token punctuation">.</span>shortdate<br><br>            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-3-integrate-contexter-timeline-pages-metadata-2">Great! I also want the ability to support the <code>links</code> field for timeline objects, to give me the ability to set links on the timeline. That means passing more complex objects into the YAML head data. How do I do that? I tried passing in an actual object but that doesn't work.</p>
+<p>It wasn't obvious to me, but apparently how you handle deeper YAML objects is by passing a blank indented hyphen and indenting the properties beneath that. If you want to pass an object into an object, this is how:</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-2-creating-collections-and-layouts-1" id="skip-to-code-skip-day-2-creating-collections-and-layouts-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br>		<span class="token string">"timeline"</span><span class="token punctuation">,</span><br>		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline.njk"</span><span class="token punctuation">)</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br>		<span class="token string">"timeline-item"</span><span class="token punctuation">,</span><br>		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline-item.njk"</span><span class="token punctuation">)</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-2-creating-collections-and-layouts-1">Nice, that looks good! Now I can just pass in my timelines collection and start building some pages!</p>
-<p>Next up, getting those templates actually working.</p>
-<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up Context Timeline templates and collections&quot;</code></a></p>
+<a href="#code-skip-day-3-integrate-contexter-timeline-pages-metadata-1" id="skip-to-code-skip-day-3-integrate-contexter-timeline-pages-metadata-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">links</span><span class="token punctuation">:</span><br>  <span class="token punctuation">-</span><br>    <span class="token key atrule">href</span><span class="token punctuation">:</span> <span class="token string">"https://www.bostonglobe.com/2022/05/13/metro/new-omicron-variant-ba2121-has-taken-over-massachusetts-heres-what-you-need-know/"</span><span class="token punctuation">,</span><br>    <span class="token key atrule">linkText</span><span class="token punctuation">:</span> <span class="token string">"A new Omicron variant, BA.2.12.1, has taken over in Massachusetts. Here’s what you need to know."</span><span class="token punctuation">,</span><br>    <span class="token key atrule">extraText</span><span class="token punctuation">:</span> <span class="token string">"BA.2.12.1 has exploded"</span></code></pre>
+<p id="code-skip-day-3-integrate-contexter-timeline-pages-metadata-1">Notably this structure needs to be all spaces, no tabs. Two spaces before the first hyphen and 4 before each of the properties.</p>
+<p>I also want to get it working with my contexter plugin, so I'm going to set up some extra styles to get a start at integrating it and then get the layout type integrated.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Timeline improvements plus contexter integration.&quot;</code></a></p>
 
                     
                     </section>
@@ -295,9 +296,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-timelines/day-3-integrate-contexter-timeline-pages-metadata/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
