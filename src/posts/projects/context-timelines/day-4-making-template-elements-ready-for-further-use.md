@@ -24,6 +24,7 @@ tags:
 - [ ] Leverage the Live Blog format of Schema dot org
 - [ ] Allow each entry to be its own Markdown file
 - [ ] Handle SASS instead of CSS
+- [ ] Fast Scroller by Month and Year
 
 ## Day 4
 
