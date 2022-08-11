@@ -5,12 +5,56 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2022-08-09T02:59:43Z</updated>
+  <updated>2022-08-11T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/"/>
+    <updated>2022-08-11T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+</ul>
+<h2 id="day-5" tabindex="-1">Day 5</h2>
+<p>I realized that extending sites using the plugins, including my own, might want to insert stuff in the templates, like a nav.</p>
+<p data-wordfix="true">Thankfully, Nunjucks templates in Eleventy can do some really interesting things.</p>
+<p>I was hoping I could treat it like it was all in one location. However, it doesn't seem to be the case. I can create a filepath to it from my site directory like:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"../../_custom-plugins/timelinety/src/layouts/timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3">Oh, but the actual <code>js</code> block (that starts and ends with <code>---</code>) that can be at the top of the <code>njk</code> file has to <em>only</em> be at the top of the top most template file. So I can't use or extend a template that contains that. I'll have to further destructure my templates so that I can use them effectively.</p>
+<p>Now I have <code>timeline.njk</code> which can be used by someone who wants an out-of-the-box timeline. It looks like this:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk">---js<br />{<br />    eleventyComputed: {<br />        applyThis: {<br />            timelineCheck: function(siteContext){<br />                if (siteContext){<br />                    console.log(siteContext.timeline, "Global check")<br />                }<br />            },<br />        },<br />        title: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.title<br /><br />            return '';<br />        },<br />        description: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.description<br /><br />            return '';<br />        },<br />        tags: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.tags<br /><br />            return [];<br />        },<br />        categories: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.categories<br /><br />            return '';<br />        },<br />        filters: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.filters<br /><br />            return [];<br />        },<br />        date: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.date<br /><br />            return "Last Modified";<br />        },<br />        header: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.header<br /><br />            return [];<br />        },<br />        color: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.color<br /><br />            return 'grey';<br />        },<br />        shortdate: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.shortdate<br /><br />            return false;<br />        },<br />        lastUpdatedPost: function(siteContext){<br />            if (siteContext?.timeline)<br />                return siteContext.timeline.lastUpdatedPost<br /><br />            return false;<br />        },<br />    }<br />}<br />---<br /><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-wrapper.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br /></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2"><code>timeline-wrapper.njk</code> which can be extended by someone who wants to use it in their own template and even has some nice Nunjucks blocks that can be used to overwrite the header or the nav. They'll have to pull in their own version of the <code>---js</code> block of course.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br /><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br />    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br />    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block head </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br /><br />        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./head.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br /><br />    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br />    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br />    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block nav </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />        <span class="token comment">&lt;!-- &lt;nav>&lt;a href="{{timelinesConfig.domainName}}">Return to Home&lt;/a>&lt;/nav> --></span><br />    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br /><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1">I have the previously created <code>head.njk</code> that I cas use as the default setup for the HEAD element. Then I have <code>timeline-base.njk</code> and that has the core timeline setup, which itself has the previously set up <code>timeline-entry.njk</code>.</p>
+<p>It's a little complicated, but I think that's the best way to handle the logical file separations and also allow future developers to extend it.</p>
+<p>Ok, but now I need to reorganize my styles a little so I can get the Nav in there and have it look the same as the rest of the site.</p>
+<p>That will mean pulling out the nav styles into their own SASS file that I can include in the timeline SASS file, as well as grabbing some of the color rules on <code>:root</code> and some of the other style rules on the base SASS. This will essentially allow me to encapsulate the nav.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Restructure timeline templates and SASS code to support new configuration.&quot;</code></a></p>
+</content>
+  </entry>
   
   <entry>
     <title>Context Center Timelines - Day 4 - Making Template Elements Ready to Use for Other Templates.</title>
@@ -30,6 +74,7 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
 </ul>
 <h2 id="day-4" tabindex="-1">Day 4</h2>
 <p>Ok, so first step is to separate out some of the basics of each template so that they can be reused.</p>

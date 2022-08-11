@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Context Center Timelines - Day 1</title>
+        <title>Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.</title>
         
             <!-- Sub Template: post -->
         
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Context Center Timelines - Day 1">
+    content="Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.">
 
 <meta property="og:description"
-    content="Setting up context-rich timelines">
+    content="Setting up better versions of the timeline templates that can be extended by the site in use">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/" />
+    content="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -50,16 +50,16 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Setting up context-rich timelines" />
+<meta name="twitter:description" content="Setting up better versions of the timeline templates that can be extended by the site in use" />
 
-<meta name="description" content="Setting up context-rich timelines">
+<meta name="description" content="Setting up better versions of the timeline templates that can be extended by the site in use">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Context Center Timelines - Day 1" />
+<meta name="twitter:title" content="Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers." />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sat, 14 May 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Thu, 11 Aug 2022 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -104,9 +104,11 @@
         
         <meta property="article:tag" content="Context" />
         
+        <meta property="article:tag" content="Nunjucks" />
+        
         <meta property="article:tag" content="WiP" />
         
-        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, Context, WiP">
+        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, Context, Nunjucks, WiP">
     
 
 
@@ -115,9 +117,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/",
-        "headline": "Context Center Timelines - Day 1",
-        "about": "Setting up context-rich timelines",
+        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/",
+        "headline": "Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.",
+        "about": "Setting up better versions of the timeline templates that can be extended by the site in use",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -191,7 +193,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -208,14 +210,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Sat May 14 2022</time>
+                            <time>Thu Aug 11 2022</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Context Center Timelines - Day 1
+                            Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.
                         </h1>
                         
                         
@@ -234,10 +236,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#setting-up-a-timeline-plugin">Setting up a Timeline Plugin?</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-5">Day 5</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Setting up context-rich timelines</div>
+        <div id="post-description">Setting up better versions of the timeline templates that can be extended by the site in use</div>
 
         
     <figure class="figure preview-image">
@@ -270,14 +272,29 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Leverage the Live Blog format of Schema dot org</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Fast Scroller by Month and Year</li>
 </ul>
-<h2 id="setting-up-a-timeline-plugin" tabindex="-1">Setting up a Timeline Plugin?</h2>
-<p>Ok, so I really love the work that <a href="http://www.mollywhite.net" target="_blank">Molly White</a> has put in to create timelines in their work. Molly has created a great starting point in <a href="https://github.com/molly/static-timeline-generator" target="_blank">an open-source 11ty-based timeline project</a> and then <a href="https://github.com/molly/web3-is-going-great" target="_blank">a much more advanced timeline for their coverage of &quot;web3&quot; that is also open-source</a>.</p>
-<p>So, I decided to set up a version for myself. I want to build multiple timelines within my context-center site so I set up <a href="https://github.com/AramZS/context-center/tree/timeline" target="_blank">a branch to try and set up a way to do that</a>. My hope is that not only can I set it up for multiple timelines within my own site, but I can also set it up within a plugin that other people (and future sites of mine) can use easily. I haven't really seen templates packaged up this way so this feels like unexplored ground. I think it might be possible, but maybe not! I guess we'll find out.</p>
-<p>So first I want to port over Molly's basic timeline work, this gives me a good starting point and lets me avoid the fact that I'm bad at design. I'll set up a timeline plugin and start moving it over. I don't want to deal with trying to do Sass builds inside the plugin so I'll also try to move her Sass work into standard CSS for now.</p>
-<p>I've set up a basic plugin structure to start me off and contain the work.</p>
-<p>I'll start with the variables.</p>
-<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Set up first folder and start porting CSS&quot;</code></a></p>
+<h2 id="day-5" tabindex="-1">Day 5</h2>
+<p>I realized that extending sites using the plugins, including my own, might want to insert stuff in the templates, like a nav.</p>
+<p data-wordfix="true">Thankfully, Nunjucks templates in Eleventy can do some really interesting things.</p>
+<p>I was hoping I could treat it like it was all in one location. However, it doesn't seem to be the case. I can create a filepath to it from my site directory like:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"../../_custom-plugins/timelinety/src/layouts/timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3">Oh, but the actual <code>js</code> block (that starts and ends with <code>---</code>) that can be at the top of the <code>njk</code> file has to <em>only</em> be at the top of the top most template file. So I can't use or extend a template that contains that. I'll have to further destructure my templates so that I can use them effectively.</p>
+<p>Now I have <code>timeline.njk</code> which can be used by someone who wants an out-of-the-box timeline. It looks like this:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk">---js<br>{<br>    eleventyComputed: {<br>        applyThis: {<br>            timelineCheck: function(siteContext){<br>                if (siteContext){<br>                    console.log(siteContext.timeline, "Global check")<br>                }<br>            },<br>        },<br>        title: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.title<br><br>            return '';<br>        },<br>        description: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.description<br><br>            return '';<br>        },<br>        tags: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.tags<br><br>            return [];<br>        },<br>        categories: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.categories<br><br>            return '';<br>        },<br>        filters: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.filters<br><br>            return [];<br>        },<br>        date: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.date<br><br>            return "Last Modified";<br>        },<br>        header: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.header<br><br>            return [];<br>        },<br>        color: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.color<br><br>            return 'grey';<br>        },<br>        shortdate: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.shortdate<br><br>            return false;<br>        },<br>        lastUpdatedPost: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.lastUpdatedPost<br><br>            return false;<br>        },<br>    }<br>}<br>---<br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-wrapper.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2"><code>timeline-wrapper.njk</code> which can be extended by someone who wants to use it in their own template and even has some nice Nunjucks blocks that can be used to overwrite the header or the nav. They'll have to pull in their own version of the <code>---js</code> block of course.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block head </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./head.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block nav </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token comment">&lt;!-- &lt;nav>&lt;a href="{{timelinesConfig.domainName}}">Return to Home&lt;/a>&lt;/nav> --></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1">I have the previously created <code>head.njk</code> that I cas use as the default setup for the HEAD element. Then I have <code>timeline-base.njk</code> and that has the core timeline setup, which itself has the previously set up <code>timeline-entry.njk</code>.</p>
+<p>It's a little complicated, but I think that's the best way to handle the logical file separations and also allow future developers to extend it.</p>
+<p>Ok, but now I need to reorganize my styles a little so I can get the Nav in there and have it look the same as the rest of the site.</p>
+<p>That will mean pulling out the nav styles into their own SASS file that I can include in the timeline SASS file, as well as grabbing some of the color rules on <code>:root</code> and some of the other style rules on the base SASS. This will essentially allow me to encapsulate the nav.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Restructure timeline templates and SASS code to support new configuration.&quot;</code></a></p>
 
                     
                     </section>
@@ -287,9 +304,9 @@
         
         
         <div class="pagination">
-            <a href="javascript:void(0)" class="pagination-link  cursor-default disabled-link">Previous Day</a>
+            <a href="/posts/projects/context-timelines/day-4-making-template-elements-ready-for-further-use/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -339,6 +356,8 @@
                     <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/context">Context</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/nunjucks">Nunjucks</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>
