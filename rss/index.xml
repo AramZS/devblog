@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Thu, 11 Aug 2022 04:01:43 GMT</lastBuildDate>
+	<lastBuildDate>Thu, 18 Aug 2022 13:27:52 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,41 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 6 - Combining Timeline data with individual Timeline items</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-6-individual-timeline-items/?source=rss</link>
+		<pubDate>Thu, 18 Aug 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-6-individual-timeline-items/</guid>
+		<description>I need to combine data from one Eleventy collection with another, but without creating an additional collection.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+</ul>
+<h2 id="day-6" tabindex="-1">Day 6</h2>
+<p>Now that I've extracted the shared components betweeen the overall timeline page and the potential individual item pages I need to set up the indiviual timeline pages.</p>
+<p>I'll need to set up a way to query the other pages so that they can be populated into the individual timeline pages, but that means getting the overall timeline object, and all its info, into the individual timeline pages. I'll have to do this when setting up the collection. But the collection is pre-created by the JSON at the level of each folder. I'll need to figure out a way to either not do that or to enhance the collection.</p>
+<p>I tried setting up a new collection, but the existing collection formed by the setup of folders inside <code>src</code> is still activating. I could move it outside of the src folder, but I don't like that idea and it doesn't make a lot of sense. I could use <code>eleventyExcludeFromCollections: true</code> to remove it from the collections system and add it in manually, but I don't like that approach at all.</p>
+<p data-wordfix="true">As far as I can tell, there's <a href="https://www.11ty.dev/docs/collections/#advanced-custom-filtering-and-sorting" target="_blank">no way</a> to 'enhance' a preexisting collection?</p>
+<p>Ok, I tried a few ways around it and I think the best approach here is to instead add the timelines' data to the global site configuration object. I can then pull it during the build process executed at the template level for eleventyComputer data. For better or worse this is a function that is only available at later versions of Eleventy so this will lock the plugin to those versions.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-6-individual-timeline-items/#code-skip-day-6-individual-timeline-items-1" id="skip-to-code-skip-day-6-individual-timeline-items-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js">eleventyConfig<span class="token punctuation">.</span><span class="token function">addGlobalData</span><span class="token punctuation">(</span><br />	<span class="token string">"globalTimelines"</span><span class="token punctuation">,</span><br />	timelines<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">previousValue<span class="token punctuation">,</span> currentValue</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />		<span class="token comment">//console.log("reduce", previousValue, currentValue);</span><br />		previousValue<span class="token punctuation">[</span>currentValue<span class="token punctuation">.</span>timeline<span class="token punctuation">]</span> <span class="token operator">=</span> currentValue<span class="token punctuation">;</span><br />		<span class="token keyword">return</span> previousValue<span class="token punctuation">;</span><br />	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><br /><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-6-individual-timeline-items-1"><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up a new timeline and getting the data from individual timelines on the global object&quot;</code></a></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.</title>
