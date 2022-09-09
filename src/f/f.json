@@ -1,0 +1,6 @@
+{
+	"layout": "fwd.njk",
+	"description": "Stand by to be forwarded",
+	"tags": [ "forwards" ],
+	"date": "Last Modified"
+}
