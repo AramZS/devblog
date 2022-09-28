@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: fightwithtools.dev
+Token: 5ceee1d4734fd640f4644130a23dcb05ae224890d2ae4f3f44097c9b66185099 
