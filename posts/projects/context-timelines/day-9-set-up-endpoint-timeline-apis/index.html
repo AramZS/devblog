@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Context Center Timelines - Day 2 - Layouts and Collections</title>
+        <title>Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages</title>
         
             <!-- Sub Template: post -->
         
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Context Center Timelines - Day 2 - Layouts and Collections">
+    content="Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages">
 
 <meta property="og:description"
-    content="Setting up context-rich timeline collections and layouts">
+    content="Stretching the limits of Nunjucks by using it to create valid JSON.">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" />
+    content="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -50,16 +50,16 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Setting up context-rich timeline collections and layouts" />
+<meta name="twitter:description" content="Stretching the limits of Nunjucks by using it to create valid JSON." />
 
-<meta name="description" content="Setting up context-rich timeline collections and layouts">
+<meta name="description" content="Stretching the limits of Nunjucks by using it to create valid JSON.">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Context Center Timelines - Day 2 - Layouts and Collections" />
+<meta name="twitter:title" content="Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages" />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sat, 14 May 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Thu, 08 Sep 2022 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -102,11 +102,13 @@
         
         <meta property="article:tag" content="SSG" />
         
-        <meta property="article:tag" content="Context" />
-        
         <meta property="article:tag" content="WiP" />
         
-        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, Context, WiP">
+        <meta property="article:tag" content="JS" />
+        
+        <meta property="article:tag" content="JSON" />
+        
+        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, WiP, JS, JSON">
     
 
 
@@ -115,9 +117,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/",
-        "headline": "Context Center Timelines - Day 2 - Layouts and Collections",
-        "about": "Setting up context-rich timeline collections and layouts",
+        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/",
+        "headline": "Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages",
+        "about": "Stretching the limits of Nunjucks by using it to create valid JSON.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -191,7 +193,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-2-creating-collections-and-layouts/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -208,14 +210,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Sat May 14 2022</time>
+                            <time>Thu Sep 08 2022</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Context Center Timelines - Day 2 - Layouts and Collections
+                            Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages
                         </h1>
                         
                         
@@ -234,10 +236,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#bringing-over-the-template-for-the-timeline">Bringing over the Template for the Timeline</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-9">Day 9</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Setting up context-rich timeline collections and layouts</div>
+        <div id="post-description">Stretching the limits of Nunjucks by using it to create valid JSON.</div>
 
         
     <figure class="figure preview-image">
@@ -270,22 +272,30 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Leverage the Live Blog format of Schema dot org</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Fast Scroller by Month and Year</li>
 </ul>
-<h2 id="bringing-over-the-template-for-the-timeline" tabindex="-1">Bringing over the Template for the Timeline</h2>
-<p>So I think it won't be so easy to directly port over the code, even if I transform the EJS to Nunjucks. What's worth doing is seeing if I can transform the data approach so it matches the different structure of content I'm trying to do.</p>
-<p>I think I can use the Project structures I have in my devblog as a starting point.</p>
-<p>I was really hoping that a plugin could come in and establish some template file, but <a href="https://github.com/11ty/eleventy/blob/e386ec5f70e08254284e76a41dcbc591762282c8/src/TemplateLayoutPathResolver.js#L79" target="_blank">it looks like that can't be done with a simple template alias</a>. Instead I'm going to have to set up some way to handle it as a path relative to the site's <code>_layouts</code> folder. That's pretty awkward. But I do think I can make it work, especially if I pass in the depth I'll have to traverse the file structure up.</p>
+<h2 id="day-9" tabindex="-1">Day 9</h2>
+<p>Ok, so to do what I want to do with single Timeline items that can expand into the whole timeline, I'm going to need to have an API with the remaining timeline items. There doesn't seem to be much out there for building JSON using Nunjucks, but I think that's what I'll try to do here.</p>
+<p>Setting up a folder for <code>json</code> in layouts and using a similar naming style.</p>
+<p>The one big problem is default loops have tailing commas. I need some way to avoid that happening.</p>
+<p>Jinja, which Nunjucks is based on, <a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank">seems to have a <code>loop.last</code> variable</a> that lets you know if you are on the last step of a loop. Nunjucks doesn't seem to have this. But it does <a href="https://mozilla.github.io/nunjucks/templating.html#last" target="_blank">seem to have a <code>last</code> filter one can apply to an array to get the last element</a>. Ok, I can use that instead.</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-2-creating-collections-and-layouts-2" id="skip-to-code-skip-day-2-creating-collections-and-layouts-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">const</span> dirs <span class="token operator">=</span> __dirname<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">const</span> pluginLayoutPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><br>		pluginConfig<span class="token punctuation">.</span>layoutFolderDepth<span class="token punctuation">,</span><br>		dirs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>		<span class="token string">"src"</span><span class="token punctuation">,</span><br>		<span class="token string">"layouts"</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-2-creating-collections-and-layouts-2">Yeah, that is not the easiest, but it does look like it works. Definitely not as intended by Eleventy core, but hey, it works. This gets the template system to traverse up from _layouts in my core site by a <code>layoutFolderDepth</code> value of <code>../../</code>. It then travels into the plugin parent folder, the plugin, then--internal to the plugin--<code>src/layouts</code> where my layout folders are.</p>
-<p>Once that file path is in place I can use layout aliases that lead to template files local to my plugin folder, like so:</p>
+<a href="#code-skip-day-9-set-up-endpoint-timeline-apis-2" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-2" class="skip-link">Skip code block ▼</a></p>
+<pre><code>{% for item in entry.data.tags %}
+&quot;{{ item }}&quot;{% if item !== entry.data.tags | last %},{% endif %}
+{% endfor %
+</code></pre>
+<p id="code-skip-day-9-set-up-endpoint-timeline-apis-2">This takes my filters list and outputs them as strings followed by a comma, except for the last one. Looks like this works, even for more complex objects!</p>
+<p>Quick note that tripped me up here, if the list is sorted then it needs to be sorted before the <code>last</code> filter is applied, like so:</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-2-creating-collections-and-layouts-1" id="skip-to-code-skip-day-2-creating-collections-and-layouts-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br>		<span class="token string">"timeline"</span><span class="token punctuation">,</span><br>		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline.njk"</span><span class="token punctuation">)</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addLayoutAlias</span><span class="token punctuation">(</span><br>		<span class="token string">"timeline-item"</span><span class="token punctuation">,</span><br>		path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>pluginLayoutPath<span class="token punctuation">,</span> <span class="token string">"timeline-item.njk"</span><span class="token punctuation">)</span><br>	<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-2-creating-collections-and-layouts-1">Nice, that looks good! Now I can just pass in my timelines collection and start building some pages!</p>
-<p>Next up, getting those templates actually working.</p>
-<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up Context Timeline templates and collections&quot;</code></a></p>
+<a href="#code-skip-day-9-set-up-endpoint-timeline-apis-1" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-1" class="skip-link">Skip code block ▼</a></p>
+<pre><code>{% for filter in filters | sort %}
+    &quot;{{ filter }}&quot;{% if filter !== filters | sort | last %},{% endif %}
+{% endfor %}
+</code></pre>
+<p id="code-skip-day-9-set-up-endpoint-timeline-apis-1">This is mostly looking good, but my content text is not being escaped properly. It looks like <a href="https://www.benjaminrancourt.ca/how-to-generate-a-complete-json-file-with-nunjucks/" target="_blank">I'm not the only one to deal with this</a> and filtering it through <code> | dump | safe</code> does seem to work. I just need to remember to allow it to generate its own quote marks.</p>
+<p>Looking good. This is a nice place to take a break. We can go back to the individual timeline items next coding session.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Set up JSON endpoints for timelines&quot;</code></a></p>
 
                     
                     </section>
@@ -295,9 +305,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/context-timelines/day-1-stepping-back-and-looking-at-what-I-want/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/context-timelines/day-8-fix-image-retrieve/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-timelines/day-3-integrate-contexter-timeline-pages-metadata/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -346,9 +356,11 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/context">Context</a>
-                </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/js">JS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/json">JSON</a>
                 </li></ul>
     </div>
 

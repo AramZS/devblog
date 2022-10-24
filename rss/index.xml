@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Fri, 07 Oct 2022 23:03:54 GMT</lastBuildDate>
+	<lastBuildDate>Mon, 24 Oct 2022 03:39:33 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,53 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/?source=rss</link>
+		<pubDate>Thu, 08 Sep 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/</guid>
+		<description>Stretching the limits of Nunjucks by using it to create valid JSON.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+</ul>
+<h2 id="day-9" tabindex="-1">Day 9</h2>
+<p>Ok, so to do what I want to do with single Timeline items that can expand into the whole timeline, I'm going to need to have an API with the remaining timeline items. There doesn't seem to be much out there for building JSON using Nunjucks, but I think that's what I'll try to do here.</p>
+<p>Setting up a folder for <code>json</code> in layouts and using a similar naming style.</p>
+<p>The one big problem is default loops have tailing commas. I need some way to avoid that happening.</p>
+<p>Jinja, which Nunjucks is based on, <a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank">seems to have a <code>loop.last</code> variable</a> that lets you know if you are on the last step of a loop. Nunjucks doesn't seem to have this. But it does <a href="https://mozilla.github.io/nunjucks/templating.html#last" target="_blank">seem to have a <code>last</code> filter one can apply to an array to get the last element</a>. Ok, I can use that instead.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/#code-skip-day-9-set-up-endpoint-timeline-apis-2" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-2" class="skip-link">Skip code block ▼</a></p>
+<pre><code>{% for item in entry.data.tags %}
+&quot;{{ item }}&quot;{% if item !== entry.data.tags | last %},{% endif %}
+{% endfor %
+</code></pre>
+<p id="code-skip-day-9-set-up-endpoint-timeline-apis-2">This takes my filters list and outputs them as strings followed by a comma, except for the last one. Looks like this works, even for more complex objects!</p>
+<p>Quick note that tripped me up here, if the list is sorted then it needs to be sorted before the <code>last</code> filter is applied, like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/#code-skip-day-9-set-up-endpoint-timeline-apis-1" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-1" class="skip-link">Skip code block ▼</a></p>
+<pre><code>{% for filter in filters | sort %}
+    &quot;{{ filter }}&quot;{% if filter !== filters | sort | last %},{% endif %}
+{% endfor %}
+</code></pre>
+<p id="code-skip-day-9-set-up-endpoint-timeline-apis-1">This is mostly looking good, but my content text is not being escaped properly. It looks like <a href="https://www.benjaminrancourt.ca/how-to-generate-a-complete-json-file-with-nunjucks/" target="_blank">I'm not the only one to deal with this</a> and filtering it through <code> | dump | safe</code> does seem to work. I just need to remember to allow it to generate its own quote marks.</p>
+<p>Looking good. This is a nice place to take a break. We can go back to the individual timeline items next coding session.</p>
+<p><a target="_blank" href="https://github.com/AramZS/context-center/commits/main" class="git-commit-link"><code>git commit -am &quot;Set up JSON endpoints for timelines&quot;</code></a></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 8 - Detour to dealing with image retrieval breaking my build process</title>
