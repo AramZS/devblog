@@ -1,7 +1,7 @@
 ---
 title: Context Center Timelines - Day 9 - Setting up a JSON API for filling in single timeline item pages
 description: "Stretching the limits of Nunjucks by using it to create valid JSON."
-date: 2022-09-07 22:59:43.10 -4
+date: 2022-10-07 22:59:43.10 -4
 tags:
   - 11ty
   - Node
