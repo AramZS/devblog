@@ -1,0 +1,443 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Context Center Timelines - Day 11 - Build on Single Items</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3402302948" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3402302948" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3402302948" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3402302948" id=""></link>
+
+            
+            <!-- Build Revision: 3402302948 & Sha: 532381dafe7374d3c2aad60c6fe6eec1d560e2ed -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Context Center Timelines - Day 11 - Build on Single Items">
+
+<meta property="og:description"
+    content="Stretching the limits of Nunjucks by using it to create valid JSON.">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/context-timelines/day-11-building-on-individual-items/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Stretching the limits of Nunjucks by using it to create valid JSON." />
+
+<meta name="description" content="Stretching the limits of Nunjucks by using it to create valid JSON.">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Context Center Timelines - Day 11 - Build on Single Items" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/timeline.jpg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/timeline.jpg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Wed, 02 Nov 2022 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Context Timelines" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="11ty" />
+        
+        <meta property="article:tag" content="Node" />
+        
+        <meta property="article:tag" content="Timelines" />
+        
+        <meta property="article:tag" content="SSG" />
+        
+        <meta property="article:tag" content="WiP" />
+        
+        <meta property="article:tag" content="JS" />
+        
+        <meta property="article:tag" content="JSON" />
+        
+        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, WiP, JS, JSON">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-11-building-on-individual-items/",
+        "headline": "Context Center Timelines - Day 11 - Build on Single Items",
+        "about": "Stretching the limits of Nunjucks by using it to create valid JSON.",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-11-building-on-individual-items/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/context-timelines">Context Timelines</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Wed Nov 02 2022</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Context Center Timelines - Day 11 - Build on Single Items
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name">Aram Zucker-Scharff</span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-11">Day 11</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">Stretching the limits of Nunjucks by using it to create valid JSON.</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/timeline.jpg" alt="Sass project logo.">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://www.flickr.com/photos/32307961@N06/3525061913" target="_blank">'Test Infographics timeline NIT' by Ciro Ip is licensed under CC BY 2.0.</a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Fast Scroller by Month and Year</li>
+</ul>
+<h2 id="day-11" tabindex="-1">Day 11</h2>
+<p>Ok, so we have single item pages, they are individually linkable, and we have the JSON file we need that has all the data to fill in the timeline.</p>
+<p>So, let's set up the page to request the API and use it.</p>
+<p>I will set up a single JS file that only loads on this template to handle this process. And to speed up that connection, I'll use the <code>preload</code> link hint to set up the requests.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-9" id="skip-to-code-skip-day-11-building-on-individual-items-9" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{timelinesConfig.jsPath}}/single-item.js<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>script<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{timelinesConfig.domainName}}/{{timelinesConfig.timelineOutFolder}}/{{timelineEntryItem.data.timeline}}/index.json<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fetch<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-9">I also will want some of the basic data set up to use in my scripts.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-8" id="skip-to-code-skip-day-11-building-on-individual-items-8" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>    window<span class="token punctuation">.</span>baseItem <span class="token operator">=</span> <span class="token string">"{{- timelineEntryItem.data.title | slugify -}}"</span><span class="token punctuation">;</span><br>    window<span class="token punctuation">.</span>timelineAPI <span class="token operator">=</span> <span class="token string">"{{timelinesConfig.domainName}}/{{timelinesConfig.timelineOutFolder}}/{{timelineEntryItem.data.timeline}}/index.json"</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-8">Now we can <code>fetch</code> the data for use.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-7" id="skip-to-code-skip-day-11-building-on-individual-items-7" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token function">fetch</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>timelineAPI<span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-7">The objects I need reside on <code>data.items</code>. The object properties are:</p>
+<ul>
+<li><code>content</code></li>
+<li><code>date</code></li>
+<li><code>faicon</code></li>
+<li><code>humanReadableDate</code></li>
+<li><code>image</code>
+<ul>
+<li>Can contain an <code>Object</code> with the properties of:
+<ul>
+<li><code>src</code></li>
+<li><code>link</code></li>
+<li><code>caption</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>isBasedOn</code></li>
+<li><code>links</code>
+<ul>
+<li>Can contain an <code>Array</code> of <code>Object</code>s with the properties
+<ul>
+<li><code>href</code></li>
+<li><code>linkText</code></li>
+<li><code>extraText</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>slug</code></li>
+<li><code>tags</code>
+<ul>
+<li>This contains an <code>Array</code> of strings.</li>
+</ul>
+</li>
+<li><code>title</code></li>
+</ul>
+<p>Now I have to use JS to translate it to content on the page.</p>
+<p>I could prerender some of this stuff, but, as I may have written before, I'm being very intentional here. The goal is a solo page that represents a solo item and so can be SEOed as such, including building and sending the metaphorical link juice to the good publication.</p>
+<p>I'm going to <a href="https://github.com/AramZS/HyperRead/blob/master/index.js" target="_blank">steal a function from an old project</a>, which I actually stole from <a href="https://paulfrazee.medium.com/" target="_blank">Paul Frazee</a> a while ago.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-6" id="skip-to-code-skip-day-11-building-on-individual-items-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> <span class="token operator">...</span>children</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">var</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>attrs<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token keyword">in</span> attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"function"</span><span class="token punctuation">)</span><br>				el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">else</span> el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		children <span class="token operator">=</span> <span class="token punctuation">[</span>attrs<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> child <span class="token keyword">of</span> children<span class="token punctuation">)</span> el<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> el<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">isPlainObject</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> v <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype <span class="token operator">===</span> v<span class="token punctuation">.</span>__proto__<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-6">There are a lot of complicated JS to HTML functions out there. I don't need any of them. This isn't updating live, I don't care about state management. Simple basic stuff here. This works, it lets me set up nice HTML with attributes and nested elements. Exactly what I need to make this easy.</p>
+<p>I think, even though this is pretty basic, it is going to be easier to manage with a custom HTML element. I haven't done this on the main page, though maybe I should, but with setting it up for building with JS, this just seems easier.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-5" id="skip-to-code-skip-day-11-building-on-individual-items-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><br><span class="token keyword">class</span> <span class="token class-name">TimelineItem</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span><br>	<span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">observedAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">"data-buildobj"</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token function">elBuilder</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Set data "</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-tags"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> timelineIcon <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><br>			<span class="token string">"div"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">{</span><br>				<span class="token keyword">class</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">timeline-icon </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>color<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">,</span><br>			data<span class="token operator">?.</span>faicon<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>						<span class="token keyword">class</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">fas fa-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>faicon<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>						<span class="token string">"aria-hidden"</span><span class="token operator">:</span> <span class="token string">"true"</span><span class="token punctuation">,</span><br>				  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>color<span class="token punctuation">)</span> timelineIcon<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>timelineIcon<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>		<span class="token keyword">let</span> timelineDescription <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><br>			<span class="token string">"div"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">{</span><br>				<span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"timeline-description"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><br>				<span class="token string">"span"</span><span class="token punctuation">,</span><br>				<span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"timestamp"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>				<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"time"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> datetime<span class="token operator">:</span> data<span class="token punctuation">.</span>date <span class="token punctuation">}</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>humanReadableDate<span class="token punctuation">)</span><br>			<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><br>				<span class="token string">"h2"</span><span class="token punctuation">,</span><br>				<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>				<span class="token function">h</span><span class="token punctuation">(</span><br>					<span class="token string">"a"</span><span class="token punctuation">,</span><br>					<span class="token punctuation">{</span> id<span class="token operator">:</span> data<span class="token punctuation">.</span>slug<span class="token punctuation">,</span> href<span class="token operator">:</span> data<span class="token punctuation">.</span>slug <span class="token punctuation">}</span><span class="token punctuation">,</span><br>					<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"fas fa-link"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>				<span class="token punctuation">)</span><span class="token punctuation">,</span><br>				data<span class="token punctuation">.</span>title<br>			<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			data<span class="token punctuation">.</span>image<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"div"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"captioned-image image-right"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token function">h</span><span class="token punctuation">(</span><br>							data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>link <span class="token operator">?</span> <span class="token string">"a"</span> <span class="token operator">:</span> <span class="token string">"span"</span><span class="token punctuation">,</span><br>							<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>							<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"img"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>								src<span class="token operator">:</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>src<span class="token punctuation">,</span><br>								alt<span class="token operator">:</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>alt<span class="token punctuation">,</span><br>							<span class="token punctuation">}</span><span class="token punctuation">)</span><br>						<span class="token punctuation">)</span><span class="token punctuation">,</span><br>						<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"caption"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>caption<span class="token punctuation">)</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>			data<span class="token punctuation">.</span>isBasedOn <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>customLink<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"a"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token string">"_blank"</span><span class="token punctuation">,</span> href<span class="token operator">:</span> <span class="token string">"data.customLink"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token string">"Read the article"</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"inner-description"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>			data<span class="token operator">?.</span>links<span class="token punctuation">.</span>length<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"ul"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token operator">...</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>							<span class="token keyword">let</span> lis <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>							data<span class="token punctuation">.</span>links<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">link</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>								lis<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><br>									<span class="token function">h</span><span class="token punctuation">(</span><br>										<span class="token string">"li"</span><span class="token punctuation">,</span><br>										<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>										<span class="token function">h</span><span class="token punctuation">(</span><br>											<span class="token string">"a"</span><span class="token punctuation">,</span><br>											<span class="token punctuation">{</span><br>												href<span class="token operator">:</span> link<span class="token punctuation">.</span>href<span class="token punctuation">,</span><br>												target<span class="token operator">:</span> <span class="token string">"_blank"</span><span class="token punctuation">,</span><br>											<span class="token punctuation">}</span><span class="token punctuation">,</span><br>											link<span class="token punctuation">.</span>linkText<br>										<span class="token punctuation">)</span><span class="token punctuation">,</span><br>										<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"> </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span> link<span class="token punctuation">.</span>extraText<br>									<span class="token punctuation">)</span><br>								<span class="token punctuation">)</span><span class="token punctuation">;</span><br>							<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>							<span class="token keyword">return</span> lis<span class="token punctuation">;</span><br>						<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>timelineDescription<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> innerContent <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">".inner-description"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		innerContent<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>content<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token function">connectedCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"data-buildobj"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token comment">// Always call super first in constructor</span><br>		<span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"aria-hidden"</span><span class="token punctuation">,</span> <span class="token string">"false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"timeline-entry"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"odd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// Element functionality written in here</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br>customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"timeline-item"</span><span class="token punctuation">,</span> TimelineItem<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-5">Originally what I was going to do is set the JSON into the custom element and then use <code>connectedCallback</code> to build it when it attaches to the DOM, the <code>constructor</code> here for the custom HTML element sets up the element with the basic classes and attributes I need. It really works well here and is straightforward.</p>
+<p>This approach is fine, and works with both types of custom HTML elements if I wanted to use the <code>is: </code> based construction of HTML elements. But <code>div</code> and this element here is pretty basic and so doesn't need that approach. I also should really construct the element before I attach it, as the DOM would run smoother that way.</p>
+<p>Also, something unexpected has happened here, when I ran this with the if statements occasionally casting nulls I discovered something unexpected. <code>append</code> seems to cast <code>null</code> as a string.</p>
+<p>Oh Javascript and your weird casting of various falsys into unexpected stuff.</p>
+<p>Ok, so, let's remove the <code>null</code> strings from my DOM first. The spread operator <code>...</code> turns the passed <code>children</code> into an array. So I can use array sanitization technique. Let's just <code>filter(Boolean)</code>. <code>append</code> may cast <code>null</code> weirdly, but <code>filter</code> should handle this just fine.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-4" id="skip-to-code-skip-day-11-building-on-individual-items-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> <span class="token operator">...</span>children</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">var</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>attrs<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token keyword">in</span> attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"function"</span><span class="token punctuation">)</span><br>				el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">else</span> el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> attrs<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		children <span class="token operator">=</span> <span class="token punctuation">[</span>attrs<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	children <span class="token operator">=</span> children<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>Boolean<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> child <span class="token keyword">of</span> children<span class="token punctuation">)</span> el<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> el<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-4">Bingo, that works!</p>
+<p>Now let's set up the custom element with a custom setter to handle the passage of a complex data object into it.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-3" id="skip-to-code-skip-day-11-building-on-individual-items-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><br><span class="token keyword">class</span> <span class="token class-name">TimelineItem</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span><br>	<span class="token function">elBuilder</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Set data "</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-tags"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> timelineIcon <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><br>			<span class="token string">"div"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">{</span><br>				<span class="token keyword">class</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">timeline-icon </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>color<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">,</span><br>			data<span class="token operator">?.</span>faicon<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>						<span class="token keyword">class</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">fas fa-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>faicon<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>						<span class="token string">"aria-hidden"</span><span class="token operator">:</span> <span class="token string">"true"</span><span class="token punctuation">,</span><br>				  <span class="token punctuation">}</span><span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>color<span class="token punctuation">)</span> timelineIcon<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>timelineIcon<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>		<span class="token keyword">let</span> timelineDescription <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><br>			<span class="token string">"div"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">{</span><br>				<span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"timeline-description"</span><span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><br>				<span class="token string">"span"</span><span class="token punctuation">,</span><br>				<span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"timestamp"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>				<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"time"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> datetime<span class="token operator">:</span> data<span class="token punctuation">.</span>date <span class="token punctuation">}</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>humanReadableDate<span class="token punctuation">)</span><br>			<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><br>				<span class="token string">"h2"</span><span class="token punctuation">,</span><br>				<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>				<span class="token function">h</span><span class="token punctuation">(</span><br>					<span class="token string">"a"</span><span class="token punctuation">,</span><br>					<span class="token punctuation">{</span> id<span class="token operator">:</span> data<span class="token punctuation">.</span>slug<span class="token punctuation">,</span> href<span class="token operator">:</span> data<span class="token punctuation">.</span>slug <span class="token punctuation">}</span><span class="token punctuation">,</span><br>					<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"fas fa-link"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><br>				<span class="token punctuation">)</span><span class="token punctuation">,</span><br>				data<span class="token punctuation">.</span>title<br>			<span class="token punctuation">)</span><span class="token punctuation">,</span><br>			data<span class="token punctuation">.</span>image<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"div"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"captioned-image image-right"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token function">h</span><span class="token punctuation">(</span><br>							data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>link <span class="token operator">?</span> <span class="token string">"a"</span> <span class="token operator">:</span> <span class="token string">"span"</span><span class="token punctuation">,</span><br>							<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>							<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"img"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>								src<span class="token operator">:</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>src<span class="token punctuation">,</span><br>								alt<span class="token operator">:</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>alt<span class="token punctuation">,</span><br>							<span class="token punctuation">}</span><span class="token punctuation">)</span><br>						<span class="token punctuation">)</span><span class="token punctuation">,</span><br>						<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"caption"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>image<span class="token punctuation">.</span>caption<span class="token punctuation">)</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>			data<span class="token punctuation">.</span>isBasedOn <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>customLink<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"a"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span> target<span class="token operator">:</span> <span class="token string">"_blank"</span><span class="token punctuation">,</span> href<span class="token operator">:</span> <span class="token string">"data.customLink"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token string">"Read the article"</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>			<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"inner-description"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>			data<span class="token operator">?.</span>links<span class="token punctuation">.</span>length<br>				<span class="token operator">?</span> <span class="token function">h</span><span class="token punctuation">(</span><br>						<span class="token string">"ul"</span><span class="token punctuation">,</span><br>						<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>						<span class="token operator">...</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>							<span class="token keyword">let</span> lis <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>							data<span class="token punctuation">.</span>links<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">link</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>								lis<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><br>									<span class="token function">h</span><span class="token punctuation">(</span><br>										<span class="token string">"li"</span><span class="token punctuation">,</span><br>										<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>										<span class="token function">h</span><span class="token punctuation">(</span><br>											<span class="token string">"a"</span><span class="token punctuation">,</span><br>											<span class="token punctuation">{</span><br>												href<span class="token operator">:</span> link<span class="token punctuation">.</span>href<span class="token punctuation">,</span><br>												target<span class="token operator">:</span> <span class="token string">"_blank"</span><span class="token punctuation">,</span><br>											<span class="token punctuation">}</span><span class="token punctuation">,</span><br>											link<span class="token punctuation">.</span>linkText<br>										<span class="token punctuation">)</span><span class="token punctuation">,</span><br>										<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"> </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span> link<span class="token punctuation">.</span>extraText<br>									<span class="token punctuation">)</span><br>								<span class="token punctuation">)</span><span class="token punctuation">;</span><br>							<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>							<span class="token keyword">return</span> lis<span class="token punctuation">;</span><br>						<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>				  <span class="token punctuation">)</span><br>				<span class="token operator">:</span> <span class="token keyword">null</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>timelineDescription<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">let</span> innerContent <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">".inner-description"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		innerContent<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">.</span>content<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token keyword">set</span> <span class="token function">itembuild</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">elBuilder</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><br>	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token comment">// Always call super first in constructor</span><br>		<span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Custom Element Setup"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"aria-hidden"</span><span class="token punctuation">,</span> <span class="token string">"false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"timeline-entry"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">this</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"odd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token comment">// Element functionality written in here</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-3">Now I can pull the individual objects out of the JSON endpoint and set them up with a very simple set, <code>itemDOMObj.itembuild = item;</code>. See how cool it is that I can just set the object into the DOM element and it sets up the rest?</p>
+<p>Now, to make this as efficent as possible I want to set the DOM elements up as fast as possible and then place them on the page as soon as the DOM is ready. For that, I need to use <code>DOMContentLoaded</code> right after I've finished building my objects. I could use <code>onload</code>, but only one function can be set to that property. If I use it then I might forget down the line and replace the function by accident. Using the Event Listener is the way to go.</p>
+<p>First I set up the objects.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-2" id="skip-to-code-skip-day-11-building-on-individual-items-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">let</span> <span class="token function-variable function">preload</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token function">fetch</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>timelineAPI<span class="token punctuation">)</span><br>		<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>		<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">let</span> homeItemFound <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>			window<span class="token punctuation">.</span>timelinePrepends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>			window<span class="token punctuation">.</span>timelineAppends <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>			<span class="token keyword">const</span> TimelineEl <span class="token operator">=</span> customElements<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"timeline-item"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			data<span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"process this data"</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span><br>				<span class="token keyword">let</span> itemDOMObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimelineEl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// document.createElement("timeline-item");</span><br>				<span class="token comment">// itemDOMObj.setAttribute("data-buildobj", JSON.stringify(item));</span><br>				itemDOMObj<span class="token punctuation">.</span>itembuild <span class="token operator">=</span> item<span class="token punctuation">;</span><br>				<span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>slug <span class="token operator">==</span> window<span class="token punctuation">.</span>timelineHomeItemSlug<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>					homeItemFound <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>				<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>					<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>homeItemFound<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>						window<span class="token punctuation">.</span>timelinePrepends<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>itemDOMObj<span class="token punctuation">)</span><span class="token punctuation">;</span><br>					<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>						window<span class="token punctuation">.</span>timelineAppends<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>itemDOMObj<span class="token punctuation">)</span><span class="token punctuation">;</span><br>					<span class="token punctuation">}</span><br>				<span class="token punctuation">}</span><br>			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState <span class="token operator">!=</span> <span class="token string">"loading"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Document ready"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>				<span class="token function">singleItemPageFill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>				document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><br>					<span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span><br>					singleItemPageFill<br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-2">I have to set up placing these on the page and I'm going to use <code>scrollIntoView()</code> on the DOM element to keep it centered. There will be some movement inside the viewport, but it will be very minimal (I hope).</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-11-building-on-individual-items-1" id="skip-to-code-skip-day-11-building-on-individual-items-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">singleItemPageFill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token comment">/* We have JS! */</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"onload trigger"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">var</span> root <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span><br>	root<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">"no-js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">let</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"section article.timeline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">let</span> homeItem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>timelineHomeItemSlug<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	container<span class="token punctuation">.</span><span class="token function">prepend</span><span class="token punctuation">(</span><span class="token operator">...</span>window<span class="token punctuation">.</span>timelinePrepends<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	homeItem<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	container<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token operator">...</span>window<span class="token punctuation">.</span>timelineAppends<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	homeItem<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	homeItem<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">".timeline-description"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>border <span class="token operator">=</span><br>		<span class="token string">"2px solid var(--border-base)"</span><span class="token punctuation">;</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Build complete"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token function">reflowEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token comment">// Clean up</span><br>	document<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span> singleItemPageFill<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-11-building-on-individual-items-1">Ok, we're good to go! It fills in great!</p>
+<p><code>git commit -am &quot;Getting standalone timeline item pages working and using variables more actively throughout&quot;</code></p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/context-timelines/day-10-back-to-individual-timeline-items/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/timelines">Timelines</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/js">JS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/json">JSON</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
