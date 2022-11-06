@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 06 Nov 2022 22:35:36 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 06 Nov 2022 22:45:51 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -27,7 +27,7 @@
 		<pubDate>Sun, 06 Nov 2022 21:30:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/writing/why-you-should-find-a-mastodon-instance/</guid>
-		<description>You can start with one of the main popular instances of Mastodon, but if you want to make it fun, you need to find an instance that matches your interests</description>
+		<description>You can start with one of the main popular instances of Mastodon but, if you want to make it fun, you need to find an instance that matches your interests.</description>
 		<content:encoded><![CDATA[<h2 id="some-help-for-having-fun-on-mastodon" tabindex="-1">Some help for having fun on Mastodon</h2>
 <p>Self-hosting Mastodon as a personal instance is a neat trick I see some of you are doing, but it is just as bad for your experience as joining one of the super popular main instances. It just isn't really how you're going to get the most out of the tool. Let me explain.</p>
 <p>Mastodon is decentralized in a general sense, but more importantly the service is federated, which means it's capable of being meaningfully decentralized... but still having centers of activity. The point isn't decentralization, it's to find a center you want to live in.</p>
