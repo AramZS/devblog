@@ -5,12 +5,43 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2022-11-02T02:59:43Z</updated>
+  <updated>2022-11-06T21:30:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Why you should find the Mastodon instance that works for you</title>
+    <link href="https://fightwithtools.dev/posts/writing/why-you-should-find-a-mastodon-instance/"/>
+    <updated>2022-11-06T21:30:43Z</updated>
+    <id>https://fightwithtools.dev/posts/writing/why-you-should-find-a-mastodon-instance/</id>
+    <content type="html"><h2 id="some-help-for-having-fun-on-mastodon" tabindex="-1">Some help for having fun on Mastodon</h2>
+<p>Self-hosting Mastodon as a personal instance is a neat trick I see some of you are doing, but it is just as bad for your experience as joining one of the super popular main instances. It just isn't really how you're going to get the most out of the tool. Let me explain.</p>
+<p>Mastodon is decentralized in a general sense, but more importantly the service is federated, which means it's capable of being meaningfully decentralized... but still having centers of activity. The point isn't decentralization, it's to find a center you want to live in.</p>
+<p><img src="https://fightwithtools.dev/img/network-models.jpg" alt="From left to right: Centralized, Federated, Distributed" /><br />
+<em>From left to right: Centralized, Federated, Distributed, <a href="https://docs.joinmastodon.org/" target="_blank">from the Mastodon Website</a>.</em></p>
+<p>To get the most out of it, you have to find an instance you like, with rules you like, people you like, and—most importantly—people interested in the same stuff and content you want to talk about. Because the secret power of Mastodon is...</p>
+<p><strong>your instance's Local.</strong></p>
+<h2 id="why-do-you-need-to-care-about-your-local-timeline" tabindex="-1">Why do you need to care about your Local Timeline?</h2>
+<p>See Mastodon has no algorithm or suggested friends on purpose because what it has instead is federated instances &amp; their Locals. Your Local, if you've got a good one, will replace all those recommendation tools. By the way, this is why the main instance sucks, its Local is nonsense. You use it to find a better one.</p>
+<p>Twitter doesn't map on to Mastodon evenly, but it is easier to understand if you think of an instance like a Twitter list, or your Notified feed. Most people who use Twitter well either: live in lists, have a small Follow count, or rely on the algorithm (which emulates the other 2).</p>
+<p>You don't actually discover people or stuff on Twitter, other people discover it and discover each other and boost other accounts or sites; then you see those boosts. It's not magical, Twitter just makes the retweet text small so you don't notice and think there's 'magic'.</p>
+<p>Like all algorithmic magic it's just people. For Mastodon you join the main instance, you see a person talking about stuff you like to talk about and you check out their instance. If that instance is mostly talking about the type of stuff you like to talk about in the way you like to talk about it, you join! Mastodon makes it very easy for you to port your account over from one instance to another. Your follows, settings, etc..., all that gets moved over easily with your account, making it much easier to switch out algorithmic discovery with Local Timeline discovery.</p>
+<h2 id="more-than-one-interest" tabindex="-1">More than one interest?</h2>
+<p>Chances are, you're interested in more than one thing! That's cool, set up more accounts! Lurk on servers. I lurk on an art instance and a politics instance and check in on their Locals semi regularly. I basically use these lurker accounts the same way I use Twitter lists, but with less duplication. Those accounts are also little feeder fish, sometimes they'll spot something or someone I really like and I'll follow or boost on my main account. One day, if I decide I'm more interested in drawing than in building indie websites, I can move my main account again!</p>
+<p>When things go viral on Mastodon it's usually stuff you saw on your Local. By boosting it people who follow you see it, but also people who don't know you but like the same stuff you do on your instance will see it on their Local and wow you've got new friends now.</p>
+<p>When you follow someone from a new instance, they bring cool stuff with them, so you can search their instance, see your favorite tags on more instances relevant to you and have an easier time finding new and interesting stuff. That's why I follow interesting instances' admins along with whoever brought me there. Boosting and following also creates a higher likelihood other people in your instance will find new users and interesting instances! A bonus for everyone! That's what I mean when I say the Local is the key: that's your Discovery, Virality, and Suggested Friends, all at once.</p>
+<h2 id="still-want-to-do-it-yourself" tabindex="-1">Still want to do it yourself?</h2>
+<p>So, if you have a group of people with similar interests, by all means start up a server and get them all together on your own instance. Or, as you use a more general instance, gather a group of users and split off. But... a personal instance just for yourself? You're giving yourself extra work to miss out on the fun.</p>
+<p>If you just want to broadcast, you can <a href="https://indieweb.org/WordPress_ActivityPub_plugin" target="_blank">rig your WordPress blog up to ActivityPub</a>. But if you want to participate: join a few instances, find one you like, and make it home. Solo instances, like big undifferentiated instances, are missing the point of the whole system.</p>
+<p>This is, I think, the most confusing part about Mastodon. Sorry, it definitely isn't perfect. To be clear, it isn't just Twitter with a different skin! If that sounds interesting then you'll have to invest some time in figuring it out. We had to with Twitter too!</p>
+<p>Oh and uh, <a href="https://indieweb.social/@Chronotope" target="_blank">follow me on Mastodon</a>!</p>
+<hr />
+<p><em>Adapted from <a href="https://twitter.com/Chronotope/status/1588145803796807682" target="_blank">my original Twitter thread</a></em></p>
+</content>
+  </entry>
   
   <entry>
     <title>Context Center Timelines - Day 12 - Generate Timeline Item Image</title>
