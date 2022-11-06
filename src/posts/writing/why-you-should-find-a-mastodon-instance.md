@@ -1,6 +1,6 @@
 ---
 title: "Why you should find the Mastodon instance that works for you"
-description: "You can start with one of the main popular instances of Mastodon, but if you want to make it fun, you need to find an instance that matches your interests"
+description: "You can start with one of the main popular instances of Mastodon but, if you want to make it fun, you need to find an instance that matches your interests."
 date: 2022-11-06 16:30:43.10 -5
 tags:
   - Social Media
