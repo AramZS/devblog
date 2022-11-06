@@ -11,7 +11,7 @@ const commit_pattern = () => {
 	return /(?<=git commit \-am [\"|\'])(.+)(?=[\"|\'])/i;
 };
 
-const gitSearchQuery = (repo, commitMsg) => {
+const gitSearchQuery = (repo, branch, commitMsg) => {
 	let queryReadyCommitMsg = commitMsg;
 	/** Looks like I don't need to do this
 	// Commit msg max char count is 72
@@ -21,17 +21,22 @@ const gitSearchQuery = (repo, commitMsg) => {
 		queryReadyCommitMsg += "...";
 	}
 	**/
+	// Notes on searching branches.
+	// https://stackoverflow.com/questions/9179828/github-api-retrieve-all-commits-for-all-branches-for-a-repo
+	// https://docs.github.com/en/rest/search#search-commits
+	// Can't use `parent:` with a commit hash either.
+	let branchQuery = branch.length ? `/branches/${branch}` : "";
 	const searchCommitMsg = queryReadyCommitMsg.replace(/\s/g, "+");
 	const repoName = repo.replace("https://github.com/", "");
 	// https://docs.github.com/en/search-github/getting-started-with-searching-on-github/troubleshooting-search-queries#limitations-on-query-length
-	let query = `repo:${repoName}+${searchCommitMsg}`;
+	let query = `repo:${repoName}${branchQuery}+${searchCommitMsg}`;
 	if (query.length > 256) {
 		query = query.slice(0, 256);
 		if (query.slice(-1) == "+") {
 			query = query.slice(0, 255);
 		}
 	}
-	return `repo:${repoName}+${searchCommitMsg}`;
+	return query;
 };
 
 function setAttr(token, name, value) {
@@ -58,9 +63,9 @@ const cacheFilePath = (pageFilePath, searchKey) => {
 	return { cacheFolder, cacheFile };
 };
 
-const getLinkToRepo = async (repo, commitMsg, pageFilePath) => {
+const getLinkToRepo = async (repo, branch, commitMsg, pageFilePath) => {
 	// console.log(repo, commitMsg)
-	const searchKey = gitSearchQuery(repo, commitMsg);
+	const searchKey = gitSearchQuery(repo, branch, commitMsg);
 	const { cacheFolder, cacheFile } = cacheFilePath(pageFilePath, searchKey);
 	try {
 		fs.accessSync(cacheFile, fs.constants.F_OK);
@@ -134,7 +139,12 @@ const createLinkTokens = (TokenConstructor, commitLink) => {
 
 const gitCommitRule = (md) => {
 	//console.log('md.core.ruler', md.core.ruler.__rules__[md.core.ruler.__rules__.length-1])
+
 	md.core.ruler.push("git_commit", (state) => {
+		// We haven't figured out branches yet.
+		if (state.env.branch) {
+			return state;
+		}
 		const tokens = state.tokens;
 		if (state.env.hasOwnProperty("repo")) {
 			for (let i = 0; i < tokens.length; i++) {
@@ -148,6 +158,7 @@ const gitCommitRule = (md) => {
 					)[0];
 					const searchKey = gitSearchQuery(
 						state.env.repo,
+						state.env.branch ? state.env.branch : "",
 						commitMessage
 					);
 					const { cacheFolder, cacheFile } = cacheFilePath(
@@ -156,6 +167,7 @@ const gitCommitRule = (md) => {
 					);
 					getLinkToRepo(
 						state.env.repo,
+						state.env.branch ? state.env.branch : "",
 						commitMessage,
 						state.env.page.url
 					).then((commitLink) => {});

@@ -2,6 +2,7 @@
 	"project": "Context Timelines",
 	"description": "A way to fun, useful and sharable timeline pages.",
 	"repo": "https://github.com/AramZS/context-center",
+	"branch": "timeline",
 	"featuredImage": "timeline.jpg",
 	"featuredImageCredit": "'Test Infographics timeline NIT' by Ciro Ip is licensed under CC BY 2.0.",
 	"featuredImageLink": "https://www.flickr.com/photos/32307961@N06/3525061913",
