@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 06 Nov 2022 00:43:36 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 06 Nov 2022 18:52:10 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,62 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 12 - Generate Timeline Item Image</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-12-generate-timeline-item-image/?source=rss</link>
+		<pubDate>Wed, 02 Nov 2022 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-12-generate-timeline-item-image/</guid>
+		<description>Stretching the limits of Nunjucks by using it to create valid JSON.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+</ul>
+<h2 id="day-12" tabindex="-1">Day 12</h2>
+<p>Ok, so I want to create social-media-ready screenshots of timeline items. This feels like something I can do with some preexisting library pretty quickly and leverage the Javascript I wrote in my last session to build the DOM element. Today I feel like I want to just complete a task.</p>
+<p>So, let's search around and see what we can pull.</p>
+<p>So it looks like the two main libraries that people reference are the older but less recently updated library <a href="https://github.com/tsayen/dom-to-image" target="_blank">dom-to-image</a> and the more recently updated <a href="https://github.com/bubkoo/html-to-image" target="_blank">html-to-image</a>. They both seem pretty similar. dom-to-image is more widely used even if it isn't more recently updated. I feel bad using a library that is ripping off another one... if it is? Ah, I see they do give credit to the original. The original author no longer seems to be active on GitHub at all. Ok, I'm going to go with the newer one.</p>
+<p>I'm going to duplicate my old code from my previous session for now. I want to keep it dry, but that'll mean setting up a JS build task, and that's for later, assuming I get this to work.</p>
+<p>To move towards that, I think I'll want to use <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank">Shadow DOM</a> with my custom element.</p>
+<p>Now I need to apply the CSS from the stylesheet that isn't included in the element using that.</p>
+<p>To create this at the build step, I'll need a virtual DOM I think? Let's pull down <a href="https://github.com/jsdom/jsdom" target="_blank">JSDOM</a>. It looks that <a href="https://dev.to/ficusjs/unit-testing-web-components-with-ava-and-jsdom-2ofp" target="_blank">JSDOM does indeed have customElements to use</a>.</p>
+<p>Ok, set that up, set my style element up. How do I attach a Shadow DOM from outside the element?</p>
+<p>It looks like as long as I define the Shadow DOM as open with <code>this.attachShadow({ mode: &quot;open&quot; });</code> in my custom element setup, I can attach to it like <code>itemDOMObj.shadowRoot.appendChild(styleElement())</code>;</p>
+<p>Ok, I think I have the right custom element, and I can use the library to create the right dataUrl. Then, I think, I can use <code>fs</code> to write that as an image file for my site.</p>
+<p>Ok, now how do I create the file during my build step?</p>
+<p>The problem is that a bunch of my data is built on to the object at the point the template is made. Can I pull my function into there? Perhaps I can pass it in as a filter? But the object is not ready really there either. And I can't use the <code>set</code> keyword to set deep object properties.</p>
+<p>Looks like Nunjucks folks have <a href="https://github.com/mozilla/nunjucks/issues/313" target="_blank">developed a technique for this</a>. I'll use that.</p>
+<p>Ok, looks like that is sending the right object and it is getting set up into the right DOM element. Only... it's not writing a file.</p>
+<p>Found the error!</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-12-generate-timeline-item-image/#code-skip-day-12-generate-timeline-item-image-1" id="skip-to-code-skip-day-12-generate-timeline-item-image-1" class="skip-link">Skip code block ▼</a></p>
+<pre><code>Test Social image build failed for reason:  ReferenceError: HTMLCanvasElement is not defined
+    at /Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:75:33
+    at step (/Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:33:23)
+    at Object.next (/Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:14:53)
+    at /Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:8:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:4:12)
+    at cloneSingleNode (/Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:73:12)
+    at /Users/zuckerscharffa/Dev/context-center/node_modules/html-to-image/lib/clone-node.js:171:58
+</code></pre>
+<p id="code-skip-day-12-generate-timeline-item-image-1">So it <a href="https://github.com/plotly/plotly.js/issues/3239" target="_blank">looks</a> <a href="https://stackoverflow.com/questions/71719298/node-js-application-leveraging-jsdom-and-node-canvas-trying-to-drawimage-from" target="_blank">like</a> <code>HTMLCanvasElement</code> <a href="https://stackoverflow.com/questions/71884870/react-testing-library-cant-acquire-context-from-the-given-item" target="_blank">isn't</a> in JSDOM? Uh oh. <a href="https://www.npmjs.com/package/canvas" target="_blank">I might be able to use this</a>?</p>
+<p>Hmmm. Guess this is not so simple. I'll save the rest for another day.</p>
+<p><code>git commit -am &quot;Step one of setting up automatic image generation&quot;</code></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 11 - Build on Single Items</title>
