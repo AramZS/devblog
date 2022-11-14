@@ -1,6 +1,6 @@
 ---
 title: Context Center Timelines - Day 12 - Generate Timeline Item Image
-description: "Stretching the limits of Nunjucks by using it to create valid JSON."
+description: "Getting a preview image auto-generated."
 date: 2022-11-01 22:59:43.10 -4
 tags:
   - 11ty
@@ -26,6 +26,7 @@ tags:
 - [ ] Allow each entry to be its own Markdown file
 - [ ] Handle SASS instead of CSS
 - [ ] Fast Scroller by Month and Year
+- [ ] Add timelines and individual timeline items to the sitemap
 
 ## Day 12
 

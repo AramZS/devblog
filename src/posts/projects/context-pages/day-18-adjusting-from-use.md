@@ -30,6 +30,7 @@ tags:
 - [ ] Add YouTube DL tool.
 - [ ] Use https://github.com/oduwsdl/archivenow?
 - [ ] Improve handoff to Archive.org with [various other methods](https://twitter.com/Chronotope/status/1517116475601043456).
+- [ ] Contexter needs to read author objects out of Schema dot org JSON-LD blocks.
 
 ## Day 18
 
