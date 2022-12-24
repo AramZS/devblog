@@ -1,0 +1,10 @@
+{
+	"project": "Raspberry Pi Development Box",
+	"description": "Setting up a Raspberry Pi 4 for development work.",
+	"repo": "https://github.com/AramZS/devblog",
+	"branch": "main",
+	"featuredImage": "Raspberry_Pi-Logo.svg",
+	"featuredImageCredit": "Raspberry Pi Logo",
+	"featuredImageLink": "https://www.raspberrypi.com/",
+	"featuredImageAlt": "Raspberry Pi logo."
+}
