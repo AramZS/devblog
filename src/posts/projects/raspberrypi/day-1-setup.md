@@ -1,11 +1,12 @@
 ---
 title: Setting up a Raspberry Pi for Development - Day 1
 description: "Getting together everything I need for a remote development environment."
-date: 2022-11-13 22:59:43.10 -4
+date: 2022-12-23 22:59:43.10 -4
 tags:
   - Node
   - Raspberry Pi
   - SSH
+  - Linux
   - Development Tools
   - WiP
 ---
