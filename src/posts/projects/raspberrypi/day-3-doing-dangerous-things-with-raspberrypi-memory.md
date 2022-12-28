@@ -8,8 +8,8 @@ tags:
   - SSH
   - Linux
   - Development Tools
-  - WiP
   - swapfile
+  - WiP
 ---
 
 ## Project Scope and ToDos
