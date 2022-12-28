@@ -1,0 +1,370 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Doing dangerous things with Raspberry Pi memory settings - Day 3</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3795355162" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3795355162" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3795355162" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3795355162" id=""></link>
+
+            
+            <!-- Build Revision: 3795355162 & Sha: 1d8c466e745efd90ce628a19f5399dbc5454d86d -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Doing dangerous things with Raspberry Pi memory settings - Day 3">
+
+<meta property="og:description"
+    content="Let's get a node project up and running">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/raspberrypi/day-3-doing-dangerous-things-with-raspberrypi-memory/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Let's get a node project up and running" />
+
+<meta name="description" content="Let's get a node project up and running">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Doing dangerous things with Raspberry Pi memory settings - Day 3" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Mon, 26 Dec 2022 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Raspberry Pi Dev Box" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="Node" />
+        
+        <meta property="article:tag" content="Raspberry Pi" />
+        
+        <meta property="article:tag" content="SSH" />
+        
+        <meta property="article:tag" content="Linux" />
+        
+        <meta property="article:tag" content="Development Tools" />
+        
+        <meta property="article:tag" content="swapfile" />
+        
+        <meta property="article:tag" content="WiP" />
+        
+        <meta name="keywords" content="posts, projects, Node, Raspberry Pi, SSH, Linux, Development Tools, swapfile, WiP">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/raspberrypi/day-3-doing-dangerous-things-with-raspberrypi-memory/",
+        "headline": "Doing dangerous things with Raspberry Pi memory settings - Day 3",
+        "about": "Let's get a node project up and running",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/raspberrypi/day-3-doing-dangerous-things-with-raspberrypi-memory/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/raspberrypi">Raspberry Pi Dev Box</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Mon Dec 26 2022</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Doing dangerous things with Raspberry Pi memory settings - Day 3
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-3">Day 3</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">Let's get a node project up and running</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" alt="Raspberry Pi logo.">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://www.raspberrypi.com/" target="_blank">Raspberry Pi Logo</a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Be able to host a server</li>
+<li>Be able to build node projects</li>
+<li>Be able to handle larger projects</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Be able to run continually</li>
+</ul>
+<h2 id="day-3" tabindex="-1">Day 3</h2>
+<p>Ok, it does seem to be that I'm still running out of memory. This is why I wanted to move over to the Raspberry Pi Linux setup. I can start doing things I wouldn't feel comfortable doing with a work machine, like setting up a ludicrous amount of swap memory.</p>
+<p><a href="https://manpages.ubuntu.com/manpages/trusty/man8/dphys-swapfile.8.html" target="_blank">Looks like this is a swapfile setting</a> I can edit that sets the default max from 2gigs to something higher. Let's try 32 and see if I blow up my machine or my USB stick.</p>
+<p>I was able to do a dry run on my Macbook and it worked, but when I try to write the files it all goes to shit.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-doing-dangerous-things-with-raspberrypi-memory-2" id="skip-to-code-skip-day-3-doing-dangerous-things-with-raspberrypi-memory-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash">npx @11ty/eleventy --quiet --incremental<br>Image request error Bad response <span class="token keyword">for</span> https://pbs.twimg.com/media/Coe4W7eUEAMxRd2.jpg <span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>: Not Found<br>Image request error Bad response <span class="token keyword">for</span> https://pbs.twimg.com/media/B3-EfHwCIAAMDKN.jpg <span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>: Not Found<br>Image request error Bad response <span class="token keyword">for</span> https://pbs.twimg.com/media/B3VERMVCMAAdf1U.jpg <span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>: Not Found<br><br><span class="token operator">&lt;</span>--- Last few GCs ---<span class="token operator">></span><br><br><span class="token punctuation">[</span><span class="token number">3594</span>:0x7fd580008000<span class="token punctuation">]</span>   <span class="token number">536892</span> ms: Scavenge <span class="token punctuation">(</span>reduce<span class="token punctuation">)</span> <span class="token number">3826.7</span> <span class="token punctuation">(</span><span class="token number">3948.8</span><span class="token punctuation">)</span> -<span class="token operator">></span> <span class="token number">3826.6</span> <span class="token punctuation">(</span><span class="token number">3949.0</span><span class="token punctuation">)</span> MB, <span class="token number">3.9</span> / <span class="token number">0.0</span> ms  <span class="token punctuation">(</span>average mu <span class="token operator">=</span> <span class="token number">0.277</span>, current mu <span class="token operator">=</span> <span class="token number">0.256</span><span class="token punctuation">)</span> allocation failure<br><span class="token punctuation">[</span><span class="token number">3594</span>:0x7fd580008000<span class="token punctuation">]</span>   <span class="token number">536923</span> ms: Scavenge <span class="token punctuation">(</span>reduce<span class="token punctuation">)</span> <span class="token number">3833.2</span> <span class="token punctuation">(</span><span class="token number">3954.5</span><span class="token punctuation">)</span> -<span class="token operator">></span> <span class="token number">3833.1</span> <span class="token punctuation">(</span><span class="token number">3954.5</span><span class="token punctuation">)</span> MB, <span class="token number">4.6</span> / <span class="token number">0.0</span> ms  <span class="token punctuation">(</span>average mu <span class="token operator">=</span> <span class="token number">0.277</span>, current mu <span class="token operator">=</span> <span class="token number">0.256</span><span class="token punctuation">)</span> allocation failure<br><span class="token punctuation">[</span><span class="token number">3594</span>:0x7fd580008000<span class="token punctuation">]</span>   <span class="token number">536947</span> ms: Scavenge <span class="token punctuation">(</span>reduce<span class="token punctuation">)</span> <span class="token number">3838.1</span> <span class="token punctuation">(</span><span class="token number">3958.8</span><span class="token punctuation">)</span> -<span class="token operator">></span> <span class="token number">3838.0</span> <span class="token punctuation">(</span><span class="token number">3958.5</span><span class="token punctuation">)</span> MB, <span class="token number">4.0</span> / <span class="token number">0.0</span> ms  <span class="token punctuation">(</span>average mu <span class="token operator">=</span> <span class="token number">0.277</span>, current mu <span class="token operator">=</span> <span class="token number">0.256</span><span class="token punctuation">)</span> allocation failure<br><br><br><span class="token operator">&lt;</span>--- JS stacktrace ---<span class="token operator">></span><br><br>FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory<br> <span class="token number">1</span>: 0x108e19815 node::Abort<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>.cold.1<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">2</span>: 0x107b18aa9 node::Abort<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">3</span>: 0x107b18c1f node::OnFatalError<span class="token punctuation">(</span>char const*, char const*<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">4</span>: 0x107c99877 v8::Utils::ReportOOMFailure<span class="token punctuation">(</span>v8::internal::Isolate*, char const*, bool<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">5</span>: 0x107c99813 v8::internal::V8::FatalProcessOutOfMemory<span class="token punctuation">(</span>v8::internal::Isolate*, char const*, bool<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">6</span>: 0x107e3ac65 v8::internal::Heap::FatalProcessOutOfMemory<span class="token punctuation">(</span>char const*<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">7</span>: 0x107e3ecad v8::internal::Heap::RecomputeLimits<span class="token punctuation">(</span>v8::internal::GarbageCollector<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">8</span>: 0x107e3b58d v8::internal::Heap::PerformGarbageCollection<span class="token punctuation">(</span>v8::internal::GarbageCollector, v8::GCCallbackFlags<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">9</span>: 0x107e38aad v8::internal::Heap::CollectGarbage<span class="token punctuation">(</span>v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">10</span>: 0x107e45de0 v8::internal::Heap::AllocateRawWithLightRetrySlowPath<span class="token punctuation">(</span>int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">11</span>: 0x107e45e61 v8::internal::Heap::AllocateRawWithRetryOrFailSlowPath<span class="token punctuation">(</span>int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">12</span>: 0x107e0cfce v8::internal::FactoryBase<span class="token operator">&lt;</span>v8::internal::Factory<span class="token operator">></span>::NewRawTwoByteString<span class="token punctuation">(</span>int, v8::internal::AllocationType<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">13</span>: 0x1080e7c88 v8::internal::String::SlowFlatten<span class="token punctuation">(</span>v8::internal::Isolate*, v8::internal::Handle<span class="token operator">&lt;</span>v8::internal::ConsString<span class="token operator">></span>, v8::internal::AllocationType<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">14</span>: 0x107cb65ad v8::String::Utf8Length<span class="token punctuation">(</span>v8::Isolate*<span class="token punctuation">)</span> const <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">15</span>: 0x107af3e0b node::Buffer::<span class="token punctuation">(</span>anonymous namespace<span class="token punctuation">)</span>::ByteLengthUtf8<span class="token punctuation">(</span>v8::FunctionCallbackInfo<span class="token operator">&lt;</span>v8::Value<span class="token operator">></span> const<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">16</span>: 0x108506e8c Builtins_CallApiCallback <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>    <span class="token number">3503</span> abort      npx @11ty/eleventy --quiet --incremental</code></pre>
+<p id="code-skip-day-3-doing-dangerous-things-with-raspberrypi-memory-2">Meanwhile on the Raspberry Pi I was able to get it closer to running it seems, but even a dry-run hits the RAM max. Very strange because <code>htop</code> doesn't seem to show it ever hitting max. Is it not able to access the swap space?</p>
+<p>The failures here seem to be the important ones?</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-3-doing-dangerous-things-with-raspberrypi-memory-1" id="skip-to-code-skip-day-3-doing-dangerous-things-with-raspberrypi-memory-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"> <span class="token number">6</span>: 0x10cc46c65 v8::internal::Heap::FatalProcessOutOfMemory<span class="token punctuation">(</span>char const*<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">7</span>: 0x10cc4acad v8::internal::Heap::RecomputeLimits<span class="token punctuation">(</span>v8::internal::GarbageCollector<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">8</span>: 0x10cc4758d v8::internal::Heap::PerformGarbageCollection<span class="token punctuation">(</span>v8::internal::GarbageCollector, v8::GCCallbackFlags<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br> <span class="token number">9</span>: 0x10cc44aad v8::internal::Heap::CollectGarbage<span class="token punctuation">(</span>v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span><br><span class="token number">10</span>: 0x10cc51de0 v8::internal::Heap::AllocateRawWithLightRetrySlowPath<span class="token punctuation">(</span>int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment<span class="token punctuation">)</span> <span class="token punctuation">[</span>/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node<span class="token punctuation">]</span></code></pre>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/raspberrypi/day-2-raspberrypi-npm-install/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="/posts/projects/raspberrypi/day-4-mucking-with-node-libraries/" class="pagination-link cursor-pointer ">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/raspberry-pi">Raspberry Pi</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/ssh">SSH</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/linux">Linux</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/development-tools">Development Tools</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/swapfile">swapfile</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
