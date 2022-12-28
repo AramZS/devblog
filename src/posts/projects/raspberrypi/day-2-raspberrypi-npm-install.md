@@ -66,7 +66,7 @@ Swap:           2047           0        2047
 
 It [looks like that's the max using the tools I used](https://forums.raspberrypi.com/viewtopic.php?t=150141). But lets try leaving it here and rerunning my commands.
 
-Well, it definetly used the swap space and I don't think I ever saw it run out of Memory, but it still failed. New error this time though! Let's reproduce here in full:
+Well, it definitely used the swap space and I don't think I ever saw it run out of Memory, but it still failed. New error this time though! Let's reproduce here in full:
 
 ```sh
 

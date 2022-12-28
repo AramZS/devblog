@@ -21,7 +21,7 @@ tags:
 
 ## Day 1
 
-I've had a Canakit Raspberry Pi 4 sitting around for a while and while trying to set up a site to host an archive of my Tweets I've maxed out some some things on my MacBook. This isn't great, but there seem to be solutions. However, those solutions require mucking about with some pretty core system settings that maybe I don't want to mess with on my main machine.
+I've had a Canakit Raspberry Pi 4 sitting around for a while and while trying to set up a site to host an archive of my Tweets [I've maxed out some some things on my MacBook](https://github.com/tweetback/tweetback/issues/10). This isn't great, but there seem to be solutions. However, those solutions require mucking about with some pretty core system settings that maybe I don't want to mess with on my main machine.
 
 So, it makes sense to set this machine up to handle these projects. That means getting a dev environment running with Node capabilities. The package I got ships with [NOOBS](https://www.raspberrypi.com/news/introducing-noobs/) a tool for setting it up with [Raspbian](https://www.raspbian.org/) a Linux variant specialized for Pis. I slid that in, connected it to the internet via ethernet, and then let it do the install. First step was easy.
 
