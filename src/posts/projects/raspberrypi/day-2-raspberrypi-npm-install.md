@@ -41,7 +41,7 @@ Hmmm, still getting `FATAL ERROR: Committing semi space failed. Allocation faile
 
 This seems to be a memory issue. I think I can increase the memory fast by using a USB key as swap space? Let's try that.
 
-```sh
+```bash
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    1 119.2G  0 disk
 ├─sda1        8:1    1   200M  0 part
@@ -58,7 +58,7 @@ Ok, I've reformatted my BigStick [using the instructions at addictive tips](http
 
 I rebooted and it looks like, by using `free -m` I can see I've added about 2 gigs of swap, not the whole stick. Why is that the case?
 
-```sh
+```bash
                total        used        free      shared  buff/cache   available
 Mem:            7898         244        7160          35         493        7393
 Swap:           2047           0        2047
@@ -68,7 +68,7 @@ It [looks like that's the max using the tools I used](https://forums.raspberrypi
 
 Well, it definitely used the swap space and I don't think I ever saw it run out of Memory, but it still failed. New error this time though! Let's reproduce here in full:
 
-```sh
+```bash
 
 <--- Last few GCs --->
 

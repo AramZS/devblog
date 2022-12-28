@@ -28,7 +28,7 @@ Ok, it does seem to be that I'm still running out of memory. This is why I wante
 
 I was able to do a dry run on my Macbook and it worked, but when I try to write the files it all goes to shit.
 
-```sh
+```bash
 npx @11ty/eleventy --quiet --incremental
 Image request error Bad response for https://pbs.twimg.com/media/Coe4W7eUEAMxRd2.jpg (404): Not Found
 Image request error Bad response for https://pbs.twimg.com/media/B3-EfHwCIAAMDKN.jpg (404): Not Found
@@ -67,7 +67,7 @@ Meanwhile on the Raspberry Pi I was able to get it closer to running it seems, b
 
 The failures here seem to be the important ones?
 
-```sh
+```bash
  6: 0x10cc46c65 v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node]
  7: 0x10cc4acad v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node]
  8: 0x10cc4758d v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/Users/zuckerscharffa/.nvm/versions/node/v16.13.1/bin/node]
