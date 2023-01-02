@@ -5,12 +5,119 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2022-12-27T02:59:43Z</updated>
+  <updated>2023-01-02T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Context Center Timelines - Day 15 - Get CSS for Image Generation Working</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-timelines/day-15-get-css-for-image-generation-working/"/>
+    <updated>2023-01-02T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-timelines/day-15-get-css-for-image-generation-working/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+</ul>
+<h2 id="day-15" tabindex="-1">Day 15</h2>
+<p>Looks like there are quite a few options for getting CSS minified in the way I'm thinking, but when filtering for recently updated, not with a lot of issues, commonly used, and with a clear intent to be used inside standard Node work, not some larger system, I've narrowed it down to one candidate - <a href="https://www.npmjs.com/package/csso" target="_blank">csso</a>.</p>
+<p>Let's install and try that.</p>
+<p>Wait though... what happens when an eleventy plugin has a dependency? I should be fine once it is packaged up and I install it with an actual install command, right? Ok, lets put that to one side.</p>
+<p>Ok, now we're getting somewhere!</p>
+<p>I need to import the user stylesheet as well and the layout isn't fully working, but it is definitely a <em>lot</em> closer.</p>
+<p><img src="https://fightwithtools.dev/img/test-img-gen-4.png" alt="A broken version of the timeline item that doesn't quite work but is getting there - it has style applied now!" />.</p>
+<p>To get it all the way there I'll need an image specific stylesheet to pull in. I've done it so it is always <code>odd</code> in terms of its placement configuration so I don't have to worry about two different styles.</p>
+<p>I will need to make two images it looks like, <a href="https://developers.facebook.com/docs/sharing/webmasters/images/" target="_blank">one for Facebook</a> at <code>1200 x 630</code> and one with a 2:1 aspect ratio (so lets do <code>1200 x 600</code>) <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image" target="_blank">for Twitter</a>.</p>
+<p><a href="https://github.com/11ty/eleventy/pull/2633" target="_blank">Now that I know that there is a queued writing system</a> in Eleventy using <code>graceful-fs</code>, I'll use that instead of standard <code>fs</code> here.</p>
+<p>I know that if the link is there by itself, it'll have a particular pattern I can check the <code>content</code> property for with a ReExp check:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-15-get-css-for-image-generation-working/#code-skip-day-15-get-css-for-image-generation-working-1" id="skip-to-code-skip-day-15-get-css-for-image-generation-working-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">let</span> rexExpCheck <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><br />  <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;p>&lt;a href="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dataObj<span class="token punctuation">.</span>isBasedOn<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" target="_blank"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dataObj<span class="token punctuation">.</span>isBasedOn<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/a>&lt;/p>\n</span><span class="token template-punctuation string">`</span></span><br /><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-15-get-css-for-image-generation-working-1">Wait actually, I think it might build the share card beforehand? Let's try.</p>
+<p>I also should try to vertically center the box during image generation.</p>
+<p>Ok, yeah, it does! Nice!</p>
+<p><code>git commit -am &quot;Set up image build function&quot;</code></p>
+<p>Hmmm, it looks like the image builder backs up and crashes.</p>
+<p>I can also see that there is a problem with some of the timegate URLs that are based on URLs. Looks like I'm getting some filepaths like <code>timegate/https://activitystrea.ms//index.html</code>.</p>
+<p>And we'll fix the positioning in the CSS.</p>
+<p><code>git commit -am &quot;Get image positioning right.&quot; </code></p>
+<p>Ok, now to figure out how to generate these images during build.</p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>Context Center Timelines - Day 14 - Generate Timeline Item Image</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/"/>
+    <updated>2022-12-31T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+</ul>
+<h2 id="day-14" tabindex="-1">Day 14</h2>
+<p>Ok, not sure what is going wrong with the image generation, but clearly something is wonky. I'm going to <a href="https://stackoverflow.com/questions/30782693/run-function-in-script-from-command-line-node-js" target="_blank">try running a test function on the command line</a> and see what happens.</p>
+<p><code>node -e 'require(&quot;./_custom-plugins/timelinety/src/build-tools/timeline-social-image.js&quot;).testImg()'</code></p>
+<p>Ok, this has worked.</p>
+<p><img src="https://fightwithtools.dev/img/test-img-gen-1.png" alt="A basic hello world" /></p>
+<p>Let us try to add some elements here and see if it continues to work.</p>
+<p>Sizing is a little weird, but looking good!</p>
+<p><img src="https://fightwithtools.dev/img/test-img-gen-2.png" alt="A basic hello world but now with color text and background" /></p>
+<p>Ok, this is looking promising!</p>
+<p>To size the final image I need to set body styles when I create JSDOM as an object, like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/#code-skip-day-14-continuing-to-generate-image-4" id="skip-to-code-skip-day-14-continuing-to-generate-image-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> dom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSDOM</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;!DOCTYPE html>&lt;head><br />&lt;link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Hind+Vadodara:400,600" rel="stylesheet" type="text/css"><br />&lt;style><br />body {<br /> width: 600px;<br /> height: 500px;<br />}<br />&lt;/style><br />&lt;/head>&lt;body>&lt;/body></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-14-continuing-to-generate-image-4">I'll try adding the style in next. Hmm. Oh, I forgot that the style element needs <code>innerHTML</code>. Hmmm, no that doesn't do it. Perhaps I need to <a href="https://stackoverflow.com/questions/524696/how-to-create-a-style-tag-with-javascript" target="_blank">give it a type</a>.</p>
+<p>Looks like that worked. Hmm.</p>
+<p>Ok, lets see if I can abstract the custom HTML element class to its own file.</p>
+<p>I'll just have to pass the class the document and HTMLElement objects into the stand-alone file like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/#code-skip-day-14-continuing-to-generate-image-3" id="skip-to-code-skip-day-14-continuing-to-generate-image-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">document<span class="token punctuation">,</span> HTMLElement</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	<span class="token keyword">class</span> <span class="token class-name">TimelineItem</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span><br />		<span class="token operator">...</span><br />	<span class="token punctuation">}</span><br />	<span class="token keyword">return</span> TimelineItem<span class="token punctuation">;</span><br /><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-14-continuing-to-generate-image-3">Ok, now lets try running a test with an actual timeline object:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/#code-skip-day-14-continuing-to-generate-image-2" id="skip-to-code-skip-day-14-continuing-to-generate-image-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token punctuation">{</span><br />  timeline<span class="token operator">:</span> <span class="token string">'monkeypox'</span><span class="token punctuation">,</span><br />  title<span class="token operator">:</span> <span class="token string">'A looming deadline for tens of millions of Americans'</span><span class="token punctuation">,</span><br />  description<span class="token operator">:</span> <span class="token string">'The GOP battles over a trillion-dollar stimulus deal. Ahead of the November election, President Trump guts a landmark environmental law. And, how to avoid a devastating potential kink in the vaccine supply chain.'</span><span class="token punctuation">,</span><br />  tags<span class="token operator">:</span> <span class="token punctuation">[</span><br />    <span class="token string">'timeline'</span><span class="token punctuation">,</span><br />    <span class="token string">'Monkeypox'</span><span class="token punctuation">,</span><br />    <span class="token string">'Health'</span><span class="token punctuation">,</span><br />    <span class="token string">'Medicine'</span><span class="token punctuation">,</span><br />    <span class="token string">'Stimulus'</span><span class="token punctuation">,</span><br />    <span class="token string">'Markets'</span><br />  <span class="token punctuation">]</span><span class="token punctuation">,</span><br />  date<span class="token operator">:</span> <span class="token string">'2020-06-22T16:00:00.100Z'</span><span class="token punctuation">,</span><br />  categories<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'News'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br />  filters<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'USA'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br />  dateAdded<span class="token operator">:</span> <span class="token string">'2022-08-09T02:59:43.100Z'</span><span class="token punctuation">,</span><br />  isBasedOn<span class="token operator">:</span> <span class="token string">'https://www.washingtonpost.com/podcasts/post-reports/a-looming-deadline-for-tens-of-millions-americans/'</span><span class="token punctuation">,</span><br />  shortdate<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br />  color<span class="token operator">:</span> <span class="token string">'grey'</span><span class="token punctuation">,</span><br />  content<span class="token operator">:</span> <span class="token string">'&lt;p>&lt;a href="https://www.washingtonpost.com/podcasts/post-reports/a-looming-deadline-for-tens-of-millions-americans/" target="_blank">https://www.washingtonpost.com/podcasts/post-reports/a-looming-deadline-for-tens-of-millions-americans/&lt;/a>&lt;/p>\n'</span><span class="token punctuation">,</span><br />  slug<span class="token operator">:</span> <span class="token string">'a-looming-deadline-for-tens-of-millions-of-americans'</span><br /><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-14-continuing-to-generate-image-2">Now we're starting to get somewhere!</p>
+<p><img src="https://fightwithtools.dev/img/test-img-gen-3.png" alt="A broken version of the timeline item that doesn't quite work but is getting there" /></p>
+<p><code>git commit -m &quot;Basic working timeline image even if it looks terrible&quot;</code></p>
+<p>Ok, I need to write the HTML to a document to debug it.</p>
+<p>Oh huh, I guess I need to add metadata with the Contexter plugin settings, since I'm going to need it to add information to the images as well. Ok, shouldn't be too hard, for that plugin I can add global data.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-14-continuing-to-generate-image/#code-skip-day-14-continuing-to-generate-image-1" id="skip-to-code-skip-day-14-continuing-to-generate-image-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">let</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><br />	name<span class="token operator">:</span> <span class="token string">"markdown-contexter"</span><span class="token punctuation">,</span><br />	extension<span class="token operator">:</span> <span class="token string">"md"</span><span class="token punctuation">,</span><br />	cachePath<span class="token operator">:</span> <span class="token string">"_contexterCache"</span><span class="token punctuation">,</span><br />	publicImagePath<span class="token operator">:</span> <span class="token string">"assets/images/contexter"</span><span class="token punctuation">,</span><br />	publicPath<span class="token operator">:</span> <span class="token string">"timegate"</span><span class="token punctuation">,</span><br />	domain<span class="token operator">:</span> <span class="token string">"http://localhost:8080"</span><span class="token punctuation">,</span><br />	buildArchive<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br />	<span class="token function-variable function">existingRenderer</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br />	<span class="token operator">...</span>userOptions<span class="token punctuation">,</span><br /><span class="token punctuation">}</span><span class="token punctuation">;</span><br /><br /><span class="token keyword">const</span> cacheFolder <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><br />	__dirname<span class="token punctuation">,</span><br />	<span class="token string">"../../"</span><span class="token punctuation">,</span><br />	<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>options<span class="token punctuation">.</span>cachePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br />	pageFilePath<br /><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><br />options<span class="token punctuation">.</span>cacheFolder <span class="token operator">=</span> cacheFolder<span class="token punctuation">;</span><br />eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br />	<span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>options<span class="token punctuation">.</span>cachePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/images</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">]</span><span class="token operator">:</span> options<span class="token punctuation">.</span>publicImagePath<span class="token punctuation">,</span><br /><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />eleventyConfig<span class="token punctuation">.</span><span class="token function">addGlobalData</span><span class="token punctuation">(</span><span class="token string">"contexterSettings"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-14-continuing-to-generate-image-1">Hmm and instead of copy pasting the CSS, why don't I use <code>fs.readSync</code> to import it?</p>
+<p>Hmmm, this seems to theoretically work, but I'm getting a huge cluster of CSS that isn't working because all the linebreaks are gone. I suppose I could minify it, but that seems silly, why can't I get a readFile output to maintain it's format?</p>
+<p>I gotta remember to put my <code>\n</code>s in doublequotes too.</p>
+<p>Hmmm, is the problem is <code>createTextNode</code>? Or is it just not possible to get all the linebreaks in there properly with how JS inserts text inside of elements? I guess I have to minify the CSS after all.</p>
+</content>
+  </entry>
   
   <entry>
     <title>Doing dangerous things with Raspberry Pi memory settings - Day 3</title>
@@ -473,18 +580,12 @@
 <p>Jinja, which Nunjucks is based on, <a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank">seems to have a <code>loop.last</code> variable</a> that lets you know if you are on the last step of a loop. Nunjucks doesn't seem to have this. But it does <a href="https://mozilla.github.io/nunjucks/templating.html#last" target="_blank">seem to have a <code>last</code> filter one can apply to an array to get the last element</a>. Ok, I can use that instead.</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/#code-skip-day-9-set-up-endpoint-timeline-apis-2" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-2" class="skip-link">Skip code block ▼</a></p>
-<pre><code>{% for item in entry.data.tags %}
-&quot;{{ item }}&quot;{% if item !== entry.data.tags | last %},{% endif %}
-{% endfor %
-</code></pre>
+<pre class="language-njk"><code class="language-njk"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> item <span class="token keyword">in</span> entry<span class="token punctuation">.</span>data<span class="token punctuation">.</span>tags </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />"{{ item }}"<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> item <span class="token operator">!==</span> entry<span class="token punctuation">.</span>data<span class="token punctuation">.</span>tags <span class="token operator">|</span> last </span><span class="token templateTagBoundary template-tag-boundary">%}</span>,<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br /><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
 <p id="code-skip-day-9-set-up-endpoint-timeline-apis-2">This takes my filters list and outputs them as strings followed by a comma, except for the last one. Looks like this works, even for more complex objects!</p>
 <p>Quick note that tripped me up here, if the list is sorted then it needs to be sorted before the <code>last</code> filter is applied, like so:</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/#code-skip-day-9-set-up-endpoint-timeline-apis-1" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-1" class="skip-link">Skip code block ▼</a></p>
-<pre><code>{% for filter in filters | sort %}
-    &quot;{{ filter }}&quot;{% if filter !== filters | sort | last %},{% endif %}
-{% endfor %}
-</code></pre>
+<pre class="language-njk"><code class="language-njk"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> filter <span class="token keyword">in</span> filters <span class="token operator">|</span> sort </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br />    "{{ filter }}"<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> filter <span class="token operator">!==</span> filters <span class="token operator">|</span> sort <span class="token operator">|</span> last </span><span class="token templateTagBoundary template-tag-boundary">%}</span>,<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br /><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
 <p id="code-skip-day-9-set-up-endpoint-timeline-apis-1">This is mostly looking good, but my content text is not being escaped properly. It looks like <a href="https://www.benjaminrancourt.ca/how-to-generate-a-complete-json-file-with-nunjucks/" target="_blank">I'm not the only one to deal with this</a> and filtering it through <code> | dump | safe</code> does seem to work. I just need to remember to allow it to generate its own quote marks.</p>
 <p>Looking good. This is a nice place to take a break. We can go back to the individual timeline items next coding session.</p>
 <p><code>git commit -am &quot;Set up JSON endpoints for timelines&quot;</code></p>

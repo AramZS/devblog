@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3801462305" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3801462305" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3819896870" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3819896870" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3801462305" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3801462305" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3819896870" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3819896870" id=""></link>
 
             
-            <!-- Build Revision: 3801462305 & Sha: 04d9ead15c3f0a95f37c69d36abbfced539691be -->
+            <!-- Build Revision: 3819896870 & Sha: acbcb8a5f3adab385de217a14ecf305c5d76792f -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -281,18 +281,12 @@
 <p>Jinja, which Nunjucks is based on, <a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank">seems to have a <code>loop.last</code> variable</a> that lets you know if you are on the last step of a loop. Nunjucks doesn't seem to have this. But it does <a href="https://mozilla.github.io/nunjucks/templating.html#last" target="_blank">seem to have a <code>last</code> filter one can apply to an array to get the last element</a>. Ok, I can use that instead.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-day-9-set-up-endpoint-timeline-apis-2" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-2" class="skip-link">Skip code block ▼</a></p>
-<pre><code>{% for item in entry.data.tags %}
-&quot;{{ item }}&quot;{% if item !== entry.data.tags | last %},{% endif %}
-{% endfor %
-</code></pre>
+<pre class="language-njk"><code class="language-njk"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> item <span class="token keyword">in</span> entry<span class="token punctuation">.</span>data<span class="token punctuation">.</span>tags </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>"{{ item }}"<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> item <span class="token operator">!==</span> entry<span class="token punctuation">.</span>data<span class="token punctuation">.</span>tags <span class="token operator">|</span> last </span><span class="token templateTagBoundary template-tag-boundary">%}</span>,<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
 <p id="code-skip-day-9-set-up-endpoint-timeline-apis-2">This takes my filters list and outputs them as strings followed by a comma, except for the last one. Looks like this works, even for more complex objects!</p>
 <p>Quick note that tripped me up here, if the list is sorted then it needs to be sorted before the <code>last</code> filter is applied, like so:</p>
 <p class="skip-link-graf">
 <a href="#code-skip-day-9-set-up-endpoint-timeline-apis-1" id="skip-to-code-skip-day-9-set-up-endpoint-timeline-apis-1" class="skip-link">Skip code block ▼</a></p>
-<pre><code>{% for filter in filters | sort %}
-    &quot;{{ filter }}&quot;{% if filter !== filters | sort | last %},{% endif %}
-{% endfor %}
-</code></pre>
+<pre class="language-njk"><code class="language-njk"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">for</span> filter <span class="token keyword">in</span> filters <span class="token operator">|</span> sort </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    "{{ filter }}"<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> filter <span class="token operator">!==</span> filters <span class="token operator">|</span> sort <span class="token operator">|</span> last </span><span class="token templateTagBoundary template-tag-boundary">%}</span>,<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endfor </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
 <p id="code-skip-day-9-set-up-endpoint-timeline-apis-1">This is mostly looking good, but my content text is not being escaped properly. It looks like <a href="https://www.benjaminrancourt.ca/how-to-generate-a-complete-json-file-with-nunjucks/" target="_blank">I'm not the only one to deal with this</a> and filtering it through <code> | dump | safe</code> does seem to work. I just need to remember to allow it to generate its own quote marks.</p>
 <p>Looking good. This is a nice place to take a break. We can go back to the individual timeline items next coding session.</p>
 <p><code>git commit -am &quot;Set up JSON endpoints for timelines&quot;</code></p>
