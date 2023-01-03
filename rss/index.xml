@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 02 Jan 2023 02:42:50 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 03 Jan 2023 05:40:09 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,74 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 16 - Get CSS for Image Generation Working</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/?source=rss</link>
+		<pubDate>Tue, 03 Jan 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/</guid>
+		<description>Getting a preview image auto-generated.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+</ul>
+<h2 id="day-16" tabindex="-1">Day 16</h2>
+<p>The image build is just too heavy to do as is, even if it works.</p>
+<p>It looks like I can pass an array into the library and build all the images at once? This might solve my problem with too many puppeteer instances launching (looks like <a href="https://github.com/frinyvonnick/node-html-to-image/issues/80" target="_blank">I'm not the only one to have this issue</a>). But it looks like it expects me to pass in a <code>content</code> property and use a Handlebars template. Well, that's good, I already have a Handlebars template I can pull in.</p>
+<p>I just need to pass in the object for <code>content</code>.</p>
+<p>I'll do another test function to handle this.</p>
+<p>Hmmm, there are a few things that need to be cleaned up let's see.</p>
+<p>Ok, I've resolved most of the errors, but I'm still getting one.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/#code-skip-day-16-attempting-to-change-the-image-build-time-4" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"> ✘  ~/Dev/context-center   timeline ●  node -e <span class="token string">'require("./_custom-plugins/timelinety/src/build-tools/timeline-social-image.js").testHandlebarImg()'</span><br />Create Template Social Image Enters<br />TypeError: <span class="token punctuation">(</span>lookupProperty<span class="token punctuation">(</span><span class="token punctuation">..</span>.<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>depth0 <span class="token operator">&amp;&amp;</span> lookupProperty<span class="token punctuation">(</span><span class="token punctuation">..</span>.<span class="token punctuation">))</span> <span class="token operator">||</span> alias4<span class="token punctuation">)</span>.call is not a <span class="token keyword">function</span><br />    at Object.eval <span class="token punctuation">[</span>as main<span class="token punctuation">]</span> <span class="token punctuation">(</span>eval at createFunctionContext <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/handlebars/dist/cjs/handlebars/compiler/javascript-compiler.js:262:23<span class="token punctuation">)</span>, <span class="token operator">&lt;</span>anonymous<span class="token operator">></span>:35:128<span class="token punctuation">)</span><br />    at main <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/handlebars/dist/cjs/handlebars/runtime.js:208:32<span class="token punctuation">)</span><br />    at ret <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/handlebars/dist/cjs/handlebars/runtime.js:212:12<span class="token punctuation">)</span><br />    at ret <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/handlebars/dist/cjs/handlebars/compiler/compiler.js:519:21<span class="token punctuation">)</span><br />    at /Users/zuckerscharffa/Dev/context-center/node_modules/node-html-to-image/dist/screenshot.js:50:44<br />    at step <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/node-html-to-image/dist/screenshot.js:33:23<span class="token punctuation">)</span><br />    at Object.next <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/node-html-to-image/dist/screenshot.js:14:53<span class="token punctuation">)</span><br />    at /Users/zuckerscharffa/Dev/context-center/node_modules/node-html-to-image/dist/screenshot.js:8:71<br />    at new Promise <span class="token punctuation">(</span><span class="token operator">&lt;</span>anonymous<span class="token operator">></span><span class="token punctuation">)</span><br />    at __awaiter <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/node-html-to-image/dist/screenshot.js:4:12<span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-16-attempting-to-change-the-image-build-time-4">Ok, let's start slowly adding chunks of Handlebar code to see what triggers the error.</p>
+<p>Ok, it looks like the core problem is <code>or</code> use in my template? Is there a different version of Handlebars at use in the <code>node-html-to-image</code> process?</p>
+<p>What happens if we change the <code>or</code>s to instead be <code>if</code>s.</p>
+<p>Ok, that seems to have fixed the issue, though it is still showing some rendering errors. I am not sure why Handlebars is working differently here. The Handlebars version <a href="https://github.com/frinyvonnick/node-html-to-image/blob/master/package.json#L11" target="_blank">we're seeing in the node library is 4.5.3</a> and <a href="https://github.com/11ty/eleventy/blob/v1.x/package.json#L110" target="_blank">in Eleventy we're using 4.7.7</a>.</p>
+<p>Hmm, it looks like the techniques I used for Nunjucks doesn't translate to Handlebars. I'll have to swap it over to Handlebars techniques instead. Annoying. Ugh, I've been doing Nunjucks for so long I've forgotten my Handlebars.</p>
+<p>Ok, I've gotten a corrected template working now, but it isn't quite the same, I'll have to fix the style since I don't have custom HTML components anymore.</p>
+<p>I'll need to set up Handlebars to generate a test rendered page, even with the fixes it still isn't working like I'd hoped.</p>
+<p>Ok, a few differences in the layout are there that I'll need to adjust for, but shouldn't be too bad.</p>
+<p>Ok, got it working again!</p>
+<p><img src="https://fightwithtools.dev/img/test-img-gen-5.png" alt="A working version of the timeline image" /></p>
+<p><code>git commit -am &quot;Set up a handlebars template for social image generation&quot;</code></p>
+<p>Ok, it looks like by putting an Array variable outside of the filter function, using it inside the filter function, and then using the Eleventy <code>after</code> event I can have it run against all the images at once:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/#code-skip-day-16-attempting-to-change-the-image-build-time-3" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js">eleventyConfig<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"eleventy.after"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Image object ready to process"</span><span class="token punctuation">,</span> timelineImages<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token function">htmlToImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br />		html<span class="token operator">:</span> imageTool<span class="token punctuation">.</span><span class="token function">handlebarsTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br />		content<span class="token operator">:</span> timelineImages<span class="token punctuation">,</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The images were created successfully!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-16-attempting-to-change-the-image-build-time-3">This does seem to work, but I'm still getting an error:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/#code-skip-day-16-attempting-to-change-the-image-build-time-2" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash">Error: Timeout hit: <span class="token number">30000</span><br />    at /Users/zuckerscharffa/Dev/context-center/node_modules/puppeteer-cluster/dist/util.js:69:23<br />    at Generator.next <span class="token punctuation">(</span><span class="token operator">&lt;</span>anonymous<span class="token operator">></span><span class="token punctuation">)</span><br />    at fulfilled <span class="token punctuation">(</span>/Users/zuckerscharffa/Dev/context-center/node_modules/puppeteer-cluster/dist/util.js:5:58<span class="token punctuation">)</span><br />    at runNextTicks <span class="token punctuation">(</span>internal/process/task_queues.js:60:5<span class="token punctuation">)</span><br />    at processTimers <span class="token punctuation">(</span>internal/timers.js:497:9<span class="token punctuation">)</span><br />  Eleventy:TemplatePassthrough Copying individual</code></pre>
+<p id="code-skip-day-16-attempting-to-change-the-image-build-time-2">This appears to be Puppeteer timing out when I build the images? Let's <a href="https://pptr.dev/api/puppeteer.launchoptions.timeout/" target="_blank">see if I can pass it the args</a> in order to avoid that timeout.</p>
+<p>I'm getting an unrelated error from JSDOM... I guess I don't really need that anymore though? Let's remove it. Wow that will be a lot of work that it turned out I didn't need to do. Yeah, that works!</p>
+<p>Ok, I've got less errors now, but it is still crashing. The images seem to be building out, but it crashes out and I think it is still the timeout?</p>
+<p><code>git commit -m &quot;Adding fixes for the template generation of the preview image&quot;</code></p>
+<p>Ok, I don't seem to be getting the same error. Perhaps this is a error about a particular post? I don't know, but the timeout error does seem to be gone.</p>
+<p>I'm trying to eliminate other errors, and it does look as if Eleventy is tripping over my error in the markdown-contexter around processing after <code>pContext</code> there.</p>
+<p>It appears that the timeout error at</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/#code-skip-day-16-attempting-to-change-the-image-build-time-1" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br />		<span class="token string">"Request timed out for "</span><span class="token punctuation">,</span><br />		cacheFile<br />	<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"Timeout error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-16-attempting-to-change-the-image-build-time-1">So it looks like a try/catch around my array of promises with <code>Promise.all</code> resolution doesn't seem to be working.</p>
+<p>Ok, replacing <code>reject(&quot;Timeout error&quot;)</code> with <code>reject(new Error(&quot;Archiving request timeout error&quot;));</code> at least tells me what the error is. But it is saying it is unhandled, and I'm not sure why that is the case. It should be handled. Maybe I just remove the reject?</p>
+<p><code>git commit -am &quot;Adding better logging for markdown contexter&quot;</code></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 15 - Get CSS for Image Generation Working</title>
