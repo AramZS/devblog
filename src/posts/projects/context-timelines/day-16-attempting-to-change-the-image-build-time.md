@@ -119,7 +119,7 @@ Ok, I don't seem to be getting the same error. Perhaps this is a error about a p
 
 I'm trying to eliminate other errors, and it does look as if Eleventy is tripping over my error in the markdown-contexter around processing after `pContext` there.
 
-It appears that the timeout error at
+It appears that the timeout error is at
 
 ```js
 setTimeout(() => {
