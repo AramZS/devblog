@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 03 Jan 2023 05:40:09 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 03 Jan 2023 15:31:01 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,7 +22,7 @@
 	</managingEditor>
 	
 	<item>
-		<title>Context Center Timelines - Day 16 - Get CSS for Image Generation Working</title>
+		<title>Context Center Timelines - Day 16 - Attempting to change the build time for images.</title>
 		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/?source=rss</link>
 		<pubDate>Tue, 03 Jan 2023 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
