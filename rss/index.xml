@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 03 Jan 2023 15:31:01 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 03 Jan 2023 17:20:52 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -79,7 +79,7 @@
 <p><code>git commit -m &quot;Adding fixes for the template generation of the preview image&quot;</code></p>
 <p>Ok, I don't seem to be getting the same error. Perhaps this is a error about a particular post? I don't know, but the timeout error does seem to be gone.</p>
 <p>I'm trying to eliminate other errors, and it does look as if Eleventy is tripping over my error in the markdown-contexter around processing after <code>pContext</code> there.</p>
-<p>It appears that the timeout error at</p>
+<p>It appears that the timeout error is at</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/context-timelines/day-16-attempting-to-change-the-image-build-time/#code-skip-day-16-attempting-to-change-the-image-build-time-1" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-js"><code class="language-js"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br />		<span class="token string">"Request timed out for "</span><span class="token punctuation">,</span><br />		cacheFile<br />	<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"Timeout error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>

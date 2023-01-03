@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3830766044" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3830766044" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3831573942" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=3831573942" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3830766044" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3830766044" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3831573942" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=3831573942" id=""></link>
 
             
-            <!-- Build Revision: 3830766044 & Sha: cf93bda09b23fe1e5ff8abadc94ee54568bc7360 -->
+            <!-- Build Revision: 3831573942 & Sha: ad9ff1f0ace74e5e4efa5397ffeeb1088760f7f1 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -318,7 +318,7 @@
 <p><code>git commit -m &quot;Adding fixes for the template generation of the preview image&quot;</code></p>
 <p>Ok, I don't seem to be getting the same error. Perhaps this is a error about a particular post? I don't know, but the timeout error does seem to be gone.</p>
 <p>I'm trying to eliminate other errors, and it does look as if Eleventy is tripping over my error in the markdown-contexter around processing after <code>pContext</code> there.</p>
-<p>It appears that the timeout error at</p>
+<p>It appears that the timeout error is at</p>
 <p class="skip-link-graf">
 <a href="#code-skip-day-16-attempting-to-change-the-image-build-time-1" id="skip-to-code-skip-day-16-attempting-to-change-the-image-build-time-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-js"><code class="language-js"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br>		<span class="token string">"Request timed out for "</span><span class="token punctuation">,</span><br>		cacheFile<br>	<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"Timeout error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
