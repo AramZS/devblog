@@ -1,5 +1,5 @@
 ---
-title: Context Center Timelines - Day 16 - Get CSS for Image Generation Working
+title: Context Center Timelines - Day 16 - Attempting to change the build time for images.
 description: "Getting a preview image auto-generated."
 date: 2023-01-02 22:59:43.10 -4
 tags:
