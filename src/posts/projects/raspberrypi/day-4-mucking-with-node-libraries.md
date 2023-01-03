@@ -1,5 +1,5 @@
 ---
-title: Doing dangerous things with Raspberry Pi memory settings - Day 3
+title: Mucking with Node libraries - Day 4
 description: "Let's get a node project up and running"
 date: 2022-12-26 22:59:43.10 -4
 tags:
