@@ -31,6 +31,8 @@ tags:
 - [ ] Use https://github.com/oduwsdl/archivenow?
 - [ ] Improve handoff to Archive.org with [various other methods](https://twitter.com/Chronotope/status/1517116475601043456).
 - [ ] Contexter needs to read author objects out of Schema dot org JSON-LD blocks.
+- [ ] Fall back to use Puppeteer
+- [ ] Fall back to read the version on the Internet Archive
 
 ## Day 18
 
