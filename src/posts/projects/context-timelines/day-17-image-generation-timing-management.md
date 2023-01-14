@@ -25,10 +25,11 @@ tags:
 - [x] Auto-create social-media-ready screenshots of a timeline item
 - [x] Integrate with Contexter to have context-full link cards in the timeline
 - [ ] Leverage the Live Blog format of Schema dot org
-- [ ] Allow each entry to be its own Markdown file
+- [x] Allow each entry to be its own Markdown file
 - [ ] Handle SASS instead of CSS
 - [ ] Fast Scroller by Month and Year
 - [ ] Add timelines and individual timeline items to the sitemap
+- [ ] Generate images more efficiently.
 
 ## Day 17
 
