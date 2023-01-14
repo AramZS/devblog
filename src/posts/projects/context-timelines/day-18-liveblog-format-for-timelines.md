@@ -55,7 +55,7 @@ Let's try setting a breaker to stop the `.after` from running after the first ti
 	});
 ```
 
-This means establishing an [a structured data article schema using JSON-LD](https://developers.google.com/search/docs/appearance/structured-data/article).
+This means establishing an a structured data article schema using JSON-LD.
 
 We want news articles [I think](https://support.google.com/webmasters/thread/95258798/for-liveblogposting-markup-it-need-be-together-with-newsarticle-or-can-be-alone?hl=en)? Or [articles](https://schema.org/Article) as a format.
 
