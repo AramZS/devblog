@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sat, 14 Jan 2023 14:53:40 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 14 Jan 2023 14:58:25 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -1164,6 +1164,7 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Contexter needs to read author objects out of Schema dot org JSON-LD blocks.</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fall back to use Puppeteer</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fall back to read the version on the Internet Archive</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Do something better when the same link is in the text more than once.</li>
 </ul>
 <h2 id="day-18" tabindex="-1">Day 18</h2>
 <p>Ok, so I put this project through it's paces by using it over the last monthish. It's working surprisingly well, but I think there are a few issues. The first is that while the Facebook UA works most of the time, it doesn't always. So let's use the work I did in Backreads to try and up my chances of successfully getting a scrape using the standard means, even if I want to eventually drop a headless browser into this process.</p>
