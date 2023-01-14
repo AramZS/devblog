@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 09 Jan 2023 04:04:47 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 14 Jan 2023 06:44:51 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,48 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 18 - Setting up JSON LD.</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/?source=rss</link>
+		<pubDate>Sat, 14 Jan 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/</guid>
+		<description>Getting a preview image auto-generated.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
+</ul>
+<h2 id="day-18" tabindex="-1">Day 18</h2>
+<p>What I'd like to do is implement the correct SEO tags. I've now put in the Social Media Optimization tags.</p>
+<p><code>git commit -am &quot;Add socials and fix links. Still don't have the keyvalues working for individual timeline items&quot;</code></p>
+<p>But it has been very annoying to have the images build constantly during watch. I bet I can fix that.</p>
+<p>Let's try setting a breaker to stop the <code>.after</code> from running after the first time.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/#code-skip-day-18-liveblog-format-for-timelines-1" id="skip-to-code-skip-day-18-liveblog-format-for-timelines-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js">	<span class="token keyword">let</span> ranOnce <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br />	eleventyConfig<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"eleventy.after"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />		<span class="token keyword">if</span> <span class="token punctuation">(</span>ranOnce<span class="token punctuation">)</span> <span class="token punctuation">{</span><br />			<span class="token keyword">return</span><span class="token punctuation">;</span><br />		<span class="token punctuation">}</span><br />		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Image array of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>timelineImages<span class="token punctuation">.</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> ready to process</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />		<span class="token keyword">let</span> processFinished <span class="token operator">=</span> imageTool<span class="token punctuation">.</span><span class="token function">queueImagesProcess</span><span class="token punctuation">(</span>timelineImages<span class="token punctuation">)</span><span class="token punctuation">;</span><br />		ranOnce <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br />		<span class="token keyword">return</span> processFinished<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><br />			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Image generation process complete"</span><span class="token punctuation">)</span><br />		<span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-18-liveblog-format-for-timelines-1">This means establishing an <a href="https://developers.google.com/search/docs/appearance/structured-data/article" target="_blank">a structured data article schema using JSON-LD</a>.</p>
+<p>We want news articles <a href="https://support.google.com/webmasters/thread/95258798/for-liveblogposting-markup-it-need-be-together-with-newsarticle-or-can-be-alone?hl=en" target="_blank">I think</a>? Or <a href="https://schema.org/Article" target="_blank">articles</a> as a format.</p>
+<p><a href="https://developers.google.com/search/docs/appearance/structured-data/article" target="_blank">https://developers.google.com/search/docs/appearance/structured-data/article</a></p>
+<p>I think it makes sense to render <a href="https://schema.org/LiveBlogPosting" target="_blank">these timelines as <code>LiveBlogPostings</code></a>? It isn't traditionally the case for longer term content, however, we should give it a try. We can always make it optional later, perhaps only some timelines get <a href="https://moz.com/blog/live-blog-posting-schema" target="_blank">the Liveblog treatment</a>. These are composed of <a href="https://schema.org/liveBlogUpdate" target="_blank">liveBlogUpdates</a>. We can see <a href="https://validator.schema.org/#url=https%3A%2F%2Fwww.washingtonpost.com%2Fnation%2F2022%2F01%2F07%2Fcovid-omicron-variant-live-updates%2F" target="_blank">an example of how this works with one of the articles that the Moz blog linked</a>.</p>
+<p>Ok, I fixed the image generation process so it won't constantly re-run in watch mode. I think this is a good start, but maybe I shouldn't even build the images if they are already built.</p>
+<p>I'll set up the framework of the JSON-LD block I have in the main blog and then work from there now that I've unblocked myself on this issue.</p>
+<p><code>git commit -am &quot;Set up JSON LD block for further development&quot;</code></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 17 - Image Generation Backoff.</title>
@@ -39,10 +81,11 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
 </ul>
 <h2 id="day-17" tabindex="-1">Day 17</h2>
 <p>After the experimentation with the other error, I don't think it is causing the failure I'm seeing. It seems like even with an array of images it may be crashing anyway. I want to try this out in isolation.</p>
