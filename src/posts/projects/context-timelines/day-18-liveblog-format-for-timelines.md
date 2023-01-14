@@ -10,7 +10,7 @@ tags:
   - WiP
   - JS
   - SchemaDotOrg
-  - Metadata
+  - metadata
   - Build Tasks
 ---
 
