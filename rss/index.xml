@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sat, 14 Jan 2023 14:58:25 GMT</lastBuildDate>
+	<lastBuildDate>Thu, 02 Feb 2023 01:18:45 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,12 +22,12 @@
 	</managingEditor>
 	
 	<item>
-		<title>Context Center Timelines - Day 18 - Setting up JSON LD.</title>
-		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/?source=rss</link>
-		<pubDate>Sat, 14 Jan 2023 02:59:43 GMT</pubDate>
+		<title>Context Center Timelines - Day 19 - Setting up data for JSON LD.</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-19-liveblog-metadata-from-timelines/?source=rss</link>
+		<pubDate>Thu, 02 Feb 2023 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
-		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/</guid>
-		<description>Getting a preview image auto-generated.</description>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-19-liveblog-metadata-from-timelines/</guid>
+		<description>Meta for metadata.</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create timeline pages where one can see the whole timeline of a particular event</li>
@@ -44,6 +44,50 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate QR codes / Stickers for each timeline</li>
+</ul>
+<h2 id="day-19" tabindex="-1">Day 19</h2>
+<p>Ok, lets start figuring out what the metadata structure is that is needed for the timeline schema.</p>
+<p>I have a bunch of these values set already, though they may not be passed through to the template.</p>
+<p>But I might not have all of them.</p>
+<p>I'll start with <code>timelineObj</code> as my new template layout uses that object pretty effectively, even if I'll have to enhance it. But it looks like it doesn't have all the data I need.</p>
+<p>I'll need to calculate a value for <code>coverageStartTime</code>. That should be easy enough, I can just reverse the calculation for <code>lastUpdatedPost</code> and make sure it doesn't fall back to zero.</p>
+<p>There are some places where I might want to have fields in the future but keep fallbacks to standard values. For those I'll use the Nunjucks construction of <code>{{ X or Y }}</code> which will hopefully work without issue.</p>
+<p>Then comes the hard part, I need to play out the timeline entries into the <code>liveBlogUpdate</code> array.</p>
+<p>Some of this is pretty straightforward, but I am going to have some trailing commas that are not how they are supposed to be. Is that going to be a problem? Probably! I can use the same <code>last</code> technique I used when generating the JSON of timelines earlier.</p>
+<p>But wait... I don't think I can compare complex objects like this?</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/context-timelines/day-19-liveblog-metadata-from-timelines/#code-skip-day-19-liveblog-metadata-from-timelines-1" id="skip-to-code-skip-day-19-liveblog-metadata-from-timelines-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-njk"><code class="language-njk"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> <span class="token keyword">if</span> entry <span class="token operator">!==</span> collections<span class="token punctuation">[</span>timelineSlug<span class="token punctuation">]</span> <span class="token operator">|</span> sort <span class="token operator">|</span> last </span><span class="token templateTagBoundary template-tag-boundary">%}</span>,<span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endif </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
+<p id="code-skip-day-19-liveblog-metadata-from-timelines-1">Welllllll, let's try next time.</p>
+<p><code>git commit -am &quot;Setting up timeline metadata&quot;</code></p>
+]]></content:encoded>
+	</item>
+	
+	<item>
+		<title>Context Center Timelines - Day 18 - Setting up JSON LD.</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/?source=rss</link>
+		<pubDate>Sat, 14 Jan 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-18-liveblog-format-for-timelines/</guid>
+		<description>Getting structured data some structure.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate QR codes / Stickers for each timeline</li>
 </ul>
 <h2 id="day-18" tabindex="-1">Day 18</h2>
 <p>What I'd like to do is implement the correct SEO tags. I've now put in the Social Media Optimization tags.</p>
@@ -1165,6 +1209,7 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fall back to use Puppeteer</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fall back to read the version on the Internet Archive</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Do something better when the same link is in the text more than once.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Allow the user to override a link's metadata with a markdown file.</li>
 </ul>
 <h2 id="day-18" tabindex="-1">Day 18</h2>
 <p>Ok, so I put this project through it's paces by using it over the last monthish. It's working surprisingly well, but I think there are a few issues. The first is that while the Facebook UA works most of the time, it doesn't always. So let's use the work I did in Backreads to try and up my chances of successfully getting a scrape using the standard means, even if I want to eventually drop a headless browser into this process.</p>
