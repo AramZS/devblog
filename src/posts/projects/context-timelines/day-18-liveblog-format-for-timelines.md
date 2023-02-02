@@ -1,6 +1,6 @@
 ---
 title: Context Center Timelines - Day 18 - Setting up JSON LD.
-description: "Getting a preview image auto-generated."
+description: "Getting structured data some structure."
 date: 2023-01-13 22:59:43.10 -4
 tags:
   - 11ty
@@ -29,6 +29,7 @@ tags:
 - [ ] Fast Scroller by Month and Year
 - [ ] Add timelines and individual timeline items to the sitemap
 - [ ] Generate images more efficiently.
+- [ ] Generate QR codes / Stickers for each timeline
 
 ## Day 18
 

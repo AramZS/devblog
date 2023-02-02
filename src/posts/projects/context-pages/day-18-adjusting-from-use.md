@@ -34,6 +34,7 @@ tags:
 - [ ] Fall back to use Puppeteer
 - [ ] Fall back to read the version on the Internet Archive
 - [ ] Do something better when the same link is in the text more than once.
+- [ ] Allow the user to override a link's metadata with a markdown file.
 
 ## Day 18
 
