@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Thu, 02 Feb 2023 01:18:45 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 21 Feb 2023 02:57:49 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,60 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Context Center Timelines - Day 20 - Liveblog Schema Metadata and SEO and Image fixes.</title>
+		<link>https://fightwithtools.dev/posts/projects/context-timelines/day-20-liveblog-metadata-and-fixes/?source=rss</link>
+		<pubDate>Tue, 21 Feb 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-20-liveblog-metadata-and-fixes/</guid>
+		<description>Meta for metadata.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Support a counter that can increment depending on where you are on the timeline.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate QR codes / Stickers for each timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md returns a raw version of a topic (in markdown)</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md includes a YAML header with relevant information</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/json returns a JSON version of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /feed/ returns a latest links feed of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> RSS feed of links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> RSS feed of new links per topic / timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Support a header image.</li>
+</ul>
+<h2 id="day-20" tabindex="-1">Day 20</h2>
+<p>Ok, I need to pull the raw version (markdown) of the post text in for the JSON-LD. I think I've got it working with <code>timelineItem.template.frontMatter.content</code>.</p>
+<p><code>git commit -am &quot;Timeline JSON LD working for overall timelines.&quot;</code></p>
+<p>Now that the basics are there, let's take a larger more detailed block and we can put the new details into it via Nunjucks <code>extends</code> method.</p>
+<p>Before I test this out I'll switch my methodology around images, only create them now where they don't already exist.</p>
+<p>Oops, I need to resolve something when the image to-create queue is zeroed out or the build won't resolve. I can't leave the promise un-resolved.</p>
+<p><code>git commit -am &quot;Fix timeline and timeline image generation&quot;</code></p>
+<p>I need to have an object for single pages now.</p>
+<p>I gotta say, as usual, Nunjucks isn't doing great with formatting. I should likely figure out a switch over to using JS to generate my templates instead of Nunjucks, at least for JSON-LD where these are JSON objects anyway.</p>
+<p>This is pretty straightforward, except for the <code>isPartOf</code> block which needs to refer back to the timeline, not the site. I'll need to pass the <code>url</code> from the timeline obj into the template.</p>
+<p>It works! I think I'm good on metadata for now!</p>
+<p>Huh, wait, I am seeing an issue.</p>
+<p>Why doesn't my <code>page.url</code> match with the URL I can access it on? There's two URLs for this?</p>
+<p><code>http://localhost/timeline/covid/new-omicron-variant-ba2121-has-taken-over-massachusetts-heres-what-you-need-know/</code></p>
+<p>and</p>
+<p><code>http://localhost/timeline/covid/new-omicron-variant-ba2121-has-taken-over-massachusetts-heres-what-you-need-know/</code></p>
+<p>Something is wonky here. Ok, let's save place before digging into it.</p>
+<p><code>git commit -am &quot;Setting up standalone item meta&quot;</code></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Context Center Timelines - Day 19 - Setting up data for JSON LD.</title>
@@ -45,6 +99,10 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate QR codes / Stickers for each timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md returns a raw version of a topic (in markdown)</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md includes a YAML header with relevant information</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/json returns a JSON version of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /feed/ returns a latest links feed of a topic</li>
 </ul>
 <h2 id="day-19" tabindex="-1">Day 19</h2>
 <p>Ok, lets start figuring out what the metadata structure is that is needed for the timeline schema.</p>
@@ -2026,6 +2084,12 @@
 </li>
 <li class="task-list-item">
 <p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a per-project <code>/now</code> page.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a whole-site aggregated <code>/now</code> page.</p>
 </li>
 </ul>
 <h2 id="day-43" tabindex="-1">Day 43</h2>
