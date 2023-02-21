@@ -100,6 +100,9 @@ featuredImageAlt: "Close up photo of keyboard keys."
 
 - [x] SEO/Social/JSON-LD HEAD data
 
+- [ ] Create a per-project `/now` page.
+- [ ] Create a whole-site aggregated `/now` page.
+
 ## Day 43
 
 Ok, so I want to update Eleventy to v1. In part, because I want to try some features. So let's give it a go!

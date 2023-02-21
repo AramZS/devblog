@@ -8,6 +8,7 @@ tags:
   - Timelines
   - SSG
   - WiP
+  - SEO
   - JS
   - SchemaDotOrg
   - metadata
@@ -30,6 +31,10 @@ tags:
 - [ ] Add timelines and individual timeline items to the sitemap
 - [ ] Generate images more efficiently.
 - [ ] Generate QR codes / Stickers for each timeline
+- [ ] /raw/md returns a raw version of a topic (in markdown)
+- [ ] /raw/md includes a YAML header with relevant information
+- [ ] /raw/json returns a JSON version of a topic
+- [ ] /feed/ returns a latest links feed of a topic
 
 ## Day 19
 

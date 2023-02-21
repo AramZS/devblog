@@ -2,5 +2,6 @@
 	"project": "Backreads",
 	"slug": "backreads",
 	"description": "Building Backreads.",
-	"repo": "https://github.com/AramZS/backreads"
+	"repo": "https://github.com/AramZS/backreads",
+	"now": false
 }

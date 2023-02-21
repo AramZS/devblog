@@ -2,5 +2,6 @@
 	"project": "Context Pages",
 	"description": "A way to generate sets of links that are readable and easy to refer back to.",
 	"repo": "https://github.com/AramZS/contexter",
-	"featuredImage": "radial_crosshair.jpg"
+	"featuredImage": "radial_crosshair.jpg",
+	"now": true
 }
