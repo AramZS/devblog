@@ -1,6 +1,6 @@
 ---
 title: Context Center Timelines - Day 21 - Slug Fixes.
-description: "Meta for metadata."
+description: "One slug to rule them, one url path to bind them, one permalink to find them all and in the darkness bind them."
 date: 2023-02-20 22:59:43.10 -4
 tags:
   - 11ty
