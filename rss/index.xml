@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 28 Feb 2023 04:20:16 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 28 Feb 2023 04:21:37 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -27,7 +27,7 @@
 		<pubDate>Tue, 21 Feb 2023 02:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/context-timelines/day-21-slug-fixes/</guid>
-		<description>Meta for metadata.</description>
+		<description>One slug to rule them, one url path to bind them, one permalink to find them all and in the darkness bind them.</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create timeline pages where one can see the whole timeline of a particular event</li>
