@@ -66,7 +66,7 @@ Huh, wait, I am seeing an issue.
 
 Why doesn't my `page.url` match with the URL I can access it on? There's two URLs for this?
 
-`http://localhost/timeline/covid/new-omicron-variant-ba2121-has-taken-over-massachusetts-heres-what-you-need-know/`
+`new-omicron-variant-ba2121-has-taken-over-massachusetts-here-s-what-you-need-know`
 
 and
 
