@@ -1,0 +1,410 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Day 1 - We try new things.</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=4381594707" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=4381594707" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=4381594707" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=4381594707" id=""></link>
+
+            
+            <!-- Build Revision: 4381594707 & Sha: 75703d8d276bb1d1c709bd007a687912ab9f3b34 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Day 1 - We try new things.">
+
+<meta property="og:description"
+    content="Let's play with using Rust to process private to public notes.">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/notebook/day-1-try-new-things/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Let's play with using Rust to process private to public notes." />
+
+<meta name="description" content="Let's play with using Rust to process private to public notes.">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Day 1 - We try new things." />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/notebook.jpg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/notebook.jpg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Fri, 10 Mar 2023 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Public Notebook" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="Knowledge Management" />
+        
+        <meta property="article:tag" content="Notes" />
+        
+        <meta property="article:tag" content="WiP" />
+        
+        <meta property="article:tag" content="Build Tasks" />
+        
+        <meta property="article:tag" content="Rust" />
+        
+        <meta name="keywords" content="posts, projects, Knowledge Management, Notes, WiP, Build Tasks, Rust">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/notebook/day-1-try-new-things/",
+        "headline": "Day 1 - We try new things.",
+        "about": "Let's play with using Rust to process private to public notes.",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/notebook/day-1-try-new-things/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/notebook">Public Notebook</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Fri Mar 10 2023</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Day 1 - We try new things.
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-1">Day 1</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">Let's play with using Rust to process private to public notes.</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/notebook.jpg" alt="Leonardo Notebook">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://openverse.org/image/63171b3f-7846-4dcf-be03-af0658d0aacc?q=notebook" target="_blank">'Leonardo Notebook' by twid is licensed under CC BY-SA 2.0. </a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-1" tabindex="-1">Day 1</h2>
+<p>I have a private Notes file, but I want to start making some of those files public so other people can use the notes files that might be helpful. I also want to connect with folks involved in the <a href="https://www.fellowshipofthelink.org/" target="_blank">Fellowship of the Link</a> project who are putting together similar notes and personal knowledge management sites.</p>
+<p>I also want to move forward with learning new things! So let's start with something cool - Rust. Everyone is doing stuff with Rust lately. I want to pick it up. Ok. So <a href="https://www.rust-lang.org/learn/get-started" target="_blank">we start at the beginning</a>.</p>
+<p>Let's go with the basics!</p>
+<p><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></p>
+<p><code>1</code> to do a basic install.</p>
+<p>I want to add it to <code>zsh</code>, which is my CLI tool of choice.</p>
+<p>I can add it to my <code>export PATH=</code> setup. Just slip <code>$HOME/.cargo/env</code> in there.</p>
+<p>Ok. <code>cargo new notebox</code>. Set it up.</p>
+<p>It isn't running however.</p>
+<p><code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></p>
+<p><a href="https://developer.apple.com/forums/thread/711512" target="_blank">Looks like I may need to update xcode</a>.</p>
+<p>Ok that works.</p>
+<p>Next: we'll need to <a href="https://blog.logrocket.com/how-to-read-files-rust/" target="_blank">read some files</a> and parse some Markdown!</p>
+<p>Let's <a href="https://lib.rs/search?q=commonmark" target="_blank">look</a> at <a href="https://crates.io/keywords/markdown" target="_blank">some options</a></p>
+<p>I think, for the sake of trying stuff out here, we'll try <a href="https://lib.rs/crates/pulldown-cmark" target="_blank"><code>pulldown-cmark</code></a> and <a href="https://github.com/kivikakk/comrak" target="_blank"><code>comrak</code></a>.</p>
+<p>For <code>pulldown-cmark</code> we'll try one of their <a href="https://github.com/raphlinus/pulldown-cmark/blob/master/examples/string-to-string.rs" target="_blank">examples</a>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-6" id="skip-to-code-skip-day-1-try-new-things-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token namespace">pulldown_cmark<span class="token punctuation">::</span></span><span class="token punctuation">{</span>html<span class="token punctuation">,</span> <span class="token class-name">Options</span><span class="token punctuation">,</span> <span class="token class-name">Parser</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">let</span> markdown_input<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token string">"Hello world, this is a ~~complicated~~ *very simple* example."</span><span class="token punctuation">;</span><br>    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Parsing the following markdown string:\n{}"</span><span class="token punctuation">,</span> markdown_input<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Set up options and parser. Strikethroughs are not part of the CommonMark standard</span><br>    <span class="token comment">// and we therefore must enable it explicitly.</span><br>    <span class="token keyword">let</span> <span class="token keyword">mut</span> options <span class="token operator">=</span> <span class="token class-name">Options</span><span class="token punctuation">::</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    options<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">Options</span><span class="token punctuation">::</span><span class="token constant">ENABLE_STRIKETHROUGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">let</span> parser <span class="token operator">=</span> <span class="token class-name">Parser</span><span class="token punctuation">::</span><span class="token function">new_ext</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Write to String buffer.</span><br>    <span class="token keyword">let</span> <span class="token keyword">mut</span> html_output<span class="token punctuation">:</span> <span class="token class-name">String</span> <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">with_capacity</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token namespace">html<span class="token punctuation">::</span></span><span class="token function">push_html</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> html_output<span class="token punctuation">,</span> parser<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Check that the output is what we expected.</span><br>    <span class="token keyword">let</span> expected_html<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span><br>        <span class="token string">"&lt;p>Hello world, this is a &lt;del>complicated&lt;/del> &lt;em>very simple&lt;/em> example.&lt;/p>\n"</span><span class="token punctuation">;</span><br>    <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>expected_html<span class="token punctuation">,</span> <span class="token operator">&amp;</span>html_output<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Write result to stdout.</span><br>    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"\nHTML output:\n{}"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>html_output<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-try-new-things-6">Ok, that worked! A good sign. Let's pull the document file we want out of the file and into the string. We'll start with the README.</p>
+<p>What can I learn from reading the code while I do this?</p>
+<p>Well, it looks like one can do Rust typed. <code>: &amp;str</code> at the end of the var decleration seems to indicate an expected type. It <a href="https://doc.rust-lang.org/std/primitive.str.html" target="_blank">isn't a normal string</a>, not like what I get out of the <code>fs::read_to_string</code> function though. I can expect a <a href="https://doc.rust-lang.org/std/string/struct.String.html" target="_blank"><code>String</code></a> out of the <code>fs</code> function it seems.</p>
+<p>However, the Markdown parser expects the simpler type of string. I'll need to transform it. Looks like there's an easy way to handle this issue listed in the docs:</p>
+<blockquote>
+<p><code>String</code> implements <code>Deref&lt;Target = str&gt;</code>, and so inherits all of <code>str</code>’s methods. In addition, this means that you can pass a String to a function which takes a &amp;str by using an ampersand (&amp;)</p>
+</blockquote>
+<p>Ok! This works:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-5" id="skip-to-code-skip-day-1-try-new-things-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token namespace">pulldown_cmark<span class="token punctuation">::</span></span><span class="token punctuation">{</span>html<span class="token punctuation">,</span> <span class="token class-name">Options</span><span class="token punctuation">,</span> <span class="token class-name">Parser</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span></span>fs<span class="token punctuation">;</span><br><br><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">let</span> file_contents<span class="token punctuation">:</span> <span class="token class-name">String</span> <span class="token operator">=</span> <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_to_string</span><span class="token punctuation">(</span><span class="token string">"../README.md"</span><span class="token punctuation">)</span><br>        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"LogRocket: Should have been able to read the file"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">let</span> markdown_input<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>file_contents<span class="token punctuation">;</span><br>    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Parsing the following markdown string:\n{}"</span><span class="token punctuation">,</span> markdown_input<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Set up options and parser. Strikethroughs are not part of the CommonMark standard</span><br>    <span class="token comment">// and we therefore must enable it explicitly.</span><br>    <span class="token keyword">let</span> <span class="token keyword">mut</span> options <span class="token operator">=</span> <span class="token class-name">Options</span><span class="token punctuation">::</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    options<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">Options</span><span class="token punctuation">::</span><span class="token constant">ENABLE_STRIKETHROUGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">let</span> parser <span class="token operator">=</span> <span class="token class-name">Parser</span><span class="token punctuation">::</span><span class="token function">new_ext</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Write to String buffer.</span><br>    <span class="token keyword">let</span> <span class="token keyword">mut</span> html_output<span class="token punctuation">:</span> <span class="token class-name">String</span> <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">with_capacity</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token namespace">html<span class="token punctuation">::</span></span><span class="token function">push_html</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> html_output<span class="token punctuation">,</span> parser<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Check that the output is what we expected.</span><br>    <span class="token comment">// let expected_html: &amp;str =</span><br>    <span class="token comment">//     "&lt;p>Hello world, this is a &lt;del>complicated&lt;/del> &lt;em>very simple&lt;/em> example.&lt;/p>\n";</span><br>    <span class="token comment">// assert_eq!(expected_html, &amp;html_output);</span><br><br>    <span class="token comment">// Write result to stdout.</span><br>    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"\nHTML output:\n{}"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>html_output<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-try-new-things-5">But it doesn't parse out the YAML headmatter which isn't great!</p>
+<p>Between <code>pulldown_cmark</code> being old and not seeming to be interested in supporting <code>YAML</code> and the fact that there doesn't appear to be a big community interested in resolving that problem I'm not particularly inclined to resolve this issue.</p>
+<p>Let's try the next tool.</p>
+<p>Looking at the ways it can be rendered now. Interesting. I hadn't realized it but <code>println!</code> takes a string and has a way to deliver an argument into the string at the position of <code>{}</code>;</p>
+<p>Ok, this works:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-4" id="skip-to-code-skip-day-1-try-new-things-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">extern</span> <span class="token keyword">crate</span> <span class="token module-declaration namespace">comrak</span><span class="token punctuation">;</span><br><span class="token keyword">use</span> <span class="token namespace">comrak<span class="token punctuation">::</span></span><span class="token punctuation">{</span>markdown_to_html<span class="token punctuation">,</span> parse_document<span class="token punctuation">,</span> format_html<span class="token punctuation">,</span> <span class="token class-name">Arena</span><span class="token punctuation">,</span> <span class="token class-name">ComrakOptions</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token keyword">use</span> <span class="token namespace">comrak<span class="token punctuation">::</span>nodes<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token class-name">AstNode</span><span class="token punctuation">,</span> <span class="token class-name">NodeValue</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span></span>fs<span class="token punctuation">;</span><br><br><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">let</span> file_contents<span class="token punctuation">:</span> <span class="token class-name">String</span> <span class="token operator">=</span> <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_to_string</span><span class="token punctuation">(</span><span class="token string">"../README.md"</span><span class="token punctuation">)</span><br>        <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"LogRocket: Should have been able to read the file"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">let</span> markdown_input<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>file_contents<span class="token punctuation">;</span><br>    <span class="token comment">// println!("Parsing the following markdown string:\n{}", markdown_input);</span><br><br>	<span class="token comment">// The returned nodes are created in the supplied Arena, and are bound by its lifetime.</span><br>	<span class="token keyword">let</span> arena <span class="token operator">=</span> <span class="token class-name">Arena</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">let</span> root <span class="token operator">=</span> <span class="token function">parse_document</span><span class="token punctuation">(</span><br>		<span class="token operator">&amp;</span>arena<span class="token punctuation">,</span><br>		<span class="token string">"This is my input.\n\n1. Also my input.\n2. Certainly my input.\n"</span><span class="token punctuation">,</span><br>		<span class="token operator">&amp;</span><span class="token class-name">ComrakOptions</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">fn</span> <span class="token function-definition function">iter_nodes</span><span class="token operator">&lt;</span><span class="token lifetime-annotation symbol">'a</span><span class="token punctuation">,</span> <span class="token class-name">F</span><span class="token operator">></span><span class="token punctuation">(</span>node<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'a</span> <span class="token class-name">AstNode</span><span class="token operator">&lt;</span><span class="token lifetime-annotation symbol">'a</span><span class="token operator">></span><span class="token punctuation">,</span> f<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">F</span><span class="token punctuation">)</span><br>		<span class="token keyword">where</span> <span class="token class-name">F</span> <span class="token punctuation">:</span> <span class="token class-name">Fn</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'a</span> <span class="token class-name">AstNode</span><span class="token operator">&lt;</span><span class="token lifetime-annotation symbol">'a</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token function">f</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">for</span> c <span class="token keyword">in</span> node<span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token function">iter_nodes</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span><br><br>	<span class="token function">iter_nodes</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>node<span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span><br>		<span class="token keyword">match</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> node<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">borrow_mut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token punctuation">{</span><br>			<span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token class-name">NodeValue</span><span class="token punctuation">::</span><span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token keyword">ref</span> <span class="token keyword">mut</span> text<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>				<span class="token keyword">let</span> orig <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">replace</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>				<span class="token operator">*</span>text <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from_utf8</span><span class="token punctuation">(</span>orig<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"my"</span><span class="token punctuation">,</span> <span class="token string">"your"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">as_bytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to_vec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>			_ <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">let</span> <span class="token keyword">mut</span> html <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>	<span class="token function">format_html</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token class-name">ComrakOptions</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> html<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from_utf8</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token macro property">assert_eq!</span><span class="token punctuation">(</span><br>		result<span class="token punctuation">,</span><br>		<span class="token string">"&lt;p>This is your input.&lt;/p>\n\<br>		 &lt;ol>\n\<br>		 &lt;li>Also your input.&lt;/li>\n\<br>		 &lt;li>Certainly your input.&lt;/li>\n\<br>		 &lt;/ol>\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token keyword">let</span> basic_result <span class="token operator">=</span> <span class="token function">markdown_to_html</span><span class="token punctuation">(</span><span class="token string">"Hello, **世界**!"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token class-name">ComrakOptions</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>basic_result<span class="token punctuation">,</span><br>		 <span class="token string">"&lt;p>Hello, &lt;strong>世界&lt;/strong>!&lt;/p>\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"\nHTML output:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"\nBasic HTML output:\n{}"</span><span class="token punctuation">,</span> basic_result<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-try-new-things-4">Both ways allow you to render HTML. It looks good! Now let's take a look at the YAML parsing processs.</p>
+<p>Hmmmm, I tried adding:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-3" id="skip-to-code-skip-day-1-try-new-things-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust">	<span class="token keyword">let</span> file_result <span class="token operator">=</span> <span class="token function">markdown_to_html</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token class-name">ComrakOptions</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"\nFile HTML output:\n{}"</span><span class="token punctuation">,</span> file_result<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-1-try-new-things-3">But the output seems to just include the YAML frontmatter as HTML. Not at all what I had hoped. Ok is there a way to handle this using the Comrak package? Yeah! <a href="https://whoisryosuke.com/blog/2022/create-a-markdown-editor-using-rust-and-react/" target="_blank">It looks like I wasn't the only one looking at doing this</a>!</p>
+<p>Ok, looking through how this works and realizing this changes in place.</p>
+<p>I think I can zero out all the text and just output the FrontMatter in theory <a href="https://lib.rs/crates/yaml-rust" target="_blank">to process</a>. I suppose I could just pull it out. <a href="https://github.com/azdle/rust-frontmatter/blob/master/src/lib.rs" target="_blank">It looks like someone else has tried that</a>.</p>
+<p>The problem is that I want to replace in-place the various blocks. The way this seems to be done in Rust is with <code>std::mem::replace(blocks, vec![]);</code>. But when the block does not have a <code>vec</code> type but instead a more complex type it will refuse to run the program. Perhaps I can just pull it out outside the function?</p>
+<p>No, that doesn't work.</p>
+<p>I want to try to figure this out using the tool at hand. I think it would be interesting. How can I best zero out those blocks? Could I use <code>std::mem::forget</code>?</p>
+<p>Doesn't seem to work.</p>
+<p>Oh look though I can do <code>*text = vec![];</code> to eliminate the Text nodes. I'm guessing it reassigns it back to the node effectively?</p>
+<p>It looks like I <em>could</em> replace it with a default using <code>Default::default()</code> or <code>std::mem::take</code>, but there's no way to do so right now because the crate doesn't define a default state. Interesting!</p>
+<p>Ok, well, this is almost enough for now. Let's try that frontmatter package: <code>cargo add frontmatter</code>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-2" id="skip-to-code-skip-day-1-try-new-things-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust">    <span class="token keyword">let</span> yaml_test_result <span class="token operator">=</span> <span class="token namespace">frontmatter<span class="token punctuation">::</span></span><span class="token function">parse</span><span class="token punctuation">(</span>markdown_input<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token macro property">dbg!</span><span class="token punctuation">(</span>yaml_test_result<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-1-try-new-things-2">Looks like it works? I don't know the <code>dbg</code> output well enough to fully understand what is happening here.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-try-new-things-1" id="skip-to-code-skip-day-1-try-new-things-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>src/main.rs:91<span class="token punctuation">]</span> yaml_test_result <span class="token operator">=</span> Ok<span class="token punctuation">(</span><br>    Some<span class="token punctuation">(</span><br>        Hash<span class="token punctuation">(</span><br>            <span class="token punctuation">{</span><br>                String<span class="token punctuation">(</span><br>                    <span class="token string">"aliases"</span>,<br>                <span class="token punctuation">)</span>: Array<span class="token punctuation">(</span><br>                    <span class="token punctuation">[</span><br>                        String<span class="token punctuation">(</span><br>                            <span class="token string">"Note Publisher"</span>,<br>                        <span class="token punctuation">)</span>,<br>                        String<span class="token punctuation">(</span><br>                            <span class="token string">"NotePub"</span>,<br>                        <span class="token punctuation">)</span>,<br>                        String<span class="token punctuation">(</span><br>                            <span class="token string">"NotePublisher"</span>,<br>                        <span class="token punctuation">)</span>,<br>                        String<span class="token punctuation">(</span><br>                            <span class="token string">"Notebook"</span>,<br>                        <span class="token punctuation">)</span>,<br>                    <span class="token punctuation">]</span>,<br>                <span class="token punctuation">)</span>,<br>                String<span class="token punctuation">(</span><br>                    <span class="token string">"public"</span>,<br>                <span class="token punctuation">)</span>: Boolean<span class="token punctuation">(</span><br>                    true,<br>                <span class="token punctuation">)</span>,<br>            <span class="token punctuation">}</span>,<br>        <span class="token punctuation">)</span>,<br>    <span class="token punctuation">)</span>,<br><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-try-new-things-1">Ok, well, I found out a whole bunch of random interesting stuff about Rust, so mission accomplished in that sense! We'll get back to processing this later.</p>
+<p><code>git commit -am &quot;Wild and potentially useless experementation&quot;</code></p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    
+        
+        
+        <div class="pagination">
+            <a href="javascript:void(0)" class="pagination-link  cursor-default disabled-link">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/knowledge-management">Knowledge Management</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/notes">Notes</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/build-tasks">Build Tasks</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/rust">Rust</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
