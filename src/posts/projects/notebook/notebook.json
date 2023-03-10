@@ -1,0 +1,11 @@
+{
+	"project": "Public Notebook",
+	"description": "I want to have a public facing notes site I can use to coordinate with other notes and people's knowledge management sites.",
+	"repo": "https://github.com/AramZS/notebook",
+	"branch": "main",
+	"featuredImage": "notebook.jpg",
+	"featuredImageCredit": "'Leonardo Notebook' by twid is licensed under CC BY-SA 2.0. ",
+	"featuredImageLink": "https://openverse.org/image/63171b3f-7846-4dcf-be03-af0658d0aacc?q=notebook",
+	"featuredImageAlt": "Leonardo Notebook",
+	"now": true
+}
