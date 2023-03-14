@@ -225,7 +225,7 @@ Ok, well, this is almost enough for now. Let's try that frontmatter package: `ca
     dbg!(yaml_test_result);
 ```
 
-Looks like it works? I don't know the `dbg` output well enough to fully understand what is happening here.
+Looks like it works? I don't know the `dbg` output what is shown when I do `cargo run` in the CLI well enough to fully understand what is happening here.
 
 ```bash
 [src/main.rs:91] yaml_test_result = Ok(

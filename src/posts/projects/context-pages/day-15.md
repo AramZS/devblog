@@ -247,6 +247,17 @@ const urlRegex =
 	/^(?:[\t\- ]*)(?<main>(\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))(?=\n|\r)$)+)/gim;
 ```
 
+<hr />
+
+EDIT (3/14/2023): *Don't use the above Regex*. It turns out to have a [catastrophic](https://www.regular-expressions.info/catastrophic.html) [backtracking](https://javascript.info/regexp-catastrophic-backtracking) problem caused when the line ends on a space. Here is the Regex I quickly switched to, though I am still testing:
+
+```javascript
+const urlRegex =
+	/^([\t\- ]*)*(?<main>(\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’])))+)/gim;
+```
+
+<hr />
+
 Here's how I handled the walkthrough of the regex results:
 
 ```javascript
