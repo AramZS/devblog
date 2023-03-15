@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 14 Mar 2023 14:49:49 GMT</lastBuildDate>
+	<lastBuildDate>Wed, 15 Mar 2023 14:02:41 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,34 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Day 2 - More Futzing</title>
+		<link>https://fightwithtools.dev/posts/projects/notebook/day-2-more-futzing/?source=rss</link>
+		<pubDate>Wed, 15 Mar 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/notebook/day-2-more-futzing/</guid>
+		<description>Let's play with using Rust to process private to public notes.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-2" tabindex="-1">Day 2</h2>
+<p>Ok, let's play around with Rust some more and see what we can figure out while futzing around blind. We have to figure out how to handle this object.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-2-more-futzing/#code-skip-day-2-more-futzing-1" id="skip-to-code-skip-day-2-more-futzing-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>src/main.rs:91<span class="token punctuation">]</span> yaml_test_result <span class="token operator">=</span> Ok<span class="token punctuation">(</span><br />    Some<span class="token punctuation">(</span><br />        Hash<span class="token punctuation">(</span><br />            <span class="token punctuation">{</span><br />                String<span class="token punctuation">(</span><br />                    <span class="token string">"aliases"</span>,<br />                <span class="token punctuation">)</span>: Array<span class="token punctuation">(</span><br />                    <span class="token punctuation">[</span><br />                        String<span class="token punctuation">(</span><br />                            <span class="token string">"Note Publisher"</span>,<br />                        <span class="token punctuation">)</span>,<br />                        String<span class="token punctuation">(</span><br />                            <span class="token string">"NotePub"</span>,<br />                        <span class="token punctuation">)</span>,<br />                        String<span class="token punctuation">(</span><br />                            <span class="token string">"NotePublisher"</span>,<br />                        <span class="token punctuation">)</span>,<br />                        String<span class="token punctuation">(</span><br />                            <span class="token string">"Notebook"</span>,<br />                        <span class="token punctuation">)</span>,<br />                    <span class="token punctuation">]</span>,<br />                <span class="token punctuation">)</span>,<br />                String<span class="token punctuation">(</span><br />                    <span class="token string">"public"</span>,<br />                <span class="token punctuation">)</span>: Boolean<span class="token punctuation">(</span><br />                    true,<br />                <span class="token punctuation">)</span>,<br />            <span class="token punctuation">}</span>,<br />        <span class="token punctuation">)</span>,<br />    <span class="token punctuation">)</span>,<br /><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-2-more-futzing-1"><code>Ok</code> is a way to handle error checking. <a href="https://doc.rust-lang.org/std/result/" target="_blank">Useful info on how to deal with it here</a>. It looks like I want to check it, then <code>unwrap()</code> it. Ok. I also have to remove the first <code>dbg!</code> because it takes ownership of the <code>yaml_test_result</code> object.</p>
+<p>Next, what to do with <code>Some</code>? It appears to be a way to return a legitimate response from a function when it could also potentially respond with a null value, since <a href="https://stackoverflow.com/questions/24771655/what-are-some-and-none" target="_blank">there isn't another way to hold that according to stack overflow</a>. Rust has some useful tools for processing <code>Some</code> it seems!</p>
+<blockquote>
+<p>Ending the expression with ? will result in the Some’s unwrapped value, unless the result is None, in which case None is returned early from the enclosing function.</p>
+</blockquote>
+<p data-wordfix="true">Hmmmm. That's not quite right. It looks like we probably need to further unwrap it? Perhaps with <code>unwrap_or_else</code>? Hmmmm, not sure how to use that. I could just <code>unwrap</code> again and deal with the Hash, but that probably isn't good handling.</p>
+<p><code>git commit -am &quot;Continuing to figure out rust&quot;</code></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Day 1 - We try new things.</title>
