@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Wed, 15 Mar 2023 14:02:41 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 16 May 2023 16:31:00 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,42 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Day 3 - Back at it</title>
+		<link>https://fightwithtools.dev/posts/projects/notebook/day-3-back-at-it/?source=rss</link>
+		<pubDate>Thu, 11 May 2023 02:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/notebook/day-3-back-at-it/</guid>
+		<description>Let's play with using Rust to process private to public notes.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-2" tabindex="-1">Day 2</h2>
+<p>Ok, I think I've got stuff basically working!</p>
+<p><code>git commit -am &quot;Adding more conventions.&quot;</code></p>
+<p>So I got the object, I can read metadata out of the file. Now I need to do something with that file! Step one, let's copy that file! I may want to edit it at the point of copying it over. I've read the file into a variable, so that should be the first step. Now how to write it?</p>
+<p>First I want to check if the YAML public value is true. Hey, is this my first Rust <code>if</code> statement? I think so. Ok, so we cast it as <code>bool</code> and unrap it is what I'm seeing. Let's try that.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-3-back-at-it/#code-skip-day-3-back-at-it-2" id="skip-to-code-skip-day-3-back-at-it-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust">    <span class="token keyword">if</span> yamlObj<span class="token punctuation">[</span><span class="token string">"public"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">as_bool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Public is true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    <span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-3-back-at-it-2">Hey, it works! Ok, now I want to write it.</p>
+<p>Ok, just like <code>node</code> there's a clearly labeled <code>fs</code> library. Looks like it has a basic <code>write</code> function. Let's give it a try!</p>
+<p>I've been passing everything (pretty much) by reference. But I'm actually done with this variable, so good behavior would be to actually clear it out when I'm done with it. So I should pass it not by reference, right? Let's try that. I've used <code>expect</code> in the past to handle errors, but the documentation says it isn't the preferred way to handle it. It looks like <a href="https://doc.rust-lang.org/std/result/" target="_blank">there is chaining to handle errors</a> instead. Hmmm, whatever the syntax is supposed to be here, I'm not getting it right. I'll <a href="https://doc.rust-lang.org/rust-by-example/error/option_unwrap/and_then.html" target="_blank">have</a> <a href="https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html" target="_blank">to look</a> <a href="https://dev.to/nathan20/how-to-handle-errors-in-rust-a-comprehensive-guide-1cco" target="_blank">around</a>.</p>
+<p>Ok, it might not be the right error handling process for this. It looks like <a href="https://dev.to/nathan20/how-to-handle-errors-in-rust-a-comprehensive-guide-1cco" target="_blank">perhaps</a> I could use a <code>?</code> after to early return an error. But that's not great, I want to do something with the error. So a control structure for that appears to be <a href="https://doc.rust-lang.org/book/ch06-02-match.html" target="_blank">match</a>. It looks like <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html" target="_blank">this is the suggested way to handle errors in a recoverable way</a>.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-3-back-at-it/#code-skip-day-3-back-at-it-1" id="skip-to-code-skip-day-3-back-at-it-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust">    <span class="token keyword">if</span> yamlObj<span class="token punctuation">[</span><span class="token string">"public"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">as_bool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Public is true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />        <span class="token keyword">let</span> write_result <span class="token operator">=</span> <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"../src/notes/README.md"</span><span class="token punctuation">,</span> file_contents<span class="token punctuation">)</span><span class="token punctuation">;</span><br />        <span class="token keyword">let</span> written_file <span class="token operator">=</span> <span class="token keyword">match</span> write_result <span class="token punctuation">{</span><br />            <span class="token class-name">Ok</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token operator">=></span> file<span class="token punctuation">,</span><br />            <span class="token class-name">Err</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token macro property">panic!</span><span class="token punctuation">(</span><span class="token string">"Problem opening the file: {:?}"</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">,</span><br />        <span class="token punctuation">}</span><span class="token punctuation">;</span><br />    <span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-3-back-at-it-1">Hey, look at that, I wrote a file! It works!</p>
+<p><code>git commit -am &quot;Write a file, heck yes&quot;</code></p>
+<p>And yeah, if <code>public</code> is <code>false</code> it won't write the file. Good first step!</p>
+<p>Ok, what happens if <code>public</code> is not a bool, but is instead one of the directives I'm planning to use? How do I take a value that may or may not be a bool and handle it, optionally turning it into a <code>bool</code> or using it like a <code>bool</code>? I think the right answer is using <code>match</code>?</p>
+<p>Maybe not, I think I can use <a href="https://doc.rust-lang.org/std/any/trait.Any.html" target="_blank"><code>Any</code></a> and either <a href="https://doc.rust-lang.org/std/any/trait.Any.html#method.downcast-1" target="_blank"><code>downcast</code></a> it or <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html#method.downcast" target="_blank">handle it in a <code>Box</code></a>.</p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>Day 2 - More Futzing</title>
