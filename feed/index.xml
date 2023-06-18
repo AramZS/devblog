@@ -146,6 +146,7 @@
 <p><code>npm run build</code></p>
 <p>Oh, that failed because I tried to use <code>sh</code> for one of my code blocks and that isn't a language supported by Prism. I'll switch that to <code>bash</code> instead and try again.</p>
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Update project to 16&quot;</code></a></p>
+<p>That worked!</p>
 </content>
   </entry>
   
