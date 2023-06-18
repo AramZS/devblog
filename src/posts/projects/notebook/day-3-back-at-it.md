@@ -16,7 +16,7 @@ tags:
 2. Create website that treats them like a wiki and links pages together
 3. Support the basic YAML in https://github.com/AramZS/notebook/blob/main/README.md
 
-## Day 2
+## Day 3
 
 Ok, I think I've got stuff basically working!
 
