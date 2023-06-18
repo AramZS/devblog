@@ -5,12 +5,218 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2023-05-11T02:59:43Z</updated>
+  <updated>2023-06-19T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Update build process to Node 16.</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/update-to-node-16/"/>
+    <updated>2023-06-19T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/update-to-node-16/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a per-project <code>/now</code> page.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" class="markdown-todo" /> Create a whole-site aggregated <code>/now</code> page.</p>
+</li>
+</ul>
+<h2 id="day-44" tabindex="-1">Day 44</h2>
+<p>My github actions were running on Node 12 apparently and GitHub doesn't support that anymore. Let's update to 16 as required.</p>
+<p>I use <code>nvm</code> to manage my local project Node version so:</p>
+<p><code>nvm use 16</code></p>
+<p>I'm going to want to make sure I can build this locally first so:</p>
+<p><code>npm ci</code></p>
+<p><code>npm run build</code></p>
+<p>Oh, that failed because I tried to use <code>sh</code> for one of my code blocks and that isn't a language supported by Prism. I'll switch that to <code>bash</code> instead and try again.</p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Update project to 16&quot;</code></a></p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>Day 5 - Iterate some dirs cast some hashmaps.</title>
+    <link href="https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/"/>
+    <updated>2023-06-13T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-5" tabindex="-1">Day 5</h2>
+<p>Ok, so I found the path. Now I can try and iterate through the files and folders in that path. First step, is it a folder at all?</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/#code-skip-day-5-iterate-some-dirs-4" id="skip-to-code-skip-day-5-iterate-some-dirs-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_dir</span><span class="token punctuation">(</span>note_path<span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-5-iterate-some-dirs-4">Ok, that should get the dir. But it also consumes the value. I think the best thing to do is <code>.clone</code> the variable so it can be used down the line. Now I need to do error handling and have an <code>else</code>. I can create a dir if none is found and if one isn't, I'll iterate through the files and folders in the path and find one. Then when I walk through that list I can figure out if it is a file or a folder and if it is a file I can process it with a function. I'll need more complex loops as well so I'll pull this into a function all its own later. For now, let's just get it working.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/#code-skip-day-5-iterate-some-dirs-3" id="skip-to-code-skip-day-5-iterate-some-dirs-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust">    <span class="token keyword">if</span> <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_dir</span><span class="token punctuation">(</span>note_path<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">is_err</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />        <span class="token comment">// Create the notes directory if none is found.</span><br />        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"No notes directory found. Creating one now."</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />        <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">create_dir</span><span class="token punctuation">(</span>note_path<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"Failed to create notes directory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />        <span class="token comment">// Parse the notes directory into an iterable object that we can walk through and take actions on.</span><br />        <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_dir</span><span class="token punctuation">(</span>note_path<span class="token punctuation">)</span><br />            <span class="token punctuation">.</span><span class="token function">and_then</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>op<span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span><br />                <span class="token keyword">for</span> entry <span class="token keyword">in</span> op <span class="token punctuation">{</span><br />                    <span class="token keyword">let</span> entry <span class="token operator">=</span> entry<span class="token operator">?</span><span class="token punctuation">;</span><br />                    <span class="token keyword">let</span> path <span class="token operator">=</span> entry<span class="token punctuation">.</span><span class="token function">path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />                    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Name: {}"</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />                <span class="token punctuation">}</span><br />                <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br />            <span class="token punctuation">}</span><span class="token punctuation">)</span><br />            <span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"Failed to read notes directory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    <span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-5-iterate-some-dirs-3">Ok, look at that. I have a list of directories and files! Now I need to detect if it is a dir or file and take the next step. It <a href="https://stackoverflow.com/questions/30309100/how-to-check-if-a-given-path-is-a-file-or-directory" target="_blank">looks like the <code>fs</code> library has a <code>metadata</code> function</a> that I can use to find out! Once I have that path, I can pass it to my function to parse it. I see there are some options for things I can do with that <code>path</code> var. Should I be using <a href="https://doc.rust-lang.org/std/ffi/struct.OsStr.html" target="_blank">OsStr</a>? What's the difference between that and a normal string? Why should I use it? It's pretty unclear.</p>
+<p>Wait I just realized that I don't only have a bool value in public. My notes have the public YAML property with a bunch of different properties:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/#code-skip-day-5-iterate-some-dirs-2" id="skip-to-code-skip-day-5-iterate-some-dirs-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-markdown"><code class="language-markdown">- `public:` This note is intended to be published.<br />	- Notes marked `false` or with no value will never have any part published.<br />	- Notes marked `true` will have their whole body published along with metadata.<br />	- Notes marked `partial-public` will have any `:::{public} content :::` content blocks published and no metadata other than title.<br />	- Notes marked `partial-private` will have all content except for `:::{private} content :::` content blocks published and all metadata.<br />	- Notes marked `true` will also follow the `private` directives.</code></pre>
+<p id="code-skip-day-5-iterate-some-dirs-2">Ok, so how do I deal--in a strongly typed system--with the fact that I have a value that can be more than one type? Wait... more than that, what happens where the property isn't there? I need to do a check.</p>
+<p>It looks like in Rust the best way to parse an object with a set of defined but not consistent properties is a hashmap. The YAML library I'm using has a function to transform the YAML object into a linked hashmap. I can then use that to check for the property and then check the value of the property.</p>
+<p>Huh... it's still not working. I have the LinkedHashMap but <code>contains_key</code> won't just take a string. It looks like I have to transform my key into a yaml-y string from looking at the code.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-5-iterate-some-dirs/#code-skip-day-5-iterate-some-dirs-1" id="skip-to-code-skip-day-5-iterate-some-dirs-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> yamlHashmap <span class="token operator">=</span> <span class="token operator">&amp;</span>yamlObj<span class="token punctuation">.</span><span class="token function">as_hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token keyword">let</span> keycheck <span class="token operator">=</span> yamlHashmap<span class="token punctuation">.</span><span class="token function">contains_key</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token class-name">Yaml</span><span class="token punctuation">::</span><span class="token function">from_str</span><span class="token punctuation">(</span><span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-5-iterate-some-dirs-1">Yeah, that works! I can check if the key exists now. And if it does I can start doing stuff with it. But will Rust let me cast it as a bool even when it has a value for the purposes of the first check? Can I do <code>if !keycheck || false == yamlObj[&quot;public&quot;].as_bool().unwrap()</code>?</p>
+<p>Ok, I gotta get off the computer so I'll find out next workday!</p>
+<p><code>git commit -am &quot;Improving md processer for my notes.&quot;</code></p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>Day 4 - Getting folders in here</title>
+    <link href="https://fightwithtools.dev/posts/projects/notebook/day-4-getting-folders-in-here/"/>
+    <updated>2023-05-26T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/notebook/day-4-getting-folders-in-here/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-4" tabindex="-1">Day 4</h2>
+<p>I'd like to change <code>option_to_hold_file</code> to an ANY? I'm not sure how best to do that, but let's set up to actually do something that needs that process.</p>
+<p>Ok, I'm at the point where I need to start scanning folders. Only one thing... I don't want to leak my folder structure from my system, so I need to store it as an environmental variable. What's the best way to do that? Does Rust have some equivalent of dotenv?</p>
+<p>Looks like <a href="https://lib.rs/crates/dotenvy" target="_blank">it does</a>!</p>
+<p>Ok, it loads, but I don't see any result. Have I misconfigured it or have I done something wrong?</p>
+<p>Looks like the recommended way to run the function is <code>dotenvy::dotenv()?;</code> but that only gives the good result not the error. I can drop that question mark and get a <code>Result</code> object which I can check for an <code>ok</code> or an error.</p>
+<p>Cool so now it looks like this:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-4-getting-folders-in-here/#code-skip-day-4-getting-folders-in-here-2" id="skip-to-code-skip-day-4-getting-folders-in-here-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> env_result <span class="token operator">=</span> <span class="token namespace">dotenvy<span class="token punctuation">::</span></span><span class="token function">dotenv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token keyword">if</span> <span class="token punctuation">(</span>env_result<span class="token punctuation">.</span><span class="token function">is_ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br />	<span class="token macro property">dbg!</span><span class="token punctuation">(</span>env_result<span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br />	<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Env tool failed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />	<span class="token macro property">dbg!</span><span class="token punctuation">(</span>env_result<span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-4-getting-folders-in-here-2">This does the bad thing I want it to do, which is I want it to freak out and stop execution and tell me what the heck the failure is.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/notebook/day-4-getting-folders-in-here/#code-skip-day-4-getting-folders-in-here-1" id="skip-to-code-skip-day-4-getting-folders-in-here-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash">Env tool failed<br />thread <span class="token string">'main'</span> panicked at <span class="token string">'called <span class="token variable"><span class="token variable">`</span>Result::unwrap<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token variable">`</span></span> on an <span class="token variable"><span class="token variable">`</span>Err<span class="token variable">`</span></span> value: LineParse("<span class="token entity" title="\&quot;">\"</span>../../../Dropbox<span class="token entity" title="\\">\\</span> <span class="token entity" title="\\">\\</span>(redacted)/redacted path to notes/Notes<span class="token entity" title="\&quot;">\"</span>", 20)'</span>, src/main.rs:19:25<br />note: run with <span class="token variable"><span class="token variable">`</span><span class="token assign-left variable">RUST_BACKTRACE</span><span class="token operator">=</span><span class="token number">1</span><span class="token variable">`</span></span> environment variable to display a backtrace</code></pre>
+<p id="code-skip-day-4-getting-folders-in-here-1">Likely not good error handling, but good at doing what I want, which is to give me a useful error.</p>
+<p>Ok, so I <em>am</em> calling the function correctly but it doesn't like my string. I pulled that string from the autocomplete for the path by OSX. But perhaps it doesn't need to handle things that way. Ok. let's try some test strings.</p>
+<p>Ok, removing the escaping required by OSX terminal does seem to make the string workable for this process. But can it give me a path to query the directory? Let's see!</p>
+<p>Fun aside here: Though the rest of the ENV vars come out in alphabetical order when walking the keys, the one this adds gets put at the bottom of the list. Almost thought it didn't work when that happened, glad I checked.</p>
+</content>
+  </entry>
   
   <entry>
     <title>Day 3 - Back at it</title>
@@ -23,7 +229,7 @@
 <li>Create website that treats them like a wiki and links pages together</li>
 <li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
 </ol>
-<h2 id="day-2" tabindex="-1">Day 2</h2>
+<h2 id="day-3" tabindex="-1">Day 3</h2>
 <p>Ok, I think I've got stuff basically working!</p>
 <p><code>git commit -am &quot;Adding more conventions.&quot;</code></p>
 <p>So I got the object, I can read metadata out of the file. Now I need to do something with that file! Step one, let's copy that file! I may want to edit it at the point of copying it over. I've read the file into a variable, so that should be the first step. Now how to write it?</p>
