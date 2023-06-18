@@ -42,7 +42,7 @@ if (env_result.is_ok()) {
 
 This does the bad thing I want it to do, which is I want it to freak out and stop execution and tell me what the heck the failure is.
 
-```sh
+```bash
 Env tool failed
 thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: LineParse("\"../../../Dropbox\\ \\(redacted)/redacted path to notes/Notes\"", 20)', src/main.rs:19:25
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
