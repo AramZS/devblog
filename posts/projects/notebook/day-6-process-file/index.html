@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Context Center Timelines - Day 10 - Setting up individual timeline items starter pages.</title>
+        <title>Day 6 - Process YAML to decide if the file is public.</title>
         
             <!-- Sub Template: post -->
         
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Context Center Timelines - Day 10 - Setting up individual timeline items starter pages.">
+    content="Day 6 - Process YAML to decide if the file is public.">
 
 <meta property="og:description"
-    content="Initial individual pages for expansion.">
+    content="Let's play with using Rust to process private to public notes.">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-timelines/day-10-back-to-individual-timeline-items/" />
+    content="https://fightwithtools.dev/posts/projects/notebook/day-6-process-file/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -50,21 +50,21 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Initial individual pages for expansion." />
+<meta name="twitter:description" content="Let's play with using Rust to process private to public notes." />
 
-<meta name="description" content="Initial individual pages for expansion.">
+<meta name="description" content="Let's play with using Rust to process private to public notes.">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Context Center Timelines - Day 10 - Setting up individual timeline items starter pages." />
+<meta name="twitter:title" content="Day 6 - Process YAML to decide if the file is public." />
 
 
 
-<meta property="og:image" content="https://fightwithtools.dev/img/timeline.jpg" />
-<meta name="twitter:image" content="https://fightwithtools.dev/img/timeline.jpg" />
+<meta property="og:image" content="https://fightwithtools.dev/img/notebook.jpg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/notebook.jpg" />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sat, 29 Oct 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Wed, 21 Jun 2023 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -84,7 +84,7 @@
 
     
     <!-- Article section isn't a required property, but it can be good to have -->
-    <meta property="article:section" content="Context Timelines" />
+    <meta property="article:section" content="Public Notebook" />
     
 
     
@@ -94,17 +94,19 @@
         
         <meta property="article:tag" content="projects" />
         
-        <meta property="article:tag" content="11ty" />
+        <meta property="article:tag" content="Knowledge Management" />
         
-        <meta property="article:tag" content="Node" />
-        
-        <meta property="article:tag" content="Timelines" />
-        
-        <meta property="article:tag" content="SSG" />
+        <meta property="article:tag" content="Notes" />
         
         <meta property="article:tag" content="WiP" />
         
-        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, WiP">
+        <meta property="article:tag" content="Build Tasks" />
+        
+        <meta property="article:tag" content="Rust" />
+        
+        <meta property="article:tag" content="YAML" />
+        
+        <meta name="keywords" content="posts, projects, Knowledge Management, Notes, WiP, Build Tasks, Rust, YAML">
     
 
 
@@ -113,9 +115,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-10-back-to-individual-timeline-items/",
-        "headline": "Context Center Timelines - Day 10 - Setting up individual timeline items starter pages.",
-        "about": "Initial individual pages for expansion.",
+        "url": "https://fightwithtools.dev/posts/projects/notebook/day-6-process-file/",
+        "headline": "Day 6 - Process YAML to decide if the file is public.",
+        "about": "Let's play with using Rust to process private to public notes.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -189,7 +191,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-10-back-to-individual-timeline-items/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/notebook/day-6-process-file/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -200,20 +202,20 @@
                             <div id="site-name-subhead">
                                 <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
                                 
-                                    > <a id="project-link" href="https://fightwithtools.dev/projects/context-timelines">Context Timelines</a>
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/notebook">Public Notebook</a>
                                 
                             </div>
                         
                         
                             <!-- post mode -->
-                            <time>Sat Oct 29 2022</time>
+                            <time>Wed Jun 21 2023</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Context Center Timelines - Day 10 - Setting up individual timeline items starter pages.
+                            Day 6 - Process YAML to decide if the file is public.
                         </h1>
                         
                         
@@ -232,19 +234,19 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-10">Day 10</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-6">Day 6</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Initial individual pages for expansion.</div>
+        <div id="post-description">Let's play with using Rust to process private to public notes.</div>
 
         
     <figure class="figure preview-image">
-        <img src="https://fightwithtools.dev/img/timeline.jpg" alt="Sass project logo.">
+        <img src="https://fightwithtools.dev/img/notebook.jpg" alt="Leonardo Notebook">
         
             <figcaption class="figcaption">
                 
                  | <em>
-                        <a href="https://www.flickr.com/photos/32307961@N06/3525061913" target="_blank">'Test Infographics timeline NIT' by Ciro Ip is licensed under CC BY 2.0.</a>
+                        <a href="https://openverse.org/image/63171b3f-7846-4dcf-be03-af0658d0aacc?q=notebook" target="_blank">'Leonardo Notebook' by twid is licensed under CC BY-SA 2.0. </a>
                     </em> | 
             </figcaption>
         
@@ -257,33 +259,20 @@
                     
                         <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
-<li>Create timeline pages where one can see the whole timeline of a particular event</li>
-<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
-<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
 </ol>
-<ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Auto-create social-media-ready screenshots of a timeline item</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate with Contexter to have context-full link cards in the timeline</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Leverage the Live Blog format of Schema dot org</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Fast Scroller by Month and Year</li>
-</ul>
-<h2 id="day-10" tabindex="-1">Day 10</h2>
-<p>Ok, I want to set it up the entry page. I've got the whole page looking like an empty timeline, but I need the individual item filled in.</p>
-<p>To do that, I'll need to pull the entry off of the global object. To make it so I can reuse my templates, I'll need to cast the entry into the right object.</p>
-<p>I seem to be able to set it up during the Eleventy Computed phase, but placing it on the <code>entry</code> object just lets it get overwritten down the line apparently.</p>
-<p>Let's try using the <code>console</code> filter to see what the object is on the page.</p>
-<p>Hmmm it isn't getting overwritten in the template, it's getting overwritten during the eleventyComputed phase by... I think my own changes? I'll have to break the link between the objects. I can cast it to a string and back. Then set the <code>entry</code> object at the template level instead.</p>
-<p>It looks like this might work? But now I'm getting a new error <code>Cannot read property 'posts' of undefined</code> but I don't know where a <code>posts</code> property could be coming from.</p>
-<p>Huh, looks like it is my debug tool getting empty values. What's happening to my new object.</p>
-<p>I can fix that, but when I echo the new object I'm building, I'm getting the overwritten object still. What is happening?</p>
-<p>It looks like somehow the object is being overwritten globally. My timeline is no itself broken along with the individual item. But what could be doing that? Why is it only the title?</p>
-<p>Ok, let's just create a new object instead of trying to overwrite the built in properties. That seems to work, but I'm still missing some fields.</p>
-<p>It means I'm going to have to do some weird extra stuff where I set variables for use in the various reusable template parts. Ok, plenty to do, especially around the <code>content</code> property, which acts pretty oddly.</p>
-<p>But it does look like it is working!</p>
-<p><code>git commit -am &quot;Getting standalone timeline item pages working and using variables more actively throughout&quot;</code></p>
+<h2 id="day-6" tabindex="-1">Day 6</h2>
+<p>Ok I want to try out my new function. That means getting everything up and running. Looks like I have one issue, my use of the new <code>md_file_transformer</code> function isn't working for my processing. I have to deal with turning the <code>PathBuf</code> output I'm getting from the directory walk into a string I can process. I thought I could use <code>to_str</code> but I guess not. Let's take a look at <a href="https://doc.rust-lang.org/std/path/struct.PathBuf.html" target="_blank">PathBuf</a>. Huh. Docs say <code>to_str</code> should work. Yet, the Rust compiler isn't working. Hmmm, it says <code>expected struct &quot;std::string::String&quot; found enum &quot;Option&lt;&amp;str&gt;&quot;</code>.</p>
+<p>Ok, so I need to transform it into a string. Looks like <a href="https://stackoverflow.com/questions/37388107/how-to-convert-the-pathbuf-to-string" target="_blank">there are a few options</a>. I'll use <code>path.into_os_string().into_string().unwrap()</code>. It doesn't look like the best way to do it, especially if the user is on a Windows machine, but I'm not sure what the best alternative is. I suspect there is a way to pass the <code>PathBuf</code> direction into <code>read_to_string</code> in <code>fs</code>. But I can fiddle with that later, I'd like to move on from this for now.</p>
+<p>Ok, that got me to the next problem. <code>if !keycheck || false == yamlObj[&quot;public&quot;].as_bool().unwrap() {</code> doesn't work if the value isn't a boolean. Oh yeah, I could use a <code>match</code> process, similar to Javascript <code>switch</code>. Ok, I want to further symplify it a bit. I'll set up another function to do the actual writing of the file in the <code>match</code>.</p>
+<p>Ok, I think I've gotten it working:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-6-process-file-1" id="skip-to-code-skip-day-6-process-file-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> keycheck <span class="token operator">=</span> yamlHashmap<span class="token punctuation">.</span><span class="token function">contains_key</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token class-name">Yaml</span><span class="token punctuation">::</span><span class="token function">from_str</span><span class="token punctuation">(</span><span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// as_hash().unwrap().contains_key("public");</span><br><span class="token macro property">dbg!</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>yamlObj<span class="token punctuation">[</span><span class="token string">"public"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Check if variable is true</span><br><span class="token keyword">if</span> <span class="token operator">!</span>keycheck <span class="token punctuation">{</span><br>	<span class="token comment">// Not a public ready file.</span><br><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>	<span class="token keyword">match</span> yamlObj<span class="token punctuation">[</span><span class="token string">"public"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">as_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token string">"true"</span> <span class="token operator">=></span> <span class="token function">public_file_transform</span><span class="token punctuation">(</span>single_file_path<span class="token punctuation">,</span> markdown_input<span class="token punctuation">,</span> <span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		<span class="token string">"partial-public"</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token function">public_file_transform</span><span class="token punctuation">(</span>single_file_path<span class="token punctuation">,</span> markdown_input<span class="token punctuation">,</span> <span class="token string">"partial-public"</span><span class="token punctuation">)</span><br>		<span class="token punctuation">}</span><br>		<span class="token string">"partial-private"</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token function">public_file_transform</span><span class="token punctuation">(</span>single_file_path<span class="token punctuation">,</span> markdown_input<span class="token punctuation">,</span> <span class="token string">"partial-private"</span><span class="token punctuation">)</span><br>		<span class="token punctuation">}</span><br>		<span class="token string">"false"</span> <span class="token operator">=></span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Public is false"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>		_ <span class="token operator">=></span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Public is not an expected value"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-6-process-file-1">Now I'll have to build out <code>public_file_transform</code> to do the actual work of processing and copying the file. I'm not sure it makes sense to pass the markdown value for the public argument in this way. It might be a bit repetitive, after all I have to do a bunch of processing of the YAML data anyway inside the function. At the very least perhaps I should pass the YAML object into <code>public_file_transform</code>? I'll have to think if this is the best way to handle it. Perhaps I should just set a variable to the value of public after I've decided to continue and otherwise return early? I'll have to fiddle with it later.</p>
+<p><code>git commit -am &quot;Continue setting up decision-making if file is public&quot;</code></p>
 
                     
                     </section>
@@ -293,9 +282,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/context-timelines/day-9-set-up-endpoint-timeline-apis/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/notebook/day-5-iterate-some-dirs/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-timelines/day-11-building-on-individual-items/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -345,15 +334,17 @@
     <div id="taglist">
         <h6>Tags: </h6>
         <ul><li>
-                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                    <a href="https://fightwithtools.dev/tag/knowledge-management">Knowledge Management</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/node">Node</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/timelines">Timelines</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
+                    <a href="https://fightwithtools.dev/tag/notes">Notes</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/build-tasks">Build Tasks</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/rust">Rust</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/yaml">YAML</a>
                 </li></ul>
     </div>
 
