@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.</title>
+        <title>Context Center Timelines - Day 22 - Test it to death</title>
         
             <!-- Sub Template: post -->
         
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.">
+    content="Context Center Timelines - Day 22 - Test it to death">
 
 <meta property="og:description"
-    content="Setting up better versions of the timeline templates that can be extended by the site in use">
+    content="Let's try the timeline plugin using a new site.">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/" />
+    content="https://fightwithtools.dev/posts/projects/context-timelines/day-22-trying-to-put-together-a-standalone-site/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -50,16 +50,16 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Setting up better versions of the timeline templates that can be extended by the site in use" />
+<meta name="twitter:description" content="Let's try the timeline plugin using a new site." />
 
-<meta name="description" content="Setting up better versions of the timeline templates that can be extended by the site in use">
+<meta name="description" content="Let's try the timeline plugin using a new site.">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers." />
+<meta name="twitter:title" content="Context Center Timelines - Day 22 - Test it to death" />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Thu, 11 Aug 2022 02:59:43 GMT" />
+    <meta property="article:published_time" content="Mon, 14 Aug 2023 02:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -102,13 +102,9 @@
         
         <meta property="article:tag" content="SSG" />
         
-        <meta property="article:tag" content="Context" />
-        
-        <meta property="article:tag" content="Nunjucks" />
-        
         <meta property="article:tag" content="WiP" />
         
-        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, Context, Nunjucks, WiP">
+        <meta name="keywords" content="posts, projects, 11ty, Node, Timelines, SSG, WiP">
     
 
 
@@ -117,9 +113,9 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/",
-        "headline": "Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.",
-        "about": "Setting up better versions of the timeline templates that can be extended by the site in use",
+        "url": "https://fightwithtools.dev/posts/projects/context-timelines/day-22-trying-to-put-together-a-standalone-site/",
+        "headline": "Context Center Timelines - Day 22 - Test it to death",
+        "about": "Let's try the timeline plugin using a new site.",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -193,7 +189,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-5-setting-up-templates-that-can-be-extended-by-nunjucks/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/context-timelines/day-22-trying-to-put-together-a-standalone-site/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -210,14 +206,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Thu Aug 11 2022</time>
+                            <time>Mon Aug 14 2023</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            Context Center Timelines - Day 5 - Making Templates More Useful and Accessible to Site Developers.
+                            Context Center Timelines - Day 22 - Test it to death
                         </h1>
                         
                         
@@ -236,10 +232,10 @@
             <div id="toc-container__inner">
                 <h2>Contents</h2>
                 <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-5">Day 5</a></li></ol></nav>
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-22">Day 22</a></li></ol></nav>
             </div>
         </aside>
-        <div id="post-description">Setting up better versions of the timeline templates that can be extended by the site in use</div>
+        <div id="post-description">Let's try the timeline plugin using a new site.</div>
 
         
     <figure class="figure preview-image">
@@ -267,34 +263,45 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Auto-create social-media-ready screenshots of a timeline item</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Integrate with Contexter to have context-full link cards in the timeline</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Leverage the Live Blog format of Schema dot org</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Allow each entry to be its own Markdown file</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Handle SASS instead of CSS</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Generate images more efficiently.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Support a counter that can increment depending on where you are on the timeline.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Generate QR codes / Stickers for each timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> /raw/md returns a raw version of a topic (in markdown)</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> /raw/md includes a YAML header with relevant information</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> /raw/json returns a JSON version of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> /feed/ returns a latest links feed of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> RSS feed of links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> RSS feed of new links per topic / timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Support a header image.</li>
 </ul>
-<h2 id="day-5" tabindex="-1">Day 5</h2>
-<p>I realized that extending sites using the plugins, including my own, might want to insert stuff in the templates, like a nav.</p>
-<p data-wordfix="true">Thankfully, Nunjucks templates in Eleventy can do some really interesting things.</p>
-<p>I was hoping I could treat it like it was all in one location. However, it doesn't seem to be the case. I can create a filepath to it from my site directory like:</p>
+<h2 id="day-22" tabindex="-1">Day 22</h2>
+<p>Ok, I want to try and <a href="https://github.com/AramZS/politicians-center" target="_blank">set up a new site</a> with the Timelinety plugin. I've been able to get it mostly working, but there is a lot of extra setup. I want to see if I can make time-to-start shorter by incorporating more initial templates in the plugin itself.</p>
+<p>Right now, the user who wants to create a site with Timelinety has to do so by creating at least 4 pages outside of the actual timeline items.</p>
+<p>The question is, can I add additional input directories to the Eleventy config?</p>
+<p>Oh, <a href="https://github.com/11ty/eleventy/issues/2353" target="_blank">looks like... no</a>. I can add the files maybe? Can I get inputs and outputs for Eleventy in the plugin? <a href="https://github.com/11ty/eleventy/discussions/2483" target="_blank">I think so</a>!</p>
+<p>Ok, so I can set it up to copy over the setup files. I think this will work:</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-liquid"><code class="language-liquid"><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"../../_custom-plugins/timelinety/src/layouts/timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span></code></pre>
-<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-3">Oh, but the actual <code>js</code> block (that starts and ends with <code>---</code>) that can be at the top of the <code>njk</code> file has to <em>only</em> be at the top of the top most template file. So I can't use or extend a template that contains that. I'll have to further destructure my templates so that I can use them effectively.</p>
-<p>Now I have <code>timeline.njk</code> which can be used by someone who wants an out-of-the-box timeline. It looks like this:</p>
-<p class="skip-link-graf">
-<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-njk"><code class="language-njk">---js<br>{<br>    eleventyComputed: {<br>        applyThis: {<br>            timelineCheck: function(siteContext){<br>                if (siteContext){<br>                    console.log(siteContext.timeline, "Global check")<br>                }<br>            },<br>        },<br>        title: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.title<br><br>            return '';<br>        },<br>        description: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.description<br><br>            return '';<br>        },<br>        tags: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.tags<br><br>            return [];<br>        },<br>        categories: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.categories<br><br>            return '';<br>        },<br>        filters: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.filters<br><br>            return [];<br>        },<br>        date: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.date<br><br>            return "Last Modified";<br>        },<br>        header: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.header<br><br>            return [];<br>        },<br>        color: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.color<br><br>            return 'grey';<br>        },<br>        shortdate: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.shortdate<br><br>            return false;<br>        },<br>        lastUpdatedPost: function(siteContext){<br>            if (siteContext?.timeline)<br>                return siteContext.timeline.lastUpdatedPost<br><br>            return false;<br>        },<br>    }<br>}<br>---<br><span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-wrapper.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br></code></pre>
-<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-2"><code>timeline-wrapper.njk</code> which can be extended by someone who wants to use it in their own template and even has some nice Nunjucks blocks that can be used to overwrite the header or the nav. They'll have to pull in their own version of the <code>---js</code> block of course.</p>
-<p class="skip-link-graf">
-<a href="#code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" id="skip-to-code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-njk"><code class="language-njk"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block head </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br>        <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./head.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> block nav </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>        <span class="token comment">&lt;!-- &lt;nav>&lt;a href="{{timelinesConfig.domainName}}">Return to Home&lt;/a>&lt;/nav> --></span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> endblock </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token templateTagBoundary template-tag-boundary">{%</span><span class="token templateTag"> include <span class="token string">"./timeline-base.njk"</span> </span><span class="token templateTagBoundary template-tag-boundary">%}</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p id="code-skip-day-5-setting-up-templates-that-can-be-extended-by-nunjucks-1">I have the previously created <code>head.njk</code> that I cas use as the default setup for the HEAD element. Then I have <code>timeline-base.njk</code> and that has the core timeline setup, which itself has the previously set up <code>timeline-entry.njk</code>.</p>
-<p>It's a little complicated, but I think that's the best way to handle the logical file separations and also allow future developers to extend it.</p>
-<p>Ok, but now I need to reorganize my styles a little so I can get the Nav in there and have it look the same as the rest of the site.</p>
-<p>That will mean pulling out the nav styles into their own SASS file that I can include in the timeline SASS file, as well as grabbing some of the color rules on <code>:root</code> and some of the other style rules on the base SASS. This will essentially allow me to encapsulate the nav.</p>
-<p><code>git commit -am &quot;Restructure timeline templates and SASS code to support new configuration.&quot;</code></p>
+<a href="#code-skip-day-22-trying-to-put-together-a-standalone-site-1" id="skip-to-code-skip-day-22-trying-to-put-together-a-standalone-site-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>pluginConfig<span class="token punctuation">.</span>addBaseFiles<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"eleventy.before"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">let</span> copyFileTo <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"src"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> pluginConfig<span class="token punctuation">.</span>addBaseFiles <span class="token operator">==</span> <span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			copyFileTo <span class="token operator">=</span> pluginConfig<span class="token punctuation">.</span>addBaseFiles<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>			copyFileTo <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><br>				path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> eleventyConfig<span class="token punctuation">.</span>dir<span class="token punctuation">.</span>input<span class="token punctuation">)</span><br>			<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">const</span> copyFromPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><br>			path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"src/pages"</span><span class="token punctuation">)</span><br>		<span class="token punctuation">)</span><span class="token punctuation">;</span><br>		<span class="token punctuation">[</span><br>			<span class="token string">"timeline.md"</span><span class="token punctuation">,</span><br>			<span class="token string">"timelines.md"</span><span class="token punctuation">,</span><br>			<span class="token string">"timeline-endpoints.md"</span><span class="token punctuation">,</span><br>			<span class="token string">"timeline-pages.md"</span><span class="token punctuation">,</span><br>		<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token keyword">const</span> timelineMDFile <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>copyFromPath<span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token keyword">const</span> targetMDFile <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>copyFileTo<span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fs<span class="token punctuation">.</span><span class="token function">existsSync</span><span class="token punctuation">(</span>targetMDFile<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br>					<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Eleventy copy from </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>timelineMDFile<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> to </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>targetMDFile<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"File does not already exist, copy it over"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>				fs<span class="token punctuation">.</span><span class="token function">copyFileSync</span><span class="token punctuation">(</span><br>					timelineMDFile<span class="token punctuation">,</span><br>					targetMDFile<span class="token punctuation">,</span><br>					fs<span class="token punctuation">.</span>constants<span class="token punctuation">.</span><span class="token constant">COPYFILE_EXCL</span><br>				<span class="token punctuation">)</span><span class="token punctuation">;</span><br>			<span class="token punctuation">}</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-22-trying-to-put-together-a-standalone-site-1">I think I want to make sure the file copy happens before the build. I can use <code>eleventyConfig.on('eleventy.before', () =&gt; ());</code> for that.</p>
+<p>Ok, that copies it over. Does it work with the build timing? Yes, it does! <a href="https://github.com/AramZS/politicians-center/commit/fe6cd0f2b2a15e0c10e91ff006e7b583d71ee361" target="_blank">Awesome</a>.</p>
+<p>Ok. Now I need to make sure that I actually have the minimum timeline CSS files.</p>
+<p>Ok, the stuff in <code>template-timeline.sass</code> is good to do without.</p>
+<p>I don't need my <code>reset.sass</code>.</p>
+<p>Ok, looks like it is working.</p>
+<p>I think things look like they are working, but there is a problem with the JSON response from Timelinety. It isn't working when there is no content value for a Timeline entry. I'll need to add another filter I think. Oh no, I need a different thing, <a href="https://github.com/AramZS/politicians-center/commit/93af4bcd2184e662f59b46e9a7b5bde8e7b6c9c5" target="_blank">I need a false state</a>.</p>
+<p>Ok, I think this is ready to be a package now. <a href="https://github.com/AramZS/timelinety" target="_blank">Let's set up a repo</a>.</p>
+<p>We add the <code>.npmignore</code> file. Then we can publish it.</p>
+<p><a href="https://www.npmjs.com/package/timelinety" target="_blank">It is out as a package</a>!</p>
+<p>Ok, let's try switching to using this package in the new site.</p>
+<p data-wordfix="true">It mostly seems to work. The one downside is that I can't use <code>extends</code> the way I had hoped. I end up having to use <code>{% extends &quot;../../node_modules/timelinety/src/layouts/timeline-wrapper.njk&quot; %}</code>. <code>extends</code> doesn't use the Eleventy layout alias systems so I can't use it exactly as I had hoped. But other than that, it works!</p>
 
                     
                     </section>
@@ -304,9 +311,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/context-timelines/day-4-making-template-elements-ready-for-further-use/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/context-timelines/day-21-slug-fixes/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/context-timelines/day-6-individual-timeline-items/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
         </div>
     
     <div class="social-icons-block">
@@ -363,10 +370,6 @@
                     <a href="https://fightwithtools.dev/tag/timelines">Timelines</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/context">Context</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/nunjucks">Nunjucks</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li></ul>
