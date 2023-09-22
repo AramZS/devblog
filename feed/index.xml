@@ -5,12 +5,54 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2023-08-14T02:59:43Z</updated>
+  <updated>2023-09-23T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Context Center Timelines - Day 23 - Fix Context Center Deploy action</title>
+    <link href="https://fightwithtools.dev/posts/projects/context-timelines/day-23-fixing-deploy-action/"/>
+    <updated>2023-09-23T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/context-timelines/day-23-fixing-deploy-action/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create timeline pages where one can see the whole timeline of a particular event</li>
+<li>Give timeline items type or category icons so that you can easily scan what is happening.</li>
+<li>Allow the user to enter the timeline at any individually sharable link of an event and seamlessly scroll up and down</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Deliver timelines as a plugin that can be extended by other Eleventy users</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Auto-create social-media-ready screenshots of a timeline item</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Integrate with Contexter to have context-full link cards in the timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Leverage the Live Blog format of Schema dot org</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Allow each entry to be its own Markdown file</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Handle SASS instead of CSS</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Fast Scroller by Month and Year</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add timelines and individual timeline items to the sitemap</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate images more efficiently.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Support a counter that can increment depending on where you are on the timeline.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Generate QR codes / Stickers for each timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md returns a raw version of a topic (in markdown)</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/md includes a YAML header with relevant information</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /raw/json returns a JSON version of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> /feed/ returns a latest links feed of a topic</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> RSS feed of links</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> RSS feed of new links per topic / timeline</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Support a header image.</li>
+</ul>
+<h2 id="day-23" tabindex="-1">Day 23</h2>
+<p>I had my site stop deploying. It looked like some problem having to do with my deploy action and when I went for support to <a href="https://github.com/peaceiris/actions-gh-pages" target="_blank">the repo for the action</a> I was using it sent me to <a href="https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/" target="_blank">GitHub Actions</a>.</p>
+<p>I read it, seems straighforward, looked at the <a href="https://github.com/actions/starter-workflows/tree/main/pages" target="_blank">examples</a>. There isn't one for Eleventy, so I decided to stitch together the <a href="https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml" target="_blank">Next</a> and <a href="https://github.com/actions/starter-workflows/blob/main/pages/static.yml" target="_blank">Static</a> workflows. Still didn't quite work.</p>
+<p>I ended up pulling together a few of the actions as anticipated, but also having to update some packages and fiddle around with the process. A big tripping point was that, for some reason, I needed to make the deploy step (with the deploy action) a separate job. I'm not sure why.</p>
+<p>Even then it didn't work. But it did tell me that I could only deploy from the <code>gh-pages</code> branch. Ok, weird.</p>
+<p>Well, it turned out I had one last step to take. I had to tell GitHub to use Actions instead of deploying from the branch by going to Settings &gt; Pages and finding the Source pulldown and changing it to &quot;GitHub Actions&quot;. Once I did that the build worked! Deployment worked! I could even, at last, delete the old <code>gh-pages</code> branch. Everything is working and deploying now .</p>
+<p><a href="https://github.com/AramZS/context-center/commit/80fbcc073e1131b0a3d9f785eba8bbba4e6b0857" target="_blank">Check out the new workflow!</a></p>
+<p><a href="https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml" target="_blank">https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml</a></p>
+</content>
+  </entry>
   
   <entry>
     <title>Context Center Timelines - Day 22 - Test it to death</title>
