@@ -49,4 +49,4 @@ Well, it turned out I had one last step to take. I had to tell GitHub to use Act
 
 [Check out the new workflow!](https://github.com/AramZS/context-center/commit/80fbcc073e1131b0a3d9f785eba8bbba4e6b0857)
 
-https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml
+Here's [the final file](https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml)
