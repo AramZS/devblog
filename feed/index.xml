@@ -79,7 +79,7 @@
 <p>Even then it didn't work. But it did tell me that I could only deploy from the <code>gh-pages</code> branch. Ok, weird.</p>
 <p>Well, it turned out I had one last step to take. I had to tell GitHub to use Actions instead of deploying from the branch by going to Settings &gt; Pages and finding the Source pulldown and changing it to &quot;GitHub Actions&quot;. Once I did that the build worked! Deployment worked! I could even, at last, delete the old <code>gh-pages</code> branch. Everything is working and deploying now .</p>
 <p><a href="https://github.com/AramZS/context-center/commit/80fbcc073e1131b0a3d9f785eba8bbba4e6b0857" target="_blank">Check out the new workflow!</a></p>
-<p><a href="https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml" target="_blank">https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml</a></p>
+<p>Here's <a href="https://github.com/AramZS/context-center/blob/main/.github/workflows/eleventy_build.yml" target="_blank">the final file</a></p>
 </content>
   </entry>
   
@@ -295,7 +295,7 @@
 <p><code>npm ci</code></p>
 <p><code>npm run build</code></p>
 <p>Oh, that failed because I tried to use <code>sh</code> for one of my code blocks and that isn't a language supported by Prism. I'll switch that to <code>bash</code> instead and try again.</p>
-<p><a target="_blank" href="https://github.com/AramZS/devblog/commits/main" class="git-commit-link"><code>git commit -am &quot;Update project to 16&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/devblog/commit/6f2a8f9b817ca04d15b3b11e7818391e9c32cbb8" class="git-commit-link"><code>git commit -am &quot;Update project to 16&quot;</code></a></p>
 <p>That worked!</p>
 </content>
   </entry>
