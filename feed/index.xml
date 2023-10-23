@@ -5,12 +5,41 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2023-09-23T02:59:43Z</updated>
+  <updated>2023-10-21T20:30:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Trying HTMX</title>
+    <link href="https://fightwithtools.dev/posts/writing/trying-htmx/"/>
+    <updated>2023-10-21T20:30:43Z</updated>
+    <id>https://fightwithtools.dev/posts/writing/trying-htmx/</id>
+    <content type="html"><h2 id="what-is-htmx" tabindex="-1">What is HTMX?</h2>
+<p>From it's <a href="https://htmx.org/" target="_blank">website</a>:</p>
+<blockquote>
+<p>htmx gives you access to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, using attributes, so you can build modern user interfaces with the simplicity and power of hypertext</p>
+</blockquote>
+<h2 id="why-htmx" tabindex="-1">Why HTMX?</h2>
+<p>It has been recommended to me a few times and I'm pretty interested in what appears to be a pretty simple way to do single-page-app style behavior without a ton of complex and overly heavy javasscript.</p>
+<h2 id="step-one:-the-basics" tabindex="-1">Step one: the basics</h2>
+<p>I'm going to <a href="https://htmx-preview-one.glitch.me/" target="_blank">use Glitch to set up a basic HTMX website</a> where I can play around with some of the core concepts, the ability to swap out content, and gain a better understanding of how to work HTMX.</p>
+<p>As I'd hoped, it's pretty straightforward. I can identify basic things to swap, events that cause swapping and even elements that I can replace in response to the swap to allow one page to provide updates to different areas of the page separately.</p>
+<p><code>hx-get</code>, <code>hx-swap</code>, and <code>hx-swap-oob</code> all seem to work really clearly and as expected.</p>
+<p><code>hx-get</code> creates a GET request to a URL (relative to the site domain, not the local path, as far as I've been able to tell thus far.) and swaps in the retrieved HTML with the current element (the method can also be <code>hx-post</code>). It can instructed how it swaps in the content wtih <code>hx-swap</code> and <code>hx-swap-oob</code>.</p>
+<p>This is pretty cool, and is promising for some things I want to try out.</p>
+<h2 id="step-two:-media-navigation" tabindex="-1">Step two: media navigation</h2>
+<p>One of the key things I want to accomplish is to be able to navigate around a site while a piece of media stays in place and can play uninterrupted. Let's try that.</p>
+<p>First I'll set up some basic navigation tests. Good to note that <code>hx-push-url</code> is relative to the core domain, not the local path. So if you're on <code>/test</code> and you want to go to <code>/test/2</code> you need to use <code>hx-push-url=&quot;/test/2&quot;</code> not <code>hx-push-url=&quot;/2&quot;</code>. It also looks like it automatically picks up the <code>&lt;title&gt;&lt;/title&gt;</code> tag. I wonder if it picks up everything else that can be in there? I'll have to test it out.</p>
+<p>Ok, it requires some hacking on to the process, you have to essentially create a space outside the elements changed by HTMX and then modify it depending on pulling in particular script tags. But it does work! This seems to be the way to go. The other thing I'll have to do is figure out how to queue up separate videos / audio tags  and then swap them in on complete for each video / audio file. It seems like this is the way to go though! I think I can do one more test, to try to make the player queue more complex. If I can do that, and also make it so playing media goes <em>into</em> the preserved element from elsewhere on the page, then this will be my solve for a bunch of projects I'd like to try out.</p>
+<h2 id="step-three:-multi-play" tabindex="-1">Step three: multi-play</h2>
+<p>I think I can make it a better organized multi-play system with a custom HTML element. Let's <a href="https://web.dev/articles/custom-elements-v1" target="_blank">remind</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements" target="_blank">ourselves</a> of how that works.</p>
+<p>I can even use the custom element mount events to inform the page it is ready to receive a playlist item and back it with a timeout if needed. Then I can push stuff to the playlist element and it will have an array to work through.</p>
+<p>I'll also have to check the iframe for YouTube's status. Here's <a href="https://stackoverflow.com/questions/7853904/how-to-detect-when-a-youtube-video-finishes-playing" target="_blank">one way to do so</a> and a <a href="https://developers.google.com/youtube/iframe_api_reference" target="_blank">reference</a>. That'll be the next step. However, so testing around how I can add things in seems to indicate it can work. Just placing a script tag in an HTMX loaded element that does the work of pushing into a playlist seems like it can do the trick. I think I'll base it on user action in the actual sites I'm working on though.</p>
+</content>
+  </entry>
   
   <entry>
     <title>Context Center Timelines - Day 23 - Fix Context Center Deploy action</title>
