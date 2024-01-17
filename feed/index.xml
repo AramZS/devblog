@@ -5,12 +5,151 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2023-10-21T20:30:43Z</updated>
+  <updated>2024-01-18T02:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Day 45 - Comments as simply as possible</title>
+    <link href="https://fightwithtools.dev/posts/projects/devblog/hello-day-45/"/>
+    <updated>2024-01-18T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/devblog/hello-day-45/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Static Site Generator that can build the blog and let me host it on Github Pages</li>
+<li>I want to write posts in Markdown because I'm lazy, it's easy, and it is how I take notes now.</li>
+<li>I don't want to spend a ton of time doing design work. I'm doing complicated designs for other projects, so I want to pull a theme I like that I can rely on someone else to keep up.</li>
+<li>Once it gets going, I want template changes to be easy.</li>
+<li>It should be as easy as Jekyll, so I need to be able to build it using GitHub Actions, where I can just commit a template change or Markdown file and away it goes. If I can't figure this out than fk it, just use Jekyll.</li>
+<li>I require it to be used by a significant percent of my professional peers so I can get easy answers when something goes wrong.</li>
+<li>I want source maps. This is a dev log site which means whatever I do with it should be easy for other developers to read.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+</ul>
+</s>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+</li>
+<li class="task-list-item">
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+</li>
+</ul>
+<s>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</li>
+</ul>
+</s>
+<ul class="task-list">
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Order projects listing by last posted blog in that project</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Limit the output of home page post lists to a specific number of posts</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Show the latest post below the site intro on the homepage.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags pages with Pagination</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Tags should be in the sidebar of articles and link to tag pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a technical reading log to the homepage</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add byline to post pages</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Have table of contents attach to sidebar bottom on mobile</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Support dark mode</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Social Icons</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> SEO/Social/JSON-LD HEAD data</p>
+</li>
+</ul>
+<h2 id="day-45" tabindex="-1">Day 45</h2>
+<p>I want to try a way to add comments to this blog. I want something where I have a good degree of ownership over the comments, so I took a look at <a href="https://lisakov.com/projects/open-source-comments/" target="_blank">some options</a>. Mainly, I'm hoping I don't have to host a server.</p>
+<p>I took a look at a whole bunch of interesting options:</p>
+<ul>
+<li><a href="https://docs.commento.io/" target="_blank">Introduction · Commento</a></li>
+<li><a href="https://webmention.io/" target="_blank">Webmention.io</a></li>
+<li><a href="https://csarven.ca/linked-data-notifications#protocol" target="_blank">Linked Data Notifications</a></li>
+<li><a href="https://github.com/coralproject/talk" target="_blank">GitHub - coralproject/talk: A better commenting experience from Vox Media</a></li>
+<li><a href="https://github.com/discourse/discourse" target="_blank">GitHub - discourse/discourse: A platform for community discussion. Free, open, simple.</a></li>
+<li><a href="https://github.com/posativ/isso" target="_blank">Isso</a></li>
+<li><a href="https://github.com/djyde/cusdis" target="_blank">GitHub - djyde/cusdis: lightweight, privacy-friendly alternative to Disqus.</a></li>
+<li><a href="https://github.com/eduardoboucas/staticman" target="_blank">GitHub - eduardoboucas/staticman: 💪 User-generated content for Git-powered websites</a></li>
+<li><a href="https://pknopf.com/post/2018-10-13-comments-for-static-sites-using-github-issues/" target="_blank">Comments for static websites, using GitHub Issues.</a></li>
+</ul>
+<p>I'm going to try <a href="https://utteranc.es/" target="_blank">utterances</a>. It's a GitHub Issues based comment system that looks like it just needs a GitHub app and some JS.</p>
+<p>I suppose the GitHub App could break and that would screw me, but I'd still have the comments and I could always pull them in some other way if needed. The one downside is that they aren't really static in my code for this site. But let's give it a try. Staticman seems like it is closer to what I want, but I don't want to have to care for some tiny server, which seems a requirement.</p>
+<p>Seems to work fine. I guess... I'll try it out? Sure, why not!</p>
+</content>
+  </entry>
   
   <entry>
     <title>Trying HTMX</title>
@@ -135,6 +274,21 @@
 <p><a href="https://www.npmjs.com/package/timelinety" target="_blank">It is out as a package</a>!</p>
 <p>Ok, let's try switching to using this package in the new site.</p>
 <p data-wordfix="true">It mostly seems to work. The one downside is that I can't use <code>extends</code> the way I had hoped. I end up having to use <code>{% extends &quot;../../node_modules/timelinety/src/layouts/timeline-wrapper.njk&quot; %}</code>. <code>extends</code> doesn't use the Eleventy layout alias systems so I can't use it exactly as I had hoped. But other than that, it works!</p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>Day 7 - Process YAML to decide if the file is public.</title>
+    <link href="https://fightwithtools.dev/posts/projects/notebook/day-7-process-a-bunch-of-files/"/>
+    <updated>2023-06-21T02:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/notebook/day-7-process-a-bunch-of-files/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Pull public-marked notes from the notebook to the new repo</li>
+<li>Create website that treats them like a wiki and links pages together</li>
+<li>Support the basic YAML in <a href="https://github.com/AramZS/notebook/blob/main/README.md" target="_blank">https://github.com/AramZS/notebook/blob/main/README.md</a></li>
+</ol>
+<h2 id="day-7" tabindex="-1">Day 7</h2>
 </content>
   </entry>
   
