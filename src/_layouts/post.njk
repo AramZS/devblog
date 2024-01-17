@@ -28,6 +28,13 @@
 {% endblock %}
 
 {% block postcontent %}
+    <script src="https://utteranc.es/client.js"
+            repo="AramZS/fightwithtools-comments"
+            issue-term="title"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
     {% if project and tags.includes("WiP") %}
         {% set previousPost = collections.posts | getPreviousProjectItem(page, project) %}
         {% set nextPost = collections.posts | getNextProjectItem(page, project) %}
