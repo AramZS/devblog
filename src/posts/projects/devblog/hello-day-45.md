@@ -115,6 +115,8 @@ I took a look at a whole bunch of interesting options:
 - [Isso](https://github.com/posativ/isso)
 - [GitHub - djyde/cusdis: lightweight, privacy-friendly alternative to Disqus.](https://github.com/djyde/cusdis)
 - [GitHub - eduardoboucas/staticman: 💪 User-generated content for Git-powered websites](https://github.com/eduardoboucas/staticman)
+	- [Adding Staticman Comments](https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html)
+	- [Adding user-generated content to a static site using Staticman](https://eduardoboucas.com/blog/2016/08/10/staticman.html)
 - [Comments for static websites, using GitHub Issues.](https://pknopf.com/post/2018-10-13-comments-for-static-sites-using-github-issues/)
 
 I'm going to try [utterances](https://utteranc.es/). It's a GitHub Issues based comment system that looks like it just needs a GitHub app and some JS.
