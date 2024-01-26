@@ -1,7 +1,6 @@
 ---
 layout: tags
 templateName: tag
-eleventyExcludeFromCollections: true
 pagination:
     data: collections.deepTagList
     size: 1

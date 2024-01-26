@@ -1,7 +1,6 @@
 ---
 layout: tags
 templateName: tag
-eleventyExcludeFromCollections: true
 pagination:
     data: collections.deepProjectPostsList
     size: 1

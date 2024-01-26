@@ -1,7 +1,6 @@
 ---
 title: "Fight with Tools: A Dev Blog by Aram Zucker-Scharff"
 layout: index
-eleventyExcludeFromCollections: true
 internalPageTypes: [ 'home' ]
 postLists: [
 	{name: "Tracking Progress", collection: "WiP", order: "reverse" },
