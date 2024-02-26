@@ -1,0 +1,362 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>XYZ Site - Day 1 - Working through a new 11ty build</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=8043889322" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=8043889322" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=8043889322" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=8043889322" id=""></link>
+
+            
+            <!-- Build Revision: 8043889322 & Sha: 82cc829f98641afd5b8d4fb66ffe8906ac0d1aaf -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="XYZ Site - Day 1 - Working through a new 11ty build">
+
+<meta property="og:description"
+    content="Let's try the timeline plugin using a new site.">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/aramzsxyz/day-1-working-through-a-new-11ty-build/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Let's try the timeline plugin using a new site." />
+
+<meta name="description" content="Let's try the timeline plugin using a new site.">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="XYZ Site - Day 1 - Working through a new 11ty build" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/xyz-icon.png" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/xyz-icon.png" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Sun, 25 Feb 2024 02:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="AramZS XYZ" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="11ty" />
+        
+        <meta property="article:tag" content="Node" />
+        
+        <meta property="article:tag" content="SSG" />
+        
+        <meta property="article:tag" content="WiP" />
+        
+        <meta name="keywords" content="posts, projects, 11ty, Node, SSG, WiP">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/aramzsxyz/day-1-working-through-a-new-11ty-build/",
+        "headline": "XYZ Site - Day 1 - Working through a new 11ty build",
+        "about": "Let's try the timeline plugin using a new site.",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-1-working-through-a-new-11ty-build/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/aramzsxyz">AramZS XYZ</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Sun Feb 25 2024</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            XYZ Site - Day 1 - Working through a new 11ty build
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-1">Day 1</a></li></ol></nav>
+            </div>
+        </aside>
+        <div id="post-description">Let's try the timeline plugin using a new site.</div>
+
+        
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a versatile blog site</li>
+<li>Create a framework that makes it easy to add external data to the site</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Give the site the capacity to replicate the logging and rating I do on Serialized and Letterboxd.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Be able to pull down RSS feeds from other sites and create forward links to my other sites</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Create forward links to sites I want to post about.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a way to pull in my Goodreads data and display it on the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a way to automate pulls from other data sources</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Add a TMDB credit to footer in base.njk</li>
+</ul>
+<h2 id="day-1" tabindex="-1">Day 1</h2>
+<p>I've branched the work from <a href="https://photogabble.co.uk/about/" target="_blank">Simon Dann</a> <small>(<a target="_blank" href="https://notacult.social/@carbontwelve">@carbontwelve@notacult.social</a>)</small> whose blog I really liked. I reached out and <a href="https://notacult.social/@carbontwelve/111568182431303826" target="_blank">got the ok to adapt the site</a> to my own site. So that's what I'm trying to do now. I've been fiddling around to try and figure out how it all works, and it's pretty cool!</p>
+<p>One of the things I want to do is be able to contribute back to Dann's site if I have useful improvements. I also did some work that will make a hard split from the origin make sense. So I'm not working on the site as a branch, but I should be able to sync back from and potentially into the original repository. I'm going to add it as an origin I can interact with:</p>
+<p><code>git remote add upstream git@github.com:photogabble/website.git</code></p>
+<p>Let's see if that works.</p>
+<p>It does! It allows me to cherry-pick improvements from the remote. That's useful, because they've added a lot of updates <a href="https://github.com/photogabble/website/commit/c7bf2e5848d46dbecf9772a1a677535630f3c879" target="_blank">since I branched</a>. We'll see later if I have useful things to contribute back.</p>
+<p data-wordfix="true">Now I want to try and get my TV lists working. I've been playing around with using a text list I pulled from JustWatch activity. I then crawl that and pull metadata and images out of <a href="https://developer.themoviedb.org/reference/intro/getting-started" target="_blank">The Movie DB</a>. I want to combine it or interact with the movie data that is in the <code>data</code> folder for global data. But I have to admit, I'm not really clear with how Dann set up processing that into the particular template that shows it. The result is that by using the list mechanism in the site I've ended up having both the TV markdown files I created and the data file writing to the same place. I've got to fix that, but to do that I need a better grasp on what is going on with how the site interacts with the data objects. Dann has made some pretty different structural choices around how to build and Eleventy site than any of mine (that's one of the reasons I wanted to work with this code) but it means I'm pretty confused about some of the pages and how they pop into existence at build. That's fine, I want to learn.</p>
+<p data-wordfix="true">Part of the confusion is that Dann has really leaned into some of the Nunjucks Eleventy hierarchy for rendering that really got me mixed up the first time around I used it for an Eleventy site. I think that it seems the site is just tapping that data object directly into the template. Whereas I can try and change the template to combine the two with a custom layout in the <code>layouts</code> folder I think. To combine the two data sources, I'm going to <a href="https://dev.to/giulia_chiola/add-items-to-an-array-in-nunjucks-482e" target="_blank">try a technique I found on Dev.to from Giulia Chiola</a>.</p>
+<p>The key to getting the page to display right is to also have some information in the <code>src/_data/lists-meta.js</code> file. I actually think I could have put the layout into that file, but I've had my automated process put it into the actual generated MD files for now. Let's see how it goes.</p>
+<p>Ok, I've been able to generate the file using my new template, but it doesn't have the new data I put in.</p>
+<p data-wordfix="true">The one issue is the item/post format from Eleventy is a lot more complicated than the content from the JS files. Not only that, but I'll need to sort the two together. I know, I'll build a filter! That way I can transform the posts to the simpler format and also handle the date sort.</p>
+<p>Dann's project makes it easy to add new filters. I can just add to <code>lib/filters.js</code>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-working-through-a-new-11ty-build-1" id="skip-to-code-skip-day-1-working-through-a-new-11ty-build-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">dateSort</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">arrayOfObjects<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	arrayOfObjects<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token comment">// Turn your strings into dates, and then subtract them</span><br>		<span class="token comment">// to get a value that is either negative, positive, or zero.</span><br>		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> arrayOfObjects<span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">mixedDataSortWatchedMedia</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">arrayOfObjects</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">let</span> standardizedArrayOfObjects <span class="token operator">=</span> arrayOfObjects<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>			<span class="token keyword">let</span> newObject <span class="token operator">=</span> <span class="token punctuation">{</span><br>				<span class="token operator">...</span>item<span class="token punctuation">.</span>data<span class="token punctuation">,</span><br>				content<span class="token operator">:</span> item<span class="token punctuation">.</span>content<span class="token punctuation">,</span><br>				date<span class="token operator">:</span> item<span class="token punctuation">.</span>date<span class="token punctuation">,</span><br>			<span class="token punctuation">}</span><span class="token punctuation">;</span><br>			<span class="token keyword">return</span> newObject<span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><br>		<span class="token keyword">return</span> item<span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">const</span> sorted <span class="token operator">=</span> <span class="token function">dateSort</span><span class="token punctuation">(</span>standardizedArrayOfObjects<span class="token punctuation">,</span> <span class="token string">"watchedDate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"mixedDataSortWatchedMedia sorted"</span><span class="token punctuation">,</span> sorted<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> sorted<span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-1-working-through-a-new-11ty-build-1">That takes care of it!</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    <script src="https://utteranc.es/client.js"
+            repo="AramZS/fightwithtools-comments"
+            issue-term="title"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+        
+        
+        <div class="pagination">
+            <a href="javascript:void(0)" class="pagination-link  cursor-default disabled-link">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/ssg">SSG</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
