@@ -1,6 +1,6 @@
 ---
 title: XYZ Site - Day 1 - Working through a new 11ty build
-description: "Let's try the timeline plugin using a new site."
+description: "Trying out someone else's approach to 11ty."
 date: 2024-02-24 22:59:43.10 -4
 tags:
   - 11ty
