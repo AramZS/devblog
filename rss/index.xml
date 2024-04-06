@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Mon, 18 Mar 2024 01:44:25 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 06 Apr 2024 21:29:52 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,56 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>XYZ Site - Day 3 - Getting a npm module client side to measure contrasts</title>
+		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-3-building-and-measuring-color-contrasts/?source=rss</link>
+		<pubDate>Sat, 06 Apr 2024 14:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-3-building-and-measuring-color-contrasts/</guid>
+		<description>I like collecting color combinations for future projects but I want to make sure they are a11y AAA contrasts for accessible readability.</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a versatile blog site</li>
+<li>Create a framework that makes it easy to add external data to the site</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Give the site the capacity to replicate the logging and rating I do on Serialized and Letterboxd.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Be able to pull down RSS feeds from other sites and create forward links to my other sites</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create forward links to sites I want to post about.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to pull in my Goodreads data and display it on the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to automate pulls from other data sources</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
+</ul>
+<h2 id="day-3" tabindex="-1">Day 3</h2>
+<p>I frequently will bookmark or reblog particularly interesting images that I think will provide a good mix of colors I could use in a different project. I'm not much of a designer, so this is a good way to bootstrap a website into looking good. It's how I decided on the <a href="https://songobsessed.com/" target="_blank">Song Obsessed</a> color scheme for instance.</p>
+<p>I want to put a page in this site that includes that and I want to be able to compare the colors' contrasts in order to make sure they are accessible. I found a <a href="https://www.npmjs.com/package/get-contrast" target="_blank">npm module called <code>get-contrast</code></a> that will do this for me. But I want to use it based on clicks on the contrast page, which means making it work client side.</p>
+<p>I'll take a look at rollup, but it seems to complex for this. In theory eslint should do the trick, and it has a nice convenient API I can leverage in a JS file to run it as part of 11ty's build process. It isn't working though and eslint's documentation is--as always--a painful read. It's been a long time since I last used Browserify, so let's try that.</p>
+<p>Ok, this looks promising! I think I need to import it into the JS file I want to build like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-3-building-and-measuring-color-contrasts/#code-skip-day-3-building-and-measuring-color-contrasts-3" id="skip-to-code-skip-day-3-building-and-measuring-color-contrasts-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> contrast <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'get-contrast'</span><span class="token punctuation">)</span><br /><br />window<span class="token punctuation">.</span>contrast <span class="token operator">=</span> contrast<span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-building-and-measuring-color-contrasts-3">I can either set it to the <code>window</code> object like this or set up my code in that file I think. To get the result running client side, it looks like I need to place it as a module like so:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-3-building-and-measuring-color-contrasts/#code-skip-day-3-building-and-measuring-color-contrasts-2" id="skip-to-code-skip-day-3-building-and-measuring-color-contrasts-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/scripts/contrast-ratio.js<span class="token punctuation">"</span></span> <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p data-wordfix="true" id="code-skip-day-3-building-and-measuring-color-contrasts-2">It seems to work! Now to make it build with Eleventy. I don't see docs on a javascript API for Browserify. I'll take my command line script and use <code>exec</code> from Node to run it in <code>eleventy.before</code>.</p>
+<p>Looks good in theory, but isn't working on the actual built site.</p>
+<p data-wordfix="true">It appears like there is a race condition where Eleventy is copying over the script before Browserify finishes building it. I need to make it wait and exec doesn't have a built-in promise. I can use <code>util.promisify</code> <a href="https://stackoverflow.com/questions/30763496/how-to-promisify-nodes-child-process-exec-and-child-process-execfile-functions" target="_blank">from node to make it work I think</a>.</p>
+<p>And yes, now it does!</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-3-building-and-measuring-color-contrasts/#code-skip-day-3-building-and-measuring-color-contrasts-1" id="skip-to-code-skip-day-3-building-and-measuring-color-contrasts-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><br />		<span class="token string">"eleventy.before"</span><span class="token punctuation">,</span><br />		<span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> dir<span class="token punctuation">,</span> runMode<span class="token punctuation">,</span> outputMode <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br />			<span class="token comment">// Run me before the build starts</span><br />			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Before Build"</span><span class="token punctuation">,</span> dir<span class="token punctuation">,</span> runMode<span class="token punctuation">,</span> outputMode<span class="token punctuation">)</span><span class="token punctuation">;</span><br />      <span class="token keyword">const</span> util <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'util'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />      <span class="token keyword">const</span> exec <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">promisify</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'node:child_process'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>exec<span class="token punctuation">)</span><span class="token punctuation">;</span><br />      <span class="token keyword">await</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'npx browserify ./public/scripts/contrast-calc.js > ./public/scripts/contrast-ratio.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-3-building-and-measuring-color-contrasts-1"><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Get a contrast checker npm module client side&quot;</code></a></p>
+<p>Not the cleanest solution, but it works. Now let's see if I can get my functionality for interacting with the colors working.</p>
+<p>I really want to compare two colors of any type, but that's a little much for now. I think I'll just click a foreground color and compare it to the background color. This seems good.</p>
+<p>How do I want to grab the results? I think I can fix a div to the top of the page and output it there. That works well, though I'll need to mod some pixels widths and background colors to make the text persistently displayable and make the whole thing work on mobile.</p>
+<p>I can select IDs and use those to easy swap in values where needed for now.</p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Contrast interactives working&quot;</code></a></p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>XYZ Site - Day 2 - Site exports to markdown blogposts</title>
