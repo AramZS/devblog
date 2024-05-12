@@ -5,12 +5,60 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2024-04-06T14:59:43Z</updated>
+  <updated>2024-05-12T14:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>XYZ Site - Day 4 - Parsing Letterboxd data exports</title>
+    <link href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-4-getting-films-working/"/>
+    <updated>2024-05-12T14:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/aramzsxyz/day-4-getting-films-working/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a versatile blog site</li>
+<li>Create a framework that makes it easy to add external data to the site</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Give the site the capacity to replicate the logging and rating I do on Serialized and Letterboxd.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Be able to pull down RSS feeds from other sites and create forward links to my other sites</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create forward links to sites I want to post about.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to pull in my Goodreads data and display it on the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to automate pulls from other data sources</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
+</ul>
+<h2 id="day-4" tabindex="-1">Day 4</h2>
+<p>One of the things I wanted to accomplish here is have this site host my reviews and ratings from Letterboxd. I've pulled a data export from them and it has given me a bunch of CSVs.</p>
+<p>I pulled in the <code>reviews.csv</code> file without any issues. A film I reviewed and rated will show up in multiple CSVs however. So I need to import them in an order where the most information comes first. Reviews first, then <code>ratings.csv</code> and then, if I want to pull them in, <code>watched.csv</code> which may include some films that I didn't review or rate but still watched.</p>
+<p>However, this appears to have crashed the build process. I rolled it back. I've made some changes and run an import again and it seems to be working. Last time I did <code>watched</code> first, but that won't work. I'll start with <code>ratings</code>.</p>
+<p>An important note is that I need to have Markdown files include <em>some</em> content, even if it is an empty string. Otherwise, the build process will crash. Doing that fixes the mysterious <code>Cannot read properties of undefined (reading 'includes') (via TypeError)</code> error I was getting during the Eleventy build process.</p>
+<p>Hmmm, it doesn't seem like that has worked. There must be an error in another file.</p>
+<p>I'll adjust my glob ignore for local development until I identify the file.</p>
+<p>Looks like there is something in the 'b's. Let's go deeper:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-4-getting-films-working/#code-skip-day-4-getting-films-working-2" id="skip-to-code-skip-day-4-getting-films-working-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js">  <span class="token comment">// Dev Time Build Ignores</span><br />  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">IS_LOCAL</span> <span class="token operator">===</span> <span class="token string">"true"</span><span class="token punctuation">)</span><span class="token punctuation">{</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/amplify/2023**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/amplify/2024-01**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/amplify/2024-02**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/amplify/2024-03**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/resources/film/[c-z]**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/resources/film/b[j-z]**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />    eleventyConfig<span class="token punctuation">.</span>ignores<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"src/content/resources/film/t**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br />  <span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-4-getting-films-working-2">Ok, let's go forward to bp. That works. We'll have to move forward again!</p>
+<p>Oh, there's a TV show in here that the TMDB API doesn't like. As a result it doesn't have any of the usual metadata, especially tags. That seems to have been what caused the problem.</p>
+<p>Looks like there are a few of those I can find by searching for</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-4-getting-films-working/#code-skip-day-4-getting-films-working-1" id="skip-to-code-skip-day-4-getting-films-working-1" class="skip-link">Skip code block ▼</a></p>
+<pre><code>rating: false
+title:
+</code></pre>
+<p id="code-skip-day-4-getting-films-working-1">I think I can just add tags to fix this as well? Yeah, that does seem to work. I'll also add something in the film-making script to avoid this problem.</p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;bugfix: Don't write film files with no tags&quot;</code></a></p>
+<p>Looks like it is building now!</p>
+<p>But hmmm, it looks like the date sort isn't working for the <code>film-and-tv</code> page.</p>
+<p>Ah, I didn't pick the <code>data</code> object to get the key for sorting from. I can fix that.</p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;End the movies data file and use md files only.&quot;</code></a></p>
+</content>
+  </entry>
   
   <entry>
     <title>XYZ Site - Day 3 - Getting a npm module client side to measure contrasts</title>
@@ -28,9 +76,9 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create forward links to sites I want to post about.</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to pull in my Goodreads data and display it on the site</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to automate pulls from other data sources</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
 </ul>
 <h2 id="day-3" tabindex="-1">Day 3</h2>
 <p>I frequently will bookmark or reblog particularly interesting images that I think will provide a good mix of colors I could use in a different project. I'm not much of a designer, so this is a good way to bootstrap a website into looking good. It's how I decided on the <a href="https://songobsessed.com/" target="_blank">Song Obsessed</a> color scheme for instance.</p>
