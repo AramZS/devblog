@@ -21,9 +21,9 @@ tags:
 - [ ] Create forward links to sites I want to post about.
 - [ ] Create a way to pull in my Goodreads data and display it on the site
 - [ ] Create a way to automate pulls from other data sources
-- [ ] Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.
-- [ ] Add a TMDB credit to footer in base.njk
-- [ ] Make sure tags do not repeat in the displayed tag list.
+- [x] Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.
+- [x] Add a TMDB credit to footer in base.njk
+- [x] Make sure tags do not repeat in the displayed tag list.
 
 ## Day 3
 
