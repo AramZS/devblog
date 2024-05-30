@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9310302377" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9310302377" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9310345714" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9310345714" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9310302377" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9310302377" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9310345714" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9310345714" id=""></link>
 
             
-            <!-- Build Revision: 9310302377 & Sha: 063a894207e546fd55294a7c3671a2d589f2bc2c -->
+            <!-- Build Revision: 9310345714 & Sha: 6da53e649d9957e026f7e359bc592ac9ee987d24 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -274,6 +274,7 @@
 <p>I put my function up on <a href="https://github.com/AramZS/spotipy-scripts/tree/archive-saved" target="_blank">a branch</a> in my own GitHub (along with documentation) as <a href="https://github.com/AramZS/spotipy-scripts" target="_blank">a forked repo</a> and <a href="https://github.com/albertored11/spotipy-scripts/pull/2" target="_blank">opened a PR against Alberto's repository</a>. Hopefully they'll find it useful and accept it. In any case, I have a tool now to solve this in the future.</p>
 <h2 id="see-it-for-yourself" tabindex="-1">See it for yourself</h2>
 <p>You can see how <a href="https://github.com/albertored11/spotipy-scripts/pull/2/files" target="_blank">it works in the PR's code</a>. You can <a href="https://github.com/AramZS/spotipy-scripts/tree/archive-saved" target="_blank">pull my version from my fork</a>.</p>
+<p>After I exported the environment variables as specified in the README, all I had to do was run: <code>python3 scripts/copy_saved_to_playlist.py playlist-id-goes-here</code>. It took a few minutes to run, but it was able to work with no issues!</p>
 <h2 id="spotify-how-does-it-work" tabindex="-1">Spotify, how does it work?</h2>
 <p>I don't know how the Liked Songs list works, or why this fixes my app, but I have my suspicions. Judging by the impact on speed and how it only happens when I open the app, I think that it is likely that the Spotify app does some sort of check or operation on the Liked Songs list when it starts up or regains focus. If so, then yeah, slimming that list down would have a big impact.</p>
 <p>Previously, <a href="https://aramzs.github.io/fun/2020/11/09/spotify-asks-listeners-to-hack-its-algorithm.html?ab=123213" target="_blank">I explored how to get the most out of Spotify's recommendations</a>.</p>
