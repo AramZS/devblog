@@ -10,8 +10,8 @@ tags:
   - Spotipy
 featuredImage: "python-record.jpg"
 featuredImageAlt: "An old Monty Python audio record. Get it?"
-featuredImageCredit: "Vintage Vinyl LP Record Album - Monty Python, Monty Python's Previous Record-Another Monty Python Record (2-LP Set), Kama Sutra Records, Catalog KSBS 2611-2, Genre - Non-Music (Comedy, Dialogue), USA, Released 1972 (Front Album Cover) - Photo by Joe Haupt, Used under Creative Commons CC-BY-SA"
-featuredImageLink: "https://flickr.com/photos/51764518@N02/37841555536/in/photolist-27qzeHv-KQN9yC-kNHY-2mdn8Yo-ZDVS5G-YDsDzb"
+featuredImageCredit: "Used under Fair Use from Discogs"
+featuredImageLink: "https://www.discogs.com/master/58509-Monty-Python-Monty-Pythons-Previous-Record/image/SW1hZ2U6MTE3MDM2OTE="
 ---
 
 So a few years back, I noticed that my Spotify mobile app (Android) seemed to really be struggling. I am a pretty heavy Spotify user and I listen to a lot of different music so even slight slowdowns really annoy me. I went back and forth with Spotify Support a bit but the whole thing was some weird mystery.
