@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9054557190" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9054557190" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9309935809" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=9309935809" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9054557190" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9054557190" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9309935809" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=9309935809" id=""></link>
 
             
-            <!-- Build Revision: 9054557190 & Sha: ec1aff5319b8f216c0b05a8e9db30a70aacd80d8 -->
+            <!-- Build Revision: 9309935809 & Sha: 91c2fa9dfb33b8ce75aef7c5e8bad5b6b0ae2d18 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -279,12 +279,12 @@
 <p class="skip-link-graf">
 <a href="#code-skip-day-3-building-and-measuring-color-contrasts-1" id="skip-to-code-skip-day-3-building-and-measuring-color-contrasts-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">eleventyConfig<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><br>		<span class="token string">"eleventy.before"</span><span class="token punctuation">,</span><br>		<span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> dir<span class="token punctuation">,</span> runMode<span class="token punctuation">,</span> outputMode <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			<span class="token comment">// Run me before the build starts</span><br>			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Before Build"</span><span class="token punctuation">,</span> dir<span class="token punctuation">,</span> runMode<span class="token punctuation">,</span> outputMode<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">const</span> util <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'util'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">const</span> exec <span class="token operator">=</span> util<span class="token punctuation">.</span><span class="token function">promisify</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'node:child_process'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>exec<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">await</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'npx browserify ./public/scripts/contrast-calc.js > ./public/scripts/contrast-ratio.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-3-building-and-measuring-color-contrasts-1"><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Get a contrast checker npm module client side&quot;</code></a></p>
+<p id="code-skip-day-3-building-and-measuring-color-contrasts-1"><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/66ed8d77ecbee40e30c6f1ac0fc873b0324e6eb7" class="git-commit-link"><code>git commit -am &quot;Get a contrast checker npm module client side&quot;</code></a></p>
 <p>Not the cleanest solution, but it works. Now let's see if I can get my functionality for interacting with the colors working.</p>
 <p>I really want to compare two colors of any type, but that's a little much for now. I think I'll just click a foreground color and compare it to the background color. This seems good.</p>
 <p>How do I want to grab the results? I think I can fix a div to the top of the page and output it there. That works well, though I'll need to mod some pixels widths and background colors to make the text persistently displayable and make the whole thing work on mobile.</p>
 <p>I can select IDs and use those to easy swap in values where needed for now.</p>
-<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Contrast interactives working&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/ff688e9bb9069cbb9426deaaf1da2721919a99dd" class="git-commit-link"><code>git commit -am &quot;Contrast interactives working&quot;</code></a></p>
 
                     
                     </section>
