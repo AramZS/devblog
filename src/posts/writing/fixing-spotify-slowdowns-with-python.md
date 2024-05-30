@@ -59,6 +59,8 @@ I put my function up on [a branch](https://github.com/AramZS/spotipy-scripts/tre
 
 You can see how [it works in the PR's code](https://github.com/albertored11/spotipy-scripts/pull/2/files). You can [pull my version from my fork](https://github.com/AramZS/spotipy-scripts/tree/archive-saved).
 
+After I exported the environment variables as specified in the README, all I had to do was run: `python3 scripts/copy_saved_to_playlist.py playlist-id-goes-here`. It took a few minutes to run, but it was able to work with no issues!
+
 ## Spotify, how does it work?
 
 I don't know how the Liked Songs list works, or why this fixes my app, but I have my suspicions. Judging by the impact on speed and how it only happens when I open the app, I think that it is likely that the Spotify app does some sort of check or operation on the Liked Songs list when it starts up or regains focus. If so, then yeah, slimming that list down would have a big impact.
