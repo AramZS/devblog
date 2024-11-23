@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=11966512017" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=11966512017" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=11983008917" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=11983008917" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=11966512017" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=11966512017" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=11983008917" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=11983008917" id=""></link>
 
             
-            <!-- Build Revision: 11966512017 & Sha: 383dcd8945578e70465f2e0dde0fbee8e6e40d9d -->
+            <!-- Build Revision: 11983008917 & Sha: 743c18e817c4c1a5efd2f45ef8649b6439093f98 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -231,8 +231,9 @@
         <aside id="toc-container">
             <div id="toc-container__inner">
                 <h2>Contents</h2>
-                <nav class="toc">
-        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-4">Day 4</a></li></ol></nav>
+                <nav class="toc" >
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-4">Day 4</a></li></ol>
+      </nav>
             </div>
         </aside>
         <div id="post-description">Let's play with using Rust to process private to public notes.</div>
@@ -274,7 +275,7 @@
 <p id="code-skip-day-4-getting-folders-in-here-2">This does the bad thing I want it to do, which is I want it to freak out and stop execution and tell me what the heck the failure is.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-day-4-getting-folders-in-here-1" id="skip-to-code-skip-day-4-getting-folders-in-here-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-bash"><code class="language-bash">Env tool failed<br>thread <span class="token string">'main'</span> panicked at <span class="token string">'called <span class="token variable"><span class="token variable">`</span>Result::unwrap<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token variable">`</span></span> on an <span class="token variable"><span class="token variable">`</span>Err<span class="token variable">`</span></span> value: LineParse("<span class="token entity" title="\&quot;">\"</span>../../../Dropbox<span class="token entity" title="\\">\\</span> <span class="token entity" title="\\">\\</span>(redacted)/redacted path to notes/Notes<span class="token entity" title="\&quot;">\"</span>", 20)'</span>, src/main.rs:19:25<br>note: run with <span class="token variable"><span class="token variable">`</span><span class="token assign-left variable">RUST_BACKTRACE</span><span class="token operator">=</span><span class="token number">1</span><span class="token variable">`</span></span> environment variable to display a backtrace</code></pre>
+<pre class="language-bash"><code class="language-bash">Env tool failed<br>thread <span class="token string">'main'</span> panicked at <span class="token string">'called `Result::unwrap()` on an `Err` value: LineParse("\"../../../Dropbox\\ \\(redacted)/redacted path to notes/Notes\"", 20)'</span>, src/main.rs:19:25<br>note: run with <span class="token variable"><span class="token variable">`</span><span class="token assign-left variable">RUST_BACKTRACE</span><span class="token operator">=</span><span class="token number">1</span><span class="token variable">`</span></span> environment variable to display a backtrace</code></pre>
 <p id="code-skip-day-4-getting-folders-in-here-1">Likely not good error handling, but good at doing what I want, which is to give me a useful error.</p>
 <p>Ok, so I <em>am</em> calling the function correctly but it doesn't like my string. I pulled that string from the autocomplete for the path by OSX. But perhaps it doesn't need to handle things that way. Ok. let's try some test strings.</p>
 <p>Ok, removing the escaping required by OSX terminal does seem to make the string workable for this process. But can it give me a path to query the directory? Let's see!</p>
