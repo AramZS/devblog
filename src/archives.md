@@ -9,5 +9,5 @@ permalink: "timegate/{{ archive.sanitizedLink }}/index.html"
 eleventyComputed:
     title: "{{ archive.data.finalizedMeta.title }}"
     description: "{{ archive.data.finalizedMeta.description }}"
-	modified: "Last Modified"
+    modified: "Last Modified"
 ---

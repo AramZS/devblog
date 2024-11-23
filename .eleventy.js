@@ -3,7 +3,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
-const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
+// const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
@@ -36,6 +36,28 @@ if (process.env.IS_LOCAL) {
 }
 
 process.env.DOMAIN = domain_name;
+
+// Pulled from eleventy core.
+function getCollectionItem(collection, page, modifier = 0) {
+	let j = 0;
+	let index;
+	for (let item of collection) {
+		if (
+			item.inputPath === page.inputPath &&
+			(item.outputPath === page.outputPath || item.url === page.url)
+		) {
+			index = j;
+			break;
+		}
+		j++;
+	}
+
+	if (index !== undefined && collection?.length) {
+		if (index + modifier >= 0 && index + modifier < collection.length) {
+			return collection[index + modifier];
+		}
+	}
+}
 
 module.exports = function (eleventyConfig) {
 	var siteConfiguration = {
