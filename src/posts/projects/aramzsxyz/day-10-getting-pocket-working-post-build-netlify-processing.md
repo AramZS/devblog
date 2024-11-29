@@ -75,3 +75,5 @@ Going to also [subtree push](https://www.atlassian.com/git/tutorials/git-subtree
 `git subtree push --prefix plugins/netlify-plugin-html-minify git@github.com:AramZS/netlify-plugin-html-minify.git master`
 
 and [try and see if I can get the current owner of the html minification plugin to update theirs](https://github.com/philhawksworth/netlify-plugin-minify-html/pull/27) and make it more broadly usable!
+
+Decided to start new and pull in the changes from other branches I needed. [And it worked](https://github.com/AramZS/aramzs.xyz/commit/bdd2033f12342d76295a3cb4876c9dd0f78644da)! Things are looking good! Build time is very fast. This is great!
