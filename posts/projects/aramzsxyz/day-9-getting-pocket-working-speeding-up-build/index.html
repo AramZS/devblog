@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12077194997" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12077194997" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12079333956" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12079333956" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12077194997" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12077194997" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12079333956" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12079333956" id=""></link>
 
             
-            <!-- Build Revision: 12077194997 & Sha: e6bede0f5b857508281e85988d46bfe2f3926370 -->
+            <!-- Build Revision: 12079333956 & Sha: 47855b3c92ad87db4dd167240affe39039262f0a -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -289,7 +289,7 @@
 <p>I'm going to try and use <code>&quot;@11ty/eleventy-plugin-directory-output&quot;</code> to give me some ideas of where I can decrease CPU and memory usage as well.</p>
 <p>I've managed to improve some of these, but they're still expensive, especially when run so many times. <code>countByKey</code> is part of the menu build, so especially expensive.</p>
 <p data-wordfix="true">I also want to try and remove the HTML minify process to Netlify, but the plugin they have for that doesn't seem to work, probably because it is so out of date. I'm going to <a href="https://www.atlassian.com/git/tutorials/git-subtree" target="_blank">subtree</a> it in and run it internally.</p>
-<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Moving html minification to a netlify function&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/db3ddef461615f0fd17343258a5892af871a41c0" class="git-commit-link"><code>git commit -am &quot;Moving html minification to a netlify function&quot;</code></a></p>
 <p>Let's try and run this on Netlify to see if my switchover works!</p>
 <p>Huh, apparently in order to run Netlify <a href="https://docs.netlify.com/build-plugins/" target="_blank">plugins</a> that are local to the project I need to add a plugin:</p>
 <p class="skip-link-graf">
@@ -316,7 +316,7 @@
 <p>Ok, that works <em>much</em> faster. Mostly because it only has to process the <code>main.css</code> file and not build the others.</p>
 <p><code>git commit -m &quot;Move postcss processing internal to the template format flow of eleventy&quot;</code></p>
 <p>I can also remove invocations of my most expensive functions from the pages that forward users where the users will never see the menu that triggers them.</p>
-<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commits/main" class="git-commit-link"><code>git commit -am &quot;Remove the invocations of the counting function from pages that no user is likely to see because they mostly are forwarding people&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/2e70c355994d671dd3198c31e4ac35c7756e851e" class="git-commit-link"><code>git commit -am &quot;Remove the invocations of the counting function from pages that no user is likely to see because they mostly are forwarding people&quot;</code></a></p>
 
                     
                     </section>
