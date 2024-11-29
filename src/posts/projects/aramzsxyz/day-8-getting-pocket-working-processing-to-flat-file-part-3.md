@@ -1,6 +1,6 @@
 ---
 title: XYZ Site - Day 8 - Next step to rebuild Pocket exporting - export to flat file.
-description: "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead"
+description: "Now that I've figured out the API, I have to get it written to the flat files in my system for 11ty to build"
 date: 2024-11-26 17:59:43.10 -4
 tags:
   - 11ty
@@ -8,11 +8,10 @@ tags:
   - SSG
   - WiP
   - APIs
-  - CSV
-  - CSVs
   - async
   - JSON
   - Pocket
+  - Markdown
 ---
 
 ## Project Scope and ToDos

@@ -1,6 +1,6 @@
 ---
 title: XYZ Site - Day 6 - Starting to rebuild Pocket exporting.
-description: "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead"
+description: "I have too many things saved into Pocket right now, so I can't export a file anymore. I've got to figure out their API instead."
 date: 2024-11-20 17:59:43.10 -4
 tags:
   - 11ty
@@ -13,6 +13,7 @@ tags:
   - async
   - JSON
   - Pocket
+  - CLI
 ---
 
 ## Project Scope and ToDos

@@ -109,3 +109,4 @@ After:
 
 ![Extensions activation](/img/after-build-time.png)
 
+Even adding every single Amplify in to the production build of the novel only takes it up to 8m. A huge improvement! 

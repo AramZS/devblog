@@ -1,18 +1,18 @@
 ---
-title: XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.
-description: "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead"
+title: XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.
+description: "Why can't I just designate files to process with PostCSS easily?"
 date: 2024-11-27 17:59:43.10 -4
 tags:
   - 11ty
   - Node
   - SSG
   - WiP
-  - APIs
-  - CSV
-  - CSVs
   - async
   - JSON
   - Pocket
+  - pcss
+  - PostCSS
+  - CSS
 ---
 
 ## Project Scope and ToDos
@@ -190,7 +190,7 @@ Looks like the `options` we get out of that tool is just everything supplied in 
 
 Ok, that works *much* faster. Mostly because it only has to process the `main.css` file and not build the others.
 
-`git commit -m "Move postcss processing internal to the template format flow of eleventy"`
+`git commit -am "Move postcss processing internal to the template format flow of eleventy"`
 
 I can also remove invocations of my most expensive functions from the pages that forward users where the users will never see the menu that triggers them.
 
