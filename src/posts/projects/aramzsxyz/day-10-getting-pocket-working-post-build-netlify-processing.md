@@ -100,3 +100,12 @@ There is likely more I can do to improve appearance, but it is high difficulty. 
 I'm pretty happy with all this, and the significant improvement in build time it created! I'm pretty consistently under 200s now! A huge improvement! We'll have to keep an eye on the stats here and see when we might need to improve a little more in advance this time.
 
 Also, I noticed that there are some rendered files, like the Amplify files, that are just pretty large when they don't need to be. I could play around with improving that in the future. But for now, yay, my site works again!
+
+Before:
+
+![Extensions activation](/img/before-build-time.png)
+
+After:
+
+![Extensions activation](/img/after-build-time.png)
+
