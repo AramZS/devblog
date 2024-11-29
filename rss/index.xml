@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Fri, 29 Nov 2024 20:10:53 GMT</lastBuildDate>
+	<lastBuildDate>Fri, 29 Nov 2024 20:44:42 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -87,16 +87,17 @@
 <p><img src="https://fightwithtools.dev/img/before-build-time.png" alt="Extensions activation" /></p>
 <p>After:</p>
 <p><img src="https://fightwithtools.dev/img/after-build-time.png" alt="Extensions activation" /></p>
+<p>Even adding every single Amplify in to the production build of the novel only takes it up to 8m. A huge improvement!</p>
 ]]></content:encoded>
 	</item>
 	
 	<item>
-		<title>XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.</title>
+		<title>XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.</title>
 		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-9-getting-pocket-working-speeding-up-build/?source=rss</link>
 		<pubDate>Wed, 27 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-9-getting-pocket-working-speeding-up-build/</guid>
-		<description>Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead</description>
+		<description>Why can't I just designate files to process with PostCSS easily?</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create a versatile blog site</li>
@@ -157,7 +158,7 @@
 <pre class="language-bash"><code class="language-bash">postcssrc <span class="token punctuation">[</span>Function: rc<span class="token punctuation">]</span><br />pcss plugins <span class="token punctuation">[</span><br />  <span class="token punctuation">[</span>Function: AtImport<span class="token punctuation">]</span> <span class="token punctuation">{</span> postcss: <span class="token boolean">true</span> <span class="token punctuation">}</span>,<br />  <span class="token punctuation">[</span>Function: plugin<span class="token punctuation">]</span> <span class="token punctuation">{</span><br />    postcss: true,<br />    data: <span class="token punctuation">{</span> browsers: <span class="token punctuation">[</span>Object<span class="token punctuation">]</span>, prefixes: <span class="token punctuation">[</span>Object<span class="token punctuation">]</span> <span class="token punctuation">}</span>,<br />    defaults: <span class="token punctuation">[</span> <span class="token string">'> 0.5%'</span>, <span class="token string">'last 2 versions'</span>, <span class="token string">'Firefox ESR'</span>, <span class="token string">'not dead'</span> <span class="token punctuation">]</span>,<br />    info: <span class="token punctuation">[</span>Function <span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span><span class="token punctuation">]</span><br />  <span class="token punctuation">}</span>,<br />  <span class="token punctuation">{</span> postcssPlugin: <span class="token string">'postcss-purgecss'</span>, OnceExit: <span class="token punctuation">[</span>Function: OnceExit<span class="token punctuation">]</span> <span class="token punctuation">}</span>,<br />  <span class="token punctuation">[</span>Function <span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> postcss: <span class="token boolean">true</span> <span class="token punctuation">}</span><br /><span class="token punctuation">]</span><br />pcss options <span class="token punctuation">{</span><br />  configLocation: <span class="token string">'./postcss.config.js'</span>,<br />  cwd: <span class="token string">'/Users/chrono/Dev/aramzs.xyz'</span>,<br />  env: undefined,<br />  from: <span class="token string">'./src/styles/main.css'</span><br /><span class="token punctuation">}</span></code></pre>
 <p id="code-skip-day-9-getting-pocket-working-speeding-up-build-1">Looks like the <code>options</code> we get out of that tool is just everything supplied in the export of the file that isn't on the <code>plugins</code> property.</p>
 <p>Ok, that works <em>much</em> faster. Mostly because it only has to process the <code>main.css</code> file and not build the others.</p>
-<p><code>git commit -m &quot;Move postcss processing internal to the template format flow of eleventy&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/ecb89ef623364d01a3037b7dea80fabae6fb7496" class="git-commit-link"><code>git commit -am &quot;Move postcss processing internal to the template format flow of eleventy&quot;</code></a></p>
 <p>I can also remove invocations of my most expensive functions from the pages that forward users where the users will never see the menu that triggers them.</p>
 <p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/2e70c355994d671dd3198c31e4ac35c7756e851e" class="git-commit-link"><code>git commit -am &quot;Remove the invocations of the counting function from pages that no user is likely to see because they mostly are forwarding people&quot;</code></a></p>
 ]]></content:encoded>
@@ -169,7 +170,7 @@
 		<pubDate>Tue, 26 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-8-getting-pocket-working-processing-to-flat-file-part-3/</guid>
-		<description>Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead</description>
+		<description>Now that I've figured out the API, I have to get it written to the flat files in my system for 11ty to build</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create a versatile blog site</li>
@@ -231,7 +232,7 @@
 		<pubDate>Thu, 21 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-7-getting-pocket-working-part-2/</guid>
-		<description>Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead</description>
+		<description>Continuing to try and process Pocket's API output.</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create a versatile blog site</li>
@@ -282,7 +283,7 @@
 		<pubDate>Wed, 20 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-6-getting-pocket-working/</guid>
-		<description>Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead</description>
+		<description>I have too many things saved into Pocket right now, so I can't export a file anymore. I've got to figure out their API instead.</description>
 		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
 <ol>
 <li>Create a versatile blog site</li>

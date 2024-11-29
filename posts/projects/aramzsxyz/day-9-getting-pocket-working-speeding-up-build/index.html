@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.</title>
+        <title>XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.</title>
         
             <!-- Sub Template: post -->
         
@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12090130682" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12090130682" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12090422105" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12090422105" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12090130682" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12090130682" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12090422105" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12090422105" id=""></link>
 
             
-            <!-- Build Revision: 12090130682 & Sha: 67581ff2329eadbdd4cc48a7c92410448349e60d -->
+            <!-- Build Revision: 12090422105 & Sha: 481a6fa85c95627a50cfc07f0339c20f353fbf07 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -35,10 +35,10 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.">
+    content="XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.">
 
 <meta property="og:description"
-    content="Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead">
+    content="Why can't I just designate files to process with PostCSS easily?">
 
 
 <meta property="og:url"
@@ -50,16 +50,16 @@
 
 <meta name="twitter:site" content="@chronotope" />
 
-<meta name="twitter:description" content="Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead" />
+<meta name="twitter:description" content="Why can't I just designate files to process with PostCSS easily?" />
 
-<meta name="description" content="Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead">
+<meta name="description" content="Why can't I just designate files to process with PostCSS easily?">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory." />
+<meta name="twitter:title" content="XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built." />
 
 
 
@@ -102,19 +102,19 @@
         
         <meta property="article:tag" content="WiP" />
         
-        <meta property="article:tag" content="APIs" />
-        
-        <meta property="article:tag" content="CSV" />
-        
-        <meta property="article:tag" content="CSVs" />
-        
         <meta property="article:tag" content="async" />
         
         <meta property="article:tag" content="JSON" />
         
         <meta property="article:tag" content="Pocket" />
         
-        <meta name="keywords" content="posts, projects, 11ty, Node, SSG, WiP, APIs, CSV, CSVs, async, JSON, Pocket">
+        <meta property="article:tag" content="pcss" />
+        
+        <meta property="article:tag" content="PostCSS" />
+        
+        <meta property="article:tag" content="CSS" />
+        
+        <meta name="keywords" content="posts, projects, 11ty, Node, SSG, WiP, async, JSON, Pocket, pcss, PostCSS, CSS">
     
 
 
@@ -124,8 +124,8 @@
         "@context": "http://schema.org",
         "@type": "Blog",
         "url": "https://fightwithtools.dev/posts/projects/aramzsxyz/day-9-getting-pocket-working-speeding-up-build/",
-        "headline": "XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.",
-        "about": "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead",
+        "headline": "XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.",
+        "about": "Why can't I just designate files to process with PostCSS easily?",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
         ],
@@ -223,7 +223,7 @@
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            XYZ Site - Day 9 - Speed up the massive build time and decrease needed memory.
+                            XYZ Site - Day 9 - PostCSS Mods - Speed up the massive build time and decrease needed memory by limiting what CSS gets built.
                         </h1>
                         
                         
@@ -246,7 +246,7 @@
       </nav>
             </div>
         </aside>
-        <div id="post-description">Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead</div>
+        <div id="post-description">Why can't I just designate files to process with PostCSS easily?</div>
 
         
 
@@ -314,7 +314,7 @@
 <pre class="language-bash"><code class="language-bash">postcssrc <span class="token punctuation">[</span>Function: rc<span class="token punctuation">]</span><br>pcss plugins <span class="token punctuation">[</span><br>  <span class="token punctuation">[</span>Function: AtImport<span class="token punctuation">]</span> <span class="token punctuation">{</span> postcss: <span class="token boolean">true</span> <span class="token punctuation">}</span>,<br>  <span class="token punctuation">[</span>Function: plugin<span class="token punctuation">]</span> <span class="token punctuation">{</span><br>    postcss: true,<br>    data: <span class="token punctuation">{</span> browsers: <span class="token punctuation">[</span>Object<span class="token punctuation">]</span>, prefixes: <span class="token punctuation">[</span>Object<span class="token punctuation">]</span> <span class="token punctuation">}</span>,<br>    defaults: <span class="token punctuation">[</span> <span class="token string">'> 0.5%'</span>, <span class="token string">'last 2 versions'</span>, <span class="token string">'Firefox ESR'</span>, <span class="token string">'not dead'</span> <span class="token punctuation">]</span>,<br>    info: <span class="token punctuation">[</span>Function <span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span><span class="token punctuation">]</span><br>  <span class="token punctuation">}</span>,<br>  <span class="token punctuation">{</span> postcssPlugin: <span class="token string">'postcss-purgecss'</span>, OnceExit: <span class="token punctuation">[</span>Function: OnceExit<span class="token punctuation">]</span> <span class="token punctuation">}</span>,<br>  <span class="token punctuation">[</span>Function <span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> postcss: <span class="token boolean">true</span> <span class="token punctuation">}</span><br><span class="token punctuation">]</span><br>pcss options <span class="token punctuation">{</span><br>  configLocation: <span class="token string">'./postcss.config.js'</span>,<br>  cwd: <span class="token string">'/Users/chrono/Dev/aramzs.xyz'</span>,<br>  env: undefined,<br>  from: <span class="token string">'./src/styles/main.css'</span><br><span class="token punctuation">}</span></code></pre>
 <p id="code-skip-day-9-getting-pocket-working-speeding-up-build-1">Looks like the <code>options</code> we get out of that tool is just everything supplied in the export of the file that isn't on the <code>plugins</code> property.</p>
 <p>Ok, that works <em>much</em> faster. Mostly because it only has to process the <code>main.css</code> file and not build the others.</p>
-<p><code>git commit -m &quot;Move postcss processing internal to the template format flow of eleventy&quot;</code></p>
+<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/ecb89ef623364d01a3037b7dea80fabae6fb7496" class="git-commit-link"><code>git commit -am &quot;Move postcss processing internal to the template format flow of eleventy&quot;</code></a></p>
 <p>I can also remove invocations of my most expensive functions from the pages that forward users where the users will never see the menu that triggers them.</p>
 <p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/2e70c355994d671dd3198c31e4ac35c7756e851e" class="git-commit-link"><code>git commit -am &quot;Remove the invocations of the counting function from pages that no user is likely to see because they mostly are forwarding people&quot;</code></a></p>
 
@@ -393,17 +393,17 @@
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/wip">WiP</a>
                 </li><li>
-                    <a href="https://fightwithtools.dev/tag/apis">APIs</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/csv">CSV</a>
-                </li><li>
-                    <a href="https://fightwithtools.dev/tag/csvs">CSVs</a>
-                </li><li>
                     <a href="https://fightwithtools.dev/tag/async">async</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/json">JSON</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/pocket">Pocket</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/pcss">pcss</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/postcss">PostCSS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/css">CSS</a>
                 </li></ul>
     </div>
 
