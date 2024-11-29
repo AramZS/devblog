@@ -72,6 +72,10 @@
 <p>There is likely more I can do to improve appearance, but it is high difficulty. Most notably, I could remove Amplify entirely from the <code>contentType</code> grouping. I really should have thought that through the first time, but now I'm pretty locked in though a bunch of places and fixing it is going to be a huge pain. I am having really good performance right know though, way better than even before I added all the Amplify posts. I think I'll save this as an option for later, if it is needed.</p>
 <p>I'm pretty happy with all this, and the significant improvement in build time it created! I'm pretty consistently under 200s now! A huge improvement! We'll have to keep an eye on the stats here and see when we might need to improve a little more in advance this time.</p>
 <p>Also, I noticed that there are some rendered files, like the Amplify files, that are just pretty large when they don't need to be. I could play around with improving that in the future. But for now, yay, my site works again!</p>
+<p>Before:</p>
+<p><img src="https://fightwithtools.dev/img/before-build-time.png" alt="Extensions activation" /></p>
+<p>After:</p>
+<p><img src="https://fightwithtools.dev/img/after-build-time.png" alt="Extensions activation" /></p>
 </content>
   </entry>
   
