@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Fri, 29 Nov 2024 00:50:28 GMT</lastBuildDate>
+	<lastBuildDate>Fri, 29 Nov 2024 00:51:01 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -22,7 +22,7 @@
 	</managingEditor>
 	
 	<item>
-		<title>XYZ Site - Day 7 - Next step to rebuild Pocket exporting.</title>
+		<title>XYZ Site - Day 10 - Next step to rebuild Pocket exporting.</title>
 		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-10-getting-pocket-working-post-build-netlify-processing/?source=rss</link>
 		<pubDate>Thu, 28 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
@@ -70,7 +70,7 @@
 	</item>
 	
 	<item>
-		<title>XYZ Site - Day 7 - Next step to rebuild Pocket exporting.</title>
+		<title>XYZ Site - Day 9 - Next step to rebuild Pocket exporting.</title>
 		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-9-getting-pocket-working-speeding-up-build/?source=rss</link>
 		<pubDate>Wed, 27 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
@@ -143,7 +143,7 @@
 	</item>
 	
 	<item>
-		<title>XYZ Site - Day 7 - Next step to rebuild Pocket exporting.</title>
+		<title>XYZ Site - Day 8 - Next step to rebuild Pocket exporting.</title>
 		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-8-getting-pocket-working-processing-to-flat-file-part-3/?source=rss</link>
 		<pubDate>Tue, 26 Nov 2024 21:59:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
