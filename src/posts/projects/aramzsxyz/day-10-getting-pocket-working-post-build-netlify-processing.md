@@ -1,5 +1,5 @@
 ---
-title: XYZ Site - Day 10 - Next step to rebuild Pocket exporting.
+title: XYZ Site - Day 10 - Next step to rebuild Pocket exporting by optimizing for Netlify.
 description: "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead"
 date: 2024-11-28 17:59:43.10 -4
 tags:
