@@ -1,0 +1,540 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Setting up a new site to get more hands on with Astro - Day 1</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12507389491" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12507389491" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12507389491" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12507389491" id=""></link>
+
+            
+            <!-- Build Revision: 12507389491 & Sha: 48886e6b577c653b2862905f1863e9f2abea5468 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Setting up a new site to get more hands on with Astro - Day 1">
+
+<meta property="og:description"
+    content="Rebuilding an old site that broke, a wiki for a game I run.">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/foursquare-location-data-site/day-1-getting-a-handle-on-the-data/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Rebuilding an old site that broke, a wiki for a game I run." />
+
+<meta name="description" content="Rebuilding an old site that broke, a wiki for a game I run.">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Setting up a new site to get more hands on with Astro - Day 1" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Wed, 25 Dec 2024 14:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Location Site" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="Python" />
+        
+        <meta property="article:tag" content="Foursquare" />
+        
+        <meta property="article:tag" content="Location Data" />
+        
+        <meta property="article:tag" content="Jupyter Notebook" />
+        
+        <meta property="article:tag" content="Jupyter" />
+        
+        <meta name="keywords" content="posts, projects, Python, Foursquare, Location Data, Jupyter Notebook, Jupyter">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/foursquare-location-data-site/day-1-getting-a-handle-on-the-data/",
+        "headline": "Setting up a new site to get more hands on with Astro - Day 1",
+        "about": "Rebuilding an old site that broke, a wiki for a game I run.",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/foursquare-location-data-site/day-1-getting-a-handle-on-the-data/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/foursquare-location-data-site">Location Site</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Wed Dec 25 2024</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Setting up a new site to get more hands on with Astro - Day 1
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc" >
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-1">Day 1</a></li></ol>
+      </nav>
+            </div>
+        </aside>
+        <div id="post-description">Rebuilding an old site that broke, a wiki for a game I run.</div>
+
+        
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a new site</li>
+<li>Process the Foursquare data to a set of locations with additional data</li>
+<li>Set the data up so it can be put on a map (it needs lat and long)</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can be searched</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can show travel paths throughout a day</li>
+</ul>
+<h2 id="day-1" tabindex="-1">Day 1</h2>
+<p>Since the Foursquare site is shutting down I got a data export. I have to decide what I want to do with it now that I have it. It is a big set of data, so I will need to do some work to make it usable and figure out how to treat it and turn it into the type of site I want.</p>
+<p>Big dataset, so let's turn to Python to process it. That's what it is best at. It has been a while, but I can start drawing some interesting conclusions from it for sure.</p>
+<p>There are a bunch of different files, and it seems like the <code>checkins</code> files are the most relevant. But they don't have latitude and longitude data attached. That's not great. I also have a <code>visits</code> file that does have latitude and longitude, but it does seem to map to anything.</p>
+<p>I'll assemble the data into a Pandas dataframe to start playing with it. See if I can find if the two connect at all.</p>
+<p>It looks like someone else has encountered this problem. <a href="https://stackoverflow.com/questions/77261620/get-lat-long-of-foursquare-data" target="_blank">They recommend hitting the Foursquare API to get the lat/long</a>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-17" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-17" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br><span class="token keyword">import</span> json<br><span class="token keyword">import</span> csv<br><br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>    <span class="token string">"accept"</span><span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span><br>    <span class="token string">"Authorization"</span><span class="token punctuation">:</span> <span class="token string">"YOUR_API_KEY"</span><br><span class="token punctuation">}</span><br><br><span class="token comment"># define path for products adoc file</span><br>path <span class="token operator">=</span> <span class="token string">r'foursquare.csv'</span><br><br><span class="token comment"># clear attributes file if exists</span><br>c <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span><br>c<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><br>csv <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><br><br><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'ids.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span><br>  <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">:</span><br>    fsq_id <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><br>    url <span class="token operator">=</span> <span class="token string">"https://api.foursquare.com/v3/places/"</span><span class="token operator">+</span>fsq_id<span class="token operator">+</span><span class="token string">"?fields=geocodes"</span><br>    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span><br>    <span class="token keyword">if</span> response<span class="token punctuation">.</span>status_code <span class="token operator">!=</span> <span class="token number">404</span><span class="token punctuation">:</span><br>        locations <span class="token operator">=</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span>fsq_id<span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">", "</span><span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>locations<span class="token punctuation">[</span><span class="token string">'geocodes'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'main'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'latitude'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">", "</span><span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>locations<span class="token punctuation">[</span><span class="token string">'geocodes'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'main'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'longitude'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>        csv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"done"</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-17">This leverages the <a href="https://location.foursquare.com/developer/reference/place-details" target="_blank">Place Details API</a>.</p>
+<p>Once I loaded the JSON files into memory, I can walk them into a dataframe:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-16" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-16" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># Create a DataFrame from the list of dictionaries</span><br>df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><br>    <span class="token string">'id'</span><span class="token punctuation">,</span><br>    <span class="token string">'createdAt'</span><span class="token punctuation">,</span><br>    <span class="token string">'type'</span><span class="token punctuation">,</span><br>    <span class="token comment"># 'visibility',</span><br>    <span class="token string">'timeZoneOffset'</span><span class="token punctuation">,</span><br>    <span class="token string">'venueId'</span><span class="token punctuation">,</span><br>    <span class="token string">'venueName'</span><span class="token punctuation">,</span><br>    <span class="token string">'venueURL'</span><span class="token punctuation">,</span><br>    <span class="token string">'commentsCount'</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span><br><br><span class="token keyword">for</span> checkinList <span class="token keyword">in</span> data<span class="token punctuation">:</span><br>	<span class="token keyword">for</span> item <span class="token keyword">in</span> checkinList<span class="token punctuation">[</span><span class="token string">"items"</span><span class="token punctuation">]</span><span class="token punctuation">:</span><br>		<span class="token keyword">if</span> <span class="token string">'venue'</span> <span class="token keyword">not</span> <span class="token keyword">in</span> item<span class="token punctuation">:</span><br>			<span class="token keyword">continue</span><br>		df <span class="token operator">=</span> pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><br>      item<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'createdAt'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token comment"># item['visibility'],</span><br>      item<span class="token punctuation">[</span><span class="token string">'timeZoneOffset'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'venue'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'venue'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'venue'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'url'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      item<span class="token punctuation">[</span><span class="token string">'comments'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'count'</span><span class="token punctuation">]</span><br>      <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span>df<span class="token punctuation">.</span>columns<span class="token punctuation">)</span><span class="token punctuation">,</span> df<span class="token punctuation">]</span><span class="token punctuation">,</span> ignore_index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><br><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>shape<span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-16">Checked and for some reason only 1000 items don't have visibility, I've manually defaulted those to &quot;private&quot;.</p>
+<p>Even now that I've got those included though, the IDs in <code>visits.json</code> and <code>visits.csv</code> don't map to anything in my checkins.</p>
+<p>Now my total checkins in the dataframe are <code>14265</code> entries.</p>
+<p>Ok, so visits seems to be non-check-in occurrences where I was at a location. The Swarm app will occasionally have draft checkins that it suggests, saying it thinks I was in a particular location and prompting me to check in, correct, or not. This appears to be what is going on here. So for example</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-15" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-15" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json">		<span class="token punctuation">{</span><br>			<span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"673e69ccdc7d4627b68ceb3b"</span><span class="token punctuation">,</span><br>			<span class="token property">"userId"</span><span class="token operator">:</span> <span class="token string">"15234"</span><span class="token punctuation">,</span><br>			<span class="token property">"timeArrived"</span><span class="token operator">:</span> <span class="token string">"2024-11-20 22:59:24.483000"</span><span class="token punctuation">,</span><br>			<span class="token property">"timeDeparted"</span><span class="token operator">:</span> <span class="token string">"2024-11-20 23:15:22.419000"</span><span class="token punctuation">,</span><br>			<span class="token property">"os"</span><span class="token operator">:</span> <span class="token string">"Android"</span><span class="token punctuation">,</span><br>			<span class="token property">"osVersion"</span><span class="token operator">:</span> <span class="token string">"12"</span><span class="token punctuation">,</span><br>			<span class="token property">"deviceModel"</span><span class="token operator">:</span> <span class="token string">"SM-G975U1"</span><span class="token punctuation">,</span><br>			<span class="token property">"isTraveling"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>			<span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token number">40.6436454</span><span class="token punctuation">,</span><br>			<span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token number">-74.072583</span><span class="token punctuation">,</span><br>			<span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Staten Island"</span><span class="token punctuation">,</span><br>			<span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"New York"</span><span class="token punctuation">,</span><br>			<span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"8600000US10301"</span><span class="token punctuation">,</span><br>			<span class="token property">"countryCode"</span><span class="token operator">:</span> <span class="token string">"US"</span><span class="token punctuation">,</span><br>			<span class="token property">"locationType"</span><span class="token operator">:</span> <span class="token string">"Venue"</span><br>		<span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-15">Is a visit. And it happens around the same time as check-ins that I actually made. I looked up the lat/long and found the location seemed to be the Staten Island ferry terminal.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-14" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-14" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">'venueName.str.contains("Staten Island")'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-14">Here's the result:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>createdAt</th>
+<th>type</th>
+<th>visibility</th>
+<th>timeZoneOffset</th>
+<th>venueId</th>
+<th>venueName</th>
+<th>venueUrl</th>
+<th>commentsCount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5bc75aa89cadd9002ce17dc3</td>
+<td>2018-10-17 15:52:08.000000</td>
+<td>checkin</td>
+<td>private</td>
+<td>-240</td>
+<td>4165d880f964a5207e1d1fe3</td>
+<td>Staten Island Ferry - Whitehall Terminal</td>
+<td><a href="https://foursquare.com/v/staten-island-ferry--" target="_blank">https://foursquare.com/v/staten-island-ferry--</a>...</td>
+<td>0</td>
+</tr>
+<tr>
+<td>673e61fdf804d01340b055f2</td>
+<td>2024-11-20 22:26:05.000000</td>
+<td>checkin</td>
+<td>closeFriends</td>
+<td>-300</td>
+<td>4165d880f964a5207e1d1fe3</td>
+<td>Staten Island Ferry - Whitehall Terminal</td>
+<td><a href="https://foursquare.com/v/staten-island-ferry--" target="_blank">https://foursquare.com/v/staten-island-ferry--</a> ...</td>
+<td>0</td>
+</tr>
+<tr>
+<td>673e69ccc2749c4b190f5fb9</td>
+<td>2024-11-20 22:59:24.000000</td>
+<td>checkin</td>
+<td>closeFriends</td>
+<td>-300</td>
+<td>4a478d19f964a520d2a91fe3</td>
+<td>Staten Island Ferry - St. George Terminal</td>
+<td><a href="https://foursquare.com/v/staten-island-ferry--" target="_blank">https://foursquare.com/v/staten-island-ferry--</a>...</td>
+<td>0</td>
+</tr>
+<tr>
+<td>673e73175e573a13d383bcfa</td>
+<td>2024-11-20 23:39:03.000000</td>
+<td>checkin</td>
+<td>closeFriends</td>
+<td>-300</td>
+<td>4d35e19d6c7c721eb511cf56</td>
+<td>College of Staten Island Main Gate</td>
+<td><a href="https://foursquare.com/v/college-of-staten-isl" target="_blank">https://foursquare.com/v/college-of-staten-isl</a>...</td>
+<td>0</td>
+</tr>
+<tr>
+<td>673ea1637f8f7e3e6b5232db</td>
+<td>2024-11-21 02:56:35.000000</td>
+<td>checkin</td>
+<td>closeFriends</td>
+<td>-300</td>
+<td>4165d880f964a5207e1d1fe3</td>
+<td>Staten Island Ferry - Whitehall Terminal</td>
+<td><a href="https://foursquare.com/v/staten-island-ferry--" target="_blank">https://foursquare.com/v/staten-island-ferry--</a> ...</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Ok, well, that seems fine, but no match really. There <em>is</em> a close match (if you ignore milliseconds) in timing. But it isn't really enough to join on en-mass, even if it is close. This also shows me that the records that don't have a visibility value look like they are early on in my checkin history, which is useful to know.</p>
+<p>So I have 9,993 &quot;visits&quot;. Which I think are dismissed check-in prompts?</p>
+<p>There's also a whole file for <code>unconfirmed_vists.json</code> which has 18,279 entries. Where I can find some matches, it looks like they also are maybe pending prompts that I never confirmed or denied? These aren't just lat and long</p>
+<p>There's no clear difference between the two. And there's no documentation from Foursquare. I'm going to go with my assumptions here. In that case, the only thing that matters is my checkins. That's cool.</p>
+<p>Interestingly, the unconfirmed_visits have lat and long values. They look like this:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-13" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-13" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"673a6e9eddf0e34a16590965"</span><span class="token punctuation">,</span><br>	<span class="token property">"startTime"</span><span class="token operator">:</span><span class="token string">"2024-11-17 22:08:21.628000"</span><span class="token punctuation">,</span><br>	<span class="token property">"endTime"</span><span class="token operator">:</span><span class="token string">"2024-11-17 22:31:27.761000"</span><span class="token punctuation">,</span><br>	<span class="token property">"venueId"</span><span class="token operator">:</span><span class="token string">"59e63da08c35dc3e57ab5520"</span><span class="token punctuation">,</span><br>	<span class="token property">"lat"</span><span class="token operator">:</span><span class="token number">40.74526808227119</span><span class="token punctuation">,</span><br>	<span class="token property">"lng"</span><span class="token operator">:</span><span class="token number">-73.99024878341206</span><span class="token punctuation">,</span><br>	<span class="token property">"venue"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>		<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"59e63da08c35dc3e57ab5520"</span><span class="token punctuation">,</span><br>		<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"Patent Pending"</span><span class="token punctuation">,</span><br>		<span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"https:\/\/foursquare.com\/v\/patent-pending\/59e63da08c35dc3e57ab5520"</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-13">There is a checkin around this time, found via</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-12" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-12" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">'venueName.str.contains("Patent Pending")'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-12">I'm pretty sure it is based around the time I did the actual checkin, found that via the above at <code>createdAt</code> time <code>2024-11-17 22:31:33.000000</code>.</p>
+<p>It looks like comments file is pretty useless:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-11" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-11" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"userId"</span><span class="token operator">:</span><span class="token number">15234</span><span class="token punctuation">,</span><br>	<span class="token property">"time"</span><span class="token operator">:</span><span class="token string">"2017-03-03 02:37:36.000000"</span><span class="token punctuation">,</span><br>	<span class="token property">"comment"</span><span class="token operator">:</span><span class="token string">"Hey! Just saw this, we just got to Kimchi Grill, if you want to join for food."</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-11">I could potentially make some assumptions on <code>time</code>, but it doesn't necessarily map out, comments could happen way later, after other checkins.</p>
+<p>Then there is the tips file.</p>
+<p>It has objects like:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-10" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-10" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"670f00d47d191f5820d40dda"</span><span class="token punctuation">,</span><br>	<span class="token property">"createdAt"</span><span class="token operator">:</span><span class="token string">"2024-10-15 23:55:00.000000"</span><span class="token punctuation">,</span><br>	<span class="token property">"text"</span><span class="token operator">:</span><span class="token string">"Great bookstore, with drinks, snacks, and plentiful recommendations cards with lots of details."</span><span class="token punctuation">,</span><br>	<span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"user"</span><span class="token punctuation">,</span><br>	<span class="token property">"canonicalUrl"</span><span class="token operator">:</span><span class="token string">"https:\/\/foursquare.com\/item\/670f00d47d191f5820d40dda"</span><span class="token punctuation">,</span><br>	<span class="token property">"flags"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>	<span class="token property">"viewCount"</span><span class="token operator">:</span><span class="token number">29</span><span class="token punctuation">,</span><br>	<span class="token property">"agreeCount"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><br>	<span class="token property">"disagreeCount"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><br>	<span class="token property">"user"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>		<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"15234"</span><span class="token punctuation">,</span><br>		<span class="token property">"firstName"</span><span class="token operator">:</span><span class="token string">"Aram"</span><span class="token punctuation">,</span><br>		<span class="token property">"lastName"</span><span class="token operator">:</span><span class="token string">"Zucker-Scharff"</span><span class="token punctuation">,</span><br>		<span class="token property">"handle"</span><span class="token operator">:</span><span class="token string">"chronotope"</span><span class="token punctuation">,</span><br>		<span class="token property">"privateProfile"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span><br>		<span class="token property">"gender"</span><span class="token operator">:</span><span class="token string">"male"</span><span class="token punctuation">,</span><br>		<span class="token property">"address"</span><span class="token operator">:</span><span class="token string">""</span><span class="token punctuation">,</span><br>		<span class="token property">"city"</span><span class="token operator">:</span><span class="token string">""</span><span class="token punctuation">,</span><br>		<span class="token property">"state"</span><span class="token operator">:</span><span class="token string">""</span><span class="token punctuation">,</span><br>		<span class="token property">"countryCode"</span><span class="token operator">:</span><span class="token string">"US"</span><span class="token punctuation">,</span><br>		<span class="token property">"relationship"</span><span class="token operator">:</span><span class="token string">"self"</span><span class="token punctuation">,</span><br>		<span class="token property">"photo"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>			<span class="token property">"prefix"</span><span class="token operator">:</span><span class="token string">"https:\/\/fastly.4sqi.net\/img\/user\/"</span><span class="token punctuation">,</span><br>			<span class="token property">"suffix"</span><span class="token operator">:</span><span class="token string">"\/15234-EMJINMXJKZ5R5S20.jpg"</span><br>		<span class="token punctuation">}</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span><br>	<span class="token property">"venue"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>		<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"64dd65470e981a714e4c9f6c"</span><span class="token punctuation">,</span><br>		<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"First Light Books"</span><span class="token punctuation">,</span><br>		<span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"https:\/\/foursquare.com\/v\/first-light-books\/64dd65470e981a714e4c9f6c"</span><br>	<span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-10">There do appear to be associated photos, but those photos don't seem to be in the <code>pix</code> folder I got with the export. I tried accessing the URL directly, but didn't get anything at that URL. However, looking at the venue, I didn't upload an image.</p>
+<p>But that does match my profile image at <code>https://fastly.4sqi.net/img/user/64x64/15234-EMJINMXJKZ5R5S20.jpg</code>.</p>
+<p>So I guess that is what that is. This does have a check-in associated with it:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>createdAt</th>
+<th>type</th>
+<th>visibility</th>
+<th>timeZoneOffset</th>
+<th>venueId</th>
+<th>venueName</th>
+<th>venueUrl</th>
+<th>commentsCount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>670efb74d8a0e46cd107fea5</td>
+<td>2024-10-15 23:32:04.000000</td>
+<td>checkin</td>
+<td>closeFriends</td>
+<td>-300</td>
+<td>64dd65470e981a714e4c9f6c</td>
+<td>First Light Books</td>
+<td><a href="https://foursquare.com/v/first-light-books/64d" target="_blank">https://foursquare.com/v/first-light-books/64d</a>...</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing there to associate based on except ID of the venue.</p>
+<p>I am starting to conclude that maybe I also need just a listing of all the venues I've visited.</p>
+<p>So I need to build a venues dataframe too.</p>
+<p>Ok, so we'll need to load a few files:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-9" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-9" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># Get tips file</span><br>tipsFile <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'../foursquare-export/tips.json'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Reading tips file"</span></span><span class="token punctuation">)</span><br>tipsObject <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>tipsFile<span class="token punctuation">)</span><br>tipsSetObject <span class="token operator">=</span> tipsObject<span class="token punctuation">[</span><span class="token string">'items'</span><span class="token punctuation">]</span><br><br><span class="token comment"># get Venue Ratings</span><br>ratingsFile <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'../foursquare-export/venueRatings.json'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Reading ratings file"</span></span><span class="token punctuation">)</span><br>ratingsObject <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>ratingsFile<span class="token punctuation">)</span><br><br>venueLikes <span class="token operator">=</span> ratingsObject<span class="token punctuation">[</span><span class="token string">'venueLikes'</span><span class="token punctuation">]</span><br>venueDislikes <span class="token operator">=</span> ratingsObject<span class="token punctuation">[</span><span class="token string">'venueDislikes'</span><span class="token punctuation">]</span><br>venueOkays <span class="token operator">=</span> ratingsObject<span class="token punctuation">[</span><span class="token string">'venueOkays'</span><span class="token punctuation">]</span><br><br>photosFile <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'../foursquare-export/photos.json'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Reading photos file"</span></span><span class="token punctuation">)</span><br>photosObject <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>photosFile<span class="token punctuation">)</span><br>photosSetObject <span class="token operator">=</span> photosObject<span class="token punctuation">[</span><span class="token string">'items'</span><span class="token punctuation">]</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-9">As you can see, the venue ratings file is divided into <code>venueLikes</code>, <code>venueDislikes</code> and <code>venueOkays</code>. So I'm pulling those out.</p>
+<p>So we know what a <code>tip</code> looks like.</p>
+<p>Here's what each object inside the venue ratings looks like:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-8" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-8" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"6278124503e634412f05cdaf"</span><span class="token punctuation">,</span><br>	<span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sobremesa Cocina Mexicana"</span><span class="token punctuation">,</span><br>	<span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https:\/\/foursquare.com\/v\/sobremesa-cocina-mexicana\/6278124503e634412f05cdaf"</span><br><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-8">And then we've got the photos object:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-7" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-7" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"4db1b674fd28f0dcfa1c0d2c"</span><span class="token punctuation">,</span><br>	<span class="token property">"createdAt"</span><span class="token operator">:</span><span class="token string">"2011-04-22 17:10:12.000000"</span><span class="token punctuation">,</span><br>	<span class="token property">"prefix"</span><span class="token operator">:</span><span class="token string">"https:\/\/fastly.4sqi.net\/img\/general\/"</span><span class="token punctuation">,</span><br>	<span class="token property">"suffix"</span><span class="token operator">:</span><span class="token string">"\/BMGMLXNIP44I0WPVA2LOPEMOYCFXBGQ1ZFTY1IILIQXJP3WA.jpg"</span><span class="token punctuation">,</span><br>	<span class="token property">"width"</span><span class="token operator">:</span><span class="token number">538</span><span class="token punctuation">,</span><br>	<span class="token property">"height"</span><span class="token operator">:</span><span class="token number">720</span><span class="token punctuation">,</span><br>	<span class="token property">"demoted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span><br>	<span class="token property">"visibility"</span><span class="token operator">:</span><span class="token string">"friends"</span><span class="token punctuation">,</span><br>	<span class="token property">"fullUrl"</span><span class="token operator">:</span><span class="token string">"https:\/\/fastly.4sqi.net\/img\/general\/538x720\/BMGMLXNIP44I0WPVA2LOPEMOYCFXBGQ1ZFTY1IILIQXJP3WA.jpg"</span><span class="token punctuation">,</span><br>	<span class="token property">"relatedItemUrl"</span><span class="token operator">:</span><span class="token string">"https:\/\/www.swarmapp.com\/checkin\/4db1b66fa86e63d21171a701"</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-7">or</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-6" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"51fc5b1f498ea67cd47c6be5"</span><span class="token punctuation">,</span><br>	<span class="token property">"createdAt"</span><span class="token operator">:</span><span class="token string">"2013-08-03 01:21:35.000000"</span><span class="token punctuation">,</span><br>	<span class="token property">"prefix"</span><span class="token operator">:</span><span class="token string">"https:\/\/fastly.4sqi.net\/img\/general\/"</span><span class="token punctuation">,</span><br>	<span class="token property">"suffix"</span><span class="token operator">:</span><span class="token string">"\/15234_GrwLQ564TbAJeS3qJjRxK5ZYDOVCj93L1ATyPJt_3RU.jpg"</span><span class="token punctuation">,</span><br>	<span class="token property">"width"</span><span class="token operator">:</span><span class="token number">720</span><span class="token punctuation">,</span><br>	<span class="token property">"height"</span><span class="token operator">:</span><span class="token number">960</span><span class="token punctuation">,</span><br>	<span class="token property">"demoted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span><br>	<span class="token property">"visibility"</span><span class="token operator">:</span><span class="token string">"public"</span><span class="token punctuation">,</span><br>	<span class="token property">"fullUrl"</span><span class="token operator">:</span><span class="token string">"https:\/\/fastly.4sqi.net\/img\/general\/720x960\/15234_GrwLQ564TbAJeS3qJjRxK5ZYDOVCj93L1ATyPJt_3RU.jpg"</span><span class="token punctuation">,</span><br>	<span class="token property">"relatedItemUrl"</span><span class="token operator">:</span><span class="token string">"https:\/\/foursquare.com\/v\/51fc5a63498ec02f4de928e0"</span><br><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-6">There the <code>suffix</code> field does match up with a file in the <code>pix</code> folder, so that's where those connect up.</p>
+<p>The <code>relatedItemUrl</code> doesn't go to anywhere that is online on the web. The value at the end of that though, the <code>4db1b66fa86e63d21171a701</code> part of the <code>relatedItemUrl</code> does match up with an <code>id</code> in the <code>checkins</code> files! So that's how I can associate a photo with a check-in and venue it seems.</p>
+<p>So what format should the second dataframe be?</p>
+<p>I'm thinking:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-5" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python">venuesDf <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><br>    <span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token comment"># venue id</span><br>    <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token comment"># venue name</span><br>    <span class="token string">'url'</span><span class="token punctuation">,</span> <span class="token comment"># venue url</span><br>    <span class="token string">'latitude'</span><span class="token punctuation">,</span><br>    <span class="token string">'longitude'</span><span class="token punctuation">,</span><br>    <span class="token string">'tipString'</span><span class="token punctuation">,</span> <span class="token comment"># tip text</span><br>    <span class="token string">'tipCreatedAt'</span><span class="token punctuation">,</span><br>    <span class="token string">'tipId'</span><span class="token punctuation">,</span><br>    <span class="token string">'tipUrl'</span><span class="token punctuation">,</span> <span class="token comment"># tip canonicalUrl</span><br>    <span class="token string">'tipViews'</span><span class="token punctuation">,</span> <span class="token comment"># tip viewCount</span><br>    <span class="token string">'tipAgreeCount'</span><span class="token punctuation">,</span> <span class="token comment"># tip agreeCount</span><br>    <span class="token string">'tipDisagreeCount'</span><span class="token punctuation">,</span> <span class="token comment"># tip disagreeCount</span><br>    <span class="token string">'rating'</span><span class="token punctuation">,</span> <span class="token comment"># from ratings file, can be like, dislike, okay</span><br>    <span class="token string">'imageSuffix'</span><span class="token punctuation">,</span> <span class="token comment"># from photos file, is the `suffix` field</span><br>    <span class="token string">'imageWidth'</span><span class="token punctuation">,</span> <span class="token comment"># from photos file, is the `width` field</span><br>    <span class="token string">'imageHeight'</span><span class="token punctuation">,</span> <span class="token comment"># from photos file, is the `height` field</span><br>    <span class="token string">'imageId'</span><span class="token punctuation">,</span> <span class="token comment"># from photos file, is the `id` field</span><br>    <span class="token string">'imageCreatedAt'</span><span class="token punctuation">,</span> <span class="token comment"># from photos file, is the `createdAt` field</span><br>    <span class="token string">'checkIns'</span> <span class="token comment"># array of string checkin IDs.</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-5">Ok, so I want to append the other checkin IDs. How to do this? In theory this should work.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-4" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">for</span> index<span class="token punctuation">,</span> row <span class="token keyword">in</span> df<span class="token punctuation">.</span>iterrows<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>	venueRow <span class="token operator">=</span> venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token operator">==</span>row<span class="token punctuation">[</span><span class="token string">'venueId'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><br>	<span class="token keyword">if</span> venueRow<span class="token punctuation">.</span>empty<span class="token punctuation">:</span><br>		<span class="token comment"># print(f"Venue not found for {row['venueId']}")</span><br>		<span class="token comment"># continue</span><br>		venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><br>      row<span class="token punctuation">[</span><span class="token string">'venueId'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      row<span class="token punctuation">[</span><span class="token string">'venueName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      row<span class="token punctuation">[</span><span class="token string">"venueURL"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># latitude</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># longitude</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipString</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipCreatedAt</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipId</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipUrl</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipViews</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipAgreeCount</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipDisagreeCount</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># rating</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageSuffix</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageWidth</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageHeight</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageId</span><br>      <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageCreatedAt</span><br>      <span class="token punctuation">[</span>row<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># checkIns</span><br>      <span class="token punctuation">]</span>  <span class="token comment"># adding a row</span><br>		venuesDf<span class="token punctuation">.</span>index <span class="token operator">=</span> venuesDf<span class="token punctuation">.</span>index <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment"># shifting index</span><br>		venuesDf <span class="token operator">=</span> venuesDf<span class="token punctuation">.</span>sort_index<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># sorting by index</span><br>	<span class="token keyword">else</span><span class="token punctuation">:</span><br>		<span class="token comment"># add a new checkin to the series of checkins for this venue</span><br>		venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> row<span class="token punctuation">[</span><span class="token string">'venueId'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'checkIns'</span><span class="token punctuation">]</span> <span class="token operator">=</span> venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> row<span class="token punctuation">[</span><span class="token string">'venueId'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'checkIns'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token punctuation">[</span>row<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-4"><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Getting the initial feed in of venues into their own dataframe&quot;</code></a></p>
+<p>Ok, this is appending the ID where needed.</p>
+<p>Now I need to get the ratings in:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-3" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">addVenueRating</span><span class="token punctuation">(</span>ratingSet<span class="token punctuation">,</span> ratingType<span class="token punctuation">,</span> venueDFSet<span class="token punctuation">)</span><span class="token punctuation">:</span><br>	<span class="token keyword">for</span> ratingItem <span class="token keyword">in</span> ratingSet<span class="token punctuation">:</span><br>		venueRatingId <span class="token operator">=</span> ratingItem<span class="token punctuation">[</span><span class="token string">'url'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><br>		venueRow <span class="token operator">=</span> venueDFSet<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venueDFSet<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token operator">==</span>venueRatingId<span class="token punctuation">]</span><br>		<span class="token keyword">if</span> venueRow<span class="token punctuation">.</span>empty<span class="token punctuation">:</span><br>			<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Venue not found for </span><span class="token interpolation"><span class="token punctuation">{</span>venueRatingId<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br>			venueDFSet<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><br>				row<span class="token punctuation">[</span><span class="token string">'venueId'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>				row<span class="token punctuation">[</span><span class="token string">'venueName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>				row<span class="token punctuation">[</span><span class="token string">"venueURL"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># latitude</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># longitude</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipString</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipCreatedAt</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipId</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipUrl</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipViews</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipAgreeCount</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># tipDisagreeCount</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># rating</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageSuffix</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageWidth</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageHeight</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageId</span><br>				<span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># imageCreatedAt</span><br>				<span class="token punctuation">[</span>row<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># checkIns</span><br>			<span class="token punctuation">]</span>  <span class="token comment"># adding a row</span><br>			venueDFSet<span class="token punctuation">.</span>index <span class="token operator">=</span> venueDFSet<span class="token punctuation">.</span>index <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment"># shifting index</span><br>			venueDFSet <span class="token operator">=</span> venueDFSet<span class="token punctuation">.</span>sort_index<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># sorting by index</span><br>			<span class="token keyword">continue</span><br>		venueDFSet<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venueDFSet<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> venueRatingId<span class="token punctuation">,</span> <span class="token string">'rating'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ratingType<br><br>addVenueRating<span class="token punctuation">(</span>venueLikes<span class="token punctuation">,</span> <span class="token string">"like"</span><span class="token punctuation">,</span> venuesDf<span class="token punctuation">)</span><br>addVenueRating<span class="token punctuation">(</span>venueDislikes<span class="token punctuation">,</span> <span class="token string">"dislike"</span><span class="token punctuation">,</span> venuesDf<span class="token punctuation">)</span><br>addVenueRating<span class="token punctuation">(</span>venueOkays<span class="token punctuation">,</span> <span class="token string">"okay"</span><span class="token punctuation">,</span> venuesDf<span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-3">I discovered there were a few venues I guess I rated without a corresponding check-in? Had to make sure to create them I guess.</p>
+<p>Ok, now I have ratings and checkins. I now need photos and tips.</p>
+<p>Tips first? Ok, this does it:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-2" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">for</span> tip <span class="token keyword">in</span> tipsSetObject<span class="token punctuation">:</span><br>	tipVenueId <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"venue"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"id"</span><span class="token punctuation">]</span><br>	venueRow <span class="token operator">=</span> venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token operator">==</span>tipVenueId<span class="token punctuation">]</span><br>	<span class="token keyword">if</span> venueRow<span class="token punctuation">.</span>empty<span class="token punctuation">:</span><br>		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Venue not found for </span><span class="token interpolation"><span class="token punctuation">{</span>tip<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br>		<span class="token keyword">continue</span><br>	<span class="token comment"># print(f"Venue found for {tipVenueId}")</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipString'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipCreatedAt'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"createdAt"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipId'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"id"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipViews'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"viewCount"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipAgreeCount'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"agreeCount"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipDisagreeCount'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"disagreeCount"</span><span class="token punctuation">]</span><br>	venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token operator">==</span> tipVenueId<span class="token punctuation">,</span> <span class="token string">'tipUrl'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tip<span class="token punctuation">[</span><span class="token string">"canonicalUrl"</span><span class="token punctuation">]</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>venuesDf<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>venuesDf<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">"64dd65470e981a714e4c9f6c"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-2"><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Set up tip pull into the venue dataframe&quot;</code></a></p>
+<p>Next up is the images and then the last thing is to figure out how to pull lat and long data.</p>
+<p>Hmmm. Looks like checkins can also have a <code>shout</code> value:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-1-getting-a-handle-on-the-data-1" id="skip-to-code-skip-day-1-getting-a-handle-on-the-data-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>	<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"673583d957abcd42163c5c32"</span><span class="token punctuation">,</span><br>	<span class="token property">"createdAt"</span><span class="token operator">:</span><span class="token string">"2024-11-14 05:00:09.000000"</span><span class="token punctuation">,</span><br>	<span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"checkin"</span><span class="token punctuation">,</span><br>	<span class="token property">"visibility"</span><span class="token operator">:</span><span class="token string">"closeFriends"</span><span class="token punctuation">,</span><br>	<span class="token property">"entities"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>	<span class="token property">"shout"</span><span class="token operator">:</span><span class="token string">"Kareoke time!"</span><span class="token punctuation">,</span><br>	<span class="token property">"timeZoneOffset"</span><span class="token operator">:</span><span class="token number">-300</span><span class="token punctuation">,</span><br>	<span class="token property">"venue"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>		<span class="token property">"id"</span><span class="token operator">:</span><span class="token string">"5285412911d2a3e51484ff56"</span><span class="token punctuation">,</span><br>		<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"The Brew Inn"</span><span class="token punctuation">,</span><br>		<span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"https:\/\/foursquare.com\/v\/the-brew-inn\/5285412911d2a3e51484ff56"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>		<span class="token property">"comments"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"count"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">}</span><br>	<span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-1-getting-a-handle-on-the-data-1">Ok, back to photos.</p>
+<p>Looks like we got a problem: When the URL for a photo contains <code>foursquare</code> it doesn't map to a check-in, but to the location. Need to check.</p>
+<p>Interesting. Somehow I have images that don't have attached check-ins. Seems impossible, but ok. Maybe from earlier versions of the app.</p>
+<p>The photos don't seem to be joining in. Something is wrong with my logic. Hmmm.</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    <script src="https://utteranc.es/client.js"
+            repo="AramZS/fightwithtools-comments"
+            issue-term="title"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/python">Python</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/foursquare">Foursquare</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/location-data">Location Data</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/jupyter-notebook">Jupyter Notebook</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/jupyter">Jupyter</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
