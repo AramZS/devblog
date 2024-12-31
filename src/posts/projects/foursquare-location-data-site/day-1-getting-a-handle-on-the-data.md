@@ -1,6 +1,6 @@
 ---
-title: Setting up a new site to get more hands on with Astro - Day 1
-description: "Rebuilding an old site that broke, a wiki for a game I run."
+title: Setting up a python project to handle Foursquare data exports
+description: "Foursquare gave me a big hunk of data files, now what do I do with it?"
 date: 2024-12-25 10:59:43.10 -4
 tags:
   - Python
@@ -491,3 +491,5 @@ Looks like we got a problem: When the URL for a photo contains `foursquare` it d
 Interesting. Somehow I have images that don't have attached check-ins. Seems impossible, but ok. Maybe from earlier versions of the app.
 
 The photos don't seem to be joining in. Something is wrong with my logic. Hmmm.
+
+`git commit -am "Attempting to process photos list"`
