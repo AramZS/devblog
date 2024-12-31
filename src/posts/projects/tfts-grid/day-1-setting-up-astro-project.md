@@ -9,6 +9,7 @@ tags:
   - HTMX
   - HTML
   - TTRPG
+  - WiP
 ---
 
 ## Project Scope and ToDos
