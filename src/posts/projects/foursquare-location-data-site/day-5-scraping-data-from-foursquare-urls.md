@@ -1,7 +1,7 @@
 ---
 title: Dealing with Foursquare checkins that don't have an API response
 description: "If it doesn't make money it apparently isn't in the Foursquare API"
-date: 2025-01-04 11:59:43.10 -4
+date: 2025-01-05 11:59:43.10 -4
 tags:
   - Python
   - Foursquare
