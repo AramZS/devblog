@@ -1,6 +1,6 @@
 ---
-title: Mucking with Node libraries - Day 4
-description: "Let's get a node project up and running"
+title: Dynamic DNS, getting it working - Day 5
+description: "Mapping out my dynamic DNS process"
 date: 2025-01-04 18:59:43.10 -4
 tags:
   - Node
