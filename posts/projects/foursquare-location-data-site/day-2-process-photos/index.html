@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12614850741" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12614850741" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12623090813" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12623090813" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12614850741" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12614850741" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12623090813" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12623090813" id=""></link>
 
             
-            <!-- Build Revision: 12614850741 & Sha: a467688186187cb7b4bbe0a752a12aae9f959107 -->
+            <!-- Build Revision: 12623090813 & Sha: 50c6d3532a96422c5451275afeb190c2a74dbad2 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -255,9 +255,9 @@
 </ul>
 <h2 id="day-2" tabindex="-1">Day 2</h2>
 <p>I think I got it writing photos effectively, but I think I made a mistake trying to put them in the venue dataframe. I need a photo table.</p>
-<p><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up a dataframe for individual photos&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/locations/commit/5df3d3aabbce8b5d47117f11e8e3ccb132b9b70d" class="git-commit-link"><code>git commit -am &quot;Setting up a dataframe for individual photos&quot;</code></a></p>
 <p>Ok, I can see how to do it, but the sequence is getting complicated. I want to actually set up some functions and call them into the notebook I'm working on. Then I need to do the next thing, which is resolve venues to have lat and long values.</p>
-<p><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Processing sequence of files into dataframes now in functions&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/locations/commit/8f8077b04a281fe5242727e5e72a9737e9c448a9" class="git-commit-link"><code>git commit -am &quot;Processing sequence of files into dataframes now in functions&quot;</code></a></p>
 <p>Oh, I know some photos exist without a checkin, which means no venue entry. I'll have to add that.</p>
 <p><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Photos should always have venues associated with them.&quot;</code></a></p>
 <p>Ok, so now we gotta look at hitting the Foursquare API to get the correct lat and long data.</p>
