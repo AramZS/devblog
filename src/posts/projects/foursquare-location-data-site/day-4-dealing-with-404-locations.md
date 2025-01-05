@@ -24,7 +24,7 @@ tags:
 
 Ok, I've got the whole setup for retrieving from the API done. Places that 200 are being integrated into the dataframe successfully and also being written to local JSON files.
 
-There's only one problem, check-in locations that don't correspond to a business aren't in the API and I have a ton of them.
+There's only one problem, check-in locations that don't correspond to a business aren't in [the API](https://docs.foursquare.com/developer/reference/place-details) and I have a ton of them.
 
 I'm going to write them all to files, this allows me to debug them a little easier.
 
@@ -54,3 +54,5 @@ That is likely all I need, but I can also get the address info it looks like, th
 I'll need to add a function to access the `url` from the dataframe and crawl that page, and do it quickly before this stuff goes offline, assuming it still will. I can then pull that data into my dataframe.
 
 I'll likely have to use [beautifulsoup](https://beautiful-soup-4.readthedocs.io/en/latest/).
+
+I also should investigate if [the new Places data set](https://location.foursquare.com/resources/blog/products/foursquare-open-source-places-a-new-foundational-dataset-for-the-geospatial-community/) that was open sourced might have this data and, if so, how I can access it.
