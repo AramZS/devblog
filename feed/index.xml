@@ -5,12 +5,107 @@
   <subtitle>Notes on various projects</subtitle>
   <link href="https://fightwithtools.dev/feed.xml" rel="self"/>
   <link href="https://fightwithtools.dev/"/>
-  <updated>2024-12-30T14:59:43Z</updated>
+  <updated>2025-01-04T22:59:43Z</updated>
   <id>https://fightwithtools.dev/</id>
   <author>
     <name>Aram Zucker-Scharff</name>
     <email>aramdevblog@aramzs.me</email>
   </author>
+  
+  <entry>
+    <title>Mucking with Node libraries - Day 4</title>
+    <link href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/"/>
+    <updated>2025-01-04T22:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Be able to host a server</li>
+<li>Be able to build node projects</li>
+<li>Be able to handle larger projects</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Be able to run continually</li>
+</ul>
+<h2 id="day-4" tabindex="-1">Day 4</h2>
+<p>Ok, I had to reset the device's OS to a 64-bit version because I want to do some applications that require it.</p>
+<p>Now I want to use it as a web host, but that means a Dynamic DNS mapping.</p>
+<p>I took a look at options and I think I can use the new registrar I've been trying out, Porkbun, directly. I use GoDaddy for most of my domains (yes I know) but their API doesn't seem to allow for you to create keys with restricted access to particular domains, it is all or nothing. <a href="https://porkbun.com/" target="_blank">Porkbun</a> apparently allows you to limit access to particular domains. So let's try that.</p>
+<p>Everything I've read seems to indicate that <a href="https://github.com/ddclient/ddclient" target="_blank">DDClient</a> is the way to go, but thus far I haven't gotten it to work. Let's see what the deal is.</p>
+<p>I can find the <a href="https://porkbun.com/account/api" target="_blank">Porkbun API</a> down in the footer.</p>
+<p>That lets me create the key and secret for the API. Now I can see <a href="https://porkbun.com/api/json/v3/documentation" target="_blank">the API docs</a>.</p>
+<p>So I'm going to test out the API to make sure my keys work:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-9" id="skip-to-code-skip-day-5-dynamic-dns-9" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">--request</span> GET <span class="token punctuation">\</span><br />  <span class="token parameter variable">--url</span> https://api.porkbun.com/api/json/v3/ping <span class="token punctuation">\</span><br />  <span class="token parameter variable">--header</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span><br />  <span class="token parameter variable">--header</span> <span class="token string">'User-Agent: insomnia/10.3.0'</span> <span class="token punctuation">\</span><br />  <span class="token parameter variable">--cookie</span> <span class="token assign-left variable">BUNSESSION2</span><span class="token operator">=</span>xxxx <span class="token punctuation">\</span><br />  <span class="token parameter variable">--data</span> <span class="token string">'{<br />	"secretapikey": "xxxxx",<br />	"apikey": "xxxxxx"<br />}<br />'</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-9">Ok, that worked! I got back:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-8" id="skip-to-code-skip-day-5-dynamic-dns-8" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span><br />	<span class="token string">"status"</span><span class="token builtin class-name">:</span> <span class="token string">"SUCCESS"</span>,<br />	<span class="token string">"yourIp"</span><span class="token builtin class-name">:</span> <span class="token string">"xxxx"</span>,<br />	<span class="token string">"xForwardedFor"</span><span class="token builtin class-name">:</span> <span class="token string">"xxxx"</span><br /><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-8">So I know my keys work!</p>
+<p>I wasn't able to get this working with GoDaddy, but that means I configured it incorrectly. So I need to know how to re-configure the config file with <code>whereis ddclient</code>.</p>
+<p>Ok, that wasn't where it was, but running it did give me an error that told me where the file was. Going to try to alter the file via <code>sudo nano /etc/ddclient.conf</code> .</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-7" id="skip-to-code-skip-day-5-dynamic-dns-7" class="skip-link">Skip code block ▼</a></p>
+<pre><code># Configuration file for ddclient generated by debconf
+#
+# /etc/ddclient.conf
+
+protocol=porkbun \
+use=web, web=ipify-ipv4 \
+login='xxxx' \
+password='xxxx' \
+</code></pre>
+<p id="code-skip-day-5-dynamic-dns-7">Huh, Porkbun isn't a protocol. Let's look and see how I activate it.</p>
+<p>Ah, well it needs a different configuration:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-6" id="skip-to-code-skip-day-5-dynamic-dns-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment">##</span><br /><span class="token comment">## Porkbun (https://porkbun.com/)</span><br /><span class="token comment">##</span><br /><span class="token comment"># protocol=porkbun</span><br /><span class="token comment"># apikey=APIKey</span><br /><span class="token comment"># secretapikey=SecretAPIKey</span><br /><span class="token comment"># root-domain=example.com</span><br /><span class="token comment"># host.example.com,host2.sub.example.com</span><br /><span class="token comment"># example.com,sub.example.com</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-6">Oh, apparently the package manager version is not up to date. I checked:</p>
+<p><code>ddclient ---</code></p>
+<p>and it is 3.10.0.</p>
+<p>Looks like <a href="https://www.reddit.com/r/HomeNetworking/comments/12ytj8m/question_ddclient_with_porkbun_domain_and_their/" target="_blank">I'm not the only one with this problem</a>.</p>
+<p>Let's remove the package from apt-get <code>sudo apt-get remove ddclient</code>.</p>
+<p>I found something useful, <a href="https://www.youtube.com/watch?v=B2y3vT35sSE" target="_blank">Porkbun has their own walkthrough</a>! But wait... it points at depreciated tech. Ok, so build DDClient locally instead I guess!</p>
+<p>I will get <a href="https://github.com/ddclient/ddclient/releases" target="_blank">the latest from the GitHub tags</a>.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-5" id="skip-to-code-skip-day-5-dynamic-dns-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/ddclient/ddclient/archive/refs/tags/v3.11.2.tar.gz<br /><br /><span class="token function">tar</span> xvfa v3.11.2.tar.gz<br /><br /><span class="token builtin class-name">cd</span> ddclient-3.11.2/<br /><br /><span class="token function">sudo</span> <span class="token function">mkdir</span> /etc/ddclient<br /><br /><span class="token function">sudo</span> <span class="token function">touch</span> /etc/ddclient/ddclient.conf</code></pre>
+<p id="code-skip-day-5-dynamic-dns-5">Ok, stuff isn't working. Let's try and pull it from GitHub. It says first you have to configure the project, but I don't have the needed package to run <code>autoreconf</code> so</p>
+<p><code>sudo apt-get install autoconf</code></p>
+<p>Ok! So now: <code>sudo ./autogen</code></p>
+<p>Now I can run this?</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-4" id="skip-to-code-skip-day-5-dynamic-dns-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash">./configure <span class="token punctuation">\</span><br />    <span class="token parameter variable">--prefix</span><span class="token operator">=</span>/usr <span class="token punctuation">\</span><br />    <span class="token parameter variable">--sysconfdir</span><span class="token operator">=</span>/etc/ddclient <span class="token punctuation">\</span><br />    <span class="token parameter variable">--localstatedir</span><span class="token operator">=</span>/var</code></pre>
+<p id="code-skip-day-5-dynamic-dns-4">Yes!</p>
+<p>Then these commands from the ReadMe:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-3" id="skip-to-code-skip-day-5-dynamic-dns-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">make</span><br /><span class="token function">make</span> <span class="token assign-left variable">VERBOSE</span><span class="token operator">=</span><span class="token number">1</span> check<br /><span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-3">Now I can configure <code>sudo nano /etc/ddclient/ddclient.conf</code>.</p>
+<p>Then down the readme we go!</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-2" id="skip-to-code-skip-day-5-dynamic-dns-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">cp</span> sample-etc_systemd.service /etc/systemd/system/ddclient.service<br />systemctl <span class="token builtin class-name">enable</span> ddclient.service<br />systemctl start ddclient.service</code></pre>
+<p id="code-skip-day-5-dynamic-dns-2">Then I can <code>sudo</code> run the service manually to determine what is going on!</p>
+<p><code>sudo ddclient -daemon=0 -debug -verbose -noquiet</code></p>
+<p>Hmm, it sure is taking a while to get to <a href="https://checkip.dyndns.org/" target="_blank">https://checkip.dyndns.org/</a> :/</p>
+<p>Doesn't look like it works? Not great! Let's investigate the options for the reading the data out of the router. Looks like it won't work for my router.</p>
+<p>Instead let's <a href="https://github.com/ddclient/ddclient/blob/0a687d505b491e6f1c462cbe7a49e1dc60724c9a/ddclient.in#L275" target="_blank">look at other protocols</a>.</p>
+<p>We can change the config to try to use a different protocol, now:</p>
+<p><code>use=web, web=ipify-ipv4                                 # via web</code></p>
+<p>Ok, that is finding the IP properly! But it isn't setting it into the domain.</p>
+<p>Looks like I need to delete the <code>ALIAS</code> record set into the domain by default in Porkbun and replace it with an <code>A</code> record. Then the system can use that. I can also map the IP to subdomains.</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/#code-skip-day-5-dynamic-dns-1" id="skip-to-code-skip-day-5-dynamic-dns-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">protocol</span><span class="token operator">=</span>porkbun<br /><span class="token assign-left variable">apikey</span><span class="token operator">=</span>xxxx<br /><span class="token assign-left variable">secretapikey</span><span class="token operator">=</span>xxxx<br />www.my.domain<br />on-root-domain<span class="token operator">=</span>yes my.domain</code></pre>
+<p id="code-skip-day-5-dynamic-dns-1">And hey, that brings me to my home router &gt;.&lt;</p>
+<p>I can, however, access the service on the port it is running on via the domain <a href="https://portforward.com/" target="_blank">once I've set up port forwarding for that port</a>, so I'm getting close!</p>
+<p><a href="https://community.verizon.com/t5/Fios-Internet-and-High-Speed/Internet-ports-80-and-443/m-p/1462542" target="_blank">It looks like my particular Verizon router may just not allow me to open port 80</a>. Ok, let's try to go on with setting up the task that will keep the static IP up to date for now. At some point in the future I <a href="https://pimylifeup.com/raspberry-pi-ssl-lets-encrypt/" target="_blank">may want to figure out an HTTPS cert</a> as well, once I got everything mapped.</p>
+<p>Ok, no, the setup instructions do activate the daemon on the server for ddclient and set it up to come back online when the system restarts. That's good, it should keep my Raspberry Pi connected to the domain.</p>
+<p>I think this is a good place to stop, nifty to get this work!</p>
+</content>
+  </entry>
   
   <entry>
     <title>Moving the python for processing Foursquare data into more manageable functions</title>

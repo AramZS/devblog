@@ -1,0 +1,460 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Mucking with Node libraries - Day 4</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12614850741" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=12614850741" id=""></link>
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12614850741" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=12614850741" id=""></link>
+
+            
+            <!-- Build Revision: 12614850741 & Sha: a467688186187cb7b4bbe0a752a12aae9f959107 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff" />
+
+<meta property="og:title"
+    content="Mucking with Node libraries - Day 4">
+
+<meta property="og:description"
+    content="Let's get a node project up and running">
+
+
+<meta property="og:url"
+    content="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/" />
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:site" content="@chronotope" />
+
+<meta name="twitter:description" content="Let's get a node project up and running" />
+
+<meta name="description" content="Let's get a node project up and running">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image" />
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope" />
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Mucking with Node libraries - Day 4" />
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" />
+<meta name="twitter:image" content="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" />
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="Sat, 04 Jan 2025 22:59:43 GMT" />
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Raspberry Pi Dev Box" />
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts" />
+        
+        <meta property="article:tag" content="projects" />
+        
+        <meta property="article:tag" content="Node" />
+        
+        <meta property="article:tag" content="Raspberry Pi" />
+        
+        <meta property="article:tag" content="SSH" />
+        
+        <meta property="article:tag" content="Linux" />
+        
+        <meta property="article:tag" content="Development Tools" />
+        
+        <meta property="article:tag" content="Dynamic DNS" />
+        
+        <meta property="article:tag" content="Hosting" />
+        
+        <meta property="article:tag" content="Self Hosting" />
+        
+        <meta property="article:tag" content="WiP" />
+        
+        <meta property="article:tag" content="ddclient" />
+        
+        <meta property="article:tag" content="Porkbun" />
+        
+        <meta name="keywords" content="posts, projects, Node, Raspberry Pi, SSH, Linux, Development Tools, Dynamic DNS, Hosting, Self Hosting, WiP, ddclient, Porkbun">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/",
+        "headline": "Mucking with Node libraries - Day 4",
+        "about": "Let's get a node project up and running",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/raspberrypi/day-5-dynamic-dns/" />
+
+        </head>
+        <body itemscope itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/raspberrypi">Raspberry Pi Dev Box</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Sat Jan 04 2025</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header">
+                            Mucking with Node libraries - Day 4
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2>Contents</h2>
+                <nav class="toc" >
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-4">Day 4</a></li></ol>
+      </nav>
+            </div>
+        </aside>
+        <div id="post-description">Let's get a node project up and running</div>
+
+        
+    <figure class="figure preview-image">
+        <img src="https://fightwithtools.dev/img/Raspberry_Pi-Logo.svg" alt="Raspberry Pi logo.">
+        
+            <figcaption class="figcaption">
+                
+                 | <em>
+                        <a href="https://www.raspberrypi.com/" target="_blank">Raspberry Pi Logo</a>
+                    </em> | 
+            </figcaption>
+        
+    </figure>
+
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Be able to host a server</li>
+<li>Be able to build node projects</li>
+<li>Be able to handle larger projects</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Be able to run continually</li>
+</ul>
+<h2 id="day-4" tabindex="-1">Day 4</h2>
+<p>Ok, I had to reset the device's OS to a 64-bit version because I want to do some applications that require it.</p>
+<p>Now I want to use it as a web host, but that means a Dynamic DNS mapping.</p>
+<p>I took a look at options and I think I can use the new registrar I've been trying out, Porkbun, directly. I use GoDaddy for most of my domains (yes I know) but their API doesn't seem to allow for you to create keys with restricted access to particular domains, it is all or nothing. <a href="https://porkbun.com/" target="_blank">Porkbun</a> apparently allows you to limit access to particular domains. So let's try that.</p>
+<p>Everything I've read seems to indicate that <a href="https://github.com/ddclient/ddclient" target="_blank">DDClient</a> is the way to go, but thus far I haven't gotten it to work. Let's see what the deal is.</p>
+<p>I can find the <a href="https://porkbun.com/account/api" target="_blank">Porkbun API</a> down in the footer.</p>
+<p>That lets me create the key and secret for the API. Now I can see <a href="https://porkbun.com/api/json/v3/documentation" target="_blank">the API docs</a>.</p>
+<p>So I'm going to test out the API to make sure my keys work:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-9" id="skip-to-code-skip-day-5-dynamic-dns-9" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">--request</span> GET <span class="token punctuation">\</span><br>  <span class="token parameter variable">--url</span> https://api.porkbun.com/api/json/v3/ping <span class="token punctuation">\</span><br>  <span class="token parameter variable">--header</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span><br>  <span class="token parameter variable">--header</span> <span class="token string">'User-Agent: insomnia/10.3.0'</span> <span class="token punctuation">\</span><br>  <span class="token parameter variable">--cookie</span> <span class="token assign-left variable">BUNSESSION2</span><span class="token operator">=</span>xxxx <span class="token punctuation">\</span><br>  <span class="token parameter variable">--data</span> <span class="token string">'{<br>	"secretapikey": "xxxxx",<br>	"apikey": "xxxxxx"<br>}<br>'</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-9">Ok, that worked! I got back:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-8" id="skip-to-code-skip-day-5-dynamic-dns-8" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span><br>	<span class="token string">"status"</span><span class="token builtin class-name">:</span> <span class="token string">"SUCCESS"</span>,<br>	<span class="token string">"yourIp"</span><span class="token builtin class-name">:</span> <span class="token string">"xxxx"</span>,<br>	<span class="token string">"xForwardedFor"</span><span class="token builtin class-name">:</span> <span class="token string">"xxxx"</span><br><span class="token punctuation">}</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-8">So I know my keys work!</p>
+<p>I wasn't able to get this working with GoDaddy, but that means I configured it incorrectly. So I need to know how to re-configure the config file with <code>whereis ddclient</code>.</p>
+<p>Ok, that wasn't where it was, but running it did give me an error that told me where the file was. Going to try to alter the file via <code>sudo nano /etc/ddclient.conf</code> .</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-7" id="skip-to-code-skip-day-5-dynamic-dns-7" class="skip-link">Skip code block ▼</a></p>
+<pre><code># Configuration file for ddclient generated by debconf
+#
+# /etc/ddclient.conf
+
+protocol=porkbun \
+use=web, web=ipify-ipv4 \
+login='xxxx' \
+password='xxxx' \
+</code></pre>
+<p id="code-skip-day-5-dynamic-dns-7">Huh, Porkbun isn't a protocol. Let's look and see how I activate it.</p>
+<p>Ah, well it needs a different configuration:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-6" id="skip-to-code-skip-day-5-dynamic-dns-6" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment">##</span><br><span class="token comment">## Porkbun (https://porkbun.com/)</span><br><span class="token comment">##</span><br><span class="token comment"># protocol=porkbun</span><br><span class="token comment"># apikey=APIKey</span><br><span class="token comment"># secretapikey=SecretAPIKey</span><br><span class="token comment"># root-domain=example.com</span><br><span class="token comment"># host.example.com,host2.sub.example.com</span><br><span class="token comment"># example.com,sub.example.com</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-6">Oh, apparently the package manager version is not up to date. I checked:</p>
+<p><code>ddclient ---</code></p>
+<p>and it is 3.10.0.</p>
+<p>Looks like <a href="https://www.reddit.com/r/HomeNetworking/comments/12ytj8m/question_ddclient_with_porkbun_domain_and_their/" target="_blank">I'm not the only one with this problem</a>.</p>
+<p>Let's remove the package from apt-get <code>sudo apt-get remove ddclient</code>.</p>
+<p>I found something useful, <a href="https://www.youtube.com/watch?v=B2y3vT35sSE" target="_blank">Porkbun has their own walkthrough</a>! But wait... it points at depreciated tech. Ok, so build DDClient locally instead I guess!</p>
+<p>I will get <a href="https://github.com/ddclient/ddclient/releases" target="_blank">the latest from the GitHub tags</a>.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-5" id="skip-to-code-skip-day-5-dynamic-dns-5" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/ddclient/ddclient/archive/refs/tags/v3.11.2.tar.gz<br><br><span class="token function">tar</span> xvfa v3.11.2.tar.gz<br><br><span class="token builtin class-name">cd</span> ddclient-3.11.2/<br><br><span class="token function">sudo</span> <span class="token function">mkdir</span> /etc/ddclient<br><br><span class="token function">sudo</span> <span class="token function">touch</span> /etc/ddclient/ddclient.conf</code></pre>
+<p id="code-skip-day-5-dynamic-dns-5">Ok, stuff isn't working. Let's try and pull it from GitHub. It says first you have to configure the project, but I don't have the needed package to run <code>autoreconf</code> so</p>
+<p><code>sudo apt-get install autoconf</code></p>
+<p>Ok! So now: <code>sudo ./autogen</code></p>
+<p>Now I can run this?</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-4" id="skip-to-code-skip-day-5-dynamic-dns-4" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash">./configure <span class="token punctuation">\</span><br>    <span class="token parameter variable">--prefix</span><span class="token operator">=</span>/usr <span class="token punctuation">\</span><br>    <span class="token parameter variable">--sysconfdir</span><span class="token operator">=</span>/etc/ddclient <span class="token punctuation">\</span><br>    <span class="token parameter variable">--localstatedir</span><span class="token operator">=</span>/var</code></pre>
+<p id="code-skip-day-5-dynamic-dns-4">Yes!</p>
+<p>Then these commands from the ReadMe:</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-3" id="skip-to-code-skip-day-5-dynamic-dns-3" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">make</span><br><span class="token function">make</span> <span class="token assign-left variable">VERBOSE</span><span class="token operator">=</span><span class="token number">1</span> check<br><span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span></code></pre>
+<p id="code-skip-day-5-dynamic-dns-3">Now I can configure <code>sudo nano /etc/ddclient/ddclient.conf</code>.</p>
+<p>Then down the readme we go!</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-2" id="skip-to-code-skip-day-5-dynamic-dns-2" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">cp</span> sample-etc_systemd.service /etc/systemd/system/ddclient.service<br>systemctl <span class="token builtin class-name">enable</span> ddclient.service<br>systemctl start ddclient.service</code></pre>
+<p id="code-skip-day-5-dynamic-dns-2">Then I can <code>sudo</code> run the service manually to determine what is going on!</p>
+<p><code>sudo ddclient -daemon=0 -debug -verbose -noquiet</code></p>
+<p>Hmm, it sure is taking a while to get to <a href="https://checkip.dyndns.org/" target="_blank">https://checkip.dyndns.org/</a> :/</p>
+<p>Doesn't look like it works? Not great! Let's investigate the options for the reading the data out of the router. Looks like it won't work for my router.</p>
+<p>Instead let's <a href="https://github.com/ddclient/ddclient/blob/0a687d505b491e6f1c462cbe7a49e1dc60724c9a/ddclient.in#L275" target="_blank">look at other protocols</a>.</p>
+<p>We can change the config to try to use a different protocol, now:</p>
+<p><code>use=web, web=ipify-ipv4                                 # via web</code></p>
+<p>Ok, that is finding the IP properly! But it isn't setting it into the domain.</p>
+<p>Looks like I need to delete the <code>ALIAS</code> record set into the domain by default in Porkbun and replace it with an <code>A</code> record. Then the system can use that. I can also map the IP to subdomains.</p>
+<p class="skip-link-graf">
+<a href="#code-skip-day-5-dynamic-dns-1" id="skip-to-code-skip-day-5-dynamic-dns-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">protocol</span><span class="token operator">=</span>porkbun<br><span class="token assign-left variable">apikey</span><span class="token operator">=</span>xxxx<br><span class="token assign-left variable">secretapikey</span><span class="token operator">=</span>xxxx<br>www.my.domain<br>on-root-domain<span class="token operator">=</span>yes my.domain</code></pre>
+<p id="code-skip-day-5-dynamic-dns-1">And hey, that brings me to my home router &gt;.&lt;</p>
+<p>I can, however, access the service on the port it is running on via the domain <a href="https://portforward.com/" target="_blank">once I've set up port forwarding for that port</a>, so I'm getting close!</p>
+<p><a href="https://community.verizon.com/t5/Fios-Internet-and-High-Speed/Internet-ports-80-and-443/m-p/1462542" target="_blank">It looks like my particular Verizon router may just not allow me to open port 80</a>. Ok, let's try to go on with setting up the task that will keep the static IP up to date for now. At some point in the future I <a href="https://pimylifeup.com/raspberry-pi-ssl-lets-encrypt/" target="_blank">may want to figure out an HTTPS cert</a> as well, once I got everything mapped.</p>
+<p>Ok, no, the setup instructions do activate the daemon on the server for ddclient and set it up to come back online when the system restarts. That's good, it should keep my Raspberry Pi connected to the domain.</p>
+<p>I think this is a good place to stop, nifty to get this work!</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    <script src="https://utteranc.es/client.js"
+            repo="AramZS/fightwithtools-comments"
+            issue-term="title"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/raspberrypi/day-4-mucking-with-node-libraries/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6>Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/node">Node</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/raspberry-pi">Raspberry Pi</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/ssh">SSH</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/linux">Linux</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/development-tools">Development Tools</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/dynamic-dns">Dynamic DNS</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/hosting">Hosting</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/self-hosting">Self Hosting</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/ddclient">ddclient</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/porkbun">Porkbun</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
