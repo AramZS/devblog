@@ -3,5 +3,5 @@
 	"description": "A shortform blog and collection for my activity on other sites.",
 	"repo": "https://github.com/AramZS/aramzs.xyz",
 	"featuredImage": "xyz-icon.png",
-	"now": true
+	"complete": "v1"
 }
