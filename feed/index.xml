@@ -516,6 +516,51 @@
   
   <entry>
     <title>XYZ Site - Day 10 - Next step to rebuild Pocket exporting by optimizing for Netlify.</title>
+    <link href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-11-sharing-buttons/"/>
+    <updated>2024-11-28T21:59:43Z</updated>
+    <id>https://fightwithtools.dev/posts/projects/aramzsxyz/day-11-sharing-buttons/</id>
+    <content type="html"><h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a versatile blog site</li>
+<li>Create a framework that makes it easy to add external data to the site</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Give the site the capacity to replicate the logging and rating I do on Serialized and Letterboxd.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Be able to pull down RSS feeds from other sites and create forward links to my other sites</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create forward links to sites I want to post about.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to pull in my Goodreads data and display it on the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to automate pulls from other data sources</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Get my Kindle Quotes into the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> YouTube Channel Recommendations</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Minify HTML via Netlify plugin.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Log played games</li>
+</ul>
+<h2 id="day-11" tabindex="-1">Day 11</h2>
+<p>Now that the Web Share API is pretty much available everywhere I really have wanted to take some time to figure out how to use it. <a href="https://piccalil.li/blog/simplify-sharing-with-built-in-apis-and-progressive-enhancement/" target="_blank">An article on setting up sharing with HTML/JS</a> popped up on my feed reader and I figured this is the excuse to give it a try.</p>
+<p>One thing I really want to do here is avoid having more network requests for script files. This has been an issue that has come up at work and the tactic I thought about there is one I want to try for myself here, which is to pull the script out of a JS file and into the HTML file for inline script tags.</p>
+<p>There might be more than one script I want to handle this way, but I think they all belong in a single script tag? The potential problem here is that this could cause problems with how JS pointers bubble up, giving it a broad scope.</p>
+<p>Actually... now that I've typed it out... I don't want it to be in a single script tag. Let's not do that.</p>
+<p>Ok, so I need a block in the template:</p>
+<p><code>{{ build.footerInlineScript | safe }}</code></p>
+<p>I need to make it safe because it is HTML and I don't want it escaped.</p>
+<p data-wordfix="true">This is a <code>build</code> Eleventy data object in the <code>_data</code> folder. In there I have an object now:</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-11-sharing-buttons/#code-skip-day-11-sharing-buttons-1" id="skip-to-code-skip-day-11-sharing-buttons-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> shareActions <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../../plugins/share-actions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br /><br />module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><br />	<span class="token literal-property property">env</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">ELEVENTY_ENV</span><span class="token punctuation">,</span><br />	<span class="token literal-property property">timestamp</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br />	<span class="token literal-property property">bookwyrm</span><span class="token operator">:</span> <span class="token punctuation">{</span><br />		<span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">"aramzs"</span><span class="token punctuation">,</span><br />		<span class="token literal-property property">instance</span><span class="token operator">:</span> <span class="token string">"bookwyrm.tilde.zone"</span><span class="token punctuation">,</span><br />	<span class="token punctuation">}</span><span class="token punctuation">,</span><br />  <span class="token literal-property property">footerInlineScript</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;script></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareActions<span class="token punctuation">.</span><span class="token function">js</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/script></span><span class="token template-punctuation string">`</span></span><br /><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-11-sharing-buttons-1">With the <code>share-actions</code> file going to be my home for building this process. I can then build it like normal JS files in there and export it out from the <code>index.js</code> in the <code>share-actions</code> folder.</p>
+<p>Now I'm free to build in <code>.js</code> files easily.</p>
+<p>The other thing I may want to add to this process is minification, but I'll worry about that later.</p>
+<p>I will want my custom HTML as well, and I can export that from my index also. I might not be able to get the per-page <code>data</code> context with the URL that way, but let's see what we can do.</p>
+<p>Ok yeah, the data from the page build just doesn't seem accessible in the global data? At least not with the Nunjucks rendering process. I guess I'll have to define a Nunjucks template and import it into my template.</p>
+<p data-wordfix="true">I'm putting it in the plugin's folder for now. That's not great because it doesn't trigger rebuild but hopefully it has full access to the page context?</p>
+</content>
+  </entry>
+  
+  <entry>
+    <title>XYZ Site - Day 10 - Next step to rebuild Pocket exporting by optimizing for Netlify.</title>
     <link href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-10-getting-pocket-working-post-build-netlify-processing/"/>
     <updated>2024-11-28T21:59:43Z</updated>
     <id>https://fightwithtools.dev/posts/projects/aramzsxyz/day-10-getting-pocket-working-post-build-netlify-processing/</id>
