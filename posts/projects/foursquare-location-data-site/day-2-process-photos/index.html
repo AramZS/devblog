@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=14285794529" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=14285794529" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16870875112" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16870875112" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=14285794529" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=14285794529" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16870875112" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16870875112" id=""></link>
 
             
-            <!-- Build Revision: 14285794529 & Sha: ad671e00916d662d613c2763305fcbe994081c9b -->
+            <!-- Build Revision: 16870875112 & Sha: 638b4a12a03cfd36a3462876178c911347a3b504 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -259,7 +259,7 @@
 <p>Ok, I can see how to do it, but the sequence is getting complicated. I want to actually set up some functions and call them into the notebook I'm working on. Then I need to do the next thing, which is resolve venues to have lat and long values.</p>
 <p><a target="_blank" href="https://github.com/AramZS/locations/commit/8f8077b04a281fe5242727e5e72a9737e9c448a9" class="git-commit-link"><code>git commit -am &quot;Processing sequence of files into dataframes now in functions&quot;</code></a></p>
 <p>Oh, I know some photos exist without a checkin, which means no venue entry. I'll have to add that.</p>
-<p><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Photos should always have venues associated with them.&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/locations/commit/3920cd3566c5e74417921963021a376794ebd7c6" class="git-commit-link"><code>git commit -am &quot;Photos should always have venues associated with them.&quot;</code></a></p>
 <p>Ok, so now we gotta look at hitting the Foursquare API to get the correct lat and long data.</p>
 <h2 id="using-the-foursquare-api" tabindex="-1">Using the Foursquare API</h2>
 <p>Ok, I tried out the <a href="https://docs.foursquare.com/developer/reference/place-details" target="_blank">place details endpoint in the FourSquare API Explorer</a>.</p>
@@ -272,7 +272,7 @@
 <p class="skip-link-graf">
 <a href="#code-skip-day-2-process-photos-1" id="skip-to-code-skip-day-2-process-photos-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-python"><code class="language-python"><span class="token operator">%</span>autoreload <span class="token number">2</span><br><span class="token keyword">import</span> data_processing<br><br>config <span class="token operator">=</span> dotenv_values<span class="token punctuation">(</span><span class="token string">'../.env'</span><span class="token punctuation">)</span><br>apiKey <span class="token operator">=</span> config<span class="token punctuation">[</span><span class="token string">'FSQ_API_KEY'</span><span class="token punctuation">]</span><br><br>data_processing<span class="token punctuation">.</span>get_place_details<span class="token punctuation">(</span><span class="token string">"59e63da08c35dc3e57ab5520"</span><span class="token punctuation">,</span> apiKey<span class="token punctuation">)</span></code></pre>
-<p id="code-skip-day-2-process-photos-1"><a target="_blank" href="https://github.com/AramZS/locations/commits/main" class="git-commit-link"><code>git commit -am &quot;Adding FSq API checks and file writing and new notebook for testing functions&quot;</code></a></p>
+<p id="code-skip-day-2-process-photos-1"><a target="_blank" href="https://github.com/AramZS/locations/commit/95ac2b1100bc617070d598d5aae836b95c4a5aa6" class="git-commit-link"><code>git commit -am &quot;Adding FSq API checks and file writing and new notebook for testing functions&quot;</code></a></p>
 
                     
                     </section>
