@@ -1,7 +1,7 @@
 ---
-title: XYZ Site - Day 10 - Next step to rebuild Pocket exporting by optimizing for Netlify.
-description: "Previously I had exported a nice simple JSON file I could turn into files, but that site broke, so trying Readwise instead"
-date: 2024-11-28 17:59:43.10 -4
+title: XYZ Site - Day 11 - Setting up a share button.
+description: "Make it easier to share my content online"
+date: 2025-04-05 17:59:43.10 -4
 tags:
   - 11ty
   - Node
