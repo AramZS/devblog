@@ -1,5 +1,5 @@
 ---
-title: XYZ Site - Day 12 - Setting up a share button as an eleventy plugin.
+title: XYZ Site - Day 13 - Setting up a share button as an eleventy plugin.
 description: "Make it easier to share my content online"
 date: 2025-06-15 17:59:43.10 -4
 tags:
@@ -30,7 +30,7 @@ tags:
 - [x] Minify HTML via Netlify plugin.
 - [ ] Log played games
 
-## Day 12
+## Day 13
 
 After thinking about it some more I'm realizing the easiest thing is to turn this into a Eleventy plugin. So I'm going to restructure it that way.
 

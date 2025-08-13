@@ -1,0 +1,7 @@
+{
+	"project": "WordPress JSON API Eleventy Site",
+	"description": "An Eleventy site that builds off of a WordPress site's JSON API.",
+	"repo": "https://github.com/AramZS/fumed",
+	"featuredImage": "fumed-preview.png",
+	"now": true
+}

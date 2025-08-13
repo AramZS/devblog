@@ -1,5 +1,5 @@
 ---
-title: XYZ Site - Day 11 - Setting up a share button.
+title: XYZ Site - Day 12 - Setting up a share button.
 description: "Make it easier to share my content online"
 date: 2025-04-05 17:59:43.10 -4
 tags:
@@ -30,7 +30,7 @@ tags:
 - [x] Minify HTML via Netlify plugin.
 - [ ] Log played games
 
-## Day 11
+## Day 12
 
 Now that the Web Share API is pretty much available everywhere I really have wanted to take some time to figure out how to use it. [An article on setting up sharing with HTML/JS](https://piccalil.li/blog/simplify-sharing-with-built-in-apis-and-progressive-enhancement/) popped up on my feed reader and I figured this is the excuse to give it a try.
 
