@@ -7,7 +7,7 @@
     	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>XYZ Site - Day 12 - Setting up a share button as an eleventy plugin.</title>
+        <title>XYZ Site - Day 12 - Setting up a share button.</title>
         
             <!-- Sub Template: post -->
         
@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16870875112" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16870875112" id=""></link>
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16949748254" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=16949748254" id=""></link>
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16870875112" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16870875112" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16949748254" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=16949748254" id=""></link>
 
             
-            <!-- Build Revision: 16870875112 & Sha: 638b4a12a03cfd36a3462876178c911347a3b504 -->
+            <!-- Build Revision: 16949748254 & Sha: 77267ddb70655a13d95fde606e1147391f5c7407 -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
             <!--[if lt IE 9]>
@@ -35,14 +35,14 @@
 <meta name="author" content="Aram Zucker-Scharff" />
 
 <meta property="og:title"
-    content="XYZ Site - Day 12 - Setting up a share button as an eleventy plugin.">
+    content="XYZ Site - Day 12 - Setting up a share button.">
 
 <meta property="og:description"
     content="Make it easier to share my content online">
 
 
 <meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons-plugin/" />
+    content="https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons/" />
 
 <meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
 
@@ -59,7 +59,7 @@
 <!-- You, you're the creator. -->
 <meta name="twitter:creator" content="@chronotope" />
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="XYZ Site - Day 12 - Setting up a share button as an eleventy plugin." />
+<meta name="twitter:title" content="XYZ Site - Day 12 - Setting up a share button." />
 
 
 
@@ -72,7 +72,7 @@
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Sun, 15 Jun 2025 21:59:43 GMT" />
+    <meta property="article:published_time" content="Sat, 05 Apr 2025 21:59:43 GMT" />
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
@@ -117,8 +117,8 @@
     {
         "@context": "http://schema.org",
         "@type": "Blog",
-        "url": "https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons-plugin/",
-        "headline": "XYZ Site - Day 12 - Setting up a share button as an eleventy plugin.",
+        "url": "https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons/",
+        "headline": "XYZ Site - Day 12 - Setting up a share button.",
         "about": "Make it easier to share my content online",
         "image": [
             "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
@@ -193,7 +193,7 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons-plugin/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-12-sharing-buttons/" />
 
         </head>
         <body itemscope itemtype="https://schema.org/Blog">
@@ -210,14 +210,14 @@
                         
                         
                             <!-- post mode -->
-                            <time>Sun Jun 15 2025</time>
+                            <time>Sat Apr 05 2025</time>
                             <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
                         
                         
                             <!-- projects mode -->
                         
                         <h1 class="header">
-                            XYZ Site - Day 12 - Setting up a share button as an eleventy plugin.
+                            XYZ Site - Day 12 - Setting up a share button.
                         </h1>
                         
                         
@@ -268,17 +268,23 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Log played games</li>
 </ul>
 <h2 id="day-12" tabindex="-1">Day 12</h2>
-<p>After thinking about it some more I'm realizing the easiest thing is to turn this into a Eleventy plugin. So I'm going to restructure it that way.</p>
-<p data-wordfix="true">Let's start with <a href="https://www.11ty.dev/docs/create-plugin/" target="_blank">a quick template</a> for the <code>eleventy.config.js</code> file:</p>
+<p>Now that the Web Share API is pretty much available everywhere I really have wanted to take some time to figure out how to use it. <a href="https://piccalil.li/blog/simplify-sharing-with-built-in-apis-and-progressive-enhancement/" target="_blank">An article on setting up sharing with HTML/JS</a> popped up on my feed reader and I figured this is the excuse to give it a try.</p>
+<p>One thing I really want to do here is avoid having more network requests for script files. This has been an issue that has come up at work and the tactic I thought about there is one I want to try for myself here, which is to pull the script out of a JS file and into the HTML file for inline script tags.</p>
+<p>There might be more than one script I want to handle this way, but I think they all belong in a single script tag? The potential problem here is that this could cause problems with how JS pointers bubble up, giving it a broad scope.</p>
+<p>Actually... now that I've typed it out... I don't want it to be in a single script tag. Let's not do that.</p>
+<p>Ok, so I need a block in the template:</p>
+<p><code>{{ build.footerInlineScript | safe }}</code></p>
+<p>I need to make it safe because it is HTML and I don't want it escaped.</p>
+<p data-wordfix="true">This is a <code>build</code> Eleventy data object in the <code>_data</code> folder. In there I have an object now:</p>
 <p class="skip-link-graf">
-<a href="#code-skip-day-12-sharing-buttons-plugin-2" id="skip-to-code-skip-day-12-sharing-buttons-plugin-2" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">eleventyConfig<span class="token punctuation">,</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>	<span class="token keyword">let</span> options <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token literal-property property">defaultUtms</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token comment">// I am a plugin!</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-day-12-sharing-buttons-plugin-2">Oh right, I'm in CJS, I gotta restructure:</p>
-<p class="skip-link-graf">
-<a href="#code-skip-day-12-sharing-buttons-plugin-1" id="skip-to-code-skip-day-12-sharing-buttons-plugin-1" class="skip-link">Skip code block ▼</a></p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> activateShortcodes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./lib/shortcodes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token function-variable function">configFunction</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">eleventyConfig<span class="token punctuation">,</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    options <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>      <span class="token literal-property property">defaultUtms</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">defaultShareText</span><span class="token operator">:</span> <span class="token string">"Share this post"</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">domain</span><span class="token operator">:</span> <span class="token string">""</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token comment">// I am a plugin!</span><br>      <span class="token function">activateShortcodes</span><span class="token punctuation">(</span>eleventyConfig<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-day-12-sharing-buttons-plugin-1">The button will need styles. For now I'm going to embed that together with the button supplied by the shortcode.</p>
-<p><a target="_blank" href="https://github.com/AramZS/aramzs.xyz/commit/17c7d32130e4916af5a33481fbe6b2a4819812a9" class="git-commit-link"><code>git commit -am &quot;Set up share button, still needs styling&quot;</code></a></p>
+<a href="#code-skip-day-12-sharing-buttons-1" id="skip-to-code-skip-day-12-sharing-buttons-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> shareActions <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"../../plugins/share-actions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><br>	<span class="token literal-property property">env</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">ELEVENTY_ENV</span><span class="token punctuation">,</span><br>	<span class="token literal-property property">timestamp</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>	<span class="token literal-property property">bookwyrm</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>		<span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">"aramzs"</span><span class="token punctuation">,</span><br>		<span class="token literal-property property">instance</span><span class="token operator">:</span> <span class="token string">"bookwyrm.tilde.zone"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">footerInlineScript</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;script></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareActions<span class="token punctuation">.</span><span class="token function">js</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/script></span><span class="token template-punctuation string">`</span></span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p id="code-skip-day-12-sharing-buttons-1">With the <code>share-actions</code> file going to be my home for building this process. I can then build it like normal JS files in there and export it out from the <code>index.js</code> in the <code>share-actions</code> folder.</p>
+<p>Now I'm free to build in <code>.js</code> files easily.</p>
+<p>The other thing I may want to add to this process is minification, but I'll worry about that later.</p>
+<p>I will want my custom HTML as well, and I can export that from my index also. I might not be able to get the per-page <code>data</code> context with the URL that way, but let's see what we can do.</p>
+<p>Ok yeah, the data from the page build just doesn't seem accessible in the global data? At least not with the Nunjucks rendering process. I guess I'll have to define a Nunjucks template and import it into my template.</p>
+<p data-wordfix="true">I'm putting it in the plugin's folder for now. That's not great because it doesn't trigger rebuild but hopefully it has full access to the page context?</p>
 
                     
                     </section>
@@ -295,9 +301,9 @@
         
         
         <div class="pagination">
-            <a href="/posts/projects/aramzsxyz/day-11-sharing-buttons/" class="pagination-link cursor-pointer ">Previous Day</a>
+            <a href="/posts/projects/aramzsxyz/day-11-contrasts-page-v2/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="/posts/projects/aramzsxyz/day-13-share-button-work/" class="pagination-link cursor-pointer ">Next Day</a>
+            <a href="/posts/projects/aramzsxyz/day-13-sharing-buttons-plugin/" class="pagination-link cursor-pointer ">Next Day</a>
         </div>
     
     <div class="social-icons-block">
