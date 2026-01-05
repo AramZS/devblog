@@ -24,7 +24,7 @@ tags:
 
 - [ ] Be able to run continually
 
-## Day 4
+## Day 5
 
 Ok, I had to reset the device's OS to a 64-bit version because I want to do some applications that require it.
 
