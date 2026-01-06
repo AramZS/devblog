@@ -1,11 +1,16 @@
-const { Octokit } = require("@octokit/rest");
-const { retry } = require("@octokit/plugin-retry");
-const { throttling } = require("@octokit/plugin-throttling");
-require("dotenv").config();
-const fs = require("fs");
-var slugify = require("slugify");
-var path = require("path");
-var sanitizeFilename = require("sanitize-filename");
+import { Octokit } from "@octokit/rest";
+import { retry } from "@octokit/plugin-retry";
+import { throttling } from "@octokit/plugin-throttling";
+import dotenv from "dotenv";
+dotenv.config();
+import { fileURLToPath } from "url";
+import fs from "fs";
+import slugify from "slugify";
+import path from "path";
+import sanitizeFilename from "sanitize-filename";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const commit_pattern = () => {
 	return /(?<=git commit \-am [\"|\'])(.+)(?=[\"|\'])/i;
@@ -25,11 +30,25 @@ const gitSearchQuery = (repo, branch, commitMsg) => {
 	// https://stackoverflow.com/questions/9179828/github-api-retrieve-all-commits-for-all-branches-for-a-repo
 	// https://docs.github.com/en/rest/search#search-commits
 	// Can't use `parent:` with a commit hash either.
-	let branchQuery = branch.length ? `/branches/${branch}` : "";
+	//let branchQuery = branch.length ? `/branches/${branch}` : "";
 	const searchCommitMsg = queryReadyCommitMsg.replace(/\s/g, "+");
 	const repoName = repo.replace("https://github.com/", "");
+	console.log(
+		"Checking with repo name:",
+		repoName,
+		"and commit msg:",
+		searchCommitMsg
+	);
+
+	// Ensure we have search terms - GitHub Search API requires actual text, not just qualifiers
+	if (!searchCommitMsg || searchCommitMsg.trim().replace(/\+/g, "") === "") {
+		console.log("Warning: Empty commit message, using fallback search");
+		return `repo:${repoName}+commit`; // Fallback search
+	}
+
 	// https://docs.github.com/en/search-github/getting-started-with-searching-on-github/troubleshooting-search-queries#limitations-on-query-length
-	let query = `repo:${repoName}${branchQuery}+${searchCommitMsg}`;
+	// let query = `repo:${repoName}${branchQuery}+${searchCommitMsg}`;
+	let query = `repo:${repoName}+${searchCommitMsg}`;
 	if (query.length > 256) {
 		query = query.slice(0, 256);
 		if (query.slice(-1) == "+") {
@@ -75,16 +94,29 @@ const getLinkToRepo = async (repo, branch, commitMsg, pageFilePath) => {
 		console.log("Query is not cached: ", cacheFile);
 		// An error occurs when we cannot access the file and it needs to be created
 		const MyOctokit = Octokit.plugin(retry, throttling);
-
 		const myOctokit = new MyOctokit({
 			auth: process.env.APIS_GITHUB_KEY,
+			request: {
+				timeout: 10000, // 10 seconds timeout
+			},
+			log: {
+				debug: console.log,
+				info: console.log,
+				warn: console.log,
+				error: console.log,
+			},
 			throttle: {
 				onRateLimit: (retryAfter, options) => {
+					console.log("onRateLimit hit");
 					myOctokit.log.warn(
 						`Request quota exhausted for request ${options.method} ${options.url}`
 					);
 
 					if (options.request.retryCount === 0) {
+						console.log(
+							"onRateLimit retry",
+							`Retrying after ${retryAfter} seconds!`
+						);
 						// only retries once
 						myOctokit.log.info(
 							`Retrying after ${retryAfter} seconds!`
@@ -92,11 +124,21 @@ const getLinkToRepo = async (repo, branch, commitMsg, pageFilePath) => {
 						return true;
 					}
 				},
+				onSecondaryRateLimit: (retryAfter, options) => {
+					console.log("onSecondaryRateLimit hit");
+					myOctokit.log.warn(
+						`Secondary rate limit detected for request ${options.method} ${options.url}`
+					);
+					// Don't retry on secondary rate limits
+					return false;
+				},
 				onAbuseLimit: (retryAfter, options) => {
+					console.log("onAbuseLimit hit");
 					// does not retry, only logs a warning
 					myOctokit.log.warn(
 						`Abuse detected for request ${options.method} ${options.url}`
 					);
+					return false;
 				},
 			},
 			retry: {
@@ -104,27 +146,40 @@ const getLinkToRepo = async (repo, branch, commitMsg, pageFilePath) => {
 			},
 		});
 		console.log("Retrieve Commit: ", searchKey);
-		// NOTE: This search style only queries commits on 'main' branch
-		// @TODO Should this search more than main?
-		const r = await myOctokit.rest.search.commits({
-			q: searchKey,
-		});
-		if (r && r.data && r.data.items && r.data.items.length) {
-			console.log("Found commit: ", r.data.items[0].html_url);
-			// Let's cache the results
-			try {
-				fs.mkdirSync(cacheFolder, { recursive: true });
-				// console.log('write data to file', cacheFile)
-				fs.writeFileSync(cacheFile, r.data.items[0].html_url);
-			} catch (e) {
-				console.log("writing to cache failed:", e);
+		try {
+			// NOTE: This search style only queries commits on 'main' branch
+			myOctokit.log.warn(
+				"OCTOKIT Searching commits with query: " + searchKey
+			);
+			// @TODO Should this search more than main?
+			const r = await myOctokit.search.commits({
+				q: searchKey,
+			});
+			console.log("Git commit search successful", r);
+			if (r && r.data && r.data.items && r.data.items.length) {
+				console.log("Found commit: ", r.data.items[0].html_url);
+				// Let's cache the results
+				try {
+					fs.mkdirSync(cacheFolder, { recursive: true });
+					// console.log('write data to file', cacheFile)
+					fs.writeFileSync(cacheFile, r.data.items[0].html_url);
+				} catch (e) {
+					console.log("writing to cache failed:", e);
+				}
+				return r.data.items[0].html_url;
+			} else {
+				console.log(
+					"Commit retrieve failed - no results found for query:",
+					searchKey
+				);
+				return false;
 			}
-			return r.data.items[0].html_url;
-		} else {
-			console.log("Commit retrieve failed: ", r);
+		} catch (e) {
+			console.log("Git commit search error: ", e.message, e.status);
 			return false;
 		}
 	}
+	return false; // Fallback return
 };
 
 const createLinkTokens = (TokenConstructor, commitLink) => {
@@ -134,6 +189,8 @@ const createLinkTokens = (TokenConstructor, commitLink) => {
 	setAttr(link_open, "class", "git-commit-link");
 	// This is haunting me, so I asked - https://github.com/markdown-it/markdown-it/issues/834
 	const link_close = new TokenConstructor("link_close", "a", -1);
+	//console.log("link tokens", { link_open, link_close });
+	console.log("Created link tokens for:", commitLink);
 	return { link_open, link_close };
 };
 
@@ -146,6 +203,7 @@ const gitCommitRule = (md) => {
 			return state;
 		}
 		const tokens = state.tokens;
+		console.log("Git tokens to process:", tokens.length);
 		if (state.env.hasOwnProperty("repo")) {
 			for (let i = 0; i < tokens.length; i++) {
 				if (
@@ -165,12 +223,20 @@ const gitCommitRule = (md) => {
 						state.env.page.url,
 						searchKey
 					);
-					getLinkToRepo(
-						state.env.repo,
-						state.env.branch ? state.env.branch : "",
-						commitMessage,
-						state.env.page.url
-					).then((commitLink) => {});
+					console.log("Search Key:", searchKey);
+					try {
+						getLinkToRepo(
+							state.env.repo,
+							state.env.branch ? state.env.branch : "",
+							commitMessage,
+							state.env.page.url
+						);
+					} catch (e) {
+						console.log(
+							"Error on linking to repo via getLinkToRepo:",
+							e
+						);
+					}
 					let envRepo = state.env.repo;
 					let linkToRepo = "";
 					// Let's make the default link go to the commit log, that makes more sense.
@@ -198,9 +264,10 @@ const gitCommitRule = (md) => {
 				}
 			}
 		}
+		return state;
 	});
 };
 
-module.exports = (md) => {
+export const gitCommitMarkdownRule = (md) => {
 	gitCommitRule(md);
 };
