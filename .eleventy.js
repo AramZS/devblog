@@ -1,7 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const projectSet = require("./src/_data/projects");
 const pluginTOC = require("eleventy-plugin-toc");
 // const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
@@ -21,6 +20,8 @@ const normalize = require("normalize-path");
 const util = require("util");
 
 var slugify = require("slugify");
+
+const configData = require("./src/_configData/index.js");
 
 loadLanguages(["yaml"]);
 
@@ -166,6 +167,11 @@ module.exports = function (eleventyConfig) {
 	});
 	eleventyConfig.addPassthroughCopy({
 		"src/assets": "assets",
+	});
+
+	Object.keys(configData).forEach((dataKey) => {
+		console.log("Adding global data:", dataKey);
+		eleventyConfig.addGlobalData(dataKey, configData[dataKey]);
 	});
 
 	// Can't use this until ver 1 apparently
@@ -470,6 +476,7 @@ module.exports = function (eleventyConfig) {
 
 	const deepList = (collection, tag) => {
 		let deepProjectPostList = [];
+		let projectSet = configData.projects();
 		// console.log("projectSet", projectSet);
 		projectSet.forEach((project) => {
 			// console.log("aProject", project);
@@ -675,6 +682,7 @@ module.exports = function (eleventyConfig) {
 			return ""; // use external default escaping
 		},**/
 	};
+	let gitCommitMarkdownRules = require("./_custom-plugins/markdown-it-git-commit/index.js");
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
@@ -696,7 +704,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
-		.use(require("./_custom-plugins/markdown-it-git-commit/index.js"))
+		.use(gitCommitMarkdownRules.gitCommitMarkdownRule)
 		.use(
 			require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js")
 		);
