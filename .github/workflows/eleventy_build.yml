@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     env:
       MY_GITHUB_RUN_ID: ${{ github.run_id }}
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: "18"
+          node-version: "22.20.0"
 
       - run: npm ci
 

@@ -186,4 +186,8 @@ goat lex lint
 error: linting issues detected
 ```
 
-It seems this is blocking me from publishing. 
+It seems this is blocking me from publishing.
+
+Ah, [I got some advice](https://bsky.app/profile/brookie.blog/post/3mbpw3wzu7k2o), and it turns out for the first entry of a lexicon on my PDS I have to not verify the Lexicon.
+
+`goat record create fightwithtools-publication.json --no-validate`
