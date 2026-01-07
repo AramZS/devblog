@@ -43,7 +43,7 @@ const gitSearchQuery = (repo, branch, commitMsg) => {
 	// Ensure we have search terms - GitHub Search API requires actual text, not just qualifiers
 	if (!searchCommitMsg || searchCommitMsg.trim().replace(/\+/g, "") === "") {
 		console.log("Warning: Empty commit message, using fallback search");
-		return `repo:${repoName}+commit`; // Fallback search
+		return false;
 	}
 
 	// https://docs.github.com/en/search-github/getting-started-with-searching-on-github/troubleshooting-search-queries#limitations-on-query-length
@@ -85,6 +85,9 @@ const cacheFilePath = (pageFilePath, searchKey) => {
 const getLinkToRepo = async (repo, branch, commitMsg, pageFilePath) => {
 	// console.log(repo, commitMsg)
 	const searchKey = gitSearchQuery(repo, branch, commitMsg);
+	if (!searchKey) {
+		return false;
+	}
 	const { cacheFolder, cacheFile } = cacheFilePath(pageFilePath, searchKey);
 	try {
 		fs.accessSync(cacheFile, fs.constants.F_OK);

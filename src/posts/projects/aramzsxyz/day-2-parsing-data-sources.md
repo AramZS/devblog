@@ -63,10 +63,12 @@ Seems like it is a template rendering problem. I've added some data properties t
 
 Of those three, the only concern is on page-resource.njk. I'll start there. This code appears to be the problem, as it assumes a date value, and there should be one on all of these.
 
+(remove backslashes)
+
 ```liquid
-{% set subTitle %}
-    posted on <time datetime="{{ page.date.toISOString() }}">{{ page.date | dateToFormat("DDD") }}</time> in: {% include "../components/tag-list.njk" %}.
-{% endset %}
+{\% set subTitle %\}
+    posted on <time datetime="{\{ page.date.toISOString() }\}">{\{ page.date | dateToFormat("DDD") }\}</time> in: {\% include "../components/tag-list.njk" %\}.
+{\% endset %\}
 ```
 
 The error seems to be coming from this area in particular in the 11ty core code:

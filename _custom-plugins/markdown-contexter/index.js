@@ -66,6 +66,12 @@ module.exports = (eleventyConfig, userOptions) => {
 		if (urlsArray.length) {
 			urlsArray.forEach((urlObj) => {
 				const link = urlObj.url;
+				// A regex to check if the `url` ends in `.domain`
+				const domainRegex = /\.domain$/;
+				if (!link || domainRegex.test(link)) {
+					console.log("Blocked fetch to .domain URL:", link);
+					return false;
+				}
 				// console.log("inputContent Process: ", link);
 				// console.log("inputContent treated", inputContent);
 				const fileName = sanitizeFilename(
