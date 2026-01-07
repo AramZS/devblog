@@ -36,8 +36,6 @@ Ok, I'm pulling the link object into my markdown writer and it is looking good. 
 
 I'm going to use Sort - Oldest to see if it will match up with my old file titles. It looks like it might be rewriting over existing files. I don't want that. I'll try passing in the neverOverwrite property I assigned to my JSON-to-flat-file creator. I also want to try and figure out how to bring in cover images for social for this. I should be able to pull them out of the pocket object.
 
-`git commit -am "Pocket API now writing files. Looking good thus far."`
-
 Ok, it's looking good. I had to adjust how images are rendered to check if they have https in the string and not try to prepend my img path if they do.
 
 Now I'm pre-setting some of the set up to crawl the whole API and get every article I'm missing. I want to use the `since` param in the config I pass to only get new articles after this, so I'll set up for that too.
@@ -68,6 +66,6 @@ Oops, forgot to make sure that it can handle a lack of tags. I'll fix that.
 
 Ok, now I just need to make sure I can handle a few other places it can fail and fix the return in the above function and I should be good to go.
 
-`git commit -am "Got the Pocket walker and since functionality working"`
+`git commit -am "Pulling in pocket api related code"`
 
 
