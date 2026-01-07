@@ -56,12 +56,20 @@ module.exports = (eleventyConfig, userOptions) => {
 		let urlsArray = [];
 		let counter = 0;
 		while ((matchArray = urlRegex.exec(inputContent)) != null) {
-			// console.log("Found URLs", matchArray.groups.main, matchArray[0]);
-			urlsArray.push({
-				url: matchArray.groups.main,
-				replace: matchArray[0],
-			});
-			counter++;
+			try {
+				const myURL = new URL(matchArray.groups.main);
+				// console.log("Found URLs", matchArray.groups.main, matchArray[0]);
+				urlsArray.push({
+					url: matchArray.groups.main,
+					replace: matchArray[0],
+				});
+				counter++;
+			} catch (e) {
+				console.log(
+					"Invalid URL Found, skipping:",
+					matchArray.groups.main
+				);
+			}
 		}
 		if (urlsArray.length) {
 			urlsArray.forEach((urlObj) => {

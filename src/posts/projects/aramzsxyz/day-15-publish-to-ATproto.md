@@ -64,6 +64,8 @@ goat get at://did:plc:t5xmf33p5kqgkbznx22p7d7g/app.bsky.feed.post/3mbpifihvqm2q
 
 Yup!
 
+## Trying out Leaflet
+
 Let's [publish a test on Leaflet.pub](https://chronotope.leaflet.pub/3mbpjrfwqm22y) to see [what it looks like on my PDS](https://pdsls.dev/at://did:plc:t5xmf33p5kqgkbznx22p7d7g/pub.leaflet.document/3mbpjrfwqm22y#record):
 
 ```yaml
@@ -146,6 +148,8 @@ And a post: `goat record get at://did:plc:txurc6ueald5d7462bpvzdby/site.standard
 }
 ```
 
+## Let's publish!
+
 Ok, let's try to make one for this publication? First we'll make a JSON file.
 
 ```json
@@ -186,4 +190,8 @@ goat lex lint
 error: linting issues detected
 ```
 
-It seems this is blocking me from publishing. 
+It seems this is blocking me from publishing.
+
+Ah, [I got some advice](https://bsky.app/profile/brookie.blog/post/3mbpw3wzu7k2o), and it turns out for the first entry of a lexicon on my PDS I have to not verify the Lexicon.
+
+`goat record create fightwithtools-publication.json --no-validate`

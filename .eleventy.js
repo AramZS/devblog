@@ -738,5 +738,8 @@ module.exports = function (eleventyConfig) {
 		publicPath: "timegate",
 		domain: domain_name,
 	});
+	console.log(
+		"DO NOT FORGET EVERY POST NEEDS AT LEAST TWO HEADERS AT h2 LEVEL!!!!!!"
+	);
 	return siteConfiguration;
 };
