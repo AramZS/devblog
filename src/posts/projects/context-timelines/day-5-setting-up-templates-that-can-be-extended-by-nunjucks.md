@@ -34,15 +34,18 @@ Thankfully, Nunjucks templates in 11ty can do some really interesting things.
 
 I was hoping I could treat it like it was all in one location. However, it doesn't seem to be the case. I can create a filepath to it from my site directory like:
 
+{% raw %}
 ```liquid
 {% include "../../_custom-plugins/timelinety/src/layouts/timeline-base.njk" %}
 ```
+{% endraw %}
 
 Oh, but the actual `js` block (that starts and ends with `---`) that can be at the top of the `njk` file has to *only* be at the top of the top most template file. So I can't use or extend a template that contains that. I'll have to further destructure my templates so that I can use them effectively.
 
 Now I have `timeline.njk` which can be used by someone who wants an out-of-the-box timeline. It looks like this:
 
-```njk
+{% raw %}
+```liquid
 ---js
 {
     eleventyComputed: {
@@ -119,11 +122,12 @@ Now I have `timeline.njk` which can be used by someone who wants an out-of-the-b
 {% include "./timeline-wrapper.njk" %}
 
 ```
-
+{% endraw %}
 
 `timeline-wrapper.njk` which can be extended by someone who wants to use it in their own template and even has some nice Nunjucks blocks that can be used to overwrite the header or the nav. They'll have to pull in their own version of the `---js` block of course.
 
-```njk
+{% raw %}
+```liquid
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <head>
@@ -141,6 +145,7 @@ Now I have `timeline.njk` which can be used by someone who wants an out-of-the-b
     </body>
 </html>
 ```
+{% endraw %}
 
 I have the previously created `head.njk` that I cas use as the default setup for the HEAD element. Then I have `timeline-base.njk` and that has the core timeline setup, which itself has the previously set up `timeline-entry.njk`.
 

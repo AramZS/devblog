@@ -188,7 +188,7 @@ With these new collections I can build corresponding pages in 11ty.
 Posts:
 
 {% raw %}
-```njk
+```liquid
 ---
 layout: tags
 templateName: tag
@@ -208,7 +208,7 @@ eleventyComputed:
 Projects:
 
 {% raw %}
-```njk
+```liquid
 ---
 layout: tags
 templateName: tag
@@ -326,7 +326,7 @@ Now I have an array of objects that look like this:
 See I forgot that I control the permalink structure not through the structures in the array, but the objects. So I can now take this array and use it to generate any number of paged collections at `/posts/projects/projectSlug/`. So now I can use this new collection with this `md` file:
 
 {% raw %}
-```njk
+```liquid
 ---
 layout: tags
 templateName: tag

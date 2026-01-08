@@ -108,4 +108,4 @@ We add the `.npmignore` file. Then we can publish it.
 
 Ok, let's try switching to using this package in the new site.
 
-It mostly seems to work. The one downside is that I can't use `extends` the way I had hoped. I end up having to use `{% extends "../../node_modules/timelinety/src/layouts/timeline-wrapper.njk" %}`. `extends` doesn't use the 11ty layout alias systems so I can't use it exactly as I had hoped. But other than that, it works!
+It mostly seems to work. The one downside is that I can't use `extends` the way I had hoped. I end up having to use {%raw%}{% extends "../../node_modules/timelinety/src/layouts/timeline-wrapper.njk" %}{% endraw %}. `extends` doesn't use the 11ty layout alias systems so I can't use it exactly as I had hoped. But other than that, it works!
