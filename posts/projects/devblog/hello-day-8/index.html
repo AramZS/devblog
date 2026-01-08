@@ -2,119 +2,116 @@
     <html lang="en-US" id="template-post" class="base">
         <head>
         
-        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
-    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script defer="" data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/">
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Source Maps, Site Paths and GitHub Actions</title>
         
             <!-- Sub Template: post -->
         
         
             <link rel="preload" as="font">
-            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
-            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=19714237753" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=19714237753" id=""></link>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=20809437587" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=20809437587" id="">
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=19714237753" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=19714237753" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=20809437587" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=20809437587" id="">
 
             
-            <!-- Build Revision: 19714237753 & Sha: 820c92e2c507437023d4f307d2fcbd53541e2764 -->
-            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
-            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!-- Build Revision: 20809437587 & Sha: 5821a82f417ad9db09fd763baf2ea19f0fb49fae -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async=""></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
             <!--[if lt IE 9]>
                 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
         
         
             <!-- The Author meta propagates the byline in a number of social networks -->
-<meta name="author" content="Aram Zucker-Scharff" />
+<meta name="author" content="Aram Zucker-Scharff">
 
-<meta property="og:title"
-    content="Source Maps, Site Paths and GitHub Actions">
+<meta property="og:title" content="Source Maps, Site Paths and GitHub Actions">
 
-<meta property="og:description"
-    content="Part 8 of setting up 11ty dev blog.">
+<meta property="og:description" content="Part 8 of setting up 11ty dev blog.">
 
 
-<meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/" />
+<meta property="og:url" content="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/">
 
-<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog">
 
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content="en_US">
 
-<meta name="twitter:site" content="@chronotope" />
+<meta name="twitter:site" content="@chronotope">
 
-<meta name="twitter:description" content="Part 8 of setting up 11ty dev blog." />
+<meta name="twitter:description" content="Part 8 of setting up 11ty dev blog.">
 
 <meta name="description" content="Part 8 of setting up 11ty dev blog.">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary_large_image">
 <!-- You, you're the creator. -->
-<meta name="twitter:creator" content="@chronotope" />
+<meta name="twitter:creator" content="@chronotope">
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Source Maps, Site Paths and GitHub Actions" />
+<meta name="twitter:title" content="Source Maps, Site Paths and GitHub Actions">
 
 
 
-<meta property="og:image" content="https://fightwithtools.dev/img/radial_crosshair.jpg" />
-<meta name="twitter:image" content="https://fightwithtools.dev/img/radial_crosshair.jpg" />
+<meta property="og:image" content="https://fightwithtools.dev/img/radial_crosshair.jpg">
+<meta name="twitter:image" content="https://fightwithtools.dev/img/radial_crosshair.jpg">
 
 
 
 
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
-    <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Wed, 23 Jun 2021 02:59:43 GMT" />
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="Wed, 23 Jun 2021 02:59:43 GMT">
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
 
     <!-- Here my author and publisher tags are the same (yay self-publishing) -->
-    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <meta property="article:author" content="http://facebook.com/aramzs">
     <!-- But if your site has its own page, this is where to put it. -->
-    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs">
 
     
     <!-- Article section isn't a required property, but it can be good to have -->
-    <meta property="article:section" content="Dev Blog" />
+    <meta property="article:section" content="Dev Blog">
     
 
     
         <!-- I use the page.categories property for OG tags. -->
         
-        <meta property="article:tag" content="posts" />
+        <meta property="article:tag" content="posts">
         
-        <meta property="article:tag" content="projects" />
+        <meta property="article:tag" content="projects">
         
-        <meta property="article:tag" content="Starters" />
+        <meta property="article:tag" content="Starters">
         
-        <meta property="article:tag" content="11ty" />
+        <meta property="article:tag" content="11ty">
         
-        <meta property="article:tag" content="Node" />
+        <meta property="article:tag" content="Node">
         
-        <meta property="article:tag" content="Sass" />
+        <meta property="article:tag" content="Sass">
         
-        <meta property="article:tag" content="CSS" />
+        <meta property="article:tag" content="CSS">
         
-        <meta property="article:tag" content="Source Maps" />
+        <meta property="article:tag" content="Source Maps">
         
-        <meta property="article:tag" content="Sitemaps" />
+        <meta property="article:tag" content="Sitemaps">
         
-        <meta property="article:tag" content="SEO" />
+        <meta property="article:tag" content="SEO">
         
-        <meta property="article:tag" content="GitHub Actions" />
+        <meta property="article:tag" content="GitHub Actions">
         
-        <meta property="article:tag" content="Cachebreak" />
+        <meta property="article:tag" content="Cachebreak">
         
-        <meta property="article:tag" content="WiP" />
+        <meta property="article:tag" content="WiP">
         
         <meta name="keywords" content="posts, projects, Starters, 11ty, Node, Sass, CSS, Source Maps, Sitemaps, SEO, GitHub Actions, Cachebreak, WiP">
     
@@ -201,10 +198,10 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-8/">
 
         </head>
-        <body itemscope itemtype="https://schema.org/Blog">
+        <body itemscope="" itemtype="https://schema.org/Blog">
             <div class="wrapper">
                 <header>
                     
@@ -224,7 +221,7 @@
                         
                             <!-- projects mode -->
                         
-                        <h1 class="header">
+                        <h1 class="header" id="source-maps-site-paths-and-github-actions">
                             Source Maps, Site Paths and GitHub Actions
                         </h1>
                         
@@ -233,8 +230,8 @@
                         
                     
                     
-    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
-    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    <h5 itemprop="author" itemscope="" itemtype="https://schema.org/Person" id="by-aram-zucker-scharff">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/">
     By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
 </h5>
 
@@ -244,8 +241,8 @@
     <section id="precontent">
         <aside id="toc-container">
             <div id="toc-container__inner">
-                <h2>Contents</h2>
-                <nav class="toc" >
+                <h2 id="contents">Contents</h2>
+                <nav class="toc">
         <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-8">Day 8</a><ol><li><a href="#source-maps">Source Maps</a><ol><li><a href="#filename-fixes">Filename Fixes</a></li></ol></li><li><a href="#cache-break-with-github">Cache Break with GitHub</a></li><li><a href="#site-maps">Site Maps</a></li><li><a href="#managing-page-data">Managing Page Data</a></li><li><a href="#robots.txt">Robots.txt</a></li></ol></li></ol>
       </nav>
             </div>
@@ -270,47 +267,47 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/blob/master/src/BuildTOC.js" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 </li>
 </ul>
 <s>
 <ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
 </ul>
 </s>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" class="markdown-todo"> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 </ul>
 <h2 id="day-8" tabindex="-1">Day 8</h2>
@@ -327,26 +324,20 @@
 <pre class="language-json"><code class="language-json">	<span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span><br>	<span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8080"</span><span class="token punctuation">,</span><br>	<span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>		<span class="token string">"dinky/_sass/jekyll-theme-dinky.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"dinky/_sass/rouge-github.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/base-syntax-highlighting.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/syntax-highlighting.scss"</span><span class="token punctuation">,</span><br>		<span class="token string">"src/_sass/user.sass"</span><br>	<span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre>
 <p id="code-skip-hello-day-8-8">The code sample says &quot;HACK 1: Force all &quot;sources&quot; to be relative to project root&quot; but it apparently does this so that dart-sass... gets rid of the project root? I find this process very confusing, I'm adding the project root so Sass can remove the project root? This is fking baffling to me and apparently hits some process that is very badly documented in dart-sass. The other hack &quot;node-sass does not support sourceRoot, but we can add it&quot; at least makes sense. Seems like something you should support! It looks like some iteration of Node-based Sass takes the <code>sourceMapRoot</code> configuration property, but not dart-sass. The documentation and debugging process is very confusing for this because dart-sass links to node-sass for most of its documentation, but node-sass clearly has some features that dart-sass does not, and the fact that issues are often in node-sass that are actually about dart-sass is just a <em>mess</em>.</p>
 <p>Anyway, this works now... and it gives me a really useful insight into how the source map is built. I can hack better paths for sources! The paths themselves are useful for the project, but having them at the base of the website sort of irks me. Now I can put them all in a nice <code>sass</code> folder, makes it neat.</p>
-<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-7" id="skip-to-code-skip-hello-day-8-7" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	<span class="token keyword">var</span> newSources <span class="token operator">=</span> map<span class="token punctuation">.</span>sources<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>		<span class="token keyword">return</span> <span class="token string">"sass/"</span> <span class="token operator">+</span> source<span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	map<span class="token punctuation">.</span>sources <span class="token operator">=</span> newSources<span class="token punctuation">;</span></code></pre>
-<p id="code-skip-hello-day-8-7">{% endraw %}</p>
-<p>And I can also change my passthroughs in <code>.eleventy.js</code>.</p>
-<p>{% raw %}</p>
+<p id="code-skip-hello-day-8-7">And I can also change my passthroughs in <code>.eleventy.js</code>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-6" id="skip-to-code-skip-hello-day-8-6" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string-property property">"dinky/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/dinky/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>		<span class="token string-property property">"src/_sass"</span><span class="token operator">:</span> <span class="token string">"sass/src/_sass"</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p id="code-skip-hello-day-8-6">{% endraw %}</p>
-<p>If this works correctly on publish, it will resolve the last of my base requirements!</p>
+<p id="code-skip-hello-day-8-6">If this works correctly on publish, it will resolve the last of my base requirements!</p>
 <h3 id="cache-break-with-github" tabindex="-1">Cache Break with GitHub</h3>
 <p>Ok, I was thinking about how to handle build-time cache-breaking and realized that there's likely a way to handle getting a cache-break variable at the build stage. There's <a href="https://github.com/jekyll/github-metadata" target="_blank">a plugin for Jekyll to do it</a>, it looks like <a href="https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md" target="_blank">it does so at least partially via the Github API</a>. It gets <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">a pretty good list of data too</a>. There's also <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">the &quot;Github Context&quot; which is available to GitHub actions</a>. I could call the API during build time, which is what it appears that Jekyll is doing (I didn't really look too deeply into the plugin). But if this data is available in the Actions context... couldn't I export it as a environment variable? Why not try adding that to the Github Actions script?</p>
-<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-5" id="skip-to-code-skip-hello-day-8-5" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml">        <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> export GITHUB_HEAD_SHA=$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-8-5">{% endraw %}</p>
-<p>Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
+<p id="code-skip-hello-day-8-5">Now I should be able to call this in my site data, right? So I'll update the file at <code>src/_data/site.js</code>.</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-4" id="skip-to-code-skip-hello-day-8-4" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>	<span class="token keyword">return</span> <span class="token punctuation">{</span><br>		<span class="token literal-property property">lang</span><span class="token operator">:</span> <span class="token string">"en-US"</span><span class="token punctuation">,</span><br>		<span class="token literal-property property">github</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>			<span class="token literal-property property">build_revision</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">GITHUB_HEAD_SHA</span> <span class="token operator">||</span> <span class="token number">1.0</span><span class="token punctuation">,</span><br>		<span class="token punctuation">}</span><span class="token punctuation">,</span><br>		<span class="token literal-property property">site_url</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span><span class="token punctuation">,</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
@@ -354,12 +345,10 @@
 <p><a target="_blank" href="https://github.com/AramZS/devblog/commit/e25ca3229277e2348f288607e48322d1ee66fef1" class="git-commit-link"><code>git commit -am &quot;Set up new Sass build process and new build vars in use&quot; </code></a></p>
 <p>Well... the Sass sitemaps built properly, but none of the Github Actions env stuff seemed to have gone off. For some reason calling <code>process.env.GITHUB_JOB</code> just got me <code>deploy</code>. Which is the job name, not a job-run ID. But a step in the right direction, just me mistakenly reading the docs.</p>
 <p data-wordfix="true">What if I set the <code>env</code> at the level of job? I think this means I could probably use <code>GITHUB_SHA</code>, but I want to see what works.</p>
-<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-3" id="skip-to-code-skip-hello-day-8-3" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">deploy</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<br>    <span class="token key atrule">env</span><span class="token punctuation">:</span><br>      <span class="token key atrule">MY_GITHUB_RUN_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.run_id <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-8-3">{% endraw %}</p>
-<p>Ah, that did it, so now I know how to use both!</p>
+<p id="code-skip-hello-day-8-3">Ah, that did it, so now I know how to use both!</p>
 <h3 id="site-maps" tabindex="-1">Site Maps</h3>
 <p>The sitemap plugin looks easy to implement. Let's try that!</p>
 <p>Looks good! A little basic as sitemaps go, and if this site gets extensive I may have to figure out file splitting, but there's a lot of flexibility and options in the plugin so I'm not too worried.</p>
@@ -374,12 +363,10 @@
 <p id="code-skip-hello-day-8-2">Huh, I'm getting this in the output now: <code>Benchmark (Configuration): &quot;htmlToAbsoluteUrls&quot; Nunjucks Async Filter took 40ms (8.9%, called 8×, 5.0ms each)</code> and the domain name is wrong in the RSS feed. Found some info on building permalinks that may be useful for my more dynamic link urls, but doesn't seem to be for this. Huh, looks like this generates an Atom feed, not an RSS standard one. Going to rename the file accordingly.</p>
 <p>Still no go on getting those URLs set up properly. I need to pass the calculated domain in to the page metadata, but using template tags or JS functions doesn't seem to be doing it. The domain data just isn't going through.</p>
 <p>Ok, I had thought the functions in the <code>js</code> layout-based front matter would execute themselves, but it looks like I have to write them to execute in the context of the front matter itself. So now the front matter looks like this:</p>
-<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-8-1" id="skip-to-code-skip-hello-day-8-1" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-liquid"><code class="language-liquid">---js<br>{<br>  "permalink": "feed.xml",<br>  "eleventyExcludeFromCollections": true,<br>  "metadata": {<br>    "title": "Feed for Fight With Tools - Aram's Dev Blog",<br>    "subtitle": "Notes on various projects",<br>    "url": (function(){ return process.env.DOMAIN + "/" })(),<br>    "feedUrl": (function(){ return process.env.DOMAIN + "/feed.xml" })(),<br>    "author": {<br>      "name": "Aram Zucker-Scharff",<br>      "email": "aramdevblog@aramzs.me"<br>    }<br>  },<br>  "internalPageTypes": [ "feed" ]<br>}<br>---</code></pre>
-<p id="code-skip-hello-day-8-1">{% endraw %}</p>
-<p>Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
+<p id="code-skip-hello-day-8-1">Looks like the solution was to use a immediately-invoked function there. Working well now!</p>
 <h3 id="robots.txt" tabindex="-1">Robots.txt</h3>
 <p>Looks like <a href="https://obsolete29.com/posts/ogp-seo-favicons-eleventy/" target="_blank">there is a straightforward way to handle building a good robots.txt</a> file.</p>
 <p>I'll hand build an RSS template so I have an RSS2 feed as well.</p>
@@ -389,12 +376,7 @@
                     </section>
                     <section id="postcontent">
                     
-    <script src="https://utteranc.es/client.js"
-            repo="AramZS/fightwithtools-comments"
-            issue-term="title"
-            theme="github-dark"
-            crossorigin="anonymous"
-            async>
+    <script src="https://utteranc.es/client.js" repo="AramZS/fightwithtools-comments" issue-term="title" theme="github-dark" crossorigin="anonymous" async="">
     </script>
     
         
@@ -408,7 +390,7 @@
     <div class="social-icons-block">
     <div class="a-social-icon">
         <a href="https://github.com/AramZS/" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
 
 
 <!-- https://simpleicons.org/?q=github -->
@@ -417,7 +399,7 @@
     </div>
     <div class="a-social-icon">
         <a href="https://bit.ly/aramzs" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
 
 
 <!-- https://simpleicons.org/?q=linked -->
@@ -426,7 +408,7 @@
     </div>
     <div class="a-social-icon">
         <a href="https://twitter.com/Chronotope" target="_blank">
-            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
 
 <!-- https://simpleicons.org/?q=tw -->
 
@@ -435,7 +417,7 @@
     
     <div class="a-social-icon">
         <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"></path></svg>
 
 <!-- https://simpleicons.org/?q=mastodon -->
 
@@ -450,8 +432,10 @@
                 <footer>
                     
     <div id="taglist">
-        <h6>Tags: </h6>
+        <h6 id="tags">Tags: </h6>
         <ul><li>
+                    <a href="https://fightwithtools.dev/tag/projects">projects</a>
+                </li><li>
                     <a href="https://fightwithtools.dev/tag/starters">Starters</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/11ty">11ty</a>

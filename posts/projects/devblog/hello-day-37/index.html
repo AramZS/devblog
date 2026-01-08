@@ -2,107 +2,104 @@
     <html lang="en-US" id="template-post" class="base">
         <head>
         
-        <script defer data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/" />
-    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/" />
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script defer="" data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/">
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Part 37:  Markdown It, Caching and Automatic Commit Links</title>
         
             <!-- Sub Template: post -->
         
         
             <link rel="preload" as="font">
-            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style" />
-            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet" />
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=19714237753" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=19714237753" id=""></link>
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=20809437587" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=20809437587" id="">
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=19714237753" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=19714237753" id=""></link>
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=20809437587" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=20809437587" id="">
 
             
-            <!-- Build Revision: 19714237753 & Sha: 820c92e2c507437023d4f307d2fcbd53541e2764 -->
-            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async></script>
-            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+            <!-- Build Revision: 20809437587 & Sha: 5821a82f417ad9db09fd763baf2ea19f0fb49fae -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async=""></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
             <!--[if lt IE 9]>
                 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
         
         
             <!-- The Author meta propagates the byline in a number of social networks -->
-<meta name="author" content="Aram Zucker-Scharff" />
+<meta name="author" content="Aram Zucker-Scharff">
 
-<meta property="og:title"
-    content="Part 37: Markdown It, Caching and Automatic Commit Links">
+<meta property="og:title" content="Part 37: Markdown It, Caching and Automatic Commit Links">
 
-<meta property="og:description"
-    content="More devblog">
+<meta property="og:description" content="More devblog">
 
 
-<meta property="og:url"
-    content="https://fightwithtools.dev/posts/projects/devblog/hello-day-37/" />
+<meta property="og:url" content="https://fightwithtools.dev/posts/projects/devblog/hello-day-37/">
 
-<meta property="og:site_name" content="Fight With Tools: A Dev Blog" />
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog">
 
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content="en_US">
 
-<meta name="twitter:site" content="@chronotope" />
+<meta name="twitter:site" content="@chronotope">
 
-<meta name="twitter:description" content="More devblog" />
+<meta name="twitter:description" content="More devblog">
 
 <meta name="description" content="More devblog">
 
 <!-- I prefer the summary_large_image Twitter card for posts. -->
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary_large_image">
 <!-- You, you're the creator. -->
-<meta name="twitter:creator" content="@chronotope" />
+<meta name="twitter:creator" content="@chronotope">
 <!-- This property is for the article title, not site title. -->
-<meta name="twitter:title" content="Part 37: Markdown It, Caching and Automatic Commit Links" />
+<meta name="twitter:title" content="Part 37: Markdown It, Caching and Automatic Commit Links">
 
 
 
-<meta property="og:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
-<meta name="twitter:image" content="https://fightwithtools.dev/img/close-up-keys.jpg" />
+<meta property="og:image" content="https://fightwithtools.dev/img/close-up-keys.jpg">
+<meta name="twitter:image" content="https://fightwithtools.dev/img/close-up-keys.jpg">
 
 
 
 
     <!-- Article specific OG data -->
     <!-- The OG:Type dictates a number of other tags on posts. -->
-    <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="Thu, 18 Nov 2021 02:59:43 GMT" />
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="Thu, 18 Nov 2021 02:59:43 GMT">
 
     <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
     
 
     <!-- Here my author and publisher tags are the same (yay self-publishing) -->
-    <meta property="article:author" content="http://facebook.com/aramzs" />
+    <meta property="article:author" content="http://facebook.com/aramzs">
     <!-- But if your site has its own page, this is where to put it. -->
-    <meta property="article:publisher" content="https://www.facebook.com/aramzs" />
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs">
 
     
     <!-- Article section isn't a required property, but it can be good to have -->
-    <meta property="article:section" content="Dev Blog" />
+    <meta property="article:section" content="Dev Blog">
     
 
     
         <!-- I use the page.categories property for OG tags. -->
         
-        <meta property="article:tag" content="posts" />
+        <meta property="article:tag" content="posts">
         
-        <meta property="article:tag" content="projects" />
+        <meta property="article:tag" content="projects">
         
-        <meta property="article:tag" content="Starters" />
+        <meta property="article:tag" content="Starters">
         
-        <meta property="article:tag" content="11ty" />
+        <meta property="article:tag" content="11ty">
         
-        <meta property="article:tag" content="Node" />
+        <meta property="article:tag" content="Node">
         
-        <meta property="article:tag" content="WiP" />
+        <meta property="article:tag" content="WiP">
         
-        <meta property="article:tag" content="Markdown-It" />
+        <meta property="article:tag" content="Markdown-It">
         
         <meta name="keywords" content="posts, projects, Starters, 11ty, Node, WiP, Markdown-It">
     
@@ -189,10 +186,10 @@
         
         
         
-<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-37/" />
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/devblog/hello-day-37/">
 
         </head>
-        <body itemscope itemtype="https://schema.org/Blog">
+        <body itemscope="" itemtype="https://schema.org/Blog">
             <div class="wrapper">
                 <header>
                     
@@ -212,15 +209,15 @@
                         
                             <!-- projects mode -->
                         
-                        <h1 class="header">
+                        <h1 class="header" id="part-37-markdown-it-caching-and-automatic-commit-links">
                             Part 37:  Markdown It, Caching and Automatic Commit Links
                         </h1>
                         
                         
                     
                     
-    <h5 itemprop="author" itemscope itemtype="https://schema.org/Person">
-    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/" />
+    <h5 itemprop="author" itemscope="" itemtype="https://schema.org/Person" id="by-aram-zucker-scharff">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/">
     By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
 </h5>
 
@@ -230,8 +227,8 @@
     <section id="precontent">
         <aside id="toc-container">
             <div id="toc-container__inner">
-                <h2>Contents</h2>
-                <nav class="toc" >
+                <h2 id="contents">Contents</h2>
+                <nav class="toc">
         <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-37">Day 37</a><ol><li><a href="#finding-the-inline-token">Finding the inline token</a></li><li><a href="#markdown-it-state-obj">Markdown-it State Obj</a></li><li><a href="#searching-for-git-commit-via-api">Searching for git commit via API</a></li><li><a href="#caching-commit-links">Caching Commit Links</a></li><li><a href="#rendering-link-with-markdown-it">Rendering link with Markdown It</a></li><li><a href="#adding-link-css">Adding Link CSS</a></li><li><a href="#touch-up-of-markdown-it-link-process">Touch Up of Markdown It Link Process</a><ol><li><a href="#push-to-end-of-core-rules">Push to end of core rules</a></li><li><a href="#create-link-tokens">Create link tokens</a></li><li><a href="#can't-start-secrets-with-github">Can't start secrets with GITHUB</a></li></ol></li></ol></li></ol>
       </nav>
             </div>
@@ -268,100 +265,100 @@
 </ol>
 <ul class="task-list">
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Also <a href="https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap" target="_blank">the sitemap plugin</a> looks cool. Should grab that later.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> So does the <a href="https://www.npmjs.com/package/eleventy-plugin-reading-time" target="_blank">reading time one</a>.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Also <a href="https://github.com/jdsteinbach/eleventy-plugin-toc/" target="_blank">this TOC plugin</a> mby?</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Use <a href="https://www.11ty.dev/docs/data-deep-merge/" target="_blank">Data Deep Merge</a> in this blog.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Decide if I want to render the CSS fancier than just a base file and do per-template splitting.</p>
 </li>
 </ul>
 <s>
 <ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> Can I use the template inside of dinky that already exists instead of copy/pasting it?</li>
 </ul>
 </s>
 <s>
 <ul class="task-list">
-<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"></input> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> Is there a way to have permalinks to posts contain metadata without organizing them into subfolders?</li>
 </ul>
 </s>
 <ul class="task-list">
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> How do I cachebreak files on the basis of new build events? Datetime? <code>site.github.build_revision</code> is <a href="https://github.com/jekyll/github-metadata/blob/master/docs/site.github.md" target="_blank">how Jekyll accomplishes this</a>, but is there a way to push <a href="https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank">that</a> <a href="https://stackoverflow.com/questions/54310050/how-to-version-build-artifacts-using-github-actions" target="_blank">into the build process</a> for Eleventy?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Make link text look less shitty. It looks like it is a whole, lighter, font.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Code blocks do not have good syntax highlighting. I want good syntax highlighting.</p>
 </li>
 <li class="task-list-item">
-<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
+<p data-wordfix="true"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Build a Markdown-it plugin to take my typing shortcuts <code>[prob, b/c, ...?]</code> and expand them on build.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> See if we can start Markdown's interpretation of H tags to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#multiple_h1" target="_blank">start at 2, since H1</a> is always pulled from the page title metadata. If it isn't easy, I just have to change my pattern of writing in the MD documents.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Should I <a href="https://www.madebymike.com.au/writing/11ty-filters-data-shortcodes/" target="_blank">explore some shortcodes</a>?</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Order projects listing by last posted blog in that project</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Order projects listing by last posted blog in that project</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Limit the output of home page post lists to a specific number of posts</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Limit the output of home page post lists to a specific number of posts</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Show the latest post below the site intro on the homepage.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Show the latest post below the site intro on the homepage.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags pages with Pagination</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Tags pages with Pagination</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Posts should be able to support a preview header image that can also be shown on post lists.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Posts should be able to support a preview header image that can also be shown on post lists.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" class="markdown-todo"></input> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
+<p><input disabled="true" type="checkbox" class="markdown-todo"> Create a Markdown-It plugin that reads the project's repo URL off the folder data file and renders commit messages with <a href="https://stackoverflow.com/questions/15919635/on-github-api-what-is-the-best-way-to-get-the-last-commit-message-associated-w" target="_blank">links to the referenced commit</a>. (Is this even possible?) (Is there a way to do it with eleventy instead?)</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Create Next Day/Previous Day links on each post / Next/Previous post on post templates from projects</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Tags should be in the sidebar of articles and link to tag pages</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Tags should be in the sidebar of articles and link to tag pages</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Create a skiplink for the todo section (or would this be better served with the ToC plugin?) - Yes it would be!</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Add a Things I Learned section to the project pages that are the things I learned from that specific project.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add a technical reading log to the homepage</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Add a technical reading log to the homepage</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty" target="_blank">Hide</a> empty sections.</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Add byline to post pages</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Add byline to post pages</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Have table of contents attach to sidebar bottom on mobile</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Have table of contents attach to sidebar bottom on mobile</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Support dark mode</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Support dark mode</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> Social Icons</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Social Icons</p>
 </li>
 <li class="task-list-item">
-<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"></input> SEO/Social/JSON-LD HEAD data</p>
+<p><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> SEO/Social/JSON-LD HEAD data</p>
 </li>
 </ul>
 <h2 id="day-37" tabindex="-1">Day 37</h2>
@@ -385,12 +382,10 @@
 <pre class="language-javascript"><code class="language-javascript"> Token <span class="token punctuation">{</span><br>  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'inline'</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">attrs</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">144</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">nesting</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    Token <span class="token punctuation">{</span><br>      <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'code_inline'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token string">'code'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">attrs</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">nesting</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'git commit -am "Get macros in the mix."'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">markup</span><span class="token operator">:</span> <span class="token string">'`'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">info</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">block</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'`git commit -am "Get macros in the mix."`'</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">markup</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">info</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">block</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">false</span><br><span class="token punctuation">}</span></code></pre>
 <h3 id="markdown-it-state-obj" tabindex="-1">Markdown-it State Obj</h3>
 <p id="code-skip-hello-day-37-13">Good to know, ok, what is in this state object anyway?</p>
-<p>{% raw %}</p>
 <p class="skip-link-graf">
 <a href="#code-skip-hello-day-37-12" id="skip-to-code-skip-hello-day-37-12" class="skip-link">Skip code block ▼</a></p>
 <pre class="language-javascript"><code class="language-javascript">StateCore <span class="token punctuation">{</span><br>  <span class="token literal-property property">src</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">env</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token literal-property property">defaults</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">layout</span><span class="token operator">:</span> <span class="token string">'default.njk'</span><span class="token punctuation">,</span> <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'Talking about code'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'Posts tagged with Markdown-It'</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">layout</span><span class="token operator">:</span> <span class="token string">'tags'</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">projects</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">site</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">lang</span><span class="token operator">:</span> <span class="token string">'en-US'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">github</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">site_url</span><span class="token operator">:</span> <span class="token string">'http://localhost:8080'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">site_name</span><span class="token operator">:</span> <span class="token string">'Fight With Tools: A Dev Blog'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'A site opening up my development process to all.'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">featuredImage</span><span class="token operator">:</span> <span class="token string">'nyc_noir.jpg'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">aramPhoto</span><span class="token operator">:</span> <span class="token string">'https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg'</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">pkg</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'fightwithtooldev'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token string">'1.0.0'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">"This is the repo for Aram ZS's developer notes and log, keeping track of code experiments and decisions."</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">main</span><span class="token operator">:</span> <span class="token string">'index.js'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">scripts</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">keywords</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">license</span><span class="token operator">:</span> <span class="token string">'ISC'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">devDependencies</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">dependencies</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">templateName</span><span class="token operator">:</span> <span class="token string">'tag'</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">eleventyExcludeFromCollections</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token string">'collections.deepTagList'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">size</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">alias</span><span class="token operator">:</span> <span class="token string">'paged'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">pages</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">items</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">pageNumber</span><span class="token operator">:</span> <span class="token number">37</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">previousPageLink</span><span class="token operator">:</span> <span class="token string">'/tag/smo/index.html'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">previous</span><span class="token operator">:</span> <span class="token string">'/tag/smo/index.html'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">nextPageLink</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">next</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">firstPageLink</span><span class="token operator">:</span> <span class="token string">'/tag/blogroll/index.html'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">lastPageLink</span><span class="token operator">:</span> <span class="token string">'/tag/markdown-it/index.html'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">links</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">pageLinks</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">previousPageHref</span><span class="token operator">:</span> <span class="token string">'/tag/smo/'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">nextPageHref</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">firstPageHref</span><span class="token operator">:</span> <span class="token string">'/tag/blogroll/'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">lastPageHref</span><span class="token operator">:</span> <span class="token string">'/tag/markdown-it/'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">hrefs</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">href</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">permalink</span><span class="token operator">:</span> <span class="token string">'tag/{{ paged.tagName | slug }}/{% if paged.number > 1 %}{{ paged.number }}/{% endif %}index.html'</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">eleventyComputed</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Tag: {{ paged.tagName }}{% if paged.number > 1 %} | Page {{paged.number}}{% endif %}'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'Posts tagged with {{ paged.tagName }}'</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span>13T22<span class="token operator">:</span><span class="token number">11</span><span class="token operator">:</span><span class="token number">01</span><span class="token punctuation">.</span>651Z<span class="token punctuation">,</span><br>      <span class="token literal-property property">inputPath</span><span class="token operator">:</span> <span class="token string">'./src/tags-pages.md'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">fileSlug</span><span class="token operator">:</span> <span class="token string">'tags-pages'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">filePathStem</span><span class="token operator">:</span> <span class="token string">'/tags-pages'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/tag/markdown-it/'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">outputPath</span><span class="token operator">:</span> <span class="token string">'docs/tag/markdown-it/index.html'</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">paged</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">tagName</span><span class="token operator">:</span> <span class="token string">'Markdown-It'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">number</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">first</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">last</span><span class="token operator">:</span> <span class="token boolean">true</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Tag: Markdown-It'</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">collections</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">all</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">blogroll</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Personal Blog'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">links</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Tech Critical'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Blockchain</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Cryptocurrency</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Code Reference'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Ad Tech'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'BAd Tech'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Broken By Design'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">projects</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Starters</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'11ty'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Node</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Sass</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">WiP</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Github Actions'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token constant">GPC</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token constant">CSS</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">Aggregation</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token constant">SEO</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token constant">SMO</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token string-property property">'Markdown-It'</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">tagList</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">deepTagList</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">tokens</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">inlineMode</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>  <span class="token literal-property property">md</span><span class="token operator">:</span> MarkdownIt <span class="token punctuation">{</span><br>    <span class="token literal-property property">inline</span><span class="token operator">:</span> ParserInline <span class="token punctuation">{</span> <span class="token literal-property property">ruler</span><span class="token operator">:</span> <span class="token punctuation">[</span>Ruler<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token literal-property property">ruler2</span><span class="token operator">:</span> <span class="token punctuation">[</span>Ruler<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">block</span><span class="token operator">:</span> ParserBlock <span class="token punctuation">{</span> <span class="token literal-property property">ruler</span><span class="token operator">:</span> <span class="token punctuation">[</span>Ruler<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">core</span><span class="token operator">:</span> Core <span class="token punctuation">{</span> <span class="token literal-property property">ruler</span><span class="token operator">:</span> <span class="token punctuation">[</span>Ruler<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">renderer</span><span class="token operator">:</span> Renderer <span class="token punctuation">{</span> <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">linkify</span><span class="token operator">:</span> LinkifyIt <span class="token punctuation">{</span><br>      <span class="token literal-property property">__opts__</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__index__</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__last_index__</span><span class="token operator">:</span> <span class="token number">29</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__schema__</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__text_cache__</span><span class="token operator">:</span> <span class="token string">'Especially with the variable name in the '</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__schemas__</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__compiled__</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__tlds__</span><span class="token operator">:</span> <span class="token punctuation">[</span>Array<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">__tlds_replaced__</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">re</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">validateLink</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> validateLink<span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">normalizeLink</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> normalizeLink<span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">normalizeLinkText</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> normalizeLinkText<span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">utils</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">lib</span><span class="token operator">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">assign</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> assign<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isString</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isString<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">has</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> has<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">unescapeMd</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> unescapeMd<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">unescapeAll</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> unescapeAll<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isValidEntityCode</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isValidEntityCode<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">fromCodePoint</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> fromCodePoint<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">escapeHtml</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> escapeHtml<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">arrayReplaceAt</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> arrayReplaceAt<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isSpace</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isSpace<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isWhiteSpace</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isWhiteSpace<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isMdAsciiPunct</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isMdAsciiPunct<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">isPunctChar</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> isPunctChar<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">escapeRE</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> escapeRE<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">normalizeReference</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> normalizeReference<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">helpers</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">parseLinkLabel</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> parseLinkLabel<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">parseLinkDestination</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> parseLinkDestination<span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">parseLinkTitle</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> parseLinkTitle<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token literal-property property">html</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">xhtmlOut</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">breaks</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">langPrefix</span><span class="token operator">:</span> <span class="token string">'language-'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">linkify</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">typographer</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">quotes</span><span class="token operator">:</span> <span class="token string">'“”‘’'</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">highlight</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">Function</span> <span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">maxNesting</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">replaceLink</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> replaceLink<span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<p id="code-skip-hello-day-37-12">{% endraw %}</p>
-<p>Oh, look at that. Everything I need to handle it at the rule level, instead of the <code>rerender</code> process!</p>
+<p id="code-skip-hello-day-37-12">Oh, look at that. Everything I need to handle it at the rule level, instead of the <code>rerender</code> process!</p>
 <p>Ok, so now I can make a plugin pretty similar to the one I did before.</p>
 <h3 id="searching-for-git-commit-via-api" tabindex="-1">Searching for git commit via API</h3>
 <p>I can find the commit message by searching through <code>inline</code> tokens, and pull the repo out of <code>state.env.repo</code>. I can then pull the commit message out of the inline token's <code>content</code> and use it with Octokit to search for the repo. The API query results in a <code>data</code> object with an <code>items</code> property that returns an array that looks like:</p>
@@ -464,12 +459,7 @@
                     </section>
                     <section id="postcontent">
                     
-    <script src="https://utteranc.es/client.js"
-            repo="AramZS/fightwithtools-comments"
-            issue-term="title"
-            theme="github-dark"
-            crossorigin="anonymous"
-            async>
+    <script src="https://utteranc.es/client.js" repo="AramZS/fightwithtools-comments" issue-term="title" theme="github-dark" crossorigin="anonymous" async="">
     </script>
     
         
@@ -483,7 +473,7 @@
     <div class="social-icons-block">
     <div class="a-social-icon">
         <a href="https://github.com/AramZS/" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
 
 
 <!-- https://simpleicons.org/?q=github -->
@@ -492,7 +482,7 @@
     </div>
     <div class="a-social-icon">
         <a href="https://bit.ly/aramzs" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
 
 
 <!-- https://simpleicons.org/?q=linked -->
@@ -501,7 +491,7 @@
     </div>
     <div class="a-social-icon">
         <a href="https://twitter.com/Chronotope" target="_blank">
-            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
 
 <!-- https://simpleicons.org/?q=tw -->
 
@@ -510,7 +500,7 @@
     
     <div class="a-social-icon">
         <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"></path></svg>
 
 <!-- https://simpleicons.org/?q=mastodon -->
 
@@ -525,8 +515,10 @@
                 <footer>
                     
     <div id="taglist">
-        <h6>Tags: </h6>
+        <h6 id="tags">Tags: </h6>
         <ul><li>
+                    <a href="https://fightwithtools.dev/tag/projects">projects</a>
+                </li><li>
                     <a href="https://fightwithtools.dev/tag/starters">Starters</a>
                 </li><li>
                     <a href="https://fightwithtools.dev/tag/11ty">11ty</a>
