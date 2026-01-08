@@ -724,7 +724,7 @@ module.exports = function (eleventyConfig) {
 	var markdownSetup = mdProcessor(options)
 		.use(require("markdown-it-replace-link"))
 		.use(require("markdown-it-todo"))
-		// .use(require("./_custom-plugins/markdown-it-short-phrases"))
+		//.use(require("./_custom-plugins/markdown-it-short-phrases"))
 		.use(require("markdown-it-find-and-replace"), {
 			defaults: true,
 			replaceRules: [
@@ -742,7 +742,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
-		//.use(gitCommitMarkdownRules.gitCommitMarkdownRule)
+		.use(gitCommitMarkdownRules.gitCommitMarkdownRule)
 		.use(
 			require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js")
 		);

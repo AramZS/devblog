@@ -67,10 +67,12 @@ module.exports = (eleventyConfig, userOptions) => {
 			urlsArray.forEach((urlObj) => {
 				const link = urlObj.url;
 				// A regex to check if the `url` ends in `.domain`
-				const domainRegex = /\.domain$/;
+				const domainRegex = /\.domain$|\.post$|\.document$/;
 				if (!link || domainRegex.test(link)) {
-					console.log("Blocked fetch to .domain URL:", link);
+					console.log("Blocked fetch to bad TLD URL:", link);
 					return false;
+				} else {
+					//console.log("Processing link: ", link);
 				}
 				// console.log("inputContent Process: ", link);
 				// console.log("inputContent treated", inputContent);
