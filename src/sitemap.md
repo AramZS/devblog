@@ -1,6 +1,17 @@
 ---
 permalink: /sitemap.xml
-layout: null
+layout: false
 eleventyExcludeFromCollections: true
 ---
-{% sitemap collections.all %}
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for page in collections.all %}
+	{% if page.data.permalink != false %}
+		{% set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset %}
+		<url>
+			<loc>{{ absoluteUrl }}</loc>
+			<lastmod>{{ page.date | htmlDateString }}</lastmod>
+		</url>
+	{% endif %}
+{%- endfor %}
+</urlset>

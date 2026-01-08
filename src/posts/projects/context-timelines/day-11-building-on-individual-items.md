@@ -34,19 +34,23 @@ So, let's set up the page to request the API and use it.
 
 I will set up a single JS file that only loads on this template to handle this process. And to speed up that connection, I'll use the `preload` link hint to set up the requests.
 
-```html
+{% raw %}
+```liquid
 <link rel="preload" href="{{timelinesConfig.jsPath}}/single-item.js" as="script" />
 <link rel="preload" href="{{timelinesConfig.domainName}}/{{timelinesConfig.timelineOutFolder}}/{{timelineEntryItem.data.timeline}}/index.json" as="fetch" />
 ```
+{% endraw %}
 
 I also will want some of the basic data set up to use in my scripts.
 
-```html
+{% raw %}
+```liquid
 <script>
     window.baseItem = "{{- timelineEntryItem.data.title | slugify -}}";
     window.timelineAPI = "{{timelinesConfig.domainName}}/{{timelinesConfig.timelineOutFolder}}/{{timelineEntryItem.data.timeline}}/index.json";
 </script>
 ```
+{% endraw %}
 
 Now we can `fetch` the data for use.
 

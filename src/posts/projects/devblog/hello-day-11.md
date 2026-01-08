@@ -159,4 +159,5 @@ and now my `index.njk` file is reusable for any vertical file I wish to reuse it
 ```
 {% endraw %}
 
+
 `git commit -am "Got shortcode + vertical layout template working"`

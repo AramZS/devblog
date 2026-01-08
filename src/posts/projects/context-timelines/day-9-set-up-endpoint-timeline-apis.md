@@ -36,7 +36,7 @@ The one big problem is default loops have tailing commas. I need some way to avo
 
 Jinja, which Nunjucks is based on, [seems to have a `loop.last` variable](https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template) that lets you know if you are on the last step of a loop. Nunjucks doesn't seem to have this. But it does [seem to have a `last` filter one can apply to an array to get the last element](https://mozilla.github.io/nunjucks/templating.html#last). Ok, I can use that instead.
 
-```njk
+```liquid
 {% for item in entry.data.tags %}
 "{{ item }}"{% if item !== entry.data.tags | last %},{% endif %}
 {% endfor %}
@@ -46,7 +46,7 @@ This takes my filters list and outputs them as strings followed by a comma, exce
 
 Quick note that tripped me up here, if the list is sorted then it needs to be sorted before the `last` filter is applied, like so:
 
-```njk
+```liquid
 {% for filter in filters | sort %}
     "{{ filter }}"{% if filter !== filters | sort | last %},{% endif %}
 {% endfor %}

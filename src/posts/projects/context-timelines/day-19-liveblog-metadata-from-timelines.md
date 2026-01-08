@@ -48,7 +48,7 @@ I'll start with `timelineObj` as my new template layout uses that object pretty 
 
 I'll need to calculate a value for `coverageStartTime`. That should be easy enough, I can just reverse the calculation for `lastUpdatedPost` and make sure it doesn't fall back to zero.
 
-There are some places where I might want to have fields in the future but keep fallbacks to standard values. For those I'll use the Nunjucks construction of `{{ X or Y }}` which will hopefully work without issue.
+There are some places where I might want to have fields in the future but keep fallbacks to standard values. For those I'll use the Nunjucks construction of {% raw %}`{{ X or Y }}`{% endraw %} which will hopefully work without issue.
 
 Then comes the hard part, I need to play out the timeline entries into the `liveBlogUpdate` array.
 
@@ -56,9 +56,11 @@ Some of this is pretty straightforward, but I am going to have some trailing com
 
 But wait... I don't think I can compare complex objects like this?
 
-```njk
+{% raw %}
+```liquid
 {% if entry !== collections[timelineSlug] | sort | last %},{% endif %}
 ```
+{% endraw %}
 
 Welllllll, let's try next time.
 

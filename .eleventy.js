@@ -1,10 +1,10 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const eleventyCore = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginTOC = require("eleventy-plugin-toc");
 // const getCollectionItem = require("@11ty/eleventy/src/Filters/GetCollectionItem");
 const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
-const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 // const markdownShorthand = require("./_custom-plugins/markdown-it-short-phrases");
 // const markdownItRegex = require("markdown-it-regex");
 const path = require("path");
@@ -117,6 +117,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigationPlugin);
 	// https://www.11ty.dev/docs/plugins/rss/
 	eleventyConfig.addPlugin(pluginRss);
+	eleventyConfig.addPlugin(eleventyCore.HtmlBasePlugin);
+	eleventyConfig.addPlugin(eleventyCore.InputPathToUrlTransformPlugin);
+	eleventyConfig.addPlugin(eleventyCore.IdAttributePlugin, {
+		// by default we use Eleventy’s built-in `slugify` filter:
+		// slugify: eleventyConfig.getFilter("slugify"),
+		// selector: "h1,h2,h3,h4,h5,h6", // default
+	});
 	// https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
 	eleventyConfig.addPlugin(sitemap, {
 		// Name of the property for the last modification date.
@@ -131,6 +138,9 @@ module.exports = function (eleventyConfig) {
 			hostname: domain_name,
 		},
 	});
+	const pluginFilters = require("./_custom-plugins/filters.js");
+	eleventyConfig.addPlugin(pluginFilters.default);
+
 	eleventyConfig.addWatchTarget("./_custom-plugins/");
 	// eleventyConfig.addWatchTarget("./src/_sass");
 	// sassBuild(domain_name);
@@ -405,6 +415,36 @@ module.exports = function (eleventyConfig) {
 		return s.substring(0, n);
 	});
  */
+
+	/*eleventyConfig.addPreprocessor(
+		"handle-escaping",
+		"njk,md,liquid",
+		(data, content) => {
+			// Replace {% with [%
+			content = content
+				.replace(/\{\%\s+/g, "'xz")
+				.replace(/\%\}/g, "zx'")
+				.replace(/\$\{\s+/g, "'fx")
+				.replace(/\s+\}/g, "xf'");
+
+			// You can also modify the raw input of the template here too, be careful!
+			return `${content}<!-- Template file: {{ page.inputPath }} -->`;
+
+			// If you return nothing or `undefined`, no changes will be made to this template.
+		}
+	);
+	eleventyConfig.addTransform(
+		"handle-escaped-tags",
+		async function (content) {
+			content = content
+				.replace(/'xz/g, "{% ")
+				.replace(/zx'/g, " %}")
+				.replace(/'fx/g, "${ ")
+				.replace(/xf'/g, " }");
+			return content;
+		}
+	);*/
+
 	function filterTagList(tags) {
 		return (tags || []).filter(
 			(tag) =>
@@ -611,7 +651,7 @@ module.exports = function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPlugin(syntaxHighlight, {
-		templateFormats: ["md", "njk"],
+		templateFormats: ["md", "html", "njk"],
 		init: function ({ Prism }) {
 			Prism.languages.markdown = Prism.languages.extend("markup", {
 				frontmatter: {
@@ -627,11 +667,11 @@ module.exports = function (eleventyConfig) {
 					greedy: true,
 					inside: Prism.languages.javascript,
 				},
-				templateTagBoundary: {
+				/*templateTagBoundary: {
 					pattern: /\{\%}?|\%\}?/g,
 					greedy: false,
 					alias: "template-tag-boundary",
-				},
+				},*/
 			});
 			Prism.languages.njk = Prism.languages.extend("liquid", {});
 		},
@@ -648,8 +688,6 @@ module.exports = function (eleventyConfig) {
 		const str = util.inspect(objToEcho);
 		return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`;
 	});
-
-	eleventyConfig.addPlugin(UpgradeHelper);
 
 	let options = {
 		html: true,
@@ -704,7 +742,7 @@ module.exports = function (eleventyConfig) {
 		.use(require("markdown-it-anchor"), {
 			slugify: (s) => slugify(s.toLowerCase().replace(/"/g, "")),
 		})
-		.use(gitCommitMarkdownRules.gitCommitMarkdownRule)
+		//.use(gitCommitMarkdownRules.gitCommitMarkdownRule)
 		.use(
 			require("./_custom-plugins/markdown-it-codeblocks-skip-links/index.js")
 		);
@@ -740,11 +778,11 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.setLibrary("md", markdownSetup);
 
-	eleventyConfig.addPlugin(require("./_custom-plugins/markdown-contexter"), {
+	/*eleventyConfig.addPlugin(require("./_custom-plugins/markdown-contexter"), {
 		existingRenderer: markdownSetup,
 		publicImagePath: "assets/images/contexter",
 		publicPath: "timegate",
 		domain: domain_name,
-	});
+	});*/
 	return siteConfiguration;
 };
