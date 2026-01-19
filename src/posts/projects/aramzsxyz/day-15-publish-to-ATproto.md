@@ -1,7 +1,7 @@
 ---
 title: XYZ Site - Day 15 - Publish to ATProto.
 description: "Put my blog posts in the atmosphere"
-date: 2025-08-10 17:59:43.10 -4
+date: 2026-01-08 17:59:43.10 -4
 tags:
   - 11ty
   - Node
