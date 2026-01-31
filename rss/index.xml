@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sun, 25 Jan 2026 23:43:26 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 31 Jan 2026 04:26:07 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,47 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>XYZ Site - Day 18 - What does an ATProto update look like.</title>
+		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-18-what-does-an-atproto-update-look-like/?source=rss</link>
+		<pubDate>Sun, 25 Jan 2026 18:01:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-18-what-does-an-atproto-update-look-like/</guid>
+		<description>Getting my blog posts set up in the atmosphere</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Create a versatile blog site</li>
+<li>Create a framework that makes it easy to add external data to the site</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Give the site the capacity to replicate the logging and rating I do on Serialized and Letterboxd.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Be able to pull down RSS feeds from other sites and create forward links to my other sites</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Create forward links to sites I want to post about.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to pull in my Goodreads data and display it on the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Create a way to automate pulls from other data sources</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Combine easy inputs like text lists and JSON data files with markdown files that I can build on top of.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Add a TMDB credit to footer in base.njk</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Make sure tags do not repeat in the displayed tag list.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Get my Kindle Quotes into the site</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> YouTube Channel Recommendations</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Minify HTML via Netlify plugin.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Log played games</li>
+</ul>
+<h2 id="day-18" tabindex="-1">Day 18</h2>
+<p>Ok, that worked, what does an article update look like?</p>
+<p>I made an edit to my one post on Leaflet. Looks like it just adjusts the record in place, which is nice. Updates are pretty easy then.</p>
+<p>Ok, so then how to integrate this with my publishing flow? Let's <a href="https://github.com/bluesky-social/cookbook/blob/main/ts-bot/index.ts" target="_blank">take a look at a basic authenticated flow from BlueSky</a>. Looks like <a href="https://tangled.org/mary.my.id/atcute/tree/trunk/packages/definitions/standard-site" target="_blank">there is also some ways to reference standard types for standard.site</a>. This uses <a href="https://tangled.org/mary.my.id/atcute/tree/trunk/packages/definitions/atproto" target="_blank">the atcute package</a>, which seems to be well respected.</p>
+<p>There seems to be <a href="https://micahcantor.com/blog/bluesky-comment-section.html" target="_blank">an interesting example of comments out there</a>, but that doesn't post anything.</p>
+<p>There's also <a href="https://marvins-guide.leaflet.pub/3mckm76mfws2h" target="_blank">an interesting exploration of upserting records</a>.</p>
+<p>A <a href="https://tangled.org/baileytownsend.dev/upsert-example/blob/main/upsertFullExample.js" target="_blank">good basic example here as well</a>.</p>
+<p>To make this flexible, we should make it as it's own extension for static sites. Let's try to make a basic version.</p>
+<p>First, I want to get used to tangled, <a href="https://tangled.org/did:plc:t5xmf33p5kqgkbznx22p7d7g/marksky-pub" target="_blank">so I'll set the repo up on there</a>.</p>
+<p>I'm pretty sure my PDS host would be <code>https://bsky.social</code> right?</p>
+<p>I can start with the <a href="https://tangled.org/baileytownsend.dev/upsert-example/blob/main/upsertFullExample.js" target="_blank">example</a>. I'll reorg it a little into the pieces I need as a start.</p>
+<p>Ok, a nice place to pick up later from.</p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>XYZ Site - Day 17 - Publish an image and article to ATProto.</title>
