@@ -9,7 +9,9 @@ tags:
   - WiP
   - APIs
   - Social Media
-  - Web Share API
+  - ATProto
+  - ATmosphere
+  - decentralization
 ---
 
 ## Project Scope and ToDos
