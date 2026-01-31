@@ -1,7 +1,7 @@
 ---
 title: XYZ Site - Day 18 - What does an ATProto update look like.
 description: "Getting my blog posts set up in the atmosphere"
-date: 2026-01-25 14:01:43.10 -4
+date: 2026-01-30 11:01:43.10 -4
 tags:
   - 11ty
   - Node
