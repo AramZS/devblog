@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Sat, 31 Jan 2026 04:26:07 GMT</lastBuildDate>
+	<lastBuildDate>Sat, 31 Jan 2026 04:26:52 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -24,7 +24,7 @@
 	<item>
 		<title>XYZ Site - Day 18 - What does an ATProto update look like.</title>
 		<link>https://fightwithtools.dev/posts/projects/aramzsxyz/day-18-what-does-an-atproto-update-look-like/?source=rss</link>
-		<pubDate>Sun, 25 Jan 2026 18:01:43 GMT</pubDate>
+		<pubDate>Fri, 30 Jan 2026 15:01:43 GMT</pubDate>
 		<dc:creator>Aram Zucker-Scharff</dc:creator>
 		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/aramzsxyz/day-18-what-does-an-atproto-update-look-like/</guid>
 		<description>Getting my blog posts set up in the atmosphere</description>
