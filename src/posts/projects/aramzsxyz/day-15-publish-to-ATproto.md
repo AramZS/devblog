@@ -121,7 +121,7 @@ or in JSON
 }
 ```
 
-Looks like it hasn't been implimented in leaflet yet? Ok, let's try [Thomas's top blog example](https://pdsls.dev/at://did:plc:txurc6ueald5d7462bpvzdby/site.standard.document/3mbnqpz3ziw2v#record):
+Looks like it hasn't been implemented in leaflet yet? Ok, let's try [Thomas's top blog example](https://pdsls.dev/at://did:plc:txurc6ueald5d7462bpvzdby/site.standard.document/3mbnqpz3ziw2v#record):
 
 `goat record get at://did:plc:txurc6ueald5d7462bpvzdby/site.standard.publication/3mbnlfyowxg2v`
 
