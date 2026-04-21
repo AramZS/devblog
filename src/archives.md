@@ -1,12 +1,12 @@
 ---
-layout: archives
+xxlayout: archives
 eleventyExcludeFromCollections: true
-pagination:
+xxpagination:
     data: collections.archives
     size: 1
     alias: archive
-permalink: "timegate/{{ archive.sanitizedLink }}/index.html"
-eleventyComputed:
+xxpermalink: "timegate/{{ archive.sanitizedLink }}/index.html"
+xxeleventyComputed:
     title: "{{ archive.data.finalizedMeta.title }}"
     description: "{{ archive.data.finalizedMeta.description }}"
     modified: "Last Modified"

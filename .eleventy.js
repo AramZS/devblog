@@ -60,7 +60,7 @@ function getCollectionItem(collection, page, modifier = 0) {
 	}
 }
 
-module.exports = function (eleventyConfig) {
+module.exports = function(eleventyConfig) {
 	var siteConfiguration = {
 		// Control which files Eleventy will process
 		// e.g.: *.md, *.njk, *.html
@@ -193,11 +193,11 @@ module.exports = function (eleventyConfig) {
 
 
 	eleventyConfig.addGlobalData('projects', function(collectionApi) {
-        return getDirectories('src/projects/');
-    });
+		return getDirectories('src/projects/');
+	});
 	*/
 
-	const pathNormalizer = function (pathString) {
+	const pathNormalizer = function(pathString) {
 		return normalize(
 			path.normalize(path.join(path.resolve("."), pathString))
 		);
@@ -230,7 +230,7 @@ module.exports = function (eleventyConfig) {
 		}
 	);
 	eleventyConfig.setLibrary("njk", nunjucksEnvironment);
-    */
+	*/
 	const nunjucksFileSystem = [
 		path.join(siteConfiguration.dir.input, siteConfiguration.dir.includes),
 		path.join(siteConfiguration.dir.input, siteConfiguration.dir.layouts),
@@ -251,7 +251,7 @@ module.exports = function (eleventyConfig) {
 	//});
 	eleventyConfig.addShortcode(
 		"postList",
-		function (collectionName, collectionOfPosts, order, hlevel) {
+		function(collectionName, collectionOfPosts, order, hlevel) {
 			var postCollection = [];
 			if (collectionOfPosts) {
 				// Clone post collection to avoid reverse having weird effects on other uses of the collection due to it being transformed in place.
@@ -291,7 +291,7 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addShortcode(
 		"projectList",
-		function (collectionName, collectionOfPosts, order, hlevel, limit) {
+		function(collectionName, collectionOfPosts, order, hlevel, limit) {
 			var postCollection = [];
 			if (collectionOfPosts) {
 				// Clone post collection to avoid reverse having weird effects on other uses of the collection due to it being transformed in place.
@@ -355,14 +355,14 @@ module.exports = function (eleventyConfig) {
 	}
 	eleventyConfig.addFilter(
 		"getPreviousProjectItem",
-		function (collection, page, project) {
+		function(collection, page, project) {
 			let index = -1;
 			return getNProjectItem(
 				collection,
 				page,
 				project,
 				index,
-				function (i) {
+				function(i) {
 					return i - 1;
 				}
 			);
@@ -370,20 +370,20 @@ module.exports = function (eleventyConfig) {
 	);
 	eleventyConfig.addFilter(
 		"getNextProjectItem",
-		function (collection, page, project) {
+		function(collection, page, project) {
 			let index = 1;
 			return getNProjectItem(
 				collection,
 				page,
 				project,
 				index,
-				function (i) {
+				function(i) {
 					return i + 1;
 				}
 			);
 		}
 	);
-	eleventyConfig.addFilter("relproject", function (url) {
+	eleventyConfig.addFilter("relproject", function(url) {
 		var urlArray = url.split("/");
 		var urlFiltered = urlArray.filter((e) => e.length > 0);
 		urlFiltered.pop(); // Remove post path
@@ -652,7 +652,7 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		templateFormats: ["md", "html", "njk"],
-		init: function ({ Prism }) {
+		init: function({ Prism }) {
 			Prism.languages.markdown = Prism.languages.extend("markup", {
 				frontmatter: {
 					pattern: /^---[\s\S]*?^---$/m,
@@ -677,7 +677,7 @@ module.exports = function (eleventyConfig) {
 		},
 	});
 
-	eleventyConfig.addFilter("console", function (value) {
+	eleventyConfig.addFilter("console", function(value) {
 		let objToEcho;
 		if (value.posts) {
 			objToEcho = Object.assign({}, value);
@@ -693,7 +693,7 @@ module.exports = function (eleventyConfig) {
 		html: true,
 		breaks: true,
 		linkify: true,
-		replaceLink: function (link, env) {
+		replaceLink: function(link, env) {
 			// console.log("env:", env);
 			var imageLinkRegex = /^..\/img\//;
 			if (link && imageLinkRegex.test(link)) {
@@ -750,10 +750,10 @@ module.exports = function (eleventyConfig) {
 	// via https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 	var defaultRender =
 		markdownSetup.renderer.rules.link_open ||
-		function (tokens, idx, options, env, self) {
+		function(tokens, idx, options, env, self) {
 			return self.renderToken(tokens, idx, options);
 		};
-	markdownSetup.renderer.rules.link_open = function (
+	markdownSetup.renderer.rules.link_open = function(
 		tokens,
 		idx,
 		options,

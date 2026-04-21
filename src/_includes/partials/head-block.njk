@@ -4,7 +4,7 @@
     	<link rel="alternate" type="application/atom+xml" title="{{site.site_name}} Feed" href="{{site.site_url}}/feed/" />
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>{{ title }}</title>
+        <title>{{ title or "Dev Blog" }}</title>
         {% if templateName %}
             <!-- Sub Template: {{ templateName }} -->
         {% else %}

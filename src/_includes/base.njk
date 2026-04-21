@@ -47,7 +47,7 @@
                             <!-- projects mode -->
                         {% endif %}
                         <h1 class="header">
-                            {{ title }}
+                            {{ title or "Dev Blog"}}
                         </h1>
                         {% if '/posts' not in page.url %}
                         <p class="header">{{ description }}</p>
