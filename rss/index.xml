@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 24 Mar 2026 03:39:40 GMT</lastBuildDate>
+	<lastBuildDate>Tue, 21 Apr 2026 05:27:25 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -20,6 +20,43 @@
 	<managingEditor>
 		aramdevblog@aramzs.me (Aram Zucker-Scharff)
 	</managingEditor>
+	
+	<item>
+		<title>Let's write a client side ATProto tool for sharing Web Archives, if we can?</title>
+		<link>https://fightwithtools.dev/posts/projects/archiversat/001-lets-get-started/?source=rss</link>
+		<pubDate>Tue, 21 Apr 2026 00:59:43 GMT</pubDate>
+		<dc:creator>Aram Zucker-Scharff</dc:creator>
+		<guid isPermaLink="true">https://fightwithtools.dev/posts/projects/archiversat/001-lets-get-started/</guid>
+		<description>Make archives decentralized</description>
+		<content:encoded><![CDATA[<h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Log in to ATProto</li>
+<li>Post archives to a PDS.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Remember my login.</li>
+</ul>
+<h2 id="day-1" tabindex="-1">Day 1</h2>
+<p>So, I didn't have enough time to participate in the <a href="https://blog.stream.place/3micfu6ifyk2a/l-quote/6.0_0-6.0_124" target="_blank">SteamPlace VOD JAM</a> but looking at it made me realize that you can put some sizable files on a PDS. Together with the shitty situation for web archives, it has me thinking: why not host your own archives on your own PDS?</p>
+<p>Let's try some stuff with this project. <a href="https://pnpm.io/installation" target="_blank">PNPM</a> and <a href="https://www.npmjs.com/package/@atproto/oauth-client-browser" target="_blank">the client-side ATProto setup</a> to start. I'll start this one in typescript too. Let's also keep an eye on simple apps like <a href="https://github.com/atpota-to/flushes.app/tree/main" target="_blank">Flushes</a> as a reference.</p>
+<p>Gotta <code>brew install pnpm</code> and then off we go...</p>
+<p>Since I particularly dislike dealing with oauth, I think now is a good time to run an experiment that I've been avoiding. Work is asking us to deal with AI code authoring more and more of my coworkers and my team are working with it. There's no way to really get a good handle on this without trying to use it. So, I'm going to try to experiment with using Copilot for this project.</p>
+<p>I've asked it to use Vite, and a very simple non-SvelteKit Svelte site setup. I think this is important to avoid any situation where the code truly gets too far away from me while I'm working with so much new stuff.</p>
+<p>A simple command is enough for it to set up a starter Svelte site, but that's no surprise, I could find a million demos of something like that.</p>
+<p>I asked it to talk me through how to alter the HEAD-level metadata with Svelte, something I haven't done before (I've only barely played around with Svelte in the past). It was able to talk me through using <code>&lt;svelte:head&gt;</code> pretty well, with or without a script block like</p>
+<p class="skip-link-graf">
+<a href="https://fightwithtools.dev/posts/projects/archiversat/001-lets-get-started/#code-skip-001-lets-get-started-1" id="skip-to-code-skip-001-lets-get-started-1" class="skip-link">Skip code block ▼</a></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br />  <span class="token keyword">let</span> section <span class="token operator">=</span> <span class="token string">"Home"</span><span class="token punctuation">;</span><br /></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br /><br /><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">svelte:</span>head</span><span class="token punctuation">></span></span><br />  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>{section} — Archivers AT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br /><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">svelte:</span>head</span><span class="token punctuation">></span></span></code></pre>
+<p id="code-skip-001-lets-get-started-1">Next I want it to set up a request for oAuth with ATProto. I did some research and it is clear for a client-side-only application like this what I need to use is the <a href="https://www.npmjs.com/package/@atproto/oauth-client-browser" target="_blank"><code>&quot;@atproto/oauth-client-browser&quot;</code> package</a>. I also took a look at <a href="https://flushes.app/" target="_blank">the basic application Flushes</a>, which is fun and let me think about <a href="https://github.com/atpota-to/flushes.app" target="_blank">a simple app and how to handle structuring it</a>.</p>
+<p>Providing some beginning file structure and suggestive filenames, I can ask the VS Code Copilot chat tool to set up a basic oauth flow. It takes some poking, but I am able to get this working!</p>
+<p>There's not a lot of explicit documentation and I want to understand this flow better, so I've asked it for explicit inline documentation with:</p>
+<blockquote>
+<p>This needs more inline documentation. Can you start with App.svelte and add inline documentation for every custom named function?</p>
+</blockquote>
+<p>I had to carefully ask it for docs for each individual file to avoid it drifting too far off task.</p>
+<p>With all this set up, the next trick will be to get it doing more than just showing my DID. I need it to do stuff like remember my login and ask for more permissions to write to the PDS.</p>
+]]></content:encoded>
+	</item>
 	
 	<item>
 		<title>XYZ Site - Day 20 - Publish a Lexicon and Update a Markdown Post in ATProto</title>
