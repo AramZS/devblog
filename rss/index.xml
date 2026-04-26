@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Tue, 21 Apr 2026 05:27:25 GMT</lastBuildDate>
+	<lastBuildDate>Sun, 26 Apr 2026 00:59:26 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -55,6 +55,66 @@
 </blockquote>
 <p>I had to carefully ask it for docs for each individual file to avoid it drifting too far off task.</p>
 <p>With all this set up, the next trick will be to get it doing more than just showing my DID. I need it to do stuff like remember my login and ask for more permissions to write to the PDS.</p>
+<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commit/38331290f4e6d434b2b32a4172d6c5c3c1ec9423" class="git-commit-link"><code>git commit -am &quot;Attempting additional scope requests with ID metadata&quot;</code></a></p>
+<h3 id="prompt-log:" tabindex="-1">Prompt Log:</h3>
+<ul>
+<li>Set up to render a very basic page here</li>
+<li>swap this flow that uses index.html to a version of the site that renders with tsx files.</li>
+<li>Wait, instead of using React, can we use svelte?</li>
+<li>Why is this using index.html at the base of the project instead of in the app folder?
+<ul>
+<li>Educational response was:</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>That's a Vite convention. Unlike most bundlers, Vite treats index.html as the application entry point and serves it from the project root. It needs to be there so Vite can:</p>
+<ol>
+<li>Resolve the <code>&lt;script src=&quot;/src/app/main.ts&quot;&gt;</code> path relative to the project root.</li>
+<li>Serve it directly at <a href="http://localhost:5173/" target="_blank">http://localhost:5173/</a> during dev without any redirect.</li>
+<li>Use it as the build entry during vite build.</li>
+</ol>
+<p>You can move it into a subfolder by setting root in vite.config.ts, but the default and most common Vite setup keeps index.html at the project root. It's intentional, not an oversight.</p>
+</blockquote>
+<ul>
+<li>How do I allow the page to set the parent's <code>&lt;title&gt;</code> tag?</li>
+<li>This needs more inline documentation. Can you start with App.svelte and add inline documentation for every custom named function?</li>
+<li>Great, now do the same for the Login.svelte file.</li>
+<li>I want this oauth to add some additional permission scopes, specifically the ability to write to the user's repo, writing posts, and uploading blobs.</li>
+<li>Please output the CLI result regardless of if it failed. Now rerun the rg command.
+<ul>
+<li>At this time I realized it was trying to use <code>rg</code> to search for text in the module, which seems like a good idea to me, I hadn't used it before, so this was a good opportunity for me to look it up and experiment with it.</li>
+</ul>
+</li>
+<li>Ok, rg just needed to be installed. Let's try again: I want this oauth to add some additional permision scopes, specifically the ability to write to the user's repo, writing posts, and uploading blobs.</li>
+<li>Try again but remember that in this library what we are looking at is called grant_types in the node_modules/@atproto/oauth-client-browser package.</li>
+<li>The login flow isn't working, it is emitting the following error: &quot;OAuth &quot;invalid_request&quot; error: Invalid authorization request: Expected array, received string at body.authorization_details, or Required at body.request, or Required at body.request&quot;</li>
+<li>Looks like it is almost there. Still getting an error though: OAuth &quot;invalid_scope&quot; error: Scope &quot;transition:com.atproto.repo.applyWrites&quot; is not declared in the client metadata</li>
+<li>Wait a moment. It's good to have the option to honor VITE_CLIENT_ID but I want to burn the metadata into the application by setting it into clientMetadata when we set up new <code>BrowserOAuthClient({</code> in the oauth flow.</li>
+<li>Hi, I want to make the use of VITE_CLIENT_ID optional so I can run this locally.</li>
+<li>Well this is working now but is there no way to locally request those particular write scopes?
+<ul>
+<li>Educational response was:</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Short answer: not in pure loopback mode.</p>
+<p>When you run as a loopback client on 127.0.0.1 or ::1 with local default metadata, the OAuth server uses constrained metadata behavior, and those transition write scopes are not generally configurable there.</p>
+<p>What does work for local development with write scopes:</p>
+<ol>
+<li>Run the app behind a public HTTPS tunnel (for example ngrok or Cloudflare Tunnel).</li>
+<li>Host your client metadata JSON at a public URL.</li>
+<li>Put the transition scopes in that metadata scope field.</li>
+<li>Set VITE_CLIENT_ID to that metadata URL.</li>
+<li>Use the tunneled app URL in redirect_uris.</li>
+</ol>
+<p>So:</p>
+<ol>
+<li>Local loopback only: basically no custom write-scope request.</li>
+<li>Local app via tunnel + public metadata: yes, you can request those write scopes.</li>
+</ol>
+</blockquote>
 ]]></content:encoded>
 	</item>
 	
