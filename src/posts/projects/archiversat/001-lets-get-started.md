@@ -57,3 +57,54 @@ There's not a lot of explicit documentation and I want to understand this flow b
 I had to carefully ask it for docs for each individual file to avoid it drifting too far off task.
 
 With all this set up, the next trick will be to get it doing more than just showing my DID. I need it to do stuff like remember my login and ask for more permissions to write to the PDS.
+
+`git commit -am "Attempting additional scope requests with ID metadata"`
+
+### Prompt Log:
+
+- Set up to render a very basic page here
+- swap this flow that uses index.html to a version of the site that renders with tsx files.
+- Wait, instead of using React, can we use svelte?
+- Why is this using index.html at the base of the project instead of in the app folder?
+	- Educational response was:
+
+> That's a Vite convention. Unlike most bundlers, Vite treats index.html as the application entry point and serves it from the project root. It needs to be there so Vite can:
+>
+> 1. Resolve the `<script src="/src/app/main.ts">` path relative to the project root.
+> 2. Serve it directly at http://localhost:5173/ during dev without any redirect.
+> 3. Use it as the build entry during vite build.
+>
+> You can move it into a subfolder by setting root in vite.config.ts, but the default and most common Vite setup keeps index.html at the project root. It's intentional, not an oversight.
+
+- How do I allow the page to set the parent's `<title>` tag?
+- This needs more inline documentation. Can you start with App.svelte and add inline documentation for every custom named function?
+- Great, now do the same for the Login.svelte file.
+- I want this oauth to add some additional permission scopes, specifically the ability to write to the user's repo, writing posts, and uploading blobs.
+- Please output the CLI result regardless of if it failed. Now rerun the rg command.
+	- At this time I realized it was trying to use `rg` to search for text in the module, which seems like a good idea to me, I hadn't used it before, so this was a good opportunity for me to look it up and experiment with it.
+- Ok, rg just needed to be installed. Let's try again: I want this oauth to add some additional permision scopes, specifically the ability to write to the user's repo, writing posts, and uploading blobs.
+- Try again but remember that in this library what we are looking at is called grant_types in the node_modules/@atproto/oauth-client-browser package.
+- The login flow isn't working, it is emitting the following error: "OAuth "invalid_request" error: Invalid authorization request: Expected array, received string at body.authorization_details, or Required at body.request, or Required at body.request"
+- Looks like it is almost there. Still getting an error though: OAuth "invalid_scope" error: Scope "transition:com.atproto.repo.applyWrites" is not declared in the client metadata
+- Wait a moment. It's good to have the option to honor VITE_CLIENT_ID but I want to burn the metadata into the application by setting it into clientMetadata when we set up new `BrowserOAuthClient({` in the oauth flow.
+- Hi, I want to make the use of VITE_CLIENT_ID optional so I can run this locally.
+- Well this is working now but is there no way to locally request those particular write scopes?
+	- Educational response was:
+
+> Short answer: not in pure loopback mode.
+>
+> When you run as a loopback client on 127.0.0.1 or ::1 with local default metadata, the OAuth server uses constrained metadata behavior, and those transition write scopes are not generally configurable there.
+>
+> What does work for local development with write scopes:
+>
+> 1. Run the app behind a public HTTPS tunnel (for example ngrok or Cloudflare Tunnel).
+> 2. Host your client metadata JSON at a public URL.
+> 3. Put the transition scopes in that metadata scope field.
+> 4. Set VITE_CLIENT_ID to that metadata URL.
+> 5. Use the tunneled app URL in redirect_uris.
+>
+> So:
+>
+> 1. Local loopback only: basically no custom write-scope request.
+> 2. Local app via tunnel + public metadata: yes, you can request those write scopes.
+

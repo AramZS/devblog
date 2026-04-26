@@ -1,7 +1,7 @@
 {
-	"project": "Archivers.at",
+	"project": "Archiving.at",
 	"description": "Archiver's ATProto - A client-only social site for posting and sharing web archives.",
-	"repo": "https://github.com/AramZS/aramzs.xyz",
+	"repo": "https://github.com/AramZS/archiving-at",
 	"featuredImage": "xyz-icon.png",
 	"now": true
 }
