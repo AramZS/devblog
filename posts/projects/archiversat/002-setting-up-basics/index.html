@@ -1,0 +1,553 @@
+<!doctype html>
+    <html lang="en-US" id="template-post" class="base">
+        <head>
+        
+        <script defer="" data-domain="fightwithtools.dev" src="https://plausible.io/js/plausible.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="Fight With Tools: A Dev Blog RSS" href="https://fightwithtools.dev/rss/">
+    	<link rel="alternate" type="application/atom+xml" title="Fight With Tools: A Dev Blog Feed" href="https://fightwithtools.dev/feed/">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Let's write a client side ATProto tool for sharing Web Archives, if we can?</title>
+        
+            <!-- Sub Template: post -->
+        
+        
+            <link rel="preload" as="font">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
+            <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=25415353563" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=25415353563" id="">
+
+            
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=25415353563" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=25415353563" id="">
+
+            
+            <!-- Build Revision: 25415353563 & Sha: ce4001906b285929d88689316718c187948e1452 -->
+            <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async=""></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        
+            <!-- The Author meta propagates the byline in a number of social networks -->
+<meta name="author" content="Aram Zucker-Scharff">
+
+<meta property="og:title" content="Let's write a client side ATProto tool for sharing Web Archives, if we can?">
+
+<meta property="og:description" content="Make archives decentralized">
+
+
+<meta property="og:url" content="https://fightwithtools.dev/posts/projects/archiversat/002-setting-up-basics/">
+
+<meta property="og:site_name" content="Fight With Tools: A Dev Blog">
+
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:site" content="@chronotope">
+
+<meta name="twitter:description" content="Make archives decentralized">
+
+<meta name="description" content="Make archives decentralized">
+
+<!-- I prefer the summary_large_image Twitter card for posts. -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- You, you're the creator. -->
+<meta name="twitter:creator" content="@chronotope">
+<!-- This property is for the article title, not site title. -->
+<meta name="twitter:title" content="Let's write a client side ATProto tool for sharing Web Archives, if we can?">
+
+
+
+<meta property="og:image" content="https://fightwithtools.dev/img/xyz-icon.png">
+<meta name="twitter:image" content="https://fightwithtools.dev/img/xyz-icon.png">
+
+
+
+
+    <!-- Article specific OG data -->
+    <!-- The OG:Type dictates a number of other tags on posts. -->
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="Tue, 21 Apr 2026 00:59:43 GMT">
+
+    <!-- page.modified isn't a natural Jekyll property, but it can be added. -->
+    
+
+    <!-- Here my author and publisher tags are the same (yay self-publishing) -->
+    <meta property="article:author" content="http://facebook.com/aramzs">
+    <!-- But if your site has its own page, this is where to put it. -->
+    <meta property="article:publisher" content="https://www.facebook.com/aramzs">
+
+    
+    <!-- Article section isn't a required property, but it can be good to have -->
+    <meta property="article:section" content="Archiving.at">
+    
+
+    
+        <!-- I use the page.categories property for OG tags. -->
+        
+        <meta property="article:tag" content="posts">
+        
+        <meta property="article:tag" content="projects">
+        
+        <meta property="article:tag" content="ATProto">
+        
+        <meta property="article:tag" content="ATmosphere">
+        
+        <meta property="article:tag" content="WARC">
+        
+        <meta property="article:tag" content="WARCs">
+        
+        <meta property="article:tag" content="BlueSky">
+        
+        <meta property="article:tag" content="decentralization">
+        
+        <meta property="article:tag" content="archives">
+        
+        <meta property="article:tag" content="archiving">
+        
+        <meta property="article:tag" content="WiP">
+        
+        <meta name="keywords" content="posts, projects, ATProto, ATmosphere, WARC, WARCs, BlueSky, decentralization, archives, archiving, WiP">
+    
+
+
+
+            <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "https://fightwithtools.dev/posts/projects/archiversat/002-setting-up-basics/",
+        "headline": "Let's write a client side ATProto tool for sharing Web Archives, if we can?",
+        "about": "Make archives decentralized",
+        "image": [
+            "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+        ],
+        "isAccessibleForFree": "True",
+        "isPartOf": {
+            "@type": ["CreativeWork", "Product"],
+            "name": "Fight With Tools",
+            "productID": "fightwithtools.dev"
+        },
+        "discussionUrl": "https://twitter.com/search?q=to%3AChronotope%20%23dev&src=typed_query&f=top",
+        "author": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+}, 
+        "editor": {
+    "@type": "Person",
+    "name": {
+        "@type": "PronounceableText",
+        "inLanguage": "en-US",
+        "textValue": "Aram Zucker-Scharff",
+        "speechToTextMarkup": "IPA",
+        "phoneticText": "/ˌæ.ɹəm ˈt͡sʊ.kɚ 'ʃɑɹf/"
+    },
+    "description": "Aram Zucker-Scharff is Lead Privacy Engineer at The Washington Post, lead dev for PressForward and a consultant. Tech solutions for journo problems.",
+    "disambiguatingDescription": "A media-focused developer and strategist.",
+    "sameAs": "http://aramzs.github.io/aramzs/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/AramZS/aramzs.github.io/master/_includes/Aram-Zucker-Scharff-square.jpg"
+    },
+    "givenName": "Aram",
+    "familyName": "Zucker-Scharff",
+    "alternateName": "AramZS",
+    "publishingPrinciples": "http://aramzs.github.io/about/"
+},
+        "inLanguage": "en-US",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "additionalType": "CreativeWork",
+        "alternateName": "Fight With Tools Dev",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fight With Tools",
+            "description": "A site discussing how to imagine, build, analyze and use cool code and web tools. Better websites, better stories, better developers. Technology won't save the world, but you can.",
+            "sameAs": "https://fightwithtools.dev/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg"
+            },
+            "publishingPrinciples": "http://aramzs.github.io/about/"
+        }
+    }
+</script>
+
+        
+        
+        
+<link rel="canonical" href="https://fightwithtools.dev/posts/projects/archiversat/002-setting-up-basics/">
+
+        </head>
+        <body itemscope="" itemtype="https://schema.org/Blog">
+            <div class="wrapper">
+                <header>
+                    
+                        
+                            <div id="site-name-subhead">
+                                <a href="https://fightwithtools.dev">Fight With Tools: A Dev Blog</a>
+                                
+                                    > <a id="project-link" href="https://fightwithtools.dev/projects/archiversat">Archiving.at</a>
+                                
+                            </div>
+                        
+                        
+                            <!-- post mode -->
+                            <time>Tue Apr 21 2026</time>
+                            <!-- front matter dates made in format at https://yaml.org/type/timestamp.html -->
+                        
+                        
+                            <!-- projects mode -->
+                        
+                        <h1 class="header" id="lets-write-a-client-side-atproto-tool-for-sharing-web-archives-if-we-can">
+                            Let's write a client side ATProto tool for sharing Web Archives, if we can?
+                        </h1>
+                        
+                        
+                    
+                    
+    <h5 itemprop="author" itemscope="" itemtype="https://schema.org/Person" id="by-aram-zucker-scharff">
+    <link itemprop="sameAs" href="http://aramzs.github.io/aramzs/">
+    By <span itemprop="name"><a href="http://aramzs.github.io/aramzs/" target="_blank">Aram Zucker-Scharff</a></span>
+</h5>
+
+                </header>
+                <main>
+                    
+    <section id="precontent">
+        <aside id="toc-container">
+            <div id="toc-container__inner">
+                <h2 id="contents">Contents</h2>
+                <nav class="toc">
+        <ol><li><a href="#project-scope-and-todos">Project Scope and ToDos</a></li><li><a href="#day-2">Day 2</a><ol><li><a href="#prompt-log:">Prompt Log:</a></li></ol></li></ol>
+      </nav>
+            </div>
+        </aside>
+        <div id="post-description">Make archives decentralized</div>
+
+        
+
+    </section>
+
+                    <section id="maincontent" class="maincontent">
+                    
+                        <h2 id="project-scope-and-todos" tabindex="-1">Project Scope and ToDos</h2>
+<ol>
+<li>Log in to ATProto</li>
+<li>Post archives to a PDS.</li>
+</ol>
+<ul class="task-list">
+<li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo"> Remember my login.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> List records</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> Upload a warcz or warc blob</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> List records with links to uploaded blobs.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo"> Load the archive viewer to allow the user to review their own archives.</li>
+</ul>
+<h2 id="day-2" tabindex="-1">Day 2</h2>
+<p>Ok, so it is currently retaining my log in! That's good.</p>
+<p>I think, in order to get anything really working, it seems I can't auth into any real permissions from the local. I'm not sure how people do local testing? But I will set up a file at <code>https://archiving.at/.well-known/oauth-client-metadata.json</code> with the right permissions.</p>
+<p>I went through a number of prompts to figure out everything and it wasn't really great at figuring it out on its own. It seemed to have a lot of trouble figuring out the scopes. I don't blame it, I also had a lot of trouble wrapping my head around scopes, even with <a href="https://atproto.com/specs/oauth" target="_blank">reading</a> up <a href="https://atproto.com/specs/permission" target="_blank">on them</a>. I ended up using the Lexicon Garden <a href="https://lexicon.garden/scope-builder?scope=atproto+blob:application/zip+blob:application/warc+repo:test.record.activity+repo:test.foo.bar?action%3Dcreate%26action%3Dupdate+rpc:app.bsky.actor.getProfile?aud%3Ddid%253Aweb%253Aapi.bsky.app%2523bsky_appview" target="_blank">OAuth Scope Builder</a> with some test lexicons to figure out how the scopes worked.</p>
+<p>I also needed to poke around on my own to figure out how to access profile information set up for Bluesky, but I was able to figure it out. There's a need for specific XRPC methods and requesting permission to access them that had to get added to the client-metadata document.</p>
+<p>Finally, after all that, I was able to set up to pull my test record and list it. A good place to leave off.</p>
+<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commit/30c01dd72aff14889e8b2543d119413a504dcd4a" class="git-commit-link"><code>git commit -am &quot;Trying to get data displayed on to the page&quot;</code></a></p>
+<h3 id="prompt-log:" tabindex="-1">Prompt Log:</h3>
+<p>Q: Can you set up a metadata JSON with the correct permissions served from the base of the domain? I'll upload it and serve it from the domain <a href="http://archiving.at" target="_blank">archiving.at</a></p>
+<p>Compacted conversation</p>
+<p>I'll create an OAuth client metadata JSON file for you to serve from <a href="http://archiving.at" target="_blank">archiving.at</a>. Let me generate the file with the write permissions (transition scopes) configured:</p>
+<p>Done! I've created oauth-client-metadata.json with the write permissions configured. Here's what you need to do:</p>
+<p>Upload the file to <a href="https://archiving.at/.well-known/oauth-client-metadata.json" target="_blank">https://archiving.at/.well-known/oauth-client-metadata.json</a> (serving the exact file at that path)</p>
+<p>Ensure proper headers: When serving, set the Content-Type header to application/json</p>
+<p>Build with environment variable: When building the app for production, set:</p>
+<p>Deploy to <a href="http://archiving.at" target="_blank">archiving.at</a> and the OAuth flow will automatically:</p>
+<p>Request the three write transition scopes (repo writes, create posts, upload blobs)<br>
+Use DPoP-bound access tokens for enhanced security<br>
+Notes on the metadata:</p>
+<p>logo_uri points to <a href="https://archiving.at/logo.png" target="_blank">https://archiving.at/logo.png</a> — update or remove if you don't have a logo there<br>
+The redirect_uris expects your app served at <a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a> — if your callback path differs, update that<br>
+For local dev, leave VITE_CLIENT_ID unset and it'll use loopback mode with base atproto scope only<br>
+Anything you'd like to adjust in the metadata before uploading?</p>
+<p>Q: The document is requesting the right scopes to be able to write, read and upload blobs to the PDS?</p>
+<p>Yes, the metadata is correctly requesting all the necessary scopes. Here's the breakdown:</p>
+<p>Read Access:</p>
+<p>✓ atproto — baseline scope that grants read access to public data (profiles, posts, feeds, etc.)<br>
+Write Access:</p>
+<p>✓ transition:com.atproto.repo.applyWrites — enables writing batches of records to the user's repo<br>
+✓ transition:com.atproto.repo.createRecord — enables creating individual records (posts, custom objects, etc.)<br>
+Blob Uploads:</p>
+<p>✓ transition:com.atproto.repo.uploadBlob — enables uploading binary objects (images, media, etc.)<br>
+All three transition scopes are declared in your oauth-client-metadata.json:</p>
+<p>This covers exactly what you requested: read capabilities (baseline atproto), write capabilities to the repo, and blob uploads. Once you upload this file to <a href="https://archiving.at/.well-known/oauth-client-metadata.json" target="_blank">https://archiving.at/.well-known/oauth-client-metadata.json</a> and set VITE_CLIENT_ID=&quot;<a href="https://archiving.at/.well-known/oauth-client-metadata.json" target="_blank">https://archiving.at/.well-known/oauth-client-metadata.json</a>&quot; at build time, users will be prompted to grant all these permissions during login.</p>
+<p><em>NOTE: None of these are the right scopes except for <code>atproto</code></em></p>
+<p>Q: Great. Can you move the oauth-client-metadata.json file to the static folder and set it up to be served through the vite build process into the correct folder? I think it would need to be in the static folder right?</p>
+<p>Perfect! You already have a static folder. I'll:</p>
+<p>Update vite.config.ts to explicitly use static as the public directory<br>
+Create the .well-known/ directory structure<br>
+Move the metadata file there<br>
+Now I'll move the metadata file to the correct location:</p>
+<p>Done! I've:</p>
+<p>✓ Updated vite.config.ts to explicitly set publicDir: &quot;static&quot;<br>
+✓ Created .well-known directory<br>
+✓ Moved oauth-client-metadata.json to oauth-client-metadata.json<br>
+✓ Removed the old file from the root<br>
+When you run pnpm build, Vite will copy everything from static to your dist root, so oauth-client-metadata.json will end up at dist/.well-known/oauth-client-metadata.json — exactly where it needs to be when deployed to <a href="http://archiving.at/.well-known/oauth-client-metadata.json" target="_blank">archiving.at/.well-known/oauth-client-metadata.json</a>.</p>
+<p>Q: Great, I've uploaded the file. Can we use that instead of the burned in metadata in oauth.ts?</p>
+<p>Done! I've simplified oauth.ts to fetch the metadata remotely instead of burning it in. Now:</p>
+<p>When VITE_CLIENT_ID is set to <a href="https://archiving.at/.well-known/oauth-client-metadata.json" target="_blank">https://archiving.at/.well-known/oauth-client-metadata.json</a>, the OAuth client will automatically fetch your full metadata (scopes, redirect URIs, etc.) from that URL at runtime<br>
+When VITE_CLIENT_ID is unset, it falls back to loopback mode for local development<br>
+The metadata JSON file you uploaded is now your single source of truth—no need to keep it in sync in the code anymore.</p>
+<p>Q: Ok, now that we've god this set up with the metadata file and it is online can you set the oauth request to ask to write to the PDS?</p>
+<p>I’m checking the current OAuth client and login request path so I can switch the request to the production write scopes without reintroducing the old metadata mismatch.</p>
+<p>I found the controlling path: the login component already has the write scopes, but it only enables them when VITE_CLIENT_ID is set. I’m going to make production auto-use your hosted metadata URL on <a href="http://archiving.at" target="_blank">archiving.at</a>, keep loopback behavior locally, and validate with a build.</p>
+<p>The scope gate is now driven by the actual client configuration instead of just an env check. Next I’m running a focused build to catch any Svelte or TypeScript issues from that change.</p>
+<p>The build failure is local and expected: Svelte rejected the top-level await I introduced. I’m fixing that by switching to a normal static import in the same slice, then rerunning the build.</p>
+<p>Yes. The login flow now requests the write-capable scope set whenever the app is running on <a href="http://archiving.at" target="_blank">archiving.at</a> or VITE_CLIENT_ID is explicitly set.</p>
+<p>I changed src/lib/oauth.ts so the hosted metadata URL is used automatically on the production domain, and I changed src/app/auth/login/Login.svelte to use a shared WRITE_SCOPE value instead of a separate env-only check. That means the auth request now asks for:</p>
+<p>atproto<br>
+transition:com.atproto.repo.applyWrites<br>
+transition:com.atproto.repo.createRecord<br>
+transition:com.atproto.repo.uploadBlob<br>
+pnpm build passes. The only remaining note is a Vite warning about chunk size and a now-ineffective dynamic import because src/app/auth/login/Login.svelte statically imports src/lib/oauth.ts while other files still dynamic-import it. If you want, I can clean that import pattern up next.</p>
+<p><em>NOTE: Again, not the right scope</em></p>
+<p>Q: Is it possible to get the write capability in this app while it is running locally now that there is a domain set up?</p>
+<p>I’m checking the current metadata and local OAuth setup to answer this against the actual redirect and client configuration you have now.</p>
+<p>Yes, but not with the current metadata as-is.</p>
+<p>Right now your hosted metadata at static/.well-known/oauth-client-metadata.json only allows this redirect URI:</p>
+<p><a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a><br>
+And your local app in src/lib/oauth.ts runs on 127.0.0.1, so even if it uses the hosted client_id and asks for write scopes, the OAuth server will send the callback back to <a href="http://archiving.at" target="_blank">archiving.at</a>, not your local dev server.</p>
+<p>So the practical answer is:</p>
+<p>Yes, local write-capable auth is possible if your local app is reachable at an allowed redirect URI.<br>
+No, your current setup does not allow that yet.<br>
+Your options are:</p>
+<p>Add a local callback URI to the hosted metadata, such as <a href="http://127.0.0.1:5173/auth/callback" target="_blank">http://127.0.0.1:5173/auth/callback</a>, if the provider accepts it for this client.<br>
+Use a public tunnel like Cloudflare Tunnel or ngrok, then add that tunneled callback URL to the metadata.<br>
+Run the app locally under <a href="https://archiving.at" target="_blank">https://archiving.at</a> with local DNS/hosts mapping plus HTTPS termination, so the current redirect URI already matches.<br>
+The cleanest dev setup is usually option 2. You keep the hosted metadata, add one temporary public callback URL, and point local Vite through that tunnel.</p>
+<p>If you want, I can make the app support this cleanly by:</p>
+<p>Adding an env-driven dev callback origin/client ID path.<br>
+Updating the metadata strategy so local+tunneled development can request write scopes without touching production behavior.</p>
+<p>Q: Before you get to that I am testing the auth process on the domain and it isn't working. I get the following error:<br>
+<code>[ { &quot;code&quot;: &quot;invalid_type&quot;, &quot;expected&quot;: &quot;array&quot;, &quot;received&quot;: &quot;undefined&quot;, &quot;path&quot;: [ &quot;redirect_uris&quot; ], &quot;message&quot;: &quot;Required&quot; } ]</code></p>
+<p>I’m checking the OAuth client constructor path against the library’s expected config shape, because that error strongly suggests the client is validating clientMetadata locally before any remote fetch happens.</p>
+<p>The failure is clear now: BrowserOAuthClient does not fetch remote metadata from { client_id }. It validates clientMetadata immediately, and redirect_uris is required. I’m updating the client creation path to use the library’s async BrowserOAuthClient.load(...), which is the code path that fetches your hosted metadata correctly.</p>
+<p>I’ve confirmed the root cause and the one-hop fix: the app must construct the browser client through the async load path when using your hosted HTTPS client ID. I’m updating that slice and the three call sites that currently assume the client is synchronous, then I’ll rebuild.</p>
+<p>The constructor path is fixed and all current callers now await the client. I’m validating with a build next; if that passes, this specific auth error should be gone.</p>
+<p>The previous validation hit an environment quirk: pnpm build launched the dev script instead of the build script in this terminal context. I’m running vite build directly to get the actual compile result for the changed slice.</p>
+<p>The error came from src/lib/oauth.ts: the app was constructing BrowserOAuthClient with only { client_id }, but this library validates clientMetadata immediately and requires redirect_uris. That meant it never reached the remote metadata fetch path.</p>
+<p>I changed the client setup to use BrowserOAuthClient.load({ clientId }) when the hosted HTTPS client ID is in use, and updated the existing call sites in src/app/auth/login/Login.svelte, src/app/auth/callback/Callback.svelte, and src/app/App.svelte to await the client before calling signIn, callback, init, or restore.</p>
+<p>Validation passed with pnpm exec vite build. The previous redirect_uris validation error should be resolved now, and the production domain should use the hosted metadata correctly. If auth still fails, the next thing to inspect is the callback request/response itself rather than client construction.</p>
+<p>Q: The page at /auth/callback no longer works</p>
+<p>The Callback component's client.callback(params) call is the likely culprit — after switching to the async load() path, the library is now managing redirect_uri internally via findRedirectUrl(), but we're bypassing that by calling callback() directly without a redirect_uri. The library's init() method handles both callback detection and redirect_uri resolution automatically — let me switch to that.</p>
+<p>Updated Callback.svelte and ran build command<br>
+Build passes. The fix replaces the manual client.callback(params) approach with client.init(), which is what the library intends for this flow. Specifically:</p>
+<p>init() reads the state+code params from the URL automatically<br>
+It calls findRedirectUrl() internally to resolve the correct redirect_uri from the loaded metadata (<a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a>)<br>
+It handles the token exchange with the correct redirect_uri included — which is what was missing before<br>
+The old manual callback(params) path was passing params without a redirect_uri, which the auth server would reject because the original authorization request included one.</p>
+<p>Q: It's still getting a 404 on <a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a><br>
+Remember this is a Single Page App. The landing page at App.svelte should have the routing in place to handle the callback.</p>
+<p>Let me check the current routing and deployment config.</p>
+<p>The SPA routing in App.svelte is fine — it already handles /auth/callback. The 404 is a server-side problem: the host doesn't know to serve index.html for unknown paths. The solution is a _redirects file (Netlify) or _headers/vercel.json depending on your host. Let me check what's in the project first.</p>
+<p>Analyzing your answers... <em>NOTE: the system provided me with a poll here</em></p>
+<p>Q: How is <a href="http://archiving.at" target="_blank">archiving.at</a> hosted/deployed?<br>
+A: Netlify<br>
+For Netlify, a _redirects file in static telling it to serve index.html for all paths is all that's needed.</p>
+<p>Created _redirects</p>
+<p>Vite will copy that file to dist/_redirects on build. When Netlify sees /*, it serves index.html with a 200 (not a redirect), the SPA loads, and isCallback in App.svelte fires correctly for /auth/callback.</p>
+<p>Rebuild and redeploy and the /auth/callback 404 will be gone.</p>
+<p>Q: Ok, great. Now it isn't requesting the full set of WRITE_SCOPE scopes</p>
+<p>I’m going to verify the runtime scope selection logic and adjust hostname/client-ID detection so production domains like <a href="http://www.archiving.at" target="_blank">www.archiving.at</a> still trigger the write scope request.</p>
+<p>I found the bug: write scope is only enabled when location.hostname === &quot;<a href="http://archiving.at" target="_blank">archiving.at</a>&quot;, so it silently falls back to atproto on <a href="http://www.archiving.at" target="_blank">www.archiving.at</a> or other subdomains. I’m broadening that detection and then validating with a build.</p>
+<p>Fixed. The app was only enabling WRITE_SCOPE on the exact host <a href="http://archiving.at" target="_blank">archiving.at</a>, so if you were on <a href="http://www.archiving.at" target="_blank">www.archiving.at</a> it downgraded to just atproto.</p>
+<p>I updated oauth.ts:14 to treat both the apex and subdomains as production hosts:</p>
+<p><a href="http://archiving.at" target="_blank">archiving.at</a><br>
+*.archiving.at (including <a href="http://www.archiving.at" target="_blank">www.archiving.at</a>)<br>
+That means getConfiguredClientId() now uses your hosted client metadata URL on those hosts, and Login.svelte:14 will request the full WRITE_SCOPE again.</p>
+<p>Build validation passed with pnpm exec vite build.</p>
+<p>If you want, I can also add a temporary debug log in login showing the exact scope string being sent, then remove it after you confirm in browser network tools.</p>
+<p>Q: I'd like to test this locally. How would I map a subdomain to my local host file to do testing with the correct callback logic?</p>
+<p>Yes. The clean way is:</p>
+<p>Map a hostname to 127.0.0.1 in hosts<br>
+Serve your local app on that hostname with HTTPS<br>
+Ensure the OAuth metadata redirect_uris includes that exact callback URL<br>
+For your current setup, easiest is to map the real domain locally so callback logic matches exactly.</p>
+<p>Use this:</p>
+<p>Then verify:</p>
+<p>It should resolve to 127.0.0.1.</p>
+<p>Important part: HTTPS<br>
+OAuth callback on <a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a> needs TLS locally. HTTP won’t behave like production and may fail OAuth/security checks.</p>
+<p>Practical local TLS setup:</p>
+<p>Install mkcert<br>
+Generate certs for <a href="http://archiving.at" target="_blank">archiving.at</a> and <a href="http://www.archiving.at" target="_blank">www.archiving.at</a><br>
+Run Vite with HTTPS cert/key (or run Caddy/Nginx on 443 proxying to Vite)<br>
+Minimal Vite direction (if you want I can wire this in code):</p>
+<p>Set server.host = &quot;0.0.0.0&quot; (or hostname)<br>
+Set server.https with the generated cert/key<br>
+Visit <a href="https://archiving.at:5173" target="_blank">https://archiving.at:5173</a> (or proxy to 443)<br>
+One more critical check:<br>
+Your metadata currently has redirect URI <a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a> (no port).<br>
+So if you test on :5173, callback URI won’t match unless metadata includes the ported URI too.</p>
+<p>Best match strategy:</p>
+<p>Run local HTTPS on 443 for <a href="http://archiving.at" target="_blank">archiving.at</a><br>
+Keep redirect URI as <a href="https://archiving.at/auth/callback" target="_blank">https://archiving.at/auth/callback</a> exactly<br>
+If you want, I can set up a ready-to-run local config next (hosts + mkcert + Vite/Caddy commands) tailored to your machine.</p>
+<p>Q: Please add useful console logging across this file</p>
+<p>I’m checking the current OAuth helper before editing so the logging lands on the actual control points that decide client ID selection and client construction.</p>
+<p>Read oauth.ts</p>
+<p>I’ve got the control points: redirect handling, client-ID selection, and cached client creation. I’m adding logs there so you can see exactly which branch runs, which client ID is selected, and whether the cached client or remote-load path is being used.</p>
+<p>Edited<br>
+oauth.ts+52-5<br>
+The logging is in place at the decision points that matter for auth debugging. I’m running a quick build now to make sure the added instrumentation didn’t break the module.</p>
+<p>I added targeted logging in src/lib/oauth.ts around the parts that actually control auth behavior:</p>
+<p>localhost to 127.0.0.1 redirect<br>
+archiving-domain detection<br>
+VITE_CLIENT_ID vs hosted client ID vs loopback fallback<br>
+write-scope client availability<br>
+first-time client creation vs cached reuse<br>
+success and failure of BrowserOAuthClient initialization<br>
+Build validation passed with pnpm exec vite build.</p>
+<p>When you test locally, the console should now tell you exactly which client ID path is being used and whether the app is loading remote metadata or falling back to loopback. If you want, I can also add one matching log in the login component to print the exact scope string being passed to signIn().</p>
+<p>Q: Can you add displaying the user's username and avatar under the DID display in the app?</p>
+<p>I'll add a section below the DID that displays a smaller avatar and the username (handle). Let me update the markup and add corresponding styles.</p>
+<p>Q: Add code to this file that will take a session created using oauth.ts and use <code>getProfile({ actor: agent.accountDid })</code> to get the profile data to fill in to the app display</p>
+<p>Done. I added a getUserProfile() function to src/lib/getBskyData.ts that:</p>
+<p>Takes an OAuthSession from your OAuth client<br>
+Creates an Agent with that session<br>
+Calls agent.getProfile({ actor: agent.accountDid }) to fetch the profile<br>
+Returns ProfileViewDetailed | null with error handling<br>
+You can now call getUserProfile(session) from your callback or auth components to populate the app display. The function includes JSDoc documentation and error logging.</p>
+<p>Build validation passed cleanly with pnpm exec vite build.</p>
+<p>Q: Great! Use the output from getUserProfile to fill in the state infromation for displayName, handle and avatar</p>
+<p>I'll update the Callback component to use the new getUserProfile function and simplify the profile fetching logic:</p>
+<p>Now I'll update the App.svelte to extract the user data from the profile object in the onAuthSuccess handler:</p>
+<p>The App.svelte's onAuthSuccess handler is already correctly extracting displayName, handle, and avatar from the profile. Let me validate that the callback changes compile cleanly:</p>
+<p>Done! I updated src/app/auth/callback/Callback.svelte to:</p>
+<p>Import the new getUserProfile function from getBskyData<br>
+Replace the inline profile-fetching logic with a single call to getUserProfile(session)<br>
+Pass the profile data to onAuthSuccess<br>
+The App.svelte component already extracts displayName, handle, and avatar from the profile and displays them in the user-summary section you added earlier. The whole flow is now cleaner and the profile fetching logic is centralized.</p>
+<p>Build validation passed with pnpm exec vite build.</p>
+<p>Q: In the DIV with the class list-records, when the user is signed in, retrieve all test.record.activity entries from their PDS and list them.</p>
+<p>I’m checking the current signed-in view and the nearest data-access code so I can wire record listing into the existing authenticated state instead of inventing a parallel flow.</p>
+<p>I’ve narrowed this to the authenticated view and one missing data helper. I’m checking the ATProto client’s listRecords shape first so I can add the smallest working fetch path and then render it in the existing list-records container.</p>
+<p>The code search agent missed the actual workspace path, so I’m querying the installed package directly for the listRecords signature and response shape before I edit.</p>
+<p>I have the needed shape: agent.com.atproto.repo.listRecords({ repo, collection }) returns { records } with uri, cid, and value. I’m going to add one helper for test.record.activity, then wire the signed-in view to fetch and render those records in list-records.</p>
+<p>I’ve got the controlling path: fetch the signed-in session via the existing OAuth client, call com.atproto.repo.listRecords for test.record.activity, and render the returned records in the existing container. I’m wiring that into App.svelte and adding a small helper in getBskyData.ts, then I’ll run a build.</p>
+<p>The records helper and authenticated rendering path are in place. I’m running a focused build now to catch any typing or Svelte issues before we stop.</p>
+<p>The feature builds, but Svelte surfaced a local cleanup issue: App.svelte still has old .user-summary styles with no matching markup. I’m removing that dead CSS and rerunning the same build so the touched slice is clean.</p>
+<p>The signed-in view now fetches and lists test.record.activity records from the user’s PDS inside the existing list-records container.</p>
+<p>I added getActivityRecords(session) to src/lib/getBskyData.ts, which creates an authenticated Agent and calls agent.com.atproto.repo.listRecords({ repo, collection: &quot;test.record.activity&quot; }). In src/app/App.svelte, the app now restores the signed-in session after auth success, loads those records, and renders each entry with its AT URI and JSON payload. It also handles loading, empty, and error states, and clears the records on sign-out.</p>
+<p>Validation passed with pnpm exec vite build. The only remaining build note is the pre-existing dynamic-import warning around src/lib/oauth.ts.</p>
+
+                    
+                    </section>
+                    <section id="postcontent">
+                    
+    <script src="https://utteranc.es/client.js" repo="AramZS/fightwithtools-comments" issue-term="title" theme="github-dark" crossorigin="anonymous" async="">
+    </script>
+    
+        
+        
+        <div class="pagination">
+            <a href="/posts/projects/archiversat/001-lets-get-started/" class="pagination-link cursor-pointer ">Previous Day</a>
+
+            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+        </div>
+    
+    <div class="social-icons-block">
+    <div class="a-social-icon">
+        <a href="https://github.com/AramZS/" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" class="twitter-icon social-icon" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+
+
+<!-- https://simpleicons.org/?q=github -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://bit.ly/aramzs" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+
+
+<!-- https://simpleicons.org/?q=linked -->
+
+        </a>
+    </div>
+    <div class="a-social-icon">
+        <a href="https://twitter.com/Chronotope" target="_blank">
+            <svg role="img" class="twitter-icon social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+
+<!-- https://simpleicons.org/?q=tw -->
+
+        </a>
+    </div>
+    
+    <div class="a-social-icon">
+        <a href="https://indieweb.social/@Chronotope" rel="me" target="_blank">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"></path></svg>
+
+<!-- https://simpleicons.org/?q=mastodon -->
+
+        </a>
+    </div>
+
+</div>
+
+
+                    </section>
+                </main>
+                <footer>
+                    
+    <div id="taglist">
+        <h6 id="tags">Tags: </h6>
+        <ul><li>
+                    <a href="https://fightwithtools.dev/tag/projects">projects</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/atproto">ATProto</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/atmosphere">ATmosphere</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/warc">WARC</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/warcs">WARCs</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/bluesky">BlueSky</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/decentralization">decentralization</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/archives">archives</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/archiving">archiving</a>
+                </li><li>
+                    <a href="https://fightwithtools.dev/tag/wip">WiP</a>
+                </li></ul>
+    </div>
+
+                    
+                        <p>
+                            <small>Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a> based on <a href="https://github.com/pages-themes/dinky" target="_blank">the Dinky theme</a>. <a href="https://github.com/AramZS/devblog" target="_blank">See the code</a>.</small>
+                        </p>
+                    
+                    
+                </footer>
+            </div>
+            <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        </body>
+    </html>
