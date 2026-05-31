@@ -15,15 +15,15 @@
             <link rel="preload" as="font">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="preload" as="style">
             <link href="https://fightwithtools.dev/assets/prism-okaidia.css" rel="stylesheet">
-            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=26609415211" /> -->
-            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=26609415211" id="">
+            <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=26728140957" /> -->
+            <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/style.css?v=26728140957" id="">
 
             
-                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=26609415211" /> -->
-                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=26609415211" id="">
+                <!-- <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=26728140957" /> -->
+                <link rel="stylesheet" href="https://fightwithtools.dev/assets/css/template-post.css?v=26728140957" id="">
 
             
-            <!-- Build Revision: 26609415211 & Sha: d413f2c41c4bba72ab00a034e637218b826b36db -->
+            <!-- Build Revision: 26728140957 & Sha: 0c377bddbe654e166ed98eca3f0796ecc4d36a9d -->
             <script src="https://fightwithtools.dev/assets/js/scale.fix.js" async=""></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
             <!--[if lt IE 9]>
@@ -273,7 +273,7 @@
 <pre class="language-json"><code class="language-json"><span class="token property">"archiveFile"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>	<span class="token property">"accept"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>		<span class="token string">"application/warc"</span><span class="token punctuation">,</span><br>		<span class="token string">"application/wacz"</span><br>	<span class="token punctuation">]</span><span class="token punctuation">,</span><br>	<span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Blob that stores the warc or wacz archive on your PDS. Less than 50MB in size."</span><span class="token punctuation">,</span><br>	<span class="token property">"maxSize"</span><span class="token operator">:</span> <span class="token number">52428800</span><span class="token punctuation">,</span><br>	<span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"blob"</span><br><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
 <p id="code-skip-003-upload-a-warc-3">Looking around, it looks like people also store files at <code>warc.gz</code>.</p>
 <p>So I'll add the <code>application/warc+gzip</code> mime type.</p>
-<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commits/main" class="git-commit-link"><code>git commit -am &quot;Adding archiving session lexicon and the document.standard.site lexicon for reference&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commit/468445b736d2acfddca3547739bc819d2a503718" class="git-commit-link"><code>git commit -am &quot;Adding archiving session lexicon and the document.standard.site lexicon for reference&quot;</code></a></p>
 <p>Ok, I've got a basic record. Let's try publishing:</p>
 <p><code>goat account login -u chronotope.aramzs.xyz -p &lt;app password here&gt;</code></p>
 <p>Now I can upload a basic blob from <a href="https://markpub.at" target="_blank">Markpub.at</a> as an archive as a file:</p>
@@ -292,7 +292,7 @@
 <p>Results in:</p>
 <p><code>at://did:plc:t5xmf33p5kqgkbznx22p7d7g/at.archiving.session/3mmncuczxxi2p        bafyreicgr6a24h4xodl62cxrn4eoipgu7oux75x5daos7dey2ay4smrsx4</code></p>
 <p>Great, <a href="https://pdsls.dev/at://did:plc:t5xmf33p5kqgkbznx22p7d7g/at.archiving.session/3mmncuczxxi2p" target="_blank">it's up there</a>!</p>
-<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commits/main" class="git-commit-link"><code>git commit -am &quot;Setting up lexicon and test file to publish&quot;</code></a></p>
+<p><a target="_blank" href="https://github.com/AramZS/archiving-at/commit/b49c34cb086eb10a0c3ad8d7357012b8ea611b08" class="git-commit-link"><code>git commit -am &quot;Setting up lexicon and test file to publish&quot;</code></a></p>
 
                     
                     </section>
@@ -306,7 +306,7 @@
         <div class="pagination">
             <a href="/posts/projects/archiversat/002-setting-up-basics/" class="pagination-link cursor-pointer ">Previous Day</a>
 
-            <a href="javascript:void(0)" class="pagination-link  disabled-link cursor-default">Next Day</a>
+            <a href="/posts/projects/archiversat/004-upload-form-time/" class="pagination-link cursor-pointer ">Next Day</a>
         </div>
     
     <div class="social-icons-block">
