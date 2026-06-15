@@ -24,6 +24,7 @@ tags:
 - [x] Upload a warcz or warc blob
 - [x] List records with links to uploaded blobs.
 - [ ] Load the archive viewer to allow the user to review their own archives.
+- [ ] Profile page - see what archives are under a given user.
 
 ### Day 5
 
