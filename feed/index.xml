@@ -28,6 +28,7 @@
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> Upload a warcz or warc blob</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" checked="true" class="markdown-todo" /> List records with links to uploaded blobs.</li>
 <li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Load the archive viewer to allow the user to review their own archives.</li>
+<li class="task-list-item"><input disabled="true" type="checkbox" class="markdown-todo" /> Profile page - see what archives are under a given user.</li>
 </ul>
 <h3 id="day-5" tabindex="-1">Day 5</h3>
 <p>Ok, time to set up a viewer page. I want to base it on archive pages from my blog which uses the custom HTML element:</p>
