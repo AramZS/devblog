@@ -68,9 +68,9 @@ Again, here are the logs of my chats from this session. I am replacing `{` symbo
 **User:**
 
 When there is a record URI I want to generate a link on the page around the record.uri value that opens a page in this app. That should be a stand-alone page that is full width and places a link to the blob that is composed by combining the user's did and the value at `record.archiveFile.ref.$link` of the record into a custom HTML element with the following format:
-```
-<replay-web-page source="/assets/archives/\\archivePage.data.archive}}" url="\\ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}}"></replay-web-page>
-```
+
+`<replay-web-page source="/assets/archives/\\archivePage.data.archive}}" url="\\ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}}"></replay-web-page>`
+
 The page should not require login to access (it can be linked to and accessed anywhere).
 
 ---
