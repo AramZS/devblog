@@ -29,11 +29,11 @@ tags:
 
 Ok, time to set up a viewer page. I want to base it on archive pages from my blog which uses the custom HTML element:
 
-`<replay-web-page source="/assets/archives/{{archivePage.data.archive}}" url="{{ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}}"></replay-web-page>`
+`<replay-web-page source="/assets/archives/{archivePage.data.archive}" url="{ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}"></replay-web-page>`
 
 And I'll need to construct the URL for getting the blob:
 
-`https://{PDS_Host}/xrpc/com.atproto.sync.getBlob?did={DID}&cid={CID}`
+`https://{PDS_Host}/xrpc/com.atproto.sync.getBlob?did=\DID}&cid=\CID}`
 
 which will look like:
 
@@ -63,12 +63,13 @@ As always, I'm sharing my logs from the Agent chat.
 
 ### Here are the logs
 
+Again, here are the logs of my chats from this session. I am replacing `{` symbols with `\` for the sake of escaping.
 
 **User:**
 
 When there is a record URI I want to generate a link on the page around the record.uri value that opens a page in this app. That should be a stand-alone page that is full width and places a link to the blob that is composed by combining the user's did and the value at `record.archiveFile.ref.$link` of the record into a custom HTML element with the following format:
 ```
-<replay-web-page source="/assets/archives/{{archivePage.data.archive}}" url="{{ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}}"></replay-web-page>
+<replay-web-page source="/assets/archives/\\archivePage.data.archive}}" url="\\ archivePage.data.cite.href or archivePage.data.canonical or archivePage.data.archivedUrl}}"></replay-web-page>
 ```
 The page should not require login to access (it can be linked to and accessed anywhere).
 
@@ -97,7 +98,7 @@ The user wants to build a public archive record viewer page in a Svelte SPA (no 
 4. The page constructs a blob URL for the archive file by combining:
    - The user's DID (extracted from the AT URI)
    - The blob CID from `record.value.archiveFile.ref.$link`
-   - Into a URL like: `https://{pds-host}/xrpc/com.atproto.sync.getBlob?did={did}&cid={cid}` (or the appropriate public blob endpoint)
+   - Into a URL like: `https://\pds-host}/xrpc/com.atproto.sync.getBlob?did=\did}&cid=\cid}` (or the appropriate public blob endpoint)
 
 5. The page renders a `<replay-web-page>` custom HTML element with:
    - `source` attribute: the blob URL constructed above
@@ -232,7 +233,7 @@ Performed four-phase gap analysis on Requirement 3. Key gaps found and addressed
 ##### Acceptance Criteria
 
 1. WHEN a valid ArchiveSession_Record has been fetched, THE Viewer_Page SHALL extract the CID from `record.value.archiveFile.ref.$link`.
-2. THE Viewer_Page SHALL construct the Blob_URL in the format `https://{PDS_Host}/xrpc/com.atproto.sync.getBlob?did={DID}&cid={CID}`.
+2. THE Viewer_Page SHALL construct the Blob_URL in the format `https://\PDS_Host}/xrpc/com.atproto.sync.getBlob?did=\DID}&cid=\CID}`.
 3. IF `record.value.archiveFile.ref.$link` is absent or empty, THEN THE Viewer_Page SHALL display an error message stating the archive file reference is missing and SHALL NOT attempt to render the ReplayWebPage_Element.
 
 **Response:**
@@ -353,7 +354,7 @@ The requirements document is ready. Here's a summary of what was captured:
 
 3. **Unauthenticated record fetch** — resolves PDS host from the DID document first, then fetches the record via the public `com.atproto.repo.getRecord` endpoint, with specific error handling for each failure point.
 
-4. **Blob URL construction** — builds `https://{PDS_Host}/xrpc/com.atproto.sync.getBlob?did={DID}&cid={CID}` from the resolved host and the `archiveFile.ref.$link` CID.
+4. **Blob URL construction** — builds `https://\PDS_Host}/xrpc/com.atproto.sync.getBlob?did=\DID}&cid=\CID}` from the resolved host and the `archiveFile.ref.$link` CID.
 
 5. **Original URL resolution** — uses `sameAs[0]` as the `url` attribute, with a fallback notice (and no viewer rendered) if it's absent or invalid.
 
@@ -411,26 +412,28 @@ This is a Svelte 5 SPA (no SSR) using TypeScript, Vite with historyApiFallback, 
 #### Relevant existing files
 
 **App.svelte** – top-level router. Uses `path` ($state), `navigate(to)`, `isCallback`, `restoring`, `did`. The template dispatches to components based on `path` and auth state.  Current routing block:
+
 ```
-{#if isCallback} <Callback />
-{:else if restoring} …spinner…
-{:else if did && path === '/upload'} <UploadView {session} {navigate} />
-{:else if did} …home view with records list…
-{:else} <Login />
-{/if}
+\#if isCallback} <Callback />
+\:else if restoring} …spinner…
+\:else if did && path === '/upload'} <UploadView \session} \navigate} />
+\:else if did} …home view with records list…
+\:else} <Login />
+\/if}
 ```
 
 The home view renders activity records in a `<ul>`, each `<li>` contains:
-```svelte
-<p class="record-uri">{record.uri}</p>
-<pre>{JSON.stringify(record.value, null, 2)}</pre>
+
+```liquid
+<p class="record-uri">\record.uri}</p>
+<pre>\JSON.stringify(record.value, null, 2)}</pre>
 ```
 
-**getBskyData.ts** – exports `RepoRecord { uri, cid, value }` and `getActivityRecords(session)`.
+**getBskyData.ts** – exports `RepoRecord \ uri, cid, value }` and `getActivityRecords(session)`.
 
 **uploadSession.ts** – exports `BlobRef`, `ArchiveSessionRecord`, `uploadBlob`, `createArchiveSession`, `resolveStrongRef`.
 
-**UploadView.svelte** – thin wrapper that receives `{ session, navigate }` props and redirects to `/` if session is null. Renders `<UploadForm {session} {navigate} />`.
+**UploadView.svelte** – thin wrapper that receives `\ session, navigate }` props and redirects to `/` if session is null. Renders `<UploadForm \session} \navigate} />`.
 
 **UploadForm.svelte** – full form component, good reference for code style.
 
@@ -447,15 +450,15 @@ Blob CID lives at: `record.value.archiveFile.ref.$link`
 
 1. **Clickable links** – Each record in the home view gets a link (`<a>`) using `record.value.title` or `record.uri` as text, navigating to `/view/<rkey>?did=<did>`. Uses `navigate()` / `history.pushState`; falls back to `window.location.href` if `pushState` throws. Malformed URIs render as plain text.
 
-2. **Public route** – `/view/<rkey>?did=<did>` must render without auth. The route is handled in `App.svelte` before the `{:else if did}` block so unauthenticated visitors also see it.
+2. **Public route** – `/view/<rkey>?did=<did>` must render without auth. The route is handled in `App.svelte` before the `\:else if did}` block so unauthenticated visitors also see it.
 
-3. **Unauthenticated record fetch** – Resolve PDS host from DID document (`https://plc.directory/<did>` for `did:plc`), then fetch via `GET https://{pds}/xrpc/com.atproto.repo.getRecord?repo=<did>&collection=at.archiving.session&rkey=<rkey>` with no auth. Error states for missing params, DID resolution failure, and record fetch failure.
+3. **Unauthenticated record fetch** – Resolve PDS host from DID document (`https://plc.directory/<did>` for `did:plc`), then fetch via `GET https://\pds}/xrpc/com.atproto.repo.getRecord?repo=<did>&collection=at.archiving.session&rkey=<rkey>` with no auth. Error states for missing params, DID resolution failure, and record fetch failure.
 
-4. **Blob URL construction** – `https://{pds}/xrpc/com.atproto.sync.getBlob?did=<did>&cid=<cid>` where CID = `record.value.archiveFile.ref.$link`.
+4. **Blob URL construction** – `https://\pds}/xrpc/com.atproto.sync.getBlob?did=<did>&cid=<cid>` where CID = `record.value.archiveFile.ref.$link`.
 
 5. **Original URL** – `record.value.sameAs[0]` if valid `at://` or `https://` URI; otherwise show a notice instead of the player.
 
-6. **ReplayWeb.page rendering** – Load `https://cdn.jsdelivr.net/npm/replaywebpage@2.1.0/ui.js` via `<script>` in `<svelte:head>`. Render `<replay-web-page source={blobUrl} url={sameAs[0]}>`. Full-width layout. Handle error event + 30 s timeout.
+6. **ReplayWeb.page rendering** – Load `https://cdn.jsdelivr.net/npm/replaywebpage@2.1.0/ui.js` via `<script>` in `<svelte:head>`. Render `<replay-web-page source=\blobUrl} url=\sameAs[0]}>`. Full-width layout. Handle error event + 30 s timeout.
 
 7. **Metadata display** – `<h1>` for title, description below, "Original URL: …" label. Loading indicator during fetch.
 
@@ -488,7 +491,7 @@ Design document created at `/Users/chrono/Dev/archivers-at/.kiro/specs/archive-r
 The design covers:
 - Architecture: `RecordViewer.svelte` + `archiveRecord.ts` + routing change in `App.svelte`
 - New files: `src/lib/archiveRecord.ts` (pure helpers), `src/app/view/RecordViewer.svelte`, `src/lib/archiveRecord.test.ts`
-- Modified file: `src/app/App.svelte` — adds `/view/` route branch before `{:else if did}` and replaces home record cards with links
+- Modified file: `src/app/App.svelte` — adds `/view/` route branch before `\:else if did}` and replaces home record cards with links
 - Full component designs with TypeScript interfaces, state variables, pseudocode, template structures
 - AT Protocol integration: unauthenticated DID resolution via plc.directory, getRecord, blob URL construction
 - ReplayWeb.page integration: svelte:head script injection, custom element usage, 30s timeout + error event handling
@@ -502,12 +505,12 @@ The design is ready. Here's a summary of what was designed:
 - `src/lib/archiveRecord.test.ts` — unit and property-based tests
 
 **Modified files:**
-- `src/app/App.svelte` — two changes: (1) a new `{:else if path.startsWith('/view/')}` route branch added *before* the authenticated home block (so unauthenticated users can reach it), and (2) home view record cards become anchor elements using `parseAtUri` to build the `/view/<rkey>?did=<did>` path
+- `src/app/App.svelte` — two changes: (1) a new `\:else if path.startsWith('/view/')}` route branch added *before* the authenticated home block (so unauthenticated users can reach it), and (2) home view record cards become anchor elements using `parseAtUri` to build the `/view/<rkey>?did=<did>` path
 
 **Key design decisions:**
 - DID resolution goes through `plc.directory` (no auth needed), extracting the `AtprotoPersonalDataServer` service endpoint
 - Record is fetched via plain `fetch` to `getRecord` XRPC — no OAuth session involved
-- Blob URL is `{pds}/xrpc/com.atproto.sync.getBlob?did=<did>&cid=<cid>` — the browser streams it directly
+- Blob URL is `\pds}/xrpc/com.atproto.sync.getBlob?did=<did>&cid=<cid>` — the browser streams it directly
 - ReplayWeb.page script injected via `<svelte:head>` only when `RecordViewer` is mounted; the `<replay-web-page>` element handles a 30-second timeout + error event
 - 4 correctness properties defined for fast-check PBT coverage
 
@@ -559,7 +562,7 @@ Here's a quick summary of what the task list covers:
 2. **`archiveRecord.ts` — async fetch layer** (`resolvePdsHost`, `fetchRecord`) + property test for the state machine + full unit test suite
 3. **Checkpoint** — all library tests green before UI work begins
 4. **`RecordViewer.svelte`** — full viewer component: loading/error/success states, ReplayWeb.page `<svelte:head>` script, 30s timeout/error handler, full-width layout, TypeScript `.d.ts` augmentation for the custom element
-5. **`App.svelte` updates** — insert `/view/` route branch before `{:else if did}`, replace home view record `<li>` blocks with `<a>` links using `parseAtUri`
+5. **`App.svelte` updates** — insert `/view/` route branch before `\:else if did}`, replace home view record `<li>` blocks with `<a>` links using `parseAtUri`
 6. **Final checkpoint**
 
 Property tests (marked `*`, skippable for MVP) cover all 4 correctness properties defined in the design.
@@ -591,7 +594,7 @@ Execute task 1 from the archive-record-viewer spec, including all its sub-tasks 
 ### Task 1: Create `src/lib/archiveRecord.ts` with types and pure helper functions
 
 - Define `ParsedAtUri`, `ArchiveRecordValue`, `FetchedRecord`, and `FetchRecordResult` TypeScript interfaces/types
-- Implement `parseAtUri(uri: string): ParsedAtUri | null` — splits an `at://` URI into `{ did, collection, rkey }`, returns `null` for any malformed input
+- Implement `parseAtUri(uri: string): ParsedAtUri | null` — splits an `at://` URI into `\ did, collection, rkey }`, returns `null` for any malformed input
 - Implement `buildBlobUrl(pdsHost: string, did: string, cid: string): string` — constructs the `com.atproto.sync.getBlob` HTTPS URL, stripping trailing slashes from `pdsHost` and percent-encoding `did` and `cid`
 - Implement `resolveOriginalUrl(sameAs: string[] | undefined): string | null` — returns the first element passing `isValidSameAsUri` from `validation.ts`, or `null`
 
@@ -645,7 +648,7 @@ Task 1 (including sub-tasks 1.1, 1.2, 1.3) is complete. All 86 tests pass.
 - **Property 2** (sub-task 1.2): `buildBlobUrl` HTTPS URL — for any valid pdsHost/did/cid, result parses as HTTPS, pathname contains `getBlob`, query params round-trip exactly. 100 iterations. ✅
 - **Property 3** (sub-task 1.3): `resolveOriginalUrl` first-valid-or-null — for any `string[]`, result equals `array.find(isValidSameAsUri) ?? null`. 100 iterations. ✅
 
-The Property 2 generator used `fc.webUrl({ validSchemes: ['https'] })` to ensure only well-formed HTTPS hosts are generated (avoiding numeric TLD edge cases that cause `new URL()` to throw).
+The Property 2 generator used `fc.webUrl(\ validSchemes: ['https'] })` to ensure only well-formed HTTPS hosts are generated (avoiding numeric TLD edge cases that cause `new URL()` to throw).
 
 Now I have all the context I need. Let me also check the tasks.md to understand what's expected:
 
@@ -660,7 +663,7 @@ Three failures to fix:
 
 For Property 2, the host generator was producing invalid hostnames like `.0.` that `new URL` rejects. The property is about `buildBlobUrl`'s behaviour, not URL validity of the raw host string — the fix is to use a well-formed hostname generator so the constructed URL is always parseable:
 
-The counterexample is `"https://a.0"` — a TLD that's all digits. `new URL("https://a.0/path")` throws in the browser/Node URL parser. The `stringMatching(/^[a-z0-9]{1,10}$/)` generator can produce numeric-only labels.
+The counterexample is `"https://a.0"` — a TLD that's all digits. `new URL("https://a.0/path")` throws in the browser/Node URL parser. The `stringMatching(/^[a-z0-9]\1,10}$/)` generator can produce numeric-only labels.
 
 The cleanest fix for the property test is to use a fixed set of known-valid example hosts or use `fc.webUrl()` which fast-check provides for well-formed URLs, then augment with trailing slashes:
 
@@ -689,12 +692,12 @@ The file `src/lib/archiveRecord.ts` already exists with stub implementations of 
 - Return `service.serviceEndpoint`
 
 **Verify/complete `fetchRecord(did: string, rkey: string): Promise<FetchRecordResult>`:**
-- Calls `resolvePdsHost(did)` first; on error returns `{ status: 'error', message }` (the error message from resolvePdsHost)
-- Then fetches `GET {pdsHost}/xrpc/com.atproto.repo.getRecord?repo=<did>&collection=at.archiving.session&rkey=<rkey>`
-- On network failure: returns `{ status: 'error', message: "Record \`at://<did>/at.archiving.session/<rkey>\` not found or could not be fetched" }`
+- Calls `resolvePdsHost(did)` first; on error returns `\ status: 'error', message }` (the error message from resolvePdsHost)
+- Then fetches `GET \pdsHost}/xrpc/com.atproto.repo.getRecord?repo=<did>&collection=at.archiving.session&rkey=<rkey>`
+- On network failure: returns `\ status: 'error', message: "Record \`at://<did>/at.archiving.session/<rkey>\` not found or could not be fetched" }`
 - On HTTP error: same message as above
-- If `record.value.archiveFile.ref.$link` is missing/empty: returns `{ status: 'error', message: "Record is missing archiveFile blob reference" }`
-- On success: returns `{ status: 'success', record, pdsHost }`
+- If `record.value.archiveFile.ref.$link` is missing/empty: returns `\ status: 'error', message: "Record is missing archiveFile blob reference" }`
+- On success: returns `\ status: 'success', record, pdsHost }`
 - NEVER throws — always returns the discriminated union
 
 #### Sub-task 2.1: Write property test for `fetchRecord` state machine invariants
@@ -785,7 +788,7 @@ Create the file `/Users/chrono/Dev/archivers-at/src/app/view/RecordViewer.svelte
 
 **Props interface:**
 ```typescript
-interface Props {
+interface Props \
   navigate: (to: string) => void;
 }
 ```
@@ -818,43 +821,43 @@ let replayLoaded = $state(false);
 - Return a cleanup function from `$effect` that clears the timer and removes listeners
 
 **Template structure:**
-```svelte
+```liquid
 <svelte:head>
   <script src="https://cdn.jsdelivr.net/npm/replaywebpage@2.1.0/ui.js"></script>
 </svelte:head>
 
 <div class="viewer-layout">
   <!-- Back link: ALWAYS visible -->
-  <a href="/" class="back-link" onclick={(e) => { e.preventDefault(); navigate('/'); }}>← Home</a>
+  <a href="/" class="back-link" onclick=\(e) => \ e.preventDefault(); navigate('/'); }}>← Home</a>
 
-  {#if status === 'loading'}
+  \#if status === 'loading'}
     <p class="loading" aria-live="polite">Loading archive record…</p>
 
-  {:else if status === 'error'}
+  \:else if status === 'error'}
     <div class="error-card" role="alert">
-      <p>{errorMessage}</p>
+      <p>\errorMessage}</p>
     </div>
 
-  {:else if status === 'success' && record}
-    <h1>{record.value.title}</h1>
-    {#if record.value.description}
-      <p class="description">{record.value.description}</p>
-    {/if}
+  \:else if status === 'success' && record}
+    <h1>\record.value.title}</h1>
+    \#if record.value.description}
+      <p class="description">\record.value.description}</p>
+    \/if}
 
-    {#if original}
-      <p class="original-url">Original URL: <a href={original} target="_blank" rel="noopener noreferrer">{original}</a></p>
-    {:else}
+    \#if original}
+      <p class="original-url">Original URL: <a href=\original} target="_blank" rel="noopener noreferrer">\original}</a></p>
+    \:else}
       <p class="no-original">Original URL not available.</p>
-    {/if}
+    \/if}
 
-    {#if replayError}
-      <div class="error-card" role="alert">{replayError}</div>
-    {:else if original}
+    \#if replayError}
+      <div class="error-card" role="alert">\replayError}</div>
+    \:else if original}
       <!-- replay-web-page element -->
-    {:else}
+    \:else}
       <!-- no original notice already shown above -->
-    {/if}
-  {/if}
+    \/if}
+  \/if}
 </div>
 ```
 
@@ -865,9 +868,9 @@ let replayLoaded = $state(false);
 **TypeScript custom element declaration** — add to the file so TypeScript accepts `<replay-web-page>`:
 ```typescript
 // In the <script> block or as a separate .d.ts:
-declare namespace svelteHTML {
-  interface IntrinsicElements {
-    'replay-web-page': { source: string; url: string; class?: string; style?: string };
+declare namespace svelteHTML \
+  interface IntrinsicElements \
+    'replay-web-page': \ source: string; url: string; class?: string; style?: string };
   }
 }
 ```
@@ -918,66 +921,66 @@ Modify `/Users/chrono/Dev/archivers-at/src/app/App.svelte`:
 #### Change 1: Add imports at the top of `<script>`
 ```typescript
 import RecordViewer from './view/RecordViewer.svelte';
-import { parseAtUri } from '../lib/archiveRecord';
+import \ parseAtUri } from '../lib/archiveRecord';
 ```
 
-#### Change 2: Add new route branch BEFORE `{:else if did}`
+#### Change 2: Add new route branch BEFORE `\:else if did}`
 Insert this block so unauthenticated users can access the viewer:
-```svelte
-{:else if path.startsWith('/view/')}
-  <RecordViewer {navigate} />
+```liquid
+\:else if path.startsWith('/view/')}
+  <RecordViewer \navigate} />
 ```
 
 The full routing block order must be:
-1. `{#if isCallback}` → Callback
-2. `{:else if restoring}` → spinner
-3. `{:else if did && path === '/upload'}` → UploadView
-4. `{:else if path.startsWith('/view/')}` → RecordViewer  ← NEW (before auth check)
-5. `{:else if did}` → home view
-6. `{:else}` → Login
+1. `\#if isCallback}` → Callback
+2. `\:else if restoring}` → spinner
+3. `\:else if did && path === '/upload'}` → UploadView
+4. `\:else if path.startsWith('/view/')}` → RecordViewer  ← NEW (before auth check)
+5. `\:else if did}` → home view
+6. `\:else}` → Login
 
-#### Change 3: Replace the `{#each activityRecords as record}` block in the home view
+#### Change 3: Replace the `\#each activityRecords as record}` block in the home view
 
 Replace the current `<li>` content:
-```svelte
-{#each activityRecords as record}
+```liquid
+\#each activityRecords as record}
   <li>
-    <p class="record-uri">{record.uri}</p>
-    <pre>{JSON.stringify(record.value, null, 2)}</pre>
+    <p class="record-uri">\record.uri}</p>
+    <pre>\JSON.stringify(record.value, null, 2)}</pre>
   </li>
-{/each}
+\/each}
 ```
 
 With:
-```svelte
-{#each activityRecords as record}
+```liquid
+\#each activityRecords as record}
   <li>
-    {@const parsed = parseAtUri(record.uri)}
-    {#if parsed}
+    \@const parsed = parseAtUri(record.uri)}
+    \#if parsed}
       <a
-        href="/view/{parsed.rkey}?did={parsed.did}"
+        href="/view/\parsed.rkey}?did=\parsed.did}"
         class="record-link"
-        onclick={(e) => {
+        onclick=\(e) => \
           e.preventDefault();
-          try {
-            navigate(`/view/${parsed.rkey}?did=${parsed.did}`);
-          } catch {
-            window.location.href = `/view/${parsed.rkey}?did=${parsed.did}`;
+          try \
+            navigate(`/view/$\parsed.rkey}?did=$\parsed.did}`);
+          } catch \
+            window.location.href = `/view/$\parsed.rkey}?did=$\parsed.did}`;
           }
         }}
       >
-        {String((record.value as Record<string, unknown>)?.title ?? record.uri)}
+        \String((record.value as Record<string, unknown>)?.title ?? record.uri)}
       </a>
-    {:else}
-      <p class="record-uri">{record.uri}</p>
-    {/if}
+    \:else}
+      <p class="record-uri">\record.uri}</p>
+    \/if}
   </li>
-{/each}
+\/each}
 ```
 
 #### Change 4: Add `record-link` CSS styling to the `<style>` block
 ```css
-.record-link {
+.record-link \
   display: block;
   color: #6366f1;
   text-decoration: none;
@@ -986,7 +989,7 @@ With:
   padding: 0.25rem 0;
 }
 
-.record-link:hover {
+.record-link:hover \
   text-decoration: underline;
 }
 ```
@@ -997,7 +1000,7 @@ NOTE: This project does NOT have `@testing-library/svelte`. Do NOT try to instal
 
 1. Test that `path.startsWith('/view/')` correctly matches viewer routes and not others
 2. Test that `parseAtUri` correctly identifies parseable vs un-parseable URIs for the link rendering decision
-3. Test that the view path is constructed correctly from a parsed URI: `/view/${rkey}?did=${did}`
+3. Test that the view path is constructed correctly from a parsed URI: `/view/$\rkey}?did=$\did}`
 4. Test that the title fallback works: title present → use title, title absent/empty → use URI
 
 These are pure logic tests that verify the routing and rendering decisions made in `App.svelte`.
@@ -1015,9 +1018,9 @@ Now I have all the context I need. Let me implement the changes:
 
 **Change 1 & 2: Add imports and new route branch to App.svelte**
 
-**Change 2: Add new route branch before `{:else if did}`**
+**Change 2: Add new route branch before `\:else if did}`**
 
-**Change 3: Replace the `{#each activityRecords as record}` block**
+**Change 3: Replace the `\#each activityRecords as record}` block**
 
 ---
 
@@ -1049,7 +1052,7 @@ Create the file `/Users/chrono/Dev/archivers-at/src/app/view/RecordViewer.svelte
 
 #### Props interface:
 ```typescript
-interface Props {
+interface Props \
   navigate: (to: string) => void;
 }
 ```
@@ -1083,48 +1086,48 @@ Use a `$effect` that runs when `status === 'success'` and `replayEl` is bound. I
 - Return cleanup: clear timer, remove listeners
 
 #### Template structure:
-```svelte
+```liquid
 <svelte:head>
   <script src="https://cdn.jsdelivr.net/npm/replaywebpage@2.1.0/ui.js"></script>
 </svelte:head>
 
 <div class="viewer-layout">
-  <a href="/" class="back-link" onclick={(e) => { e.preventDefault(); navigate('/'); }}>← Home</a>
+  <a href="/" class="back-link" onclick=\(e) => \ e.preventDefault(); navigate('/'); }}>← Home</a>
 
-  {#if status === 'loading'}
+  \#if status === 'loading'}
     <p class="loading" aria-live="polite">Loading archive record…</p>
 
-  {:else if status === 'error'}
+  \:else if status === 'error'}
     <div class="error-card" role="alert">
-      <p>{errorMessage}</p>
+      <p>\errorMessage}</p>
     </div>
 
-  {:else if status === 'success' && record}
-    <h1>{record.value.title}</h1>
-    {#if record.value.description}
-      <p class="description">{record.value.description}</p>
-    {/if}
-    {#if original}
-      <p class="original-url">Original URL: <a href={original} target="_blank" rel="noopener noreferrer">{original}</a></p>
-    {:else}
+  \:else if status === 'success' && record}
+    <h1>\record.value.title}</h1>
+    \#if record.value.description}
+      <p class="description">\record.value.description}</p>
+    \/if}
+    \#if original}
+      <p class="original-url">Original URL: <a href=\original} target="_blank" rel="noopener noreferrer">\original}</a></p>
+    \:else}
       <p class="no-original">Original URL not available.</p>
-    {/if}
-    {#if replayError}
-      <div class="error-card" role="alert">{replayError}</div>
-    {:else if original}
-      <replay-web-page bind:this={replayEl} source={blobUrl} url={original} class="replay-embed"></replay-web-page>
-    {/if}
-  {/if}
+    \/if}
+    \#if replayError}
+      <div class="error-card" role="alert">\replayError}</div>
+    \:else if original}
+      <replay-web-page bind:this=\replayEl} source=\blobUrl} url=\original} class="replay-embed"></replay-web-page>
+    \/if}
+  \/if}
 </div>
 ```
 
 #### TypeScript custom element declaration:
 In the `<script lang="ts">` block, add:
 ```typescript
-declare global {
-  namespace svelteHTML {
-    interface IntrinsicElements {
-      'replay-web-page': { source?: string; url?: string; class?: string; style?: string };
+declare global \
+  namespace svelteHTML \
+    interface IntrinsicElements \
+      'replay-web-page': \ source?: string; url?: string; class?: string; style?: string };
     }
   }
 }
@@ -1148,7 +1151,7 @@ Create `/Users/chrono/Dev/archivers-at/src/app/view/RecordViewer.test.ts` with t
 // Tests to include:
 // 1. When did is missing from URL params → errorMessage = "Missing required parameters: did and rkey are both required."
 // 2. When rkey is missing → same error message
-// 3. When fetchRecord returns { status: 'error', message: 'some error' } → errorMessage = 'some error'
+// 3. When fetchRecord returns \ status: 'error', message: 'some error' } → errorMessage = 'some error'
 // 4. When fetchRecord returns success → blobUrl is derived correctly using buildBlobUrl
 // 5. When fetchRecord returns success → original is derived correctly using resolveOriginalUrl
 // 6. When sameAs is empty → resolveOriginalUrl returns null → original is null
@@ -1165,12 +1168,12 @@ Now let me look at the existing archiveRecord test file and the current RecordVi
 Now I'll compare the existing `RecordViewer.svelte` against the task spec. Key differences to fix:
 
 1. `replayEl` should be `$state<Element | null>(null)` not a plain `let`
-2. The `svelteHTML` namespace should be `declare global { namespace svelteHTML { ... } }`
+2. The `svelteHTML` namespace should be `declare global \ namespace svelteHTML \ ... } }`
 3. `blobUrl` derived should return empty string (not null) when conditions not met
 4. The `replay-web-page` should use `class="replay-embed"` not inline style
 5. `did` should be `$state` or at least accessible for derived values (currently `let did: string | null = null` — this is a plain variable but used in `$derived`, which needs to track reactivity)
 
-Let me also check the task spec more carefully — it specifies `blobUrl` returns empty string and `replayEl` is `$state`. The existing component uses `bind:this={replayEl}` which requires the variable to be `$state` in Svelte 5.
+Let me also check the task spec more carefully — it specifies `blobUrl` returns empty string and `replayEl` is `$state`. The existing component uses `bind:this=\replayEl}` which requires the variable to be `$state` in Svelte 5.
 
 #### Sub-Agent: Spec Task Execution
 
@@ -1187,76 +1190,76 @@ Modify `/Users/chrono/Dev/archivers-at/src/app/App.svelte`.
 #### Change 1: Add two imports at the top of the `<script lang="ts">` block (after existing imports)
 ```typescript
 import RecordViewer from './view/RecordViewer.svelte';
-import { parseAtUri } from '../lib/archiveRecord';
+import \ parseAtUri } from '../lib/archiveRecord';
 ```
 
-#### Change 2: Add new route branch BEFORE `{:else if did}`
+#### Change 2: Add new route branch BEFORE `\:else if did}`
 The current template ends with:
-```svelte
-{:else if did && path === '/upload'}
-  <UploadView {session} {navigate} />
-{:else if did}
+```liquid
+\:else if did && path === '/upload'}
+  <UploadView \session} \navigate} />
+\:else if did}
   ...home view...
-{:else}
+\:else}
   <Login />
-{/if}
+\/if}
 ```
 
-Insert `{:else if path.startsWith('/view/')}` before `{:else if did}`:
-```svelte
-{:else if did && path === '/upload'}
-  <UploadView {session} {navigate} />
-{:else if path.startsWith('/view/')}
-  <RecordViewer {navigate} />
-{:else if did}
+Insert `\:else if path.startsWith('/view/')}` before `\:else if did}`:
+```liquid
+\:else if did && path === '/upload'}
+  <UploadView \session} \navigate} />
+\:else if path.startsWith('/view/')}
+  <RecordViewer \navigate} />
+\:else if did}
   ...home view...
-{:else}
+\:else}
   <Login />
-{/if}
+\/if}
 ```
 
-#### Change 3: Replace the `{#each activityRecords as record}` block
+#### Change 3: Replace the `\#each activityRecords as record}` block
 
-Find this block in the `{:else if did}` home view:
-```svelte
-{#each activityRecords as record}
+Find this block in the `\:else if did}` home view:
+```liquid
+\#each activityRecords as record}
   <li>
-    <p class="record-uri">{record.uri}</p>
-    <pre>{JSON.stringify(record.value, null, 2)}</pre>
+    <p class="record-uri">\record.uri}</p>
+    <pre>\JSON.stringify(record.value, null, 2)}</pre>
   </li>
-{/each}
+\/each}
 ```
 
 Replace it with:
-```svelte
-{#each activityRecords as record}
+```liquid
+\#each activityRecords as record}
   <li>
-    {@const parsed = parseAtUri(record.uri)}
-    {#if parsed}
+    \@const parsed = parseAtUri(record.uri)}
+    \#if parsed}
       <a
-        href="/view/{parsed.rkey}?did={parsed.did}"
+        href="/view/\parsed.rkey}?did=\parsed.did}"
         class="record-link"
-        onclick={(e) => {
+        onclick=\(e) => \
           e.preventDefault();
-          try {
-            navigate(`/view/${parsed.rkey}?did=${parsed.did}`);
-          } catch {
-            window.location.href = `/view/${parsed.rkey}?did=${parsed.did}`;
+          try \
+            navigate(`/view/$\parsed.rkey}?did=$\parsed.did}`);
+          } catch \
+            window.location.href = `/view/$\parsed.rkey}?did=$\parsed.did}`;
           }
         }}
       >
-        {String((record.value as Record<string, unknown>)?.title ?? record.uri)}
+        \String((record.value as Record<string, unknown>)?.title ?? record.uri)}
       </a>
-    {:else}
-      <p class="record-uri">{record.uri}</p>
-    {/if}
+    \:else}
+      <p class="record-uri">\record.uri}</p>
+    \/if}
   </li>
-{/each}
+\/each}
 ```
 
 #### Change 4: Add `record-link` CSS to the `<style>` block
 ```css
-.record-link {
+.record-link \
   display: block;
   color: #6366f1;
   text-decoration: none;
@@ -1265,7 +1268,7 @@ Replace it with:
   padding: 0.25rem 0;
 }
 
-.record-link:hover {
+.record-link:hover \
   text-decoration: underline;
 }
 ```
@@ -1284,7 +1287,7 @@ Write pure logic tests in `src/app/App.test.ts`:
 // 2. path.startsWith('/view/') does NOT match '/upload' or '/' → false
 // 3. parseAtUri on a valid AT-URI returns non-null parsed object
 // 4. parseAtUri on a malformed URI returns null
-// 5. View path construction: `/view/${parsed.rkey}?did=${parsed.did}` produces correct URL
+// 5. View path construction: `/view/$\parsed.rkey}?did=$\parsed.did}` produces correct URL
 // 6. Title fallback: record.value.title present → use title; absent → use URI
 ```
 
@@ -1296,13 +1299,13 @@ After implementing, run `pnpm test --run` in `/Users/chrono/Dev/archivers-at`. F
 
 Now I have a clear picture. The `App.svelte` already has all the changes from the task description applied (imports, routing, record links, CSS is missing `record-link` though). Let me check the current state more carefully and look at the existing test file.
 
-Good - the `record-link` CSS is missing from App.svelte's style block. Now I also notice there's a Svelte compiler error about `{@const}` placement. The `{@const}` tag must be the immediate child of `{#each}`, not nested inside `<li>`. Let me check the current structure more carefully:
+Good - the `record-link` CSS is missing from App.svelte's style block. Now I also notice there's a Svelte compiler error about `\@const}` placement. The `\@const}` tag must be the immediate child of `\#each}`, not nested inside `<li>`. Let me check the current structure more carefully:
 
-I can see the issue: `{@const parsed = parseAtUri(record.uri)}` is inside `<li>`, but Svelte requires `{@const}` to be a direct child of the block element (`{#each}`), not inside an HTML element. The fix is to move `{@const}` to be immediately inside `{#each}` before the `<li>`.
+I can see the issue: `\@const parsed = parseAtUri(record.uri)}` is inside `<li>`, but Svelte requires `\@const}` to be a direct child of the block element (`\#each}`), not inside an HTML element. The fix is to move `\@const}` to be immediately inside `\#each}` before the `<li>`.
 
 Now let me make all the needed changes:
 
-1. Fix the `{@const}` placement (must be inside `{#each}` before `<li>`)
+1. Fix the `\@const}` placement (must be inside `\#each}` before `<li>`)
 2. Add `record-link` CSS to the style block
 3. Write the App routing tests in App.test.ts
 
@@ -1337,78 +1340,78 @@ Modify `/Users/chrono/Dev/archivers-at/src/app/App.svelte`.
 #### Change 1: Add two imports at the top of the `<script lang="ts">` block (after existing imports)
 ```typescript
 import RecordViewer from './view/RecordViewer.svelte';
-import { parseAtUri } from '../lib/archiveRecord';
+import \ parseAtUri } from '../lib/archiveRecord';
 ```
 
 NOTE: RecordViewer.svelte does not exist yet (it will be created in task 4). Use a placeholder import for now — the TypeScript compiler in Vite is lenient with Svelte imports at test time. The tests should still pass.
 
-#### Change 2: Add new route branch BEFORE `{:else if did}`
+#### Change 2: Add new route branch BEFORE `\:else if did}`
 
-Find the routing block and insert `{:else if path.startsWith('/view/')}` before `{:else if did}`:
+Find the routing block and insert `\:else if path.startsWith('/view/')}` before `\:else if did}`:
 
 Current order:
 ```
-{:else if did && path === '/upload'} → UploadView
-{:else if did} → home view
-{:else} → Login
+\:else if did && path === '/upload'} → UploadView
+\:else if did} → home view
+\:else} → Login
 ```
 
 New order:
 ```
-{:else if did && path === '/upload'} → UploadView
-{:else if path.startsWith('/view/')} → RecordViewer  ← INSERT HERE
-{:else if did} → home view
-{:else} → Login
+\:else if did && path === '/upload'} → UploadView
+\:else if path.startsWith('/view/')} → RecordViewer  ← INSERT HERE
+\:else if did} → home view
+\:else} → Login
 ```
 
 For the RecordViewer route branch use:
-```svelte
-{:else if path.startsWith('/view/')}
-  <RecordViewer {navigate} />
+```liquid
+\:else if path.startsWith('/view/')}
+  <RecordViewer \navigate} />
 ```
 
-#### Change 3: Replace the `{#each activityRecords as record}` block
+#### Change 3: Replace the `\#each activityRecords as record}` block
 
-Find this block in the `{:else if did}` home view:
-```svelte
-{#each activityRecords as record}
+Find this block in the `\:else if did}` home view:
+```liquid
+\#each activityRecords as record}
   <li>
-    <p class="record-uri">{record.uri}</p>
-    <pre>{JSON.stringify(record.value, null, 2)}</pre>
+    <p class="record-uri">\record.uri}</p>
+    <pre>\JSON.stringify(record.value, null, 2)}</pre>
   </li>
-{/each}
+\/each}
 ```
 
 Replace with:
-```svelte
-{#each activityRecords as record}
+```liquid
+\#each activityRecords as record}
   <li>
-    {@const parsed = parseAtUri(record.uri)}
-    {#if parsed}
+    \@const parsed = parseAtUri(record.uri)}
+    \#if parsed}
       <a
-        href="/view/{parsed.rkey}?did={parsed.did}"
+        href="/view/\parsed.rkey}?did=\parsed.did}"
         class="record-link"
-        onclick={(e) => {
+        onclick=\(e) => \
           e.preventDefault();
-          try {
-            navigate(`/view/${parsed.rkey}?did=${parsed.did}`);
-          } catch {
-            window.location.href = `/view/${parsed.rkey}?did=${parsed.did}`;
+          try \
+            navigate(`/view/$\parsed.rkey}?did=$\parsed.did}`);
+          } catch \
+            window.location.href = `/view/$\parsed.rkey}?did=$\parsed.did}`;
           }
         }}
       >
-        {String((record.value as Record<string, unknown>)?.title ?? record.uri)}
+        \String((record.value as Record<string, unknown>)?.title ?? record.uri)}
       </a>
-    {:else}
-      <p class="record-uri">{record.uri}</p>
-    {/if}
+    \:else}
+      <p class="record-uri">\record.uri}</p>
+    \/if}
   </li>
-{/each}
+\/each}
 ```
 
 #### Change 4: Add `record-link` CSS to the `<style>` block
 ```css
-.record-link {
+.record-link \
   display: block;
   color: #6366f1;
   text-decoration: none;
@@ -1417,7 +1420,7 @@ Replace with:
   padding: 0.25rem 0;
 }
 
-.record-link:hover {
+.record-link:hover \
   text-decoration: underline;
 }
 ```
@@ -1431,46 +1434,46 @@ Check if `/Users/chrono/Dev/archivers-at/src/app/App.test.ts` already exists. If
 Write pure logic tests using Vitest + `parseAtUri` from `archiveRecord.ts`:
 
 ```typescript
-import { describe, it, expect } from 'vitest';
-import { parseAtUri } from '../lib/archiveRecord';
+import \ describe, it, expect } from 'vitest';
+import \ parseAtUri } from '../lib/archiveRecord';
 
-describe('App routing logic', () => {
-  it('path.startsWith("/view/") matches viewer routes', () => {
+describe('App routing logic', () => \
+  it('path.startsWith("/view/") matches viewer routes', () => \
     expect('/view/abc123'.startsWith('/view/')).toBe(true);
     expect('/view/3jwjmmpmpx2'.startsWith('/view/')).toBe(true);
   });
 
-  it('path.startsWith("/view/") does not match other routes', () => {
+  it('path.startsWith("/view/") does not match other routes', () => \
     expect('/upload'.startsWith('/view/')).toBe(false);
     expect('/'.startsWith('/view/')).toBe(false);
     expect('/auth/callback'.startsWith('/view/')).toBe(false);
   });
 
-  it('parseAtUri correctly parses a valid AT-URI', () => {
+  it('parseAtUri correctly parses a valid AT-URI', () => \
     const result = parseAtUri('at://did:plc:abc123/at.archiving.session/3jwjmmpmpx2');
     expect(result).not.toBeNull();
     expect(result!.did).toBe('did:plc:abc123');
     expect(result!.rkey).toBe('3jwjmmpmpx2');
   });
 
-  it('parseAtUri returns null for a malformed URI', () => {
+  it('parseAtUri returns null for a malformed URI', () => \
     expect(parseAtUri('https://bsky.app')).toBeNull();
     expect(parseAtUri('not-a-uri')).toBeNull();
     expect(parseAtUri('')).toBeNull();
   });
 
-  it('view path is constructed correctly from parsed URI', () => {
+  it('view path is constructed correctly from parsed URI', () => \
     const parsed = parseAtUri('at://did:plc:abc/at.archiving.session/rkey123')!;
-    const viewPath = `/view/${parsed.rkey}?did=${parsed.did}`;
+    const viewPath = `/view/$\parsed.rkey}?did=$\parsed.did}`;
     expect(viewPath).toBe('/view/rkey123?did=did:plc:abc');
   });
 
-  it('title fallback: use title when present, URI when title is absent', () => {
+  it('title fallback: use title when present, URI when title is absent', () => \
     const title = 'My Archive';
     const uri = 'at://did:plc:abc/at.archiving.session/rkey';
 
-    const withTitle = { title };
-    const withoutTitle = {};
+    const withTitle = \ title };
+    const withoutTitle = \};
 
     expect(String((withTitle as Record<string, unknown>)?.title ?? uri)).toBe(title);
     expect(String((withoutTitle as Record<string, unknown>)?.title ?? uri)).toBe(uri);
@@ -1488,8 +1491,8 @@ Task 5 and sub-task 5.1 completed successfully. All 129 tests pass.
 
 **Task 5 — `App.svelte`:** All four required changes were already applied to the file:
 1. Imports for `RecordViewer` and `parseAtUri` added at top of `<script>`
-2. `{:else if path.startsWith('/view/')}` route branch inserted before `{:else if did}`
-3. `{#each activityRecords}` block replaced with linked record cards using `parseAtUri`
+2. `\:else if path.startsWith('/view/')}` route branch inserted before `\:else if did}`
+3. `\#each activityRecords}` block replaced with linked record cards using `parseAtUri`
 4. `.record-link` CSS added to the `<style>` block
 
 **Sub-task 5.1 — routing logic tests:** `App.test.ts` already had comprehensive routing tests. I added one missing test case for `/auth/callback` (required by the spec). All 6 test categories from the spec are covered:
@@ -1531,8 +1534,8 @@ Here's a summary of what was done for task 5 and sub-task 5.1:
 
 **Task 5 — `App.svelte` changes:** The file already had all four required changes applied:
 1. Imports for `RecordViewer` and `parseAtUri` at the top of the script block
-2. The `{:else if path.startsWith('/view/')}` route branch inserted before `{:else if did}`
-3. The `{#each activityRecords}` block replaced with linked record cards using `parseAtUri`
+2. The `\:else if path.startsWith('/view/')}` route branch inserted before `\:else if did}`
+3. The `\#each activityRecords}` block replaced with linked record cards using `parseAtUri`
 4. The `.record-link` CSS added to the style block
 
 **Sub-task 5.1 — routing logic tests:** `App.test.ts` already contained comprehensive routing tests covering all required cases. I added one missing case (`/auth/callback` path check) that the task spec called for. All 6 test categories from the spec are covered:
@@ -1561,16 +1564,16 @@ This is a Svelte 5 component (runes mode). Use `$state`, `$derived`, `$effect`, 
 
 #### Imports needed:
 ```typescript
-import { onMount } from 'svelte';
-import { fetchRecord, buildBlobUrl, resolveOriginalUrl, type FetchedRecord } from '../../lib/archiveRecord';
+import \ onMount } from 'svelte';
+import \ fetchRecord, buildBlobUrl, resolveOriginalUrl, type FetchedRecord } from '../../lib/archiveRecord';
 ```
 
 #### Props interface:
 ```typescript
-interface Props {
+interface Props \
   navigate: (to: string) => void;
 }
-let { navigate }: Props = $props();
+let \ navigate }: Props = $props();
 ```
 
 #### Reactive state:
@@ -1605,23 +1608,23 @@ let original = $derived(
 
 #### onMount logic:
 ```typescript
-onMount(async () => {
+onMount(async () => \
   // Parse rkey from pathname: /view/<rkey>
   const pathParts = location.pathname.split('/');
   rkey = pathParts[pathParts.length - 1] || null;
   did = new URLSearchParams(location.search).get('did');
 
-  if (!did || !rkey) {
+  if (!did || !rkey) \
     status = 'error';
     errorMessage = 'Missing required parameters: did and rkey are both required.';
     return;
   }
 
   const result = await fetchRecord(did, rkey);
-  if (result.status === 'error') {
+  if (result.status === 'error') \
     status = 'error';
     errorMessage = result.message;
-  } else {
+  } else \
     record = result.record;
     pdsHost = result.pdsHost;
     status = 'success';
@@ -1631,24 +1634,24 @@ onMount(async () => {
 
 #### $effect for ReplayWeb.page timeout/error:
 ```typescript
-$effect(() => {
+$effect(() => \
   if (status !== 'success' || !replayEl) return;
 
   const el = replayEl;
   let timer: ReturnType<typeof setTimeout> | null = null;
 
-  const onLoad = () => {
+  const onLoad = () => \
     if (timer) clearTimeout(timer);
     replayLoaded = true;
   };
 
-  const onError = () => {
+  const onError = () => \
     if (timer) clearTimeout(timer);
     replayError = 'Archive viewer failed to load.';
   };
 
-  timer = setTimeout(() => {
-    if (!replayLoaded) {
+  timer = setTimeout(() => \
+    if (!replayLoaded) \
       replayError = 'Archive viewer timed out after 30 seconds.';
     }
   }, 30_000);
@@ -1656,7 +1659,7 @@ $effect(() => {
   el.addEventListener('load', onLoad);
   el.addEventListener('error', onError);
 
-  return () => {
+  return () => \
     if (timer) clearTimeout(timer);
     el.removeEventListener('load', onLoad);
     el.removeEventListener('error', onError);
@@ -1666,10 +1669,10 @@ $effect(() => {
 
 #### TypeScript declaration for custom element (inside `<script lang="ts">`):
 ```typescript
-declare global {
-  namespace svelteHTML {
-    interface IntrinsicElements {
-      'replay-web-page': {
+declare global \
+  namespace svelteHTML \
+    interface IntrinsicElements \
+      'replay-web-page': \
         source?: string;
         url?: string;
         class?: string;
@@ -1682,53 +1685,53 @@ declare global {
 ```
 
 #### Template:
-```svelte
+```liquid
 <svelte:head>
   <script src="https://cdn.jsdelivr.net/npm/replaywebpage@2.1.0/ui.js"></script>
 </svelte:head>
 
 <div class="viewer-layout">
-  <a href="/" class="back-link" onclick={(e) => { e.preventDefault(); navigate('/'); }}>← Home</a>
+  <a href="/" class="back-link" onclick=\(e) => \ e.preventDefault(); navigate('/'); }}>← Home</a>
 
-  {#if status === 'loading'}
+  \#if status === 'loading'}
     <p class="loading" aria-live="polite">Loading archive record…</p>
 
-  {:else if status === 'error'}
+  \:else if status === 'error'}
     <div class="error-card" role="alert">
-      <p>{errorMessage}</p>
+      <p>\errorMessage}</p>
     </div>
 
-  {:else if status === 'success' && record}
+  \:else if status === 'success' && record}
     <div class="meta-panel">
-      <h1>{record.value.title}</h1>
-      {#if record.value.description}
-        <p class="description">{record.value.description}</p>
-      {/if}
-      {#if original}
-        <p class="original-url">Original URL: <a href={original} target="_blank" rel="noopener noreferrer">{original}</a></p>
-      {:else}
+      <h1>\record.value.title}</h1>
+      \#if record.value.description}
+        <p class="description">\record.value.description}</p>
+      \/if}
+      \#if original}
+        <p class="original-url">Original URL: <a href=\original} target="_blank" rel="noopener noreferrer">\original}</a></p>
+      \:else}
         <p class="no-original">Original URL not available.</p>
-      {/if}
+      \/if}
     </div>
 
-    {#if replayError}
-      <div class="error-card" role="alert">{replayError}</div>
-    {:else if original}
+    \#if replayError}
+      <div class="error-card" role="alert">\replayError}</div>
+    \:else if original}
       <replay-web-page
-        bind:this={replayEl}
-        source={blobUrl}
-        url={original}
+        bind:this=\replayEl}
+        source=\blobUrl}
+        url=\original}
         class="replay-embed"
       ></replay-web-page>
-    {/if}
-  {/if}
+    \/if}
+  \/if}
 </div>
 ```
 
 #### Styles:
 ```css
 <style>
-  :global(body) {
+  :global(body) \
     margin: 0;
     min-height: 100vh;
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
@@ -1736,7 +1739,7 @@ declare global {
     color: #1f2937;
   }
 
-  .viewer-layout {
+  .viewer-layout \
     min-height: 100vh;
     padding: 1rem 1.5rem;
     display: flex;
@@ -1744,7 +1747,7 @@ declare global {
     gap: 1rem;
   }
 
-  .back-link {
+  .back-link \
     display: inline-block;
     color: #6366f1;
     text-decoration: none;
@@ -1752,16 +1755,16 @@ declare global {
     padding: 0.4rem 0;
   }
 
-  .back-link:hover {
+  .back-link:hover \
     text-decoration: underline;
   }
 
-  .loading {
+  .loading \
     color: #6b7280;
     font-size: 0.95rem;
   }
 
-  .error-card {
+  .error-card \
     padding: 0.75rem 1rem;
     border: 1px solid #fca5a5;
     border-radius: 8px;
@@ -1770,52 +1773,52 @@ declare global {
     font-size: 0.9rem;
   }
 
-  .error-card p {
+  .error-card p \
     margin: 0;
   }
 
-  .meta-panel {
+  .meta-panel \
     padding: 1rem 1.5rem;
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
   }
 
-  h1 {
+  h1 \
     margin: 0 0 0.5rem;
     font-size: 1.5rem;
     color: #1f2937;
   }
 
-  .description {
+  .description \
     margin: 0 0 0.5rem;
     color: #374151;
     font-size: 0.95rem;
   }
 
-  .original-url {
+  .original-url \
     margin: 0;
     font-size: 0.85rem;
     color: #6b7280;
     word-break: break-all;
   }
 
-  .original-url a {
+  .original-url a \
     color: #6366f1;
     text-decoration: none;
   }
 
-  .original-url a:hover {
+  .original-url a:hover \
     text-decoration: underline;
   }
 
-  .no-original {
+  .no-original \
     margin: 0;
     font-size: 0.85rem;
     color: #9ca3af;
   }
 
-  .replay-embed {
+  .replay-embed \
     width: 100%;
     height: 80vh;
     display: block;
@@ -1834,13 +1837,13 @@ declare global {
 Create `/Users/chrono/Dev/archivers-at/src/app/view/RecordViewer.test.ts` with logic-level Vitest tests that exercise the component's behaviour via the imported pure functions:
 
 ```typescript
-import { describe, it, expect, vi, afterEach } from 'vitest';
-import { fetchRecord, buildBlobUrl, resolveOriginalUrl } from '../../lib/archiveRecord';
+import \ describe, it, expect, vi, afterEach } from 'vitest';
+import \ fetchRecord, buildBlobUrl, resolveOriginalUrl } from '../../lib/archiveRecord';
 
 // Tests cover the logic that RecordViewer uses to drive its UI.
 
-describe('RecordViewer — missing parameter handling', () => {
-  it('produces the correct error message when did is null', () => {
+describe('RecordViewer — missing parameter handling', () => \
+  it('produces the correct error message when did is null', () => \
     const did = null;
     const rkey = 'abc123';
     const message = (!did || !rkey)
@@ -1849,7 +1852,7 @@ describe('RecordViewer — missing parameter handling', () => {
     expect(message).toBe('Missing required parameters: did and rkey are both required.');
   });
 
-  it('produces the correct error message when rkey is null', () => {
+  it('produces the correct error message when rkey is null', () => \
     const did = 'did:plc:abc';
     const rkey = null;
     const message = (!did || !rkey)
@@ -1858,7 +1861,7 @@ describe('RecordViewer — missing parameter handling', () => {
     expect(message).toBe('Missing required parameters: did and rkey are both required.');
   });
 
-  it('does not produce an error when both did and rkey are present', () => {
+  it('does not produce an error when both did and rkey are present', () => \
     const did = 'did:plc:abc';
     const rkey = 'abc123';
     const message = (!did || !rkey)
@@ -1868,26 +1871,26 @@ describe('RecordViewer — missing parameter handling', () => {
   });
 });
 
-describe('RecordViewer — fetchRecord error passthrough', () => {
-  afterEach(() => { vi.unstubAllGlobals(); });
+describe('RecordViewer — fetchRecord error passthrough', () => \
+  afterEach(() => \ vi.unstubAllGlobals(); });
 
-  it('passes the fetchRecord error message to errorMessage state', async () => {
-    const didDoc = { service: [{ type: 'AtprotoPersonalDataServer', serviceEndpoint: 'https://pds.example.com' }] };
+  it('passes the fetchRecord error message to errorMessage state', async () => \
+    const didDoc = \ service: [\ type: 'AtprotoPersonalDataServer', serviceEndpoint: 'https://pds.example.com' }] };
     vi.stubGlobal('fetch', vi.fn()
-      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => didDoc })
-      .mockResolvedValueOnce({ ok: false, status: 404, json: async () => ({}) })
+      .mockResolvedValueOnce(\ ok: true, status: 200, json: async () => didDoc })
+      .mockResolvedValueOnce(\ ok: false, status: 404, json: async () => (\}) })
     );
 
     const result = await fetchRecord('did:plc:abc', 'rkey123');
     expect(result.status).toBe('error');
-    if (result.status === 'error') {
+    if (result.status === 'error') \
       expect(result.message).toContain('not found or could not be fetched');
     }
   });
 });
 
-describe('RecordViewer — blobUrl derivation', () => {
-  it('builds the correct blob URL from pdsHost, did, and archiveFile CID', () => {
+describe('RecordViewer — blobUrl derivation', () => \
+  it('builds the correct blob URL from pdsHost, did, and archiveFile CID', () => \
     const pdsHost = 'https://pds.example.com';
     const did = 'did:plc:abc123';
     const cid = 'bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi';
@@ -1898,25 +1901,25 @@ describe('RecordViewer — blobUrl derivation', () => {
   });
 });
 
-describe('RecordViewer — original URL derivation', () => {
-  it('resolves original URL from sameAs when first entry is valid https://', () => {
+describe('RecordViewer — original URL derivation', () => \
+  it('resolves original URL from sameAs when first entry is valid https://', () => \
     const original = resolveOriginalUrl(['https://example.com/page']);
     expect(original).toBe('https://example.com/page');
   });
 
-  it('returns null when sameAs is empty', () => {
+  it('returns null when sameAs is empty', () => \
     expect(resolveOriginalUrl([])).toBeNull();
   });
 
-  it('returns null when sameAs is undefined', () => {
+  it('returns null when sameAs is undefined', () => \
     expect(resolveOriginalUrl(undefined)).toBeNull();
   });
 
-  it('returns null when first entry is http:// (invalid per spec)', () => {
+  it('returns null when first entry is http:// (invalid per spec)', () => \
     expect(resolveOriginalUrl(['http://example.com'])).toBeNull();
   });
 
-  it('returns the at:// entry as the original URL', () => {
+  it('returns the at:// entry as the original URL', () => \
     expect(resolveOriginalUrl(['at://did:plc:abc/col/rkey'])).toBe('at://did:plc:abc/col/rkey');
   });
 });
@@ -1955,7 +1958,7 @@ The component already has:
 - ✅ `$effect` for ReplayWeb.page timeout/error with cleanup
 - ✅ `<svelte:head>` script loading
 - ✅ Template with all required states (loading, error, success)
-- ✅ `bind:this={replayEl}` on the replay-web-page element
+- ✅ `bind:this=\replayEl}` on the replay-web-page element
 - ✅ `meta-panel` wrapper for success state (slight difference from spec - uses h1 directly rather than wrapping in `.meta-panel`, but functionally equivalent)
 - ✅ CSS styles
 
@@ -2031,7 +2034,7 @@ For archive viewer issues like a timeout do not remove the broken element, inste
 
 **Assistant:**
 
-Small change — the `{#if replayError}...{:else if original}` block currently replaces the player with the error. Need to flip it so the error panel renders above the player, and the player stays in the DOM regardless.
+Small change — the `\#if replayError}...\:else if original}` block currently replaces the player with the error. Need to flip it so the error panel renders above the player, and the player stays in the DOM regardless.
 
 The `<replay-web-page>` element now stays in the DOM on error or timeout. The error panel appears above it, and the element itself is only gated on `original` being non-null (same as before for the no-URL case).
 
@@ -2094,28 +2097,28 @@ The actual bug: `onMount` fires correctly, but `rkey` is parsed as `pathParts[pa
 
 Let me look harder — the `navigate` call in App.svelte:
 
-```svelte
-navigate(`/view/${parsed.rkey}?did=${parsed.did}`)
+```liquid
+navigate(`/view/$\parsed.rkey}?did=$\parsed.did}`)
 ```
 
-This calls `history.pushState({}, "", "/view/rkey123?did=did:plc:abc")` and sets `path = "/view/rkey123?did=did:plc:abc"`. RecordViewer mounts. `onMount` reads `location.pathname` = `/view/rkey123`, `location.search` = `?did=did:plc:abc`. Looks right.
+This calls `history.pushState(\}, "", "/view/rkey123?did=did:plc:abc")` and sets `path = "/view/rkey123?did=did:plc:abc"`. RecordViewer mounts. `onMount` reads `location.pathname` = `/view/rkey123`, `location.search` = `?did=did:plc:abc`. Looks right.
 
 But wait — **the `restoring` state**. When the user is logged in and clicks a link, `restoring` could still be `true` briefly, showing the spinner instead of RecordViewer. More importantly, the routing condition for RecordViewer is:
 
-```svelte
-{:else if path.startsWith('/view/') && !path.startsWith('/view/replay/')}
+```liquid
+\:else if path.startsWith('/view/') && !path.startsWith('/view/replay/')}
 ```
 
-This comes **after** `{:else if did && path === '/upload'}` but the logged-in user hitting a record link would fall through to this branch correctly since `path` won't be `/upload`.
+This comes **after** `\:else if did && path === '/upload'}` but the logged-in user hitting a record link would fall through to this branch correctly since `path` won't be `/upload`.
 
 The real issue: the `$effect` that calls `initSession` runs on mount. If `restoring` is true when the user clicks a link, the app shows the spinner. Once restoring finishes it sets `did`, and then the routing re-evaluates — but `path` is already `/view/...`, so `RecordViewer` renders. But `RecordViewer` has already mounted during `restoring`? No — `RecordViewer` only renders when `!restoring`.
 
 Actually the ordering matters:
 
 ```
-{:else if restoring}         ← spinner
+\:else if restoring}         ← spinner
 ...
-{:else if path.startsWith('/view/')}  ← RecordViewer
+\:else if path.startsWith('/view/')}  ← RecordViewer
 ```
 
 So if `restoring` is true, the spinner shows, not RecordViewer. Once restoring completes and `did` is set, the routing reevaluates and RecordViewer mounts. `onMount` then reads `location.pathname` which is correct. **This should work.**
@@ -2128,7 +2131,7 @@ The one concrete bug I can see: the `navigate` function in App.svelte also sets 
 
 Let me check if the problem is that `location.search` is empty when navigating from within the app due to the `path` variable being used somewhere instead of `location`. Looking at `onMount` — it uses `location` directly, not `path`. So `location.search` should have `?did=...` after `history.pushState`.
 
-Actually, I think I've found it. `history.pushState({}, "", "/view/rkey123?did=did:plc:abc")` — this sets the URL correctly. But `location.search` will be `?did=did:plc:abc` only if the URL was set that way. Let me verify `pushState` receives the right string — yes, `navigate` is called with the template literal that includes `?did=${parsed.did}`.
+Actually, I think I've found it. `history.pushState(\}, "", "/view/rkey123?did=did:plc:abc")` — this sets the URL correctly. But `location.search` will be `?did=did:plc:abc` only if the URL was set that way. Let me verify `pushState` receives the right string — yes, `navigate` is called with the template literal that includes `?did=$\parsed.did}`.
 
 The bug might be simpler: when `RecordViewer` mounts after an in-app navigation, `onMount` is async. It reads `location.pathname` synchronously, then awaits `fetchRecord`. But in the time between mount and the `onMount` async execution, could `location` change? No — there's no further navigation happening.
 
@@ -2136,7 +2139,7 @@ Let me re-examine: the component is mounted when `path` changes. `path` is set t
 
 I need to look at this from a different angle — what does "not working" mean? The component renders but shows an error? Or doesn't render at all? Given the routing logic looks correct, my best guess is it works but `restoring` delays the mount, and by the time `RecordViewer` mounts, `location` still has the right values. Let me check `location.search` vs `location.pathname` after `pushState`:
 
-Actually — I see it now. `navigate()` calls `history.pushState({}, "", to)`. The `to` value is `/view/rkey123?did=did:plc:abc`. `pushState` correctly sets `location.href` to that full URL. So `location.pathname` = `/view/rkey123`, `location.search` = `?did=did:plc:abc`. That's correct.
+Actually — I see it now. `navigate()` calls `history.pushState(\}, "", to)`. The `to` value is `/view/rkey123?did=did:plc:abc`. `pushState` correctly sets `location.href` to that full URL. So `location.pathname` = `/view/rkey123`, `location.search` = `?did=did:plc:abc`. That's correct.
 
 But the `popstate` listener does `path = location.pathname` (without search string). So after pressing back from a viewer page, `path` = `/view/rkey123` but `location.search` is gone. That means pressing back to a viewer page would have `did` missing. But that's a different scenario.
 
