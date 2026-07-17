@@ -12,7 +12,7 @@
 	<atom:link href="https://fightwithtools.dev/rss/" rel="self" type="application/rss+xml" />
 	<link>https://fightwithtools.dev/</link>
 	<description>Notes on various projects</description>
-	<lastBuildDate>Fri, 26 Jun 2026 05:16:28 GMT</lastBuildDate>
+	<lastBuildDate>Fri, 17 Jul 2026 15:07:10 GMT</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -57,9 +57,7 @@
 <p id="code-skip-day-21-adding-additional-lexicons-8">That doesn't work. I get instead:</p>
 <p class="skip-link-graf">
 <a href="https://fightwithtools.dev/posts/projects/aramzsxyz/day-21-adding-additional-lexicons/#code-skip-day-21-adding-additional-lexicons-7" id="skip-to-code-skip-day-21-adding-additional-lexicons-7" class="skip-link">Skip code block ▼</a></p>
-<pre><code>[schema-json-parse]: json: cannot unmarshal array into Go struct field SchemaFile.defs.properties.properties of type lexicon.genericSchemaDef
-error: linting issues detected
-</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>schema-json-parse<span class="token punctuation">]</span>: json: cannot unmarshal array into Go struct field SchemaFile.defs.properties.properties of <span class="token builtin class-name">type</span> lexicon.genericSchemaDef<br />error: linting issues detected</code></pre>
 <p id="code-skip-day-21-adding-additional-lexicons-7">Hmmm, <a href="https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/richtext/facet.json" target="_blank">let's check the bluesky reference</a> in their lexicons and compare. Also, <a href="https://getskyscraper.com/blog/bluesky-facets-rich-text-guide" target="_blank">look at an example of them in action</a>.</p>
 <p>Ok, I manually fiddled with it and it looks like there's a core problem with my byteSlice declaration. I had the required property in the wrong place. This does validate:</p>
 <p class="skip-link-graf">
